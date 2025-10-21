@@ -14,8 +14,8 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f5f5f5;
+            color: #000;
+            background-color: #fff8f0;
         }
         
         .container {
@@ -25,7 +25,8 @@
         }
         
         header {
-            background-color: #fff;
+            background: linear-gradient(90deg, #c8102e, #ffcc00);
+            color: white;
             padding: 30px 20px;
             margin-bottom: 30px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -33,13 +34,14 @@
         
         .breadcrumb {
             font-size: 0.9em;
-            color: #666;
+            color: #fff;
             margin-bottom: 20px;
         }
         
         .breadcrumb a {
-            color: #0066cc;
+            color: #fff;
             text-decoration: none;
+            font-weight: 500;
         }
         
         .breadcrumb a:hover {
@@ -47,14 +49,14 @@
         }
         
         h1 {
-            color: #0066cc;
+            color: #fff;
             font-size: 2.2em;
             margin-bottom: 10px;
-            font-weight: 600;
+            font-weight: 700;
         }
         
         .subtitle {
-            color: #666;
+            color: #fff;
             font-size: 1.1em;
         }
         
@@ -67,16 +69,16 @@
         }
         
         .theme-header {
-            background-color: #0066cc;
+            background: linear-gradient(90deg, #c8102e, #ffcc00);
             color: white;
             padding: 24px;
             cursor: pointer;
             position: relative;
-            transition: background-color 0.3s ease;
+            transition: opacity 0.3s ease;
         }
         
         .theme-header:hover {
-            background-color: #0052a3;
+            opacity: 0.9;
         }
         
         .theme-header::after {
@@ -96,6 +98,7 @@
         .theme-header h2 {
             font-size: 1.4em;
             margin-bottom: 8px;
+            font-weight: 700;
         }
         
         .theme-header .lektionen {
@@ -127,15 +130,16 @@
         .lebensbezug {
             margin-bottom: 30px;
             padding: 20px;
-            background-color: #f8f9fa;
+            background-color: #fff3cd;
             border-radius: 6px;
-            border-left: 4px solid #4d94ff;
+            border-left: 4px solid #c8102e;
         }
         
         .lebensbezug h3 {
-            color: #003d7a;
+            color: #000;
             font-size: 1.1em;
             margin-bottom: 16px;
+            font-weight: 700;
         }
         
         .schluessel-box {
@@ -144,31 +148,51 @@
             border-radius: 4px;
             padding: 12px;
             margin-bottom: 16px;
+            cursor: pointer;
+            user-select: none;
         }
         
-        .schluessel-box h4 {
-            color: #b30000;
+        .schluessel-box:hover {
+            background-color: #ffdddd;
+        }
+        
+        .schluessel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .schluessel-header h4 {
+            color: #c8102e;
             font-size: 0.9em;
-            margin-bottom: 8px;
+            font-weight: 700;
+            margin: 0;
         }
         
-        .schluessel-box ul {
-            list-style: none;
-            margin-left: 0;
+        .toggle-schluessel {
+            font-size: 1.2em;
+            color: #c8102e;
+            transition: transform 0.3s ease;
         }
         
-        .schluessel-box li {
-            padding: 4px 0;
-            padding-left: 20px;
-            position: relative;
+        .toggle-schluessel.rotated {
+            transform: rotate(180deg);
+        }
+        
+        .schluessel-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .schluessel-content.expanded {
+            max-height: 500px;
+            margin-top: 12px;
+        }
+        
+        .schluessel-content p {
+            color: #000;
             font-size: 0.85em;
-        }
-        
-        .schluessel-box li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #b30000;
         }
         
         .lerninhalt {
@@ -180,9 +204,10 @@
         }
         
         .lerninhalt h4 {
-            color: #333;
+            color: #000;
             font-size: 1em;
             margin-bottom: 12px;
+            font-weight: 700;
         }
         
         .kompetenz-container {
@@ -190,9 +215,9 @@
         }
         
         .kompetenz-button {
-            background-color: #e8f4fd;
-            border: 1px solid #cce0f4;
-            color: #0066cc;
+            background-color: #fff3cd;
+            border: 1px solid #ffcc00;
+            color: #000;
             padding: 8px 16px;
             margin-right: 8px;
             margin-bottom: 8px;
@@ -201,25 +226,21 @@
             cursor: pointer;
             transition: all 0.3s ease;
             display: inline-block;
+            font-weight: 600;
         }
         
         .kompetenz-button:hover {
-            background-color: #cce0f4;
             transform: translateY(-1px);
-        }
-        
-        .kompetenz-button.active {
-            background-color: #0066cc;
-            color: white;
         }
         
         .kompetenz-details {
             display: none;
             margin-top: 12px;
             padding: 16px;
-            background-color: #f0f8ff;
+            background-color: #fff8f0;
             border-radius: 4px;
             font-size: 0.9em;
+            border-left: 3px solid #c8102e;
         }
         
         .kompetenz-details.show {
@@ -235,40 +256,94 @@
             padding: 4px 0;
             padding-left: 20px;
             position: relative;
+            color: #000;
         }
         
         .kompetenz-details li::before {
             content: "•";
             position: absolute;
             left: 0;
-            color: #0066cc;
+            color: #c8102e;
         }
         
         .kompetenz-nummer {
-            font-weight: 600;
-            color: #003d7a;
+            font-weight: 700;
+            color: #c8102e;
         }
         
         /* Farbcodierung für verschiedene Kompetenzbereiche */
-        .gesellschaft { background-color: #e8f4fd; border-color: #b3d9ff; color: #0056b3; }
-        .sprache { background-color: #f0e8fd; border-color: #d4b3ff; color: #5a00b3; }
-        .digital { background-color: #e8fdf0; border-color: #b3ffd4; color: #00b356; }
+        .gesellschaft { 
+            background-color: #ffe8e8 !important; 
+            border-color: #ffcccc !important; 
+            color: #000 !important; 
+        }
+        .gesellschaft:hover {
+            background-color: #ffd4d4 !important;
+        }
+        .gesellschaft.active {
+            background: linear-gradient(135deg, #c8102e, #e64d5f) !important;
+            color: white !important;
+        }
+        
+        .sprache { 
+            background-color: #e8f0ff !important; 
+            border-color: #cce0ff !important; 
+            color: #000 !important; 
+        }
+        .sprache:hover {
+            background-color: #d4e4ff !important;
+        }
+        .sprache.active {
+            background: linear-gradient(135deg, #0066cc, #3385d6) !important;
+            color: white !important;
+        }
+        
+        .digital { 
+            background-color: #e8ffe8 !important; 
+            border-color: #ccffcc !important; 
+            color: #000 !important; 
+        }
+        .digital:hover {
+            background-color: #d4ffd4 !important;
+        }
+        .digital.active {
+            background: linear-gradient(135deg, #00994d, #00b359) !important;
+            color: white !important;
+        }
         
         .leitidee {
-            background-color: #f0f8ff;
+            background-color: #fff3cd;
             padding: 20px;
             border-radius: 6px;
             margin-bottom: 20px;
-            border-left: 4px solid #0066cc;
+            border-left: 4px solid #c8102e;
         }
         
         .leitidee h3 {
-            color: #003d7a;
+            color: #000;
             margin-bottom: 10px;
+            font-weight: 700;
         }
         
         .leitidee p {
             margin-bottom: 10px;
+            color: #000;
+        }
+        
+        .back-link {
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        .back-link a {
+            color: #c8102e;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+        
+        .back-link a:hover {
+            text-decoration: underline;
         }
         
         @media (max-width: 768px) {
@@ -323,6 +398,14 @@
             }
         }
         
+        function toggleSchluessel(box) {
+            const content = box.querySelector('.schluessel-content');
+            const icon = box.querySelector('.toggle-schluessel');
+            
+            content.classList.toggle('expanded');
+            icon.classList.toggle('rotated');
+        }
+        
         // Initialize: Add click handlers and collapse all themes
         document.addEventListener('DOMContentLoaded', function() {
             const headers = document.querySelectorAll('.theme-header');
@@ -349,290 +432,482 @@
     </header>
     
     <main class="container">
-        <!-- Thema 1: Ins Berufsleben einsteigen -->
+        <!-- Thema 1: Meine Berufsausbildung -->
         <div class="theme-section">
             <div class="theme-header">
-                <h2>Thema 1: Ins Berufsleben einsteigen</h2>
-                <p class="lektionen">21 Lektionen</p>
+                <h2>Thema 1: Meine Berufsausbildung</h2>
+                <p class="lektionen">xx Lektionen</p>
             </div>
             <div class="theme-content">
                 <div class="leitidee">
                     <h3>Leitidee</h3>
-                    <p>Der Beginn meiner beruflichen Grundbildung bedeutet einen tiefgreifenden Wandel. Ich übernehme eine neue Rolle im Berufsbildungssystem als verantwortungsvolle, lernende Fachkraft im Betrieb, in der Schule und in den überbetrieblichen Kursen (ÜK). In meiner Ausbildungszeit entwickle ich Orientierung und Sicherheit und finde meinen Platz in der Berufs- und Lebenswelt.</p>
+                    <p>...</p>
                 </div>
                 
                 <div class="lebensbezug">
-                    <h3>1. Individueller Lebensbezug: Ich finde mich im Berufsbildungssystem zurecht.</h3>
+                    <h3>1. Individueller Lebensbezug: ...</h3>
                     
-                    <div class="schluessel-box">
-                        <h4>Schlüsselkompetenzen</h4>
-                        <ul>
-                            <li><span class="kompetenz-nummer">3.2.1</span> Zwischen relevanten und irrelevanten Quellen und Inhalten unterscheiden</li>
-                            <li><span class="kompetenz-nummer">3.2.2</span> Sich selbst Ziele setzen, die Zielsetzung überprüfen und sich adaptiv verhalten</li>
-                            <li><span class="kompetenz-nummer">3.2.5</span> Die eigenen Werthaltungen und Überzeugungen erkennen, verstehen, kritisch reflektieren und weiterentwickeln</li>
-                            <li><span class="kompetenz-nummer">3.2.8</span> Ihre Lebensphasen planen und mit Unwägbarkeiten umgehen</li>
-                        </ul>
+                    <div class="schluessel-box" onclick="toggleSchluessel(this)">
+                        <div class="schluessel-header">
+                            <h4>Schlüsselkompetenzen</h4>
+                            <span class="toggle-schluessel">▼</span>
+                        </div>
+                        <div class="schluessel-content">
+                            <p>...</p>
+                        </div>
                     </div>
                     
                     <div class="lerninhalt">
-                        <h4>Kompetenz 1: Test</h4>
+                        <h4>Kompetenz 1: ...</h4>
                         
                         <div class="kompetenz-container">
-                            <button class="kompetenz-button gesellschaft" onclick="toggleKompetenz(this, 't1l1-gesellschaft')">
-                                Gesellschaftliche Aspekte
-                            </button>
                             <button class="kompetenz-button sprache" onclick="toggleKompetenz(this, 't1l1-sprache')">
-                                Sprachmodi
+                                Sprache und Kommunikation
                             </button>
                             <button class="kompetenz-button digital" onclick="toggleKompetenz(this, 't1l1-digital')">
-                                Digitale Kompetenzen
+                                Medien und Digitalität
+                            </button>
+                            <button class="kompetenz-button gesellschaft" onclick="toggleKompetenz(this, 't1l1-gesellschaft')">
+                                Gesellschaft
                             </button>
                         </div>
                         
                         <div id="t1l1-gesellschaft" class="kompetenz-details">
-                            <ul>
-                                <li><span class="kompetenz-nummer">5.2.6.1 Recht:</span> Die Lernenden verstehen die Funktionsweise und die Mechanismen der Institutionen sowie die juristischen Instrumente der Gesellschaft (Funktion und Wirkung des Lehrvertrags).</li>
-                                <li><span class="kompetenz-nummer">5.2.2.3 Identität und Sozialisation:</span> In ihrer eigenen Existenz sowie in den sozialen und beruflichen Kontexten erkunden die Lernenden identitätsstiftende Räume und treffen dort persönliche Entscheidungen (Rollenverständnis).</li>
-                            </ul>
+                            <p>...</p>
                         </div>
                         
                         <div id="t1l1-sprache" class="kompetenz-details">
-                            <ul>
-                                <li><span class="kompetenz-nummer">4.2.1.3</span> Rezeption schriftlich und bildlich: Analoge und digitale lineare/nicht-lineare Texte verstehen (z. B. Lehrvertrag, Bildungsportale)</li>
-                                <li><span class="kompetenz-nummer">4.2.3.1</span> Interaktion und Kollaboration mündlich: An formalen und informalen Gesprächen aktiv teilnehmen (z. B. Gespräch mit Berufsbildner/in)</li>
-                                <li><span class="kompetenz-nummer">4.2.3.2</span> Interaktion und Kollaboration schriftlich: Texte kooperativ erarbeiten</li>
-                            </ul>
+                            <p>...</p>
                         </div>
                         
                         <div id="t1l1-digital" class="kompetenz-details">
-                            <ul>
-                                <li>Recherche auf berufsbildung.ch</li>
-                                <li>Online-Recherche</li>
-                                <li>Strukturierte digitale Anfrage</li>
-                                <li>Bewerten der Quellen</li>
-                            </ul>
+                            <p>...</p>
                         </div>
                     </div>
                     
                     <div class="lerninhalt">
-                        <h4>Kompetenz 2: Test</h4>
+                        <h4>Kompetenz 2: ...</h4>
                         
                         <div class="kompetenz-container">
-                            <button class="kompetenz-button gesellschaft" onclick="toggleKompetenz(this, 't1l2-gesellschaft')">
-                                Gesellschaftliche Aspekte
+                            <button class="kompetenz-button sprache" onclick="toggleKompetenz(this, 't1l1k2-sprache')">
+                                Sprache und Kommunikation
                             </button>
-                            <button class="kompetenz-button sprache" onclick="toggleKompetenz(this, 't1l2-sprache')">
-                                Sprachmodi
+                            <button class="kompetenz-button digital" onclick="toggleKompetenz(this, 't1l1k2-digital')">
+                                Medien und Digitalität
                             </button>
-                            <button class="kompetenz-button digital" onclick="toggleKompetenz(this, 't1l2-digital')">
-                                Digitale Kompetenzen
+                            <button class="kompetenz-button gesellschaft" onclick="toggleKompetenz(this, 't1l1k2-gesellschaft')">
+                                Gesellschaft
                             </button>
                         </div>
                         
-                        <div id="t1l2-gesellschaft" class="kompetenz-details">
-                            <ul>
-                                <li><span class="kompetenz-nummer">5.2.2.3 Identität und Sozialisation:</span> Rollenverständnis, Umgangsformen</li>
-                                <li><span class="kompetenz-nummer">5.2.1.1 Ethik:</span> Die Lernenden handeln in sozialen Herausforderungen empathisch und übernehmen andere Perspektiven (Respekt, Würde)</li>
-                            </ul>
+                        <div id="t1l1k2-gesellschaft" class="kompetenz-details">
+                            <p>...</p>
                         </div>
                         
-                        <div id="t1l2-sprache" class="kompetenz-details">
-                            <ul>
-                                <li><span class="kompetenz-nummer">4.2.3.1</span> Interaktion und Kollaboration mündlich: An formalen und informalen Gesprächen aktiv teilnehmen (z. B. Rückmeldungsgespräche)</li>
-                                <li><span class="kompetenz-nummer">4.2.3.2</span> Interaktion und Kollaboration schriftlich: Formal und informal korrespondieren (z. B. E-Mails)</li>
-                            </ul>
+                        <div id="t1l1k2-sprache" class="kompetenz-details">
+                            <p>...</p>
                         </div>
                         
-                        <div id="t1l2-digital" class="kompetenz-details">
-                            <ul>
-                                <li>Nutzung digitaler Kanäle für adressaten- und kontextgerechte Kommunikation (E-Mail, Lernplattform, KI-Assistenz)</li>
-                            </ul>
+                        <div id="t1l1k2-digital" class="kompetenz-details">
+                            <p>...</p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="lebensbezug">
-                    <h3>2. Individueller Lebensbezug: Ich kommuniziere auf konstruktive Art und Weise.</h3>
+                    <h3>2. Individueller Lebensbezug: ...</h3>
                     
-                    <div class="schluessel-box">
-                        <h4>Schlüsselkompetenzen</h4>
-                        <ul>
-                            <li><span class="kompetenz-nummer">3.2.4</span> In unterschiedlichen Teams zielgerichtet und effizient arbeiten</li>
-                            <li><span class="kompetenz-nummer">3.2.5</span> Die eigenen Werthaltungen und Überzeugungen erkennen, verstehen, kritisch reflektieren und weiterentwickeln</li>
-                            <li><span class="kompetenz-nummer">3.2.7</span> Unterschiedliche Standpunkte nachvollziehen und das gegenseitige Verständnis fördern</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="lerninhalt">
-                        <h4>Kompetenz 1: Test</h4>
-                        
-                        <div class="kompetenz-container">
-                            <button class="kompetenz-button gesellschaft" onclick="toggleKompetenz(this, 't1l2-1-gesellschaft')">
-                                Gesellschaftliche Aspekte
-                            </button>
-                            <button class="kompetenz-button sprache" onclick="toggleKompetenz(this, 't1l2-1-sprache')">
-                                Sprachmodi
-                            </button>
-                            <button class="kompetenz-button digital" onclick="toggleKompetenz(this, 't1l2-1-digital')">
-                                Digitale Kompetenzen
-                            </button>
+                    <div class="schluessel-box" onclick="toggleSchluessel(this)">
+                        <div class="schluessel-header">
+                            <h4>Schlüsselkompetenzen</h4>
+                            <span class="toggle-schluessel">▼</span>
                         </div>
-                        
-                        <div id="t1l2-1-gesellschaft" class="kompetenz-details">
-                            <ul>
-                                <li><span class="kompetenz-nummer">5.2.2 Identität und Sozialisation:</span> Rollenklarheit, Selbstreflexion</li>
-                                <li><span class="kompetenz-nummer">5.2.1 Ethik:</span> Wertorientierung, Fairness</li>
-                            </ul>
-                        </div>
-                        
-                        <div id="t1l2-1-sprache" class="kompetenz-details">
-                            <ul>
-                                <li><span class="kompetenz-nummer">4.2.1.3</span> Rezeption schriftlich und bildlich: Texte zu Konfliktstrategien</li>
-                                <li><span class="kompetenz-nummer">4.2.3.1</span> Interaktion und Kollaboration mündlich: Aktiv zuhören</li>
-                                <li><span class="kompetenz-nummer">4.2.3.2</span> Interaktion und Kollaboration schriftlich: Reflektieren</li>
-                            </ul>
-                        </div>
-                        
-                        <div id="t1l2-1-digital" class="kompetenz-details">
-                            <ul>
-                                <li>Online-Recherche zu Konfliktstrategien</li>
-                                <li>Reflexion über eigenes Verhalten in digitalen Kontexten</li>
-                            </ul>
+                        <div class="schluessel-content">
+                            <p>...</p>
                         </div>
                     </div>
                     
                     <div class="lerninhalt">
-                        <h4>Kompetenz 2: Test</h4>
+                        <h4>Kompetenz 1: ...</h4>
                         
                         <div class="kompetenz-container">
-                            <button class="kompetenz-button gesellschaft" onclick="toggleKompetenz(this, 't1l2-2-gesellschaft')">
-                                Gesellschaftliche Aspekte
+                            <button class="kompetenz-button sprache" onclick="toggleKompetenz(this, 't1l2-sprache')">
+                                Sprache und Kommunikation
                             </button>
-                            <button class="kompetenz-button sprache" onclick="toggleKompetenz(this, 't1l2-2-sprache')">
-                                Sprachmodi
+                            <button class="kompetenz-button digital" onclick="toggleKompetenz(this, 't1l2-digital')">
+                                Medien und Digitalität
                             </button>
-                            <button class="kompetenz-button digital" onclick="toggleKompetenz(this, 't1l2-2-digital')">
-                                Digitale Kompetenzen
+                            <button class="kompetenz-button gesellschaft" onclick="toggleKompetenz(this, 't1l2-gesellschaft')">
+                                Gesellschaft
                             </button>
                         </div>
                         
-                        <div id="t1l2-2-gesellschaft" class="kompetenz-details">
-                            <ul>
-                                <li><span class="kompetenz-nummer">5.2.1.3 Ethik:</span> Die Lernenden beteiligen sich aktiv an der Aushandlung von moralischen Entscheiden (Verantwortung, gegenseitiger Respekt)</li>
-                                <li><span class="kompetenz-nummer">5.2.2.4 Identität und Sozialisation:</span> Die Lernenden anerkennen andere kulturelle Realitäten (Vielfalt anerkennen)</li>
-                            </ul>
+                        <div id="t1l2-gesellschaft" class="kompetenz-details">
+                            <p>...</p>
                         </div>
                         
-                        <div id="t1l2-2-sprache" class="kompetenz-details">
-                            <ul>
-                                <li><span class="kompetenz-nummer">4.2.3.1</span> Interaktion und Kollaboration mündlich: Gespräch strukturieren</li>
-                                <li><span class="kompetenz-nummer">4.2.3.2</span> Interaktion und Kollaboration schriftlich: E-Mails/Chats zur Konfliktklärung</li>
-                            </ul>
+                        <div id="t1l2-sprache" class="kompetenz-details">
+                            <p>...</p>
                         </div>
                         
-                        <div id="t1l2-2-digital" class="kompetenz-details">
-                            <ul>
-                                <li>Nutzung von Mail, Chat, Foren zur Klärung von Konflikten</li>
-                                <li>Dialog mit KI führen</li>
-                            </ul>
+                        <div id="t1l2-digital" class="kompetenz-details">
+                            <p>...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="lerninhalt">
+                        <h4>Kompetenz 2: ...</h4>
+                        
+                        <div class="kompetenz-container">
+                            <button class="kompetenz-button sprache" onclick="toggleKompetenz(this, 't1l2k2-sprache')">
+                                Sprache und Kommunikation
+                            </button>
+                            <button class="kompetenz-button digital" onclick="toggleKompetenz(this, 't1l2k2-digital')">
+                                Medien und Digitalität
+                            </button>
+                            <button class="kompetenz-button gesellschaft" onclick="toggleKompetenz(this, 't1l2k2-gesellschaft')">
+                                Gesellschaft
+                            </button>
+                        </div>
+                        
+                        <div id="t1l2k2-gesellschaft" class="kompetenz-details">
+                            <p>...</p>
+                        </div>
+                        
+                        <div id="t1l2k2-sprache" class="kompetenz-details">
+                            <p>...</p>
+                        </div>
+                        
+                        <div id="t1l2k2-digital" class="kompetenz-details">
+                            <p>...</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         
-        <!-- Thema 2: Meinungen bilden und mitgestalten -->
+        <!-- Thema 2: Geld verdienen und ausgeben -->
         <div class="theme-section">
             <div class="theme-header">
-                <h2>Thema 2: Meinungen bilden und mitgestalten</h2>
-                <p class="lektionen">30 Lektionen</p>
+                <h2>Thema 2: Geld verdienen und ausgeben</h2>
+                <p class="lektionen">xx Lektionen</p>
             </div>
             <div class="theme-content">
                 <div class="leitidee">
                     <h3>Leitidee</h3>
-                    <p>In einer Welt, in der täglich unzählige Informationen und Meinungen auf mich einwirken, wird es für mich immer wichtiger, mir eine eigene, fundierte Haltung zu erarbeiten. Zu diesem Zweck lerne ich, meine Meinung bewusst zu bilden, sie respektvoll zu vertreten und mich aktiv in gesellschaftliche Prozesse einzubringen.</p>
+                    <p>...</p>
                 </div>
                 
                 <div class="lebensbezug">
-                    <h3>1. Individueller Lebensbezug: Ich bin täglich mit Informationen aus verschiedenen Quellen konfrontiert und merke, dass ich oft nicht weiss, was stimmt und was nicht.</h3>
+                    <h3>1. Individueller Lebensbezug: ...</h3>
                     
-                    <div class="schluessel-box">
-                        <h4>Schlüsselkompetenzen</h4>
-                        <ul>
-                            <li><span class="kompetenz-nummer">3.2.1</span> Zwischen relevanten und irrelevanten Quellen und Inhalten unterscheiden</li>
-                            <li><span class="kompetenz-nummer">3.2.5</span> Die eigenen Werthaltungen und Überzeugungen erkennen, verstehen, kritisch reflektieren und weiterentwickeln</li>
-                            <li><span class="kompetenz-nummer">3.2.6</span> Ihre eigenen Standpunkte begründen und andere davon überzeugen</li>
-                            <li><span class="kompetenz-nummer">3.2.7</span> Unterschiedliche Standpunkte nachvollziehen und das gegenseitige Verständnis fördern</li>
-                        </ul>
+                    <div class="schluessel-box" onclick="toggleSchluessel(this)">
+                        <div class="schluessel-header">
+                            <h4>Schlüsselkompetenzen</h4>
+                            <span class="toggle-schluessel">▼</span>
+                        </div>
+                        <div class="schluessel-content">
+                            <p>...</p>
+                        </div>
                     </div>
                     
                     <div class="lerninhalt">
-                        <h4>Kompetenz 1: Test</h4>
+                        <h4>Kompetenz 1: ...</h4>
                         
                         <div class="kompetenz-container">
-                            <button class="kompetenz-button gesellschaft" onclick="toggleKompetenz(this, 't2l1-gesellschaft')">
-                                Gesellschaftliche Aspekte
-                            </button>
                             <button class="kompetenz-button sprache" onclick="toggleKompetenz(this, 't2l1-sprache')">
-                                Sprachmodi
+                                Sprache und Kommunikation
                             </button>
                             <button class="kompetenz-button digital" onclick="toggleKompetenz(this, 't2l1-digital')">
-                                Digitale Kompetenzen
+                                Medien und Digitalität
+                            </button>
+                            <button class="kompetenz-button gesellschaft" onclick="toggleKompetenz(this, 't2l1-gesellschaft')">
+                                Gesellschaft
                             </button>
                         </div>
                         
                         <div id="t2l1-gesellschaft" class="kompetenz-details">
-                            <ul>
-                                <li><span class="kompetenz-nummer">5.2.7 Technologie:</span> Digitale Öffentlichkeit, Fake News</li>
-                                <li><span class="kompetenz-nummer">5.2.1 Ethik:</span> Wahrheit, Verantwortung</li>
-                                <li><span class="kompetenz-nummer">5.2.5 Politik:</span> Aktualitätsbezug</li>
-                            </ul>
+                            <p>...</p>
                         </div>
                         
                         <div id="t2l1-sprache" class="kompetenz-details">
-                            <ul>
-                                <li><span class="kompetenz-nummer">4.2.1.1</span> Rezeption mündlich: Hörmaterialien aus verschiedenen Medien verstehen</li>
-                                <li><span class="kompetenz-nummer">4.2.1.2</span> Rezeption audiovisuell: Audiovisuelle Materialien verstehen (Debatten, Interviews analysieren)</li>
-                            </ul>
+                            <p>...</p>
                         </div>
                         
                         <div id="t2l1-digital" class="kompetenz-details">
-                            <ul>
-                                <li>Kritische Bewertung medialer Inhalte</li>
-                                <li>Unterscheidung von Fakten und Meinung</li>
-                            </ul>
+                            <p>...</p>
                         </div>
                     </div>
                     
                     <div class="lerninhalt">
-                        <h4>Kompetenz 2: Test</h4>
+                        <h4>Kompetenz 2: ...</h4>
                         
                         <div class="kompetenz-container">
-                            <button class="kompetenz-button gesellschaft" onclick="toggleKompetenz(this, 't2l2-gesellschaft')">
-                                Gesellschaftliche Aspekte
+                            <button class="kompetenz-button sprache" onclick="toggleKompetenz(this, 't2l1k2-sprache')">
+                                Sprache und Kommunikation
                             </button>
+                            <button class="kompetenz-button digital" onclick="toggleKompetenz(this, 't2l1k2-digital')">
+                                Medien und Digitalität
+                            </button>
+                            <button class="kompetenz-button gesellschaft" onclick="toggleKompetenz(this, 't2l1k2-gesellschaft')">
+                                Gesellschaft
+                            </button>
+                        </div>
+                        
+                        <div id="t2l1k2-gesellschaft" class="kompetenz-details">
+                            <p>...</p>
+                        </div>
+                        
+                        <div id="t2l1k2-sprache" class="kompetenz-details">
+                            <p>...</p>
+                        </div>
+                        
+                        <div id="t2l1k2-digital" class="kompetenz-details">
+                            <p>...</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lebensbezug">
+                    <h3>2. Individueller Lebensbezug: ...</h3>
+                    
+                    <div class="schluessel-box" onclick="toggleSchluessel(this)">
+                        <div class="schluessel-header">
+                            <h4>Schlüsselkompetenzen</h4>
+                            <span class="toggle-schluessel">▼</span>
+                        </div>
+                        <div class="schluessel-content">
+                            <p>...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="lerninhalt">
+                        <h4>Kompetenz 1: ...</h4>
+                        
+                        <div class="kompetenz-container">
                             <button class="kompetenz-button sprache" onclick="toggleKompetenz(this, 't2l2-sprache')">
-                                Sprachmodi
+                                Sprache und Kommunikation
                             </button>
                             <button class="kompetenz-button digital" onclick="toggleKompetenz(this, 't2l2-digital')">
-                                Digitale Kompetenzen
+                                Medien und Digitalität
+                            </button>
+                            <button class="kompetenz-button gesellschaft" onclick="toggleKompetenz(this, 't2l2-gesellschaft')">
+                                Gesellschaft
                             </button>
                         </div>
                         
                         <div id="t2l2-gesellschaft" class="kompetenz-details">
-                            <ul>
-                                <li><span class="kompetenz-nummer">5.2.1 Ethik:</span> Persönliche Werthaltungen</li>
-                                <li><span class="kompetenz-nummer">5.2.5 Politik:</span> Meinungsfreiheit, Beteiligung an Debatten</li>
-                            </ul>
+                            <p>...</p>
                         </div>
                         
                         <div id="t2l2-sprache" class="kompetenz-details">
-                            <ul>
-                                <li><span class="kompetenz-nummer">4.2.2.1</span> Produktion mündlich: Faktenorientiert und meinungsorientiert kommunizieren (begründete Beiträge)</li>
-                                <li><span class="kompetenz-nummer">4.2.2.3</span> Produktion multimedial: Eine fakten- oder meinungsorientierte Multimedia-Präsentation erstellen (Erklär-Clip, Story-Format)</li>
-                            </ul>
+                            <p>...</p>
                         </div>
                         
                         <div id="t2l2-digital" class="kompetenz-details">
-                            <ul>
-                                <li>Nutzung digitaler Präsent
+                            <p>...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="lerninhalt">
+                        <h4>Kompetenz 2: ...</h4>
+                        
+                        <div class="kompetenz-container">
+                            <button class="kompetenz-button sprache" onclick="toggleKompetenz(this, 't2l2k2-sprache')">
+                                Sprache und Kommunikation
+                            </button>
+                            <button class="kompetenz-button digital" onclick="toggleKompetenz(this, 't2l2k2-digital')">
+                                Medien und Digitalität
+                            </button>
+                            <button class="kompetenz-button gesellschaft" onclick="toggleKompetenz(this, 't2l2k2-gesellschaft')">
+                                Gesellschaft
+                            </button>
+                        </div>
+                        
+                        <div id="t2l2k2-gesellschaft" class="kompetenz-details">
+                            <p>...</p>
+                        </div>
+                        
+                        <div id="t2l2k2-sprache" class="kompetenz-details">
+                            <p>...</p>
+                        </div>
+                        
+                        <div id="t2l2k2-digital" class="kompetenz-details">
+                            <p>...</p>
+                        </div>
+                    </div>
+                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Thema 3: Gesund und sicher durchs Leben -->
+        <div class="theme-section">
+            <div class="theme-header">
+                <h2>Thema 3: Gesund und sicher durchs Leben</h2>
+                <p class="lektionen">xx Lektionen</p>
+            </div>
+            <div class="theme-content">
+                <div class="leitidee">
+                    <h3>Leitidee</h3>
+                    <p>...</p>
+                </div>
+                
+                <div class="lebensbezug">
+                    <h3>1. Individueller Lebensbezug: ...</h3>
+                    
+                    <div class="lerninhalt">
+                        <h4>Kompetenz 1: ...</h4>
+                        
+                        <div class="kompetenz-container">
+                            <button class="kompetenz-button gesellschaft" onclick="toggleKompetenz(this, 't3l1-gesellschaft')">
+                                Gesellschaftliche Aspekte
+                            </button>
+                            <button class="kompetenz-button sprache" onclick="toggleKompetenz(this, 't3l1-sprache')">
+                                Sprachmodi
+                            </button>
+                            <button class="kompetenz-button digital" onclick="toggleKompetenz(this, 't3l1-digital')">
+                                Digitale Kompetenzen
+                            </button>
+                            <button class="kompetenz-button schluessel" onclick="toggleKompetenz(this, 't3l1-schluessel')">
+                                Schlüsselkompetenzen
+                            </button>
+                        </div>
+                        
+                        <div id="t3l1-gesellschaft" class="kompetenz-details">
+                            <p>...</p>
+                        </div>
+                        
+                        <div id="t3l1-sprache" class="kompetenz-details">
+                            <p>...</p>
+                        </div>
+                        
+                        <div id="t3l1-digital" class="kompetenz-details">
+                            <p>...</p>
+                        </div>
+                        
+                        <div id="t3l1-schluessel" class="kompetenz-details">
+                            <p>...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="lerninhalt">
+                        <h4>Kompetenz 2: ...</h4>
+                        
+                        <div class="kompetenz-container">
+                            <button class="kompetenz-button gesellschaft" onclick="toggleKompetenz(this, 't3l1k2-gesellschaft')">
+                                Gesellschaftliche Aspekte
+                            </button>
+                            <button class="kompetenz-button sprache" onclick="toggleKompetenz(this, 't3l1k2-sprache')">
+                                Sprachmodi
+                            </button>
+                            <button class="kompetenz-button digital" onclick="toggleKompetenz(this, 't3l1k2-digital')">
+                                Digitale Kompetenzen
+                            </button>
+                            <button class="kompetenz-button schluessel" onclick="toggleKompetenz(this, 't3l1k2-schluessel')">
+                                Schlüsselkompetenzen
+                            </button>
+                        </div>
+                        
+                        <div id="t3l1k2-gesellschaft" class="kompetenz-details">
+                            <p>...</p>
+                        </div>
+                        
+                        <div id="t3l1k2-sprache" class="kompetenz-details">
+                            <p>...</p>
+                        </div>
+                        
+                        <div id="t3l1k2-digital" class="kompetenz-details">
+                            <p>...</p>
+                        </div>
+                        
+                        <div id="t3l1k2-schluessel" class="kompetenz-details">
+                            <p>...</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lebensbezug">
+                    <h3>2. Individueller Lebensbezug: ...</h3>
+                    
+                    <div class="lerninhalt">
+                        <h4>Kompetenz 1: ...</h4>
+                        
+                        <div class="kompetenz-container">
+                            <button class="kompetenz-button gesellschaft" onclick="toggleKompetenz(this, 't3l2-gesellschaft')">
+                                Gesellschaftliche Aspekte
+                            </button>
+                            <button class="kompetenz-button sprache" onclick="toggleKompetenz(this, 't3l2-sprache')">
+                                Sprachmodi
+                            </button>
+                            <button class="kompetenz-button digital" onclick="toggleKompetenz(this, 't3l2-digital')">
+                                Digitale Kompetenzen
+                            </button>
+                            <button class="kompetenz-button schluessel" onclick="toggleKompetenz(this, 't3l2-schluessel')">
+                                Schlüsselkompetenzen
+                            </button>
+                        </div>
+                        
+                        <div id="t3l2-gesellschaft" class="kompetenz-details">
+                            <p>...</p>
+                        </div>
+                        
+                        <div id="t3l2-sprache" class="kompetenz-details">
+                            <p>...</p>
+                        </div>
+                        
+                        <div id="t3l2-digital" class="kompetenz-details">
+                            <p>...</p>
+                        </div>
+                        
+                        <div id="t3l2-schluessel" class="kompetenz-details">
+                            <p>...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="lerninhalt">
+                        <h4>Kompetenz 2: ...</h4>
+                        
+                        <div class="kompetenz-container">
+                            <button class="kompetenz-button gesellschaft" onclick="toggleKompetenz(this, 't3l2k2-gesellschaft')">
+                                Gesellschaftliche Aspekte
+                            </button>
+                            <button class="kompetenz-button sprache" onclick="toggleKompetenz(this, 't3l2k2-sprache')">
+                                Sprachmodi
+                            </button>
+                            <button class="kompetenz-button digital" onclick="toggleKompetenz(this, 't3l2k2-digital')">
+                                Digitale Kompetenzen
+                            </button>
+                            <button class="kompetenz-button schluessel" onclick="toggleKompetenz(this, 't3l2k2-schluessel')">
+                                Schlüsselkompetenzen
+                            </button>
+                        </div>
+                        
+                        <div id="t3l2k2-gesellschaft" class="kompetenz-details">
+                            <p>...</p>
+                        </div>
+                        
+                        <div id="t3l2k2-sprache" class="kompetenz-details">
+                            <p>...</p>
+                        </div>
+                        
+                        <div id="t3l2k2-digital" class="kompetenz-details">
+                            <p>...</p>
+                        </div>
+                        
+                        <div id="t3l2k2-schluessel" class="kompetenz-details">
+                            <p>...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="back-link">
+            <a href="index.html">← Zurück zur Übersicht EFZ</a>
+        </div>
+    </main>
+</body>
+</html>
