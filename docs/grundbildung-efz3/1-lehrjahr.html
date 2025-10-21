@@ -175,6 +175,30 @@
             transition: transform 0.3s ease;
         }
         
+        .umsetzung-box {
+            background-color: #f3e8ff;
+            border: 1px solid #d4b3ff;
+            border-radius: 4px;
+            padding: 6px 10px;
+            margin-bottom: 16px;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .umsetzung-box:hover {
+            background-color: #e8d4ff;
+        }
+        
+        .umsetzung-box .schluessel-header h4 {
+            color: #7c3aed;
+            font-size: 0.75em;
+        }
+        
+        .umsetzung-box .toggle-schluessel {
+            color: #7c3aed;
+            font-size: 1em;
+        }
+        
         .toggle-schluessel.rotated {
             transform: rotate(180deg);
         }
@@ -247,6 +271,21 @@
             display: block;
         }
         
+        .kompetenz-details.gesellschaft-detail {
+            background-color: #fff9e6;
+            border-left: 3px solid #ffd700;
+        }
+        
+        .kompetenz-details.sprache-detail {
+            background-color: #e8f0ff;
+            border-left: 3px solid #0066cc;
+        }
+        
+        .kompetenz-details.digital-detail {
+            background-color: #e8ffe8;
+            border-left: 3px solid #00994d;
+        }
+        
         .kompetenz-details ul {
             list-style: none;
             margin-left: 0;
@@ -272,15 +311,15 @@
         }
         
         .gesellschaft { 
-            background-color: #ffe8e8 !important; 
-            border-color: #ffcccc !important; 
+            background-color: #fff9cc !important; 
+            border-color: #ffe680 !important; 
             color: #000 !important; 
         }
         .gesellschaft:hover {
-            background-color: #ffd4d4 !important;
+            background-color: #fff5b3 !important;
         }
         .gesellschaft.active {
-            background: linear-gradient(135deg, #c8102e, #e64d5f) !important;
+            background: linear-gradient(135deg, #ffd700, #ffed4e) !important;
             color: black !important;
         }
         
@@ -407,7 +446,7 @@
                     <div class="lerninhalt">
                         <h4>Kompetenz 1: (Darstellungsbeispiel 1)</h4>
                         
-                        <div class="schluessel-box" onclick="toggleSchluessel(this)">
+                        <div class="umsetzung-box" onclick="toggleSchluessel(this)">
                             <div class="schluessel-header">
                                 <h4>Umsetzungsbeispiel</h4>
                                 <span class="toggle-schluessel">▼</span>
@@ -467,7 +506,7 @@
                             <p>...</p>
                         </div>
                         
-                        <div class="schluessel-box" onclick="toggleSchluessel(this)">
+                        <div class="umsetzung-box" onclick="toggleSchluessel(this)">
                             <div class="schluessel-header">
                                 <h4>Umsetzungsbeispiel</h4>
                                 <span class="toggle-schluessel">▼</span>
@@ -580,7 +619,7 @@
                     <div class="lerninhalt">
                         <h4>Kompetenz 1: Anhand meiner Lohnabrechnung und Lebenssituation plane und reflektiere ich ein realistisches Budget. (Darstellungsbeispiel 1)</h4>
                         
-                        <div class="schluessel-box" onclick="toggleSchluessel(this)">
+                        <div class="umsetzung-box" onclick="toggleSchluessel(this)">
                             <div class="schluessel-header">
                                 <h4>Umsetzungsbeispiel</h4>
                                 <span class="toggle-schluessel">▼</span>
@@ -640,7 +679,7 @@
                             <p>...</p>
                         </div>
                         
-                        <div class="schluessel-box" onclick="toggleSchluessel(this)">
+                        <div class="umsetzung-box" onclick="toggleSchluessel(this)">
                             <div class="schluessel-header">
                                 <h4>Umsetzungsbeispiel</h4>
                                 <span class="toggle-schluessel">▼</span>
@@ -738,37 +777,40 @@
                 <div class="lebensbezug">
                     <h3>1. Individueller Lebensbezug: ...</h3>
                     
+                    <div class="schluessel-box" onclick="toggleSchluessel(this)">
+                        <div class="schluessel-header">
+                            <h4>Schlüsselkompetenzen</h4>
+                            <span class="toggle-schluessel">▼</span>
+                        </div>
+                        <div class="schluessel-content">
+                            <p>...</p>
+                        </div>
+                    </div>
+                    
                     <div class="lerninhalt">
                         <h4>Kompetenz 1: ...</h4>
                         
                         <div class="kompetenz-container">
-                            <button class="kompetenz-button gesellschaft" onclick="toggleKompetenz(this, 't3l1-gesellschaft')">
-                                Gesellschaftliche Aspekte
-                            </button>
                             <button class="kompetenz-button sprache" onclick="toggleKompetenz(this, 't3l1-sprache')">
-                                Sprachmodi
+                                Sprache und Kommunikation
                             </button>
                             <button class="kompetenz-button digital" onclick="toggleKompetenz(this, 't3l1-digital')">
-                                Digitale Kompetenzen
+                                Medien und Digitalität
                             </button>
-                            <button class="kompetenz-button schluessel" onclick="toggleKompetenz(this, 't3l1-schluessel')">
-                                Schlüsselkompetenzen
+                            <button class="kompetenz-button gesellschaft" onclick="toggleKompetenz(this, 't3l1-gesellschaft')">
+                                Gesellschaft
                             </button>
                         </div>
                         
-                        <div id="t3l1-gesellschaft" class="kompetenz-details">
+                        <div id="t3l1-gesellschaft" class="kompetenz-details gesellschaft-detail">
                             <p>...</p>
                         </div>
                         
-                        <div id="t3l1-sprache" class="kompetenz-details">
+                        <div id="t3l1-sprache" class="kompetenz-details sprache-detail">
                             <p>...</p>
                         </div>
                         
-                        <div id="t3l1-digital" class="kompetenz-details">
-                            <p>...</p>
-                        </div>
-                        
-                        <div id="t3l1-schluessel" class="kompetenz-details">
+                        <div id="t3l1-digital" class="kompetenz-details digital-detail">
                             <p>...</p>
                         </div>
                     </div>
@@ -777,33 +819,26 @@
                         <h4>Kompetenz 2: ...</h4>
                         
                         <div class="kompetenz-container">
-                            <button class="kompetenz-button gesellschaft" onclick="toggleKompetenz(this, 't3l1k2-gesellschaft')">
-                                Gesellschaftliche Aspekte
-                            </button>
                             <button class="kompetenz-button sprache" onclick="toggleKompetenz(this, 't3l1k2-sprache')">
-                                Sprachmodi
+                                Sprache und Kommunikation
                             </button>
                             <button class="kompetenz-button digital" onclick="toggleKompetenz(this, 't3l1k2-digital')">
-                                Digitale Kompetenzen
+                                Medien und Digitalität
                             </button>
-                            <button class="kompetenz-button schluessel" onclick="toggleKompetenz(this, 't3l1k2-schluessel')">
-                                Schlüsselkompetenzen
+                            <button class="kompetenz-button gesellschaft" onclick="toggleKompetenz(this, 't3l1k2-gesellschaft')">
+                                Gesellschaft
                             </button>
                         </div>
                         
-                        <div id="t3l1k2-gesellschaft" class="kompetenz-details">
+                        <div id="t3l1k2-gesellschaft" class="kompetenz-details gesellschaft-detail">
                             <p>...</p>
                         </div>
                         
-                        <div id="t3l1k2-sprache" class="kompetenz-details">
+                        <div id="t3l1k2-sprache" class="kompetenz-details sprache-detail">
                             <p>...</p>
                         </div>
                         
-                        <div id="t3l1k2-digital" class="kompetenz-details">
-                            <p>...</p>
-                        </div>
-                        
-                        <div id="t3l1k2-schluessel" class="kompetenz-details">
+                        <div id="t3l1k2-digital" class="kompetenz-details digital-detail">
                             <p>...</p>
                         </div>
                     </div>
@@ -812,37 +847,40 @@
                 <div class="lebensbezug">
                     <h3>2. Individueller Lebensbezug: ...</h3>
                     
+                    <div class="schluessel-box" onclick="toggleSchluessel(this)">
+                        <div class="schluessel-header">
+                            <h4>Schlüsselkompetenzen</h4>
+                            <span class="toggle-schluessel">▼</span>
+                        </div>
+                        <div class="schluessel-content">
+                            <p>...</p>
+                        </div>
+                    </div>
+                    
                     <div class="lerninhalt">
                         <h4>Kompetenz 1: ...</h4>
                         
                         <div class="kompetenz-container">
-                            <button class="kompetenz-button gesellschaft" onclick="toggleKompetenz(this, 't3l2-gesellschaft')">
-                                Gesellschaftliche Aspekte
-                            </button>
                             <button class="kompetenz-button sprache" onclick="toggleKompetenz(this, 't3l2-sprache')">
-                                Sprachmodi
+                                Sprache und Kommunikation
                             </button>
                             <button class="kompetenz-button digital" onclick="toggleKompetenz(this, 't3l2-digital')">
-                                Digitale Kompetenzen
+                                Medien und Digitalität
                             </button>
-                            <button class="kompetenz-button schluessel" onclick="toggleKompetenz(this, 't3l2-schluessel')">
-                                Schlüsselkompetenzen
+                            <button class="kompetenz-button gesellschaft" onclick="toggleKompetenz(this, 't3l2-gesellschaft')">
+                                Gesellschaft
                             </button>
                         </div>
                         
-                        <div id="t3l2-gesellschaft" class="kompetenz-details">
+                        <div id="t3l2-gesellschaft" class="kompetenz-details gesellschaft-detail">
                             <p>...</p>
                         </div>
                         
-                        <div id="t3l2-sprache" class="kompetenz-details">
+                        <div id="t3l2-sprache" class="kompetenz-details sprache-detail">
                             <p>...</p>
                         </div>
                         
-                        <div id="t3l2-digital" class="kompetenz-details">
-                            <p>...</p>
-                        </div>
-                        
-                        <div id="t3l2-schluessel" class="kompetenz-details">
+                        <div id="t3l2-digital" class="kompetenz-details digital-detail">
                             <p>...</p>
                         </div>
                     </div>
@@ -851,33 +889,26 @@
                         <h4>Kompetenz 2: ...</h4>
                         
                         <div class="kompetenz-container">
-                            <button class="kompetenz-button gesellschaft" onclick="toggleKompetenz(this, 't3l2k2-gesellschaft')">
-                                Gesellschaftliche Aspekte
-                            </button>
                             <button class="kompetenz-button sprache" onclick="toggleKompetenz(this, 't3l2k2-sprache')">
-                                Sprachmodi
+                                Sprache und Kommunikation
                             </button>
                             <button class="kompetenz-button digital" onclick="toggleKompetenz(this, 't3l2k2-digital')">
-                                Digitale Kompetenzen
+                                Medien und Digitalität
                             </button>
-                            <button class="kompetenz-button schluessel" onclick="toggleKompetenz(this, 't3l2k2-schluessel')">
-                                Schlüsselkompetenzen
+                            <button class="kompetenz-button gesellschaft" onclick="toggleKompetenz(this, 't3l2k2-gesellschaft')">
+                                Gesellschaft
                             </button>
                         </div>
                         
-                        <div id="t3l2k2-gesellschaft" class="kompetenz-details">
+                        <div id="t3l2k2-gesellschaft" class="kompetenz-details gesellschaft-detail">
                             <p>...</p>
                         </div>
                         
-                        <div id="t3l2k2-sprache" class="kompetenz-details">
+                        <div id="t3l2k2-sprache" class="kompetenz-details sprache-detail">
                             <p>...</p>
                         </div>
                         
-                        <div id="t3l2k2-digital" class="kompetenz-details">
-                            <p>...</p>
-                        </div>
-                        
-                        <div id="t3l2k2-schluessel" class="kompetenz-details">
+                        <div id="t3l2k2-digital" class="kompetenz-details digital-detail">
                             <p>...</p>
                         </div>
                     </div>
