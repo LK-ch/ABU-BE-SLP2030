@@ -11,179 +11,119 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --zh-blue: #0F05A0;
-            --zh-light-blue: #E8F2FF;
-            --zh-dark-blue: #000051;
-            --zh-accent: #FF6B6B;
-            --zh-gray: #F5F5F5;
-            --zh-text: #333333;
-            --zh-white: #FFFFFF;
-            --zh-green: #00C896;
-            --zh-orange: #FF9500;
-            --zh-purple: #9B59B6;
-            --zh-pink: #FF69B4;
-            --zh-teal: #20B2AA;
-            --zh-red: #DC143C;
-            --zh-yellow: #FFD700;
-            --zh-cyan: #00CED1;
-            --zh-lime: #32CD32;
-            --zh-indigo: #4B0082;
-            --zh-coral: #FF7F50;
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            color: var(--zh-text);
-            background-color: var(--zh-white);
+            color: #000;
+            background-color: #fff8f0;
             min-height: 100vh;
         }
 
         /* Header */
-        .header {
-            background: linear-gradient(135deg, var(--zh-blue) 0%, var(--zh-dark-blue) 100%);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+        header {
+            background: linear-gradient(90deg, #c8102e, #ffcc00);
+            color: black;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: float 20s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            font-weight: 300;
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Navigation */
-        .nav-breadcrumb {
-            background-color: var(--zh-gray);
-            padding: 1rem 2rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .nav-breadcrumb a {
-            color: var(--zh-blue);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .nav-breadcrumb a:hover {
-            text-decoration: underline;
-        }
-
-        .nav-breadcrumb span {
-            color: var(--zh-text);
-            opacity: 0.6;
-        }
-
-        /* Container */
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 20px;
         }
 
-        /* EFZ Link Button */
-        .efz-link {
-            background: var(--zh-light-blue);
-            color: var(--zh-dark-blue);
-            border: 2px solid var(--zh-blue);
-            padding: 0.8rem 1.5rem;
-            border-radius: 8px;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-left: 1rem;
+        .breadcrumb {
+            font-size: 0.9em;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb a {
+            color: #fff;
             text-decoration: none;
-            transition: all 0.3s ease;
             font-weight: 500;
         }
 
-        .efz-link:hover {
-            background: var(--zh-blue);
-            color: white;
-            transform: translateY(-2px);
+        .breadcrumb a:hover {
+            text-decoration: underline;
         }
 
-        /* Home View - Circular Concept */
+        h1 {
+            color: #fff;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #fff;
+            font-size: 1.1em;
+        }
+
+        /* Circular Concept Section */
         .circular-concept {
-            background: var(--zh-gray);
-            border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 3rem;
+            background-color: #fff3cd;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid #c8102e;
         }
 
         .circular-concept h2 {
-            color: var(--zh-dark-blue);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            color: #c8102e;
+            margin-bottom: 20px;
+            font-size: 1.6em;
+            font-weight: 700;
+        }
+
+        .circular-concept > p {
+            color: #000;
+            margin-bottom: 20px;
+            font-size: 1.05em;
         }
 
         .concept-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            gap: 20px;
+            margin-top: 25px;
         }
 
         .concept-item {
             background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 4px solid var(--zh-blue);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #c8102e;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
 
         .concept-item h4 {
-            color: var(--zh-blue);
-            margin-bottom: 0.5rem;
+            color: #c8102e;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            font-weight: 700;
         }
 
-        /* Main Navigation Cards */
+        .concept-item p {
+            color: #000;
+            font-size: 0.95em;
+        }
+
+        /* Navigation Cards */
         .nav-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
         }
 
         .nav-card {
             background: white;
-            border: 2px solid var(--zh-gray);
-            border-radius: 15px;
-            padding: 2rem;
+            border-radius: 8px;
+            padding: 30px;
             cursor: pointer;
             transition: all 0.3s ease;
             text-align: center;
@@ -191,51 +131,72 @@
             overflow: hidden;
             text-decoration: none;
             color: inherit;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 2px solid transparent;
         }
 
         .nav-card::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, var(--zh-light-blue) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #c8102e, #ffcc00);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
 
         .nav-card:hover::before {
-            opacity: 1;
+            transform: scaleX(1);
         }
 
         .nav-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            border-color: var(--zh-blue);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            border-color: #c8102e;
             text-decoration: none;
-            color: inherit;
         }
 
         .nav-card-icon {
             font-size: 3rem;
-            margin-bottom: 1rem;
+            margin-bottom: 15px;
         }
 
         .nav-card h3 {
-            color: var(--zh-dark-blue);
-            margin-bottom: 1rem;
+            color: #c8102e;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            font-weight: 700;
         }
 
         .nav-card p {
-            color: var(--zh-text);
-            opacity: 0.8;
+            color: #000;
+            opacity: 0.85;
+            font-size: 0.95em;
+        }
+
+        /* Back Link */
+        .back-link {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .back-link a {
+            color: #c8102e;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        .back-link a:hover {
+            text-decoration: underline;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 1.8rem;
+            h1 {
+                font-size: 1.8em;
             }
             
             .nav-cards {
@@ -243,23 +204,32 @@
             }
 
             .container {
-                padding: 1rem;
+                padding: 10px;
+            }
+
+            .circular-concept {
+                padding: 20px;
+            }
+
+            .concept-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header class="header">
-        <h1>Zirkularität im Schullehrplan ABU</h1>
-        <p>Spiralförmiger Kompetenzaufbau über die gesamte Lehrzeit</p>
+    <header>
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="../index.html">Schullehrplan ABU</a> / 
+                <a href="index.html">3-jährige Grundbildung EFZ</a> / 
+                Zirkularität
+            </nav>
+            <h1>Zirkularität im Schullehrplan ABU</h1>
+            <p class="subtitle">Spiralförmiger Kompetenzaufbau über die gesamte Lehrzeit</p>
+        </div>
     </header>
-
-    <!-- Navigation Breadcrumb -->
-    <nav class="nav-breadcrumb">
-        <span>Übersicht</span>
-        <a href="index.html" class="efz-link">🏠 EFZ-Überblick</a>
-    </nav>
 
     <!-- Main Container -->
     <div class="container">
@@ -314,6 +284,10 @@
                 <h3>Digitale Kompetenzen</h3>
                 <p>KI-erweiterte digitale Kompetenzen basierend auf DigComp 2.2 und UNESCO AI-Literacy</p>
             </a>
+        </div>
+
+        <div class="back-link">
+            <a href="index.html">← Zurück zur Übersicht EFZ</a>
         </div>
     </div>
 </body>
