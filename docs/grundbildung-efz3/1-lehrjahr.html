@@ -186,7 +186,7 @@
         }
         
         .schluessel-content.expanded {
-            max-height: 500px;
+            max-height: 1000px;
             margin-top: 12px;
         }
         
@@ -271,7 +271,6 @@
             color: #c8102e;
         }
         
-        /* Farbcodierung für verschiedene Kompetenzbereiche */
         .gesellschaft { 
             background-color: #ffe8e8 !important; 
             border-color: #ffcccc !important; 
@@ -365,58 +364,6 @@
             }
         }
     </style>
-    <script>
-        function toggleKompetenz(button, detailsId) {
-            const details = document.getElementById(detailsId);
-            const allButtons = button.parentElement.querySelectorAll('.kompetenz-button');
-            const allDetails = button.parentElement.parentElement.querySelectorAll('.kompetenz-details');
-            
-            // Alle anderen schließen
-            allDetails.forEach(d => {
-                if (d.id !== detailsId) d.classList.remove('show');
-            });
-            allButtons.forEach(b => {
-                if (b !== button) b.classList.remove('active');
-            });
-            
-            // Aktuellen toggle
-            details.classList.toggle('show');
-            button.classList.toggle('active');
-        }
-        
-        function toggleTheme(header) {
-            const content = header.nextElementSibling;
-            const isOpen = content.classList.contains('show');
-            
-            // Toggle current theme
-            if (isOpen) {
-                content.classList.remove('show');
-                header.classList.add('collapsed');
-            } else {
-                content.classList.add('show');
-                header.classList.remove('collapsed');
-            }
-        }
-        
-        function toggleSchluessel(box) {
-            const content = box.querySelector('.schluessel-content');
-            const icon = box.querySelector('.toggle-schluessel');
-            
-            content.classList.toggle('expanded');
-            icon.classList.toggle('rotated');
-        }
-        
-        // Initialize: Add click handlers and collapse all themes
-        document.addEventListener('DOMContentLoaded', function() {
-            const headers = document.querySelectorAll('.theme-header');
-            headers.forEach(header => {
-                header.addEventListener('click', function() {
-                    toggleTheme(this);
-                });
-                header.classList.add('collapsed');
-            });
-        });
-    </script>
 </head>
 <body>
     <header>
@@ -458,35 +405,43 @@
                     </div>
                     
                     <div class="lerninhalt">
-                        <h4>Kompetenz 1: ...</h4>
+                        <h4>Kompetenz 1: (Darstellungsbeispiel 1)</h4>
                         
-                        <div class="kompetenz-container">
-                            <button class="kompetenz-button sprache" onclick="toggleKompetenz(this, 't1l1-sprache')">
-                                Sprache und Kommunikation
-                            </button>
-                            <button class="kompetenz-button digital" onclick="toggleKompetenz(this, 't1l1-digital')">
-                                Medien und Digitalität
-                            </button>
-                            <button class="kompetenz-button gesellschaft" onclick="toggleKompetenz(this, 't1l1-gesellschaft')">
-                                Gesellschaft
-                            </button>
-                        </div>
-                        
-                        <div id="t1l1-gesellschaft" class="kompetenz-details">
-                            <p>...</p>
-                        </div>
-                        
-                        <div id="t1l1-sprache" class="kompetenz-details">
-                            <p>...</p>
-                        </div>
-                        
-                        <div id="t1l1-digital" class="kompetenz-details">
-                            <p>...</p>
+                        <div class="schluessel-box" onclick="toggleSchluessel(this)">
+                            <div class="schluessel-header">
+                                <h4>Umsetzungsbeispiel</h4>
+                                <span class="toggle-schluessel">▼</span>
+                            </div>
+                            <div class="schluessel-content">
+                                <div class="kompetenz-container">
+                                    <button class="kompetenz-button sprache" onclick="event.stopPropagation(); toggleKompetenz(this, 't1l1-sprache')">
+                                        Sprache und Kommunikation
+                                    </button>
+                                    <button class="kompetenz-button digital" onclick="event.stopPropagation(); toggleKompetenz(this, 't1l1-digital')">
+                                        Medien und Digitalität
+                                    </button>
+                                    <button class="kompetenz-button gesellschaft" onclick="event.stopPropagation(); toggleKompetenz(this, 't1l1-gesellschaft')">
+                                        Gesellschaft
+                                    </button>
+                                </div>
+                                
+                                <div id="t1l1-gesellschaft" class="kompetenz-details">
+                                    <p>...</p>
+                                </div>
+                                
+                                <div id="t1l1-sprache" class="kompetenz-details">
+                                    <p>...</p>
+                                </div>
+                                
+                                <div id="t1l1-digital" class="kompetenz-details">
+                                    <p>...</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="lerninhalt">
-                        <h4>Kompetenz 2: ...</h4>
+                        <h4>Kompetenz 2: (Darstellungsbeispiel 2)</h4>
                         
                         <div class="kompetenz-container">
                             <button class="kompetenz-button sprache" onclick="toggleKompetenz(this, 't1l1k2-sprache')">
@@ -510,6 +465,16 @@
                         
                         <div id="t1l1k2-digital" class="kompetenz-details">
                             <p>...</p>
+                        </div>
+                        
+                        <div class="schluessel-box" onclick="toggleSchluessel(this)">
+                            <div class="schluessel-header">
+                                <h4>Umsetzungsbeispiel</h4>
+                                <span class="toggle-schluessel">▼</span>
+                            </div>
+                            <div class="schluessel-content">
+                                <p>...</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -737,12 +702,8 @@
                         </div>
                     </div>
                 </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
-        
         <!-- Thema 3: Gesund und sicher durchs Leben -->
         <div class="theme-section">
             <div class="theme-header">
@@ -909,5 +870,54 @@
             <a href="index.html">← Zurück zur Übersicht EFZ</a>
         </div>
     </main>
+    
+    <script>
+        function toggleKompetenz(button, detailsId) {
+            const details = document.getElementById(detailsId);
+            const allButtons = button.parentElement.querySelectorAll('.kompetenz-button');
+            const allDetails = button.parentElement.parentElement.querySelectorAll('.kompetenz-details');
+            
+            allDetails.forEach(d => {
+                if (d.id !== detailsId) d.classList.remove('show');
+            });
+            allButtons.forEach(b => {
+                if (b !== button) b.classList.remove('active');
+            });
+            
+            details.classList.toggle('show');
+            button.classList.toggle('active');
+        }
+        
+        function toggleTheme(header) {
+            const content = header.nextElementSibling;
+            const isOpen = content.classList.contains('show');
+            
+            if (isOpen) {
+                content.classList.remove('show');
+                header.classList.add('collapsed');
+            } else {
+                content.classList.add('show');
+                header.classList.remove('collapsed');
+            }
+        }
+        
+        function toggleSchluessel(box) {
+            const content = box.querySelector('.schluessel-content');
+            const icon = box.querySelector('.toggle-schluessel');
+            
+            content.classList.toggle('expanded');
+            icon.classList.toggle('rotated');
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const headers = document.querySelectorAll('.theme-header');
+            headers.forEach(header => {
+                header.addEventListener('click', function() {
+                    toggleTheme(this);
+                });
+                header.classList.add('collapsed');
+            });
+        });
+    </script>
 </body>
 </html>
