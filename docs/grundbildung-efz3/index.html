@@ -200,6 +200,61 @@
             gap: 24px;
             margin-bottom: 40px;
         }
+
+        .zirkularitaet-container {
+            max-width: 900px;
+            margin: 0 auto 40px auto;
+        }
+
+        .zirkularitaet-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 35px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            border-left: 6px solid #c8102e;
+        }
+
+        .zirkularitaet-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        .zirkularitaet-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #c8102e, #ffcc00);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .zirkularitaet-content {
+            flex: 1;
+        }
+
+        .zirkularitaet-content h3 {
+            font-size: 1.6em;
+            margin-bottom: 8px;
+            color: #000;
+            font-weight: 700;
+        }
+
+        .zirkularitaet-content p {
+            color: #333;
+            line-height: 1.5;
+            font-size: 1.05em;
+        }
         
         .card {
             background: #fff;
@@ -281,6 +336,12 @@
             
             .theme-table {
                 font-size: 0.9em;
+            }
+
+            .zirkularitaet-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 25px;
             }
         }
     </style>
@@ -396,13 +457,14 @@
                     120 Lektionen Allgemeinbildung inkl. VA
                 </div>
             </a>
-            
-            <a href="zirkularitaet.html" class="card">
-                <div class="card-icon">↻</div>
-                <h3>Zirkularität</h3>
-                <p>...</p>
-                <div class="meta">
-                    Themenübergreifend
+        </div>
+
+        <div class="zirkularitaet-container">
+            <a href="zirkularitaet.html" class="zirkularitaet-card">
+                <div class="zirkularitaet-icon">↻</div>
+                <div class="zirkularitaet-content">
+                    <h3>Zirkularität</h3>
+                    <p>Spiralförmiger Kompetenzaufbau über die gesamte Lehrzeit</p>
                 </div>
             </a>
         </div>
