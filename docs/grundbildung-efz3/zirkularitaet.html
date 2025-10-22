@@ -136,7 +136,7 @@
 
         .key-card h3 {
             color: #c8102e;
-            font-size: 17px;
+            font-size: 19px;
             font-weight: 700;
             margin-bottom: 15px;
         }
@@ -150,7 +150,7 @@
         /* Navigation Cards */
         .nav-cards {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 25px;
             margin-top: 30px;
         }
@@ -158,7 +158,7 @@
         .nav-card {
             background: white;
             border-radius: 8px;
-            padding: 30px 30px 30px 60px;
+            padding: 30px;
             cursor: pointer;
             transition: all 0.3s ease;
             text-align: center;
@@ -200,15 +200,9 @@
 
         .nav-card h3 {
             color: #c8102e;
-            font-size: 17px;
+            font-size: 18px;
             font-weight: 700;
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: rotate(-90deg) translateX(-50%);
-            transform-origin: left center;
-            white-space: nowrap;
-            margin: 0;
+            margin-bottom: 15px;
         }
 
         .nav-card p {
@@ -261,14 +255,7 @@
             }
 
             .nav-card {
-                padding: 30px;
-            }
-
-            .nav-card h3 {
-                position: static;
-                transform: none;
-                white-space: normal;
-                margin-bottom: 15px;
+                padding: 20px;
             }
         }
     </style>
@@ -297,15 +284,13 @@
             </p>
         </div>
 
-        <div class="single-card-container">
-            <a href="schluesselkompetenzen.html" class="key-card">
-                <div class="key-card-icon">🔑</div>
+        <div class="nav-cards">
+            <a href="schluesselkompetenzen.html" class="nav-card">
+                <div class="nav-card-icon">🔑</div>
                 <h3>Schlüsselkompetenzen</h3>
                 <p>Zirkulärer Aufbau der 12 Schlüsselkompetenzen für lebenslanges Lernen über alle Themen</p>
             </a>
-        </div>
 
-        <div class="nav-cards">
             <a href="aspekte.html" class="nav-card">
                 <div class="nav-card-icon">🌍</div>
                 <h3>Gesellschaft</h3>
