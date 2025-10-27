@@ -384,6 +384,111 @@
             text-decoration: underline;
         }
         
+        /* Aufklappbare Tabelle Styles */
+        .table-container {
+            margin-top: 16px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .table-header {
+            background: linear-gradient(90deg, #c8102e, #ffcc00);
+            padding: 12px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: opacity 0.3s ease;
+        }
+        
+        .table-header:hover {
+            opacity: 0.9;
+        }
+        
+        .table-header h5 {
+            color: #fff;
+            font-size: 0.95em;
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        .table-toggle {
+            color: #fff;
+            font-size: 1.1em;
+            transition: transform 0.3s ease;
+        }
+        
+        .table-toggle.rotated {
+            transform: rotate(180deg);
+        }
+        
+        .table-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        
+        .table-content.expanded {
+            max-height: 2000px;
+        }
+        
+        .kompetenz-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+        }
+        
+        .kompetenz-table thead th {
+            padding: 16px 12px;
+            text-align: left;
+            font-size: 0.9em;
+            font-weight: 700;
+            color: #fff;
+            border-right: 2px solid #fff;
+        }
+        
+        .kompetenz-table thead th:last-child {
+            border-right: none;
+        }
+        
+        .kompetenz-table thead th.col-sprache {
+            background: linear-gradient(135deg, #0066cc, #3385d6);
+        }
+        
+        .kompetenz-table thead th.col-digital {
+            background: linear-gradient(135deg, #00994d, #00b359);
+        }
+        
+        .kompetenz-table thead th.col-gesellschaft {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #000;
+        }
+        
+        .kompetenz-table tbody td {
+            padding: 16px 12px;
+            vertical-align: top;
+            font-size: 0.85em;
+            color: #000;
+            border-right: 2px solid #e9ecef;
+        }
+        
+        .kompetenz-table tbody td:last-child {
+            border-right: none;
+        }
+        
+        .kompetenz-table tbody td.col-sprache {
+            background-color: #e8f0ff;
+        }
+        
+        .kompetenz-table tbody td.col-digital {
+            background-color: #e8ffe8;
+        }
+        
+        .kompetenz-table tbody td.col-gesellschaft {
+            background-color: #fff9e6;
+        }
+        
         @media (max-width: 768px) {
             .container {
                 padding: 10px;
@@ -482,37 +587,34 @@
                     <div class="lerninhalt">
                         <h4>Kompetenz 2: (Darstellungsbeispiel 2)</h4>
                         
-                        <div class="kompetenz-container">
-                            <button class="kompetenz-button sprache" onclick="toggleKompetenz(this, 't1l1k2-sprache')">
-                                Sprache und Kommunikation
-                            </button>
-                            <button class="kompetenz-button digital" onclick="toggleKompetenz(this, 't1l1k2-digital')">
-                                Medien und Digitalität
-                            </button>
-                            <button class="kompetenz-button gesellschaft" onclick="toggleKompetenz(this, 't1l1k2-gesellschaft')">
-                                Gesellschaft
-                            </button>
-                        </div>
-                        
-                        <div id="t1l1k2-gesellschaft" class="kompetenz-details gesellschaft-detail">
-                            <p>...</p>
-                        </div>
-                        
-                        <div id="t1l1k2-sprache" class="kompetenz-details sprache-detail">
-                            <p>...</p>
-                        </div>
-                        
-                        <div id="t1l1k2-digital" class="kompetenz-details digital-detail">
-                            <p>...</p>
-                        </div>
-                        
-                        <div class="umsetzung-box" onclick="toggleSchluessel(this)">
-                            <div class="schluessel-header">
-                                <h4>Umsetzungsbeispiel</h4>
-                                <span class="toggle-schluessel">▼</span>
+                        <div class="table-container">
+                            <div class="table-header" onclick="toggleTable(this)">
+                                <h5>Inhalte/ Lernziele</h5>
+                                <span class="table-toggle">▼</span>
                             </div>
-                            <div class="schluessel-content">
-                                <p>...</p>
+                            <div class="table-content">
+                                <table class="kompetenz-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-sprache">Sprache und Kommunikation</th>
+                                            <th class="col-digital">Medien und Digitalität</th>
+                                            <th class="col-gesellschaft">Gesellschaft</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="col-sprache">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-digital">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-gesellschaft">
+                                                <p>...</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -954,6 +1056,14 @@
         function toggleSchluessel(box) {
             const content = box.querySelector('.schluessel-content');
             const icon = box.querySelector('.toggle-schluessel');
+            
+            content.classList.toggle('expanded');
+            icon.classList.toggle('rotated');
+        }
+        
+        function toggleTable(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.table-toggle');
             
             content.classList.toggle('expanded');
             icon.classList.toggle('rotated');
