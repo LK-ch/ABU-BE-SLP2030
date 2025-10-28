@@ -3,218 +3,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plan d'études de culture générale - Schullehrplan ABU</title>
+    <title>Formation de base 3 ans CFC - Plan d'études CG</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            color: #2b2b2b;
+            color: #000;
             background-color: #fff8f0;
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
         header {
             background: linear-gradient(90deg, #c8102e, #ffcc00);
             color: white;
-            padding: 50px 20px;
-            text-align: center;
-            margin-bottom: 40px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            padding: 30px 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             position: relative;
         }
-        
-        .bern-wappen {
-            position: absolute;
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
-            width: 150px;
-            height: 150px;
-            opacity: 0.25;
+
+        .breadcrumb { font-size: 0.9em; color: #fff; margin-bottom: 20px; }
+        .breadcrumb a { color: #fff; text-decoration: none; font-weight: 500; }
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        h1 { color: #fff; font-size: 2.2em; margin-bottom: 10px; font-weight: 700; }
+        .subtitle { color: #fff; font-size: 1.1em; }
+
+        .language-switch {
+            position: absolute; top: 20px; right: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px; padding: 8px 20px;
+            cursor: pointer; transition: all 0.3s ease;
+            text-decoration: none; color: #fff; font-weight: 600;
+            font-size: 0.95em; display: inline-flex; align-items: center; gap: 8px;
         }
-        
-        .bern-wappen img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-        }
-        
-        h1 {
-            font-size: 2.5em;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-        
-        .subtitle {
-            font-size: 1.2em;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.5;
-            color: #fff;
-        }
-        
-        .language-selection-container {
-            max-width: 800px;
-            margin: 60px auto;
-            text-align: center;
-        }
-        
-        .selection-title {
-            font-size: 1.8em;
-            color: #000;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-        
-        .selection-subtitle {
-            font-size: 1.8em;
-            color: #000;
-            margin-bottom: 40px;
-            font-weight: 700;
-        }
-        
-        .language-selection {
-            display: flex;
-            gap: 30px;
-            justify-content: center;
-        }
-        
-        .language-button {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: #fff;
-            border: 3px solid #e9ecef;
-            border-radius: 16px;
-            padding: 40px 50px;
-            text-decoration: none;
-            color: #000;
-            transition: all 0.3s ease;
-            flex: 1;
-            max-width: 280px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            border-left: 6px solid #c8102e;
-        }
-        
-        .language-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-            border-color: #c8102e;
-        }
-        
-        .language-button .name {
-            font-size: 1.5em;
-            font-weight: 900;
-            margin-bottom: 8px;
-        }
-        
-        .language-button .label {
-            font-size: 0.95em;
-            color: #555;
-        }
-        
-        footer {
-            background: #c8102e;
-            color: white;
-            text-align: center;
-            padding: 25px 20px;
-            margin-top: 50px;
-        }
-        
-        footer p {
-            font-size: 0.9em;
-            margin: 0;
-        }
-        
-        @media (max-width: 768px) {
-            .bern-wappen {
-                width: 120px;
-                height: 120px;
-                top: 50%;
-                right: 15px;
-            }
-            
-            h1 {
-                font-size: 1.8em;
-            }
-            
-            .subtitle {
-                font-size: 1em;
-            }
-            
-            .selection-title {
-                font-size: 1.5em;
-            }
-            
-            .selection-subtitle {
-                font-size: 1.5em;
-            }
-            
-            .language-button {
-                padding: 30px 20px;
-            }
-            
-            .language-button .name {
-                font-size: 1.2em;
-            }
+        .language-switch:hover { background-color: rgba(255,255,255,0.3); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+
+        .info-box { background-color: #fff; border-left: 4px solid #c8102e; border-radius: 4px; padding: 24px; margin-bottom: 40px; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
+        .info-box-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none; }
+        .info-box-header:hover { opacity: 0.8; }
+        .info-box h2 { color: #000; font-size: 1.3em; font-weight: 700; margin: 0; }
+        .toggle-icon { font-size: 1.5em; color: #c8102e; transition: transform 0.3s ease; }
+        .toggle-icon.rotated { transform: rotate(180deg); }
+        .info-box-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .info-box-content.expanded { max-height: 1000px; margin-top: 16px; }
+        .info-box ul { list-style: none; margin-left: 0; }
+        .info-box li { position: relative; padding-left: 28px; margin-bottom: 12px; color: #000; }
+        .info-box li::before { content: "▸"; position: absolute; left: 0; color: #c8102e; font-weight: bold; }
+        .info-box .highlight { background-color: #fff3cd; padding: 2px 6px; border-radius: 3px; font-weight: 600; }
+
+        .theme-overview { margin-bottom: 40px; }
+        .theme-overview h2 { margin-bottom: 20px; font-size: 1.4em; color: #000; font-weight: 700; }
+        .theme-table { width: 100%; max-width: 800px; margin: 0 auto 40px auto; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
+        .theme-table th { background: linear-gradient(90deg, #c8102e, #ffcc00); padding: 12px; text-align: left; color: #fff; font-weight: 600; }
+        .theme-table td { padding: 12px; border-bottom: 1px solid #eee; color: #000; }
+        .theme-table .year-cell { font-weight: 600; background-color: #fff3cd; vertical-align: middle; text-align: center; font-size: 1.1em; color: #c8102e; }
+        .theme-table .year-2 { background-color: #ffe8a1; }
+        .theme-table .year-3 { background-color: #ffd770; }
+        .theme-table tfoot td { background-color: #f5f5f5; font-weight: 600; border-bottom: none; }
+
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 24px; margin-bottom: 40px; }
+
+        .zirkularitaet-container { max-width: 900px; margin: 0 auto 40px auto; }
+        .zirkularitaet-card { background: #fff; border-radius: 8px; padding: 35px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s ease; text-decoration: none; color: inherit; display: flex; align-items: center; gap: 30px; border-left: 6px solid #c8102e; }
+        .zirkularitaet-card:hover { transform: translateY(-4px); box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+        .zirkularitaet-icon { width: 64px; height: 64px; background: linear-gradient(135deg, #c8102e, #ffcc00); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 32px; font-weight: bold; flex-shrink: 0; }
+        .zirkularitaet-content { flex: 1; }
+        .zirkularitaet-content h3 { font-size: 1.6em; margin-bottom: 8px; color: #000; font-weight: 700; }
+        .zirkularitaet-content p { color: #333; line-height: 1.5; font-size: 1.05em; }
+
+        .card { background: #fff; border-radius: 8px; padding: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s ease; text-decoration: none; color: inherit; display: block; position: relative; overflow: hidden; border-left: 6px solid #c8102e; }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+        .card-icon { width: 56px; height: 56px; margin-bottom: 20px; background: linear-gradient(135deg, #c8102e, #ffcc00); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 28px; font-weight: bold; }
+        .card h3 { font-size: 1.5em; margin-bottom: 12px; color: #000; font-weight: 700; }
+        .card p { color: #333; line-height: 1.5; }
+        .card .meta { margin-top: 16px; padding-top: 16px; border-top: 1px solid #eee; font-size: 0.9em; color: #666; }
+
+        .back-link { text-align: center; padding: 40px 0; }
+        .back-link a { color: #c8102e; text-decoration: none; font-size: 1.1em; font-weight: 600; }
+        .back-link a:hover { text-decoration: underline; }
+
+        @media (max-width:768px){
+            h1 { font-size: 1.8em; }
+            .card-grid { grid-template-columns: 1fr; }
+            .theme-table { font-size: 0.9em; }
+            .zirkularitaet-card { flex-direction: column; text-align: center; padding: 25px; }
         }
     </style>
+    <script>
+        function toggleInfo() {
+            const content = document.getElementById('info-content');
+            const icon = document.getElementById('toggle-icon');
+            content.classList.toggle('expanded');
+            icon.classList.toggle('rotated');
+        }
+    </script>
 </head>
 <body>
-    <header>
-        <div class="bern-wappen">
-            <img src="./images/Bern-Kanton.PNG" alt="Armoiries du canton de Berne">
-        </div>
-        
-        <div class="container">
-            <h1>Plan d'études de culture générale</h1>
-            <h1 style="margin-top: 5px;">Schullehrplan ABU</h1>
-            <p class="subtitle" style="margin-top: 20px;">
-                Plan d'études de culture générale pour les écoles professionnelles du canton de Berne, 
-                basé sur le plan d'études cadre CG 2030
-            </p>
-            <p class="subtitle" style="margin-top: 10px;">
-                Schullehrplan für den allgemeinbildenden Unterricht an Berufsfachschulen 
-                des Kantons Bern, basierend auf dem Rahmenlehrplan ABU 2030
-            </p>
-        </div>
-    </header>
-    
-    <main class="container">
-        <div class="language-selection-container">
-            <h2 class="selection-title">Plan d'études de culture générale</h2>
-            <p class="selection-subtitle">Schullehrplan ABU</p>
-            
-            <div class="language-selection">
-                <a href="index_fr.html" class="language-button">
-                    <div class="name">Français</div>
-                    <div class="label">Choisir la langue</div>
-                </a>
-                
-                <a href="index_de.html" class="language-button">
-                    <div class="name">Deutsch</div>
-                    <div class="label">Sprache wählen</div>
-                </a>
+<header>
+    <a href="index.html" class="language-switch">🇩🇪 Deutsch</a>
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="../index_fr.html">Plan d'études CG</a> / Formation de base 3 ans CFC
+        </nav>
+        <h1>Formation de base 3 ans CFC</h1>
+        <p class="subtitle">Certificat fédéral de capacité</p>
+    </div>
+</header>
+
+<main class="container">
+    <div class="theme-overview">
+        <h2>📚 Aperçu des thèmes</h2>
+        <table class="theme-table">
+            <thead>
+                <tr>
+                    <th style="width: 60px;">Année</th>
+                    <th>Thèmes</th>
+                    <th style="width: 80px; text-align:center;">Leçons</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="2" class="year-cell year-1">1</td>
+                    <td>
+                        <strong>1.</strong> Ma formation professionnelle<br>
+                        <strong>2.</strong> ...<br>
+                        <strong>3.</strong> ...
+                    </td>
+                    <td style="text-align:center;">xx</td>
+                </tr>
+                <tr>
+                    <td style="font-style: italic; color:#666;">Autres leçons</td>
+                    <td style="text-align:center;">xx</td>
+                </tr>
+                <tr>
+                    <td rowspan="2" class="year-cell year-2">2</td>
+                    <td>
+                        <strong>4.</strong> ...<br>
+                        <strong>5.</strong> ...<br>
+                        <strong>6.</strong> ...
+                    </td>
+                    <td style="text-align:center;">xx</td>
+                </tr>
+                <tr>
+                    <td style="font-style: italic; color:#666;">Autres leçons</td>
+                    <td style="text-align:center;">xx</td>
+                </tr>
+                <tr>
+                    <td rowspan="3" class="year-cell year-3">3</td>
+                    <td>
+                        <strong>7.</strong> ...<br>
+                        <strong>8.</strong> ...
+                    </td>
+                    <td style="text-align:center;">xx</td>
+                </tr>
+                <tr>
+                    <td style="font-style: italic; color:#666;">Examen final</td>
+                    <td style="text-align:center;">xx</td>
+                </tr>
+                <tr>
+                    <td style="font-style: italic; color:#666; border-bottom:none;">Autres leçons</td>
+                    <td style="text-align:center; border-bottom:none;">xx</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2" style="text-align:right;">Total par année :</td>
+                    <td style="text-align:center;">120</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="card-grid">
+        <a href="1-lehrjahr_fr.html" class="card">
+            <div class="card-icon">1</div>
+            <h3>1re année d’apprentissage</h3>
+            <p>...</p>
+            <div class="meta">120 leçons de formation générale</div>
+        </a>
+
+        <a href="2-lehrjahr_fr.html" class="card">
+            <div class="card-icon">2</div>
+            <h3>2e année d’apprentissage</h3>
+            <p>...</p>
+            <div class="meta">120 leçons de formation générale</div>
+        </a>
+
+        <a href="3-lehrjahr_fr.html" class="card">
+            <div class="card-icon">3</div>
+            <h3>3e année d’apprentissage</h3>
+            <p>...</p>
+            <div class="meta">120 leçons de formation générale incl. projet final</div>
+        </a>
+    </div>
+
+    <div class="zirkularitaet-container">
+        <a href="zirkularitaet_fr.html" class="zirkularitaet-card">
+            <div class="zirkularitaet-icon">↻</div>
+            <div class="zirkularitaet-content">
+                <h3>Circularité</h3>
+                <p>Développement des compétences en spirale tout au long de l’apprentissage</p>
             </div>
+        </a>
+    </div>
+
+    <div class="info-box">
+        <div class="info-box-header" onclick="toggleInfo()">
+            <h2>📋 Exigences selon le plan d’études CG 2025</h2>
+            <span class="toggle-icon" id="toggle-icon">▼</span>
         </div>
-    </main>
-    
-    <footer>
-        <p>Mise en œuvre numérique avec le soutien du Digital Learning Hub Zurich (DLH) – merci beaucoup pour la collaboration !</p>
-        <p style="margin-top: 8px;">Digital umgesetzt mit der Unterstützung des Digital Learning Hub Zürich (DLH) – vielen Dank für die Zusammenarbeit !</p>
-    </footer>
+        <div class="info-box-content" id="info-content">
+            <ul>
+                <li>Chaque thème favorise consciemment au moins <span class="highlight">3 compétences clés</span></li>
+                <li>Contenus d’apprentissage issus d’au moins <span class="highlight">3 aspects</span> du domaine Société</li>
+                <li>Prise en compte d’au moins <span class="highlight">3 modes de langue</span> par thème</li>
+                <li>Compétences de tous les <span class="highlight">modes de langue</span> en tenant compte des conventions, normes et conscience linguistique</li>
+                <li>À la fin : développement de toutes les <span class="highlight">12 compétences clés</span> et compétences dans les 8 <span class="highlight">aspects sociétaux</span></li>
+                <li>Intégration du <span class="highlight">projet final</span> dans la dernière année</li>
+                <li>Curriculum en spirale avec évaluations formatives et sommatives</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="back-link">
+        <a href="../index_fr.html">← Retour à l’aperçu</a>
+    </div>
+</main>
 </body>
 </html>
