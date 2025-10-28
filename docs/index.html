@@ -1,1 +1,220 @@
-
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schullehrplan ABU - Plan d'études de culture générale</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #2b2b2b;
+            background-color: #fff8f0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(90deg, #c8102e, #ffcc00);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        
+        .bern-wappen {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            width: 150px;
+            height: 150px;
+            opacity: 0.25;
+        }
+        
+        .bern-wappen img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.5;
+            color: #fff;
+        }
+        
+        .language-selection-container {
+            max-width: 800px;
+            margin: 60px auto;
+            text-align: center;
+        }
+        
+        .selection-title {
+            font-size: 1.8em;
+            color: #000;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .selection-subtitle {
+            font-size: 1.8em;
+            color: #000;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+        
+        .language-selection {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .language-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            border: 3px solid #e9ecef;
+            border-radius: 16px;
+            padding: 40px 50px;
+            text-decoration: none;
+            color: #000;
+            transition: all 0.3s ease;
+            flex: 1;
+            max-width: 280px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            border-left: 6px solid #c8102e;
+        }
+        
+        .language-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            border-color: #c8102e;
+        }
+        
+        .language-button .name {
+            font-size: 1.5em;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+        
+        .language-button .label {
+            font-size: 0.95em;
+            color: #555;
+        }
+        
+        footer {
+            background: #c8102e;
+            color: white;
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 50px;
+        }
+        
+        footer p {
+            font-size: 0.9em;
+            margin: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .bern-wappen {
+                width: 120px;
+                height: 120px;
+                top: 50%;
+                right: 15px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .subtitle {
+                font-size: 1em;
+            }
+            
+            .selection-title {
+                font-size: 1.5em;
+            }
+            
+            .selection-subtitle {
+                font-size: 1.5em;
+            }
+            
+            .language-button {
+                padding: 30px 20px;
+            }
+            
+            .language-button .name {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="bern-wappen">
+            <img src="./images/Bern-Kanton.PNG" alt="Wappen Kanton Bern">
+        </div>
+        
+        <div class="container">
+            <h1>Schullehrplan ABU</h1>
+            <h1 style="margin-top: 5px;">Plan d'études de culture générale</h1>
+            <p class="subtitle" style="margin-top: 20px;">
+                Schullehrplan für den allgemeinbildenden Unterricht an Berufsfachschulen 
+                des Kantons Bern, basierend auf dem Rahmenlehrplan ABU 2030
+            </p>
+            <p class="subtitle" style="margin-top: 10px;">
+                Plan d'études de culture générale pour les écoles professionnelles 
+                du canton de Berne, basé sur le plan d'études cadre CG 2030
+            </p>
+        </div>
+    </header>
+    
+    <main class="container">
+        <div class="language-selection-container">
+            <h2 class="selection-title">Schullehrplan ABU</h2>
+            <p class="selection-subtitle">Plan d'études de culture générale</p>
+            
+            <div class="language-selection">
+                <a href="index_de.html" class="language-button">
+                    <div class="name">Deutsch</div>
+                    <div class="label">Sprache wählen</div>
+                </a>
+                
+                <a href="index_fr.html" class="language-button">
+                    <div class="name">Français</div>
+                    <div class="label">Choisir la langue</div>
+                </a>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>Digital umgesetzt mit der Unterstützung des Digital Learning Hub Zürich (DLH) - vielen Dank für die Zusammenarbeit!</p>
+        <p style="margin-top: 8px;">Mise en œuvre numérique avec le soutien du Digital Learning Hub Zurich (DLH) - merci beaucoup pour la collaboration !</p>
+    </footer>
+</body>
+</html>
