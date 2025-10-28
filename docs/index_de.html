@@ -58,10 +58,37 @@
       z-index: 10;
     }
 
+    .language-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 25px;
+      padding: 8px 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95em;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 10;
+    }
+
+    .language-switch:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
     /* Berner Wappen - oben rechts */
     .bern-wappen {
       position: absolute;
-      top: 50%;
+      top: 60%;
       right: 20px;
       transform: translateY(-50%);
       width: 150px;
@@ -205,6 +232,12 @@
         padding: 12px;
       }
 
+      .language-switch {
+        right: 20px;
+        padding: 6px 15px;
+        font-size: 0.85em;
+      }
+
       .bern-wappen {
         width: 120px;
         height: 120px;
@@ -230,6 +263,11 @@
     <div class="wip-badge">
       Website und Inhalte in Bearbeitung
     </div>
+
+    <!-- Sprachwechsel-Button -->
+    <a href="hauptseite_fr.html" class="language-switch">
+      🇫🇷 Français
+    </a>
 
     <!-- Berner Wappen oben rechts -->
     <div class="bern-wappen">
