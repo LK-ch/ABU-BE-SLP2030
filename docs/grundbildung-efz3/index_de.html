@@ -60,6 +60,36 @@
             font-size: 1.1em;
         }
         
+        .language-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            padding: 8px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.95em;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .language-switch:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        header {
+            position: relative;
+        }
+        
         .info-box {
             background-color: #fff;
             border-left: 4px solid #c8102e;
@@ -357,6 +387,9 @@
 </head>
 <body>
     <header>
+        <a href="index_fr.html" class="language-switch">
+            🇫🇷 Français
+        </a>
         <div class="container">
             <nav class="breadcrumb">
                 <a href="../index.html">Schullehrplan ABU</a> / 3-jährige Grundbildung EFZ
