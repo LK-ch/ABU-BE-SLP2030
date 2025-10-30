@@ -482,23 +482,23 @@
             border-right: none;
         }
         
-        .kompetenz-table thead th.col-sprache {
-            background: linear-gradient(135deg, #0066cc, #3385d6);
+        .kompetenz-table thead th.col-gesellschaft {
+            background: linear-gradient(135deg, #ffd966, #ffe699);
+            color: #000;
         }
         
         .kompetenz-table thead th.col-digital {
             background: linear-gradient(135deg, #4db380, #6bc799);
         }
         
-        .kompetenz-table thead th.col-gesellschaft {
-            background: linear-gradient(135deg, #ffd966, #ffe699);
-            color: #000;
+        .kompetenz-table thead th.col-sprache {
+            background: linear-gradient(135deg, #0066cc, #3385d6);
         }
         
         .kompetenz-table tbody td {
             padding: 16px 12px;
             vertical-align: top;
-            font-size: 0.95em;
+            font-size: 0.85em;
             color: #000;
             border-right: 2px solid #e9ecef;
             width: 33.33%;
@@ -508,16 +508,26 @@
             border-right: none;
         }
         
-        .kompetenz-table tbody td.col-sprache {
-            background-color: #f0f7ff;
+        .kompetenz-table tbody td.col-gesellschaft {
+            background-color: #fffbf0;
         }
         
         .kompetenz-table tbody td.col-digital {
             background-color: #f0fff0;
         }
         
-        .kompetenz-table tbody td.col-gesellschaft {
-            background-color: #fffbf0;
+        .kompetenz-table tbody td.col-sprache {
+            background-color: #f0f7ff;
+        }
+        
+        /* Kompetenzen in Tabellen fett markieren */
+        .kompetenz-table tbody td span[data-k] {
+            font-weight: 700;
+        }
+        
+        /* Visuelle Trennung zwischen erster und zweiter Zeile */
+        .kompetenz-table tbody tr:nth-child(2) td {
+            border-top: 2px solid #dee2e6;
         }
         
         .umsetzung-box-bottom {
@@ -605,20 +615,32 @@
                                 <table class="kompetenz-table">
                                     <thead>
                                         <tr>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
                                             <th class="col-gesellschaft">Gesellschaft</th>
+                                            <th class="col-digital">Medien und Digitalität</th>
+                                            <th class="col-sprache">Sprache und Kommunikation</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="col-sprache">
+                                            <td class="col-gesellschaft">
                                                 <p>...</p>
                                             </td>
                                             <td class="col-digital">
                                                 <p>...</p>
                                             </td>
+                                            <td class="col-sprache">
+                                                <p>...</p>
+                                            </td>
+                                        </tr>
+                                    
+                                        <tr>
                                             <td class="col-gesellschaft">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-digital">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-sprache">
                                                 <p>...</p>
                                             </td>
                                         </tr>
@@ -650,20 +672,32 @@
                                 <table class="kompetenz-table">
                                     <thead>
                                         <tr>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
                                             <th class="col-gesellschaft">Gesellschaft</th>
+                                            <th class="col-digital">Medien und Digitalität</th>
+                                            <th class="col-sprache">Sprache und Kommunikation</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="col-sprache">
+                                            <td class="col-gesellschaft">
                                                 <p>...</p>
                                             </td>
                                             <td class="col-digital">
                                                 <p>...</p>
                                             </td>
+                                            <td class="col-sprache">
+                                                <p>...</p>
+                                            </td>
+                                        </tr>
+                                    
+                                        <tr>
                                             <td class="col-gesellschaft">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-digital">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-sprache">
                                                 <p>...</p>
                                             </td>
                                         </tr>
@@ -695,20 +729,32 @@
                                 <table class="kompetenz-table">
                                     <thead>
                                         <tr>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
                                             <th class="col-gesellschaft">Gesellschaft</th>
+                                            <th class="col-digital">Medien und Digitalität</th>
+                                            <th class="col-sprache">Sprache und Kommunikation</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="col-sprache">
+                                            <td class="col-gesellschaft">
                                                 <p>...</p>
                                             </td>
                                             <td class="col-digital">
                                                 <p>...</p>
                                             </td>
+                                            <td class="col-sprache">
+                                                <p>...</p>
+                                            </td>
+                                        </tr>
+                                    
+                                        <tr>
                                             <td class="col-gesellschaft">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-digital">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-sprache">
                                                 <p>...</p>
                                             </td>
                                         </tr>
@@ -754,20 +800,32 @@
                                 <table class="kompetenz-table">
                                     <thead>
                                         <tr>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
                                             <th class="col-gesellschaft">Gesellschaft</th>
+                                            <th class="col-digital">Medien und Digitalität</th>
+                                            <th class="col-sprache">Sprache und Kommunikation</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="col-sprache">
+                                            <td class="col-gesellschaft">
                                                 <p>...</p>
                                             </td>
                                             <td class="col-digital">
                                                 <p>...</p>
                                             </td>
+                                            <td class="col-sprache">
+                                                <p>...</p>
+                                            </td>
+                                        </tr>
+                                    
+                                        <tr>
                                             <td class="col-gesellschaft">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-digital">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-sprache">
                                                 <p>...</p>
                                             </td>
                                         </tr>
@@ -799,20 +857,32 @@
                                 <table class="kompetenz-table">
                                     <thead>
                                         <tr>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
                                             <th class="col-gesellschaft">Gesellschaft</th>
+                                            <th class="col-digital">Medien und Digitalität</th>
+                                            <th class="col-sprache">Sprache und Kommunikation</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="col-sprache">
+                                            <td class="col-gesellschaft">
                                                 <p>...</p>
                                             </td>
                                             <td class="col-digital">
                                                 <p>...</p>
                                             </td>
+                                            <td class="col-sprache">
+                                                <p>...</p>
+                                            </td>
+                                        </tr>
+                                    
+                                        <tr>
                                             <td class="col-gesellschaft">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-digital">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-sprache">
                                                 <p>...</p>
                                             </td>
                                         </tr>
@@ -844,20 +914,32 @@
                                 <table class="kompetenz-table">
                                     <thead>
                                         <tr>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
                                             <th class="col-gesellschaft">Gesellschaft</th>
+                                            <th class="col-digital">Medien und Digitalität</th>
+                                            <th class="col-sprache">Sprache und Kommunikation</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="col-sprache">
+                                            <td class="col-gesellschaft">
                                                 <p>...</p>
                                             </td>
                                             <td class="col-digital">
                                                 <p>...</p>
                                             </td>
+                                            <td class="col-sprache">
+                                                <p>...</p>
+                                            </td>
+                                        </tr>
+                                    
+                                        <tr>
                                             <td class="col-gesellschaft">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-digital">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-sprache">
                                                 <p>...</p>
                                             </td>
                                         </tr>
@@ -921,21 +1003,33 @@
                                 <table class="kompetenz-table">
                                     <thead>
                                         <tr>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
                                             <th class="col-gesellschaft">Gesellschaft</th>
+                                            <th class="col-digital">Medien und Digitalität</th>
+                                            <th class="col-sprache">Sprache und Kommunikation</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="col-sprache">
-                                                <p><span data-k="4.2" data-kat="sprache">4.2. Rezeption schriftlich & bildlich​</span>: Das Lohnabrechnungsformular durch entsprechenden Wortschatz lesen. </p>
+                                            <td class="col-gesellschaft">
+                                                <p><span data-k="2.8" data-kat="gesellschaft">2.8. Wirtschaft​</span> Die eigene Lohnabrechnung verstehen.</p>
                                             </td>
                                             <td class="col-digital">
-                                                <p><span data-k="3.2" data-kat="digital">3.2. Informations- & Datenkompetenz​</span>: Effizientes Navigieren auf einer Webseite. </p>
+                                                <p><span data-k="3.2" data-kat="digital">3.2. Informations- & Datenkompetenz​</span> Effizientes Navigieren auf einer Webseite. </p>
                                             </td>
+                                            <td class="col-sprache">
+                                                <p><span data-k="4.2" data-kat="sprache">4.2. Rezeption schriftlich & bildlich​</span> Das Lohnabrechnungsformular durch entsprechenden Wortschatz lesen. </p>
+                                            </td>
+                                        </tr>
+                                    
+                                        <tr>
                                             <td class="col-gesellschaft">
-                                                <p><span data-k="2.8" data-kat="gesellschaft">2.8. Wirtschaft​</span>: Die eigene Lohnabrechnung verstehen.</p>
+                                                <p><span data-k="2.8" data-kat="gesellschaft">2.8. Wirtschaft​</span> Ein eigenes Budget mit fixen und variablen Kosten aufstellen. </p>
+                                            </td>
+                                            <td class="col-digital">
+                                                <p><span data-k="3.5" data-kat="digital">3.5. Problemlösung​</span> Budget-Tools zur Planung anwenden (z. B. budgetberatung.ch).</p>
+                                            </td>
+                                            <td class="col-sprache">
+                                                <p><span data-k="4.7" data-kat="sprache">4.7. Interaktion und Kollaboration mündlich​</span>Fremde und eigene Budgetplanung reflektieren.</p>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -966,20 +1060,32 @@
                                 <table class="kompetenz-table">
                                     <thead>
                                         <tr>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
                                             <th class="col-gesellschaft">Gesellschaft</th>
+                                            <th class="col-digital">Medien und Digitalität</th>
+                                            <th class="col-sprache">Sprache und Kommunikation</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="col-sprache">
+                                            <td class="col-gesellschaft">
                                                 <p>...</p>
                                             </td>
                                             <td class="col-digital">
                                                 <p>...</p>
                                             </td>
+                                            <td class="col-sprache">
+                                                <p>...</p>
+                                            </td>
+                                        </tr>
+                                    
+                                        <tr>
                                             <td class="col-gesellschaft">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-digital">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-sprache">
                                                 <p>...</p>
                                             </td>
                                         </tr>
@@ -1011,20 +1117,32 @@
                                 <table class="kompetenz-table">
                                     <thead>
                                         <tr>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
                                             <th class="col-gesellschaft">Gesellschaft</th>
+                                            <th class="col-digital">Medien und Digitalität</th>
+                                            <th class="col-sprache">Sprache und Kommunikation</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="col-sprache">
+                                            <td class="col-gesellschaft">
                                                 <p>...</p>
                                             </td>
                                             <td class="col-digital">
                                                 <p>...</p>
                                             </td>
+                                            <td class="col-sprache">
+                                                <p>...</p>
+                                            </td>
+                                        </tr>
+                                    
+                                        <tr>
                                             <td class="col-gesellschaft">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-digital">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-sprache">
                                                 <p>...</p>
                                             </td>
                                         </tr>
@@ -1071,20 +1189,32 @@
                                 <table class="kompetenz-table">
                                     <thead>
                                         <tr>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
                                             <th class="col-gesellschaft">Gesellschaft</th>
+                                            <th class="col-digital">Medien und Digitalität</th>
+                                            <th class="col-sprache">Sprache und Kommunikation</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="col-sprache">
+                                            <td class="col-gesellschaft">
                                                 <p>...</p>
                                             </td>
                                             <td class="col-digital">
                                                 <p>...</p>
                                             </td>
+                                            <td class="col-sprache">
+                                                <p>...</p>
+                                            </td>
+                                        </tr>
+                                    
+                                        <tr>
                                             <td class="col-gesellschaft">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-digital">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-sprache">
                                                 <p>...</p>
                                             </td>
                                         </tr>
@@ -1116,20 +1246,32 @@
                                 <table class="kompetenz-table">
                                     <thead>
                                         <tr>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
                                             <th class="col-gesellschaft">Gesellschaft</th>
+                                            <th class="col-digital">Medien und Digitalität</th>
+                                            <th class="col-sprache">Sprache und Kommunikation</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="col-sprache">
+                                            <td class="col-gesellschaft">
                                                 <p>...</p>
                                             </td>
                                             <td class="col-digital">
                                                 <p>...</p>
                                             </td>
+                                            <td class="col-sprache">
+                                                <p>...</p>
+                                            </td>
+                                        </tr>
+                                    
+                                        <tr>
                                             <td class="col-gesellschaft">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-digital">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-sprache">
                                                 <p>...</p>
                                             </td>
                                         </tr>
@@ -1161,20 +1303,32 @@
                                 <table class="kompetenz-table">
                                     <thead>
                                         <tr>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
                                             <th class="col-gesellschaft">Gesellschaft</th>
+                                            <th class="col-digital">Medien und Digitalität</th>
+                                            <th class="col-sprache">Sprache und Kommunikation</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="col-sprache">
+                                            <td class="col-gesellschaft">
                                                 <p>...</p>
                                             </td>
                                             <td class="col-digital">
                                                 <p>...</p>
                                             </td>
+                                            <td class="col-sprache">
+                                                <p>...</p>
+                                            </td>
+                                        </tr>
+                                    
+                                        <tr>
                                             <td class="col-gesellschaft">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-digital">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-sprache">
                                                 <p>...</p>
                                             </td>
                                         </tr>
@@ -1234,20 +1388,32 @@
                                 <table class="kompetenz-table">
                                     <thead>
                                         <tr>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
                                             <th class="col-gesellschaft">Gesellschaft</th>
+                                            <th class="col-digital">Medien und Digitalität</th>
+                                            <th class="col-sprache">Sprache und Kommunikation</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="col-sprache">
+                                            <td class="col-gesellschaft">
                                                 <p>...</p>
                                             </td>
                                             <td class="col-digital">
                                                 <p>...</p>
                                             </td>
+                                            <td class="col-sprache">
+                                                <p>...</p>
+                                            </td>
+                                        </tr>
+                                    
+                                        <tr>
                                             <td class="col-gesellschaft">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-digital">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-sprache">
                                                 <p>...</p>
                                             </td>
                                         </tr>
@@ -1279,20 +1445,32 @@
                                 <table class="kompetenz-table">
                                     <thead>
                                         <tr>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
                                             <th class="col-gesellschaft">Gesellschaft</th>
+                                            <th class="col-digital">Medien und Digitalität</th>
+                                            <th class="col-sprache">Sprache und Kommunikation</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="col-sprache">
+                                            <td class="col-gesellschaft">
                                                 <p>...</p>
                                             </td>
                                             <td class="col-digital">
                                                 <p>...</p>
                                             </td>
+                                            <td class="col-sprache">
+                                                <p>...</p>
+                                            </td>
+                                        </tr>
+                                    
+                                        <tr>
                                             <td class="col-gesellschaft">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-digital">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-sprache">
                                                 <p>...</p>
                                             </td>
                                         </tr>
@@ -1324,20 +1502,32 @@
                                 <table class="kompetenz-table">
                                     <thead>
                                         <tr>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
                                             <th class="col-gesellschaft">Gesellschaft</th>
+                                            <th class="col-digital">Medien und Digitalität</th>
+                                            <th class="col-sprache">Sprache und Kommunikation</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="col-sprache">
+                                            <td class="col-gesellschaft">
                                                 <p>...</p>
                                             </td>
                                             <td class="col-digital">
                                                 <p>...</p>
                                             </td>
+                                            <td class="col-sprache">
+                                                <p>...</p>
+                                            </td>
+                                        </tr>
+                                    
+                                        <tr>
                                             <td class="col-gesellschaft">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-digital">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-sprache">
                                                 <p>...</p>
                                             </td>
                                         </tr>
@@ -1384,20 +1574,32 @@
                                 <table class="kompetenz-table">
                                     <thead>
                                         <tr>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
                                             <th class="col-gesellschaft">Gesellschaft</th>
+                                            <th class="col-digital">Medien und Digitalität</th>
+                                            <th class="col-sprache">Sprache und Kommunikation</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="col-sprache">
+                                            <td class="col-gesellschaft">
                                                 <p>...</p>
                                             </td>
                                             <td class="col-digital">
                                                 <p>...</p>
                                             </td>
+                                            <td class="col-sprache">
+                                                <p>...</p>
+                                            </td>
+                                        </tr>
+                                    
+                                        <tr>
                                             <td class="col-gesellschaft">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-digital">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-sprache">
                                                 <p>...</p>
                                             </td>
                                         </tr>
@@ -1429,20 +1631,32 @@
                                 <table class="kompetenz-table">
                                     <thead>
                                         <tr>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
                                             <th class="col-gesellschaft">Gesellschaft</th>
+                                            <th class="col-digital">Medien und Digitalität</th>
+                                            <th class="col-sprache">Sprache und Kommunikation</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="col-sprache">
+                                            <td class="col-gesellschaft">
                                                 <p>...</p>
                                             </td>
                                             <td class="col-digital">
                                                 <p>...</p>
                                             </td>
+                                            <td class="col-sprache">
+                                                <p>...</p>
+                                            </td>
+                                        </tr>
+                                    
+                                        <tr>
                                             <td class="col-gesellschaft">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-digital">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-sprache">
                                                 <p>...</p>
                                             </td>
                                         </tr>
@@ -1474,20 +1688,32 @@
                                 <table class="kompetenz-table">
                                     <thead>
                                         <tr>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
                                             <th class="col-gesellschaft">Gesellschaft</th>
+                                            <th class="col-digital">Medien und Digitalität</th>
+                                            <th class="col-sprache">Sprache und Kommunikation</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="col-sprache">
+                                            <td class="col-gesellschaft">
                                                 <p>...</p>
                                             </td>
                                             <td class="col-digital">
                                                 <p>...</p>
                                             </td>
+                                            <td class="col-sprache">
+                                                <p>...</p>
+                                            </td>
+                                        </tr>
+                                    
+                                        <tr>
                                             <td class="col-gesellschaft">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-digital">
+                                                <p>...</p>
+                                            </td>
+                                            <td class="col-sprache">
                                                 <p>...</p>
                                             </td>
                                         </tr>
