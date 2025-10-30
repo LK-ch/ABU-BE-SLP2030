@@ -156,17 +156,54 @@
         
         .lebensbezug {
             margin-bottom: 30px;
-            padding: 20px;
             background-color: #fff3cd;
             border-radius: 6px;
             border-left: 4px solid #c8102e;
+            overflow: hidden;
+        }
+        
+        .lebensbezug-header {
+            padding: 20px;
+            cursor: pointer;
+            position: relative;
+            transition: opacity 0.3s ease;
+            user-select: none;
+        }
+        
+        .lebensbezug-header:hover {
+            opacity: 0.8;
+        }
+        
+        .lebensbezug-header::after {
+            content: '▼';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s ease;
+            font-size: 1.1em;
+            color: #000;
+        }
+        
+        .lebensbezug-header.collapsed::after {
+            transform: translateY(-50%) rotate(-90deg);
+        }
+        
+        .lebensbezug-content {
+            padding: 0 20px 20px 20px;
+            display: none;
+            animation: slideDown 0.3s ease-out;
+        }
+        
+        .lebensbezug-content.show {
+            display: block;
         }
         
         .lebensbezug h3 {
             color: #000;
             font-size: 1.1em;
-            margin-bottom: 16px;
-            font-weight: 700;
+            margin-bottom: 0;
+            font-weight: normal;
         }
         
         .schluessel-box {
@@ -591,370 +628,376 @@
                 </div>
                 
                 <div class="lebensbezug">
-                    <h3>1. Individueller Lebensbezug: ...</h3>
-                    
-                    <div class="schluessel-box" onclick="toggleSchluessel(this)">
-                        <div class="schluessel-header">
-                            <h4>Schlüsselkompetenzen</h4>
-                            <span class="toggle-schluessel">▼</span>
-                        </div>
-                        <div class="schluessel-content">
-                            <p>...</p>
-                        </div>
+                    <div class="lebensbezug-header" onclick="toggleLebensbezug(this)">
+                        <h3><strong>1. Individueller Lebensbezug:</strong> ...</h3>
                     </div>
-                    
-                    <div class="lerninhalt">
-                        <h4>Kompetenz 1: ... </h4>
-                        
-                        <div class="table-container">
-                            <div class="table-header" onclick="toggleTable(this)">
-                                <h5>Inhalte/ Lernziele</h5>
-                                <span class="table-toggle">▼</span>
-                            </div>
-                            <div class="table-content">
-                                <table class="kompetenz-table">
-                                    <thead>
-                                        <tr>
-                                            <th class="col-gesellschaft">Gesellschaft</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        
-                        <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
+                    <div class="lebensbezug-content">
+                        <div class="schluessel-box" onclick="toggleSchluessel(this)">
                             <div class="schluessel-header">
-                                <h4>Umsetzungsbeispiel</h4>
+                                <h4>Schlüsselkompetenzen</h4>
                                 <span class="toggle-schluessel">▼</span>
                             </div>
                             <div class="schluessel-content">
                                 <p>...</p>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="lerninhalt">
-                        <h4>Kompetenz 2: ...</h4>
                         
-                        <div class="table-container">
-                            <div class="table-header" onclick="toggleTable(this)">
-                                <h5>Inhalte/ Lernziele</h5>
-                                <span class="table-toggle">▼</span>
+                        <div class="lerninhalt">
+                            <h4>Kompetenz 1: ... </h4>
+                            
+                            <div class="table-container">
+                                <div class="table-header" onclick="toggleTable(this)">
+                                    <h5>Inhalte/ Lernziele</h5>
+                                    <span class="table-toggle">▼</span>
+                                </div>
+                                <div class="table-content">
+                                    <table class="kompetenz-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-gesellschaft">Gesellschaft</th>
+                                                <th class="col-digital">Medien und Digitalität</th>
+                                                <th class="col-sprache">Sprache und Kommunikation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <div class="table-content">
-                                <table class="kompetenz-table">
-                                    <thead>
-                                        <tr>
-                                            <th class="col-gesellschaft">Gesellschaft</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            
+                            <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
+                                <div class="schluessel-header">
+                                    <h4>Umsetzungsbeispiel</h4>
+                                    <span class="toggle-schluessel">▼</span>
+                                </div>
+                                <div class="schluessel-content">
+                                    <p>...</p>
+                                </div>
                             </div>
                         </div>
                         
-                        <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
-                            <div class="schluessel-header">
-                                <h4>Umsetzungsbeispiel</h4>
-                                <span class="toggle-schluessel">▼</span>
+                        <div class="lerninhalt">
+                            <h4>Kompetenz 2: ...</h4>
+                            
+                            <div class="table-container">
+                                <div class="table-header" onclick="toggleTable(this)">
+                                    <h5>Inhalte/ Lernziele</h5>
+                                    <span class="table-toggle">▼</span>
+                                </div>
+                                <div class="table-content">
+                                    <table class="kompetenz-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-gesellschaft">Gesellschaft</th>
+                                                <th class="col-digital">Medien und Digitalität</th>
+                                                <th class="col-sprache">Sprache und Kommunikation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <div class="schluessel-content">
-                                <p>...</p>
+                            
+                            <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
+                                <div class="schluessel-header">
+                                    <h4>Umsetzungsbeispiel</h4>
+                                    <span class="toggle-schluessel">▼</span>
+                                </div>
+                                <div class="schluessel-content">
+                                    <p>...</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="lerninhalt">
-                        <h4>Kompetenz 3: ...</h4>
                         
-                        <div class="table-container">
-                            <div class="table-header" onclick="toggleTable(this)">
-                                <h5>Inhalte/ Lernziele</h5>
-                                <span class="table-toggle">▼</span>
+                        <div class="lerninhalt">
+                            <h4>Kompetenz 3: ...</h4>
+                            
+                            <div class="table-container">
+                                <div class="table-header" onclick="toggleTable(this)">
+                                    <h5>Inhalte/ Lernziele</h5>
+                                    <span class="table-toggle">▼</span>
+                                </div>
+                                <div class="table-content">
+                                    <table class="kompetenz-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-gesellschaft">Gesellschaft</th>
+                                                <th class="col-digital">Medien und Digitalität</th>
+                                                <th class="col-sprache">Sprache und Kommunikation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <div class="table-content">
-                                <table class="kompetenz-table">
-                                    <thead>
-                                        <tr>
-                                            <th class="col-gesellschaft">Gesellschaft</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        
-                        <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
-                            <div class="schluessel-header">
-                                <h4>Umsetzungsbeispiel</h4>
-                                <span class="toggle-schluessel">▼</span>
-                            </div>
-                            <div class="schluessel-content">
-                                <p>...</p>
+                            
+                            <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
+                                <div class="schluessel-header">
+                                    <h4>Umsetzungsbeispiel</h4>
+                                    <span class="toggle-schluessel">▼</span>
+                                </div>
+                                <div class="schluessel-content">
+                                    <p>...</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="lebensbezug">
-                    <h3>2. Individueller Lebensbezug: ...</h3>
-                    
-                    <div class="schluessel-box" onclick="toggleSchluessel(this)">
-                        <div class="schluessel-header">
-                            <h4>Schlüsselkompetenzen</h4>
-                            <span class="toggle-schluessel">▼</span>
-                        </div>
-                        <div class="schluessel-content">
-                            <p>...</p>
-                        </div>
+                    <div class="lebensbezug-header" onclick="toggleLebensbezug(this)">
+                        <h3><strong>2. Individueller Lebensbezug:</strong> ...</h3>
                     </div>
-                    
-                    <div class="lerninhalt">
-                        <h4>Kompetenz 1: ...</h4>
-                        
-                        <div class="table-container">
-                            <div class="table-header" onclick="toggleTable(this)">
-                                <h5>Inhalte/ Lernziele</h5>
-                                <span class="table-toggle">▼</span>
-                            </div>
-                            <div class="table-content">
-                                <table class="kompetenz-table">
-                                    <thead>
-                                        <tr>
-                                            <th class="col-gesellschaft">Gesellschaft</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        
-                        <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
+                    <div class="lebensbezug-content">
+                        <div class="schluessel-box" onclick="toggleSchluessel(this)">
                             <div class="schluessel-header">
-                                <h4>Umsetzungsbeispiel</h4>
+                                <h4>Schlüsselkompetenzen</h4>
                                 <span class="toggle-schluessel">▼</span>
                             </div>
                             <div class="schluessel-content">
                                 <p>...</p>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="lerninhalt">
-                        <h4>Kompetenz 2: ...</h4>
                         
-                        <div class="table-container">
-                            <div class="table-header" onclick="toggleTable(this)">
-                                <h5>Inhalte/ Lernziele</h5>
-                                <span class="table-toggle">▼</span>
+                        <div class="lerninhalt">
+                            <h4>Kompetenz 1: ...</h4>
+                            
+                            <div class="table-container">
+                                <div class="table-header" onclick="toggleTable(this)">
+                                    <h5>Inhalte/ Lernziele</h5>
+                                    <span class="table-toggle">▼</span>
+                                </div>
+                                <div class="table-content">
+                                    <table class="kompetenz-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-gesellschaft">Gesellschaft</th>
+                                                <th class="col-digital">Medien und Digitalität</th>
+                                                <th class="col-sprache">Sprache und Kommunikation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <div class="table-content">
-                                <table class="kompetenz-table">
-                                    <thead>
-                                        <tr>
-                                            <th class="col-gesellschaft">Gesellschaft</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            
+                            <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
+                                <div class="schluessel-header">
+                                    <h4>Umsetzungsbeispiel</h4>
+                                    <span class="toggle-schluessel">▼</span>
+                                </div>
+                                <div class="schluessel-content">
+                                    <p>...</p>
+                                </div>
                             </div>
                         </div>
                         
-                        <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
-                            <div class="schluessel-header">
-                                <h4>Umsetzungsbeispiel</h4>
-                                <span class="toggle-schluessel">▼</span>
+                        <div class="lerninhalt">
+                            <h4>Kompetenz 2: ...</h4>
+                            
+                            <div class="table-container">
+                                <div class="table-header" onclick="toggleTable(this)">
+                                    <h5>Inhalte/ Lernziele</h5>
+                                    <span class="table-toggle">▼</span>
+                                </div>
+                                <div class="table-content">
+                                    <table class="kompetenz-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-gesellschaft">Gesellschaft</th>
+                                                <th class="col-digital">Medien und Digitalität</th>
+                                                <th class="col-sprache">Sprache und Kommunikation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <div class="schluessel-content">
-                                <p>...</p>
+                            
+                            <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
+                                <div class="schluessel-header">
+                                    <h4>Umsetzungsbeispiel</h4>
+                                    <span class="toggle-schluessel">▼</span>
+                                </div>
+                                <div class="schluessel-content">
+                                    <p>...</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="lerninhalt">
-                        <h4>Kompetenz 3: ...</h4>
                         
-                        <div class="table-container">
-                            <div class="table-header" onclick="toggleTable(this)">
-                                <h5>Inhalte/ Lernziele</h5>
-                                <span class="table-toggle">▼</span>
+                        <div class="lerninhalt">
+                            <h4>Kompetenz 3: ...</h4>
+                            
+                            <div class="table-container">
+                                <div class="table-header" onclick="toggleTable(this)">
+                                    <h5>Inhalte/ Lernziele</h5>
+                                    <span class="table-toggle">▼</span>
+                                </div>
+                                <div class="table-content">
+                                    <table class="kompetenz-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-gesellschaft">Gesellschaft</th>
+                                                <th class="col-digital">Medien und Digitalität</th>
+                                                <th class="col-sprache">Sprache und Kommunikation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <div class="table-content">
-                                <table class="kompetenz-table">
-                                    <thead>
-                                        <tr>
-                                            <th class="col-gesellschaft">Gesellschaft</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        
-                        <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
-                            <div class="schluessel-header">
-                                <h4>Umsetzungsbeispiel</h4>
-                                <span class="toggle-schluessel">▼</span>
-                            </div>
-                            <div class="schluessel-content">
-                                <p>...</p>
+                            
+                            <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
+                                <div class="schluessel-header">
+                                    <h4>Umsetzungsbeispiel</h4>
+                                    <span class="toggle-schluessel">▼</span>
+                                </div>
+                                <div class="schluessel-content">
+                                    <p>...</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -975,379 +1018,383 @@
                 </div>
                 
                 <div class="lebensbezug">
-                    <h3>1. Individueller Lebensbezug: Ich verdiene mein eigenes Geld, verwalte es und gebe es aus. </h3>
-                    
-                    <div class="schluessel-box" onclick="toggleSchluessel(this)">
-                        <div class="schluessel-header">
-                            <h4>Schlüsselkompetenzen</h4>
-                            <span class="toggle-schluessel">▼</span>
-                        </div>
-                        <div class="schluessel-content">
-                            <p>
-                                <span data-k="1.1">1.1. Zwischen relevanten und irrelevanten Quellen unterscheiden​</span><br>
-                                <span data-k="1.6">1.6. Standpunkte begründen und überzeugen​</span><br>
-                                <span data-k="1.8">1.8. Lebensphasen planen, mit Unwägbarkeiten umgehen​</span>
-                            </p>
-                        </div>
+                    <div class="lebensbezug-header" onclick="toggleLebensbezug(this)">
+                        <h3><strong>1. Individueller Lebensbezug:</strong> Ich verdiene mein eigenes Geld, verwalte es und gebe es aus. </h3>
                     </div>
-                    
-                    <div class="lerninhalt">
-                        <h4>Kompetenz 1: Anhand meiner Lohnabrechnung und Lebenssituation plane und reflektiere ich ein realistisches Budget. </h4>
-                        
-                        <div class="table-container">
-                            <div class="table-header" onclick="toggleTable(this)">
-                                <h5>Inhalte/ Lernziele</h5>
-                                <span class="table-toggle">▼</span>
-                            </div>
-                            <div class="table-content">
-                                <table class="kompetenz-table">
-                                    <thead>
-                                        <tr>
-                                            <th class="col-gesellschaft">Gesellschaft</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p><span data-k="2.8" data-kat="gesellschaft">2.8. Wirtschaft​</span> Die eigene Lohnabrechnung verstehen.</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p><span data-k="3.2" data-kat="digital">3.2. Informations- & Datenkompetenz​</span> Effizientes Navigieren auf einer Webseite. </p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p><span data-k="4.2" data-kat="sprache">4.2. Rezeption schriftlich & bildlich​</span> Das Lohnabrechnungsformular durch entsprechenden Wortschatz lesen. </p>
-                                            </td>
-                                        </tr>
-                                    
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p><span data-k="2.8" data-kat="gesellschaft">2.8. Wirtschaft​</span> Ein eigenes Budget mit fixen und variablen Kosten aufstellen. </p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p><span data-k="3.5" data-kat="digital">3.5. Problemlösung​</span> Budget-Tools zur Planung anwenden (z. B. budgetberatung.ch).</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p><span data-k="4.7" data-kat="sprache">4.7. Interaktion und Kollaboration mündlich​</span>Fremde und eigene Budgetplanung reflektieren.</p>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        
-                        <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
+                    <div class="lebensbezug-content">
+                        <div class="schluessel-box" onclick="toggleSchluessel(this)">
                             <div class="schluessel-header">
-                                <h4>Umsetzungsbeispiel</h4>
+                                <h4>Schlüsselkompetenzen</h4>
                                 <span class="toggle-schluessel">▼</span>
                             </div>
                             <div class="schluessel-content">
-                                <p>...</p>
+                                <p>
+                                    <span data-k="1.1">1.1. Zwischen relevanten und irrelevanten Quellen unterscheiden​</span><br>
+                                    <span data-k="1.6">1.6. Standpunkte begründen und überzeugen​</span><br>
+                                    <span data-k="1.8">1.8. Lebensphasen planen, mit Unwägbarkeiten umgehen​</span>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="lerninhalt">
+                            <h4>Kompetenz 1: Anhand meiner Lohnabrechnung und Lebenssituation plane und reflektiere ich ein realistisches Budget. </h4>
+                            
+                            <div class="table-container">
+                                <div class="table-header" onclick="toggleTable(this)">
+                                    <h5>Inhalte/ Lernziele</h5>
+                                    <span class="table-toggle">▼</span>
+                                </div>
+                                <div class="table-content">
+                                    <table class="kompetenz-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-gesellschaft">Gesellschaft</th>
+                                                <th class="col-digital">Medien und Digitalität</th>
+                                                <th class="col-sprache">Sprache und Kommunikation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p><span data-k="2.8" data-kat="gesellschaft">2.8. Wirtschaft​</span> Die eigene Lohnabrechnung verstehen.</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p><span data-k="3.2" data-kat="digital">3.2. Informations- & Datenkompetenz​</span> Effizientes Navigieren auf einer Webseite. </p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p><span data-k="4.2" data-kat="sprache">4.2. Rezeption schriftlich & bildlich​</span> Das Lohnabrechnungsformular durch entsprechenden Wortschatz lesen. </p>
+                                                </td>
+                                            </tr>
+                                        
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p><span data-k="2.8" data-kat="gesellschaft">2.8. Wirtschaft​</span> Ein eigenes Budget mit fixen und variablen Kosten aufstellen. </p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p><span data-k="3.5" data-kat="digital">3.5. Problemlösung​</span> Budget-Tools zur Planung anwenden (z. B. budgetberatung.ch).</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p><span data-k="4.7" data-kat="sprache">4.7. Interaktion und Kollaboration mündlich​</span>Fremde und eigene Budgetplanung reflektieren.</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
+                                <div class="schluessel-header">
+                                    <h4>Umsetzungsbeispiel</h4>
+                                    <span class="toggle-schluessel">▼</span>
+                                </div>
+                                <div class="schluessel-content">
+                                    <p>...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lerninhalt">
+                            <h4>Kompetenz 2: ...</h4>
+                            
+                            <div class="table-container">
+                                <div class="table-header" onclick="toggleTable(this)">
+                                    <h5>Inhalte/ Lernziele</h5>
+                                    <span class="table-toggle">▼</span>
+                                </div>
+                                <div class="table-content">
+                                    <table class="kompetenz-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-gesellschaft">Gesellschaft</th>
+                                                <th class="col-digital">Medien und Digitalität</th>
+                                                <th class="col-sprache">Sprache und Kommunikation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
+                                <div class="schluessel-header">
+                                    <h4>Umsetzungsbeispiel</h4>
+                                    <span class="toggle-schluessel">▼</span>
+                                </div>
+                                <div class="schluessel-content">
+                                    <p>...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lerninhalt">
+                            <h4>Kompetenz 3: ...</h4>
+                            
+                            <div class="table-container">
+                                <div class="table-header" onclick="toggleTable(this)">
+                                    <h5>Inhalte/ Lernziele</h5>
+                                    <span class="table-toggle">▼</span>
+                                </div>
+                                <div class="table-content">
+                                    <table class="kompetenz-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-gesellschaft">Gesellschaft</th>
+                                                <th class="col-digital">Medien und Digitalität</th>
+                                                <th class="col-sprache">Sprache und Kommunikation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
+                                <div class="schluessel-header">
+                                    <h4>Umsetzungsbeispiel</h4>
+                                    <span class="toggle-schluessel">▼</span>
+                                </div>
+                                <div class="schluessel-content">
+                                    <p>...</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="lerninhalt">
-                        <h4>Kompetenz 2: ...</h4>
-                        
-                        <div class="table-container">
-                            <div class="table-header" onclick="toggleTable(this)">
-                                <h5>Inhalte/ Lernziele</h5>
-                                <span class="table-toggle">▼</span>
-                            </div>
-                            <div class="table-content">
-                                <table class="kompetenz-table">
-                                    <thead>
-                                        <tr>
-                                            <th class="col-gesellschaft">Gesellschaft</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        
-                        <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
-                            <div class="schluessel-header">
-                                <h4>Umsetzungsbeispiel</h4>
-                                <span class="toggle-schluessel">▼</span>
-                            </div>
-                            <div class="schluessel-content">
-                                <p>...</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="lerninhalt">
-                        <h4>Kompetenz 3: ...</h4>
-                        
-                        <div class="table-container">
-                            <div class="table-header" onclick="toggleTable(this)">
-                                <h5>Inhalte/ Lernziele</h5>
-                                <span class="table-toggle">▼</span>
-                            </div>
-                            <div class="table-content">
-                                <table class="kompetenz-table">
-                                    <thead>
-                                        <tr>
-                                            <th class="col-gesellschaft">Gesellschaft</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        
-                        <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
-                            <div class="schluessel-header">
-                                <h4>Umsetzungsbeispiel</h4>
-                                <span class="toggle-schluessel">▼</span>
-                            </div>
-                            <div class="schluessel-content">
-                                <p>...</p>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
                 
                 <div class="lebensbezug">
-                    <h3>2. Individueller Lebensbezug: ...</h3>
-                    
-                    <div class="schluessel-box" onclick="toggleSchluessel(this)">
-                        <div class="schluessel-header">
-                            <h4>Schlüsselkompetenzen</h4>
-                            <span class="toggle-schluessel">▼</span>
-                        </div>
-                        <div class="schluessel-content">
-                            <p>...</p>
-                        </div>
+                    <div class="lebensbezug-header" onclick="toggleLebensbezug(this)">
+                        <h3><strong>2. Individueller Lebensbezug:</strong> ...</h3>
                     </div>
-                    
-                    <div class="lerninhalt">
-                        <h4>Kompetenz 1: ...</h4>
-                        
-                        <div class="table-container">
-                            <div class="table-header" onclick="toggleTable(this)">
-                                <h5>Inhalte/ Lernziele</h5>
-                                <span class="table-toggle">▼</span>
-                            </div>
-                            <div class="table-content">
-                                <table class="kompetenz-table">
-                                    <thead>
-                                        <tr>
-                                            <th class="col-gesellschaft">Gesellschaft</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        
-                        <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
+                    <div class="lebensbezug-content">
+                        <div class="schluessel-box" onclick="toggleSchluessel(this)">
                             <div class="schluessel-header">
-                                <h4>Umsetzungsbeispiel</h4>
+                                <h4>Schlüsselkompetenzen</h4>
                                 <span class="toggle-schluessel">▼</span>
                             </div>
                             <div class="schluessel-content">
                                 <p>...</p>
                             </div>
                         </div>
-                    </div>
+                        
+                        <div class="lerninhalt">
+                            <h4>Kompetenz 1: ...</h4>
+                            
+                            <div class="table-container">
+                                <div class="table-header" onclick="toggleTable(this)">
+                                    <h5>Inhalte/ Lernziele</h5>
+                                    <span class="table-toggle">▼</span>
+                                </div>
+                                <div class="table-content">
+                                    <table class="kompetenz-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-gesellschaft">Gesellschaft</th>
+                                                <th class="col-digital">Medien und Digitalität</th>
+                                                <th class="col-sprache">Sprache und Kommunikation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
+                                <div class="schluessel-header">
+                                    <h4>Umsetzungsbeispiel</h4>
+                                    <span class="toggle-schluessel">▼</span>
+                                </div>
+                                <div class="schluessel-content">
+                                    <p>...</p>
+                                </div>
+                            </div>
+                        </div>
 
-                    <div class="lerninhalt">
-                        <h4>Kompetenz 2: ...</h4>
-                        
-                        <div class="table-container">
-                            <div class="table-header" onclick="toggleTable(this)">
-                                <h5>Inhalte/ Lernziele</h5>
-                                <span class="table-toggle">▼</span>
+                        <div class="lerninhalt">
+                            <h4>Kompetenz 2: ...</h4>
+                            
+                            <div class="table-container">
+                                <div class="table-header" onclick="toggleTable(this)">
+                                    <h5>Inhalte/ Lernziele</h5>
+                                    <span class="table-toggle">▼<span class="table-toggle">▼</span>
+                                </div>
+                                <div class="table-content">
+                                    <table class="kompetenz-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-gesellschaft">Gesellschaft</th>
+                                                <th class="col-digital">Medien und Digitalität</th>
+                                                <th class="col-sprache">Sprache und Kommunikation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <div class="table-content">
-                                <table class="kompetenz-table">
-                                    <thead>
-                                        <tr>
-                                            <th class="col-gesellschaft">Gesellschaft</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            
+                            <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
+                                <div class="schluessel-header">
+                                    <h4>Umsetzungsbeispiel</h4>
+                                    <span class="toggle-schluessel">▼</span>
+                                </div>
+                                <div class="schluessel-content">
+                                    <p>...</p>
+                                </div>
                             </div>
                         </div>
-                        
-                        <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
-                            <div class="schluessel-header">
-                                <h4>Umsetzungsbeispiel</h4>
-                                <span class="toggle-schluessel">▼</span>
+
+                        <div class="lerninhalt">
+                            <h4>Kompetenz 3: ...</h4>
+                            
+                            <div class="table-container">
+                                <div class="table-header" onclick="toggleTable(this)">
+                                    <h5>Inhalte/ Lernziele</h5>
+                                    <span class="table-toggle">▼</span>
+                                </div>
+                                <div class="table-content">
+                                    <table class="kompetenz-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-gesellschaft">Gesellschaft</th>
+                                                <th class="col-digital">Medien und Digitalität</th>
+                                                <th class="col-sprache">Sprache und Kommunikation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <div class="schluessel-content">
-                                <p>...</p>
+                            
+                            <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
+                                <div class="schluessel-header">
+                                    <h4>Umsetzungsbeispiel</h4>
+                                    <span class="toggle-schluessel">▼</span>
+                                </div>
+                                <div class="schluessel-content">
+                                    <p>...</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="lerninhalt">
-                        <h4>Kompetenz 3: ...</h4>
-                        
-                        <div class="table-container">
-                            <div class="table-header" onclick="toggleTable(this)">
-                                <h5>Inhalte/ Lernziele</h5>
-                                <span class="table-toggle">▼</span>
-                            </div>
-                            <div class="table-content">
-                                <table class="kompetenz-table">
-                                    <thead>
-                                        <tr>
-                                            <th class="col-gesellschaft">Gesellschaft</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        
-                        <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
-                            <div class="schluessel-header">
-                                <h4>Umsetzungsbeispiel</h4>
-                                <span class="toggle-schluessel">▼</span>
-                            </div>
-                            <div class="schluessel-content">
-                                <p>...</p>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -1364,375 +1411,379 @@
                 </div>
                 
                 <div class="lebensbezug">
-                    <h3>1. Individueller Lebensbezug: ...</h3>
-                    
-                    <div class="schluessel-box" onclick="toggleSchluessel(this)">
-                        <div class="schluessel-header">
-                            <h4>Schlüsselkompetenzen</h4>
-                            <span class="toggle-schluessel">▼</span>
-                        </div>
-                        <div class="schluessel-content">
-                            <p>...</p>
-                        </div>
+                    <div class="lebensbezug-header" onclick="toggleLebensbezug(this)">
+                        <h3><strong>1. Individueller Lebensbezug:</strong> ...</h3>
                     </div>
-                    
-                    <div class="lerninhalt">
-                        <h4>Kompetenz 1: ...</h4>
-                        
-                        <div class="table-container">
-                            <div class="table-header" onclick="toggleTable(this)">
-                                <h5>Inhalte/ Lernziele</h5>
-                                <span class="table-toggle">▼</span>
-                            </div>
-                            <div class="table-content">
-                                <table class="kompetenz-table">
-                                    <thead>
-                                        <tr>
-                                            <th class="col-gesellschaft">Gesellschaft</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        
-                        <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
+                    <div class="lebensbezug-content">
+                        <div class="schluessel-box" onclick="toggleSchluessel(this)">
                             <div class="schluessel-header">
-                                <h4>Umsetzungsbeispiel</h4>
+                                <h4>Schlüsselkompetenzen</h4>
                                 <span class="toggle-schluessel">▼</span>
                             </div>
                             <div class="schluessel-content">
                                 <p>...</p>
                             </div>
                         </div>
-                    </div>
+                        
+                        <div class="lerninhalt">
+                            <h4>Kompetenz 1: ...</h4>
+                            
+                            <div class="table-container">
+                                <div class="table-header" onclick="toggleTable(this)">
+                                    <h5>Inhalte/ Lernziele</h5>
+                                    <span class="table-toggle">▼</span>
+                                </div>
+                                <div class="table-content">
+                                    <table class="kompetenz-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-gesellschaft">Gesellschaft</th>
+                                                <th class="col-digital">Medien und Digitalität</th>
+                                                <th class="col-sprache">Sprache und Kommunikation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
+                                <div class="schluessel-header">
+                                    <h4>Umsetzungsbeispiel</h4>
+                                    <span class="toggle-schluessel">▼</span>
+                                </div>
+                                <div class="schluessel-content">
+                                    <p>...</p>
+                                </div>
+                            </div>
+                        </div>
 
-                    <div class="lerninhalt">
-                        <h4>Kompetenz 2: ...</h4>
-                        
-                        <div class="table-container">
-                            <div class="table-header" onclick="toggleTable(this)">
-                                <h5>Inhalte/ Lernziele</h5>
-                                <span class="table-toggle">▼</span>
+                        <div class="lerninhalt">
+                            <h4>Kompetenz 2: ...</h4>
+                            
+                            <div class="table-container">
+                                <div class="table-header" onclick="toggleTable(this)">
+                                    <h5>Inhalte/ Lernziele</h5>
+                                    <span class="table-toggle">▼</span>
+                                </div>
+                                <div class="table-content">
+                                    <table class="kompetenz-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-gesellschaft">Gesellschaft</th>
+                                                <th class="col-digital">Medien und Digitalität</th>
+                                                <th class="col-sprache">Sprache und Kommunikation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <div class="table-content">
-                                <table class="kompetenz-table">
-                                    <thead>
-                                        <tr>
-                                            <th class="col-gesellschaft">Gesellschaft</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            
+                            <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
+                                <div class="schluessel-header">
+                                    <h4>Umsetzungsbeispiel</h4>
+                                    <span class="toggle-schluessel">▼</span>
+                                </div>
+                                <div class="schluessel-content">
+                                    <p>...</p>
+                                </div>
                             </div>
                         </div>
-                        
-                        <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
-                            <div class="schluessel-header">
-                                <h4>Umsetzungsbeispiel</h4>
-                                <span class="toggle-schluessel">▼</span>
+
+                        <div class="lerninhalt">
+                            <h4>Kompetenz 3: ...</h4>
+                            
+                            <div class="table-container">
+                                <div class="table-header" onclick="toggleTable(this)">
+                                    <h5>Inhalte/ Lernziele</h5>
+                                    <span class="table-toggle">▼</span>
+                                </div>
+                                <div class="table-content">
+                                    <table class="kompetenz-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-gesellschaft">Gesellschaft</th>
+                                                <th class="col-digital">Medien und Digitalität</th>
+                                                <th class="col-sprache">Sprache und Kommunikation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <div class="schluessel-content">
-                                <p>...</p>
+                            
+                            <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
+                                <div class="schluessel-header">
+                                    <h4>Umsetzungsbeispiel</h4>
+                                    <span class="toggle-schluessel">▼</span>
+                                </div>
+                                <div class="schluessel-content">
+                                    <p>...</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="lerninhalt">
-                        <h4>Kompetenz 3: ...</h4>
-                        
-                        <div class="table-container">
-                            <div class="table-header" onclick="toggleTable(this)">
-                                <h5>Inhalte/ Lernziele</h5>
-                                <span class="table-toggle">▼</span>
-                            </div>
-                            <div class="table-content">
-                                <table class="kompetenz-table">
-                                    <thead>
-                                        <tr>
-                                            <th class="col-gesellschaft">Gesellschaft</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        
-                        <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
-                            <div class="schluessel-header">
-                                <h4>Umsetzungsbeispiel</h4>
-                                <span class="toggle-schluessel">▼</span>
-                            </div>
-                            <div class="schluessel-content">
-                                <p>...</p>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
                 
                 <div class="lebensbezug">
-                    <h3>2. Individueller Lebensbezug: ...</h3>
-                    
-                    <div class="schluessel-box" onclick="toggleSchluessel(this)">
-                        <div class="schluessel-header">
-                            <h4>Schlüsselkompetenzen</h4>
-                            <span class="toggle-schluessel">▼</span>
-                        </div>
-                        <div class="schluessel-content">
-                            <p>...</p>
-                        </div>
+                    <div class="lebensbezug-header" onclick="toggleLebensbezug(this)">
+                        <h3><strong>2. Individueller Lebensbezug:</strong> ...</h3>
                     </div>
-                    
-                    <div class="lerninhalt">
-                        <h4>Kompetenz 1: ...</h4>
-                        
-                        <div class="table-container">
-                            <div class="table-header" onclick="toggleTable(this)">
-                                <h5>Inhalte/ Lernziele</h5>
-                                <span class="table-toggle">▼</span>
-                            </div>
-                            <div class="table-content">
-                                <table class="kompetenz-table">
-                                    <thead>
-                                        <tr>
-                                            <th class="col-gesellschaft">Gesellschaft</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        
-                        <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
+                    <div class="lebensbezug-content">
+                        <div class="schluessel-box" onclick="toggleSchluessel(this)">
                             <div class="schluessel-header">
-                                <h4>Umsetzungsbeispiel</h4>
+                                <h4>Schlüsselkompetenzen</h4>
                                 <span class="toggle-schluessel">▼</span>
                             </div>
                             <div class="schluessel-content">
                                 <p>...</p>
                             </div>
                         </div>
-                    </div>
+                        
+                        <div class="lerninhalt">
+                            <h4>Kompetenz 1: ...</h4>
+                            
+                            <div class="table-container">
+                                <div class="table-header" onclick="toggleTable(this)">
+                                    <h5>Inhalte/ Lernziele</h5>
+                                    <span class="table-toggle">▼</span>
+                                </div>
+                                <div class="table-content">
+                                    <table class="kompetenz-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-gesellschaft">Gesellschaft</th>
+                                                <th class="col-digital">Medien und Digitalität</th>
+                                                <th class="col-sprache">Sprache und Kommunikation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
+                                <div class="schluessel-header">
+                                    <h4>Umsetzungsbeispiel</h4>
+                                    <span class="toggle-schluessel">▼</span>
+                                </div>
+                                <div class="schluessel-content">
+                                    <p>...</p>
+                                </div>
+                            </div>
+                        </div>
 
-                    <div class="lerninhalt">
-                        <h4>Kompetenz 2: ...</h4>
-                        
-                        <div class="table-container">
-                            <div class="table-header" onclick="toggleTable(this)">
-                                <h5>Inhalte/ Lernziele</h5>
-                                <span class="table-toggle">▼</span>
+                        <div class="lerninhalt">
+                            <h4>Kompetenz 2: ...</h4>
+                            
+                            <div class="table-container">
+                                <div class="table-header" onclick="toggleTable(this)">
+                                    <h5>Inhalte/ Lernziele</h5>
+                                    <span class="table-toggle">▼</span>
+                                </div>
+                                <div class="table-content">
+                                    <table class="kompetenz-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-gesellschaft">Gesellschaft</th>
+                                                <th class="col-digital">Medien und Digitalität</th>
+                                                <th class="col-sprache">Sprache und Kommunikation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <div class="table-content">
-                                <table class="kompetenz-table">
-                                    <thead>
-                                        <tr>
-                                            <th class="col-gesellschaft">Gesellschaft</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            
+                            <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
+                                <div class="schluessel-header">
+                                    <h4>Umsetzungsbeispiel</h4>
+                                    <span class="toggle-schluessel">▼</span>
+                                </div>
+                                <div class="schluessel-content">
+                                    <p>...</p>
+                                </div>
                             </div>
                         </div>
-                        
-                        <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
-                            <div class="schluessel-header">
-                                <h4>Umsetzungsbeispiel</h4>
-                                <span class="toggle-schluessel">▼</span>
+
+                        <div class="lerninhalt">
+                            <h4>Kompetenz 3: ...</h4>
+                            
+                            <div class="table-container">
+                                <div class="table-header" onclick="toggleTable(this)">
+                                    <h5>Inhalte/ Lernziele</h5>
+                                    <span class="table-toggle">▼</span>
+                                </div>
+                                <div class="table-content">
+                                    <table class="kompetenz-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-gesellschaft">Gesellschaft</th>
+                                                <th class="col-digital">Medien und Digitalität</th>
+                                                <th class="col-sprache">Sprache und Kommunikation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        
+                                            <tr>
+                                                <td class="col-gesellschaft">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-digital">
+                                                    <p>...</p>
+                                                </td>
+                                                <td class="col-sprache">
+                                                    <p>...</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <div class="schluessel-content">
-                                <p>...</p>
+                            
+                            <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
+                                <div class="schluessel-header">
+                                    <h4>Umsetzungsbeispiel</h4>
+                                    <span class="toggle-schluessel">▼</span>
+                                </div>
+                                <div class="schluessel-content">
+                                    <p>...</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="lerninhalt">
-                        <h4>Kompetenz 3: ...</h4>
-                        
-                        <div class="table-container">
-                            <div class="table-header" onclick="toggleTable(this)">
-                                <h5>Inhalte/ Lernziele</h5>
-                                <span class="table-toggle">▼</span>
-                            </div>
-                            <div class="table-content">
-                                <table class="kompetenz-table">
-                                    <thead>
-                                        <tr>
-                                            <th class="col-gesellschaft">Gesellschaft</th>
-                                            <th class="col-digital">Medien und Digitalität</th>
-                                            <th class="col-sprache">Sprache und Kommunikation</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    
-                                        <tr>
-                                            <td class="col-gesellschaft">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-digital">
-                                                <p>...</p>
-                                            </td>
-                                            <td class="col-sprache">
-                                                <p>...</p>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        
-                        <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
-                            <div class="schluessel-header">
-                                <h4>Umsetzungsbeispiel</h4>
-                                <span class="toggle-schluessel">▼</span>
-                            </div>
-                            <div class="schluessel-content">
-                                <p>...</p>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -1772,6 +1823,19 @@
             }
         }
         
+        function toggleLebensbezug(header) {
+            const content = header.nextElementSibling;
+            const isOpen = content.classList.contains('show');
+            
+            if (isOpen) {
+                content.classList.remove('show');
+                header.classList.add('collapsed');
+            } else {
+                content.classList.add('show');
+                header.classList.remove('collapsed');
+            }
+        }
+        
         function toggleSchluessel(box) {
             const content = box.querySelector('.schluessel-content');
             const icon = box.querySelector('.toggle-schluessel');
@@ -1789,11 +1853,18 @@
         }
         
         document.addEventListener('DOMContentLoaded', function() {
-            const headers = document.querySelectorAll('.theme-header');
-            headers.forEach(header => {
+            // Initialize theme headers as collapsed
+            const themeHeaders = document.querySelectorAll('.theme-header');
+            themeHeaders.forEach(header => {
                 header.addEventListener('click', function() {
                     toggleTheme(this);
                 });
+                header.classList.add('collapsed');
+            });
+            
+            // Initialize lebensbezug headers as collapsed
+            const lebensbezugHeaders = document.querySelectorAll('.lebensbezug-header');
+            lebensbezugHeaders.forEach(header => {
                 header.classList.add('collapsed');
             });
         });
