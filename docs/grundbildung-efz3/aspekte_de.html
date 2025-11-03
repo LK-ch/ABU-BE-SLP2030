@@ -41,7 +41,7 @@
         }
 
         .header-container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
         }
 
@@ -75,7 +75,7 @@
 
         /* Container */
         .container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
             padding: 20px;
         }
@@ -140,7 +140,7 @@
             font-weight: bold;
         }
 
-        /* Grid Container */
+        /* Grid Container für Aspekte */
         .kachel-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -217,130 +217,118 @@
             transform: translateY(-2px);
         }
 
-        /* Section Title */
-        .section-title {
-            font-size: 1.8em;
-            font-weight: 700;
-            color: #c8102e;
-            margin: 40px 0 20px 0;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #c8102e;
+        /* Timeline Grid - Flexbox für nebeneinander */
+        .timeline-grid {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            align-items: flex-start;
         }
 
-        /* Progression Table Styles */
-        .progression-table {
-            width: 100%;
+        /* Lehrjahr Spalte */
+        .year-column {
+            flex: 1;
             background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            min-width: 0;
         }
 
-        .progression-table table {
-            width: 100%;
-            border-collapse: collapse;
+        /* Arrow zwischen Spalten */
+        .arrow-connector {
+            flex: 0 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            color: #c8102e;
+            font-weight: bold;
+            margin-top: 50px;
         }
 
-        .progression-table thead {
-            background: linear-gradient(90deg, #c8102e, #ffcc00);
+        .year-header {
+            background: linear-gradient(135deg, #c8102e, #a00d24);
             color: white;
-        }
-
-        .progression-table th {
-            padding: 15px 12px;
-            text-align: left;
-            font-weight: 600;
-            border-right: 2px solid rgba(255,255,255,0.3);
-        }
-
-        .progression-table th:last-child {
-            border-right: none;
-        }
-
-        .progression-table th.year-header {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
             text-align: center;
-            font-size: 1.1em;
-            background: rgba(255,255,255,0.15);
         }
 
-        .progression-table td {
-            padding: 15px 12px;
-            border-bottom: 1px solid #eee;
-            border-right: 1px solid #f0f0f0;
-            vertical-align: top;
-            min-height: 80px;
+        .year-header h2 {
+            font-size: 1.3em;
+            margin-bottom: 2px;
         }
 
-        .progression-table td:last-child {
-            border-right: none;
+        .year-header p {
+            font-size: 0.8em;
+            opacity: 0.95;
         }
 
-        .progression-table tbody tr:last-child td {
-            border-bottom: none;
+        /* Themen-Karte */
+        .theme-card {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+            border-left: 4px solid #c8102e;
+            transition: all 0.3s ease;
         }
 
-        .progression-table tbody tr:hover {
-            background-color: #f9f9f9;
+        .theme-card:hover {
+            transform: translateX(3px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
 
-        .progression-table .theme-cell {
+        .theme-card h3 {
+            color: #c8102e;
+            font-size: 1em;
+            margin-bottom: 10px;
             font-weight: 600;
-            background: #f8f8f8;
-            width: 200px;
-            position: sticky;
-            left: 0;
-            z-index: 1;
+            line-height: 1.3;
         }
 
-        .progression-table .year-cell {
-            background: linear-gradient(to right, #ffffff, #f9f9f9);
-            position: relative;
+        .lebensbezug-item {
+            background: white;
+            padding: 8px;
+            margin-bottom: 6px;
+            border-radius: 4px;
+            border-left: 3px solid #ddd;
         }
 
-        .year-cell-content {
-            font-size: 0.9em;
-            line-height: 1.5;
+        .lebensbezug-item:last-of-type {
+            margin-bottom: 10px;
         }
 
         .lebensbezug-label {
-            font-size: 0.75em;
+            font-size: 0.7em;
             color: #666;
             text-transform: uppercase;
             font-weight: 600;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
             display: block;
         }
 
         .lebensbezug-text {
             color: #333;
-            margin-bottom: 10px;
-        }
-
-        /* Progression Arrow */
-        .year-cell::after {
-            content: '→';
-            position: absolute;
-            right: -12px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #c8102e;
-            font-size: 1.5em;
-            font-weight: bold;
-            z-index: 2;
-        }
-
-        .progression-table td:last-child::after {
-            content: '';
+            font-size: 0.85em;
+            line-height: 1.4;
         }
 
         /* Aspekt Tags */
+        .aspekt-tags {
+            margin-top: 10px;
+            padding-top: 8px;
+            border-top: 2px solid #e0e0e0;
+        }
+
         .aspekt-tag {
             display: inline-block;
             padding: 4px 10px;
             margin: 2px;
             border-radius: 15px;
-            font-size: 0.8em;
+            font-size: 0.75em;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -348,8 +336,8 @@
         }
 
         .aspekt-tag:hover {
-            transform: scale(1.05);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            transform: scale(1.08);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
         }
 
         .aspekt-tag.hidden {
@@ -366,48 +354,22 @@
         .btn-tech { background-color: var(--aspect-tech); }
         .btn-wirtschaft { background-color: var(--aspect-wirtschaft); }
 
-        .aspekt-tags {
-            margin-top: 8px;
-            padding-top: 8px;
-            border-top: 1px solid #e0e0e0;
-        }
-
-        /* Legend */
-        .legend {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .legend h3 {
-            color: #c8102e;
-            margin-bottom: 15px;
-            font-size: 1.2em;
-        }
-
-        .legend-item {
-            display: inline-flex;
-            align-items: center;
-            margin-right: 20px;
-            margin-bottom: 10px;
-        }
-
-        .legend-icon {
-            font-size: 1.5em;
-            color: #c8102e;
-            margin-right: 8px;
-        }
-
         /* Responsive */
         @media (max-width: 1200px) {
-            .progression-table {
-                overflow-x: auto;
+            .timeline-grid {
+                flex-direction: column;
+                gap: 25px;
             }
-            
-            .progression-table table {
-                min-width: 900px;
+
+            .arrow-connector {
+                flex: 0 0 auto;
+                margin: 0;
+                font-size: 2em;
+                transform: rotate(90deg);
+            }
+
+            .year-column {
+                width: 100%;
             }
         }
 
@@ -424,16 +386,24 @@
                 grid-template-columns: 1fr;
             }
 
-            .progression-table th,
-            .progression-table td {
-                padding: 10px 8px;
-                font-size: 0.85em;
+            .year-header h2 {
+                font-size: 1.2em;
             }
 
-            .year-cell::after {
-                font-size: 1.2em;
-                right: -10px;
+            .theme-card h3 {
+                font-size: 0.95em;
             }
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: 2em;
+            font-weight: 700;
+            color: #c8102e;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #c8102e;
+            text-align: center;
         }
     </style>
 </head>
@@ -462,7 +432,7 @@
             <ul>
                 <li>Die 8 Aspekte werden spiralförmig über alle Themen aufgebaut</li>
                 <li>Kompetenzen werden in verschiedenen Lebensbezügen vertieft</li>
-                <li>Progression von links (1. LJ) nach rechts (3. LJ) sichtbar</li>
+                <li>Progression vom 1. zum 3. Lehrjahr nebeneinander sichtbar</li>
                 <li>Klicken Sie auf einen Aspekt, um dessen Vorkommen zu filtern</li>
             </ul>
         </div>
@@ -504,303 +474,236 @@
 
         <button class="reset-btn" onclick="resetFilter()">Filter zurücksetzen</button>
 
-        <div class="legend">
-            <h3>Legende</h3>
-            <div class="legend-item">
-                <span class="legend-icon">→</span>
-                <span>Progression der Kompetenzen über die Lehrjahre</span>
-            </div>
-        </div>
-
         <div class="section-title">Kompetenzaufbau über die Lehrjahre</div>
-        
-        <div class="progression-table">
-            <table>
-                <thead>
-                    <tr>
-                        <th class="theme-cell">Thema</th>
-                        <th class="year-header">1. Lehrjahr</th>
-                        <th class="year-header">2. Lehrjahr</th>
-                        <th class="year-header">3. Lehrjahr</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Thema 1 -->
-                    <tr>
-                        <td class="theme-cell">
-                            <strong>Thema 1:</strong><br>
-                            Meine Berufsausbildung
-                        </td>
-                        <td class="year-cell">
-                            <div class="year-cell-content">
-                                <span class="lebensbezug-label">Lebensbezug 1</span>
-                                <div class="lebensbezug-text">...</div>
-                                
-                                <span class="lebensbezug-label">Lebensbezug 2</span>
-                                <div class="lebensbezug-text">...</div>
-                                
-                                <span class="lebensbezug-label">Lebensbezug 3</span>
-                                <div class="lebensbezug-text">...</div>
-                                
-                                <div class="aspekt-tags">
-                                    <!-- Aspekte hier einfügen -->
-                                </div>
-                            </div>
-                        </td>
-                        <td class="year-cell">
-                            <div class="year-cell-content">
-                                <em style="color: #999;">Thema nicht in diesem Lehrjahr</em>
-                            </div>
-                        </td>
-                        <td class="year-cell">
-                            <div class="year-cell-content">
-                                <em style="color: #999;">Thema nicht in diesem Lehrjahr</em>
-                            </div>
-                        </td>
-                    </tr>
 
-                    <!-- Thema 2 -->
-                    <tr>
-                        <td class="theme-cell">
-                            <strong>Thema 2:</strong><br>
-                            Geld verdienen und ausgeben
-                        </td>
-                        <td class="year-cell">
-                            <div class="year-cell-content">
-                                <span class="lebensbezug-label">Lebensbezug 1</span>
-                                <div class="lebensbezug-text">...</div>
-                                
-                                <span class="lebensbezug-label">Lebensbezug 2</span>
-                                <div class="lebensbezug-text">...</div>
-                                
-                                <span class="lebensbezug-label">Lebensbezug 3</span>
-                                <div class="lebensbezug-text">...</div>
-                                
-                                <div class="aspekt-tags">
-                                    <span class="aspekt-tag btn-wirtschaft" data-aspekt="wirtschaft" onclick="filterAspekt('wirtschaft')">Wirtschaft</span>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="year-cell">
-                            <div class="year-cell-content">
-                                <em style="color: #999;">Thema nicht in diesem Lehrjahr</em>
-                            </div>
-                        </td>
-                        <td class="year-cell">
-                            <div class="year-cell-content">
-                                <em style="color: #999;">Thema nicht in diesem Lehrjahr</em>
-                            </div>
-                        </td>
-                    </tr>
+        <!-- Timeline Grid mit 3 Spalten nebeneinander -->
+        <div class="timeline-grid">
+            <!-- 1. Lehrjahr -->
+            <div class="year-column">
+                <div class="year-header">
+                    <h2>1. Lehrjahr</h2>
+                    <p>Grundlagen</p>
+                </div>
 
-                    <!-- Thema 3 -->
-                    <tr>
-                        <td class="theme-cell">
-                            <strong>Thema 3:</strong><br>
-                            Gesund und sicher durchs Leben
-                        </td>
-                        <td class="year-cell">
-                            <div class="year-cell-content">
-                                <span class="lebensbezug-label">Lebensbezug 1</span>
-                                <div class="lebensbezug-text">...</div>
-                                
-                                <span class="lebensbezug-label">Lebensbezug 2</span>
-                                <div class="lebensbezug-text">...</div>
-                                
-                                <span class="lebensbezug-label">Lebensbezug 3</span>
-                                <div class="lebensbezug-text">...</div>
-                                
-                                <div class="aspekt-tags">
-                                    <!-- Aspekte hier einfügen -->
-                                </div>
-                            </div>
-                        </td>
-                        <td class="year-cell">
-                            <div class="year-cell-content">
-                                <em style="color: #999;">Thema nicht in diesem Lehrjahr</em>
-                            </div>
-                        </td>
-                        <td class="year-cell">
-                            <div class="year-cell-content">
-                                <em style="color: #999;">Thema nicht in diesem Lehrjahr</em>
-                            </div>
-                        </td>
-                    </tr>
+                <!-- Thema 1 -->
+                <div class="theme-card">
+                    <h3>Thema 1: Meine Berufsausbildung</h3>
+                    
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Lebensbezug 1</span>
+                        <div class="lebensbezug-text">...</div>
+                    </div>
+                    
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Lebensbezug 2</span>
+                        <div class="lebensbezug-text">...</div>
+                    </div>
+                    
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Lebensbezug 3</span>
+                        <div class="lebensbezug-text">...</div>
+                    </div>
+                    
+                    <div class="aspekt-tags">
+                        <!-- Aspekte einfügen -->
+                    </div>
+                </div>
 
-                    <!-- Thema 4 -->
-                    <tr>
-                        <td class="theme-cell">
-                            <strong>Thema 4:</strong><br>
-                            ...
-                        </td>
-                        <td class="year-cell">
-                            <div class="year-cell-content">
-                                <em style="color: #999;">Thema nicht in diesem Lehrjahr</em>
-                            </div>
-                        </td>
-                        <td class="year-cell">
-                            <div class="year-cell-content">
-                                <span class="lebensbezug-label">Lebensbezug 1</span>
-                                <div class="lebensbezug-text">...</div>
-                                
-                                <span class="lebensbezug-label">Lebensbezug 2</span>
-                                <div class="lebensbezug-text">...</div>
-                                
-                                <span class="lebensbezug-label">Lebensbezug 3</span>
-                                <div class="lebensbezug-text">...</div>
-                                
-                                <div class="aspekt-tags">
-                                    <!-- Aspekte hier einfügen -->
-                                </div>
-                            </div>
-                        </td>
-                        <td class="year-cell">
-                            <div class="year-cell-content">
-                                <em style="color: #999;">Thema nicht in diesem Lehrjahr</em>
-                            </div>
-                        </td>
-                    </tr>
+                <!-- Thema 2 -->
+                <div class="theme-card">
+                    <h3>Thema 2: Geld verdienen und ausgeben</h3>
+                    
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Lebensbezug 1</span>
+                        <div class="lebensbezug-text">...</div>
+                    </div>
+                    
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Lebensbezug 2</span>
+                        <div class="lebensbezug-text">...</div>
+                    </div>
+                    
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Lebensbezug 3</span>
+                        <div class="lebensbezug-text">...</div>
+                    </div>
+                    
+                    <div class="aspekt-tags">
+                        <span class="aspekt-tag btn-wirtschaft" data-aspekt="wirtschaft" onclick="filterAspekt('wirtschaft')">Wirtschaft</span>
+                    </div>
+                </div>
 
-                    <!-- Thema 5 -->
-                    <tr>
-                        <td class="theme-cell">
-                            <strong>Thema 5:</strong><br>
-                            ...
-                        </td>
-                        <td class="year-cell">
-                            <div class="year-cell-content">
-                                <em style="color: #999;">Thema nicht in diesem Lehrjahr</em>
-                            </div>
-                        </td>
-                        <td class="year-cell">
-                            <div class="year-cell-content">
-                                <span class="lebensbezug-label">Lebensbezug 1</span>
-                                <div class="lebensbezug-text">...</div>
-                                
-                                <span class="lebensbezug-label">Lebensbezug 2</span>
-                                <div class="lebensbezug-text">...</div>
-                                
-                                <span class="lebensbezug-label">Lebensbezug 3</span>
-                                <div class="lebensbezug-text">...</div>
-                                
-                                <div class="aspekt-tags">
-                                    <!-- Aspekte hier einfügen -->
-                                </div>
-                            </div>
-                        </td>
-                        <td class="year-cell">
-                            <div class="year-cell-content">
-                                <em style="color: #999;">Thema nicht in diesem Lehrjahr</em>
-                            </div>
-                        </td>
-                    </tr>
+                <!-- Thema 3 -->
+                <div class="theme-card">
+                    <h3>Thema 3: Gesund und sicher durchs Leben</h3>
+                    
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Lebensbezug 1</span>
+                        <div class="lebensbezug-text">...</div>
+                    </div>
+                    
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Lebensbezug 2</span>
+                        <div class="lebensbezug-text">...</div>
+                    </div>
+                    
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Lebensbezug 3</span>
+                        <div class="lebensbezug-text">...</div>
+                    </div>
+                    
+                    <div class="aspekt-tags">
+                        <!-- Aspekte einfügen -->
+                    </div>
+                </div>
+            </div>
 
-                    <!-- Thema 6 -->
-                    <tr>
-                        <td class="theme-cell">
-                            <strong>Thema 6:</strong><br>
-                            ...
-                        </td>
-                        <td class="year-cell">
-                            <div class="year-cell-content">
-                                <em style="color: #999;">Thema nicht in diesem Lehrjahr</em>
-                            </div>
-                        </td>
-                        <td class="year-cell">
-                            <div class="year-cell-content">
-                                <span class="lebensbezug-label">Lebensbezug 1</span>
-                                <div class="lebensbezug-text">...</div>
-                                
-                                <span class="lebensbezug-label">Lebensbezug 2</span>
-                                <div class="lebensbezug-text">...</div>
-                                
-                                <span class="lebensbezug-label">Lebensbezug 3</span>
-                                <div class="lebensbezug-text">...</div>
-                                
-                                <span class="lebensbezug-label">Lebensbezug 4</span>
-                                <div class="lebensbezug-text">...</div>
-                                
-                                <div class="aspekt-tags">
-                                    <!-- Aspekte hier einfügen -->
-                                </div>
-                            </div>
-                        </td>
-                        <td class="year-cell">
-                            <div class="year-cell-content">
-                                <em style="color: #999;">Thema nicht in diesem Lehrjahr</em>
-                            </div>
-                        </td>
-                    </tr>
+            <!-- Arrow zwischen 1. und 2. Lehrjahr -->
+            <div class="arrow-connector">→</div>
 
-                    <!-- Thema 7 -->
-                    <tr>
-                        <td class="theme-cell">
-                            <strong>Thema 7:</strong><br>
-                            ...
-                        </td>
-                        <td class="year-cell">
-                            <div class="year-cell-content">
-                                <em style="color: #999;">Thema nicht in diesem Lehrjahr</em>
-                            </div>
-                        </td>
-                        <td class="year-cell">
-                            <div class="year-cell-content">
-                                <em style="color: #999;">Thema nicht in diesem Lehrjahr</em>
-                            </div>
-                        </td>
-                        <td class="year-cell">
-                            <div class="year-cell-content">
-                                <span class="lebensbezug-label">Lebensbezug 1</span>
-                                <div class="lebensbezug-text">...</div>
-                                
-                                <span class="lebensbezug-label">Lebensbezug 2</span>
-                                <div class="lebensbezug-text">...</div>
-                                
-                                <span class="lebensbezug-label">Lebensbezug 3</span>
-                                <div class="lebensbezug-text">...</div>
-                                
-                                <div class="aspekt-tags">
-                                    <!-- Aspekte hier einfügen -->
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
+            <!-- 2. Lehrjahr -->
+            <div class="year-column">
+                <div class="year-header">
+                    <h2>2. Lehrjahr</h2>
+                    <p>Vertiefung</p>
+                </div>
 
-                    <!-- Thema 8 -->
-                    <tr>
-                        <td class="theme-cell">
-                            <strong>Thema 8:</strong><br>
-                            ...
-                        </td>
-                        <td class="year-cell">
-                            <div class="year-cell-content">
-                                <em style="color: #999;">Thema nicht in diesem Lehrjahr</em>
-                            </div>
-                        </td>
-                        <td class="year-cell">
-                            <div class="year-cell-content">
-                                <em style="color: #999;">Thema nicht in diesem Lehrjahr</em>
-                            </div>
-                        </td>
-                        <td class="year-cell">
-                            <div class="year-cell-content">
-                                <span class="lebensbezug-label">Lebensbezug 1</span>
-                                <div class="lebensbezug-text">...</div>
-                                
-                                <span class="lebensbezug-label">Lebensbezug 2</span>
-                                <div class="lebensbezug-text">...</div>
-                                
-                                <span class="lebensbezug-label">Lebensbezug 3</span>
-                                <div class="lebensbezug-text">...</div>
-                                
-                                <div class="aspekt-tags">
-                                    <!-- Aspekte hier einfügen -->
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                <!-- Thema 4 -->
+                <div class="theme-card">
+                    <h3>Thema 4: ...</h3>
+                    
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Lebensbezug 1</span>
+                        <div class="lebensbezug-text">...</div>
+                    </div>
+                    
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Lebensbezug 2</span>
+                        <div class="lebensbezug-text">...</div>
+                    </div>
+                    
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Lebensbezug 3</span>
+                        <div class="lebensbezug-text">...</div>
+                    </div>
+                    
+                    <div class="aspekt-tags">
+                        <!-- Aspekte einfügen -->
+                    </div>
+                </div>
+
+                <!-- Thema 5 -->
+                <div class="theme-card">
+                    <h3>Thema 5: ...</h3>
+                    
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Lebensbezug 1</span>
+                        <div class="lebensbezug-text">...</div>
+                    </div>
+                    
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Lebensbezug 2</span>
+                        <div class="lebensbezug-text">...</div>
+                    </div>
+                    
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Lebensbezug 3</span>
+                        <div class="lebensbezug-text">...</div>
+                    </div>
+                    
+                    <div class="aspekt-tags">
+                        <!-- Aspekte einfügen -->
+                    </div>
+                </div>
+
+                <!-- Thema 6 -->
+                <div class="theme-card">
+                    <h3>Thema 6: ...</h3>
+                    
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Lebensbezug 1</span>
+                        <div class="lebensbezug-text">...</div>
+                    </div>
+                    
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Lebensbezug 2</span>
+                        <div class="lebensbezug-text">...</div>
+                    </div>
+                    
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Lebensbezug 3</span>
+                        <div class="lebensbezug-text">...</div>
+                    </div>
+                    
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Lebensbezug 4</span>
+                        <div class="lebensbezug-text">...</div>
+                    </div>
+                    
+                    <div class="aspekt-tags">
+                        <!-- Aspekte einfügen -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Arrow zwischen 2. und 3. Lehrjahr -->
+            <div class="arrow-connector">→</div>
+
+            <!-- 3. Lehrjahr -->
+            <div class="year-column">
+                <div class="year-header">
+                    <h2>3. Lehrjahr</h2>
+                    <p>Transfer</p>
+                </div>
+
+                <!-- Thema 7 -->
+                <div class="theme-card">
+                    <h3>Thema 7: ...</h3>
+                    
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Lebensbezug 1</span>
+                        <div class="lebensbezug-text">...</div>
+                    </div>
+                    
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Lebensbezug 2</span>
+                        <div class="lebensbezug-text">...</div>
+                    </div>
+                    
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Lebensbezug 3</span>
+                        <div class="lebensbezug-text">...</div>
+                    </div>
+                    
+                    <div class="aspekt-tags">
+                        <!-- Aspekte einfügen -->
+                    </div>
+                </div>
+
+                <!-- Thema 8 -->
+                <div class="theme-card">
+                    <h3>Thema 8: ...</h3>
+                    
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Lebensbezug 1</span>
+                        <div class="lebensbezug-text">...</div>
+                    </div>
+                    
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Lebensbezug 2</span>
+                        <div class="lebensbezug-text">...</div>
+                    </div>
+                    
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Lebensbezug 3</span>
+                        <div class="lebensbezug-text">...</div>
+                    </div>
+                    
+                    <div class="aspekt-tags">
+                        <!-- Aspekte einfügen -->
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
