@@ -528,6 +528,19 @@
             </ul>
         </div>
 
+        <div class="section-title">Kompetenzaufbau über die Lehrjahre</div>
+
+        <div id="loading" class="loading">
+            Lade Kompetenzen aus dem Lehrplan...
+        </div>
+
+        <!-- Timeline Grid mit 3 Spalten nebeneinander -->
+        <div id="timeline-container" class="timeline-grid" style="display: none;">
+            <!-- Wird dynamisch gefüllt -->
+        </div>
+
+        <div class="section-title" style="margin-top: 60px;">Filter nach Aspekten</div>
+
         <div class="kachel-grid">
             <div class="kachel kachel-ethik" onclick="filterAspekt('ethik')">
                 <h3>Ethik</h3>
@@ -564,17 +577,6 @@
         </div>
 
         <button class="reset-btn" onclick="resetFilter()">Filter zurücksetzen</button>
-
-        <div class="section-title">Kompetenzaufbau über die Lehrjahre</div>
-
-        <div id="loading" class="loading">
-            Lade Kompetenzen aus dem Lehrplan...
-        </div>
-
-        <!-- Timeline Grid mit 3 Spalten nebeneinander -->
-        <div id="timeline-container" class="timeline-grid" style="display: none;">
-            <!-- Wird dynamisch gefüllt -->
-        </div>
     </div>
 
     <script>
@@ -931,15 +933,10 @@
                     const kompContainer = document.createElement('div');
                     kompContainer.className = 'kompetenz-detail';
                     
-                    lb.kompetenzen.forEach((komp, kIndex) => {
-                        const kompDiv = document.createElement('div');
-                        kompDiv.className = 'kompetenz-detail-item';
-                        
-                        const kompTitle = document.createElement('div');
-                        kompTitle.className = 'kompetenz-detail-title';
-                        kompTitle.textContent = komp.title;
-                        kompDiv.appendChild(kompTitle);
-                        
+                    // Sammle alle Kompetenznummern/Badges aus allen Kompetenzen
+                    const allBadges = [];
+                    
+                    lb.kompetenzen.forEach((komp) => {
                         // Zeige die Kompetenzen aus den drei Bereichen
                         const bereiche = [
                             { key: 'gesellschaft', label: 'Gesellschaft', cssClass: 'kompetenz-badge-gesellschaft' },
@@ -950,15 +947,24 @@
                         bereiche.forEach(bereich => {
                             if (komp.inhalte[bereich.key] && komp.inhalte[bereich.key].length > 0) {
                                 komp.inhalte[bereich.key].forEach(item => {
-                                    const badge = document.createElement('div');
-                                    badge.className = `kompetenz-badge ${bereich.cssClass}`;
-                                    badge.textContent = item.text;
-                                    kompDiv.appendChild(badge);
+                                    allBadges.push({
+                                        text: item.text,
+                                        cssClass: bereich.cssClass
+                                    });
                                 });
                             }
                         });
-                        
-                        kompContainer.appendChild(kompDiv);
+                    });
+                    
+                    // Zeige alle Badges ohne Kompetenz-Titel
+                    allBadges.forEach(badgeInfo => {
+                        const badge = document.createElement('div');
+                        badge.className = `kompetenz-badge ${badgeInfo.cssClass}`;
+                        badge.textContent = badgeInfo.text;
+                        badge.style.display = 'inline-block';
+                        badge.style.marginRight = '4px';
+                        badge.style.marginBottom = '4px';
+                        kompContainer.appendChild(badge);
                     });
                     
                     lbItem.appendChild(kompContainer);
@@ -966,29 +972,6 @@
                 
                 card.appendChild(lbItem);
             });
-            
-            // Sammle alle Aspekte aus allen Lebensbezügen
-            const allAspekte = new Set();
-            themeData.lebensbezuege.forEach(lb => {
-                lb.aspekte.forEach(asp => allAspekte.add(asp));
-            });
-            
-            // Aspekt-Tags
-            if (allAspekte.size > 0) {
-                const tagsContainer = document.createElement('div');
-                tagsContainer.className = 'aspekt-tags';
-                
-                allAspekte.forEach(aspekt => {
-                    const tag = document.createElement('span');
-                    tag.className = `aspekt-tag btn-${aspekt}`;
-                    tag.setAttribute('data-aspekt', aspekt);
-                    tag.textContent = aspektLabels[aspekt];
-                    tag.onclick = () => filterAspekt(aspekt);
-                    tagsContainer.appendChild(tag);
-                });
-                
-                card.appendChild(tagsContainer);
-            }
             
             return card;
         }
