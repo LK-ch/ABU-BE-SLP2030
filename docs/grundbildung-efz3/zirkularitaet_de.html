@@ -154,6 +154,40 @@
             margin: 0;
         }
 
+        /* Aufklappbare Info-Box */
+        .status-info-header {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            user-select: none;
+        }
+
+        .status-info-header:hover {
+            opacity: 0.8;
+        }
+
+        .status-info-toggle {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+            color: #c8102e;
+            font-weight: bold;
+        }
+
+        .status-info-toggle.open {
+            transform: rotate(90deg);
+        }
+
+        .status-info-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .status-info-content.open {
+            max-height: 1000px;
+        }
+
         /* Loading Indicator */
         .loading {
             text-align: center;
@@ -659,10 +693,42 @@
         </a>
 
         <div class="status-info">
-            <h2>🔄 Was bedeutet Zirkularität im Schullehrplan?</h2>
-            <p style="margin-top: 10px; line-height: 1.6;">
-                Der Schullehrplan ABU ist spiralförmig aufgebaut. Das bedeutet, dass Schlüsselkompetenzen, Gesellschaftsaspekte, Sprachmodi und Aspekte von Medien und Digitalität nicht einmalig behandelt, sondern über die gesamte Lehrzeit in verschiedenen Kontexten und mit steigender Komplexität aufgebaut werden.
-            </p>
+            <div class="status-info-header" onclick="toggleStatusInfo()">
+                <h2>Vorgaben gemäss Rahmenlehrplan ABU 2025</h2>
+                <span class="status-info-toggle">▶</span>
+            </div>
+            <div class="status-info-content">
+                <ul style="list-style: none; padding-left: 0; margin-top: 15px;">
+                    <li style="padding: 0.4rem 0; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #c8102e; font-weight: bold;">▸</span>
+                        Pro Thema werden mindestens <strong>3 Schlüsselkompetenzen</strong> bewusst gefördert
+                    </li>
+                    <li style="padding: 0.4rem 0; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #c8102e; font-weight: bold;">▸</span>
+                        Lerninhalte aus mindestens <strong>3 Aspekten</strong> des Lernbereichs Gesellschaft
+                    </li>
+                    <li style="padding: 0.4rem 0; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #c8102e; font-weight: bold;">▸</span>
+                        Berücksichtigung von <strong>3 Sprachmodi</strong> pro Thema
+                    </li>
+                    <li style="padding: 0.4rem 0; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #c8102e; font-weight: bold;">▸</span>
+                        Kompetenzen aus allen <strong>Sprachmodi</strong> unter Berücksichtigung von Konvention, Normen und Sprachbewusstheit
+                    </li>
+                    <li style="padding: 0.4rem 0; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #c8102e; font-weight: bold;">▸</span>
+                        Bis zum Abschluss: Aufbau aller <strong>12 Schlüsselkompetenzen</strong> und Kompetenzen aus allen <strong>8 gesellschaftlichen Aspekten</strong>
+                    </li>
+                    <li style="padding: 0.4rem 0; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #c8102e; font-weight: bold;">▸</span>
+                        Integration der <strong>Schlussarbeit</strong> im letzten Lehrjahr
+                    </li>
+                    <li style="padding: 0.4rem 0; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: #c8102e; font-weight: bold;">▸</span>
+                        Spiralförmiges Curriculum mit formativen und summativen Kompetenznachweisen
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <div class="section-title">Kompetenzaufbau über die Lehrjahre</div>
@@ -1699,6 +1765,15 @@
             document.querySelectorAll('.theme-card').forEach(card => {
                 card.style.display = 'block';
             });
+        }
+
+        // Toggle-Funktion für aufklappbare Info-Box
+        function toggleStatusInfo() {
+            const content = document.querySelector('.status-info-content');
+            const toggle = document.querySelector('.status-info-toggle');
+            
+            content.classList.toggle('open');
+            toggle.classList.toggle('open');
         }
 
         // Starte das Laden beim Seitenaufruf
