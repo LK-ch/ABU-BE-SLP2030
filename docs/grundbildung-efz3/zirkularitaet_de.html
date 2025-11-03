@@ -3,12 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zirkularität im SLP ABU - EFZ</title>
+    <title>Zirkulärer Aufbau von Kompetenzen - EFZ</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        :root {
+            /* Farben für die 8 Aspekte */
+            --aspect-ethik: #FF6B6B;
+            --aspect-identitaet: #4ECDC4;
+            --aspect-kultur: #9B59B6;
+            --aspect-oekologie: #2ECC71;
+            --aspect-politik: #3498DB;
+            --aspect-recht: #E67E22;
+            --aspect-tech: #34495E;
+            --aspect-wirtschaft: #F39C12;
         }
 
         body {
@@ -26,12 +38,38 @@
             padding: 30px 20px;
             margin-bottom: 30px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
         }
 
-        .container {
-            max-width: 1200px;
+        .language-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            padding: 8px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.95em;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .language-switch:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .header-container {
+            max-width: 1600px;
             margin: 0 auto;
-            padding: 20px;
         }
 
         .breadcrumb {
@@ -62,211 +100,548 @@
             font-size: 1.1em;
         }
 
-        /* Circular Concept Section */
-        .circular-concept {
-            background-color: #fff3cd;
+        /* Container */
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Back Button */
+        .back-btn {
+            background: white;
+            border: 2px solid #c8102e;
+            padding: 0.8rem 1.5rem;
             border-radius: 8px;
-            padding: 30px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #c8102e;
+            font-weight: 500;
+        }
+
+        .back-btn:hover {
+            background: #c8102e;
+            color: white;
+            transform: translateX(-5px);
+            text-decoration: none;
+        }
+
+        /* Status Info Box */
+        .status-info {
+            background: #fff3cd;
+            border-left: 4px solid #c8102e;
+            padding: 20px;
+            border-radius: 8px;
             margin-bottom: 30px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            border-left: 4px solid #c8102e;
         }
 
-        .circular-concept h2 {
+        .status-info h2 {
             color: #c8102e;
-            margin-bottom: 20px;
-            font-size: 1.6em;
-            font-weight: 700;
-        }
-
-        .circular-concept > p {
-            color: #000;
-            margin-bottom: 20px;
-            font-size: 1.05em;
-        }
-
-        /* Single Card Container */
-        .single-card-container {
-            max-width: 400px;
-            margin: 0 auto 30px auto;
-        }
-
-        .key-card {
-            background: white;
-            border-radius: 8px;
-            padding: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-            position: relative;
-            text-decoration: none;
-            color: inherit;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            border: 2px solid transparent;
-            display: block;
-        }
-
-        .key-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #c8102e, #ffcc00);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .key-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .key-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-            border-color: #c8102e;
-            text-decoration: none;
-        }
-
-        .key-card-icon {
-            font-size: 3rem;
             margin-bottom: 10px;
-        }
-
-        .key-card h3 {
-            color: #c8102e;
-            font-size: 19px;
+            font-size: 1.4em;
             font-weight: 700;
-            margin-bottom: 15px;
         }
 
-        .key-card p {
-            color: #000;
-            opacity: 0.85;
-            font-size: 0.9em;
+        .status-info p {
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
         }
 
-        /* Navigation Cards */
-        .nav-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-
-        .nav-card {
-            background: white;
-            border-radius: 8px;
-            padding: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        /* Loading Indicator */
+        .loading {
             text-align: center;
-            position: relative;
-            overflow: hidden;
-            text-decoration: none;
-            color: inherit;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            border: 2px solid transparent;
-        }
-
-        .nav-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #c8102e, #ffcc00);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .nav-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .nav-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-            border-color: #c8102e;
-            text-decoration: none;
-        }
-
-        .nav-card-icon {
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
-
-        .nav-card h3 {
+            padding: 40px;
             color: #c8102e;
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .nav-card p {
-            color: #000;
-            opacity: 0.85;
-            font-size: 0.9em;
-        }
-
-        /* Back Link */
-        .back-link {
-            text-align: center;
-            padding: 40px 0;
-        }
-
-        .back-link a {
-            color: #c8102e;
-            text-decoration: none;
-            font-size: 1.1em;
             font-weight: 600;
         }
 
-        .back-link a:hover {
-            text-decoration: underline;
+        /* Grid Container für Aspekte - noch kleinere Kacheln */
+        .kachel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+            gap: 8px;
+            margin-bottom: 20px;
         }
 
+        .kachel {
+            background: white;
+            padding: 8px;
+            border-radius: 6px;
+            border-left: 3px solid;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .kachel:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .kachel.active {
+            border-width: 3px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Einheitlich hellgelb für alle Gesellschafts-Aspekte */
+        .kachel-ethik { border-color: #ffd966; }
+        .kachel-identitaet { border-color: #ffd966; }
+        .kachel-kultur { border-color: #ffd966; }
+        .kachel-oekologie { border-color: #ffd966; }
+        .kachel-politik { border-color: #ffd966; }
+        .kachel-recht { border-color: #ffd966; }
+        .kachel-tech { border-color: #ffd966; }
+        .kachel-wirtschaft { border-color: #ffd966; }
+        
+        /* Schlüsselkompetenz Kacheln */
+        .kachel-schluessel-quellen { border-color: #c8102e; }
+        .kachel-schluessel-ziele { border-color: #c8102e; }
+        .kachel-schluessel-problemloesung { border-color: #c8102e; }
+        .kachel-schluessel-teams { border-color: #c8102e; }
+        .kachel-schluessel-werthaltungen { border-color: #c8102e; }
+        .kachel-schluessel-standpunkte { border-color: #c8102e; }
+        .kachel-schluessel-perspektiven { border-color: #c8102e; }
+        .kachel-schluessel-lebensphasen { border-color: #c8102e; }
+        .kachel-schluessel-vernetzt { border-color: #c8102e; }
+        .kachel-schluessel-wandel { border-color: #c8102e; }
+        .kachel-schluessel-mehrdeutigkeiten { border-color: #c8102e; }
+        .kachel-schluessel-partizipieren { border-color: #c8102e; }
+        
+        /* Digital Kacheln */
+        .kachel-digital-grundlagen { border-color: #4db380; }
+        .kachel-digital-info { border-color: #4db380; }
+        .kachel-digital-kommunikation { border-color: #4db380; }
+        .kachel-digital-inhalt { border-color: #4db380; }
+        .kachel-digital-problemloesung { border-color: #4db380; }
+        .kachel-digital-ki { border-color: #4db380; }
+        .kachel-digital-ethik { border-color: #4db380; }
+        
+        /* Sprache Kacheln */
+        .kachel-sprache-rez-muendlich { border-color: #3385d6; }
+        .kachel-sprache-rez-schriftlich { border-color: #3385d6; }
+        .kachel-sprache-rez-audiovisuell { border-color: #3385d6; }
+        .kachel-sprache-prod-muendlich { border-color: #3385d6; }
+        .kachel-sprache-prod-schriftlich { border-color: #3385d6; }
+        .kachel-sprache-prod-multimedial { border-color: #3385d6; }
+        .kachel-sprache-int-muendlich { border-color: #3385d6; }
+        .kachel-sprache-int-schriftlich { border-color: #3385d6; }
+        .kachel-sprache-int-digital { border-color: #3385d6; }
+
+        .kachel h3 {
+            font-size: 0.78em;
+            margin-bottom: 0;
+            color: #333;
+            line-height: 1.2;
+        }
+
+        /* Einheitlich hellgelb für alle Gesellschafts-Aspekte */
+        .kachel-ethik h3,
+        .kachel-identitaet h3,
+        .kachel-kultur h3,
+        .kachel-oekologie h3,
+        .kachel-politik h3,
+        .kachel-recht h3,
+        .kachel-tech h3,
+        .kachel-wirtschaft h3 { color: #d4a500; }
+        
+        /* Schlüsselkompetenz Kacheln */
+        .kachel-schluessel-quellen h3,
+        .kachel-schluessel-ziele h3,
+        .kachel-schluessel-problemloesung h3,
+        .kachel-schluessel-teams h3,
+        .kachel-schluessel-werthaltungen h3,
+        .kachel-schluessel-standpunkte h3,
+        .kachel-schluessel-perspektiven h3,
+        .kachel-schluessel-lebensphasen h3,
+        .kachel-schluessel-vernetzt h3,
+        .kachel-schluessel-wandel h3,
+        .kachel-schluessel-mehrdeutigkeiten h3,
+        .kachel-schluessel-partizipieren h3 { color: #c8102e; }
+        
+        .kachel-digital-grundlagen h3,
+        .kachel-digital-info h3,
+        .kachel-digital-kommunikation h3,
+        .kachel-digital-inhalt h3,
+        .kachel-digital-problemloesung h3,
+        .kachel-digital-ki h3,
+        .kachel-digital-ethik h3 { color: #4db380; }
+        
+        .kachel-sprache-rez-muendlich h3,
+        .kachel-sprache-rez-schriftlich h3,
+        .kachel-sprache-rez-audiovisuell h3,
+        .kachel-sprache-prod-muendlich h3,
+        .kachel-sprache-prod-schriftlich h3,
+        .kachel-sprache-prod-multimedial h3,
+        .kachel-sprache-int-muendlich h3,
+        .kachel-sprache-int-schriftlich h3,
+        .kachel-sprache-int-digital h3 { color: #3385d6; }
+
+        /* Reset Button */
+        .reset-btn {
+            background: #c8102e;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .reset-btn:hover {
+            background: #a00d24;
+            transform: translateY(-2px);
+        }
+
+        /* Timeline Grid - Flexbox für nebeneinander */
+        .timeline-grid {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            align-items: flex-start;
+        }
+
+        /* Lehrjahr Spalte */
+        .year-column {
+            flex: 1;
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            min-width: 0;
+        }
+
+        /* Arrow zwischen Spalten - entfernt */
+
+        .year-header {
+            background: linear-gradient(135deg, #c8102e, #a00d24);
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .year-header h2 {
+            font-size: 1.3em;
+            margin-bottom: 2px;
+        }
+
+        .year-header p {
+            font-size: 0.8em;
+            opacity: 0.95;
+        }
+
+        /* Themen-Karte */
+        .theme-card {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+            border-left: 4px solid #c8102e;
+            transition: all 0.3s ease;
+        }
+
+        .theme-card:hover {
+            transform: translateX(3px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .theme-card h3 {
+            color: #c8102e;
+            font-size: 1em;
+            margin-bottom: 10px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .lebensbezug-item {
+            background: white;
+            padding: 8px;
+            margin-bottom: 6px;
+            border-radius: 4px;
+            border-left: 3px solid #ddd;
+        }
+
+        .lebensbezug-item:last-of-type {
+            margin-bottom: 10px;
+        }
+
+        .lebensbezug-label {
+            font-size: 0.7em;
+            color: #666;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 3px;
+            display: block;
+        }
+
+        .lebensbezug-text {
+            color: #333;
+            font-size: 0.85em;
+            line-height: 1.4;
+        }
+
+        /* Kompetenz-Details in Lebensbezügen */
+        .kompetenz-detail {
+            margin-top: 8px;
+            font-size: 0.8em;
+        }
+
+        .kompetenz-detail-item {
+            margin-bottom: 8px;
+            padding-left: 10px;
+            border-left: 2px solid #c8102e;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 6px;
+            border-radius: 4px;
+        }
+
+        .kompetenz-detail-title {
+            font-weight: 600;
+            color: #c8102e;
+            margin-bottom: 4px;
+            font-size: 0.9em;
+        }
+
+        .kompetenz-badge {
+            display: inline-block;
+            font-size: 0.75em;
+            padding: 3px 8px;
+            margin: 2px 2px 2px 0;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .kompetenz-badge-gesellschaft {
+            background-color: rgba(255, 217, 102, 0.3);
+            border-left: 3px solid #ffd966;
+        }
+
+        .kompetenz-badge-digital {
+            background-color: rgba(77, 179, 128, 0.3);
+            border-left: 3px solid #4db380;
+        }
+
+        .kompetenz-badge-sprache {
+            background-color: rgba(51, 133, 214, 0.3);
+            border-left: 3px solid #3385d6;
+        }
+
+        /* Aspekt Tags */
+        .aspekt-tags {
+            margin-top: 10px;
+            padding-top: 8px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .aspekt-tag {
+            display: inline-block;
+            padding: 4px 10px;
+            margin: 2px;
+            border-radius: 15px;
+            font-size: 0.75em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .aspekt-tag:hover {
+            transform: scale(1.08);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+        }
+
+        .aspekt-tag.hidden {
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+        .btn-ethik { background-color: var(--aspect-ethik); }
+        .btn-identitaet { background-color: var(--aspect-identitaet); }
+        .btn-kultur { background-color: var(--aspect-kultur); }
+        .btn-oekologie { background-color: var(--aspect-oekologie); }
+        .btn-politik { background-color: var(--aspect-politik); }
+        .btn-recht { background-color: var(--aspect-recht); }
+        .btn-tech { background-color: var(--aspect-tech); }
+        .btn-wirtschaft { background-color: var(--aspect-wirtschaft); }
+
         /* Responsive */
+        @media (max-width: 1200px) {
+            .timeline-grid {
+                flex-direction: column;
+                gap: 25px;
+            }
+
+            .year-column {
+                width: 100%;
+            }
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 1.8em;
             }
             
-            .nav-cards {
-                grid-template-columns: 1fr;
-            }
-
             .container {
                 padding: 10px;
             }
 
-            .circular-concept {
-                padding: 20px;
+            .kachel-grid {
+                grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+                gap: 6px;
             }
 
-            .single-card-container {
-                max-width: 100%;
+            .kachel {
+                padding: 6px;
             }
 
-            .key-card {
-                padding: 20px;
+            .kachel h3 {
+                font-size: 0.7em;
             }
 
-            .nav-card {
-                padding: 20px;
+            .year-header h2 {
+                font-size: 1.2em;
             }
+
+            .theme-card h3 {
+                font-size: 0.95em;
+            }
+
+            .language-switch {
+                top: 10px;
+                right: 10px;
+                font-size: 0.85em;
+                padding: 6px 16px;
+            }
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: 2em;
+            font-weight: 700;
+            color: #c8102e;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #c8102e;
+            text-align: center;
+        }
+
+        /* Hauptkategorie Filter */
+        .main-filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .main-filter-btn {
+            background: white;
+            border: 3px solid #ddd;
+            padding: 12px 24px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: #333;
+        }
+
+        .main-filter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .main-filter-btn.active {
+            border-width: 3px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .main-filter-btn-schluessel {
+            border-color: #c8102e;
+            color: #c8102e;
+        }
+
+        .main-filter-btn-schluessel.active {
+            background: #c8102e;
+            color: white;
+        }
+
+        .main-filter-btn-gesellschaft {
+            border-color: #ffd966;
+            color: #d4a500;
+        }
+
+        .main-filter-btn-gesellschaft.active {
+            background: #ffd966;
+            color: #333;
+        }
+
+        .main-filter-btn-digital {
+            border-color: #4db380;
+            color: #4db380;
+        }
+
+        .main-filter-btn-digital.active {
+            background: #4db380;
+            color: white;
+        }
+
+        .main-filter-btn-sprache {
+            border-color: #3385d6;
+            color: #3385d6;
+        }
+
+        .main-filter-btn-sprache.active {
+            background: #3385d6;
+            color: white;
+        }
+
+        /* Schlüsselkompetenzen unter Themen */
+        .schluesselkompetenzen {
+            padding: 0;
+            margin: 10px 0 15px 0;
+            border: none;
+            background: transparent;
+        }
+
+        .schluesselkompetenzen-title {
+            display: none;
+        }
+
+        .schluesselkompetenz-badge {
+            display: inline-block;
+            background: rgba(255, 107, 107, 0.15);
+            border-left: 3px solid #ff6b6b;
+            padding: 3px 8px;
+            margin: 2px 2px 2px 0;
+            border-radius: 3px;
+            font-size: 0.75em;
+            font-weight: 600;
+            color: #d64545;
         }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <div class="container">
+        <a href="aspekte_fr.html" class="language-switch">
+            🇫🇷 Français
+        </a>
+        <div class="header-container">
             <nav class="breadcrumb">
-                <a href="../index.html">Schullehrplan ABU</a> / 
-                <a href="index.html">3-jährige Grundbildung EFZ</a> / 
+                <a href="../index_de.html">Schullehrplan ABU</a> / 
+                <a href="index_de.html">3-jährige Grundbildung EFZ</a> / 
                 Zirkularität
             </nav>
             <h1>Zirkularität im Schullehrplan ABU</h1>
@@ -274,45 +649,982 @@
         </div>
     </header>
 
-    <!-- Main Container -->
     <div class="container">
-        <div class="circular-concept">
+        <a href="zirkularitaet_de.html" class="back-btn">
+            ← Zurück zur Zirkularität
+        </a>
+
+        <div class="status-info">
             <h2>🔄 Was bedeutet Zirkularität im Schullehrplan?</h2>
-            <p>
-                Der Schullehrplan ABU ist spiralförmig aufgebaut. Das bedeutet, dass Kompetenzen nicht einmalig behandelt, 
-                sondern über die gesamte Lehrzeit in verschiedenen Kontexten und mit steigender Komplexität aufgebaut werden.
+            <p style="margin-top: 10px; line-height: 1.6;">
+                Der Schullehrplan ABU ist spiralförmig aufgebaut. Das bedeutet, dass Kompetenzen nicht einmalig behandelt, sondern über die gesamte Lehrzeit in verschiedenen Kontexten und mit steigender Komplexität aufgebaut werden.
             </p>
         </div>
 
-        <div class="nav-cards">
-            <a href="schluesselk_de.html" class="nav-card">
-                <div class="nav-card-icon">🔑</div>
-                <h3>Schlüsselkompetenzen</h3>
-                <p>Zirkulärer Aufbau der 12 Schlüsselkompetenzen für lebenslanges Lernen über alle Themen</p>
-            </a>
+        <div class="section-title">Kompetenzaufbau über die Lehrjahre</div>
 
-            <a href="aspekte_de.html" class="nav-card">
-                <div class="nav-card-icon">🌍</div>
-                <h3>Gesellschaft</h3>
-                <p>Spiralförmige Entwicklung der gesellschaftlichen Kompetenzen in acht Aspekten über alle individuellen Lebensbezüge</p>
-            </a>
-
-            <a href="sprache_de.html" class="nav-card">
-                <div class="nav-card-icon">💬</div>
-                <h3>Sprache und Kommunikation</h3>
-                <p>Systematischer Aufbau der Sprach- und Kommunikationskompetenzen in verschiedenen Modi</p>
-            </a>
-
-            <a href="digital_de.html" class="nav-card">
-                <div class="nav-card-icon">💻</div>
-                <h3>Digitale Kompetenzen</h3>
-                <p>KI-erweiterte digitale Kompetenzen</p>
-            </a>
+        <!-- Hauptkategorie Filter -->
+        <div class="main-filter-container">
+            <button class="main-filter-btn main-filter-btn-schluessel" onclick="filterMainCategory('schluessel')">
+                Schlüsselkompetenzen
+            </button>
+            <button class="main-filter-btn main-filter-btn-gesellschaft" onclick="filterMainCategory('gesellschaft')">
+                Gesellschaft
+            </button>
+            <button class="main-filter-btn main-filter-btn-digital" onclick="filterMainCategory('digital')">
+                Medien und Digitalität
+            </button>
+            <button class="main-filter-btn main-filter-btn-sprache" onclick="filterMainCategory('sprache')">
+                Sprache und Kommunikation
+            </button>
         </div>
 
-        <div class="back-link">
-            <a href="index_de.html">← Zurück zur Übersicht EFZ</a>
+        <div id="loading" class="loading">
+            Lade Kompetenzen aus dem Lehrplan...
         </div>
+
+        <!-- Timeline Grid mit 3 Spalten nebeneinander -->
+        <div id="timeline-container" class="timeline-grid" style="display: none;">
+            <!-- Wird dynamisch gefüllt -->
+        </div>
+
+        <div class="section-title" style="margin-top: 60px;">Filter nach Kompetenzen</div>
+
+        <h3 style="color: #c8102e; font-size: 1.2em; margin: 20px 0 15px 0;">Schlüsselkompetenzen</h3>
+        <div class="kachel-grid">
+            <div class="kachel kachel-schluessel-quellen" onclick="filterAspekt('schluessel-quellen')" style="border-color: #c8102e;">
+                <h3 style="color: #c8102e;">1.1 Quellen untersch.</h3>
+            </div>
+            <div class="kachel kachel-schluessel-ziele" onclick="filterAspekt('schluessel-ziele')" style="border-color: #c8102e;">
+                <h3 style="color: #c8102e;">1.2 Ziele setzen</h3>
+            </div>
+            <div class="kachel kachel-schluessel-problemloesung" onclick="filterAspekt('schluessel-problemloesung')" style="border-color: #c8102e;">
+                <h3 style="color: #c8102e;">1.3 Probleme lösen</h3>
+            </div>
+            <div class="kachel kachel-schluessel-teams" onclick="filterAspekt('schluessel-teams')" style="border-color: #c8102e;">
+                <h3 style="color: #c8102e;">1.4 In Teams arbeiten</h3>
+            </div>
+            <div class="kachel kachel-schluessel-werthaltungen" onclick="filterAspekt('schluessel-werthaltungen')" style="border-color: #c8102e;">
+                <h3 style="color: #c8102e;">1.5 Werthalt. refl.</h3>
+            </div>
+            <div class="kachel kachel-schluessel-standpunkte" onclick="filterAspekt('schluessel-standpunkte')" style="border-color: #c8102e;">
+                <h3 style="color: #c8102e;">1.6 Standp. begründen</h3>
+            </div>
+            <div class="kachel kachel-schluessel-perspektiven" onclick="filterAspekt('schluessel-perspektiven')" style="border-color: #c8102e;">
+                <h3 style="color: #c8102e;">1.7 Persp. wechseln</h3>
+            </div>
+            <div class="kachel kachel-schluessel-lebensphasen" onclick="filterAspekt('schluessel-lebensphasen')" style="border-color: #c8102e;">
+                <h3 style="color: #c8102e;">1.8 Lebensp. planen</h3>
+            </div>
+            <div class="kachel kachel-schluessel-vernetzt" onclick="filterAspekt('schluessel-vernetzt')" style="border-color: #c8102e;">
+                <h3 style="color: #c8102e;">1.9 Vernetzt denken</h3>
+            </div>
+            <div class="kachel kachel-schluessel-wandel" onclick="filterAspekt('schluessel-wandel')" style="border-color: #c8102e;">
+                <h3 style="color: #c8102e;">1.10 An Wandel anp.</h3>
+            </div>
+            <div class="kachel kachel-schluessel-mehrdeutigkeiten" onclick="filterAspekt('schluessel-mehrdeutigkeiten')" style="border-color: #c8102e;">
+                <h3 style="color: #c8102e;">1.11 Mehrdeutigk.</h3>
+            </div>
+            <div class="kachel kachel-schluessel-partizipieren" onclick="filterAspekt('schluessel-partizipieren')" style="border-color: #c8102e;">
+                <h3 style="color: #c8102e;">1.12 Partizipieren</h3>
+            </div>
+        </div>
+
+        <h3 style="color: #d4a500; font-size: 1.2em; margin: 20px 0 15px 0;">Aspekte Gesellschaft</h3>
+        <div class="kachel-grid">
+            <div class="kachel kachel-ethik" onclick="filterAspekt('ethik')">
+                <h3>2.1 Ethik</h3>
+            </div>
+            <div class="kachel kachel-identitaet" onclick="filterAspekt('identitaet')">
+                <h3>2.2 Identität & Soz.</h3>
+            </div>
+            <div class="kachel kachel-kultur" onclick="filterAspekt('kultur')">
+                <h3>2.3 Kultur</h3>
+            </div>
+            <div class="kachel kachel-oekologie" onclick="filterAspekt('oekologie')">
+                <h3>2.4 Ökologie</h3>
+            </div>
+            <div class="kachel kachel-politik" onclick="filterAspekt('politik')">
+                <h3>2.5 Politik</h3>
+            </div>
+            <div class="kachel kachel-recht" onclick="filterAspekt('recht')">
+                <h3>2.6 Recht</h3>
+            </div>
+            <div class="kachel kachel-tech" onclick="filterAspekt('tech')">
+                <h3>2.7 Technologie</h3>
+            </div>
+            <div class="kachel kachel-wirtschaft" onclick="filterAspekt('wirtschaft')">
+                <h3>2.8 Wirtschaft</h3>
+            </div>
+        </div>
+
+        <h3 style="color: #4db380; font-size: 1.2em; margin: 30px 0 15px 0;">Digitale Kompetenzstufen</h3>
+        <div class="kachel-grid">
+            <div class="kachel kachel-digital-grundlagen" onclick="filterAspekt('digital-grundlagen')">
+                <h3>3.1 Grundl. Informatik</h3>
+            </div>
+            <div class="kachel kachel-digital-info" onclick="filterAspekt('digital-info')">
+                <h3>3.2 Info- & Datenkomp.</h3>
+            </div>
+            <div class="kachel kachel-digital-kommunikation" onclick="filterAspekt('digital-kommunikation')">
+                <h3>3.3 Komm. & Zusammenarb.</h3>
+            </div>
+            <div class="kachel kachel-digital-inhalt" onclick="filterAspekt('digital-inhalt')">
+                <h3>3.4 Inhaltserstellung</h3>
+            </div>
+            <div class="kachel kachel-digital-problemloesung" onclick="filterAspekt('digital-problemloesung')">
+                <h3>3.5 Problemlösung</h3>
+            </div>
+            <div class="kachel kachel-digital-ki" onclick="filterAspekt('digital-ki')">
+                <h3>3.6 KI-Komponenten</h3>
+            </div>
+            <div class="kachel kachel-digital-ethik" onclick="filterAspekt('digital-ethik')">
+                <h3>3.7 Eth. & refl. Haltung</h3>
+            </div>
+        </div>
+
+        <h3 style="color: #3385d6; font-size: 1.2em; margin: 30px 0 15px 0;">Sprachmodi</h3>
+        <div class="kachel-grid">
+            <div class="kachel kachel-sprache-rez-muendlich" onclick="filterAspekt('sprache-rez-muendlich')">
+                <h3>4.1 Rez. mündlich</h3>
+            </div>
+            <div class="kachel kachel-sprache-rez-schriftlich" onclick="filterAspekt('sprache-rez-schriftlich')">
+                <h3>4.2 Rez. schriftl./bildl.</h3>
+            </div>
+            <div class="kachel kachel-sprache-rez-audiovisuell" onclick="filterAspekt('sprache-rez-audiovisuell')">
+                <h3>4.3 Rez. audiovisuell</h3>
+            </div>
+            <div class="kachel kachel-sprache-prod-muendlich" onclick="filterAspekt('sprache-prod-muendlich')">
+                <h3>4.4 Prod. mündlich</h3>
+            </div>
+            <div class="kachel kachel-sprache-prod-schriftlich" onclick="filterAspekt('sprache-prod-schriftlich')">
+                <h3>4.5 Prod. schriftl./bildl.</h3>
+            </div>
+            <div class="kachel kachel-sprache-prod-multimedial" onclick="filterAspekt('sprache-prod-multimedial')">
+                <h3>4.6 Prod. multimedial</h3>
+            </div>
+            <div class="kachel kachel-sprache-int-muendlich" onclick="filterAspekt('sprache-int-muendlich')">
+                <h3>4.7 Int. mündlich</h3>
+            </div>
+            <div class="kachel kachel-sprache-int-schriftlich" onclick="filterAspekt('sprache-int-schriftlich')">
+                <h3>4.8 Int. schriftlich</h3>
+            </div>
+            <div class="kachel kachel-sprache-int-digital" onclick="filterAspekt('sprache-int-digital')">
+                <h3>4.9 Int. digital</h3>
+            </div>
+        </div>
+
+        <button class="reset-btn" onclick="resetFilter()">Filter zurücksetzen</button>
     </div>
+
+    <script>
+        let activeFilter = null;
+        let activeMainFilter = null;
+        let themenData = {};
+
+        // Vollständige Kompetenzstruktur gemäss Lehrplan
+        // ===================================================
+        
+        // Mapping von Kompetenznummern zu Filterkategorien
+        const kompetenzToAspekt = {
+            // SCHLÜSSELKOMPETENZEN (1.1 - 1.12)
+            '1.1': 'schluessel-quellen',
+            '1.2': 'schluessel-ziele',
+            '1.3': 'schluessel-problemloesung',
+            '1.4': 'schluessel-teams',
+            '1.5': 'schluessel-werthaltungen',
+            '1.6': 'schluessel-standpunkte',
+            '1.7': 'schluessel-perspektiven',
+            '1.8': 'schluessel-lebensphasen',
+            '1.9': 'schluessel-vernetzt',
+            '1.10': 'schluessel-wandel',
+            '1.11': 'schluessel-mehrdeutigkeiten',
+            '1.12': 'schluessel-partizipieren',
+            // ASPEKTE GESELLSCHAFT (2.1 - 2.8)
+            '2.1': 'ethik',
+            '2.2': 'identitaet',
+            '2.3': 'kultur',
+            '2.4': 'oekologie',
+            '2.5': 'politik',
+            '2.6': 'recht',
+            '2.7': 'tech',
+            '2.8': 'wirtschaft',
+            // DIGITALE KOMPETENZSTUFEN (3.1 - 3.7)
+            '3.1': 'digital-grundlagen',
+            '3.2': 'digital-info',
+            '3.3': 'digital-kommunikation',
+            '3.4': 'digital-inhalt',
+            '3.5': 'digital-problemloesung',
+            '3.6': 'digital-ki',
+            '3.7': 'digital-ethik',
+            // SPRACHMODI (4.1 - 4.9)
+            '4.1': 'sprache-rez-muendlich',
+            '4.2': 'sprache-rez-schriftlich',
+            '4.3': 'sprache-rez-audiovisuell',
+            '4.4': 'sprache-prod-muendlich',
+            '4.5': 'sprache-prod-schriftlich',
+            '4.6': 'sprache-prod-multimedial',
+            '4.7': 'sprache-int-muendlich',
+            '4.8': 'sprache-int-schriftlich',
+            '4.9': 'sprache-int-digital'
+        };
+
+        // Mapping von Aspekten zu Hauptkategorien
+        const aspektToMainCategory = {
+            // Schlüsselkompetenzen
+            'schluessel-quellen': 'schluessel',
+            'schluessel-ziele': 'schluessel',
+            'schluessel-problemloesung': 'schluessel',
+            'schluessel-teams': 'schluessel',
+            'schluessel-werthaltungen': 'schluessel',
+            'schluessel-standpunkte': 'schluessel',
+            'schluessel-perspektiven': 'schluessel',
+            'schluessel-lebensphasen': 'schluessel',
+            'schluessel-vernetzt': 'schluessel',
+            'schluessel-wandel': 'schluessel',
+            'schluessel-mehrdeutigkeiten': 'schluessel',
+            'schluessel-partizipieren': 'schluessel',
+            // Gesellschaft
+            'ethik': 'gesellschaft',
+            'identitaet': 'gesellschaft',
+            'kultur': 'gesellschaft',
+            'oekologie': 'gesellschaft',
+            'politik': 'gesellschaft',
+            'recht': 'gesellschaft',
+            'tech': 'gesellschaft',
+            'wirtschaft': 'gesellschaft',
+            // Digital
+            'digital-grundlagen': 'digital',
+            'digital-info': 'digital',
+            'digital-kommunikation': 'digital',
+            'digital-inhalt': 'digital',
+            'digital-problemloesung': 'digital',
+            'digital-ki': 'digital',
+            'digital-ethik': 'digital',
+            // Sprache
+            'sprache-rez-muendlich': 'sprache',
+            'sprache-rez-schriftlich': 'sprache',
+            'sprache-rez-audiovisuell': 'sprache',
+            'sprache-prod-muendlich': 'sprache',
+            'sprache-prod-schriftlich': 'sprache',
+            'sprache-prod-multimedial': 'sprache',
+            'sprache-int-muendlich': 'sprache',
+            'sprache-int-schriftlich': 'sprache',
+            'sprache-int-digital': 'sprache'
+        };
+
+        const aspektLabels = {
+            // Schlüsselkompetenzen
+            'schluessel-quellen': 'Quellen unterscheiden',
+            'schluessel-ziele': 'Ziele setzen',
+            'schluessel-problemloesung': 'Probleme lösen',
+            'schluessel-teams': 'In Teams arbeiten',
+            'schluessel-werthaltungen': 'Werthaltungen reflektieren',
+            'schluessel-standpunkte': 'Standpunkte begründen',
+            'schluessel-perspektiven': 'Perspektiven wechseln',
+            'schluessel-lebensphasen': 'Lebensphasen planen',
+            'schluessel-vernetzt': 'Vernetzt denken',
+            'schluessel-wandel': 'An Wandel anpassen',
+            'schluessel-mehrdeutigkeiten': 'Mit Mehrdeutigkeiten umgehen',
+            'schluessel-partizipieren': 'Partizipieren',
+            // Gesellschaft
+            'ethik': 'Ethik',
+            'identitaet': 'Identität & Sozialisation',
+            'kultur': 'Kultur',
+            'oekologie': 'Ökologie',
+            'politik': 'Politik',
+            'recht': 'Recht',
+            'tech': 'Technologie',
+            'wirtschaft': 'Wirtschaft',
+            // Digital
+            'digital-grundlagen': 'Grundlagen Informatik',
+            'digital-info': 'Informations- & Datenkompetenz',
+            'digital-kommunikation': 'Kommunikation & Zusammenarbeit',
+            'digital-inhalt': 'Inhaltserstellung',
+            'digital-problemloesung': 'Problemlösung',
+            'digital-ki': 'KI-spezifische Komponenten',
+            'digital-ethik': 'Ethische & reflexive Haltung',
+            // Sprache
+            'sprache-rez-muendlich': 'Rezeption mündlich',
+            'sprache-rez-schriftlich': 'Rezeption schriftlich & bildlich',
+            'sprache-rez-audiovisuell': 'Rezeption audiovisuell',
+            'sprache-prod-muendlich': 'Produktion mündlich',
+            'sprache-prod-schriftlich': 'Produktion schriftlich & bildlich',
+            'sprache-prod-multimedial': 'Produktion multimedial',
+            'sprache-int-muendlich': 'Interaktion & Kollaboration mündlich',
+            'sprache-int-schriftlich': 'Interaktion & Kollaboration schriftlich',
+            'sprache-int-digital': 'Interaktion & Kollaboration digital'
+        };
+
+
+        // SCHLÜSSELKOMPETENZEN (1.1 - 1.12)
+        const schluesselKompetenzen = {
+            '1.1': 'Zwischen relevanten und irrelevanten Quellen unterscheiden',
+            '1.2': 'Ziele setzen, prüfen, adaptiv handeln',
+            '1.3': 'Antizipativ, unternehmerisch, innovativ Probleme lösen',
+            '1.4': 'In unterschiedlichen Teams effizient arbeiten',
+            '1.5': 'Werthaltungen reflektieren und weiterentwickeln',
+            '1.6': 'Standpunkte begründen und überzeugen',
+            '1.7': 'Perspektiven wechseln und gegenseitiges Verständnis fördern',
+            '1.8': 'Lebensphasen planen, mit Unwägbarkeiten umgehen',
+            '1.9': 'Vernetzt/systemisch denken, nachhaltig handeln',
+            '1.10': 'Sich an Wandel anpassen',
+            '1.11': 'Mit Mehrdeutigkeiten umgehen',
+            '1.12': 'Gesellschaftlich partizipieren, Handlungsspielräume nutzen'
+        };
+
+        // MEDIEN UND DIGITALITÄT (3.1 - 3.7)
+        const digitalKompetenzen = {
+            '3.1': 'Grundlagen der Informatik',
+            '3.2': 'Informations- & Datenkompetenz',
+            '3.3': 'Kommunikation & Zusammenarbeit',
+            '3.4': 'Inhaltserstellung',
+            '3.5': 'Problemlösung',
+            '3.6': 'KI-spezifische Komponenten',
+            '3.7': 'Ethische & reflexive Haltung'
+        };
+
+        // SPRACHE UND KOMMUNIKATION (4.1 - 4.9)
+        const spracheKompetenzen = {
+            '4.1': 'Rezeption mündlich',
+            '4.2': 'Rezeption schriftlich & bildlich',
+            '4.3': 'Rezeption audiovisuell',
+            '4.4': 'Produktion mündlich',
+            '4.5': 'Produktion schriftlich & bildlich',
+            '4.6': 'Produktion multimedial',
+            '4.7': 'Interaktion & Kollaboration mündlich',
+            '4.8': 'Interaktion & Kollaboration schriftlich',
+            '4.9': 'Interaktion & Kollaboration digital'
+        };
+
+        // Lade und parse die Lehrjahr-Dateien
+        async function loadLehrjahrData() {
+            try {
+                // Lade alle drei Lehrjahre
+                const lehrjahre = [
+                    { file: '1-lehrjahr_de.html', year: 1, startTheme: 1 },
+                    { file: '2-lehrjahr_de.html', year: 2, startTheme: 4 },
+                    { file: '3-lehrjahr_de.html', year: 3, startTheme: 7 }
+                ];
+
+                let successCount = 0;
+                
+                for (const lehrjahr of lehrjahre) {
+                    try {
+                        console.log(`Versuche ${lehrjahr.file} zu laden...`);
+                        console.log(`Basis-URL: ${window.location.href}`);
+                        
+                        const response = await fetch(lehrjahr.file);
+                        console.log(`Response Status für ${lehrjahr.file}: ${response.status}`);
+                        console.log(`Response URL: ${response.url}`);
+                        
+                        if (!response.ok) {
+                            console.log(`${lehrjahr.file} konnte nicht geladen werden (Status: ${response.status})`);
+                            continue;
+                        }
+                        
+                        const html = await response.text();
+                        console.log(`${lehrjahr.file} erfolgreich geladen, Länge: ${html.length} Zeichen`);
+                        parseLehrjahrHTML(html, lehrjahr.startTheme);
+                        successCount++;
+                        console.log(`${lehrjahr.file} erfolgreich verarbeitet`);
+                    } catch (error) {
+                        console.error(`Fehler beim Laden von ${lehrjahr.file}:`, error);
+                    }
+                }
+                
+                console.log(`${successCount} von ${lehrjahre.length} Dateien erfolgreich geladen`);
+                console.log('ThemenData:', themenData);
+                
+                renderTimeline();
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('timeline-container').style.display = 'flex';
+                
+                if (successCount === 0) {
+                    document.getElementById('loading').innerHTML = `
+                        <div style="color: #c8102e;">
+                            <strong>⚠️ Keine Lehrjahr-Dateien gefunden</strong><br>
+                            <span style="font-size: 0.9em; color: #666;">
+                                Bitte stellen Sie sicher, dass die Datei aspekte_gesellschaft_zirkular_de.html im selben Verzeichnis liegt wie:<br>
+                                • 1-lehrjahr_de.html<br>
+                                • 2-lehrjahr_de.html<br>
+                                • 3-lehrjahr_de.html<br><br>
+                                Aktueller Pfad: ${window.location.href}
+                            </span>
+                        </div>
+                    `;
+                    document.getElementById('loading').style.display = 'block';
+                }
+                
+            } catch (error) {
+                console.error('Fehler beim Laden der Daten:', error);
+                document.getElementById('loading').innerHTML = `
+                    <div style="color: #c8102e;">
+                        <strong>Fehler beim Laden der Daten</strong><br>
+                        <span style="font-size: 0.9em; color: #666;">${error.message}</span>
+                    </div>
+                `;
+            }
+        }
+
+        function parseLehrjahrHTML(html, startThemeNr) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            
+            // Extrahiere Themen
+            const themeSections = doc.querySelectorAll('.theme-section');
+            
+            themeSections.forEach((section, themeIndex) => {
+                const actualThemeNr = startThemeNr + themeIndex;
+                
+                const themeHeader = section.querySelector('.theme-header h2');
+                const themeName = themeHeader ? themeHeader.textContent.trim() : `Thema ${actualThemeNr}`;
+                
+                const leitidee = section.querySelector('.leitidee p');
+                const leitideeText = leitidee ? leitidee.textContent.trim() : '';
+                
+                // Extrahiere Schlüsselkompetenzen
+                const schluesselkompetenzen = [];
+                
+                // Suche in col-schluessel (Themen-Ebene)
+                const schluesselCell = section.querySelector('td.col-schluessel');
+                if (schluesselCell) {
+                    const spans = schluesselCell.querySelectorAll('span[data-k]');
+                    spans.forEach(span => {
+                        const kompNr = span.getAttribute('data-k');
+                        const text = span.textContent.trim();
+                        // Nur Schlüsselkompetenzen (1.x) hinzufügen
+                        if (kompNr && kompNr.startsWith('1.')) {
+                            schluesselkompetenzen.push({ nr: kompNr, text: text });
+                        }
+                    });
+                }
+                
+                // Zusätzliche Suche: Falls Schlüsselkompetenzen in der Themen-Übersicht sind
+                const themeOverview = section.querySelector('.theme-overview, .kompetenzen-uebersicht');
+                if (themeOverview) {
+                    const spans = themeOverview.querySelectorAll('span[data-k]');
+                    spans.forEach(span => {
+                        const kompNr = span.getAttribute('data-k');
+                        const text = span.textContent.trim();
+                        // Nur Schlüsselkompetenzen (1.x) hinzufügen und Duplikate vermeiden
+                        if (kompNr && kompNr.startsWith('1.')) {
+                            const exists = schluesselkompetenzen.some(sk => sk.nr === kompNr);
+                            if (!exists) {
+                                schluesselkompetenzen.push({ nr: kompNr, text: text });
+                            }
+                        }
+                    });
+                }
+                
+                // Falls keine gefunden, suche in allen spans mit data-k="1.x" im gesamten Themen-Bereich
+                if (schluesselkompetenzen.length === 0) {
+                    const allSpans = section.querySelectorAll('span[data-k]');
+                    allSpans.forEach(span => {
+                        const kompNr = span.getAttribute('data-k');
+                        const text = span.textContent.trim();
+                        if (kompNr && kompNr.startsWith('1.')) {
+                            const exists = schluesselkompetenzen.some(sk => sk.nr === kompNr);
+                            if (!exists) {
+                                schluesselkompetenzen.push({ nr: kompNr, text: text });
+                            }
+                        }
+                    });
+                }
+                
+                // Extrahiere Lebensbezüge
+                const lebensbezuege = [];
+                const lebensbezugSections = section.querySelectorAll('.lebensbezug');
+                
+                lebensbezugSections.forEach((lbSection, lbIndex) => {
+                    const lbHeader = lbSection.querySelector('.lebensbezug-header h3');
+                    const lbText = lbHeader ? lbHeader.textContent.replace(/^\d+\.\s*Individueller Lebensbezug:\s*/i, '').trim() : '';
+                    
+                    // Extrahiere Kompetenzen aus diesem Lebensbezug
+                    const kompetenzen = [];
+                    const lerninhalte = lbSection.querySelectorAll('.lerninhalt');
+                    
+                    lerninhalte.forEach(lerninhalt => {
+                        const kompetenzTitle = lerninhalt.querySelector('h4');
+                        const kompetenzText = kompetenzTitle ? kompetenzTitle.textContent.trim() : '';
+                        
+                        // Extrahiere Inhalte aus der Tabelle
+                        const gesellschaftCell = lerninhalt.querySelector('td.col-gesellschaft');
+                        const digitalCell = lerninhalt.querySelector('td.col-digital');
+                        const spracheCell = lerninhalt.querySelector('td.col-sprache');
+                        
+                        const inhalte = {
+                            gesellschaft: [],
+                            digital: [],
+                            sprache: []
+                        };
+                        
+                        if (gesellschaftCell) {
+                            const spans = gesellschaftCell.querySelectorAll('span[data-k]');
+                            spans.forEach(span => {
+                                const kompNr = span.getAttribute('data-k');
+                                const text = span.textContent.trim();
+                                inhalte.gesellschaft.push({ nr: kompNr, text: text });
+                            });
+                        }
+                        
+                        if (digitalCell) {
+                            const spans = digitalCell.querySelectorAll('span[data-k]');
+                            spans.forEach(span => {
+                                const kompNr = span.getAttribute('data-k');
+                                const text = span.textContent.trim();
+                                inhalte.digital.push({ nr: kompNr, text: text });
+                            });
+                        }
+                        
+                        if (spracheCell) {
+                            const spans = spracheCell.querySelectorAll('span[data-k]');
+                            spans.forEach(span => {
+                                const kompNr = span.getAttribute('data-k');
+                                const text = span.textContent.trim();
+                                inhalte.sprache.push({ nr: kompNr, text: text });
+                            });
+                        }
+                        
+                        if (kompetenzText) {
+                            kompetenzen.push({
+                                title: kompetenzText,
+                                inhalte: inhalte
+                            });
+                        }
+                    });
+                    
+                    // Extrahiere Aspekte aus allen Kompetenzen
+                    const aspekte = new Set();
+                    kompetenzen.forEach(komp => {
+                        Object.values(komp.inhalte).forEach(inhaltArray => {
+                            inhaltArray.forEach(item => {
+                                if (item.nr) {
+                                    // Extrahiere Basisnummer (z.B. "2.8" aus "2.8.1" oder "1.10" direkt)
+                                    const parts = item.nr.split('.');
+                                    let baseNr = parts.length >= 2 ? `${parts[0]}.${parts[1]}` : item.nr;
+                                    const aspekt = kompetenzToAspekt[baseNr];
+                                    if (aspekt) {
+                                        aspekte.add(aspekt);
+                                    }
+                                }
+                            });
+                        });
+                    });
+                    
+                    lebensbezuege.push({
+                        text: lbText,
+                        kompetenzen: kompetenzen,
+                        aspekte: Array.from(aspekte)
+                    });
+                });
+                
+                themenData[actualThemeNr] = {
+                    name: themeName,
+                    leitidee: leitideeText,
+                    schluesselkompetenzen: schluesselkompetenzen,
+                    lebensbezuege: lebensbezuege
+                };
+            });
+        }
+
+        function renderTimeline() {
+            const container = document.getElementById('timeline-container');
+            container.innerHTML = ''; // Clear existing content
+            
+            // 1. Lehrjahr
+            const year1 = document.createElement('div');
+            year1.className = 'year-column';
+            year1.innerHTML = `
+                <div class="year-header">
+                    <h2>1. Lehrjahr</h2>
+                    <p>Grundlagen</p>
+                </div>
+            `;
+            
+            // Themen 1-3 für 1. Lehrjahr
+            let hasYear1Content = false;
+            for (let i = 1; i <= 3; i++) {
+                if (themenData[i]) {
+                    year1.appendChild(createThemeCard(i, themenData[i]));
+                    hasYear1Content = true;
+                }
+            }
+            
+            // Wenn keine Inhalte vorhanden, Platzhalter anzeigen
+            if (!hasYear1Content) {
+                const placeholder = document.createElement('div');
+                placeholder.className = 'theme-card';
+                placeholder.innerHTML = `
+                    <h3>Themen 1-3</h3>
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Noch nicht verfügbar</span>
+                        <div class="lebensbezug-text">Die Inhalte werden geladen, sobald 1-lehrjahr_de.html verfügbar ist.</div>
+                    </div>
+                `;
+                year1.appendChild(placeholder);
+            }
+            
+            container.appendChild(year1);
+            
+            // 2. Lehrjahr
+            const year2 = document.createElement('div');
+            year2.className = 'year-column';
+            year2.innerHTML = `
+                <div class="year-header">
+                    <h2>2. Lehrjahr</h2>
+                    <p>Vertiefung</p>
+                </div>
+            `;
+            
+            // Themen 4-6 für 2. Lehrjahr
+            let hasYear2Content = false;
+            for (let i = 4; i <= 6; i++) {
+                if (themenData[i]) {
+                    year2.appendChild(createThemeCard(i, themenData[i]));
+                    hasYear2Content = true;
+                }
+            }
+            
+            if (!hasYear2Content) {
+                const placeholder = document.createElement('div');
+                placeholder.className = 'theme-card';
+                placeholder.innerHTML = `
+                    <h3>Themen 4-6</h3>
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Noch nicht verfügbar</span>
+                        <div class="lebensbezug-text">Die Inhalte werden geladen, sobald 2-lehrjahr_de.html verfügbar ist.</div>
+                    </div>
+                `;
+                year2.appendChild(placeholder);
+            }
+            
+            container.appendChild(year2);
+            
+            // 3. Lehrjahr
+            const year3 = document.createElement('div');
+            year3.className = 'year-column';
+            year3.innerHTML = `
+                <div class="year-header">
+                    <h2>3. Lehrjahr</h2>
+                    <p>Transfer</p>
+                </div>
+            `;
+            
+            // Themen 7-8 für 3. Lehrjahr
+            let hasYear3Content = false;
+            for (let i = 7; i <= 8; i++) {
+                if (themenData[i]) {
+                    year3.appendChild(createThemeCard(i, themenData[i]));
+                    hasYear3Content = true;
+                }
+            }
+            
+            if (!hasYear3Content) {
+                const placeholder = document.createElement('div');
+                placeholder.className = 'theme-card';
+                placeholder.innerHTML = `
+                    <h3>Themen 7-8</h3>
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Noch nicht verfügbar</span>
+                        <div class="lebensbezug-text">Die Inhalte werden geladen, sobald 3-lehrjahr_de.html verfügbar ist.</div>
+                    </div>
+                `;
+                year3.appendChild(placeholder);
+            }
+            
+            container.appendChild(year3);
+        }
+
+        function createThemeCard(themeNr, themeData) {
+            const card = document.createElement('div');
+            card.className = 'theme-card';
+            
+            const title = document.createElement('h3');
+            title.textContent = themeData.name;
+            card.appendChild(title);
+            
+            // Schlüsselkompetenzen unter dem Themen-Titel
+            if (themeData.schluesselkompetenzen && themeData.schluesselkompetenzen.length > 0) {
+                const schluesselDiv = document.createElement('div');
+                schluesselDiv.className = 'schluesselkompetenzen';
+                
+                themeData.schluesselkompetenzen.forEach(sk => {
+                    const badge = document.createElement('div');
+                    badge.className = 'schluesselkompetenz-badge';
+                    badge.textContent = sk.text;
+                    badge.style.display = 'inline-block';
+                    badge.style.marginRight = '4px';
+                    badge.style.marginBottom = '4px';
+                    
+                    // Füge data-category für Hauptkategorie-Filterung hinzu
+                    badge.setAttribute('data-category', 'schluessel');
+                    
+                    // Füge data-aspekt für detaillierte Filterung hinzu
+                    if (sk.nr) {
+                        const parts = sk.nr.split('.');
+                        const baseNr = parts.length >= 2 ? `${parts[0]}.${parts[1]}` : sk.nr;
+                        const aspekt = kompetenzToAspekt[baseNr];
+                        if (aspekt) {
+                            badge.setAttribute('data-aspekt', aspekt);
+                        }
+                    }
+                    
+                    schluesselDiv.appendChild(badge);
+                });
+                
+                card.appendChild(schluesselDiv);
+            }
+            
+            // Lebensbezüge
+            themeData.lebensbezuege.forEach((lb, index) => {
+                const lbItem = document.createElement('div');
+                lbItem.className = 'lebensbezug-item';
+                
+                const label = document.createElement('span');
+                label.className = 'lebensbezug-label';
+                label.textContent = `Lebensbezug ${index + 1}`;
+                lbItem.appendChild(label);
+                
+                const text = document.createElement('div');
+                text.className = 'lebensbezug-text';
+                text.textContent = lb.text || '...';
+                lbItem.appendChild(text);
+                
+                // Kompetenzen unter dem Lebensbezug
+                if (lb.kompetenzen && lb.kompetenzen.length > 0) {
+                    const kompContainer = document.createElement('div');
+                    kompContainer.className = 'kompetenz-detail';
+                    
+                    // Sammle alle Kompetenznummern/Badges aus allen Kompetenzen
+                    const allBadges = [];
+                    
+                    lb.kompetenzen.forEach((komp) => {
+                        // Zeige die Kompetenzen aus den drei Bereichen
+                        const bereiche = [
+                            { key: 'gesellschaft', label: 'Gesellschaft', cssClass: 'kompetenz-badge-gesellschaft', category: 'gesellschaft' },
+                            { key: 'digital', label: 'Digital', cssClass: 'kompetenz-badge-digital', category: 'digital' },
+                            { key: 'sprache', label: 'Sprache', cssClass: 'kompetenz-badge-sprache', category: 'sprache' }
+                        ];
+                        
+                        bereiche.forEach(bereich => {
+                            if (komp.inhalte[bereich.key] && komp.inhalte[bereich.key].length > 0) {
+                                komp.inhalte[bereich.key].forEach(item => {
+                                    // Bestimme das Aspekt basierend auf der Kompetenznummer
+                                    let aspekt = null;
+                                    if (item.nr) {
+                                        const parts = item.nr.split('.');
+                                        const baseNr = parts.length >= 2 ? `${parts[0]}.${parts[1]}` : item.nr;
+                                        aspekt = kompetenzToAspekt[baseNr];
+                                    }
+                                    
+                                    allBadges.push({
+                                        text: item.text,
+                                        cssClass: bereich.cssClass,
+                                        aspekt: aspekt,
+                                        category: bereich.category
+                                    });
+                                });
+                            }
+                        });
+                    });
+                    
+                    // Zeige alle Badges ohne Kompetenz-Titel
+                    allBadges.forEach(badgeInfo => {
+                        const badge = document.createElement('div');
+                        badge.className = `kompetenz-badge ${badgeInfo.cssClass}`;
+                        badge.textContent = badgeInfo.text;
+                        badge.style.display = 'inline-block';
+                        badge.style.marginRight = '4px';
+                        badge.style.marginBottom = '4px';
+                        
+                        // Füge data-category für Hauptkategorie-Filterung hinzu
+                        badge.setAttribute('data-category', badgeInfo.category);
+                        
+                        // Füge data-aspekt Attribut hinzu für detaillierte Filterung
+                        if (badgeInfo.aspekt) {
+                            badge.setAttribute('data-aspekt', badgeInfo.aspekt);
+                        }
+                        
+                        kompContainer.appendChild(badge);
+                    });
+                    
+                    lbItem.appendChild(kompContainer);
+                }
+                
+                card.appendChild(lbItem);
+            });
+            
+            return card;
+        }
+        
+        function filterMainCategory(categoryName) {
+            // Alle Hauptkategorie-Buttons zurücksetzen
+            document.querySelectorAll('.main-filter-btn').forEach(btn => btn.classList.remove('active'));
+            
+            if (activeMainFilter === categoryName) {
+                // Wenn dieselbe Kategorie nochmal geklickt wird, Filter aufheben
+                activeMainFilter = null;
+                resetFilter();
+                return;
+            }
+            
+            // Neuen Button aktivieren
+            document.querySelector(`.main-filter-btn-${categoryName}`).classList.add('active');
+            activeMainFilter = categoryName;
+            
+            // Setze detaillierten Filter zurück
+            activeFilter = null;
+            document.querySelectorAll('.kachel').forEach(k => k.classList.remove('active'));
+            
+            // Filtere alle Badges nach Hauptkategorie
+            document.querySelectorAll('.kompetenz-badge, .schluesselkompetenz-badge').forEach(badge => {
+                const badgeCategory = badge.getAttribute('data-category');
+                if (badgeCategory === categoryName) {
+                    badge.style.display = 'inline-block';
+                    badge.style.opacity = '1';
+                } else {
+                    badge.style.display = 'none';
+                }
+            });
+            
+            // Verstecke Schlüsselkompetenzen-Boxen wenn nicht in der Kategorie
+            document.querySelectorAll('.schluesselkompetenzen').forEach(sk => {
+                if (categoryName === 'schluessel') {
+                    sk.style.display = 'block';
+                } else {
+                    sk.style.display = 'none';
+                }
+            });
+            
+            // Verstecke Lebensbezüge, die keine sichtbaren Badges haben
+            document.querySelectorAll('.lebensbezug-item').forEach(item => {
+                const badges = item.querySelectorAll('.kompetenz-badge');
+                const visibleBadges = Array.from(badges).filter(b => b.style.display !== 'none');
+                
+                if (visibleBadges.length === 0) {
+                    item.style.display = 'none';
+                } else {
+                    item.style.display = 'block';
+                }
+            });
+            
+            // Verstecke Theme-Cards, die keine sichtbaren Inhalte haben
+            document.querySelectorAll('.theme-card').forEach(card => {
+                const items = card.querySelectorAll('.lebensbezug-item');
+                const visibleItems = Array.from(items).filter(i => i.style.display !== 'none');
+                const schluesselBox = card.querySelector('.schluesselkompetenzen');
+                const schluesselVisible = schluesselBox && schluesselBox.style.display !== 'none';
+                
+                if (visibleItems.length === 0 && !schluesselVisible) {
+                    card.style.display = 'none';
+                } else {
+                    card.style.display = 'block';
+                }
+            });
+        }
+        
+        function filterAspekt(aspektName) {
+            // Alle Kacheln zurücksetzen
+            document.querySelectorAll('.kachel').forEach(k => k.classList.remove('active'));
+            
+            if (activeFilter === aspektName) {
+                // Wenn dieselbe Kachel nochmal geklickt wird, Filter aufheben
+                resetFilter();
+                return;
+            }
+            
+            // Neue Kachel aktivieren
+            document.querySelector(`.kachel-${aspektName}`).classList.add('active');
+            activeFilter = aspektName;
+            
+            // Setze Hauptkategorie-Filter zurück
+            activeMainFilter = null;
+            document.querySelectorAll('.main-filter-btn').forEach(btn => btn.classList.remove('active'));
+            
+            // Alle Badges durchgehen
+            document.querySelectorAll('.kompetenz-badge, .schluesselkompetenz-badge').forEach(badge => {
+                const badgeAspekt = badge.getAttribute('data-aspekt');
+                if (badgeAspekt === aspektName) {
+                    badge.style.display = 'inline-block';
+                    badge.style.opacity = '1';
+                } else {
+                    badge.style.display = 'none';
+                }
+            });
+            
+            // Verstecke Schlüsselkompetenzen-Boxen wenn kein Schlüsselkompetenz-Aspekt
+            const isSchluesselAspekt = aspektName.startsWith('schluessel-');
+            document.querySelectorAll('.schluesselkompetenzen').forEach(sk => {
+                const badges = sk.querySelectorAll('.schluesselkompetenz-badge');
+                const visibleBadges = Array.from(badges).filter(b => b.style.display !== 'none');
+                
+                if (visibleBadges.length === 0) {
+                    sk.style.display = 'none';
+                } else {
+                    sk.style.display = 'block';
+                }
+            });
+            
+            // Verstecke Lebensbezüge, die keine sichtbaren Badges haben
+            document.querySelectorAll('.lebensbezug-item').forEach(item => {
+                const badges = item.querySelectorAll('.kompetenz-badge');
+                const visibleBadges = Array.from(badges).filter(b => b.style.display !== 'none');
+                
+                if (visibleBadges.length === 0) {
+                    item.style.display = 'none';
+                } else {
+                    item.style.display = 'block';
+                }
+            });
+            
+            // Verstecke Theme-Cards, die keine sichtbaren Inhalte haben
+            document.querySelectorAll('.theme-card').forEach(card => {
+                const items = card.querySelectorAll('.lebensbezug-item');
+                const visibleItems = Array.from(items).filter(i => i.style.display !== 'none');
+                const schluesselBox = card.querySelector('.schluesselkompetenzen');
+                const schluesselVisible = schluesselBox && schluesselBox.style.display !== 'none';
+                
+                if (visibleItems.length === 0 && !schluesselVisible) {
+                    card.style.display = 'none';
+                } else {
+                    card.style.display = 'block';
+                }
+            });
+        }
+        
+        function resetFilter() {
+            activeFilter = null;
+            activeMainFilter = null;
+            document.querySelectorAll('.kachel').forEach(k => k.classList.remove('active'));
+            document.querySelectorAll('.main-filter-btn').forEach(btn => btn.classList.remove('active'));
+            
+            // Alle Badges wieder anzeigen
+            document.querySelectorAll('.kompetenz-badge, .schluesselkompetenz-badge').forEach(badge => {
+                badge.style.display = 'inline-block';
+                badge.style.opacity = '1';
+            });
+            
+            // Alle Schlüsselkompetenzen-Boxen wieder anzeigen
+            document.querySelectorAll('.schluesselkompetenzen').forEach(sk => {
+                sk.style.display = 'block';
+            });
+            
+            // Alle Lebensbezüge wieder anzeigen
+            document.querySelectorAll('.lebensbezug-item').forEach(item => {
+                item.style.display = 'block';
+            });
+            
+            // Alle Theme-Cards wieder anzeigen
+            document.querySelectorAll('.theme-card').forEach(card => {
+                card.style.display = 'block';
+            });
+        }
+
+        // Starte das Laden beim Seitenaufruf
+        document.addEventListener('DOMContentLoaded', function() {
+            loadLehrjahrData();
+        });
+    </script>
 </body>
 </html>
