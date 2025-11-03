@@ -947,9 +947,17 @@
                         bereiche.forEach(bereich => {
                             if (komp.inhalte[bereich.key] && komp.inhalte[bereich.key].length > 0) {
                                 komp.inhalte[bereich.key].forEach(item => {
+                                    // Bestimme das Aspekt basierend auf der Kompetenznummer
+                                    let aspekt = null;
+                                    if (item.nr) {
+                                        const baseNr = item.nr.substring(0, 3); // z.B. "2.8"
+                                        aspekt = kompetenzToAspekt[baseNr];
+                                    }
+                                    
                                     allBadges.push({
                                         text: item.text,
-                                        cssClass: bereich.cssClass
+                                        cssClass: bereich.cssClass,
+                                        aspekt: aspekt
                                     });
                                 });
                             }
@@ -964,6 +972,12 @@
                         badge.style.display = 'inline-block';
                         badge.style.marginRight = '4px';
                         badge.style.marginBottom = '4px';
+                        
+                        // Füge data-aspekt Attribut hinzu für Filterung
+                        if (badgeInfo.aspekt) {
+                            badge.setAttribute('data-aspekt', badgeInfo.aspekt);
+                        }
+                        
                         kompContainer.appendChild(badge);
                     });
                     
@@ -990,22 +1004,60 @@
             document.querySelector(`.kachel-${aspektName}`).classList.add('active');
             activeFilter = aspektName;
             
-            // Alle Aspekt-Tags verstecken
-            document.querySelectorAll('.aspekt-tag').forEach(tag => {
-                tag.classList.add('hidden');
+            // Alle Badges durchgehen
+            document.querySelectorAll('.kompetenz-badge').forEach(badge => {
+                const badgeAspekt = badge.getAttribute('data-aspekt');
+                if (badgeAspekt === aspektName) {
+                    badge.style.display = 'inline-block';
+                    badge.style.opacity = '1';
+                } else {
+                    badge.style.display = 'none';
+                }
             });
             
-            // Nur die entsprechenden Tags anzeigen
-            document.querySelectorAll(`.aspekt-tag[data-aspekt="${aspektName}"]`).forEach(tag => {
-                tag.classList.remove('hidden');
+            // Verstecke Lebensbezüge, die keine sichtbaren Badges haben
+            document.querySelectorAll('.lebensbezug-item').forEach(item => {
+                const badges = item.querySelectorAll('.kompetenz-badge');
+                const visibleBadges = Array.from(badges).filter(b => b.style.display !== 'none');
+                
+                if (visibleBadges.length === 0) {
+                    item.style.display = 'none';
+                } else {
+                    item.style.display = 'block';
+                }
+            });
+            
+            // Verstecke Theme-Cards, die keine sichtbaren Lebensbezüge haben
+            document.querySelectorAll('.theme-card').forEach(card => {
+                const items = card.querySelectorAll('.lebensbezug-item');
+                const visibleItems = Array.from(items).filter(i => i.style.display !== 'none');
+                
+                if (visibleItems.length === 0) {
+                    card.style.display = 'none';
+                } else {
+                    card.style.display = 'block';
+                }
             });
         }
         
         function resetFilter() {
             activeFilter = null;
             document.querySelectorAll('.kachel').forEach(k => k.classList.remove('active'));
-            document.querySelectorAll('.aspekt-tag').forEach(tag => {
-                tag.classList.remove('hidden');
+            
+            // Alle Badges wieder anzeigen
+            document.querySelectorAll('.kompetenz-badge').forEach(badge => {
+                badge.style.display = 'inline-block';
+                badge.style.opacity = '1';
+            });
+            
+            // Alle Lebensbezüge wieder anzeigen
+            document.querySelectorAll('.lebensbezug-item').forEach(item => {
+                item.style.display = 'block';
+            });
+            
+            // Alle Theme-Cards wieder anzeigen
+            document.querySelectorAll('.theme-card').forEach(card => {
+                card.style.display = 'block';
             });
         }
 
