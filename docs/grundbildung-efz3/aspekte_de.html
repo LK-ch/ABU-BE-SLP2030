@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aspekte Gesellschaft EFZ - Zirkulärer Aufbau</title>
+    <title>Zirkulärer Aufbau von Kompetenzen - EFZ</title>
     <style>
         * {
             margin: 0;
@@ -91,13 +91,8 @@
         h1 {
             color: #fff;
             font-size: 2.2em;
-            margin-bottom: 10px;
+            margin-bottom: 0;
             font-weight: 700;
-        }
-
-        .subtitle {
-            color: #fff;
-            font-size: 1.1em;
         }
 
         /* Container */
@@ -131,42 +126,6 @@
             text-decoration: none;
         }
 
-        /* Status Info Box */
-        .status-info {
-            background: #fff3cd;
-            border-left: 4px solid #c8102e;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .status-info h2 {
-            color: #c8102e;
-            margin-bottom: 10px;
-            font-size: 1.6em;
-            font-weight: 700;
-        }
-
-        .status-info ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .status-info li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .status-info li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #c8102e;
-            font-weight: bold;
-        }
-
         /* Loading Indicator */
         .loading {
             text-align: center;
@@ -175,17 +134,17 @@
             font-weight: 600;
         }
 
-        /* Grid Container für Aspekte */
+        /* Grid Container für Aspekte - kleinere Kacheln */
         .kachel-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 12px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
             margin-bottom: 20px;
         }
 
         .kachel {
             background: white;
-            padding: 12px;
+            padding: 10px;
             border-radius: 6px;
             border-left: 3px solid;
             cursor: pointer;
@@ -234,9 +193,10 @@
         .kachel-sprache-int-digital { border-color: #3385d6; }
 
         .kachel h3 {
-            font-size: 0.9em;
-            margin-bottom: 6px;
+            font-size: 0.85em;
+            margin-bottom: 0;
             color: #333;
+            line-height: 1.3;
         }
 
         /* Einheitlich hellgelb für alle Gesellschafts-Aspekte */
@@ -266,12 +226,6 @@
         .kachel-sprache-int-muendlich h3,
         .kachel-sprache-int-schriftlich h3,
         .kachel-sprache-int-digital h3 { color: #3385d6; }
-
-        .kachel p {
-            font-size: 0.75em;
-            line-height: 1.4;
-            color: #666;
-        }
 
         /* Reset Button */
         .reset-btn {
@@ -504,20 +458,16 @@
             }
 
             .kachel-grid {
-                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-                gap: 10px;
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 8px;
             }
 
             .kachel {
-                padding: 10px;
+                padding: 8px;
             }
 
             .kachel h3 {
-                font-size: 0.8em;
-            }
-
-            .kachel p {
-                font-size: 0.7em;
+                font-size: 0.75em;
             }
 
             .year-header h2 {
@@ -561,8 +511,7 @@
                 <a href="zirkularitaet_de.html">Zirkularität</a> /
                 Aspekte Gesellschaft
             </nav>
-            <h1>Aspekte Gesellschaft</h1>
-            <p class="subtitle">Spiralförmige Entwicklung der gesellschaftlichen Kompetenzen</p>
+            <h1>Zirkulärer Aufbau von Kompetenzen</h1>
         </div>
     </header>
 
@@ -570,16 +519,6 @@
         <a href="zirkularitaet_de.html" class="back-btn">
             ← Zurück zur Zirkularität
         </a>
-
-        <div class="status-info">
-            <h2>🔄 Zirkulärer Aufbau der Gesellschaftsaspekte</h2>
-            <ul>
-                <li>Die 8 Aspekte werden spiralförmig über alle Themen aufgebaut</li>
-                <li>Kompetenzen werden in verschiedenen Lebensbezügen vertieft</li>
-                <li>Progression vom 1. zum 3. Lehrjahr nebeneinander sichtbar</li>
-                <li>Klicken Sie auf einen Aspekt, um dessen Vorkommen zu filtern</li>
-            </ul>
-        </div>
 
         <div class="section-title">Kompetenzaufbau über die Lehrjahre</div>
 
@@ -598,35 +537,27 @@
         <div class="kachel-grid">
             <div class="kachel kachel-ethik" onclick="filterAspekt('ethik')">
                 <h3>2.1 Ethik</h3>
-                <p>Werte, Normen und moralische Fragen</p>
             </div>
             <div class="kachel kachel-identitaet" onclick="filterAspekt('identitaet')">
                 <h3>2.2 Identität & Sozialisation</h3>
-                <p>Persönliche Entwicklung und Prägung</p>
             </div>
             <div class="kachel kachel-kultur" onclick="filterAspekt('kultur')">
                 <h3>2.3 Kultur</h3>
-                <p>Kulturelle Vielfalt und Dialog</p>
             </div>
             <div class="kachel kachel-oekologie" onclick="filterAspekt('oekologie')">
                 <h3>2.4 Ökologie</h3>
-                <p>Nachhaltigkeit und Umwelt</p>
             </div>
             <div class="kachel kachel-politik" onclick="filterAspekt('politik')">
                 <h3>2.5 Politik</h3>
-                <p>Demokratie und Partizipation</p>
             </div>
             <div class="kachel kachel-recht" onclick="filterAspekt('recht')">
                 <h3>2.6 Recht</h3>
-                <p>Rechtliche Grundlagen</p>
             </div>
             <div class="kachel kachel-tech" onclick="filterAspekt('tech')">
                 <h3>2.7 Technologie</h3>
-                <p>Digitalisierung und Wandel</p>
             </div>
             <div class="kachel kachel-wirtschaft" onclick="filterAspekt('wirtschaft')">
                 <h3>2.8 Wirtschaft</h3>
-                <p>Ökonomische Zusammenhänge</p>
             </div>
         </div>
 
@@ -634,31 +565,24 @@
         <div class="kachel-grid">
             <div class="kachel kachel-digital-grundlagen" onclick="filterAspekt('digital-grundlagen')">
                 <h3>3.1 Grundlagen Informatik</h3>
-                <p>Informatik-Grundwissen</p>
             </div>
             <div class="kachel kachel-digital-info" onclick="filterAspekt('digital-info')">
                 <h3>3.2 Informations- & Datenkompetenz</h3>
-                <p>Umgang mit Informationen und Daten</p>
             </div>
             <div class="kachel kachel-digital-kommunikation" onclick="filterAspekt('digital-kommunikation')">
                 <h3>3.3 Kommunikation & Zusammenarbeit</h3>
-                <p>Digitale Kommunikationsformen</p>
             </div>
             <div class="kachel kachel-digital-inhalt" onclick="filterAspekt('digital-inhalt')">
                 <h3>3.4 Inhaltserstellung</h3>
-                <p>Digitale Inhalte erstellen</p>
             </div>
             <div class="kachel kachel-digital-problemloesung" onclick="filterAspekt('digital-problemloesung')">
                 <h3>3.5 Problemlösung</h3>
-                <p>Digitale Problemlösungsstrategien</p>
             </div>
             <div class="kachel kachel-digital-ki" onclick="filterAspekt('digital-ki')">
                 <h3>3.6 KI-spezifische Komponenten</h3>
-                <p>Künstliche Intelligenz verstehen</p>
             </div>
             <div class="kachel kachel-digital-ethik" onclick="filterAspekt('digital-ethik')">
                 <h3>3.7 Ethische & reflexive Haltung</h3>
-                <p>Ethischer Umgang mit Technologie</p>
             </div>
         </div>
 
@@ -666,39 +590,30 @@
         <div class="kachel-grid">
             <div class="kachel kachel-sprache-rez-muendlich" onclick="filterAspekt('sprache-rez-muendlich')">
                 <h3>4.1 Rezeption mündlich</h3>
-                <p>Mündliches Verstehen</p>
             </div>
             <div class="kachel kachel-sprache-rez-schriftlich" onclick="filterAspekt('sprache-rez-schriftlich')">
                 <h3>4.2 Rezeption schriftlich & bildlich</h3>
-                <p>Schriftliches und bildliches Verstehen</p>
             </div>
             <div class="kachel kachel-sprache-rez-audiovisuell" onclick="filterAspekt('sprache-rez-audiovisuell')">
                 <h3>4.3 Rezeption audiovisuell</h3>
-                <p>Audiovisuelles Verstehen</p>
             </div>
             <div class="kachel kachel-sprache-prod-muendlich" onclick="filterAspekt('sprache-prod-muendlich')">
                 <h3>4.4 Produktion mündlich</h3>
-                <p>Mündliche Produktion</p>
             </div>
             <div class="kachel kachel-sprache-prod-schriftlich" onclick="filterAspekt('sprache-prod-schriftlich')">
                 <h3>4.5 Produktion schriftlich & bildlich</h3>
-                <p>Schriftliche und bildliche Produktion</p>
             </div>
             <div class="kachel kachel-sprache-prod-multimedial" onclick="filterAspekt('sprache-prod-multimedial')">
                 <h3>4.6 Produktion multimedial</h3>
-                <p>Multimediale Produktion</p>
             </div>
             <div class="kachel kachel-sprache-int-muendlich" onclick="filterAspekt('sprache-int-muendlich')">
                 <h3>4.7 Interaktion & Kollaboration mündlich</h3>
-                <p>Mündliche Interaktion</p>
             </div>
             <div class="kachel kachel-sprache-int-schriftlich" onclick="filterAspekt('sprache-int-schriftlich')">
                 <h3>4.8 Interaktion & Kollaboration schriftlich</h3>
-                <p>Schriftliche Interaktion</p>
             </div>
             <div class="kachel kachel-sprache-int-digital" onclick="filterAspekt('sprache-int-digital')">
                 <h3>4.9 Interaktion & Kollaboration digital</h3>
-                <p>Digitale Interaktion</p>
             </div>
         </div>
 
