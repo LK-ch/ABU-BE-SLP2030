@@ -38,6 +38,33 @@
             padding: 30px 20px;
             margin-bottom: 30px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .language-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            padding: 8px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.95em;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .language-switch:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .header-container {
@@ -138,6 +165,14 @@
             left: 0;
             color: #c8102e;
             font-weight: bold;
+        }
+
+        /* Loading Indicator */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #c8102e;
+            font-weight: 600;
         }
 
         /* Grid Container für Aspekte */
@@ -316,6 +351,52 @@
             line-height: 1.4;
         }
 
+        /* Kompetenz-Details in Lebensbezügen */
+        .kompetenz-detail {
+            margin-top: 8px;
+            font-size: 0.8em;
+        }
+
+        .kompetenz-detail-item {
+            margin-bottom: 8px;
+            padding-left: 10px;
+            border-left: 2px solid #c8102e;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 6px;
+            border-radius: 4px;
+        }
+
+        .kompetenz-detail-title {
+            font-weight: 600;
+            color: #c8102e;
+            margin-bottom: 4px;
+            font-size: 0.9em;
+        }
+
+        .kompetenz-badge {
+            display: inline-block;
+            font-size: 0.75em;
+            padding: 3px 8px;
+            margin: 2px 2px 2px 0;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .kompetenz-badge-gesellschaft {
+            background-color: rgba(255, 217, 102, 0.3);
+            border-left: 3px solid #ffd966;
+        }
+
+        .kompetenz-badge-digital {
+            background-color: rgba(77, 179, 128, 0.3);
+            border-left: 3px solid #4db380;
+        }
+
+        .kompetenz-badge-sprache {
+            background-color: rgba(51, 133, 214, 0.3);
+            border-left: 3px solid #3385d6;
+        }
+
         /* Aspekt Tags */
         .aspekt-tags {
             margin-top: 10px;
@@ -393,6 +474,13 @@
             .theme-card h3 {
                 font-size: 0.95em;
             }
+
+            .language-switch {
+                top: 10px;
+                right: 10px;
+                font-size: 0.85em;
+                padding: 6px 16px;
+            }
         }
 
         /* Section Title */
@@ -410,6 +498,9 @@
 <body>
     <!-- Header -->
     <header>
+        <a href="aspekte_fr.html" class="language-switch">
+            🇫🇷 Français
+        </a>
         <div class="header-container">
             <nav class="breadcrumb">
                 <a href="../index_de.html">Schullehrplan ABU</a> / 
@@ -476,239 +567,431 @@
 
         <div class="section-title">Kompetenzaufbau über die Lehrjahre</div>
 
+        <div id="loading" class="loading">
+            Lade Kompetenzen aus dem Lehrplan...
+        </div>
+
         <!-- Timeline Grid mit 3 Spalten nebeneinander -->
-        <div class="timeline-grid">
-            <!-- 1. Lehrjahr -->
-            <div class="year-column">
-                <div class="year-header">
-                    <h2>1. Lehrjahr</h2>
-                    <p>Grundlagen</p>
-                </div>
-
-                <!-- Thema 1 -->
-                <div class="theme-card">
-                    <h3>Thema 1: Meine Berufsausbildung</h3>
-                    
-                    <div class="lebensbezug-item">
-                        <span class="lebensbezug-label">Lebensbezug 1</span>
-                        <div class="lebensbezug-text">...</div>
-                    </div>
-                    
-                    <div class="lebensbezug-item">
-                        <span class="lebensbezug-label">Lebensbezug 2</span>
-                        <div class="lebensbezug-text">...</div>
-                    </div>
-                    
-                    <div class="lebensbezug-item">
-                        <span class="lebensbezug-label">Lebensbezug 3</span>
-                        <div class="lebensbezug-text">...</div>
-                    </div>
-                    
-                    <div class="aspekt-tags">
-                        <!-- Aspekte einfügen -->
-                    </div>
-                </div>
-
-                <!-- Thema 2 -->
-                <div class="theme-card">
-                    <h3>Thema 2: Geld verdienen und ausgeben</h3>
-                    
-                    <div class="lebensbezug-item">
-                        <span class="lebensbezug-label">Lebensbezug 1</span>
-                        <div class="lebensbezug-text">...</div>
-                    </div>
-                    
-                    <div class="lebensbezug-item">
-                        <span class="lebensbezug-label">Lebensbezug 2</span>
-                        <div class="lebensbezug-text">...</div>
-                    </div>
-                    
-                    <div class="lebensbezug-item">
-                        <span class="lebensbezug-label">Lebensbezug 3</span>
-                        <div class="lebensbezug-text">...</div>
-                    </div>
-                    
-                    <div class="aspekt-tags">
-                        <span class="aspekt-tag btn-wirtschaft" data-aspekt="wirtschaft" onclick="filterAspekt('wirtschaft')">Wirtschaft</span>
-                    </div>
-                </div>
-
-                <!-- Thema 3 -->
-                <div class="theme-card">
-                    <h3>Thema 3: Gesund und sicher durchs Leben</h3>
-                    
-                    <div class="lebensbezug-item">
-                        <span class="lebensbezug-label">Lebensbezug 1</span>
-                        <div class="lebensbezug-text">...</div>
-                    </div>
-                    
-                    <div class="lebensbezug-item">
-                        <span class="lebensbezug-label">Lebensbezug 2</span>
-                        <div class="lebensbezug-text">...</div>
-                    </div>
-                    
-                    <div class="lebensbezug-item">
-                        <span class="lebensbezug-label">Lebensbezug 3</span>
-                        <div class="lebensbezug-text">...</div>
-                    </div>
-                    
-                    <div class="aspekt-tags">
-                        <!-- Aspekte einfügen -->
-                    </div>
-                </div>
-            </div>
-
-            <!-- Arrow zwischen 1. und 2. Lehrjahr -->
-            <div class="arrow-connector">→</div>
-
-            <!-- 2. Lehrjahr -->
-            <div class="year-column">
-                <div class="year-header">
-                    <h2>2. Lehrjahr</h2>
-                    <p>Vertiefung</p>
-                </div>
-
-                <!-- Thema 4 -->
-                <div class="theme-card">
-                    <h3>Thema 4: ...</h3>
-                    
-                    <div class="lebensbezug-item">
-                        <span class="lebensbezug-label">Lebensbezug 1</span>
-                        <div class="lebensbezug-text">...</div>
-                    </div>
-                    
-                    <div class="lebensbezug-item">
-                        <span class="lebensbezug-label">Lebensbezug 2</span>
-                        <div class="lebensbezug-text">...</div>
-                    </div>
-                    
-                    <div class="lebensbezug-item">
-                        <span class="lebensbezug-label">Lebensbezug 3</span>
-                        <div class="lebensbezug-text">...</div>
-                    </div>
-                    
-                    <div class="aspekt-tags">
-                        <!-- Aspekte einfügen -->
-                    </div>
-                </div>
-
-                <!-- Thema 5 -->
-                <div class="theme-card">
-                    <h3>Thema 5: ...</h3>
-                    
-                    <div class="lebensbezug-item">
-                        <span class="lebensbezug-label">Lebensbezug 1</span>
-                        <div class="lebensbezug-text">...</div>
-                    </div>
-                    
-                    <div class="lebensbezug-item">
-                        <span class="lebensbezug-label">Lebensbezug 2</span>
-                        <div class="lebensbezug-text">...</div>
-                    </div>
-                    
-                    <div class="lebensbezug-item">
-                        <span class="lebensbezug-label">Lebensbezug 3</span>
-                        <div class="lebensbezug-text">...</div>
-                    </div>
-                    
-                    <div class="aspekt-tags">
-                        <!-- Aspekte einfügen -->
-                    </div>
-                </div>
-
-                <!-- Thema 6 -->
-                <div class="theme-card">
-                    <h3>Thema 6: ...</h3>
-                    
-                    <div class="lebensbezug-item">
-                        <span class="lebensbezug-label">Lebensbezug 1</span>
-                        <div class="lebensbezug-text">...</div>
-                    </div>
-                    
-                    <div class="lebensbezug-item">
-                        <span class="lebensbezug-label">Lebensbezug 2</span>
-                        <div class="lebensbezug-text">...</div>
-                    </div>
-                    
-                    <div class="lebensbezug-item">
-                        <span class="lebensbezug-label">Lebensbezug 3</span>
-                        <div class="lebensbezug-text">...</div>
-                    </div>
-                    
-                    <div class="lebensbezug-item">
-                        <span class="lebensbezug-label">Lebensbezug 4</span>
-                        <div class="lebensbezug-text">...</div>
-                    </div>
-                    
-                    <div class="aspekt-tags">
-                        <!-- Aspekte einfügen -->
-                    </div>
-                </div>
-            </div>
-
-            <!-- Arrow zwischen 2. und 3. Lehrjahr -->
-            <div class="arrow-connector">→</div>
-
-            <!-- 3. Lehrjahr -->
-            <div class="year-column">
-                <div class="year-header">
-                    <h2>3. Lehrjahr</h2>
-                    <p>Transfer</p>
-                </div>
-
-                <!-- Thema 7 -->
-                <div class="theme-card">
-                    <h3>Thema 7: ...</h3>
-                    
-                    <div class="lebensbezug-item">
-                        <span class="lebensbezug-label">Lebensbezug 1</span>
-                        <div class="lebensbezug-text">...</div>
-                    </div>
-                    
-                    <div class="lebensbezug-item">
-                        <span class="lebensbezug-label">Lebensbezug 2</span>
-                        <div class="lebensbezug-text">...</div>
-                    </div>
-                    
-                    <div class="lebensbezug-item">
-                        <span class="lebensbezug-label">Lebensbezug 3</span>
-                        <div class="lebensbezug-text">...</div>
-                    </div>
-                    
-                    <div class="aspekt-tags">
-                        <!-- Aspekte einfügen -->
-                    </div>
-                </div>
-
-                <!-- Thema 8 -->
-                <div class="theme-card">
-                    <h3>Thema 8: ...</h3>
-                    
-                    <div class="lebensbezug-item">
-                        <span class="lebensbezug-label">Lebensbezug 1</span>
-                        <div class="lebensbezug-text">...</div>
-                    </div>
-                    
-                    <div class="lebensbezug-item">
-                        <span class="lebensbezug-label">Lebensbezug 2</span>
-                        <div class="lebensbezug-text">...</div>
-                    </div>
-                    
-                    <div class="lebensbezug-item">
-                        <span class="lebensbezug-label">Lebensbezug 3</span>
-                        <div class="lebensbezug-text">...</div>
-                    </div>
-                    
-                    <div class="aspekt-tags">
-                        <!-- Aspekte einfügen -->
-                    </div>
-                </div>
-            </div>
+        <div id="timeline-container" class="timeline-grid" style="display: none;">
+            <!-- Wird dynamisch gefüllt -->
         </div>
     </div>
 
     <script>
         let activeFilter = null;
+        let themenData = {};
+
+        // Mapping von Kompetenznummern zu Aspekten
+        const kompetenzToAspekt = {
+            '2.1': 'ethik',
+            '2.2': 'identitaet',
+            '2.3': 'kultur',
+            '2.4': 'oekologie',
+            '2.5': 'politik',
+            '2.6': 'recht',
+            '2.7': 'tech',
+            '2.8': 'wirtschaft'
+        };
+
+        const aspektLabels = {
+            'ethik': 'Ethik',
+            'identitaet': 'Identität',
+            'kultur': 'Kultur',
+            'oekologie': 'Ökologie',
+            'politik': 'Politik',
+            'recht': 'Recht',
+            'tech': 'Technologie',
+            'wirtschaft': 'Wirtschaft'
+        };
+
+        // Lade und parse die Lehrjahr-Dateien
+        async function loadLehrjahrData() {
+            try {
+                // Lade alle drei Lehrjahre
+                const lehrjahre = [
+                    { file: '1-lehrjahr_de.html', year: 1, startTheme: 1 },
+                    { file: '2-lehrjahr_de.html', year: 2, startTheme: 4 },
+                    { file: '3-lehrjahr_de.html', year: 3, startTheme: 7 }
+                ];
+
+                let successCount = 0;
+                
+                for (const lehrjahr of lehrjahre) {
+                    try {
+                        console.log(`Versuche ${lehrjahr.file} zu laden...`);
+                        console.log(`Basis-URL: ${window.location.href}`);
+                        
+                        const response = await fetch(lehrjahr.file);
+                        console.log(`Response Status für ${lehrjahr.file}: ${response.status}`);
+                        console.log(`Response URL: ${response.url}`);
+                        
+                        if (!response.ok) {
+                            console.log(`${lehrjahr.file} konnte nicht geladen werden (Status: ${response.status})`);
+                            continue;
+                        }
+                        
+                        const html = await response.text();
+                        console.log(`${lehrjahr.file} erfolgreich geladen, Länge: ${html.length} Zeichen`);
+                        parseLehrjahrHTML(html, lehrjahr.startTheme);
+                        successCount++;
+                        console.log(`${lehrjahr.file} erfolgreich verarbeitet`);
+                    } catch (error) {
+                        console.error(`Fehler beim Laden von ${lehrjahr.file}:`, error);
+                    }
+                }
+                
+                console.log(`${successCount} von ${lehrjahre.length} Dateien erfolgreich geladen`);
+                console.log('ThemenData:', themenData);
+                
+                renderTimeline();
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('timeline-container').style.display = 'flex';
+                
+                if (successCount === 0) {
+                    document.getElementById('loading').innerHTML = `
+                        <div style="color: #c8102e;">
+                            <strong>⚠️ Keine Lehrjahr-Dateien gefunden</strong><br>
+                            <span style="font-size: 0.9em; color: #666;">
+                                Bitte stellen Sie sicher, dass die Datei aspekte_gesellschaft_zirkular_de.html im selben Verzeichnis liegt wie:<br>
+                                • 1-lehrjahr_de.html<br>
+                                • 2-lehrjahr_de.html<br>
+                                • 3-lehrjahr_de.html<br><br>
+                                Aktueller Pfad: ${window.location.href}
+                            </span>
+                        </div>
+                    `;
+                    document.getElementById('loading').style.display = 'block';
+                }
+                
+            } catch (error) {
+                console.error('Fehler beim Laden der Daten:', error);
+                document.getElementById('loading').innerHTML = `
+                    <div style="color: #c8102e;">
+                        <strong>Fehler beim Laden der Daten</strong><br>
+                        <span style="font-size: 0.9em; color: #666;">${error.message}</span>
+                    </div>
+                `;
+            }
+        }
+
+        function parseLehrjahrHTML(html, startThemeNr) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            
+            // Extrahiere Themen
+            const themeSections = doc.querySelectorAll('.theme-section');
+            
+            themeSections.forEach((section, themeIndex) => {
+                const actualThemeNr = startThemeNr + themeIndex;
+                
+                const themeHeader = section.querySelector('.theme-header h2');
+                const themeName = themeHeader ? themeHeader.textContent.trim() : `Thema ${actualThemeNr}`;
+                
+                const leitidee = section.querySelector('.leitidee p');
+                const leitideeText = leitidee ? leitidee.textContent.trim() : '';
+                
+                // Extrahiere Lebensbezüge
+                const lebensbezuege = [];
+                const lebensbezugSections = section.querySelectorAll('.lebensbezug');
+                
+                lebensbezugSections.forEach((lbSection, lbIndex) => {
+                    const lbHeader = lbSection.querySelector('.lebensbezug-header h3');
+                    const lbText = lbHeader ? lbHeader.textContent.replace(/^\d+\.\s*Individueller Lebensbezug:\s*/i, '').trim() : '';
+                    
+                    // Extrahiere Kompetenzen aus diesem Lebensbezug
+                    const kompetenzen = [];
+                    const lerninhalte = lbSection.querySelectorAll('.lerninhalt');
+                    
+                    lerninhalte.forEach(lerninhalt => {
+                        const kompetenzTitle = lerninhalt.querySelector('h4');
+                        const kompetenzText = kompetenzTitle ? kompetenzTitle.textContent.trim() : '';
+                        
+                        // Extrahiere Inhalte aus der Tabelle
+                        const gesellschaftCell = lerninhalt.querySelector('td.col-gesellschaft');
+                        const digitalCell = lerninhalt.querySelector('td.col-digital');
+                        const spracheCell = lerninhalt.querySelector('td.col-sprache');
+                        
+                        const inhalte = {
+                            gesellschaft: [],
+                            digital: [],
+                            sprache: []
+                        };
+                        
+                        if (gesellschaftCell) {
+                            const spans = gesellschaftCell.querySelectorAll('span[data-k]');
+                            spans.forEach(span => {
+                                const kompNr = span.getAttribute('data-k');
+                                const text = span.textContent.trim();
+                                inhalte.gesellschaft.push({ nr: kompNr, text: text });
+                            });
+                        }
+                        
+                        if (digitalCell) {
+                            const spans = digitalCell.querySelectorAll('span[data-k]');
+                            spans.forEach(span => {
+                                const kompNr = span.getAttribute('data-k');
+                                const text = span.textContent.trim();
+                                inhalte.digital.push({ nr: kompNr, text: text });
+                            });
+                        }
+                        
+                        if (spracheCell) {
+                            const spans = spracheCell.querySelectorAll('span[data-k]');
+                            spans.forEach(span => {
+                                const kompNr = span.getAttribute('data-k');
+                                const text = span.textContent.trim();
+                                inhalte.sprache.push({ nr: kompNr, text: text });
+                            });
+                        }
+                        
+                        if (kompetenzText) {
+                            kompetenzen.push({
+                                title: kompetenzText,
+                                inhalte: inhalte
+                            });
+                        }
+                    });
+                    
+                    // Extrahiere Aspekte aus allen Kompetenzen
+                    const aspekte = new Set();
+                    kompetenzen.forEach(komp => {
+                        Object.values(komp.inhalte).forEach(inhaltArray => {
+                            inhaltArray.forEach(item => {
+                                if (item.nr) {
+                                    const baseNr = item.nr.substring(0, 3);
+                                    const aspekt = kompetenzToAspekt[baseNr];
+                                    if (aspekt) {
+                                        aspekte.add(aspekt);
+                                    }
+                                }
+                            });
+                        });
+                    });
+                    
+                    lebensbezuege.push({
+                        text: lbText,
+                        kompetenzen: kompetenzen,
+                        aspekte: Array.from(aspekte)
+                    });
+                });
+                
+                themenData[actualThemeNr] = {
+                    name: themeName,
+                    leitidee: leitideeText,
+                    lebensbezuege: lebensbezuege
+                };
+            });
+        }
+
+        function renderTimeline() {
+            const container = document.getElementById('timeline-container');
+            container.innerHTML = ''; // Clear existing content
+            
+            // 1. Lehrjahr
+            const year1 = document.createElement('div');
+            year1.className = 'year-column';
+            year1.innerHTML = `
+                <div class="year-header">
+                    <h2>1. Lehrjahr</h2>
+                    <p>Grundlagen</p>
+                </div>
+            `;
+            
+            // Themen 1-3 für 1. Lehrjahr
+            let hasYear1Content = false;
+            for (let i = 1; i <= 3; i++) {
+                if (themenData[i]) {
+                    year1.appendChild(createThemeCard(i, themenData[i]));
+                    hasYear1Content = true;
+                }
+            }
+            
+            // Wenn keine Inhalte vorhanden, Platzhalter anzeigen
+            if (!hasYear1Content) {
+                const placeholder = document.createElement('div');
+                placeholder.className = 'theme-card';
+                placeholder.innerHTML = `
+                    <h3>Themen 1-3</h3>
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Noch nicht verfügbar</span>
+                        <div class="lebensbezug-text">Die Inhalte werden geladen, sobald 1-lehrjahr_de.html verfügbar ist.</div>
+                    </div>
+                `;
+                year1.appendChild(placeholder);
+            }
+            
+            container.appendChild(year1);
+            
+            // Arrow
+            const arrow1 = document.createElement('div');
+            arrow1.className = 'arrow-connector';
+            arrow1.textContent = '→';
+            container.appendChild(arrow1);
+            
+            // 2. Lehrjahr
+            const year2 = document.createElement('div');
+            year2.className = 'year-column';
+            year2.innerHTML = `
+                <div class="year-header">
+                    <h2>2. Lehrjahr</h2>
+                    <p>Vertiefung</p>
+                </div>
+            `;
+            
+            // Themen 4-6 für 2. Lehrjahr
+            let hasYear2Content = false;
+            for (let i = 4; i <= 6; i++) {
+                if (themenData[i]) {
+                    year2.appendChild(createThemeCard(i, themenData[i]));
+                    hasYear2Content = true;
+                }
+            }
+            
+            if (!hasYear2Content) {
+                const placeholder = document.createElement('div');
+                placeholder.className = 'theme-card';
+                placeholder.innerHTML = `
+                    <h3>Themen 4-6</h3>
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Noch nicht verfügbar</span>
+                        <div class="lebensbezug-text">Die Inhalte werden geladen, sobald 2-lehrjahr_de.html verfügbar ist.</div>
+                    </div>
+                `;
+                year2.appendChild(placeholder);
+            }
+            
+            container.appendChild(year2);
+            
+            // Arrow
+            const arrow2 = document.createElement('div');
+            arrow2.className = 'arrow-connector';
+            arrow2.textContent = '→';
+            container.appendChild(arrow2);
+            
+            // 3. Lehrjahr
+            const year3 = document.createElement('div');
+            year3.className = 'year-column';
+            year3.innerHTML = `
+                <div class="year-header">
+                    <h2>3. Lehrjahr</h2>
+                    <p>Transfer</p>
+                </div>
+            `;
+            
+            // Themen 7-8 für 3. Lehrjahr
+            let hasYear3Content = false;
+            for (let i = 7; i <= 8; i++) {
+                if (themenData[i]) {
+                    year3.appendChild(createThemeCard(i, themenData[i]));
+                    hasYear3Content = true;
+                }
+            }
+            
+            if (!hasYear3Content) {
+                const placeholder = document.createElement('div');
+                placeholder.className = 'theme-card';
+                placeholder.innerHTML = `
+                    <h3>Themen 7-8</h3>
+                    <div class="lebensbezug-item">
+                        <span class="lebensbezug-label">Noch nicht verfügbar</span>
+                        <div class="lebensbezug-text">Die Inhalte werden geladen, sobald 3-lehrjahr_de.html verfügbar ist.</div>
+                    </div>
+                `;
+                year3.appendChild(placeholder);
+            }
+            
+            container.appendChild(year3);
+        }
+
+        function createThemeCard(themeNr, themeData) {
+            const card = document.createElement('div');
+            card.className = 'theme-card';
+            
+            const title = document.createElement('h3');
+            title.textContent = themeData.name;
+            card.appendChild(title);
+            
+            // Lebensbezüge
+            themeData.lebensbezuege.forEach((lb, index) => {
+                const lbItem = document.createElement('div');
+                lbItem.className = 'lebensbezug-item';
+                
+                const label = document.createElement('span');
+                label.className = 'lebensbezug-label';
+                label.textContent = `Lebensbezug ${index + 1}`;
+                lbItem.appendChild(label);
+                
+                const text = document.createElement('div');
+                text.className = 'lebensbezug-text';
+                text.textContent = lb.text || '...';
+                lbItem.appendChild(text);
+                
+                // Kompetenzen unter dem Lebensbezug
+                if (lb.kompetenzen && lb.kompetenzen.length > 0) {
+                    const kompContainer = document.createElement('div');
+                    kompContainer.className = 'kompetenz-detail';
+                    
+                    lb.kompetenzen.forEach((komp, kIndex) => {
+                        const kompDiv = document.createElement('div');
+                        kompDiv.className = 'kompetenz-detail-item';
+                        
+                        const kompTitle = document.createElement('div');
+                        kompTitle.className = 'kompetenz-detail-title';
+                        kompTitle.textContent = komp.title;
+                        kompDiv.appendChild(kompTitle);
+                        
+                        // Zeige die Kompetenzen aus den drei Bereichen
+                        const bereiche = [
+                            { key: 'gesellschaft', label: 'Gesellschaft', cssClass: 'kompetenz-badge-gesellschaft' },
+                            { key: 'digital', label: 'Digital', cssClass: 'kompetenz-badge-digital' },
+                            { key: 'sprache', label: 'Sprache', cssClass: 'kompetenz-badge-sprache' }
+                        ];
+                        
+                        bereiche.forEach(bereich => {
+                            if (komp.inhalte[bereich.key] && komp.inhalte[bereich.key].length > 0) {
+                                komp.inhalte[bereich.key].forEach(item => {
+                                    const badge = document.createElement('div');
+                                    badge.className = `kompetenz-badge ${bereich.cssClass}`;
+                                    badge.textContent = item.text;
+                                    kompDiv.appendChild(badge);
+                                });
+                            }
+                        });
+                        
+                        kompContainer.appendChild(kompDiv);
+                    });
+                    
+                    lbItem.appendChild(kompContainer);
+                }
+                
+                card.appendChild(lbItem);
+            });
+            
+            // Sammle alle Aspekte aus allen Lebensbezügen
+            const allAspekte = new Set();
+            themeData.lebensbezuege.forEach(lb => {
+                lb.aspekte.forEach(asp => allAspekte.add(asp));
+            });
+            
+            // Aspekt-Tags
+            if (allAspekte.size > 0) {
+                const tagsContainer = document.createElement('div');
+                tagsContainer.className = 'aspekt-tags';
+                
+                allAspekte.forEach(aspekt => {
+                    const tag = document.createElement('span');
+                    tag.className = `aspekt-tag btn-${aspekt}`;
+                    tag.setAttribute('data-aspekt', aspekt);
+                    tag.textContent = aspektLabels[aspekt];
+                    tag.onclick = () => filterAspekt(aspekt);
+                    tagsContainer.appendChild(tag);
+                });
+                
+                card.appendChild(tagsContainer);
+            }
+            
+            return card;
+        }
         
         function filterAspekt(aspektName) {
             // Alle Kacheln zurücksetzen
@@ -742,6 +1025,11 @@
                 tag.classList.remove('hidden');
             });
         }
+
+        // Starte das Laden beim Seitenaufruf
+        document.addEventListener('DOMContentLoaded', function() {
+            loadLehrjahrData();
+        });
     </script>
 </body>
 </html>
