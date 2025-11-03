@@ -134,17 +134,17 @@
             font-weight: 600;
         }
 
-        /* Grid Container für Aspekte - kleinere Kacheln */
+        /* Grid Container für Aspekte - noch kleinere Kacheln */
         .kachel-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+            gap: 8px;
             margin-bottom: 20px;
         }
 
         .kachel {
             background: white;
-            padding: 10px;
+            padding: 8px;
             border-radius: 6px;
             border-left: 3px solid;
             cursor: pointer;
@@ -207,10 +207,10 @@
         .kachel-sprache-int-digital { border-color: #3385d6; }
 
         .kachel h3 {
-            font-size: 0.85em;
+            font-size: 0.78em;
             margin-bottom: 0;
             color: #333;
-            line-height: 1.3;
+            line-height: 1.2;
         }
 
         /* Einheitlich hellgelb für alle Gesellschafts-Aspekte */
@@ -469,16 +469,16 @@
             }
 
             .kachel-grid {
-                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-                gap: 8px;
+                grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+                gap: 6px;
             }
 
             .kachel {
-                padding: 8px;
+                padding: 6px;
             }
 
             .kachel h3 {
-                font-size: 0.75em;
+                font-size: 0.7em;
             }
 
             .year-header h2 {
@@ -663,7 +663,7 @@
         <h3 style="color: #c8102e; font-size: 1.2em; margin: 20px 0 15px 0;">Schlüsselkompetenzen</h3>
         <div class="kachel-grid">
             <div class="kachel kachel-schluessel-quellen" onclick="filterAspekt('schluessel-quellen')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.1 Quellen unterscheiden</h3>
+                <h3 style="color: #c8102e;">1.1 Quellen untersch.</h3>
             </div>
             <div class="kachel kachel-schluessel-ziele" onclick="filterAspekt('schluessel-ziele')" style="border-color: #c8102e;">
                 <h3 style="color: #c8102e;">1.2 Ziele setzen</h3>
@@ -675,25 +675,25 @@
                 <h3 style="color: #c8102e;">1.4 In Teams arbeiten</h3>
             </div>
             <div class="kachel kachel-schluessel-werthaltungen" onclick="filterAspekt('schluessel-werthaltungen')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.5 Werthaltungen reflektieren</h3>
+                <h3 style="color: #c8102e;">1.5 Werthalt. refl.</h3>
             </div>
             <div class="kachel kachel-schluessel-standpunkte" onclick="filterAspekt('schluessel-standpunkte')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.6 Standpunkte begründen</h3>
+                <h3 style="color: #c8102e;">1.6 Standp. begründen</h3>
             </div>
             <div class="kachel kachel-schluessel-perspektiven" onclick="filterAspekt('schluessel-perspektiven')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.7 Perspektiven wechseln</h3>
+                <h3 style="color: #c8102e;">1.7 Persp. wechseln</h3>
             </div>
             <div class="kachel kachel-schluessel-lebensphasen" onclick="filterAspekt('schluessel-lebensphasen')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.8 Lebensphasen planen</h3>
+                <h3 style="color: #c8102e;">1.8 Lebensp. planen</h3>
             </div>
             <div class="kachel kachel-schluessel-vernetzt" onclick="filterAspekt('schluessel-vernetzt')" style="border-color: #c8102e;">
                 <h3 style="color: #c8102e;">1.9 Vernetzt denken</h3>
             </div>
             <div class="kachel kachel-schluessel-wandel" onclick="filterAspekt('schluessel-wandel')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.10 An Wandel anpassen</h3>
+                <h3 style="color: #c8102e;">1.10 An Wandel anp.</h3>
             </div>
             <div class="kachel kachel-schluessel-mehrdeutigkeiten" onclick="filterAspekt('schluessel-mehrdeutigkeiten')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.11 Mit Mehrdeutigkeiten umgehen</h3>
+                <h3 style="color: #c8102e;">1.11 Mehrdeutigk.</h3>
             </div>
             <div class="kachel kachel-schluessel-partizipieren" onclick="filterAspekt('schluessel-partizipieren')" style="border-color: #c8102e;">
                 <h3 style="color: #c8102e;">1.12 Partizipieren</h3>
@@ -706,7 +706,7 @@
                 <h3>2.1 Ethik</h3>
             </div>
             <div class="kachel kachel-identitaet" onclick="filterAspekt('identitaet')">
-                <h3>2.2 Identität & Sozialisation</h3>
+                <h3>2.2 Identität & Soz.</h3>
             </div>
             <div class="kachel kachel-kultur" onclick="filterAspekt('kultur')">
                 <h3>2.3 Kultur</h3>
@@ -731,13 +731,13 @@
         <h3 style="color: #4db380; font-size: 1.2em; margin: 30px 0 15px 0;">Digitale Kompetenzstufen</h3>
         <div class="kachel-grid">
             <div class="kachel kachel-digital-grundlagen" onclick="filterAspekt('digital-grundlagen')">
-                <h3>3.1 Grundlagen Informatik</h3>
+                <h3>3.1 Grundl. Informatik</h3>
             </div>
             <div class="kachel kachel-digital-info" onclick="filterAspekt('digital-info')">
-                <h3>3.2 Informations- & Datenkompetenz</h3>
+                <h3>3.2 Info- & Datenkomp.</h3>
             </div>
             <div class="kachel kachel-digital-kommunikation" onclick="filterAspekt('digital-kommunikation')">
-                <h3>3.3 Kommunikation & Zusammenarbeit</h3>
+                <h3>3.3 Komm. & Zusammenarb.</h3>
             </div>
             <div class="kachel kachel-digital-inhalt" onclick="filterAspekt('digital-inhalt')">
                 <h3>3.4 Inhaltserstellung</h3>
@@ -746,41 +746,41 @@
                 <h3>3.5 Problemlösung</h3>
             </div>
             <div class="kachel kachel-digital-ki" onclick="filterAspekt('digital-ki')">
-                <h3>3.6 KI-spezifische Komponenten</h3>
+                <h3>3.6 KI-Komponenten</h3>
             </div>
             <div class="kachel kachel-digital-ethik" onclick="filterAspekt('digital-ethik')">
-                <h3>3.7 Ethische & reflexive Haltung</h3>
+                <h3>3.7 Eth. & refl. Haltung</h3>
             </div>
         </div>
 
         <h3 style="color: #3385d6; font-size: 1.2em; margin: 30px 0 15px 0;">Sprachmodi</h3>
         <div class="kachel-grid">
             <div class="kachel kachel-sprache-rez-muendlich" onclick="filterAspekt('sprache-rez-muendlich')">
-                <h3>4.1 Rezeption mündlich</h3>
+                <h3>4.1 Rez. mündlich</h3>
             </div>
             <div class="kachel kachel-sprache-rez-schriftlich" onclick="filterAspekt('sprache-rez-schriftlich')">
-                <h3>4.2 Rezeption schriftlich & bildlich</h3>
+                <h3>4.2 Rez. schriftl./bildl.</h3>
             </div>
             <div class="kachel kachel-sprache-rez-audiovisuell" onclick="filterAspekt('sprache-rez-audiovisuell')">
-                <h3>4.3 Rezeption audiovisuell</h3>
+                <h3>4.3 Rez. audiovisuell</h3>
             </div>
             <div class="kachel kachel-sprache-prod-muendlich" onclick="filterAspekt('sprache-prod-muendlich')">
-                <h3>4.4 Produktion mündlich</h3>
+                <h3>4.4 Prod. mündlich</h3>
             </div>
             <div class="kachel kachel-sprache-prod-schriftlich" onclick="filterAspekt('sprache-prod-schriftlich')">
-                <h3>4.5 Produktion schriftlich & bildlich</h3>
+                <h3>4.5 Prod. schriftl./bildl.</h3>
             </div>
             <div class="kachel kachel-sprache-prod-multimedial" onclick="filterAspekt('sprache-prod-multimedial')">
-                <h3>4.6 Produktion multimedial</h3>
+                <h3>4.6 Prod. multimedial</h3>
             </div>
             <div class="kachel kachel-sprache-int-muendlich" onclick="filterAspekt('sprache-int-muendlich')">
-                <h3>4.7 Interaktion & Kollaboration mündlich</h3>
+                <h3>4.7 Int. mündlich</h3>
             </div>
             <div class="kachel kachel-sprache-int-schriftlich" onclick="filterAspekt('sprache-int-schriftlich')">
-                <h3>4.8 Interaktion & Kollaboration schriftlich</h3>
+                <h3>4.8 Int. schriftlich</h3>
             </div>
             <div class="kachel kachel-sprache-int-digital" onclick="filterAspekt('sprache-int-digital')">
-                <h3>4.9 Interaktion & Kollaboration digital</h3>
+                <h3>4.9 Int. digital</h3>
             </div>
         </div>
 
