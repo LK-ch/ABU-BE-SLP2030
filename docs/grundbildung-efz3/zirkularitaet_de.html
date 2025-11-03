@@ -162,22 +162,25 @@
             font-weight: 600;
         }
 
-        /* Grid Container für Aspekte - noch kleinere Kacheln */
+        /* Grid Container für Aspekte - größere Kacheln für vollständige Texte */
         .kachel-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-            gap: 8px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
             margin-bottom: 20px;
         }
 
         .kachel {
             background: white;
-            padding: 8px;
+            padding: 12px;
             border-radius: 6px;
             border-left: 3px solid;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            min-height: 60px;
+            display: flex;
+            align-items: center;
         }
 
         .kachel:hover {
@@ -235,10 +238,10 @@
         .kachel-sprache-int-digital { border-color: #3385d6; }
 
         .kachel h3 {
-            font-size: 0.78em;
+            font-size: 0.85em;
             margin-bottom: 0;
             color: #333;
-            line-height: 1.2;
+            line-height: 1.4;
         }
 
         /* Einheitlich hellgelb für alle Gesellschafts-Aspekte */
@@ -497,16 +500,17 @@
             }
 
             .kachel-grid {
-                grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-                gap: 6px;
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 8px;
             }
 
             .kachel {
-                padding: 6px;
+                padding: 10px;
+                min-height: 50px;
             }
 
             .kachel h3 {
-                font-size: 0.7em;
+                font-size: 0.8em;
             }
 
             .year-header h2 {
@@ -650,8 +654,8 @@
     </header>
 
     <div class="container">
-        <a href="zirkularitaet_de.html" class="back-btn">
-            ← Zurück zur Zirkularität
+        <a href="index_de.html" class="back-btn">
+            ← Zurück zur Übersicht 3-jährige Grundbildung EFZ
         </a>
 
         <div class="status-info">
@@ -693,40 +697,40 @@
         <h3 style="color: #c8102e; font-size: 1.2em; margin: 20px 0 15px 0;">Schlüsselkompetenzen</h3>
         <div class="kachel-grid">
             <div class="kachel kachel-schluessel-quellen" onclick="filterAspekt('schluessel-quellen')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.1 Quellen untersch.</h3>
+                <h3 style="color: #c8102e;">1.1 Zwischen relevanten und irrelevanten Quellen unterscheiden</h3>
             </div>
             <div class="kachel kachel-schluessel-ziele" onclick="filterAspekt('schluessel-ziele')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.2 Ziele setzen</h3>
+                <h3 style="color: #c8102e;">1.2 Ziele setzen, prüfen, adaptiv handeln</h3>
             </div>
             <div class="kachel kachel-schluessel-problemloesung" onclick="filterAspekt('schluessel-problemloesung')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.3 Probleme lösen</h3>
+                <h3 style="color: #c8102e;">1.3 Antizipativ, unternehmerisch, innovativ Probleme lösen</h3>
             </div>
             <div class="kachel kachel-schluessel-teams" onclick="filterAspekt('schluessel-teams')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.4 In Teams arbeiten</h3>
+                <h3 style="color: #c8102e;">1.4 In unterschiedlichen Teams effizient arbeiten</h3>
             </div>
             <div class="kachel kachel-schluessel-werthaltungen" onclick="filterAspekt('schluessel-werthaltungen')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.5 Werthalt. refl.</h3>
+                <h3 style="color: #c8102e;">1.5 Werthaltungen reflektieren und weiterentwickeln</h3>
             </div>
             <div class="kachel kachel-schluessel-standpunkte" onclick="filterAspekt('schluessel-standpunkte')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.6 Standp. begründen</h3>
+                <h3 style="color: #c8102e;">1.6 Standpunkte begründen und überzeugen</h3>
             </div>
             <div class="kachel kachel-schluessel-perspektiven" onclick="filterAspekt('schluessel-perspektiven')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.7 Persp. wechseln</h3>
+                <h3 style="color: #c8102e;">1.7 Perspektiven wechseln und gegenseitiges Verständnis fördern</h3>
             </div>
             <div class="kachel kachel-schluessel-lebensphasen" onclick="filterAspekt('schluessel-lebensphasen')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.8 Lebensp. planen</h3>
+                <h3 style="color: #c8102e;">1.8 Lebensphasen planen, mit Unwägbarkeiten umgehen</h3>
             </div>
             <div class="kachel kachel-schluessel-vernetzt" onclick="filterAspekt('schluessel-vernetzt')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.9 Vernetzt denken</h3>
+                <h3 style="color: #c8102e;">1.9 Vernetzt/systemisch denken, nachhaltig handeln</h3>
             </div>
             <div class="kachel kachel-schluessel-wandel" onclick="filterAspekt('schluessel-wandel')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.10 An Wandel anp.</h3>
+                <h3 style="color: #c8102e;">1.10 Sich an Wandel anpassen</h3>
             </div>
             <div class="kachel kachel-schluessel-mehrdeutigkeiten" onclick="filterAspekt('schluessel-mehrdeutigkeiten')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.11 Mehrdeutigk.</h3>
+                <h3 style="color: #c8102e;">1.11 Mit Mehrdeutigkeiten umgehen</h3>
             </div>
             <div class="kachel kachel-schluessel-partizipieren" onclick="filterAspekt('schluessel-partizipieren')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.12 Partizipieren</h3>
+                <h3 style="color: #c8102e;">1.12 Gesellschaftlich partizipieren, Handlungsspielräume nutzen</h3>
             </div>
         </div>
 
@@ -736,7 +740,7 @@
                 <h3>2.1 Ethik</h3>
             </div>
             <div class="kachel kachel-identitaet" onclick="filterAspekt('identitaet')">
-                <h3>2.2 Identität & Soz.</h3>
+                <h3>2.2 Identität und Sozialisation</h3>
             </div>
             <div class="kachel kachel-kultur" onclick="filterAspekt('kultur')">
                 <h3>2.3 Kultur</h3>
@@ -761,13 +765,13 @@
         <h3 style="color: #4db380; font-size: 1.2em; margin: 30px 0 15px 0;">Digitale Kompetenzstufen</h3>
         <div class="kachel-grid">
             <div class="kachel kachel-digital-grundlagen" onclick="filterAspekt('digital-grundlagen')">
-                <h3>3.1 Grundl. Informatik</h3>
+                <h3>3.1 Grundlagen der Informatik</h3>
             </div>
             <div class="kachel kachel-digital-info" onclick="filterAspekt('digital-info')">
-                <h3>3.2 Info- & Datenkomp.</h3>
+                <h3>3.2 Informations- und Datenkompetenz</h3>
             </div>
             <div class="kachel kachel-digital-kommunikation" onclick="filterAspekt('digital-kommunikation')">
-                <h3>3.3 Komm. & Zusammenarb.</h3>
+                <h3>3.3 Kommunikation und Zusammenarbeit</h3>
             </div>
             <div class="kachel kachel-digital-inhalt" onclick="filterAspekt('digital-inhalt')">
                 <h3>3.4 Inhaltserstellung</h3>
@@ -776,41 +780,41 @@
                 <h3>3.5 Problemlösung</h3>
             </div>
             <div class="kachel kachel-digital-ki" onclick="filterAspekt('digital-ki')">
-                <h3>3.6 KI-Komponenten</h3>
+                <h3>3.6 KI-spezifische Komponenten</h3>
             </div>
             <div class="kachel kachel-digital-ethik" onclick="filterAspekt('digital-ethik')">
-                <h3>3.7 Eth. & refl. Haltung</h3>
+                <h3>3.7 Ethische und reflexive Haltung</h3>
             </div>
         </div>
 
         <h3 style="color: #3385d6; font-size: 1.2em; margin: 30px 0 15px 0;">Sprachmodi</h3>
         <div class="kachel-grid">
             <div class="kachel kachel-sprache-rez-muendlich" onclick="filterAspekt('sprache-rez-muendlich')">
-                <h3>4.1 Rez. mündlich</h3>
+                <h3>4.1 Rezeption mündlich</h3>
             </div>
             <div class="kachel kachel-sprache-rez-schriftlich" onclick="filterAspekt('sprache-rez-schriftlich')">
-                <h3>4.2 Rez. schriftl./bildl.</h3>
+                <h3>4.2 Rezeption schriftlich und bildlich</h3>
             </div>
             <div class="kachel kachel-sprache-rez-audiovisuell" onclick="filterAspekt('sprache-rez-audiovisuell')">
-                <h3>4.3 Rez. audiovisuell</h3>
+                <h3>4.3 Rezeption audiovisuell</h3>
             </div>
             <div class="kachel kachel-sprache-prod-muendlich" onclick="filterAspekt('sprache-prod-muendlich')">
-                <h3>4.4 Prod. mündlich</h3>
+                <h3>4.4 Produktion mündlich</h3>
             </div>
             <div class="kachel kachel-sprache-prod-schriftlich" onclick="filterAspekt('sprache-prod-schriftlich')">
-                <h3>4.5 Prod. schriftl./bildl.</h3>
+                <h3>4.5 Produktion schriftlich und bildlich</h3>
             </div>
             <div class="kachel kachel-sprache-prod-multimedial" onclick="filterAspekt('sprache-prod-multimedial')">
-                <h3>4.6 Prod. multimedial</h3>
+                <h3>4.6 Produktion multimedial</h3>
             </div>
             <div class="kachel kachel-sprache-int-muendlich" onclick="filterAspekt('sprache-int-muendlich')">
-                <h3>4.7 Int. mündlich</h3>
+                <h3>4.7 Interaktion und Kollaboration mündlich</h3>
             </div>
             <div class="kachel kachel-sprache-int-schriftlich" onclick="filterAspekt('sprache-int-schriftlich')">
-                <h3>4.8 Int. schriftlich</h3>
+                <h3>4.8 Interaktion und Kollaboration schriftlich</h3>
             </div>
             <div class="kachel kachel-sprache-int-digital" onclick="filterAspekt('sprache-int-digital')">
-                <h3>4.9 Int. digital</h3>
+                <h3>4.9 Interaktion und Kollaboration digital</h3>
             </div>
         </div>
 
@@ -996,6 +1000,82 @@
             '4.8': 'Interaktion & Kollaboration schriftlich',
             '4.9': 'Interaktion & Kollaboration digital'
         };
+
+        // Funktion zum Kürzen von Kompetenztexten für Badges in der Timeline
+        function shortenCompetenceText(text) {
+            // Entferne eventuell vorhandene Kompetenznummern am Anfang (z.B. "2.2 " oder "1.10 ")
+            let cleanText = text;
+            const numberMatch = text.match(/^(\d+\.\d+)\s+(.+)$/);
+            if (numberMatch) {
+                cleanText = numberMatch[2]; // Text ohne die Nummer
+            }
+            
+            // Spezielle Kürzungen für häufige lange Texte
+            const shortenings = {
+                'Zwischen relevanten und irrelevanten Quellen unterscheiden': 'Quellen',
+                'Ziele setzen, prüfen, adaptiv handeln': 'Ziele',
+                'Antizipativ, unternehmerisch, innovativ Probleme lösen': 'Probleme lösen',
+                'In unterschiedlichen Teams effizient arbeiten': 'Teamarbeit',
+                'Werthaltungen reflektieren und weiterentwickeln': 'Werthaltungen',
+                'Standpunkte begründen und überzeugen': 'Standpunkte',
+                'Perspektiven wechseln und gegenseitiges Verständnis fördern': 'Perspektiven',
+                'Lebensphasen planen, mit Unwägbarkeiten umgehen': 'Lebensphasen',
+                'Vernetzt/systemisch denken, nachhaltig handeln': 'Vernetzt',
+                'Sich an Wandel anpassen': 'Wandel',
+                'Mit Mehrdeutigkeiten umgehen': 'Mehrdeutigkeit',
+                'Gesellschaftlich partizipieren, Handlungsspielräume nutzen': 'Partizipation',
+                'Identität und Sozialisation': 'Identität',
+                'Identität & Sozialisation': 'Identität',
+                'Grundlagen der Informatik': 'Informatik',
+                'Informations- & Datenkompetenz': 'Info & Daten',
+                'Informations- und Datenkompetenz': 'Info & Daten',
+                'Kommunikation & Zusammenarbeit': 'Kommunikation',
+                'Kommunikation und Zusammenarbeit': 'Kommunikation',
+                'Inhaltserstellung': 'Inhalte',
+                'Problemlösung': 'Problemlösung',
+                'KI-spezifische Komponenten': 'KI',
+                'Ethische & reflexive Haltung': 'Ethik',
+                'Ethische und reflexive Haltung': 'Ethik',
+                'Rezeption mündlich': 'Rez. mündl.',
+                'Rezeption schriftlich & bildlich': 'Rez. schriftl.',
+                'Rezeption schriftlich und bildlich': 'Rez. schriftl.',
+                'Rezeption audiovisuell': 'Rez. audio',
+                'Produktion mündlich': 'Prod. mündl.',
+                'Produktion schriftlich & bildlich': 'Prod. schriftl.',
+                'Produktion schriftlich und bildlich': 'Prod. schriftl.',
+                'Produktion multimedial': 'Prod. multi',
+                'Interaktion & Kollaboration mündlich': 'Int. mündl.',
+                'Interaktion und Kollaboration mündlich': 'Int. mündl.',
+                'Interaktion & Kollaboration schriftlich': 'Int. schriftl.',
+                'Interaktion und Kollaboration schriftlich': 'Int. schriftl.',
+                'Interaktion & Kollaboration digital': 'Int. digital',
+                'Interaktion und Kollaboration digital': 'Int. digital',
+                // Zusätzliche häufige Variationen
+                'Ethik': 'Ethik',
+                'Kultur': 'Kultur',
+                'Ökologie': 'Ökologie',
+                'Politik': 'Politik',
+                'Recht': 'Recht',
+                'Technologie': 'Technologie',
+                'Wirtschaft': 'Wirtschaft'
+            };
+            
+            // Prüfe ob der bereinigte Text in den Kürzungen vorhanden ist
+            if (shortenings[cleanText]) {
+                return shortenings[cleanText];
+            }
+            
+            // Fallback: Wenn Text länger als 30 Zeichen, kürze nach erstem Komma oder auf 30 Zeichen
+            if (cleanText.length > 30) {
+                const commaIndex = cleanText.indexOf(',');
+                if (commaIndex > 0 && commaIndex < 30) {
+                    return cleanText.substring(0, commaIndex);
+                }
+                return cleanText.substring(0, 27) + '...';
+            }
+            
+            return cleanText;
+        }
 
         // Lade und parse die Lehrjahr-Dateien
         async function loadLehrjahrData() {
@@ -1352,7 +1432,7 @@
                 themeData.schluesselkompetenzen.forEach(sk => {
                     const badge = document.createElement('div');
                     badge.className = 'schluesselkompetenz-badge';
-                    badge.textContent = sk.text;
+                    badge.textContent = shortenCompetenceText(sk.text);
                     badge.style.display = 'inline-block';
                     badge.style.marginRight = '4px';
                     badge.style.marginBottom = '4px';
@@ -1433,7 +1513,7 @@
                     allBadges.forEach(badgeInfo => {
                         const badge = document.createElement('div');
                         badge.className = `kompetenz-badge ${badgeInfo.cssClass}`;
-                        badge.textContent = badgeInfo.text;
+                        badge.textContent = shortenCompetenceText(badgeInfo.text);
                         badge.style.display = 'inline-block';
                         badge.style.marginRight = '4px';
                         badge.style.marginBottom = '4px';
