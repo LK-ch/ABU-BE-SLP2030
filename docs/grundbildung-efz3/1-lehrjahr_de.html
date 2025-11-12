@@ -18,7 +18,71 @@
             font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
             color: #000;
-            background-color: #f5e6d3;
+            background-color: #f9f3e8;
+        }
+        
+        /* Simplified Header */
+        header {
+            background: #f9f3e8;
+            color: #000;
+            padding: 20px;
+            margin-bottom: 0;
+            box-shadow: none;
+            position: relative;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-section img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .canton-name {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+        
+        .canton-name strong {
+            font-size: 0.95em;
+            font-weight: 700;
+        }
+        
+        .canton-name span {
+            font-size: 0.85em;
+            font-weight: 400;
+        }
+        
+        .language-switch {
+            background-color: transparent;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            text-decoration: none;
+            color: #000;
+            font-weight: 600;
+            font-size: 0.95em;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
+        
+        .language-switch:hover {
+            color: #666;
         }
         
         .container {
@@ -29,43 +93,6 @@
         
         main.container {
             background-color: #fff;
-        }
-        
-        header {
-            background: #fff;
-            color: #000;
-            padding: 30px 20px;
-            margin-bottom: 0;
-            box-shadow: none;
-            position: relative;
-            border-bottom: 4px solid #dc291e;
-        }
-        
-        .language-switch {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: transparent;
-            backdrop-filter: none;
-            border: 2px solid #dc291e;
-            border-radius: 25px;
-            padding: 8px 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: #dc291e;
-            font-weight: 600;
-            font-size: 0.95em;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .language-switch:hover {
-            background-color: #dc291e;
-            color: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(220, 41, 30, 0.2);
         }
         
         .breadcrumb {
@@ -94,6 +121,7 @@
         .subtitle {
             color: #000;
             font-size: 1.1em;
+            margin-bottom: 30px;
         }
         
         .theme-section {
@@ -107,11 +135,10 @@
         .theme-header {
             background: #f5e6d3;
             color: black;
-            padding: 24px;
+            padding: 16px 20px;
             cursor: pointer;
             position: relative;
             transition: opacity 0.3s ease;
-            border-left: 4px solid #dc291e;
         }
         
         .theme-header:hover {
@@ -121,11 +148,11 @@
         .theme-header::after {
             content: '▼';
             position: absolute;
-            right: 24px;
+            right: 20px;
             top: 50%;
             transform: translateY(-50%);
             transition: transform 0.3s ease;
-            font-size: 1.2em;
+            font-size: 1em;
         }
         
         .theme-header.collapsed::after {
@@ -133,18 +160,18 @@
         }
         
         .theme-header h2 {
-            font-size: 1.4em;
-            margin-bottom: 8px;
+            font-size: 1.1em;
+            margin-bottom: 6px;
             font-weight: 700;
         }
         
         .theme-header .lektionen {
-            font-size: 0.9em;
+            font-size: 0.85em;
             opacity: 0.9;
         }
         
         .theme-content {
-            padding: 24px;
+            padding: 20px;
             display: none;
             animation: slideDown 0.3s ease-out;
             background-color: #fff;
@@ -166,15 +193,14 @@
         }
         
         .lebensbezug {
-            margin-bottom: 30px;
-            background-color: #f5e6d3;
+            margin-bottom: 25px;
+            background-color: #f9f3e8;
             border-radius: 0;
-            border-left: 4px solid #dc291e;
             overflow: hidden;
         }
         
         .lebensbezug-header {
-            padding: 30px;
+            padding: 16px 20px;
             cursor: pointer;
             position: relative;
             transition: opacity 0.3s ease;
@@ -188,11 +214,11 @@
         .lebensbezug-header::after {
             content: '▼';
             position: absolute;
-            right: 30px;
+            right: 20px;
             top: 50%;
             transform: translateY(-50%);
             transition: transform 0.3s ease;
-            font-size: 1.1em;
+            font-size: 1em;
             color: #000;
         }
         
@@ -201,7 +227,7 @@
         }
         
         .lebensbezug-content {
-            padding: 0 30px 30px 30px;
+            padding: 0 20px 20px 20px;
             display: none;
             animation: slideDown 0.3s ease-out;
         }
@@ -212,7 +238,7 @@
         
         .lebensbezug h3 {
             color: #000;
-            font-size: 1.3em;
+            font-size: 1em;
             margin-bottom: 0;
             font-weight: 400;
         }
@@ -221,15 +247,15 @@
             font-weight: 400;
             font-size: 0.7em;
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
         .schluessel-box {
             background-color: #f9f9f9;
             border: 1px solid #e0e0e0;
             border-radius: 0;
-            padding: 8px 16px;
-            margin-bottom: 16px;
+            padding: 8px 14px;
+            margin-bottom: 14px;
             cursor: pointer;
             user-select: none;
         }
@@ -246,13 +272,13 @@
         
         .schluessel-header h4 {
             color: #000;
-            font-size: 0.95em;
+            font-size: 0.9em;
             font-weight: 700;
             margin: 0;
         }
         
         .toggle-schluessel {
-            font-size: 1.1em;
+            font-size: 1em;
             color: #000;
             transition: transform 0.3s ease;
         }
@@ -262,7 +288,7 @@
             border: 1px solid #d0d0d0;
             border-radius: 0;
             padding: 4px 8px;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             cursor: pointer;
             user-select: none;
         }
@@ -273,12 +299,12 @@
         
         .umsetzung-box .schluessel-header h4 {
             color: #000;
-            font-size: 0.8em;
+            font-size: 0.75em;
         }
         
         .umsetzung-box .toggle-schluessel {
             color: #000;
-            font-size: 0.9em;
+            font-size: 0.85em;
         }
         
         .toggle-schluessel.rotated {
@@ -293,17 +319,17 @@
         
         .schluessel-content.expanded {
             max-height: 1000px;
-            margin-top: 12px;
+            margin-top: 10px;
         }
         
         .schluessel-content p {
             color: #000;
-            font-size: 0.85em;
+            font-size: 0.8em;
         }
         
         .lerninhalt {
-            margin-bottom: 20px;
-            padding: 16px;
+            margin-bottom: 18px;
+            padding: 14px;
             background-color: #fff;
             border-radius: 0;
             border: 1px solid #e0e0e0;
@@ -311,24 +337,24 @@
         
         .lerninhalt h4 {
             color: #000;
-            font-size: 1em;
-            margin-bottom: 12px;
+            font-size: 0.95em;
+            margin-bottom: 10px;
             font-weight: 700;
         }
         
         .kompetenz-container {
-            margin-top: 12px;
+            margin-top: 10px;
         }
         
         .kompetenz-button {
             background-color: #f9f9f9;
             border: 1px solid #d0d0d0;
             color: #000;
-            padding: 8px 16px;
-            margin-right: 8px;
-            margin-bottom: 8px;
+            padding: 7px 14px;
+            margin-right: 7px;
+            margin-bottom: 7px;
             border-radius: 0;
-            font-size: 0.85em;
+            font-size: 0.8em;
             cursor: pointer;
             transition: all 0.3s ease;
             display: inline-block;
@@ -341,12 +367,11 @@
         
         .kompetenz-details {
             display: none;
-            margin-top: 12px;
-            padding: 16px;
+            margin-top: 10px;
+            padding: 14px;
             background-color: #f9f9f9;
             border-radius: 4px;
-            font-size: 0.9em;
-            border-left: 3px solid #dc291e;
+            font-size: 0.85em;
         }
         
         .kompetenz-details.show {
@@ -355,17 +380,14 @@
         
         .kompetenz-details.gesellschaft-detail {
             background-color: #fffef5;
-            border-left: 3px solid #fff4cc;
         }
         
         .kompetenz-details.sprache-detail {
             background-color: #f5f9ff;
-            border-left: 3px solid #cce5ff;
         }
         
         .kompetenz-details.digital-detail {
             background-color: #f0f8f0;
-            border-left: 3px solid #d4edda;
         }
         
         .kompetenz-details ul {
@@ -374,8 +396,8 @@
         }
         
         .kompetenz-details li {
-            padding: 4px 0;
-            padding-left: 20px;
+            padding: 3px 0;
+            padding-left: 18px;
             position: relative;
             color: #000;
         }
@@ -432,24 +454,23 @@
         }
         
         .leitidee {
-            background-color: #f5e6d3;
-            padding: 30px;
+            background-color: #f9f3e8;
+            padding: 20px;
             border-radius: 0;
-            margin-bottom: 20px;
-            border-left: 4px solid #dc291e;
+            margin-bottom: 18px;
         }
         
         .leitidee h3 {
             color: #000;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             font-weight: 400;
-            font-size: 0.9em;
+            font-size: 0.85em;
         }
         
         .leitidee p {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: #000;
-            font-size: 1.3em;
+            font-size: 1em;
             font-weight: 400;
         }
         
@@ -471,7 +492,7 @@
         
         /* Aufklappbare Tabelle Styles */
         .table-container {
-            margin-top: 16px;
+            margin-top: 14px;
             border-radius: 0;
             overflow: hidden;
             box-shadow: none;
@@ -480,7 +501,7 @@
         
         .table-header {
             background: #f0f0f0;
-            padding: 8px 16px;
+            padding: 7px 14px;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -494,14 +515,14 @@
         
         .table-header h5 {
             color: #000;
-            font-size: 0.95em;
+            font-size: 0.9em;
             font-weight: 700;
             margin: 0;
         }
         
         .table-toggle {
             color: #000;
-            font-size: 1.1em;
+            font-size: 1em;
             transition: transform 0.3s ease;
         }
         
@@ -524,13 +545,13 @@
             border-collapse: collapse;
             background-color: #fff;
             table-layout: fixed;
-            margin-top: 12px;
+            margin-top: 10px;
         }
         
         .kompetenz-table thead th {
-            padding: 6px 12px;
+            padding: 5px 10px;
             text-align: left;
-            font-size: 0.8em;
+            font-size: 0.75em;
             font-weight: 700;
             color: #000;
             border-right: 2px solid #fff;
@@ -556,9 +577,9 @@
         
         /* Header cells in tbody - making them narrower */
         .kompetenz-table tbody th {
-            padding: 6px 12px;
+            padding: 5px 10px;
             text-align: left;
-            font-size: 0.8em;
+            font-size: 0.75em;
             font-weight: 700;
             color: #000;
             border-right: 2px solid #fff;
@@ -584,7 +605,7 @@
         .kompetenz-table tbody th.col-digital span {
             display: block;
             background: #d4edda;
-            padding: 6px 12px;
+            padding: 5px 10px;
         }
         
         .kompetenz-table tbody th.col-sprache {
@@ -592,9 +613,9 @@
         }
         
         .kompetenz-table tbody td {
-            padding: 10px 12px;
+            padding: 8px 10px;
             vertical-align: top;
-            font-size: 0.85em;
+            font-size: 0.8em;
             color: #000;
             border-right: 2px solid #e9ecef;
             width: 33.33%;
@@ -621,7 +642,7 @@
         .kompetenz-table tbody td.col-digital-content p {
             text-align: center;
             background-color: #f0f8f0;
-            padding: 10px 12px;
+            padding: 8px 10px;
         }
         
         .kompetenz-table tbody td.col-sprache {
@@ -634,7 +655,7 @@
         }
         
         .umsetzung-box-bottom {
-            margin-top: 24px;
+            margin-top: 20px;
         }
         
         /* Spacing row for table gaps */
@@ -642,7 +663,7 @@
             background: transparent !important;
             border: none !important;
             padding: 0 !important;
-            height: 24px;
+            height: 20px;
         }
         
         /* Kleiner Button für Tools/Webseiten */
@@ -651,10 +672,10 @@
             background-color: #f8f9fa;
             border: 1px solid #ced4da;
             color: #000;
-            padding: 4px 10px;
-            margin-top: 8px;
+            padding: 3px 8px;
+            margin-top: 6px;
             border-radius: 4px;
-            font-size: 0.75em;
+            font-size: 0.7em;
             cursor: pointer;
             transition: all 0.2s ease;
             text-decoration: none;
@@ -666,49 +687,56 @@
         }
         
         @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
             .container {
                 padding: 10px;
             }
             
             .theme-header {
-                padding: 16px;
+                padding: 14px;
             }
             
             .theme-content {
-                padding: 16px;
+                padding: 14px;
             }
             
             .kompetenz-button {
-                font-size: 0.8em;
-                padding: 6px 12px;
-            }
-            
-            .language-switch {
-                top: 10px;
-                right: 10px;
-                font-size: 0.85em;
-                padding: 6px 16px;
+                font-size: 0.75em;
+                padding: 6px 10px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Simplified Header -->
     <header>
-        <a href="1-lehrjahr_fr.html" class="language-switch">
-            🇫🇷 Français
-        </a>
-        <div class="container">
-            <nav class="breadcrumb">
-                <a href="../index.html">Schullehrplan ABU</a> / 
-                <a href="index.html">3-jährige Grundbildung EFZ</a> / 
-                1. Lehrjahr
-            </nav>
-            <h1>1. Lehrjahr EFZ</h1>
-            <p class="subtitle">Themen und Kompetenzen der Allgemeinbildung</p>
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="docs/grundbildung-efz3/images/KTBE.png" alt="Kanton Bern Logo">
+                <div class="canton-name">
+                    <strong>Kanton Bern</strong>
+                    <span>Canton de Berne</span>
+                </div>
+            </div>
+            <a href="1-lehrjahr_fr.html" class="language-switch">
+                DE | FR
+            </a>
         </div>
     </header>
     
     <main class="container">
+        <nav class="breadcrumb">
+            <a href="../index.html">Schullehrplan ABU</a> / 
+            <a href="index.html">3-jährige Grundbildung EFZ</a> / 
+            1. Lehrjahr
+        </nav>
+        <h1>1. Lehrjahr EFZ</h1>
+        <p class="subtitle">Themen und Kompetenzen der Allgemeinbildung</p>
+        
         <!-- Thema 1: Meine Berufsausbildung -->
         <div class="theme-section">
             <div class="theme-header">
@@ -1401,7 +1429,7 @@
                             <div class="table-container">
                                 <div class="table-header" onclick="toggleTable(this)">
                                     <h5>Inhalte/ Lernziele</h5>
-                                    <span class="table-toggle">▼<span class="table-toggle">▼</span>
+                                    <span class="table-toggle">▼</span>
                                 </div>
                                 <div class="table-content">
                                     <table class="kompetenz-table">
@@ -1512,6 +1540,7 @@
                 </div>
             </div>
         </div>
+        
         <!-- Thema 3: Gesund und sicher durchs Leben -->
         <div class="theme-section">
             <div class="theme-header">
