@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1. Lehrjahr EFZ - Schullehrplan ABU</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,40 +15,45 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
             color: #000;
-            background-color: #fff8f0;
+            background-color: #f5e6d3;
         }
         
         .container {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 30px auto 0 auto;
             padding: 20px;
         }
         
+        main.container {
+            background-color: #fff;
+        }
+        
         header {
-            background: linear-gradient(90deg, #c8102e, #ffcc00);
-            color: black;
+            background: #fff;
+            color: #000;
             padding: 30px 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 0;
+            box-shadow: none;
             position: relative;
+            border-bottom: 4px solid #dc291e;
         }
         
         .language-switch {
             position: absolute;
             top: 20px;
             right: 20px;
-            background-color: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            background-color: transparent;
+            backdrop-filter: none;
+            border: 2px solid #dc291e;
             border-radius: 25px;
             padding: 8px 20px;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
-            color: #fff;
+            color: #dc291e;
             font-weight: 600;
             font-size: 0.95em;
             display: inline-flex;
@@ -54,19 +62,20 @@
         }
         
         .language-switch:hover {
-            background-color: rgba(255, 255, 255, 0.3);
+            background-color: #dc291e;
+            color: #fff;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 12px rgba(220, 41, 30, 0.2);
         }
         
         .breadcrumb {
             font-size: 0.9em;
-            color: #fff;
+            color: #000;
             margin-bottom: 20px;
         }
         
         .breadcrumb a {
-            color: #fff;
+            color: #000;
             text-decoration: none;
             font-weight: 500;
         }
@@ -76,32 +85,33 @@
         }
         
         h1 {
-            color: #fff;
+            color: #000;
             font-size: 2.2em;
             margin-bottom: 10px;
             font-weight: 700;
         }
         
         .subtitle {
-            color: #fff;
+            color: #000;
             font-size: 1.1em;
         }
         
         .theme-section {
             background-color: #fff;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 0;
+            margin-bottom: 20px;
+            box-shadow: none;
             overflow: hidden;
         }
         
         .theme-header {
-            background: linear-gradient(90deg, #c8102e, #ffcc00);
+            background: #f5e6d3;
             color: black;
             padding: 24px;
             cursor: pointer;
             position: relative;
             transition: opacity 0.3s ease;
+            border-left: 4px solid #dc291e;
         }
         
         .theme-header:hover {
@@ -137,6 +147,7 @@
             padding: 24px;
             display: none;
             animation: slideDown 0.3s ease-out;
+            background-color: #fff;
         }
         
         .theme-content.show {
@@ -156,14 +167,14 @@
         
         .lebensbezug {
             margin-bottom: 30px;
-            background-color: #fff3cd;
-            border-radius: 6px;
-            border-left: 4px solid #c8102e;
+            background-color: #f5e6d3;
+            border-radius: 0;
+            border-left: 4px solid #dc291e;
             overflow: hidden;
         }
         
         .lebensbezug-header {
-            padding: 20px;
+            padding: 30px;
             cursor: pointer;
             position: relative;
             transition: opacity 0.3s ease;
@@ -177,7 +188,7 @@
         .lebensbezug-header::after {
             content: '▼';
             position: absolute;
-            right: 20px;
+            right: 30px;
             top: 50%;
             transform: translateY(-50%);
             transition: transform 0.3s ease;
@@ -190,7 +201,7 @@
         }
         
         .lebensbezug-content {
-            padding: 0 20px 20px 20px;
+            padding: 0 30px 30px 30px;
             display: none;
             animation: slideDown 0.3s ease-out;
         }
@@ -201,15 +212,22 @@
         
         .lebensbezug h3 {
             color: #000;
-            font-size: 1.1em;
+            font-size: 1.3em;
             margin-bottom: 0;
-            font-weight: normal;
+            font-weight: 400;
+        }
+        
+        .lebensbezug h3 strong {
+            font-weight: 400;
+            font-size: 0.7em;
+            display: block;
+            margin-bottom: 10px;
         }
         
         .schluessel-box {
-            background-color: #fde8e8;
-            border: 1px solid #ffb3b3;
-            border-radius: 4px;
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 0;
             padding: 8px 16px;
             margin-bottom: 16px;
             cursor: pointer;
@@ -217,7 +235,7 @@
         }
         
         .schluessel-box:hover {
-            background-color: #ffdddd;
+            background-color: #f0f0f0;
         }
         
         .schluessel-header {
@@ -240,9 +258,9 @@
         }
         
         .umsetzung-box {
-            background-color: #e9ecef;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
+            background-color: #f0f0f0;
+            border: 1px solid #d0d0d0;
+            border-radius: 0;
             padding: 4px 8px;
             margin-bottom: 16px;
             cursor: pointer;
@@ -250,7 +268,7 @@
         }
         
         .umsetzung-box:hover {
-            background-color: #dee2e6;
+            background-color: #e8e8e8;
         }
         
         .umsetzung-box .schluessel-header h4 {
@@ -287,8 +305,8 @@
             margin-bottom: 20px;
             padding: 16px;
             background-color: #fff;
-            border-radius: 4px;
-            border: 1px solid #e9ecef;
+            border-radius: 0;
+            border: 1px solid #e0e0e0;
         }
         
         .lerninhalt h4 {
@@ -303,13 +321,13 @@
         }
         
         .kompetenz-button {
-            background-color: #fff9e6;
-            border: 1px solid #ffe6b3;
+            background-color: #f9f9f9;
+            border: 1px solid #d0d0d0;
             color: #000;
             padding: 8px 16px;
             margin-right: 8px;
             margin-bottom: 8px;
-            border-radius: 20px;
+            border-radius: 0;
             font-size: 0.85em;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -325,10 +343,10 @@
             display: none;
             margin-top: 12px;
             padding: 16px;
-            background-color: #fff8f0;
+            background-color: #f9f9f9;
             border-radius: 4px;
             font-size: 0.9em;
-            border-left: 3px solid #c8102e;
+            border-left: 3px solid #dc291e;
         }
         
         .kompetenz-details.show {
@@ -336,18 +354,18 @@
         }
         
         .kompetenz-details.gesellschaft-detail {
-            background-color: #fff9e6;
-            border-left: 3px solid #ffd700;
+            background-color: #fffef5;
+            border-left: 3px solid #fff4cc;
         }
         
         .kompetenz-details.sprache-detail {
-            background-color: #e8f0ff;
-            border-left: 3px solid #0066cc;
+            background-color: #f5f9ff;
+            border-left: 3px solid #cce5ff;
         }
         
         .kompetenz-details.digital-detail {
-            background-color: #e8ffe8;
-            border-left: 3px solid #00994d;
+            background-color: #f0f8f0;
+            border-left: 3px solid #d4edda;
         }
         
         .kompetenz-details ul {
@@ -366,70 +384,73 @@
             content: "•";
             position: absolute;
             left: 0;
-            color: #c8102e;
+            color: #dc291e;
         }
         
         .kompetenz-nummer {
             font-weight: 700;
-            color: #c8102e;
+            color: #dc291e;
         }
         
         .gesellschaft { 
-            background-color: #fff9cc !important; 
-            border-color: #ffe680 !important; 
+            background-color: #fff9e6 !important; 
+            border-color: #fff4cc !important; 
             color: #000 !important; 
         }
         .gesellschaft:hover {
-            background-color: #fff5b3 !important;
+            background-color: #fff4cc !important;
         }
         .gesellschaft.active {
-            background: linear-gradient(135deg, #ffd700, #ffed4e) !important;
+            background: #fff4cc !important;
             color: black !important;
         }
         
         .sprache { 
-            background-color: #e8f0ff !important; 
-            border-color: #cce0ff !important; 
+            background-color: #e6f2ff !important; 
+            border-color: #cce5ff !important; 
             color: #000 !important; 
         }
         .sprache:hover {
-            background-color: #d4e4ff !important;
+            background-color: #cce5ff !important;
         }
         .sprache.active {
-            background: linear-gradient(135deg, #0066cc, #3385d6) !important;
+            background: #cce5ff !important;
             color: black !important;
         }
         
         .digital { 
-            background-color: #e8ffe8 !important; 
-            border-color: #ccffcc !important; 
+            background-color: #e8f5e8 !important; 
+            border-color: #d4edda !important; 
             color: #000 !important; 
         }
         .digital:hover {
-            background-color: #d4ffd4 !important;
+            background-color: #d4edda !important;
         }
         .digital.active {
-            background: linear-gradient(135deg, #00994d, #00b359) !important;
+            background: #d4edda !important;
             color: black !important;
         }
         
         .leitidee {
-            background-color: #fff3cd;
-            padding: 20px;
-            border-radius: 6px;
+            background-color: #f5e6d3;
+            padding: 30px;
+            border-radius: 0;
             margin-bottom: 20px;
-            border-left: 4px solid #c8102e;
+            border-left: 4px solid #dc291e;
         }
         
         .leitidee h3 {
             color: #000;
-            margin-bottom: 10px;
-            font-weight: 700;
+            margin-bottom: 20px;
+            font-weight: 400;
+            font-size: 0.9em;
         }
         
         .leitidee p {
             margin-bottom: 10px;
             color: #000;
+            font-size: 1.3em;
+            font-weight: 400;
         }
         
         .back-link {
@@ -438,7 +459,7 @@
         }
         
         .back-link a {
-            color: #c8102e;
+            color: #dc291e;
             text-decoration: none;
             font-size: 1.1em;
             font-weight: 600;
@@ -451,13 +472,14 @@
         /* Aufklappbare Tabelle Styles */
         .table-container {
             margin-top: 16px;
-            border-radius: 8px;
+            border-radius: 0;
             overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: none;
+            border: 1px solid #e0e0e0;
         }
         
         .table-header {
-            background: #b0b5ba;
+            background: #f0f0f0;
             padding: 8px 16px;
             cursor: pointer;
             display: flex;
@@ -520,16 +542,16 @@
         }
         
         .kompetenz-table thead th.col-gesellschaft {
-            background: linear-gradient(135deg, #ffe599, #fff0b3);
+            background: #fff4cc;
             color: #000;
         }
         
         .kompetenz-table thead th.col-digital {
-            background: linear-gradient(135deg, #66cc99, #80d9ad);
+            background: #d4edda;
         }
         
         .kompetenz-table thead th.col-sprache {
-            background: linear-gradient(135deg, #3385d6, #5c9ee0);
+            background: #cce5ff;
         }
         
         /* Header cells in tbody - making them narrower */
@@ -547,7 +569,7 @@
         }
         
         .kompetenz-table tbody th.col-gesellschaft {
-            background: linear-gradient(135deg, #ffe599, #fff0b3);
+            background: #fff4cc;
             color: #000;
         }
         
@@ -561,12 +583,12 @@
         
         .kompetenz-table tbody th.col-digital span {
             display: block;
-            background: linear-gradient(135deg, #66cc99, #80d9ad);
+            background: #d4edda;
             padding: 6px 12px;
         }
         
         .kompetenz-table tbody th.col-sprache {
-            background: linear-gradient(135deg, #3385d6, #5c9ee0);
+            background: #cce5ff;
         }
         
         .kompetenz-table tbody td {
@@ -583,7 +605,7 @@
         }
         
         .kompetenz-table tbody td.col-gesellschaft {
-            background-color: #fffbf0;
+            background-color: #fffef5;
         }
         
         .kompetenz-table tbody td.col-digital {
@@ -598,12 +620,12 @@
         
         .kompetenz-table tbody td.col-digital-content p {
             text-align: center;
-            background-color: #f0fff0;
+            background-color: #f0f8f0;
             padding: 10px 12px;
         }
         
         .kompetenz-table tbody td.col-sprache {
-            background-color: #f0f7ff;
+            background-color: #f5f9ff;
         }
         
         /* Kompetenzen in Tabellen fett markieren */
