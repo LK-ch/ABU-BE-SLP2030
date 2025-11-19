@@ -45,7 +45,7 @@
         }
         
         .logo-section img {
-            height: 60px;
+            height: 85px;
             width: auto;
         }
         
@@ -53,19 +53,31 @@
             background-color: transparent;
             border: none;
             padding: 0;
-            cursor: pointer;
-            text-decoration: none;
             color: #000;
             font-weight: 600;
             font-size: 0.95em;
             display: inline-flex;
             align-items: center;
             gap: 8px;
+        }
+        
+        .language-switch .current-lang {
+            color: #000;
+            font-weight: 600;
+            border-bottom: 2px solid #dc291e;
+            padding-bottom: 2px;
+        }
+        
+        .language-switch .lang-link {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
             transition: color 0.3s ease;
         }
         
-        .language-switch:hover {
+        .language-switch .lang-link:hover {
             color: #666;
+            text-decoration: underline;
         }
         
         /* Yellow separator strip */
@@ -708,9 +720,9 @@
             <div class="logo-section">
                 <img src="images/KTBE.png" alt="Kanton Bern Logo">
             </div>
-            <a href="1-lehrjahr_fr.html" class="language-switch">
-                DE | FR
-            </a>
+            <div class="language-switch">
+                <span class="current-lang">DE</span> | <a href="1-lehrjahr_fr.html" class="lang-link">FR</a>
+            </div>
         </div>
     </header>
     
@@ -719,8 +731,8 @@
     
     <main class="container">
         <nav class="breadcrumb">
-            <a href="../index_de.html">Schullehrplan ABU</a> / 
-            <a href="index_de.html">3-jährige Grundbildung EFZ</a> / 
+            <a href="../index.html">Schullehrplan ABU</a> / 
+            <a href="index.html">3-jährige Grundbildung EFZ</a> / 
             1. Lehrjahr
         </nav>
         <h1>1. Lehrjahr EFZ</h1>
