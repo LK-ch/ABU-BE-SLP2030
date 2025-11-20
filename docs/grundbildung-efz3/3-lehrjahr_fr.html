@@ -3,39 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>En construction - Plan d’enseignement scolaire CFG</title>
+    <title>En construction - Plan d'études de culture générale</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #c8102e 0%, #ffcc00 100%);
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background-color: #fff;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Header */
+        header {
+            background: #fff;
+            color: #000;
+            padding: 10px 20px;
+            box-shadow: none;
+            position: relative;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-section img {
+            height: 85px;
+            width: auto;
+        }
+        
+        /* Yellow separator strip */
+        .separator-strip {
+            background-color: #f9f3e8;
+            height: 30px;
+            width: 100%;
+        }
+        
+        /* Main Content */
+        main {
+            flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 40px 20px;
         }
-
+        
         .container {
-            background: white;
-            border-radius: 16px;
+            background: #f5e6d3;
+            border-radius: 0;
             padding: 60px 40px;
             max-width: 600px;
             text-align: center;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: none;
+            border: 2px solid #e0e0e0;
         }
-
+        
         .icon {
             font-size: 80px;
             margin-bottom: 30px;
             animation: bounce 2s infinite;
         }
-
+        
         @keyframes bounce {
             0%, 100% {
                 transform: translateY(0);
@@ -44,56 +91,59 @@
                 transform: translateY(-20px);
             }
         }
-
+        
         h1 {
             font-size: 2.5em;
             color: #000;
             margin-bottom: 20px;
             font-weight: 700;
         }
-
+        
         p {
             font-size: 1.2em;
-            color: #666;
+            color: #000;
             margin-bottom: 40px;
             line-height: 1.6;
+            font-weight: 400;
         }
-
+        
         .back-button {
             display: inline-block;
-            background: linear-gradient(90deg, #c8102e, #ffcc00);
+            background: #dc291e;
             color: white;
             padding: 15px 40px;
-            border-radius: 30px;
+            border-radius: 0;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1em;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(200, 16, 46, 0.3);
+            box-shadow: none;
+            border: 2px solid #dc291e;
         }
-
+        
         .back-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(200, 16, 46, 0.4);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            background: #b82018;
         }
-
+        
         .progress-bar {
             width: 100%;
             height: 6px;
-            background-color: #f0f0f0;
+            background-color: #e0e0e0;
             border-radius: 3px;
             margin-top: 40px;
             overflow: hidden;
         }
-
+        
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #c8102e, #ffcc00);
+            background: #dc291e;
             width: 30%;
             border-radius: 3px;
             animation: progress 3s ease-in-out infinite;
         }
-
+        
         @keyframes progress {
             0% {
                 width: 30%;
@@ -105,20 +155,38 @@
                 width: 30%;
             }
         }
-
+        
+        footer {
+            background: #f9f3e8;
+            color: #000;
+            text-align: center;
+            padding: 20px 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        footer p {
+            font-size: 0.85em;
+            margin: 0;
+            color: #000;
+        }
+        
         @media (max-width: 768px) {
+            .logo-section img {
+                height: 70px;
+            }
+            
             .container {
                 padding: 40px 30px;
             }
-
+            
             h1 {
                 font-size: 2em;
             }
-
+            
             p {
                 font-size: 1em;
             }
-
+            
             .icon {
                 font-size: 60px;
             }
@@ -126,14 +194,32 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="icon">🚧</div>
-        <h1>Site en construction</h1>
-        <p>Cette page est actuellement en cours de développement. Nous travaillons à vous fournir bientôt le contenu complet.</p>
-        <a href="javascript:history.back()" class="back-button">← Retour</a>
-        <div class="progress-bar">
-            <div class="progress-fill"></div>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="./images/KTBE.png" alt="Logo du canton de Berne">
+            </div>
         </div>
-    </div>
+    </header>
+    
+    <!-- Yellow separator strip -->
+    <div class="separator-strip"></div>
+    
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <div class="icon">🚧</div>
+            <h1>Site web en construction</h1>
+            <p>Cette page est actuellement en cours d'élaboration. Nous travaillons à vous fournir prochainement le contenu complet.</p>
+            <a href="javascript:history.back()" class="back-button">← Retour</a>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+    </footer>
 </body>
 </html>
