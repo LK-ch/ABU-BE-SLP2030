@@ -74,11 +74,23 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+    }
+
+    .language-switch .current-lang {
+      color: #000;
+      font-weight: 400;
+      border-bottom: 2px solid #dc291e;
+      padding-bottom: 2px;
+    }
+
+    .language-switch .lang-link {
+      color: #000;
       text-decoration: none;
+      cursor: pointer;
       transition: color 0.3s ease;
     }
 
-    .language-switch:hover {
+    .language-switch .lang-link:hover {
       color: #666;
       text-decoration: underline;
     }
@@ -279,9 +291,9 @@
         </div>
       </div>
       <!-- Sprachwechsel-Button -->
-      <a href="index_fr.html" class="language-switch">
-        🇫🇷 Français
-      </a>
+      <div class="language-switch">
+        <span class="current-lang">DE</span> | <a href="index_fr.html" class="lang-link">FR</a>
+      </div>
     </div>
   </header>
 
@@ -319,11 +331,11 @@
       <h3>Rechtsgrundlagen</h3>
       <div class="external-links-grid">
         <a href="https://backend.sbfi.admin.ch/fileservice/sdweb-docs-prod-sbfitestch-files/files/2025/07/01/a429d879-d581-4c26-a973-fbcedc8fadd7.pdf" target="_blank" class="external-link-button">
-          <span class="link-icon">📚</span>
+          <span class="link-icon"></span>
           <span>Rahmenlehrplan ABU 2030 ↗</span>
         </a>
         <a href="https://www.fedlex.admin.ch/eli/oc/2025/263/de" target="_blank" class="external-link-button">
-          <span class="link-icon">⚖️</span>
+          <span class="link-icon"></span>
           <span>VMAB-Verordnung ↗</span>
         </a>
       </div>
