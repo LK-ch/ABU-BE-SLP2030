@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3-jährige Grundbildung EFZ - Schullehrplan ABU</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,34 +15,96 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
             color: #000;
-            background-color: #fff8f0;
+            background-color: #fff;
+        }
+        
+        /* Header */
+        header {
+            background: #fff;
+            color: #000;
+            padding: 10px 20px;
+            margin-bottom: 0;
+            box-shadow: none;
+            position: relative;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-section img {
+            height: 85px;
+            width: auto;
+        }
+        
+        .language-switch {
+            background-color: transparent;
+            border: none;
+            padding: 0;
+            color: #000;
+            font-weight: 400;
+            font-size: 0.95em;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .language-switch .current-lang {
+            color: #000;
+            font-weight: 400;
+            border-bottom: 2px solid #dc291e;
+            padding-bottom: 2px;
+        }
+        
+        .language-switch .lang-link {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .language-switch .lang-link:hover {
+            color: #666;
+            text-decoration: underline;
+        }
+        
+        /* Yellow separator strip */
+        .separator-strip {
+            background-color: #f9f3e8;
+            height: 30px;
+            width: 100%;
         }
         
         .container {
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+            margin: 20px auto 0 auto;
+            padding: 15px;
         }
         
-        header {
-            background: linear-gradient(90deg, #c8102e, #ffcc00);
-            color: white;
-            padding: 30px 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        main.container {
+            background-color: #fff;
         }
         
         .breadcrumb {
             font-size: 0.9em;
-            color: #fff;
+            color: #000;
             margin-bottom: 20px;
         }
         
         .breadcrumb a {
-            color: #fff;
+            color: #000;
             text-decoration: none;
             font-weight: 500;
         }
@@ -49,54 +114,27 @@
         }
         
         h1 {
-            color: #fff;
+            color: #000;
             font-size: 2.2em;
             margin-bottom: 10px;
             font-weight: 700;
         }
         
         .subtitle {
-            color: #fff;
+            color: #000;
             font-size: 1.1em;
-        }
-        
-        .language-switch {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 25px;
-            padding: 8px 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: #fff;
-            font-weight: 600;
-            font-size: 0.95em;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .language-switch:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-        
-        header {
-            position: relative;
+            margin-bottom: 30px;
         }
         
         .info-box {
-            background-color: #fff;
-            border-left: 4px solid #c8102e;
-            border-radius: 4px;
+            background-color: #f5e6d3;
+            border-left: 4px solid #dc291e;
+            border-radius: 0;
             padding: 24px;
             margin-bottom: 40px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            box-shadow: none;
+            border: 2px solid #e0e0e0;
+            border-left: 4px solid #dc291e;
         }
         
         .info-box-header {
@@ -120,7 +158,7 @@
         
         .toggle-icon {
             font-size: 1.5em;
-            color: #c8102e;
+            color: #dc291e;
             transition: transform 0.3s ease;
         }
         
@@ -155,7 +193,7 @@
             content: "▸";
             position: absolute;
             left: 0;
-            color: #c8102e;
+            color: #dc291e;
             font-weight: bold;
         }
         
@@ -179,20 +217,22 @@
         
         .theme-table {
             width: 100%;
-            max-width: 800px;
+            max-width: 600px;
             margin: 0 auto 40px auto;
             background: white;
-            border-radius: 8px;
+            border-radius: 0;
             overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            box-shadow: none;
+            border: 2px solid #e0e0e0;
         }
         
         .theme-table th {
-            background: linear-gradient(90deg, #c8102e, #ffcc00);
+            background: #f5e6d3;
             padding: 12px;
             text-align: left;
-            color: #fff;
-            font-weight: 600;
+            color: #000;
+            font-weight: 700;
+            border-bottom: 2px solid #e0e0e0;
         }
         
         .theme-table td {
@@ -203,23 +243,23 @@
         
         .theme-table .year-cell {
             font-weight: 600;
-            background-color: #fff3cd;
+            background-color: #f5e6d3;
             vertical-align: middle;
             text-align: center;
             font-size: 1.1em;
-            color: #c8102e;
+            color: #dc291e;
         }
         
         .theme-table .year-2 {
-            background-color: #ffe8a1;
+            background-color: #f5e6d3;
         }
         
         .theme-table .year-3 {
-            background-color: #ffd770;
+            background-color: #f5e6d3;
         }
         
         .theme-table tfoot td {
-            background-color: #f5f5f5;
+            background-color: #f9f3e8;
             font-weight: 600;
             border-bottom: none;
         }
@@ -237,28 +277,29 @@
         }
 
         .zirkularitaet-card {
-            background: #fff;
-            border-radius: 8px;
+            background: #f5e6d3;
+            border-radius: 0;
             padding: 35px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: none;
             transition: all 0.3s ease;
             text-decoration: none;
             color: inherit;
             display: flex;
             align-items: center;
             gap: 30px;
-            border-left: 6px solid #c8102e;
+            border: 2px solid #e0e0e0;
         }
 
         .zirkularitaet-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            background-color: #ecdcc4;
         }
 
         .zirkularitaet-icon {
             width: 64px;
             height: 64px;
-            background: linear-gradient(135deg, #c8102e, #ffcc00);
+            background: #dc291e;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -281,35 +322,37 @@
         }
 
         .zirkularitaet-content p {
-            color: #333;
+            color: #000;
             line-height: 1.5;
             font-size: 1.05em;
+            font-weight: 400;
         }
         
         .card {
-            background: #fff;
-            border-radius: 8px;
+            background: #f5e6d3;
+            border-radius: 0;
             padding: 30px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: none;
             transition: all 0.3s ease;
             text-decoration: none;
             color: inherit;
             display: block;
             position: relative;
             overflow: hidden;
-            border-left: 6px solid #c8102e;
+            border: 2px solid #e0e0e0;
         }
         
         .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            background-color: #ecdcc4;
         }
         
         .card-icon {
             width: 56px;
             height: 56px;
             margin-bottom: 20px;
-            background: linear-gradient(135deg, #c8102e, #ffcc00);
+            background: #dc291e;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -327,16 +370,17 @@
         }
         
         .card p {
-            color: #333;
+            color: #000;
             line-height: 1.5;
+            font-weight: 400;
         }
         
         .card .meta {
             margin-top: 16px;
             padding-top: 16px;
-            border-top: 1px solid #eee;
+            border-top: 1px solid #e0e0e0;
             font-size: 0.9em;
-            color: #666;
+            color: #000;
         }
         
         .back-link {
@@ -345,7 +389,7 @@
         }
         
         .back-link a {
-            color: #c8102e;
+            color: #dc291e;
             text-decoration: none;
             font-size: 1.1em;
             font-weight: 600;
@@ -356,6 +400,19 @@
         }
         
         @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .logo-section img {
+                height: 70px;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
             h1 {
                 font-size: 1.8em;
             }
@@ -366,6 +423,7 @@
             
             .theme-table {
                 font-size: 0.9em;
+                max-width: 100%;
             }
 
             .zirkularitaet-card {
@@ -386,20 +444,28 @@
     </script>
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <a href="index_fr.html" class="language-switch">
-            🇫🇷 Français
-        </a>
-        <div class="container">
-            <nav class="breadcrumb">
-                <a href="../index_de.html">Schullehrplan ABU</a> / 3-jährige Grundbildung EFZ
-            </nav>
-            <h1>3-jährige Grundbildung EFZ</h1>
-            <p class="subtitle">Eidgenössisches Fähigkeitszeugnis</p>
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="../images/KTBE.png" alt="Kanton Bern Logo">
+            </div>
+            <div class="language-switch">
+                <span class="current-lang">DE</span> | <a href="index_fr.html" class="lang-link">FR</a>
+            </div>
         </div>
     </header>
     
+    <!-- Yellow separator strip -->
+    <div class="separator-strip"></div>
+    
     <main class="container">
+        <nav class="breadcrumb">
+            <a href="../index_de.html">Schullehrplan ABU</a> / 3-jährige Grundbildung EFZ
+        </nav>
+        <h1>3-jährige Grundbildung EFZ</h1>
+        <p class="subtitle">Eidgenössisches Fähigkeitszeugnis</p>
+        
         <div class="theme-overview">
             <h2>Themenübersicht</h2>
             <table class="theme-table">
