@@ -435,6 +435,8 @@
             margin: 2px 2px 2px 0;
             border-radius: 3px;
             font-weight: 600;
+            position: relative;
+            cursor: pointer;
         }
 
         .kompetenz-badge-gesellschaft {
@@ -470,6 +472,8 @@
             font-size: 0.75em;
             font-weight: 600;
             color: #dc291e;
+            position: relative;
+            cursor: pointer;
         }
 
         /* Filter Kacheln - kompakte Nummerierung mit Tooltip */
@@ -673,6 +677,11 @@
         }
 
         .kachel:hover .tooltip {
+            opacity: 1;
+        }
+
+        .kompetenz-badge:hover .tooltip,
+        .schluesselkompetenz-badge:hover .tooltip {
             opacity: 1;
         }
 
@@ -1564,10 +1573,20 @@
                 themeData.schluesselkompetenzen.forEach(sk => {
                     const badge = document.createElement('div');
                     badge.className = 'schluesselkompetenz-badge';
-                    badge.textContent = shortenCompetenceText(sk.text);
                     badge.style.display = 'inline-block';
                     badge.style.marginRight = '4px';
                     badge.style.marginBottom = '4px';
+                    badge.style.position = 'relative';
+                    badge.style.cursor = 'pointer';
+                    
+                    // Nur die Nummer anzeigen
+                    badge.textContent = sk.nr;
+                    
+                    // Tooltip hinzufügen
+                    const tooltip = document.createElement('div');
+                    tooltip.className = 'tooltip';
+                    tooltip.textContent = sk.text;
+                    badge.appendChild(tooltip);
                     
                     // Füge data-category für Hauptkategorie-Filterung hinzu
                     badge.setAttribute('data-category', 'schluessel');
@@ -1631,6 +1650,7 @@
                                     }
                                     
                                     allBadges.push({
+                                        nr: item.nr,
                                         text: item.text,
                                         cssClass: bereich.cssClass,
                                         aspekt: aspekt,
@@ -1645,10 +1665,20 @@
                     allBadges.forEach(badgeInfo => {
                         const badge = document.createElement('div');
                         badge.className = `kompetenz-badge ${badgeInfo.cssClass}`;
-                        badge.textContent = shortenCompetenceText(badgeInfo.text);
                         badge.style.display = 'inline-block';
                         badge.style.marginRight = '4px';
                         badge.style.marginBottom = '4px';
+                        badge.style.position = 'relative';
+                        badge.style.cursor = 'pointer';
+                        
+                        // Nur die Nummer anzeigen
+                        badge.textContent = badgeInfo.nr;
+                        
+                        // Tooltip hinzufügen
+                        const tooltip = document.createElement('div');
+                        tooltip.className = 'tooltip';
+                        tooltip.textContent = badgeInfo.text;
+                        badge.appendChild(tooltip);
                         
                         // Füge data-category für Hauptkategorie-Filterung hinzu
                         badge.setAttribute('data-category', badgeInfo.category);
