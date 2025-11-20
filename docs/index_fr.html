@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Plan d'études de culture générale - Enseignement de culture générale</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -12,109 +15,118 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
       line-height: 1.6;
-      color: #2b2b2b;
-      background-color: #fff8f0;
+      color: #000;
+      background-color: #fff;
     }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
+    /* Header */
     header {
-      background: linear-gradient(90deg, #c8102e, #ffcc00);
-      color: white;
-      padding: 50px 20px;
-      text-align: center;
-      margin-bottom: 40px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      background: #fff;
+      color: #000;
+      padding: 10px 20px;
+      margin-bottom: 0;
+      box-shadow: none;
       position: relative;
     }
 
-    /* Work in Progress Badge - oben links */
-    .wip-badge {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 120px;
-      height: 120px;
-      background-color: rgba(255, 255, 255, 0.95);
-      border-radius: 50%;
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-section {
       display: flex;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-size: 0.68em;
+    }
+
+    .logo-section img {
+      height: 85px;
+      width: auto;
+    }
+
+    /* Work in Progress Badge - neben Logo */
+    .wip-badge {
+      margin-left: 20px;
+      padding: 8px 16px;
+      background-color: #fff3cd;
+      border: 2px solid #ffcc00;
+      border-radius: 8px;
+      font-size: 0.75em;
       font-weight: 700;
       color: #c8102e;
+      text-align: center;
       line-height: 1.3;
-      padding: 15px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
       text-transform: uppercase;
-      border: 3px solid #c8102e;
-      z-index: 10;
-    }
-
-    /* Berner Wappen - oben rechts */
-    .bern-wappen {
-      position: absolute;
-      top: 60%;
-      right: 20px;
-      transform: translateY(-50%);
-      width: 150px;
-      height: 150px;
-      opacity: 0.25;
-    }
-
-    .bern-wappen img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-    }
-
-    h1 {
-      font-size: 2.5em;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .subtitle {
-      font-size: 1.2em;
-      max-width: 800px;
-      margin: 0 auto;
-      line-height: 1.5;
-      color: #fff;
     }
 
     .language-switch {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background-color: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      border-radius: 25px;
-      padding: 8px 20px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      color: #fff;
-      font-weight: 600;
+      background-color: transparent;
+      border: none;
+      padding: 0;
+      color: #000;
+      font-weight: 400;
       font-size: 0.95em;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      z-index: 10;
     }
 
-    .language-switch:hover {
-      background-color: rgba(255, 255, 255, 0.3);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    .language-switch .current-lang {
+      color: #000;
+      font-weight: 400;
+      border-bottom: 2px solid #dc291e;
+      padding-bottom: 2px;
+    }
+
+    .language-switch .lang-link {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .language-switch .lang-link:hover {
+      color: #666;
+      text-decoration: underline;
+    }
+
+    /* Yellow separator strip */
+    .separator-strip {
+      background-color: #f9f3e8;
+      height: 30px;
+      width: 100%;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 20px auto 0 auto;
+      padding: 15px;
+    }
+
+    main.container {
+      background-color: #fff;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #000;
+      text-align: center;
+    }
+
+    .subtitle {
+      font-size: 1em;
+      max-width: 900px;
+      margin: 0 auto 30px;
+      line-height: 1.5;
+      color: #000;
+      text-align: center;
     }
 
     .card-grid {
@@ -125,61 +137,64 @@
     }
 
     .card {
-      background: #fff;
-      border-radius: 10px;
+      background: #f5e6d3;
+      border-radius: 0;
       padding: 30px;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: none;
       transition: all 0.3s ease;
       text-decoration: none;
       color: inherit;
       display: block;
       position: relative;
       overflow: hidden;
-      border-left: 6px solid #c8102e;
+      border: 2px solid #e0e0e0;
     }
 
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+      transform: translateY(-3px);
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+      background-color: #ecdcc4;
     }
 
     .card-icon {
       width: 50px;
       height: 50px;
       margin-bottom: 20px;
-      background-color: #c8102e;
+      background-color: #dc291e;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
       font-size: 24px;
+      font-weight: 700;
     }
 
     .card h2 {
       font-size: 1.3em;
       margin-bottom: 10px;
       color: #000;
-      font-weight: 900;
+      font-weight: 700;
     }
 
     .card p {
-      color: #555;
+      color: #000;
       font-size: 0.95em;
+      font-weight: 400;
     }
 
     .external-links {
       margin-top: 40px;
       padding-top: 30px;
-      border-top: 2px solid #ffcc00;
+      border-top: 2px solid #f5e6d3;
     }
 
     .external-links h3 {
-      color: #c8102e;
+      color: #000;
       text-align: center;
       font-size: 1.1em;
       margin-bottom: 20px;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .external-links-grid {
@@ -195,10 +210,10 @@
       gap: 8px;
       padding: 10px 16px;
       background-color: #fff3cd;
-      border: 1px solid #ffcc00;
-      border-radius: 6px;
+      border: 2px solid #e0e0e0;
+      border-radius: 0;
       text-decoration: none;
-      color: #b30000;
+      color: #000;
       font-weight: 500;
       transition: all 0.2s ease;
     }
@@ -206,84 +221,92 @@
     .external-link-button:hover {
       background-color: #ffe066;
       transform: translateY(-2px);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
 
     footer {
-      background: #c8102e;
-      color: white;
+      background: #f9f3e8;
+      color: #000;
       text-align: center;
-      padding: 25px 20px;
+      padding: 20px 20px;
       margin-top: 50px;
+      border-top: 1px solid #e0e0e0;
     }
 
     footer p {
-      font-size: 0.9em;
+      font-size: 0.85em;
       margin: 0;
+      color: #000;
     }
 
     /* Responsive Design */
     @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .logo-section {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .logo-section img {
+        height: 70px;
+      }
+
       .wip-badge {
-        width: 100px;
-        height: 100px;
-        font-size: 0.6em;
-        top: 15px;
-        left: 15px;
-        padding: 12px;
+        margin-left: 0;
+        font-size: 0.65em;
       }
 
-      .language-switch {
-        right: 20px;
-        padding: 6px 15px;
-        font-size: 0.85em;
-      }
-
-      .bern-wappen {
-        width: 120px;
-        height: 120px;
-        top: 50%;
-        right: 15px;
+      .container {
+        padding: 10px;
       }
 
       h1 {
         font-size: 1.8em;
-        margin-top: 30px;
       }
 
       .subtitle {
-        font-size: 1em;
+        font-size: 0.9em;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 
 <body>
+  <!-- Header -->
   <header>
-    <!-- Work in Progress Badge oben Mitte -->
-    <div class="wip-badge">
-      Site web et contenus en cours d'élaboration
-    </div>
-
-    <!-- Sprachwechsel-Button -->
-    <a href="index_de.html" class="language-switch">
-      🇩🇪 Deutsch
-    </a>
-
-    <!-- Berner Wappen oben rechts -->
-    <div class="bern-wappen">
-      <img src="./images/Bern-Kanton.PNG" alt="Armoiries du canton de Berne">
-    </div>
-
-    <div class="container">
-      <h1>Plan d'études de culture générale</h1>
-      <p class="subtitle">
-        Plan d'études de culture générale pour les écoles professionnelles 
-        du canton de Berne, basé sur le plan d'études cadre CG 2030
-      </p>
+    <div class="header-container">
+      <div class="logo-section">
+        <img src="./images/KTBE.png" alt="Logo du canton de Berne">
+        <!-- Work in Progress Badge -->
+        <div class="wip-badge">
+          Site web et contenus en cours d'élaboration
+        </div>
+      </div>
+      <!-- Sprachwechsel-Button -->
+      <div class="language-switch">
+        <a href="index_de.html" class="lang-link">DE</a> | <span class="current-lang">FR</span>
+      </div>
     </div>
   </header>
 
+  <!-- Yellow separator strip -->
+  <div class="separator-strip"></div>
+
   <main class="container">
+    <h1>Plan d'études de culture générale</h1>
+    <p class="subtitle">
+      Plan d'études de culture générale pour les écoles professionnelles 
+      du canton de Berne, basé sur le plan d'études cadre CG 2030
+    </p>
+
     <div class="card-grid">
       <a href="grundbildung-eba/index_fr.html" class="card">
         <div class="card-icon">2</div>
@@ -308,11 +331,9 @@
       <h3>Bases légales</h3>
       <div class="external-links-grid">
         <a href="https://backend.sbfi.admin.ch/fileservice/sdweb-docs-prod-sbfitestch-files/files/2025/07/01/a429d879-d581-4c26-a973-fbcedc8fadd7.pdf" target="_blank" class="external-link-button">
-          <span class="link-icon">📚</span>
           <span>Plan d'études cadre CG 2030 ↗</span>
         </a>
         <a href="https://www.fedlex.admin.ch/eli/oc/2025/263/fr" target="_blank" class="external-link-button">
-          <span class="link-icon">⚖️</span>
           <span>Ordonnance OFCG ↗</span>
         </a>
       </div>
