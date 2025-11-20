@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zirkulärer Aufbau von Kompetenzen - EFZ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -11,106 +14,122 @@
             box-sizing: border-box;
         }
 
-        :root {
-            /* Farben für die 8 Aspekte */
-            --aspect-ethik: #FF6B6B;
-            --aspect-identitaet: #4ECDC4;
-            --aspect-kultur: #9B59B6;
-            --aspect-oekologie: #2ECC71;
-            --aspect-politik: #3498DB;
-            --aspect-recht: #E67E22;
-            --aspect-tech: #34495E;
-            --aspect-wirtschaft: #F39C12;
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
             color: #000;
-            background-color: #fff8f0;
+            background-color: #fff;
             min-height: 100vh;
         }
 
-        /* Header */
+        /* Simplified Header */
         header {
-            background: linear-gradient(90deg, #c8102e, #ffcc00);
-            color: black;
-            padding: 30px 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background: #fff;
+            color: #000;
+            padding: 10px 20px;
+            margin-bottom: 0;
+            box-shadow: none;
             position: relative;
         }
-
+        
+        .header-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-section img {
+            height: 85px;
+            width: auto;
+        }
+        
         .language-switch {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 25px;
-            padding: 8px 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: #fff;
-            font-weight: 600;
+            background-color: transparent;
+            border: none;
+            padding: 0;
+            color: #000;
+            font-weight: 400;
             font-size: 0.95em;
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            text-decoration: none;
+        }
+        
+        .language-switch .current-lang {
+            color: #000;
+            font-weight: 400;
+            border-bottom: 2px solid #dc291e;
+            padding-bottom: 2px;
+        }
+        
+        .language-switch .lang-link {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .language-switch .lang-link:hover {
+            color: #666;
+            text-decoration: underline;
+        }
+        
+        /* Yellow separator strip */
+        .separator-strip {
+            background-color: #f9f3e8;
+            height: 30px;
+            width: 100%;
         }
 
-        .language-switch:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .header-container {
+        /* Container */
+        .container {
             max-width: 1600px;
-            margin: 0 auto;
+            margin: 30px auto 0 auto;
+            padding: 20px;
+            background-color: #fff;
         }
 
         .breadcrumb {
             font-size: 0.9em;
-            color: #fff;
+            color: #000;
             margin-bottom: 20px;
         }
-
+        
         .breadcrumb a {
-            color: #fff;
+            color: #000;
             text-decoration: none;
             font-weight: 500;
         }
-
+        
         .breadcrumb a:hover {
             text-decoration: underline;
         }
 
         h1 {
-            color: #fff;
+            color: #000;
             font-size: 2.2em;
             margin-bottom: 10px;
             font-weight: 700;
         }
 
         .subtitle {
-            color: #fff;
+            color: #000;
             font-size: 1.1em;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1600px;
-            margin: 0 auto;
-            padding: 20px;
+            margin-bottom: 30px;
         }
 
         /* Back Button */
         .back-btn {
             background: white;
-            border: 2px solid #c8102e;
+            border: 2px solid #dc291e;
             padding: 0.8rem 1.5rem;
             border-radius: 8px;
             cursor: pointer;
@@ -120,12 +139,12 @@
             margin-bottom: 2rem;
             transition: all 0.3s ease;
             text-decoration: none;
-            color: #c8102e;
+            color: #dc291e;
             font-weight: 500;
         }
 
         .back-btn:hover {
-            background: #c8102e;
+            background: #dc291e;
             color: white;
             transform: translateX(-5px);
             text-decoration: none;
@@ -133,16 +152,16 @@
 
         /* Status Info Box */
         .status-info {
-            background: #fff3cd;
-            border-left: 4px solid #c8102e;
+            background: #f9f3e8;
+            border-left: 4px solid #dc291e;
             padding: 20px;
-            border-radius: 8px;
+            border-radius: 0;
             margin-bottom: 30px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .status-info h2 {
-            color: #c8102e;
+            color: #dc291e;
             margin-bottom: 10px;
             font-size: 1.4em;
             font-weight: 700;
@@ -170,7 +189,7 @@
         .status-info-toggle {
             font-size: 1.2em;
             transition: transform 0.3s ease;
-            color: #c8102e;
+            color: #dc291e;
             font-weight: bold;
         }
 
@@ -188,141 +207,118 @@
             max-height: 1000px;
         }
 
+        .status-info ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 15px;
+        }
+
+        .status-info li {
+            padding: 0.4rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .status-info li span {
+            position: absolute;
+            left: 0;
+            color: #dc291e;
+            font-weight: bold;
+        }
+
         /* Loading Indicator */
         .loading {
             text-align: center;
             padding: 40px;
-            color: #c8102e;
+            color: #dc291e;
             font-weight: 600;
         }
 
-        /* Grid Container für Aspekte - größere Kacheln für vollständige Texte */
-        .kachel-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 10px;
-            margin-bottom: 20px;
+        /* Section Title */
+        .section-title {
+            font-size: 2em;
+            font-weight: 700;
+            color: #dc291e;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #dc291e;
+            text-align: center;
         }
 
-        .kachel {
-            background: white;
-            padding: 12px;
-            border-radius: 6px;
-            border-left: 3px solid;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            min-height: 60px;
+        /* Hauptkategorie Filter */
+        .main-filter-container {
             display: flex;
-            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0 30px 0;
+            flex-wrap: wrap;
         }
 
-        .kachel:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        .main-filter-btn {
+            background: white;
+            border: 3px solid #ddd;
+            padding: 12px 24px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: #333;
         }
 
-        .kachel.active {
-            border-width: 3px;
+        .main-filter-btn:hover {
+            transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
-        /* Einheitlich hellgelb für alle Gesellschafts-Aspekte */
-        .kachel-ethik { border-color: #ffd966; }
-        .kachel-identitaet { border-color: #ffd966; }
-        .kachel-kultur { border-color: #ffd966; }
-        .kachel-oekologie { border-color: #ffd966; }
-        .kachel-politik { border-color: #ffd966; }
-        .kachel-recht { border-color: #ffd966; }
-        .kachel-tech { border-color: #ffd966; }
-        .kachel-wirtschaft { border-color: #ffd966; }
-        
-        /* Schlüsselkompetenz Kacheln */
-        .kachel-schluessel-quellen { border-color: #c8102e; }
-        .kachel-schluessel-ziele { border-color: #c8102e; }
-        .kachel-schluessel-problemloesung { border-color: #c8102e; }
-        .kachel-schluessel-teams { border-color: #c8102e; }
-        .kachel-schluessel-werthaltungen { border-color: #c8102e; }
-        .kachel-schluessel-standpunkte { border-color: #c8102e; }
-        .kachel-schluessel-perspektiven { border-color: #c8102e; }
-        .kachel-schluessel-lebensphasen { border-color: #c8102e; }
-        .kachel-schluessel-vernetzt { border-color: #c8102e; }
-        .kachel-schluessel-wandel { border-color: #c8102e; }
-        .kachel-schluessel-mehrdeutigkeiten { border-color: #c8102e; }
-        .kachel-schluessel-partizipieren { border-color: #c8102e; }
-        
-        /* Digital Kacheln */
-        .kachel-digital-grundlagen { border-color: #4db380; }
-        .kachel-digital-info { border-color: #4db380; }
-        .kachel-digital-kommunikation { border-color: #4db380; }
-        .kachel-digital-inhalt { border-color: #4db380; }
-        .kachel-digital-problemloesung { border-color: #4db380; }
-        .kachel-digital-ki { border-color: #4db380; }
-        .kachel-digital-ethik { border-color: #4db380; }
-        
-        /* Sprache Kacheln */
-        .kachel-sprache-rez-muendlich { border-color: #3385d6; }
-        .kachel-sprache-rez-schriftlich { border-color: #3385d6; }
-        .kachel-sprache-rez-audiovisuell { border-color: #3385d6; }
-        .kachel-sprache-prod-muendlich { border-color: #3385d6; }
-        .kachel-sprache-prod-schriftlich { border-color: #3385d6; }
-        .kachel-sprache-prod-multimedial { border-color: #3385d6; }
-        .kachel-sprache-int-muendlich { border-color: #3385d6; }
-        .kachel-sprache-int-schriftlich { border-color: #3385d6; }
-        .kachel-sprache-int-digital { border-color: #3385d6; }
-
-        .kachel h3 {
-            font-size: 0.85em;
-            margin-bottom: 0;
-            color: #333;
-            line-height: 1.4;
+        .main-filter-btn.active {
+            border-width: 3px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
-        /* Einheitlich hellgelb für alle Gesellschafts-Aspekte */
-        .kachel-ethik h3,
-        .kachel-identitaet h3,
-        .kachel-kultur h3,
-        .kachel-oekologie h3,
-        .kachel-politik h3,
-        .kachel-recht h3,
-        .kachel-tech h3,
-        .kachel-wirtschaft h3 { color: #d4a500; }
-        
-        /* Schlüsselkompetenz Kacheln */
-        .kachel-schluessel-quellen h3,
-        .kachel-schluessel-ziele h3,
-        .kachel-schluessel-problemloesung h3,
-        .kachel-schluessel-teams h3,
-        .kachel-schluessel-werthaltungen h3,
-        .kachel-schluessel-standpunkte h3,
-        .kachel-schluessel-perspektiven h3,
-        .kachel-schluessel-lebensphasen h3,
-        .kachel-schluessel-vernetzt h3,
-        .kachel-schluessel-wandel h3,
-        .kachel-schluessel-mehrdeutigkeiten h3,
-        .kachel-schluessel-partizipieren h3 { color: #c8102e; }
-        
-        .kachel-digital-grundlagen h3,
-        .kachel-digital-info h3,
-        .kachel-digital-kommunikation h3,
-        .kachel-digital-inhalt h3,
-        .kachel-digital-problemloesung h3,
-        .kachel-digital-ki h3,
-        .kachel-digital-ethik h3 { color: #4db380; }
-        
-        .kachel-sprache-rez-muendlich h3,
-        .kachel-sprache-rez-schriftlich h3,
-        .kachel-sprache-rez-audiovisuell h3,
-        .kachel-sprache-prod-muendlich h3,
-        .kachel-sprache-prod-schriftlich h3,
-        .kachel-sprache-prod-multimedial h3,
-        .kachel-sprache-int-muendlich h3,
-        .kachel-sprache-int-schriftlich h3,
-        .kachel-sprache-int-digital h3 { color: #3385d6; }
+        .main-filter-btn-schluessel {
+            border-color: #dc291e;
+            color: #dc291e;
+        }
+
+        .main-filter-btn-schluessel.active {
+            background: #dc291e;
+            color: white;
+        }
+
+        .main-filter-btn-gesellschaft {
+            border-color: #ffd966;
+            color: #d4a500;
+        }
+
+        .main-filter-btn-gesellschaft.active {
+            background: #ffd966;
+            color: #333;
+        }
+
+        .main-filter-btn-digital {
+            border-color: #4db380;
+            color: #4db380;
+        }
+
+        .main-filter-btn-digital.active {
+            background: #4db380;
+            color: white;
+        }
+
+        .main-filter-btn-sprache {
+            border-color: #3385d6;
+            color: #3385d6;
+        }
+
+        .main-filter-btn-sprache.active {
+            background: #3385d6;
+            color: white;
+        }
 
         /* Reset Button */
         .reset-btn {
-            background: #c8102e;
+            background: #dc291e;
             color: white;
             border: none;
             padding: 0.8rem 1.5rem;
@@ -357,10 +353,8 @@
             min-width: 0;
         }
 
-        /* Arrow zwischen Spalten - entfernt */
-
         .year-header {
-            background: linear-gradient(135deg, #c8102e, #a00d24);
+            background: linear-gradient(135deg, #dc291e, #a00d24);
             color: white;
             padding: 12px;
             border-radius: 8px;
@@ -384,7 +378,7 @@
             border-radius: 8px;
             padding: 12px;
             margin-bottom: 12px;
-            border-left: 4px solid #c8102e;
+            border-left: 4px solid #dc291e;
             transition: all 0.3s ease;
         }
 
@@ -394,7 +388,7 @@
         }
 
         .theme-card h3 {
-            color: #c8102e;
+            color: #dc291e;
             font-size: 1em;
             margin-bottom: 10px;
             font-weight: 600;
@@ -434,22 +428,6 @@
             font-size: 0.8em;
         }
 
-        .kompetenz-detail-item {
-            margin-bottom: 8px;
-            padding-left: 10px;
-            border-left: 2px solid #c8102e;
-            background: rgba(255, 255, 255, 0.5);
-            padding: 6px;
-            border-radius: 4px;
-        }
-
-        .kompetenz-detail-title {
-            font-weight: 600;
-            color: #c8102e;
-            margin-bottom: 4px;
-            font-size: 0.9em;
-        }
-
         .kompetenz-badge {
             display: inline-block;
             font-size: 0.75em;
@@ -474,43 +452,229 @@
             border-left: 3px solid #3385d6;
         }
 
-        /* Aspekt Tags */
-        .aspekt-tags {
-            margin-top: 10px;
-            padding-top: 8px;
-            border-top: 2px solid #e0e0e0;
+        /* Schlüsselkompetenzen unter Themen */
+        .schluesselkompetenzen {
+            padding: 0;
+            margin: 10px 0 15px 0;
+            border: none;
+            background: transparent;
         }
 
-        .aspekt-tag {
+        .schluesselkompetenz-badge {
             display: inline-block;
-            padding: 4px 10px;
-            margin: 2px;
-            border-radius: 15px;
+            background: rgba(220, 41, 30, 0.15);
+            border-left: 3px solid #dc291e;
+            padding: 3px 8px;
+            margin: 2px 2px 2px 0;
+            border-radius: 3px;
             font-size: 0.75em;
-            font-weight: 500;
+            font-weight: 600;
+            color: #dc291e;
+        }
+
+        /* Filter Kacheln - kompakte Nummerierung mit Tooltip */
+        .filter-section {
+            margin-bottom: 30px;
+        }
+
+        .filter-section h3 {
+            font-size: 1.2em;
+            margin: 20px 0 15px 0;
+            font-weight: 600;
+        }
+
+        .filter-section h3.color-schluessel {
+            color: #dc291e;
+        }
+
+        .filter-section h3.color-gesellschaft {
+            color: #d4a500;
+        }
+
+        .filter-section h3.color-digital {
+            color: #4db380;
+        }
+
+        .filter-section h3.color-sprache {
+            color: #3385d6;
+        }
+
+        .kachel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .kachel {
+            background: white;
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid;
             cursor: pointer;
             transition: all 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            text-align: center;
+        }
+
+        .kachel:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .kachel.active {
+            border-width: 3px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .kachel h3 {
+            font-size: 0.9em;
+            margin: 0;
+            color: #333;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+
+        /* Farben für Kacheln - Schlüsselkompetenzen */
+        .kachel-schluessel-quellen,
+        .kachel-schluessel-ziele,
+        .kachel-schluessel-problemloesung,
+        .kachel-schluessel-teams,
+        .kachel-schluessel-werthaltungen,
+        .kachel-schluessel-standpunkte,
+        .kachel-schluessel-perspektiven,
+        .kachel-schluessel-lebensphasen,
+        .kachel-schluessel-vernetzt,
+        .kachel-schluessel-wandel,
+        .kachel-schluessel-mehrdeutigkeiten,
+        .kachel-schluessel-partizipieren {
+            border-color: #dc291e;
+        }
+
+        .kachel-schluessel-quellen h3,
+        .kachel-schluessel-ziele h3,
+        .kachel-schluessel-problemloesung h3,
+        .kachel-schluessel-teams h3,
+        .kachel-schluessel-werthaltungen h3,
+        .kachel-schluessel-standpunkte h3,
+        .kachel-schluessel-perspektiven h3,
+        .kachel-schluessel-lebensphasen h3,
+        .kachel-schluessel-vernetzt h3,
+        .kachel-schluessel-wandel h3,
+        .kachel-schluessel-mehrdeutigkeiten h3,
+        .kachel-schluessel-partizipieren h3 {
+            color: #dc291e;
+        }
+
+        /* Farben für Kacheln - Gesellschaft */
+        .kachel-ethik,
+        .kachel-identitaet,
+        .kachel-kultur,
+        .kachel-oekologie,
+        .kachel-politik,
+        .kachel-recht,
+        .kachel-tech,
+        .kachel-wirtschaft {
+            border-color: #ffd966;
+        }
+
+        .kachel-ethik h3,
+        .kachel-identitaet h3,
+        .kachel-kultur h3,
+        .kachel-oekologie h3,
+        .kachel-politik h3,
+        .kachel-recht h3,
+        .kachel-tech h3,
+        .kachel-wirtschaft h3 {
+            color: #d4a500;
+        }
+
+        /* Farben für Kacheln - Digital */
+        .kachel-digital-grundlagen,
+        .kachel-digital-info,
+        .kachel-digital-kommunikation,
+        .kachel-digital-inhalt,
+        .kachel-digital-problemloesung,
+        .kachel-digital-ki,
+        .kachel-digital-ethik {
+            border-color: #4db380;
+        }
+
+        .kachel-digital-grundlagen h3,
+        .kachel-digital-info h3,
+        .kachel-digital-kommunikation h3,
+        .kachel-digital-inhalt h3,
+        .kachel-digital-problemloesung h3,
+        .kachel-digital-ki h3,
+        .kachel-digital-ethik h3 {
+            color: #4db380;
+        }
+
+        /* Farben für Kacheln - Sprache */
+        .kachel-sprache-rez-muendlich,
+        .kachel-sprache-rez-schriftlich,
+        .kachel-sprache-rez-audiovisuell,
+        .kachel-sprache-prod-muendlich,
+        .kachel-sprache-prod-schriftlich,
+        .kachel-sprache-prod-multimedial,
+        .kachel-sprache-int-muendlich,
+        .kachel-sprache-int-schriftlich,
+        .kachel-sprache-int-digital {
+            border-color: #3385d6;
+        }
+
+        .kachel-sprache-rez-muendlich h3,
+        .kachel-sprache-rez-schriftlich h3,
+        .kachel-sprache-rez-audiovisuell h3,
+        .kachel-sprache-prod-muendlich h3,
+        .kachel-sprache-prod-schriftlich h3,
+        .kachel-sprache-prod-multimedial h3,
+        .kachel-sprache-int-muendlich h3,
+        .kachel-sprache-int-schriftlich h3,
+        .kachel-sprache-int-digital h3 {
+            color: #3385d6;
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.9);
             color: white;
-        }
-
-        .aspekt-tag:hover {
-            transform: scale(1.08);
-            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
-        }
-
-        .aspekt-tag.hidden {
-            opacity: 0.2;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.75em;
+            white-space: nowrap;
             pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+            margin-bottom: 8px;
+            max-width: 250px;
+            white-space: normal;
+            text-align: center;
         }
 
-        .btn-ethik { background-color: var(--aspect-ethik); }
-        .btn-identitaet { background-color: var(--aspect-identitaet); }
-        .btn-kultur { background-color: var(--aspect-kultur); }
-        .btn-oekologie { background-color: var(--aspect-oekologie); }
-        .btn-politik { background-color: var(--aspect-politik); }
-        .btn-recht { background-color: var(--aspect-recht); }
-        .btn-tech { background-color: var(--aspect-tech); }
-        .btn-wirtschaft { background-color: var(--aspect-wirtschaft); }
+        .tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .kachel:hover .tooltip {
+            opacity: 1;
+        }
 
         /* Responsive */
         @media (max-width: 1200px) {
@@ -534,13 +698,13 @@
             }
 
             .kachel-grid {
-                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
                 gap: 8px;
             }
 
             .kachel {
                 padding: 10px;
-                min-height: 50px;
+                min-height: 45px;
             }
 
             .kachel h3 {
@@ -556,138 +720,43 @@
             }
 
             .language-switch {
-                top: 10px;
-                right: 10px;
                 font-size: 0.85em;
                 padding: 6px 16px;
             }
-        }
 
-        /* Section Title */
-        .section-title {
-            font-size: 2em;
-            font-weight: 700;
-            color: #c8102e;
-            margin: 40px 0 20px 0;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #c8102e;
-            text-align: center;
-        }
-
-        /* Hauptkategorie Filter */
-        .main-filter-container {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 20px 0 30px 0;
-            flex-wrap: wrap;
-        }
-
-        .main-filter-btn {
-            background: white;
-            border: 3px solid #ddd;
-            padding: 12px 24px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 1em;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            color: #333;
-        }
-
-        .main-filter-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-
-        .main-filter-btn.active {
-            border-width: 3px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-
-        .main-filter-btn-schluessel {
-            border-color: #c8102e;
-            color: #c8102e;
-        }
-
-        .main-filter-btn-schluessel.active {
-            background: #c8102e;
-            color: white;
-        }
-
-        .main-filter-btn-gesellschaft {
-            border-color: #ffd966;
-            color: #d4a500;
-        }
-
-        .main-filter-btn-gesellschaft.active {
-            background: #ffd966;
-            color: #333;
-        }
-
-        .main-filter-btn-digital {
-            border-color: #4db380;
-            color: #4db380;
-        }
-
-        .main-filter-btn-digital.active {
-            background: #4db380;
-            color: white;
-        }
-
-        .main-filter-btn-sprache {
-            border-color: #3385d6;
-            color: #3385d6;
-        }
-
-        .main-filter-btn-sprache.active {
-            background: #3385d6;
-            color: white;
-        }
-
-        /* Schlüsselkompetenzen unter Themen */
-        .schluesselkompetenzen {
-            padding: 0;
-            margin: 10px 0 15px 0;
-            border: none;
-            background: transparent;
-        }
-
-        .schluesselkompetenzen-title {
-            display: none;
-        }
-
-        .schluesselkompetenz-badge {
-            display: inline-block;
-            background: rgba(255, 107, 107, 0.15);
-            border-left: 3px solid #ff6b6b;
-            padding: 3px 8px;
-            margin: 2px 2px 2px 0;
-            border-radius: 3px;
-            font-size: 0.75em;
-            font-weight: 600;
-            color: #d64545;
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Simplified Header -->
     <header>
-        <a href="aspekte_fr.html" class="language-switch">
-            🇫🇷 Français
-        </a>
         <div class="header-container">
-            <nav class="breadcrumb">
-                <a href="../index_de.html">Schullehrplan ABU</a> / 
-                <a href="index_de.html">3-jährige Grundbildung EFZ</a> / 
-                Zirkularität
-            </nav>
-            <h1>Zirkularität im Schullehrplan ABU</h1>
-            <p class="subtitle">Spiralförmiger Kompetenzaufbau über die gesamte Lehrzeit</p>
+            <div class="logo-section">
+                <img src="images/KTBE.png" alt="Kanton Bern Logo">
+            </div>
+            <div class="language-switch">
+                <span class="current-lang">DE</span> | <a href="aspekte_fr.html" class="lang-link">FR</a>
+            </div>
         </div>
     </header>
+    
+    <!-- Yellow separator strip -->
+    <div class="separator-strip"></div>
 
     <div class="container">
+        <nav class="breadcrumb">
+            <a href="../index_de.html">Schullehrplan ABU</a> / 
+            <a href="index_de.html">3-jährige Grundbildung EFZ</a> / 
+            Zirkularität
+        </nav>
+
+        <h1>Zirkularität im Schullehrplan ABU</h1>
+        <p class="subtitle">Spiralförmiger Kompetenzaufbau über die gesamte Lehrzeit</p>
+
         <a href="index_de.html" class="back-btn">
             ← Zurück zur Übersicht 3-jährige Grundbildung EFZ
         </a>
@@ -698,33 +767,33 @@
                 <span class="status-info-toggle">▶</span>
             </div>
             <div class="status-info-content">
-                <ul style="list-style: none; padding-left: 0; margin-top: 15px;">
-                    <li style="padding: 0.4rem 0; padding-left: 1.5rem; position: relative;">
-                        <span style="position: absolute; left: 0; color: #c8102e; font-weight: bold;">▸</span>
+                <ul>
+                    <li>
+                        <span>▸</span>
                         Pro Thema werden mindestens <strong>3 Schlüsselkompetenzen</strong> bewusst gefördert
                     </li>
-                    <li style="padding: 0.4rem 0; padding-left: 1.5rem; position: relative;">
-                        <span style="position: absolute; left: 0; color: #c8102e; font-weight: bold;">▸</span>
+                    <li>
+                        <span>▸</span>
                         Lerninhalte aus mindestens <strong>3 Aspekten</strong> des Lernbereichs Gesellschaft
                     </li>
-                    <li style="padding: 0.4rem 0; padding-left: 1.5rem; position: relative;">
-                        <span style="position: absolute; left: 0; color: #c8102e; font-weight: bold;">▸</span>
+                    <li>
+                        <span>▸</span>
                         Berücksichtigung von <strong>3 Sprachmodi</strong> pro Thema
                     </li>
-                    <li style="padding: 0.4rem 0; padding-left: 1.5rem; position: relative;">
-                        <span style="position: absolute; left: 0; color: #c8102e; font-weight: bold;">▸</span>
+                    <li>
+                        <span>▸</span>
                         Kompetenzen aus allen <strong>Sprachmodi</strong> unter Berücksichtigung von Konvention, Normen und Sprachbewusstheit
                     </li>
-                    <li style="padding: 0.4rem 0; padding-left: 1.5rem; position: relative;">
-                        <span style="position: absolute; left: 0; color: #c8102e; font-weight: bold;">▸</span>
+                    <li>
+                        <span>▸</span>
                         Bis zum Abschluss: Aufbau aller <strong>12 Schlüsselkompetenzen</strong> und Kompetenzen aus allen <strong>8 gesellschaftlichen Aspekten</strong>
                     </li>
-                    <li style="padding: 0.4rem 0; padding-left: 1.5rem; position: relative;">
-                        <span style="position: absolute; left: 0; color: #c8102e; font-weight: bold;">▸</span>
+                    <li>
+                        <span>▸</span>
                         Integration der <strong>Schlussarbeit</strong> im letzten Lehrjahr
                     </li>
-                    <li style="padding: 0.4rem 0; padding-left: 1.5rem; position: relative;">
-                        <span style="position: absolute; left: 0; color: #c8102e; font-weight: bold;">▸</span>
+                    <li>
+                        <span>▸</span>
                         Spiralförmiges Curriculum mit formativen und summativen Kompetenznachweisen
                     </li>
                 </ul>
@@ -760,127 +829,171 @@
 
         <div class="section-title" style="margin-top: 60px;">Filter nach Kompetenzen</div>
 
-        <h3 style="color: #c8102e; font-size: 1.2em; margin: 20px 0 15px 0;">Schlüsselkompetenzen</h3>
-        <div class="kachel-grid">
-            <div class="kachel kachel-schluessel-quellen" onclick="filterAspekt('schluessel-quellen')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.1 Zwischen relevanten und irrelevanten Quellen unterscheiden</h3>
-            </div>
-            <div class="kachel kachel-schluessel-ziele" onclick="filterAspekt('schluessel-ziele')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.2 Ziele setzen, prüfen, adaptiv handeln</h3>
-            </div>
-            <div class="kachel kachel-schluessel-problemloesung" onclick="filterAspekt('schluessel-problemloesung')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.3 Antizipativ, unternehmerisch, innovativ Probleme lösen</h3>
-            </div>
-            <div class="kachel kachel-schluessel-teams" onclick="filterAspekt('schluessel-teams')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.4 In unterschiedlichen Teams effizient arbeiten</h3>
-            </div>
-            <div class="kachel kachel-schluessel-werthaltungen" onclick="filterAspekt('schluessel-werthaltungen')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.5 Werthaltungen reflektieren und weiterentwickeln</h3>
-            </div>
-            <div class="kachel kachel-schluessel-standpunkte" onclick="filterAspekt('schluessel-standpunkte')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.6 Standpunkte begründen und überzeugen</h3>
-            </div>
-            <div class="kachel kachel-schluessel-perspektiven" onclick="filterAspekt('schluessel-perspektiven')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.7 Perspektiven wechseln und gegenseitiges Verständnis fördern</h3>
-            </div>
-            <div class="kachel kachel-schluessel-lebensphasen" onclick="filterAspekt('schluessel-lebensphasen')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.8 Lebensphasen planen, mit Unwägbarkeiten umgehen</h3>
-            </div>
-            <div class="kachel kachel-schluessel-vernetzt" onclick="filterAspekt('schluessel-vernetzt')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.9 Vernetzt/systemisch denken, nachhaltig handeln</h3>
-            </div>
-            <div class="kachel kachel-schluessel-wandel" onclick="filterAspekt('schluessel-wandel')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.10 Sich an Wandel anpassen</h3>
-            </div>
-            <div class="kachel kachel-schluessel-mehrdeutigkeiten" onclick="filterAspekt('schluessel-mehrdeutigkeiten')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.11 Mit Mehrdeutigkeiten umgehen</h3>
-            </div>
-            <div class="kachel kachel-schluessel-partizipieren" onclick="filterAspekt('schluessel-partizipieren')" style="border-color: #c8102e;">
-                <h3 style="color: #c8102e;">1.12 Gesellschaftlich partizipieren, Handlungsspielräume nutzen</h3>
-            </div>
-        </div>
-
-        <h3 style="color: #d4a500; font-size: 1.2em; margin: 20px 0 15px 0;">Aspekte Gesellschaft</h3>
-        <div class="kachel-grid">
-            <div class="kachel kachel-ethik" onclick="filterAspekt('ethik')">
-                <h3>2.1 Ethik</h3>
-            </div>
-            <div class="kachel kachel-identitaet" onclick="filterAspekt('identitaet')">
-                <h3>2.2 Identität und Sozialisation</h3>
-            </div>
-            <div class="kachel kachel-kultur" onclick="filterAspekt('kultur')">
-                <h3>2.3 Kultur</h3>
-            </div>
-            <div class="kachel kachel-oekologie" onclick="filterAspekt('oekologie')">
-                <h3>2.4 Ökologie</h3>
-            </div>
-            <div class="kachel kachel-politik" onclick="filterAspekt('politik')">
-                <h3>2.5 Politik</h3>
-            </div>
-            <div class="kachel kachel-recht" onclick="filterAspekt('recht')">
-                <h3>2.6 Recht</h3>
-            </div>
-            <div class="kachel kachel-tech" onclick="filterAspekt('tech')">
-                <h3>2.7 Technologie</h3>
-            </div>
-            <div class="kachel kachel-wirtschaft" onclick="filterAspekt('wirtschaft')">
-                <h3>2.8 Wirtschaft</h3>
+        <div class="filter-section">
+            <h3 class="color-schluessel">Schlüsselkompetenzen</h3>
+            <div class="kachel-grid">
+                <div class="kachel kachel-schluessel-quellen" onclick="filterAspekt('schluessel-quellen')">
+                    <h3>1.1</h3>
+                    <div class="tooltip">Zwischen relevanten und irrelevanten Quellen unterscheiden</div>
+                </div>
+                <div class="kachel kachel-schluessel-ziele" onclick="filterAspekt('schluessel-ziele')">
+                    <h3>1.2</h3>
+                    <div class="tooltip">Ziele setzen, prüfen, adaptiv handeln</div>
+                </div>
+                <div class="kachel kachel-schluessel-problemloesung" onclick="filterAspekt('schluessel-problemloesung')">
+                    <h3>1.3</h3>
+                    <div class="tooltip">Antizipativ, unternehmerisch, innovativ Probleme lösen</div>
+                </div>
+                <div class="kachel kachel-schluessel-teams" onclick="filterAspekt('schluessel-teams')">
+                    <h3>1.4</h3>
+                    <div class="tooltip">In unterschiedlichen Teams effizient arbeiten</div>
+                </div>
+                <div class="kachel kachel-schluessel-werthaltungen" onclick="filterAspekt('schluessel-werthaltungen')">
+                    <h3>1.5</h3>
+                    <div class="tooltip">Werthaltungen reflektieren und weiterentwickeln</div>
+                </div>
+                <div class="kachel kachel-schluessel-standpunkte" onclick="filterAspekt('schluessel-standpunkte')">
+                    <h3>1.6</h3>
+                    <div class="tooltip">Standpunkte begründen und überzeugen</div>
+                </div>
+                <div class="kachel kachel-schluessel-perspektiven" onclick="filterAspekt('schluessel-perspektiven')">
+                    <h3>1.7</h3>
+                    <div class="tooltip">Perspektiven wechseln und gegenseitiges Verständnis fördern</div>
+                </div>
+                <div class="kachel kachel-schluessel-lebensphasen" onclick="filterAspekt('schluessel-lebensphasen')">
+                    <h3>1.8</h3>
+                    <div class="tooltip">Lebensphasen planen, mit Unwägbarkeiten umgehen</div>
+                </div>
+                <div class="kachel kachel-schluessel-vernetzt" onclick="filterAspekt('schluessel-vernetzt')">
+                    <h3>1.9</h3>
+                    <div class="tooltip">Vernetzt/systemisch denken, nachhaltig handeln</div>
+                </div>
+                <div class="kachel kachel-schluessel-wandel" onclick="filterAspekt('schluessel-wandel')">
+                    <h3>1.10</h3>
+                    <div class="tooltip">Sich an Wandel anpassen</div>
+                </div>
+                <div class="kachel kachel-schluessel-mehrdeutigkeiten" onclick="filterAspekt('schluessel-mehrdeutigkeiten')">
+                    <h3>1.11</h3>
+                    <div class="tooltip">Mit Mehrdeutigkeiten umgehen</div>
+                </div>
+                <div class="kachel kachel-schluessel-partizipieren" onclick="filterAspekt('schluessel-partizipieren')">
+                    <h3>1.12</h3>
+                    <div class="tooltip">Gesellschaftlich partizipieren, Handlungsspielräume nutzen</div>
+                </div>
             </div>
         </div>
 
-        <h3 style="color: #4db380; font-size: 1.2em; margin: 30px 0 15px 0;">Digitale Kompetenzstufen</h3>
-        <div class="kachel-grid">
-            <div class="kachel kachel-digital-grundlagen" onclick="filterAspekt('digital-grundlagen')">
-                <h3>3.1 Grundlagen der Informatik</h3>
-            </div>
-            <div class="kachel kachel-digital-info" onclick="filterAspekt('digital-info')">
-                <h3>3.2 Informations- und Datenkompetenz</h3>
-            </div>
-            <div class="kachel kachel-digital-kommunikation" onclick="filterAspekt('digital-kommunikation')">
-                <h3>3.3 Kommunikation und Zusammenarbeit</h3>
-            </div>
-            <div class="kachel kachel-digital-inhalt" onclick="filterAspekt('digital-inhalt')">
-                <h3>3.4 Inhaltserstellung</h3>
-            </div>
-            <div class="kachel kachel-digital-problemloesung" onclick="filterAspekt('digital-problemloesung')">
-                <h3>3.5 Problemlösung</h3>
-            </div>
-            <div class="kachel kachel-digital-ki" onclick="filterAspekt('digital-ki')">
-                <h3>3.6 KI-spezifische Komponenten</h3>
-            </div>
-            <div class="kachel kachel-digital-ethik" onclick="filterAspekt('digital-ethik')">
-                <h3>3.7 Ethische und reflexive Haltung</h3>
+        <div class="filter-section">
+            <h3 class="color-gesellschaft">Aspekte Gesellschaft</h3>
+            <div class="kachel-grid">
+                <div class="kachel kachel-ethik" onclick="filterAspekt('ethik')">
+                    <h3>2.1</h3>
+                    <div class="tooltip">Ethik</div>
+                </div>
+                <div class="kachel kachel-identitaet" onclick="filterAspekt('identitaet')">
+                    <h3>2.2</h3>
+                    <div class="tooltip">Identität und Sozialisation</div>
+                </div>
+                <div class="kachel kachel-kultur" onclick="filterAspekt('kultur')">
+                    <h3>2.3</h3>
+                    <div class="tooltip">Kultur</div>
+                </div>
+                <div class="kachel kachel-oekologie" onclick="filterAspekt('oekologie')">
+                    <h3>2.4</h3>
+                    <div class="tooltip">Ökologie</div>
+                </div>
+                <div class="kachel kachel-politik" onclick="filterAspekt('politik')">
+                    <h3>2.5</h3>
+                    <div class="tooltip">Politik</div>
+                </div>
+                <div class="kachel kachel-recht" onclick="filterAspekt('recht')">
+                    <h3>2.6</h3>
+                    <div class="tooltip">Recht</div>
+                </div>
+                <div class="kachel kachel-tech" onclick="filterAspekt('tech')">
+                    <h3>2.7</h3>
+                    <div class="tooltip">Technologie</div>
+                </div>
+                <div class="kachel kachel-wirtschaft" onclick="filterAspekt('wirtschaft')">
+                    <h3>2.8</h3>
+                    <div class="tooltip">Wirtschaft</div>
+                </div>
             </div>
         </div>
 
-        <h3 style="color: #3385d6; font-size: 1.2em; margin: 30px 0 15px 0;">Sprachmodi</h3>
-        <div class="kachel-grid">
-            <div class="kachel kachel-sprache-rez-muendlich" onclick="filterAspekt('sprache-rez-muendlich')">
-                <h3>4.1 Rezeption mündlich</h3>
+        <div class="filter-section">
+            <h3 class="color-digital">Digitale Kompetenzstufen</h3>
+            <div class="kachel-grid">
+                <div class="kachel kachel-digital-grundlagen" onclick="filterAspekt('digital-grundlagen')">
+                    <h3>3.1</h3>
+                    <div class="tooltip">Grundlagen der Informatik</div>
+                </div>
+                <div class="kachel kachel-digital-info" onclick="filterAspekt('digital-info')">
+                    <h3>3.2</h3>
+                    <div class="tooltip">Informations- und Datenkompetenz</div>
+                </div>
+                <div class="kachel kachel-digital-kommunikation" onclick="filterAspekt('digital-kommunikation')">
+                    <h3>3.3</h3>
+                    <div class="tooltip">Kommunikation und Zusammenarbeit</div>
+                </div>
+                <div class="kachel kachel-digital-inhalt" onclick="filterAspekt('digital-inhalt')">
+                    <h3>3.4</h3>
+                    <div class="tooltip">Inhaltserstellung</div>
+                </div>
+                <div class="kachel kachel-digital-problemloesung" onclick="filterAspekt('digital-problemloesung')">
+                    <h3>3.5</h3>
+                    <div class="tooltip">Problemlösung</div>
+                </div>
+                <div class="kachel kachel-digital-ki" onclick="filterAspekt('digital-ki')">
+                    <h3>3.6</h3>
+                    <div class="tooltip">KI-spezifische Komponenten</div>
+                </div>
+                <div class="kachel kachel-digital-ethik" onclick="filterAspekt('digital-ethik')">
+                    <h3>3.7</h3>
+                    <div class="tooltip">Ethische und reflexive Haltung</div>
+                </div>
             </div>
-            <div class="kachel kachel-sprache-rez-schriftlich" onclick="filterAspekt('sprache-rez-schriftlich')">
-                <h3>4.2 Rezeption schriftlich und bildlich</h3>
-            </div>
-            <div class="kachel kachel-sprache-rez-audiovisuell" onclick="filterAspekt('sprache-rez-audiovisuell')">
-                <h3>4.3 Rezeption audiovisuell</h3>
-            </div>
-            <div class="kachel kachel-sprache-prod-muendlich" onclick="filterAspekt('sprache-prod-muendlich')">
-                <h3>4.4 Produktion mündlich</h3>
-            </div>
-            <div class="kachel kachel-sprache-prod-schriftlich" onclick="filterAspekt('sprache-prod-schriftlich')">
-                <h3>4.5 Produktion schriftlich und bildlich</h3>
-            </div>
-            <div class="kachel kachel-sprache-prod-multimedial" onclick="filterAspekt('sprache-prod-multimedial')">
-                <h3>4.6 Produktion multimedial</h3>
-            </div>
-            <div class="kachel kachel-sprache-int-muendlich" onclick="filterAspekt('sprache-int-muendlich')">
-                <h3>4.7 Interaktion und Kollaboration mündlich</h3>
-            </div>
-            <div class="kachel kachel-sprache-int-schriftlich" onclick="filterAspekt('sprache-int-schriftlich')">
-                <h3>4.8 Interaktion und Kollaboration schriftlich</h3>
-            </div>
-            <div class="kachel kachel-sprache-int-digital" onclick="filterAspekt('sprache-int-digital')">
-                <h3>4.9 Interaktion und Kollaboration digital</h3>
+        </div>
+
+        <div class="filter-section">
+            <h3 class="color-sprache">Sprachmodi</h3>
+            <div class="kachel-grid">
+                <div class="kachel kachel-sprache-rez-muendlich" onclick="filterAspekt('sprache-rez-muendlich')">
+                    <h3>4.1</h3>
+                    <div class="tooltip">Rezeption mündlich</div>
+                </div>
+                <div class="kachel kachel-sprache-rez-schriftlich" onclick="filterAspekt('sprache-rez-schriftlich')">
+                    <h3>4.2</h3>
+                    <div class="tooltip">Rezeption schriftlich und bildlich</div>
+                </div>
+                <div class="kachel kachel-sprache-rez-audiovisuell" onclick="filterAspekt('sprache-rez-audiovisuell')">
+                    <h3>4.3</h3>
+                    <div class="tooltip">Rezeption audiovisuell</div>
+                </div>
+                <div class="kachel kachel-sprache-prod-muendlich" onclick="filterAspekt('sprache-prod-muendlich')">
+                    <h3>4.4</h3>
+                    <div class="tooltip">Produktion mündlich</div>
+                </div>
+                <div class="kachel kachel-sprache-prod-schriftlich" onclick="filterAspekt('sprache-prod-schriftlich')">
+                    <h3>4.5</h3>
+                    <div class="tooltip">Produktion schriftlich und bildlich</div>
+                </div>
+                <div class="kachel kachel-sprache-prod-multimedial" onclick="filterAspekt('sprache-prod-multimedial')">
+                    <h3>4.6</h3>
+                    <div class="tooltip">Produktion multimedial</div>
+                </div>
+                <div class="kachel kachel-sprache-int-muendlich" onclick="filterAspekt('sprache-int-muendlich')">
+                    <h3>4.7</h3>
+                    <div class="tooltip">Interaktion und Kollaboration mündlich</div>
+                </div>
+                <div class="kachel kachel-sprache-int-schriftlich" onclick="filterAspekt('sprache-int-schriftlich')">
+                    <h3>4.8</h3>
+                    <div class="tooltip">Interaktion und Kollaboration schriftlich</div>
+                </div>
+                <div class="kachel kachel-sprache-int-digital" onclick="filterAspekt('sprache-int-digital')">
+                    <h3>4.9</h3>
+                    <div class="tooltip">Interaktion und Kollaboration digital</div>
+                </div>
             </div>
         </div>
 
@@ -892,9 +1005,6 @@
         let activeMainFilter = null;
         let themenData = {};
 
-        // Vollständige Kompetenzstruktur gemäss Lehrplan
-        // ===================================================
-        
         // Mapping von Kompetenznummern zu Filterkategorien
         const kompetenzToAspekt = {
             // SCHLÜSSELKOMPETENZEN (1.1 - 1.12)
@@ -982,50 +1092,6 @@
             'sprache-int-schriftlich': 'sprache',
             'sprache-int-digital': 'sprache'
         };
-
-        const aspektLabels = {
-            // Schlüsselkompetenzen
-            'schluessel-quellen': 'Quellen unterscheiden',
-            'schluessel-ziele': 'Ziele setzen',
-            'schluessel-problemloesung': 'Probleme lösen',
-            'schluessel-teams': 'In Teams arbeiten',
-            'schluessel-werthaltungen': 'Werthaltungen reflektieren',
-            'schluessel-standpunkte': 'Standpunkte begründen',
-            'schluessel-perspektiven': 'Perspektiven wechseln',
-            'schluessel-lebensphasen': 'Lebensphasen planen',
-            'schluessel-vernetzt': 'Vernetzt denken',
-            'schluessel-wandel': 'An Wandel anpassen',
-            'schluessel-mehrdeutigkeiten': 'Mit Mehrdeutigkeiten umgehen',
-            'schluessel-partizipieren': 'Partizipieren',
-            // Gesellschaft
-            'ethik': 'Ethik',
-            'identitaet': 'Identität & Sozialisation',
-            'kultur': 'Kultur',
-            'oekologie': 'Ökologie',
-            'politik': 'Politik',
-            'recht': 'Recht',
-            'tech': 'Technologie',
-            'wirtschaft': 'Wirtschaft',
-            // Digital
-            'digital-grundlagen': 'Grundlagen Informatik',
-            'digital-info': 'Informations- & Datenkompetenz',
-            'digital-kommunikation': 'Kommunikation & Zusammenarbeit',
-            'digital-inhalt': 'Inhaltserstellung',
-            'digital-problemloesung': 'Problemlösung',
-            'digital-ki': 'KI-spezifische Komponenten',
-            'digital-ethik': 'Ethische & reflexive Haltung',
-            // Sprache
-            'sprache-rez-muendlich': 'Rezeption mündlich',
-            'sprache-rez-schriftlich': 'Rezeption schriftlich & bildlich',
-            'sprache-rez-audiovisuell': 'Rezeption audiovisuell',
-            'sprache-prod-muendlich': 'Produktion mündlich',
-            'sprache-prod-schriftlich': 'Produktion schriftlich & bildlich',
-            'sprache-prod-multimedial': 'Produktion multimedial',
-            'sprache-int-muendlich': 'Interaktion & Kollaboration mündlich',
-            'sprache-int-schriftlich': 'Interaktion & Kollaboration schriftlich',
-            'sprache-int-digital': 'Interaktion & Kollaboration digital'
-        };
-
 
         // SCHLÜSSELKOMPETENZEN (1.1 - 1.12)
         const schluesselKompetenzen = {
@@ -1188,7 +1254,7 @@
                 
                 if (successCount === 0) {
                     document.getElementById('loading').innerHTML = `
-                        <div style="color: #c8102e;">
+                        <div style="color: #dc291e;">
                             <strong>⚠️ Keine Lehrjahr-Dateien gefunden</strong><br>
                             <span style="font-size: 0.9em; color: #666;">
                                 Bitte stellen Sie sicher, dass die Datei aspekte_gesellschaft_zirkular_de.html im selben Verzeichnis liegt wie:<br>
@@ -1205,7 +1271,7 @@
             } catch (error) {
                 console.error('Fehler beim Laden der Daten:', error);
                 document.getElementById('loading').innerHTML = `
-                    <div style="color: #c8102e;">
+                    <div style="color: #dc291e;">
                         <strong>Fehler beim Laden der Daten</strong><br>
                         <span style="font-size: 0.9em; color: #666;">${error.message}</span>
                     </div>
