@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zirkulärer Aufbau von Kompetenzen - EFZ</title>
+    <title>En construction - Plan d'études de culture générale</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -13,30 +13,31 @@
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Roboto', Arial, sans-serif;
-            line-height: 1.5;
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
             color: #000;
-            background-color: #f5f5f5;
+            background-color: #fff;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
-
-        /* Simplified Header */
+        
+        /* Header */
         header {
             background: #fff;
             color: #000;
-            padding: 8px 20px;
-            margin-bottom: 0;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            padding: 10px 20px;
+            box-shadow: none;
             position: relative;
         }
         
         .header-container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
         }
         
@@ -46,829 +47,179 @@
         }
         
         .logo-section img {
-            height: 70px;
+            height: 85px;
             width: auto;
-        }
-        
-        .language-switch {
-            background-color: transparent;
-            border: none;
-            padding: 0;
-            color: #000;
-            font-weight: 400;
-            font-size: 0.95em;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-        }
-        
-        .language-switch .current-lang {
-            color: #000;
-            font-weight: 400;
-            border-bottom: 2px solid #dc291e;
-            padding-bottom: 2px;
-        }
-        
-        .language-switch .lang-link {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-        
-        .language-switch .lang-link:hover {
-            color: #666;
-            text-decoration: underline;
         }
         
         /* Yellow separator strip */
         .separator-strip {
             background-color: #f9f3e8;
-            height: 20px;
+            height: 30px;
             width: 100%;
         }
-
-        /* Container */
-        .container {
-            max-width: 1400px;
-            margin: 20px auto 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-        }
-
-        .breadcrumb {
-            font-size: 0.9em;
-            color: #000;
-            margin-bottom: 20px;
-        }
         
-        .breadcrumb a {
-            color: #000;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        .breadcrumb a:hover {
-            text-decoration: underline;
-        }
-
-        h1 {
-            color: #000;
-            font-size: 1.9em;
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
-
-        .subtitle {
-            color: #666;
-            font-size: 1em;
-            margin-bottom: 25px;
-        }
-
-        /* Back Button */
-        .back-btn {
-            background: white;
-            border: 2px solid #dc291e;
-            padding: 0.6rem 1.2rem;
-            border-radius: 4px;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            margin-bottom: 1.5rem;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            color: #dc291e;
-            font-weight: 500;
-            font-size: 0.95em;
-        }
-
-        .back-btn:hover {
-            background: #dc291e;
-            color: white;
-            text-decoration: none;
-        }
-
-        /* Status Info Box */
-        .status-info {
-            background: #f9f9f9;
-            border-left: 4px solid #dc291e;
-            padding: 15px;
-            border-radius: 0;
-            margin-bottom: 25px;
-            box-shadow: none;
-            border: 1px solid #e0e0e0;
-            border-left: 4px solid #dc291e;
-        }
-
-        .status-info h2 {
-            color: #dc291e;
-            margin-bottom: 8px;
-            font-size: 1.2em;
-            font-weight: 700;
-        }
-
-        .status-info p {
-            color: #333;
-            line-height: 1.5;
-            margin: 0;
-            font-size: 0.95em;
-        }
-
-        /* Aufklappbare Info-Box */
-        .status-info-header {
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            user-select: none;
-        }
-
-        .status-info-header:hover {
-            opacity: 0.8;
-        }
-
-        .status-info-toggle {
-            font-size: 1.2em;
-            transition: transform 0.3s ease;
-            color: #dc291e;
-            font-weight: bold;
-        }
-
-        .status-info-toggle.open {
-            transform: rotate(90deg);
-        }
-
-        .status-info-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .status-info-content.open {
-            max-height: 1000px;
-        }
-
-        .status-info ul {
-            list-style: none;
-            padding-left: 0;
-            margin-top: 15px;
-        }
-
-        .status-info li {
-            padding: 0.3rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            font-size: 0.9em;
-        }
-
-        .status-info li span {
-            position: absolute;
-            left: 0;
-            color: #dc291e;
-            font-weight: bold;
-        }
-
-        /* Loading Indicator */
-        .loading {
-            text-align: center;
-            padding: 40px;
-            color: #dc291e;
-            font-weight: 600;
-        }
-
-        /* Section Title */
-        .section-title {
-            font-size: 1.6em;
-            font-weight: 700;
-            color: #dc291e;
-            margin: 35px 0 18px 0;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #dc291e;
-            text-align: left;
-        }
-
-        /* Hauptkategorie Filter */
-        .main-filter-container {
-            display: flex;
-            justify-content: flex-start;
-            gap: 10px;
-            margin: 15px 0 25px 0;
-            flex-wrap: wrap;
-        }
-
-        .main-filter-btn {
-            background: white;
-            border: 2px solid #ddd;
-            padding: 8px 18px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.95em;
-            font-weight: 600;
-            transition: all 0.2s ease;
-            color: #333;
-        }
-
-        .main-filter-btn:hover {
-            border-width: 2px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .main-filter-btn.active {
-            border-width: 2px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
-
-        .main-filter-btn-schluessel {
-            border-color: #dc291e;
-            color: #dc291e;
-        }
-
-        .main-filter-btn-schluessel.active {
-            background: #dc291e;
-            color: white;
-        }
-
-        .main-filter-btn-gesellschaft {
-            border-color: #ffd966;
-            color: #d4a500;
-        }
-
-        .main-filter-btn-gesellschaft.active {
-            background: #ffd966;
-            color: #333;
-        }
-
-        .main-filter-btn-digital {
-            border-color: #4db380;
-            color: #4db380;
-        }
-
-        .main-filter-btn-digital.active {
-            background: #4db380;
-            color: white;
-        }
-
-        .main-filter-btn-sprache {
-            border-color: #3385d6;
-            color: #3385d6;
-        }
-
-        .main-filter-btn-sprache.active {
-            background: #3385d6;
-            color: white;
-        }
-
-        /* Reset Button */
-        .reset-btn {
-            background: #dc291e;
-            color: white;
-            border: none;
-            padding: 0.6rem 1.2rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            margin-bottom: 20px;
-        }
-
-        .reset-btn:hover {
-            background: #a00d24;
-        }
-
-        /* Timeline Grid - Flexbox für nebeneinander */
-        .timeline-grid {
-            display: flex;
-            gap: 12px;
-            margin-top: 25px;
-            align-items: flex-start;
-        }
-
-        /* Lehrjahr Spalte */
-        .year-column {
+        /* Main Content */
+        main {
             flex: 1;
-            background: white;
-            border-radius: 4px;
-            padding: 12px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-            border: 1px solid #e0e0e0;
-            min-width: 0;
-        }
-
-        .year-header {
-            background: linear-gradient(135deg, #dc291e, #a00d24);
-            color: white;
-            padding: 10px;
-            border-radius: 4px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .year-header h2 {
-            font-size: 1.15em;
-            margin-bottom: 2px;
-        }
-
-        .year-header p {
-            font-size: 0.8em;
-            opacity: 0.9;
-        }
-
-        /* Themen-Karte */
-        .theme-card {
-            background: #fafafa;
-            border-radius: 4px;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-left: 3px solid #dc291e;
-            transition: all 0.2s ease;
-        }
-
-        .theme-card:hover {
-            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-        }
-
-        .theme-card h3 {
-            color: #dc291e;
-            font-size: 0.95em;
-            margin-bottom: 8px;
-            font-weight: 600;
-            line-height: 1.3;
-        }
-
-        .lebensbezug-item {
-            background: white;
-            padding: 8px;
-            margin-bottom: 6px;
-            border-radius: 3px;
-            border-left: 2px solid #ddd;
-        }
-
-        .lebensbezug-item:last-of-type {
-            margin-bottom: 8px;
-        }
-
-        .lebensbezug-label {
-            font-size: 0.7em;
-            color: #666;
-            text-transform: uppercase;
-            font-weight: 600;
-            margin-bottom: 3px;
-            display: block;
-        }
-
-        .lebensbezug-text {
-            color: #333;
-            font-size: 0.85em;
-            line-height: 1.4;
-        }
-
-        /* Kompetenz-Details in Lebensbezügen */
-        .kompetenz-detail {
-            margin-top: 6px;
-            font-size: 0.8em;
-        }
-
-        .kompetenz-badge {
-            display: inline-block;
-            font-size: 0.75em;
-            padding: 2px 6px;
-            margin: 2px 2px 2px 0;
-            border-radius: 2px;
-            font-weight: 600;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .kompetenz-badge-gesellschaft {
-            background-color: rgba(255, 217, 102, 0.3);
-            border-left: 3px solid #ffd966;
-        }
-
-        .kompetenz-badge-digital {
-            background-color: rgba(77, 179, 128, 0.3);
-            border-left: 3px solid #4db380;
-        }
-
-        .kompetenz-badge-sprache {
-            background-color: rgba(51, 133, 214, 0.3);
-            border-left: 3px solid #3385d6;
-        }
-
-        /* Schlüsselkompetenzen unter Themen */
-        .schluesselkompetenzen {
-            padding: 0;
-            margin: 8px 0 12px 0;
-            border: none;
-            background: transparent;
-        }
-
-        .schluesselkompetenz-badge {
-            display: inline-block;
-            background: rgba(220, 41, 30, 0.15);
-            border-left: 2px solid #dc291e;
-            padding: 2px 6px;
-            margin: 2px 2px 2px 0;
-            border-radius: 2px;
-            font-size: 0.75em;
-            font-weight: 600;
-            color: #dc291e;
-            position: relative;
-            cursor: pointer;
-        }
-
-        /* Filter Kacheln - kompakte Nummerierung mit Tooltip */
-        .filter-section {
-            margin-bottom: 25px;
-        }
-
-        .filter-section h3 {
-            font-size: 1.1em;
-            margin: 18px 0 12px 0;
-            font-weight: 600;
-        }
-
-        .filter-section h3.color-schluessel {
-            color: #dc291e;
-        }
-
-        .filter-section h3.color-gesellschaft {
-            color: #d4a500;
-        }
-
-        .filter-section h3.color-digital {
-            color: #4db380;
-        }
-
-        .filter-section h3.color-sprache {
-            color: #3385d6;
-        }
-
-        .kachel-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(65px, 1fr));
-            gap: 8px;
-            margin-bottom: 15px;
-        }
-
-        .kachel {
-            background: white;
-            padding: 10px;
-            border-radius: 4px;
-            border-left: 2px solid;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-            border: 1px solid #e0e0e0;
-            border-left: 3px solid;
-            min-height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            background: #f5e6d3;
+            border-radius: 0;
+            padding: 60px 40px;
+            max-width: 600px;
             text-align: center;
+            box-shadow: none;
+            border: 2px solid #e0e0e0;
         }
-
-        .kachel:hover {
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        
+        .icon {
+            font-size: 80px;
+            margin-bottom: 30px;
+            animation: bounce 2s infinite;
         }
-
-        .kachel.active {
-            border-left-width: 3px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
         }
-
-        .kachel h3 {
-            font-size: 0.85em;
-            margin: 0;
-            color: #333;
-            line-height: 1.3;
+        
+        h1 {
+            font-size: 2.5em;
+            color: #000;
+            margin-bottom: 20px;
             font-weight: 700;
         }
-
-        /* Farben für Kacheln - Schlüsselkompetenzen */
-        .kachel-schluessel-quellen,
-        .kachel-schluessel-ziele,
-        .kachel-schluessel-problemloesung,
-        .kachel-schluessel-teams,
-        .kachel-schluessel-werthaltungen,
-        .kachel-schluessel-standpunkte,
-        .kachel-schluessel-perspektiven,
-        .kachel-schluessel-lebensphasen,
-        .kachel-schluessel-vernetzt,
-        .kachel-schluessel-wandel,
-        .kachel-schluessel-mehrdeutigkeiten,
-        .kachel-schluessel-partizipieren {
-            border-color: #dc291e;
+        
+        p {
+            font-size: 1.2em;
+            color: #000;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            font-weight: 400;
         }
-
-        .kachel-schluessel-quellen h3,
-        .kachel-schluessel-ziele h3,
-        .kachel-schluessel-problemloesung h3,
-        .kachel-schluessel-teams h3,
-        .kachel-schluessel-werthaltungen h3,
-        .kachel-schluessel-standpunkte h3,
-        .kachel-schluessel-perspektiven h3,
-        .kachel-schluessel-lebensphasen h3,
-        .kachel-schluessel-vernetzt h3,
-        .kachel-schluessel-wandel h3,
-        .kachel-schluessel-mehrdeutigkeiten h3,
-        .kachel-schluessel-partizipieren h3 {
-            color: #dc291e;
-        }
-
-        /* Farben für Kacheln - Gesellschaft */
-        .kachel-ethik,
-        .kachel-identitaet,
-        .kachel-kultur,
-        .kachel-oekologie,
-        .kachel-politik,
-        .kachel-recht,
-        .kachel-tech,
-        .kachel-wirtschaft {
-            border-color: #ffd966;
-        }
-
-        .kachel-ethik h3,
-        .kachel-identitaet h3,
-        .kachel-kultur h3,
-        .kachel-oekologie h3,
-        .kachel-politik h3,
-        .kachel-recht h3,
-        .kachel-tech h3,
-        .kachel-wirtschaft h3 {
-            color: #d4a500;
-        }
-
-        /* Farben für Kacheln - Digital */
-        .kachel-digital-grundlagen,
-        .kachel-digital-info,
-        .kachel-digital-kommunikation,
-        .kachel-digital-inhalt,
-        .kachel-digital-problemloesung,
-        .kachel-digital-ki,
-        .kachel-digital-ethik {
-            border-color: #4db380;
-        }
-
-        .kachel-digital-grundlagen h3,
-        .kachel-digital-info h3,
-        .kachel-digital-kommunikation h3,
-        .kachel-digital-inhalt h3,
-        .kachel-digital-problemloesung h3,
-        .kachel-digital-ki h3,
-        .kachel-digital-ethik h3 {
-            color: #4db380;
-        }
-
-        /* Farben für Kacheln - Sprache */
-        .kachel-sprache-rez-muendlich,
-        .kachel-sprache-rez-schriftlich,
-        .kachel-sprache-rez-audiovisuell,
-        .kachel-sprache-prod-muendlich,
-        .kachel-sprache-prod-schriftlich,
-        .kachel-sprache-prod-multimedial,
-        .kachel-sprache-int-muendlich,
-        .kachel-sprache-int-schriftlich,
-        .kachel-sprache-int-digital {
-            border-color: #3385d6;
-        }
-
-        .kachel-sprache-rez-muendlich h3,
-        .kachel-sprache-rez-schriftlich h3,
-        .kachel-sprache-rez-audiovisuell h3,
-        .kachel-sprache-prod-muendlich h3,
-        .kachel-sprache-prod-schriftlich h3,
-        .kachel-sprache-prod-multimedial h3,
-        .kachel-sprache-int-muendlich h3,
-        .kachel-sprache-int-schriftlich h3,
-        .kachel-sprache-int-digital h3 {
-            color: #3385d6;
-        }
-
-        /* Tooltip */
-        .tooltip {
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.9);
+        
+        .back-button {
+            display: inline-block;
+            background: #dc291e;
             color: white;
-            padding: 6px 10px;
-            border-radius: 4px;
-            font-size: 0.75em;
-            white-space: nowrap;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.2s ease;
-            z-index: 1000;
-            margin-bottom: 6px;
-            max-width: 250px;
-            white-space: normal;
+            padding: 15px 40px;
+            border-radius: 0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: none;
+            border: 2px solid #dc291e;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            background: #b82018;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background-color: #e0e0e0;
+            border-radius: 3px;
+            margin-top: 40px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: #dc291e;
+            width: 30%;
+            border-radius: 3px;
+            animation: progress 3s ease-in-out infinite;
+        }
+        
+        @keyframes progress {
+            0% {
+                width: 30%;
+            }
+            50% {
+                width: 70%;
+            }
+            100% {
+                width: 30%;
+            }
+        }
+        
+        footer {
+            background: #f9f3e8;
+            color: #000;
             text-align: center;
+            padding: 20px 20px;
+            border-top: 1px solid #e0e0e0;
         }
-
-        .tooltip::after {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            border: 5px solid transparent;
-            border-top-color: rgba(0, 0, 0, 0.9);
+        
+        footer p {
+            font-size: 0.85em;
+            margin: 0;
+            color: #000;
         }
-
-        .kachel:hover .tooltip {
-            opacity: 1;
-        }
-
-        .kompetenz-badge:hover .tooltip,
-        .schluesselkompetenz-badge:hover .tooltip {
-            opacity: 1;
-        }
-
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .timeline-grid {
-                flex-direction: column;
-                gap: 25px;
-            }
-
-            .year-column {
-                width: 100%;
-            }
-        }
-
+        
         @media (max-width: 768px) {
-            h1 {
-                font-size: 1.8em;
+            .logo-section img {
+                height: 70px;
             }
             
             .container {
-                padding: 10px;
+                padding: 40px 30px;
             }
-
-            .kachel-grid {
-                grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-                gap: 8px;
+            
+            h1 {
+                font-size: 2em;
             }
-
-            .kachel {
-                padding: 10px;
-                min-height: 45px;
+            
+            p {
+                font-size: 1em;
             }
-
-            .kachel h3 {
-                font-size: 0.8em;
-            }
-
-            .year-header h2 {
-                font-size: 1.2em;
-            }
-
-            .theme-card h3 {
-                font-size: 0.95em;
-            }
-
-            .language-switch {
-                font-size: 0.85em;
-                padding: 6px 16px;
-            }
-
-            .header-container {
-                flex-direction: column;
-                gap: 15px;
+            
+            .icon {
+                font-size: 60px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Simplified Header -->
+    <!-- Header -->
     <header>
         <div class="header-container">
             <div class="logo-section">
-                <img src="images/KTBE.png" alt="Kanton Bern Logo">
-            </div>
-            <div class="language-switch">
-                <span class="current-lang">DE</span> | <a href="aspekte_fr.html" class="lang-link">FR</a>
+                <img src="./images/KTBE.png" alt="Logo du canton de Berne">
             </div>
         </div>
     </header>
     
     <!-- Yellow separator strip -->
     <div class="separator-strip"></div>
-
-    <div class="container">
-        <nav class="breadcrumb">
-            <a href="../index_de.html">Schullehrplan ABU</a> / 
-            <a href="index_de.html">3-jährige Grundbildung EFZ</a> / 
-            Zirkularität
-        </nav>
-
-        <h1>Zirkularität im Schullehrplan ABU</h1>
-        <p class="subtitle">Spiralförmiger Kompetenzaufbau über die gesamte Lehrzeit</p>
-
-        <a href="index_de.html" class="back-btn">
-            ← Zurück zur Übersicht 3-jährige Grundbildung EFZ
-        </a>
-
-        <div class="status-info">
-            <div class="status-info-header" onclick="toggleStatusInfo()">
-                <h2>Vorgaben gemäss Rahmenlehrplan ABU 2025</h2>
-                <span class="status-info-toggle">▶</span>
-            </div>
-            <div class="status-info-content">
-                <ul>
-                    <li>
-                        <span>▸</span>
-                        Pro Thema werden mindestens <strong>3 Schlüsselkompetenzen</strong> bewusst gefördert
-                    </li>
-                    <li>
-                        <span>▸</span>
-                        Lerninhalte aus mindestens <strong>3 Aspekten</strong> des Lernbereichs Gesellschaft
-                    </li>
-                    <li>
-                        <span>▸</span>
-                        Berücksichtigung von <strong>3 Sprachmodi</strong> pro Thema
-                    </li>
-                    <li>
-                        <span>▸</span>
-                        Kompetenzen aus allen <strong>Sprachmodi</strong> unter Berücksichtigung von Konvention, Normen und Sprachbewusstheit
-                    </li>
-                    <li>
-                        <span>▸</span>
-                        Bis zum Abschluss: Aufbau aller <strong>12 Schlüsselkompetenzen</strong> und Kompetenzen aus allen <strong>8 gesellschaftlichen Aspekten</strong>
-                    </li>
-                    <li>
-                        <span>▸</span>
-                        Integration der <strong>Schlussarbeit</strong> im letzten Lehrjahr
-                    </li>
-                    <li>
-                        <span>▸</span>
-                        Spiralförmiges Curriculum mit formativen und summativen Kompetenznachweisen
-                    </li>
-                </ul>
+    
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <div class="icon">🚧</div>
+            <h1>Site web en construction</h1>
+            <p>Cette page est actuellement en cours d'élaboration. Nous travaillons à vous fournir prochainement le contenu complet.</p>
+            <a href="javascript:history.back()" class="back-button">← Retour</a>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
             </div>
         </div>
-
-        <div class="section-title">Kompetenzaufbau über die Lehrjahre</div>
-
-        <!-- Hauptkategorie Filter -->
-        <div class="main-filter-container">
-            <button class="main-filter-btn main-filter-btn-schluessel" onclick="filterMainCategory('schluessel')">
-                Schlüsselkompetenzen
-            </button>
-            <button class="main-filter-btn main-filter-btn-gesellschaft" onclick="filterMainCategory('gesellschaft')">
-                Gesellschaft
-            </button>
-            <button class="main-filter-btn main-filter-btn-digital" onclick="filterMainCategory('digital')">
-                Medien und Digitalität
-            </button>
-            <button class="main-filter-btn main-filter-btn-sprache" onclick="filterMainCategory('sprache')">
-                Sprache und Kommunikation
-            </button>
-        </div>
-
-        <div id="loading" class="loading">
-            Lade Kompetenzen aus dem Lehrplan...
-        </div>
-
-        <!-- Timeline Grid mit 3 Spalten nebeneinander -->
-        <div id="timeline-container" class="timeline-grid" style="display: none;">
-            <!-- Wird dynamisch gefüllt -->
-        </div>
-
-        <div class="section-title" style="margin-top: 50px;">Filter nach Kompetenzen</div>
-
-        <div class="filter-section">
-            <h3 class="color-schluessel">Schlüsselkompetenzen</h3>
-            <div class="kachel-grid">
-                <div class="kachel kachel-schluessel-quellen" onclick="filterAspekt('schluessel-quellen')">
-                    <h3>1.1</h3>
-                    <div class="tooltip">Zwischen relevanten und irrelevanten Quellen und Inhalten unterscheiden</div>
-                </div>
-                <div class="kachel kachel-schluessel-ziele" onclick="filterAspekt('schluessel-ziele')">
-                    <h3>1.2</h3>
-                    <div class="tooltip">Sich selbst Ziele setzen, die Zielsetzung überprüfen und sich adaptiv verhalten</div>
-                </div>
-                <div class="kachel kachel-schluessel-problemloesung" onclick="filterAspekt('schluessel-problemloesung')">
-                    <h3>1.3</h3>
-                    <div class="tooltip">Antizipative, unternehmerische und innovative Wege der Problemlösung erkennen, entwickeln und umsetzen</div>
-                </div>
-                <div class="kachel kachel-schluessel-teams" onclick="filterAspekt('schluessel-teams')">
-                    <h3>1.4</h3>
-                    <div class="tooltip">In unterschiedlichen Teams zielgerichtet und effizient arbeiten</div>
-                </div>
-                <div class="kachel kachel-schluessel-werthaltungen" onclick="filterAspekt('schluessel-werthaltungen')">
-                    <h3>1.5</h3>
-                    <div class="tooltip">Die eigenen Werthaltungen und Überzeugungen erkennen, verstehen, kritisch reflektieren und weiterentwickeln</div>
-                </div>
-                <div class="kachel kachel-schluessel-standpunkte" onclick="filterAspekt('schluessel-standpunkte')">
-                    <h3>1.6</h3>
-                    <div class="tooltip">Ihre eigenen Standpunkte begründen und andere davon überzeugen</div>
-                </div>
-                <div class="kachel kachel-schluessel-perspektiven" onclick="filterAspekt('schluessel-perspektiven')">
-                    <h3>
+    </main>
+    
+    <footer>
+    </footer>
+</body>
+</html>
