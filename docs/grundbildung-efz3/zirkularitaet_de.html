@@ -16,24 +16,25 @@
 
         body {
             font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
+            line-height: 1.5;
             color: #000;
             background-color: #fff;
             min-height: 100vh;
+            font-size: 15px;
         }
 
-        /* Simplified Header */
+        /* Header - kompakter */
         header {
             background: #fff;
             color: #000;
-            padding: 10px 20px;
+            padding: 8px 16px;
             margin-bottom: 0;
-            box-shadow: none;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
             position: relative;
         }
         
         .header-container {
-            max-width: 1600px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -46,7 +47,7 @@
         }
         
         .logo-section img {
-            height: 85px;
+            height: 65px;
             width: auto;
         }
         
@@ -56,16 +57,16 @@
             padding: 0;
             color: #000;
             font-weight: 400;
-            font-size: 0.95em;
+            font-size: 0.9em;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             text-decoration: none;
         }
         
         .language-switch .current-lang {
             color: #000;
-            font-weight: 400;
+            font-weight: 500;
             border-bottom: 2px solid #dc291e;
             padding-bottom: 2px;
         }
@@ -74,39 +75,38 @@
             color: #000;
             text-decoration: none;
             cursor: pointer;
-            transition: color 0.3s ease;
+            transition: color 0.2s ease;
         }
         
         .language-switch .lang-link:hover {
             color: #666;
-            text-decoration: underline;
         }
         
-        /* Yellow separator strip */
+        /* Separator strip - kompakter */
         .separator-strip {
             background-color: #f9f3e8;
-            height: 30px;
+            height: 20px;
             width: 100%;
         }
 
-        /* Container */
+        /* Container - kompakter */
         .container {
-            max-width: 1600px;
-            margin: 30px auto 0 auto;
-            padding: 20px;
+            max-width: 1400px;
+            margin: 20px auto 0 auto;
+            padding: 16px;
             background-color: #fff;
         }
 
         .breadcrumb {
-            font-size: 0.9em;
-            color: #000;
-            margin-bottom: 20px;
+            font-size: 0.85em;
+            color: #666;
+            margin-bottom: 12px;
         }
         
         .breadcrumb a {
             color: #000;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 400;
         }
         
         .breadcrumb a:hover {
@@ -115,62 +115,66 @@
 
         h1 {
             color: #000;
-            font-size: 2.2em;
-            margin-bottom: 10px;
-            font-weight: 700;
+            font-size: 1.8em;
+            margin-bottom: 6px;
+            font-weight: 500;
+            line-height: 1.3;
         }
 
         .subtitle {
-            color: #000;
-            font-size: 1.1em;
-            margin-bottom: 30px;
+            color: #666;
+            font-size: 1em;
+            margin-bottom: 20px;
+            font-weight: 300;
         }
 
-        /* Back Button */
+        /* Back Button - kompakter */
         .back-btn {
             background: white;
             border: 2px solid #dc291e;
-            padding: 0.8rem 1.5rem;
-            border-radius: 8px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
-            transition: all 0.3s ease;
+            gap: 0.4rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.2s ease;
             text-decoration: none;
             color: #dc291e;
             font-weight: 500;
+            font-size: 0.9em;
         }
 
         .back-btn:hover {
             background: #dc291e;
             color: white;
-            transform: translateX(-5px);
+            transform: translateX(-3px);
             text-decoration: none;
         }
 
-        /* Status Info Box */
+        /* Status Info Box - kompakter */
         .status-info {
             background: #f9f3e8;
-            border-left: 4px solid #dc291e;
-            padding: 20px;
+            border-left: 3px solid #dc291e;
+            padding: 14px 16px;
             border-radius: 0;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
         }
 
         .status-info h2 {
             color: #dc291e;
-            margin-bottom: 10px;
-            font-size: 1.4em;
-            font-weight: 700;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+            font-weight: 500;
         }
 
         .status-info p {
             color: #333;
-            line-height: 1.6;
+            line-height: 1.5;
             margin: 0;
+            font-size: 0.9em;
         }
 
         /* Aufklappbare Info-Box */
@@ -187,8 +191,8 @@
         }
 
         .status-info-toggle {
-            font-size: 1.2em;
-            transition: transform 0.3s ease;
+            font-size: 1em;
+            transition: transform 0.2s ease;
             color: #dc291e;
             font-weight: bold;
         }
@@ -204,19 +208,20 @@
         }
 
         .status-info-content.open {
-            max-height: 1000px;
+            max-height: 800px;
         }
 
         .status-info ul {
             list-style: none;
             padding-left: 0;
-            margin-top: 15px;
+            margin-top: 10px;
         }
 
         .status-info li {
-            padding: 0.4rem 0;
-            padding-left: 1.5rem;
+            padding: 0.3rem 0;
+            padding-left: 1.2rem;
             position: relative;
+            font-size: 0.9em;
         }
 
         .status-info li span {
@@ -229,51 +234,52 @@
         /* Loading Indicator */
         .loading {
             text-align: center;
-            padding: 40px;
+            padding: 30px;
             color: #dc291e;
-            font-weight: 600;
+            font-weight: 500;
+            font-size: 0.95em;
         }
 
-        /* Section Title */
+        /* Section Title - kompakter */
         .section-title {
-            font-size: 2em;
-            font-weight: 700;
+            font-size: 1.5em;
+            font-weight: 500;
             color: #dc291e;
-            margin: 40px 0 20px 0;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #dc291e;
+            margin: 30px 0 16px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #dc291e;
             text-align: center;
         }
 
-        /* Hauptkategorie Filter */
+        /* Hauptkategorie Filter - kompakter */
         .main-filter-container {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin: 20px 0 30px 0;
+            gap: 10px;
+            margin: 16px 0 20px 0;
             flex-wrap: wrap;
         }
 
         .main-filter-btn {
             background: white;
-            border: 3px solid #ddd;
-            padding: 12px 24px;
-            border-radius: 10px;
+            border: 2px solid #ddd;
+            padding: 8px 18px;
+            border-radius: 4px;
             cursor: pointer;
-            font-size: 1em;
-            font-weight: 600;
-            transition: all 0.3s ease;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: all 0.2s ease;
             color: #333;
         }
 
         .main-filter-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
         }
 
         .main-filter-btn.active {
-            border-width: 3px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            border-width: 2px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
         }
 
         .main-filter-btn-schluessel {
@@ -316,175 +322,178 @@
             color: white;
         }
 
-        /* Reset Button */
+        /* Reset Button - kompakter */
         .reset-btn {
             background: #dc291e;
             color: white;
             border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 8px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 500;
-            transition: all 0.3s ease;
-            margin-bottom: 20px;
+            transition: all 0.2s ease;
+            margin-bottom: 16px;
         }
 
         .reset-btn:hover {
             background: #a00d24;
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
 
-        /* Timeline Grid - Flexbox für nebeneinander */
+        /* Timeline Grid - kompakter */
         .timeline-grid {
             display: flex;
-            gap: 15px;
-            margin-top: 30px;
+            gap: 12px;
+            margin-top: 20px;
             align-items: flex-start;
         }
 
-        /* Lehrjahr Spalte */
+        /* Lehrjahr Spalte - kompakter */
         .year-column {
             flex: 1;
             background: white;
-            border-radius: 12px;
-            padding: 15px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-radius: 6px;
+            padding: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
             min-width: 0;
         }
 
         .year-header {
             background: linear-gradient(135deg, #dc291e, #a00d24);
             color: white;
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 12px;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
             text-align: center;
         }
 
         .year-header h2 {
-            font-size: 1.3em;
+            font-size: 1.1em;
             margin-bottom: 2px;
+            font-weight: 500;
         }
 
         .year-header p {
-            font-size: 0.8em;
-            opacity: 0.95;
+            font-size: 0.75em;
+            opacity: 0.9;
+            font-weight: 300;
         }
 
-        /* Themen-Karte */
+        /* Themen-Karte - kompakter */
         .theme-card {
-            background: #f9f9f9;
-            border-radius: 8px;
-            padding: 12px;
-            margin-bottom: 12px;
-            border-left: 4px solid #dc291e;
-            transition: all 0.3s ease;
+            background: #fafafa;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-left: 3px solid #dc291e;
+            transition: all 0.2s ease;
         }
 
         .theme-card:hover {
-            transform: translateX(3px);
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transform: translateX(2px);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
         }
 
         .theme-card h3 {
             color: #dc291e;
-            font-size: 1em;
-            margin-bottom: 10px;
-            font-weight: 600;
+            font-size: 0.95em;
+            margin-bottom: 8px;
+            font-weight: 500;
             line-height: 1.3;
         }
 
         .lebensbezug-item {
             background: white;
-            padding: 8px;
-            margin-bottom: 6px;
-            border-radius: 4px;
-            border-left: 3px solid #ddd;
+            padding: 6px 8px;
+            margin-bottom: 5px;
+            border-radius: 3px;
+            border-left: 2px solid #e0e0e0;
         }
 
         .lebensbezug-item:last-of-type {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .lebensbezug-label {
             font-size: 0.7em;
             color: #666;
             text-transform: uppercase;
-            font-weight: 600;
-            margin-bottom: 3px;
+            font-weight: 500;
+            margin-bottom: 2px;
             display: block;
+            letter-spacing: 0.3px;
         }
 
         .lebensbezug-text {
             color: #333;
-            font-size: 0.85em;
+            font-size: 0.8em;
             line-height: 1.4;
         }
 
-        /* Kompetenz-Details in Lebensbezügen */
+        /* Kompetenz-Details in Lebensbezügen - kompakter */
         .kompetenz-detail {
-            margin-top: 8px;
-            font-size: 0.8em;
+            margin-top: 6px;
+            font-size: 0.75em;
         }
 
         .kompetenz-badge {
             display: inline-block;
-            font-size: 0.75em;
-            padding: 3px 8px;
-            margin: 2px 2px 2px 0;
-            border-radius: 3px;
-            font-weight: 600;
+            font-size: 0.7em;
+            padding: 2px 6px;
+            margin: 1px 2px 1px 0;
+            border-radius: 2px;
+            font-weight: 500;
             position: relative;
             cursor: pointer;
         }
 
         .kompetenz-badge-gesellschaft {
             background-color: rgba(255, 217, 102, 0.3);
-            border-left: 3px solid #ffd966;
+            border-left: 2px solid #ffd966;
         }
 
         .kompetenz-badge-digital {
             background-color: rgba(77, 179, 128, 0.3);
-            border-left: 3px solid #4db380;
+            border-left: 2px solid #4db380;
         }
 
         .kompetenz-badge-sprache {
             background-color: rgba(51, 133, 214, 0.3);
-            border-left: 3px solid #3385d6;
+            border-left: 2px solid #3385d6;
         }
 
-        /* Schlüsselkompetenzen unter Themen */
+        /* Schlüsselkompetenzen unter Themen - kompakter */
         .schluesselkompetenzen {
             padding: 0;
-            margin: 10px 0 15px 0;
+            margin: 8px 0 10px 0;
             border: none;
             background: transparent;
         }
 
         .schluesselkompetenz-badge {
             display: inline-block;
-            background: rgba(220, 41, 30, 0.15);
-            border-left: 3px solid #dc291e;
-            padding: 3px 8px;
-            margin: 2px 2px 2px 0;
-            border-radius: 3px;
-            font-size: 0.75em;
-            font-weight: 600;
+            background: rgba(220, 41, 30, 0.12);
+            border-left: 2px solid #dc291e;
+            padding: 2px 6px;
+            margin: 1px 2px 1px 0;
+            border-radius: 2px;
+            font-size: 0.7em;
+            font-weight: 500;
             color: #dc291e;
             position: relative;
             cursor: pointer;
         }
 
-        /* Filter Kacheln - kompakte Nummerierung mit Tooltip */
+        /* Filter Kacheln - kompakter */
         .filter-section {
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .filter-section h3 {
-            font-size: 1.2em;
-            margin: 20px 0 15px 0;
-            font-weight: 600;
+            font-size: 1.05em;
+            margin: 16px 0 10px 0;
+            font-weight: 500;
         }
 
         .filter-section h3.color-schluessel {
@@ -505,20 +514,20 @@
 
         .kachel-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-            gap: 10px;
-            margin-bottom: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+            gap: 8px;
+            margin-bottom: 16px;
         }
 
         .kachel {
             background: white;
-            padding: 12px;
-            border-radius: 6px;
-            border-left: 3px solid;
+            padding: 8px;
+            border-radius: 4px;
+            border-left: 2px solid;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            min-height: 50px;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            min-height: 42px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -527,21 +536,21 @@
         }
 
         .kachel:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
 
         .kachel.active {
-            border-width: 3px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border-width: 2px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
         }
 
         .kachel h3 {
-            font-size: 0.9em;
+            font-size: 0.85em;
             margin: 0;
             color: #333;
-            line-height: 1.4;
-            font-weight: 700;
+            line-height: 1.3;
+            font-weight: 600;
         }
 
         /* Farben für Kacheln - Schlüsselkompetenzen */
@@ -644,7 +653,7 @@
             color: #3385d6;
         }
 
-        /* Tooltip */
+        /* Tooltip - kompakter */
         .tooltip {
             position: absolute;
             bottom: 100%;
@@ -652,18 +661,19 @@
             transform: translateX(-50%);
             background: rgba(0, 0, 0, 0.9);
             color: white;
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 0.75em;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 0.7em;
             white-space: nowrap;
             pointer-events: none;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.2s ease;
             z-index: 1000;
-            margin-bottom: 8px;
-            max-width: 250px;
+            margin-bottom: 6px;
+            max-width: 220px;
             white-space: normal;
             text-align: center;
+            line-height: 1.3;
         }
 
         .tooltip::after {
@@ -672,7 +682,7 @@
             top: 100%;
             left: 50%;
             transform: translateX(-50%);
-            border: 6px solid transparent;
+            border: 5px solid transparent;
             border-top-color: rgba(0, 0, 0, 0.9);
         }
 
@@ -685,11 +695,11 @@
             opacity: 1;
         }
 
-        /* Responsive */
+        /* Responsive - angepasst */
         @media (max-width: 1200px) {
             .timeline-grid {
                 flex-direction: column;
-                gap: 25px;
+                gap: 16px;
             }
 
             .year-column {
@@ -698,22 +708,26 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+
             h1 {
-                font-size: 1.8em;
+                font-size: 1.5em;
             }
             
             .container {
-                padding: 10px;
+                padding: 12px;
             }
 
             .kachel-grid {
-                grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-                gap: 8px;
+                grid-template-columns: repeat(auto-fit, minmax(55px, 1fr));
+                gap: 6px;
             }
 
             .kachel {
-                padding: 10px;
-                min-height: 45px;
+                padding: 6px;
+                min-height: 38px;
             }
 
             .kachel h3 {
@@ -721,27 +735,30 @@
             }
 
             .year-header h2 {
-                font-size: 1.2em;
+                font-size: 1em;
             }
 
             .theme-card h3 {
-                font-size: 0.95em;
+                font-size: 0.9em;
             }
 
             .language-switch {
-                font-size: 0.85em;
-                padding: 6px 16px;
+                font-size: 0.8em;
             }
 
-            .header-container {
-                flex-direction: column;
-                gap: 15px;
+            .logo-section img {
+                height: 55px;
+            }
+
+            .main-filter-btn {
+                padding: 6px 14px;
+                font-size: 0.85em;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Simplified Header -->
+    <!-- Header -->
     <header>
         <div class="header-container">
             <div class="logo-section">
@@ -753,7 +770,7 @@
         </div>
     </header>
     
-    <!-- Yellow separator strip -->
+    <!-- Separator strip -->
     <div class="separator-strip"></div>
 
     <div class="container">
@@ -831,12 +848,12 @@
             Lade Kompetenzen aus dem Lehrplan...
         </div>
 
-        <!-- Timeline Grid mit 3 Spalten nebeneinander -->
+        <!-- Timeline Grid -->
         <div id="timeline-container" class="timeline-grid" style="display: none;">
             <!-- Wird dynamisch gefüllt -->
         </div>
 
-        <div class="section-title" style="margin-top: 60px;">Filter nach Kompetenzen</div>
+        <div class="section-title" style="margin-top: 40px;">Filter nach Kompetenzen</div>
 
         <div class="filter-section">
             <h3 class="color-schluessel">Schlüsselkompetenzen</h3>
@@ -1144,14 +1161,12 @@
 
         // Funktion zum Kürzen von Kompetenztexten für Badges in der Timeline
         function shortenCompetenceText(text) {
-            // Entferne eventuell vorhandene Kompetenznummern am Anfang (z.B. "2.2 " oder "1.10 ")
             let cleanText = text;
             const numberMatch = text.match(/^(\d+\.\d+)\s+(.+)$/);
             if (numberMatch) {
-                cleanText = numberMatch[2]; // Text ohne die Nummer
+                cleanText = numberMatch[2];
             }
             
-            // Spezielle Kürzungen für häufige lange Texte
             const shortenings = {
                 'Zwischen relevanten und irrelevanten Quellen und Inhalten unterscheiden': 'Quellen',
                 'Sich selbst Ziele setzen, die Zielsetzung überprüfen und sich adaptiv verhalten': 'Ziele',
@@ -1191,7 +1206,6 @@
                 'Interaktion und Kollaboration schriftlich': 'Int. schriftl.',
                 'Interaktion & Kollaboration digital': 'Int. digital',
                 'Interaktion und Kollaboration digital': 'Int. digital',
-                // Zusätzliche häufige Variationen
                 'Ethik': 'Ethik',
                 'Kultur': 'Kultur',
                 'Ökologie': 'Ökologie',
@@ -1201,12 +1215,10 @@
                 'Wirtschaft': 'Wirtschaft'
             };
             
-            // Prüfe ob der bereinigte Text in den Kürzungen vorhanden ist
             if (shortenings[cleanText]) {
                 return shortenings[cleanText];
             }
             
-            // Fallback: Wenn Text länger als 30 Zeichen, kürze nach erstem Komma oder auf 30 Zeichen
             if (cleanText.length > 30) {
                 const commaIndex = cleanText.indexOf(',');
                 if (commaIndex > 0 && commaIndex < 30) {
@@ -1221,7 +1233,6 @@
         // Lade und parse die Lehrjahr-Dateien
         async function loadLehrjahrData() {
             try {
-                // Lade alle drei Lehrjahre
                 const lehrjahre = [
                     { file: '1-lehrjahr_de.html', year: 1, startTheme: 1 },
                     { file: '2-lehrjahr_de.html', year: 2, startTheme: 4 },
@@ -1232,30 +1243,19 @@
                 
                 for (const lehrjahr of lehrjahre) {
                     try {
-                        console.log(`Versuche ${lehrjahr.file} zu laden...`);
-                        console.log(`Basis-URL: ${window.location.href}`);
-                        
                         const response = await fetch(lehrjahr.file);
-                        console.log(`Response Status für ${lehrjahr.file}: ${response.status}`);
-                        console.log(`Response URL: ${response.url}`);
                         
                         if (!response.ok) {
-                            console.log(`${lehrjahr.file} konnte nicht geladen werden (Status: ${response.status})`);
                             continue;
                         }
                         
                         const html = await response.text();
-                        console.log(`${lehrjahr.file} erfolgreich geladen, Länge: ${html.length} Zeichen`);
                         parseLehrjahrHTML(html, lehrjahr.startTheme);
                         successCount++;
-                        console.log(`${lehrjahr.file} erfolgreich verarbeitet`);
                     } catch (error) {
                         console.error(`Fehler beim Laden von ${lehrjahr.file}:`, error);
                     }
                 }
-                
-                console.log(`${successCount} von ${lehrjahre.length} Dateien erfolgreich geladen`);
-                console.log('ThemenData:', themenData);
                 
                 renderTimeline();
                 document.getElementById('loading').style.display = 'none';
@@ -1265,12 +1265,8 @@
                     document.getElementById('loading').innerHTML = `
                         <div style="color: #dc291e;">
                             <strong>⚠️ Keine Lehrjahr-Dateien gefunden</strong><br>
-                            <span style="font-size: 0.9em; color: #666;">
-                                Bitte stellen Sie sicher, dass die Datei aspekte_gesellschaft_zirkular_de.html im selben Verzeichnis liegt wie:<br>
-                                • 1-lehrjahr_de.html<br>
-                                • 2-lehrjahr_de.html<br>
-                                • 3-lehrjahr_de.html<br><br>
-                                Aktueller Pfad: ${window.location.href}
+                            <span style="font-size: 0.85em; color: #666;">
+                                Bitte stellen Sie sicher, dass die Dateien im selben Verzeichnis liegen.
                             </span>
                         </div>
                     `;
@@ -1282,7 +1278,7 @@
                 document.getElementById('loading').innerHTML = `
                     <div style="color: #dc291e;">
                         <strong>Fehler beim Laden der Daten</strong><br>
-                        <span style="font-size: 0.9em; color: #666;">${error.message}</span>
+                        <span style="font-size: 0.85em; color: #666;">${error.message}</span>
                     </div>
                 `;
             }
@@ -1292,7 +1288,6 @@
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
             
-            // Extrahiere Themen
             const themeSections = doc.querySelectorAll('.theme-section');
             
             themeSections.forEach((section, themeIndex) => {
@@ -1304,31 +1299,26 @@
                 const leitidee = section.querySelector('.leitidee p');
                 const leitideeText = leitidee ? leitidee.textContent.trim() : '';
                 
-                // Extrahiere Schlüsselkompetenzen
                 const schluesselkompetenzen = [];
                 
-                // Suche in col-schluessel (Themen-Ebene)
                 const schluesselCell = section.querySelector('td.col-schluessel');
                 if (schluesselCell) {
                     const spans = schluesselCell.querySelectorAll('span[data-k]');
                     spans.forEach(span => {
                         const kompNr = span.getAttribute('data-k');
                         const text = span.textContent.trim();
-                        // Nur Schlüsselkompetenzen (1.x) hinzufügen
                         if (kompNr && kompNr.startsWith('1.')) {
                             schluesselkompetenzen.push({ nr: kompNr, text: text });
                         }
                     });
                 }
                 
-                // Zusätzliche Suche: Falls Schlüsselkompetenzen in der Themen-Übersicht sind
                 const themeOverview = section.querySelector('.theme-overview, .kompetenzen-uebersicht');
                 if (themeOverview) {
                     const spans = themeOverview.querySelectorAll('span[data-k]');
                     spans.forEach(span => {
                         const kompNr = span.getAttribute('data-k');
                         const text = span.textContent.trim();
-                        // Nur Schlüsselkompetenzen (1.x) hinzufügen und Duplikate vermeiden
                         if (kompNr && kompNr.startsWith('1.')) {
                             const exists = schluesselkompetenzen.some(sk => sk.nr === kompNr);
                             if (!exists) {
@@ -1338,7 +1328,6 @@
                     });
                 }
                 
-                // Falls keine gefunden, suche in allen spans mit data-k="1.x" im gesamten Themen-Bereich
                 if (schluesselkompetenzen.length === 0) {
                     const allSpans = section.querySelectorAll('span[data-k]');
                     allSpans.forEach(span => {
@@ -1353,7 +1342,6 @@
                     });
                 }
                 
-                // Extrahiere Lebensbezüge
                 const lebensbezuege = [];
                 const lebensbezugSections = section.querySelectorAll('.lebensbezug');
                 
@@ -1361,7 +1349,6 @@
                     const lbHeader = lbSection.querySelector('.lebensbezug-header h3');
                     const lbText = lbHeader ? lbHeader.textContent.replace(/^\d+\.\s*Individueller Lebensbezug:\s*/i, '').trim() : '';
                     
-                    // Extrahiere Kompetenzen aus diesem Lebensbezug
                     const kompetenzen = [];
                     const lerninhalte = lbSection.querySelectorAll('.lerninhalt');
                     
@@ -1369,7 +1356,6 @@
                         const kompetenzTitle = lerninhalt.querySelector('h4');
                         const kompetenzText = kompetenzTitle ? kompetenzTitle.textContent.trim() : '';
                         
-                        // Extrahiere Inhalte aus der Tabelle
                         const gesellschaftCell = lerninhalt.querySelector('td.col-gesellschaft');
                         const digitalCell = lerninhalt.querySelector('td.col-digital');
                         const spracheCell = lerninhalt.querySelector('td.col-sprache');
@@ -1415,13 +1401,11 @@
                         }
                     });
                     
-                    // Extrahiere Aspekte aus allen Kompetenzen
                     const aspekte = new Set();
                     kompetenzen.forEach(komp => {
                         Object.values(komp.inhalte).forEach(inhaltArray => {
                             inhaltArray.forEach(item => {
                                 if (item.nr) {
-                                    // Extrahiere Basisnummer (z.B. "2.8" aus "2.8.1" oder "1.10" direkt)
                                     const parts = item.nr.split('.');
                                     let baseNr = parts.length >= 2 ? `${parts[0]}.${parts[1]}` : item.nr;
                                     const aspekt = kompetenzToAspekt[baseNr];
@@ -1451,9 +1435,8 @@
 
         function renderTimeline() {
             const container = document.getElementById('timeline-container');
-            container.innerHTML = ''; // Clear existing content
+            container.innerHTML = '';
             
-            // 1. Lehrjahr
             const year1 = document.createElement('div');
             year1.className = 'year-column';
             year1.innerHTML = `
@@ -1463,7 +1446,6 @@
                 </div>
             `;
             
-            // Themen 1-3 für 1. Lehrjahr
             let hasYear1Content = false;
             for (let i = 1; i <= 3; i++) {
                 if (themenData[i]) {
@@ -1472,7 +1454,6 @@
                 }
             }
             
-            // Wenn keine Inhalte vorhanden, Platzhalter anzeigen
             if (!hasYear1Content) {
                 const placeholder = document.createElement('div');
                 placeholder.className = 'theme-card';
@@ -1480,7 +1461,7 @@
                     <h3>Themen 1-3</h3>
                     <div class="lebensbezug-item">
                         <span class="lebensbezug-label">Noch nicht verfügbar</span>
-                        <div class="lebensbezug-text">Die Inhalte werden geladen, sobald 1-lehrjahr_de.html verfügbar ist.</div>
+                        <div class="lebensbezug-text">Die Inhalte werden geladen, sobald die Dateien verfügbar sind.</div>
                     </div>
                 `;
                 year1.appendChild(placeholder);
@@ -1488,7 +1469,6 @@
             
             container.appendChild(year1);
             
-            // 2. Lehrjahr
             const year2 = document.createElement('div');
             year2.className = 'year-column';
             year2.innerHTML = `
@@ -1498,7 +1478,6 @@
                 </div>
             `;
             
-            // Themen 4-6 für 2. Lehrjahr
             let hasYear2Content = false;
             for (let i = 4; i <= 6; i++) {
                 if (themenData[i]) {
@@ -1514,7 +1493,7 @@
                     <h3>Themen 4-6</h3>
                     <div class="lebensbezug-item">
                         <span class="lebensbezug-label">Noch nicht verfügbar</span>
-                        <div class="lebensbezug-text">Die Inhalte werden geladen, sobald 2-lehrjahr_de.html verfügbar ist.</div>
+                        <div class="lebensbezug-text">Die Inhalte werden geladen, sobald die Dateien verfügbar sind.</div>
                     </div>
                 `;
                 year2.appendChild(placeholder);
@@ -1522,7 +1501,6 @@
             
             container.appendChild(year2);
             
-            // 3. Lehrjahr
             const year3 = document.createElement('div');
             year3.className = 'year-column';
             year3.innerHTML = `
@@ -1532,7 +1510,6 @@
                 </div>
             `;
             
-            // Themen 7-8 für 3. Lehrjahr
             let hasYear3Content = false;
             for (let i = 7; i <= 8; i++) {
                 if (themenData[i]) {
@@ -1548,7 +1525,7 @@
                     <h3>Themen 7-8</h3>
                     <div class="lebensbezug-item">
                         <span class="lebensbezug-label">Noch nicht verfügbar</span>
-                        <div class="lebensbezug-text">Die Inhalte werden geladen, sobald 3-lehrjahr_de.html verfügbar ist.</div>
+                        <div class="lebensbezug-text">Die Inhalte werden geladen, sobald die Dateien verfügbar sind.</div>
                     </div>
                 `;
                 year3.appendChild(placeholder);
@@ -1565,7 +1542,6 @@
             title.textContent = themeData.name;
             card.appendChild(title);
             
-            // Schlüsselkompetenzen unter dem Themen-Titel
             if (themeData.schluesselkompetenzen && themeData.schluesselkompetenzen.length > 0) {
                 const schluesselDiv = document.createElement('div');
                 schluesselDiv.className = 'schluesselkompetenzen';
@@ -1574,24 +1550,20 @@
                     const badge = document.createElement('div');
                     badge.className = 'schluesselkompetenz-badge';
                     badge.style.display = 'inline-block';
-                    badge.style.marginRight = '4px';
-                    badge.style.marginBottom = '4px';
+                    badge.style.marginRight = '3px';
+                    badge.style.marginBottom = '3px';
                     badge.style.position = 'relative';
                     badge.style.cursor = 'pointer';
                     
-                    // Nur die Nummer anzeigen
                     badge.textContent = sk.nr;
                     
-                    // Tooltip hinzufügen
                     const tooltip = document.createElement('div');
                     tooltip.className = 'tooltip';
                     tooltip.textContent = sk.text;
                     badge.appendChild(tooltip);
                     
-                    // Füge data-category für Hauptkategorie-Filterung hinzu
                     badge.setAttribute('data-category', 'schluessel');
                     
-                    // Füge data-aspekt für detaillierte Filterung hinzu
                     if (sk.nr) {
                         const parts = sk.nr.split('.');
                         const baseNr = parts.length >= 2 ? `${parts[0]}.${parts[1]}` : sk.nr;
@@ -1607,7 +1579,6 @@
                 card.appendChild(schluesselDiv);
             }
             
-            // Lebensbezüge
             themeData.lebensbezuege.forEach((lb, index) => {
                 const lbItem = document.createElement('div');
                 lbItem.className = 'lebensbezug-item';
@@ -1622,16 +1593,13 @@
                 text.textContent = lb.text || '...';
                 lbItem.appendChild(text);
                 
-                // Kompetenzen unter dem Lebensbezug
                 if (lb.kompetenzen && lb.kompetenzen.length > 0) {
                     const kompContainer = document.createElement('div');
                     kompContainer.className = 'kompetenz-detail';
                     
-                    // Sammle alle Kompetenznummern/Badges aus allen Kompetenzen
                     const allBadges = [];
                     
                     lb.kompetenzen.forEach((komp) => {
-                        // Zeige die Kompetenzen aus den drei Bereichen
                         const bereiche = [
                             { key: 'gesellschaft', label: 'Gesellschaft', cssClass: 'kompetenz-badge-gesellschaft', category: 'gesellschaft' },
                             { key: 'digital', label: 'Digital', cssClass: 'kompetenz-badge-digital', category: 'digital' },
@@ -1641,7 +1609,6 @@
                         bereiche.forEach(bereich => {
                             if (komp.inhalte[bereich.key] && komp.inhalte[bereich.key].length > 0) {
                                 komp.inhalte[bereich.key].forEach(item => {
-                                    // Bestimme das Aspekt basierend auf der Kompetenznummer
                                     let aspekt = null;
                                     if (item.nr) {
                                         const parts = item.nr.split('.');
@@ -1661,29 +1628,24 @@
                         });
                     });
                     
-                    // Zeige alle Badges ohne Kompetenz-Titel
                     allBadges.forEach(badgeInfo => {
                         const badge = document.createElement('div');
                         badge.className = `kompetenz-badge ${badgeInfo.cssClass}`;
                         badge.style.display = 'inline-block';
-                        badge.style.marginRight = '4px';
-                        badge.style.marginBottom = '4px';
+                        badge.style.marginRight = '3px';
+                        badge.style.marginBottom = '3px';
                         badge.style.position = 'relative';
                         badge.style.cursor = 'pointer';
                         
-                        // Nur die Nummer anzeigen
                         badge.textContent = badgeInfo.nr;
                         
-                        // Tooltip hinzufügen
                         const tooltip = document.createElement('div');
                         tooltip.className = 'tooltip';
                         tooltip.textContent = badgeInfo.text;
                         badge.appendChild(tooltip);
                         
-                        // Füge data-category für Hauptkategorie-Filterung hinzu
                         badge.setAttribute('data-category', badgeInfo.category);
                         
-                        // Füge data-aspekt Attribut hinzu für detaillierte Filterung
                         if (badgeInfo.aspekt) {
                             badge.setAttribute('data-aspekt', badgeInfo.aspekt);
                         }
@@ -1701,25 +1663,20 @@
         }
         
         function filterMainCategory(categoryName) {
-            // Alle Hauptkategorie-Buttons zurücksetzen
             document.querySelectorAll('.main-filter-btn').forEach(btn => btn.classList.remove('active'));
             
             if (activeMainFilter === categoryName) {
-                // Wenn dieselbe Kategorie nochmal geklickt wird, Filter aufheben
                 activeMainFilter = null;
                 resetFilter();
                 return;
             }
             
-            // Neuen Button aktivieren
             document.querySelector(`.main-filter-btn-${categoryName}`).classList.add('active');
             activeMainFilter = categoryName;
             
-            // Setze detaillierten Filter zurück
             activeFilter = null;
             document.querySelectorAll('.kachel').forEach(k => k.classList.remove('active'));
             
-            // Filtere alle Badges nach Hauptkategorie
             document.querySelectorAll('.kompetenz-badge, .schluesselkompetenz-badge').forEach(badge => {
                 const badgeCategory = badge.getAttribute('data-category');
                 if (badgeCategory === categoryName) {
@@ -1730,7 +1687,6 @@
                 }
             });
             
-            // Verstecke Schlüsselkompetenzen-Boxen wenn nicht in der Kategorie
             document.querySelectorAll('.schluesselkompetenzen').forEach(sk => {
                 if (categoryName === 'schluessel') {
                     sk.style.display = 'block';
@@ -1739,7 +1695,6 @@
                 }
             });
             
-            // Verstecke Lebensbezüge, die keine sichtbaren Badges haben
             document.querySelectorAll('.lebensbezug-item').forEach(item => {
                 const badges = item.querySelectorAll('.kompetenz-badge');
                 const visibleBadges = Array.from(badges).filter(b => b.style.display !== 'none');
@@ -1751,7 +1706,6 @@
                 }
             });
             
-            // Verstecke Theme-Cards, die keine sichtbaren Inhalte haben
             document.querySelectorAll('.theme-card').forEach(card => {
                 const items = card.querySelectorAll('.lebensbezug-item');
                 const visibleItems = Array.from(items).filter(i => i.style.display !== 'none');
@@ -1767,24 +1721,19 @@
         }
         
         function filterAspekt(aspektName) {
-            // Alle Kacheln zurücksetzen
             document.querySelectorAll('.kachel').forEach(k => k.classList.remove('active'));
             
             if (activeFilter === aspektName) {
-                // Wenn dieselbe Kachel nochmal geklickt wird, Filter aufheben
                 resetFilter();
                 return;
             }
             
-            // Neue Kachel aktivieren
             document.querySelector(`.kachel-${aspektName}`).classList.add('active');
             activeFilter = aspektName;
             
-            // Setze Hauptkategorie-Filter zurück
             activeMainFilter = null;
             document.querySelectorAll('.main-filter-btn').forEach(btn => btn.classList.remove('active'));
             
-            // Alle Badges durchgehen
             document.querySelectorAll('.kompetenz-badge, .schluesselkompetenz-badge').forEach(badge => {
                 const badgeAspekt = badge.getAttribute('data-aspekt');
                 if (badgeAspekt === aspektName) {
@@ -1795,7 +1744,6 @@
                 }
             });
             
-            // Verstecke Schlüsselkompetenzen-Boxen wenn kein Schlüsselkompetenz-Aspekt
             const isSchluesselAspekt = aspektName.startsWith('schluessel-');
             document.querySelectorAll('.schluesselkompetenzen').forEach(sk => {
                 const badges = sk.querySelectorAll('.schluesselkompetenz-badge');
@@ -1808,7 +1756,6 @@
                 }
             });
             
-            // Verstecke Lebensbezüge, die keine sichtbaren Badges haben
             document.querySelectorAll('.lebensbezug-item').forEach(item => {
                 const badges = item.querySelectorAll('.kompetenz-badge');
                 const visibleBadges = Array.from(badges).filter(b => b.style.display !== 'none');
@@ -1820,7 +1767,6 @@
                 }
             });
             
-            // Verstecke Theme-Cards, die keine sichtbaren Inhalte haben
             document.querySelectorAll('.theme-card').forEach(card => {
                 const items = card.querySelectorAll('.lebensbezug-item');
                 const visibleItems = Array.from(items).filter(i => i.style.display !== 'none');
@@ -1841,29 +1787,24 @@
             document.querySelectorAll('.kachel').forEach(k => k.classList.remove('active'));
             document.querySelectorAll('.main-filter-btn').forEach(btn => btn.classList.remove('active'));
             
-            // Alle Badges wieder anzeigen
             document.querySelectorAll('.kompetenz-badge, .schluesselkompetenz-badge').forEach(badge => {
                 badge.style.display = 'inline-block';
                 badge.style.opacity = '1';
             });
             
-            // Alle Schlüsselkompetenzen-Boxen wieder anzeigen
             document.querySelectorAll('.schluesselkompetenzen').forEach(sk => {
                 sk.style.display = 'block';
             });
             
-            // Alle Lebensbezüge wieder anzeigen
             document.querySelectorAll('.lebensbezug-item').forEach(item => {
                 item.style.display = 'block';
             });
             
-            // Alle Theme-Cards wieder anzeigen
             document.querySelectorAll('.theme-card').forEach(card => {
                 card.style.display = 'block';
             });
         }
 
-        // Toggle-Funktion für aufklappbare Info-Box
         function toggleStatusInfo() {
             const content = document.querySelector('.status-info-content');
             const toggle = document.querySelector('.status-info-toggle');
@@ -1872,7 +1813,6 @@
             toggle.classList.toggle('open');
         }
 
-        // Starte das Laden beim Seitenaufruf
         document.addEventListener('DOMContentLoaded', function() {
             loadLehrjahrData();
         });
