@@ -286,7 +286,7 @@
         }
         
         .umsetzung-box {
-            background-color: #f0f0f0;
+            background-color: #ffffff;
             border: 1px solid #d0d0d0;
             border-radius: 0;
             padding: 4px 8px;
@@ -296,7 +296,7 @@
         }
         
         .umsetzung-box:hover {
-            background-color: #e8e8e8;
+            background-color: #f9f9f9;
         }
         
         .umsetzung-box .schluessel-header h4 {
@@ -346,6 +346,77 @@
         
         .lerninhalt h4 .normal-weight {
             font-weight: 400;
+        }
+        
+        /* Neue Styles für Schlüsselkompetenzen */
+        .schluesselkompetenzen-inline {
+            margin-bottom: 15px;
+            padding: 10px 0;
+            font-size: 0.85em;
+            color: #555;
+        }
+        
+        .schluesselkompetenzen-inline strong {
+            color: #000;
+            font-weight: 600;
+        }
+        
+        .kompetenz-nummer-link {
+            display: inline-block;
+            color: #dc291e;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            position: relative;
+            margin-right: 8px;
+            padding: 3px 6px;
+            border-radius: 3px;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+        }
+        
+        .kompetenz-nummer-link:hover {
+            background-color: #ffe6e6;
+            border-color: #ffcccc;
+            text-decoration: none;
+        }
+        
+        /* Tooltip Styles */
+        .tooltip {
+            position: absolute;
+            background-color: #2d2d2d;
+            color: #ffffff;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            line-height: 1.5;
+            max-width: 400px;
+            z-index: 999999;
+            pointer-events: none;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+            border: 1px solid #555;
+            font-weight: 400;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            white-space: normal;
+            word-wrap: break-word;
+        }
+        
+        .tooltip.show {
+            opacity: 1;
+        }
+        
+        .tooltip::before {
+            content: '';
+            position: absolute;
+            top: -7px;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            border-bottom: 7px solid #2d2d2d;
         }
         
         .kompetenz-container {
@@ -506,7 +577,7 @@
         }
         
         .table-header {
-            background: #f0f0f0;
+            background: #f5e6d3;
             padding: 7px 14px;
             cursor: pointer;
             display: flex;
@@ -714,6 +785,11 @@
                 font-size: 0.75em;
                 padding: 6px 10px;
             }
+            
+            .tooltip {
+                max-width: 250px;
+                font-size: 0.8em;
+            }
         }
     </style>
 </head>
@@ -759,18 +835,16 @@
                         <h3><strong>1. Individueller Lebensbezug:</strong> ...</h3>
                     </div>
                     <div class="lebensbezug-content">
-                        <div class="schluessel-box" onclick="toggleSchluessel(this)">
-                            <div class="schluessel-header">
-                                <h4>Schlüsselkompetenzen</h4>
-                                <span class="toggle-schluessel">▼</span>
-                            </div>
-                            <div class="schluessel-content">
-                                <p>...</p>
-                            </div>
-                        </div>
                         
                         <div class="lerninhalt">
                             <h4>Kompetenz 1: <span class="normal-weight"><span class="normal-weight">...</span></span></h4>
+                            
+                            <div class="schluesselkompetenzen-inline">
+                                <strong>Schlüsselkompetenzen:</strong>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.1" data-text="Zwischen relevanten und irrelevanten Quellen und Inhalten unterscheiden">1.1</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.6" data-text="Ihre eigenen Standpunkte begründen und andere davon überzeugen">1.6</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.8" data-text="Ihre Lebensphasen planen und mit Unwägbarkeiten umgehen">1.8</span>
+                            </div>
                             
                             <div class="table-container">
                                 <div class="table-header" onclick="toggleTable(this)">
@@ -847,6 +921,13 @@
                         <div class="lerninhalt">
                             <h4>Kompetenz 2: <span class="normal-weight">...</span></h4>
                             
+                            <div class="schluesselkompetenzen-inline">
+                                <strong>Schlüsselkompetenzen:</strong>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.1" data-text="Zwischen relevanten und irrelevanten Quellen und Inhalten unterscheiden">1.1</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.6" data-text="Ihre eigenen Standpunkte begründen und andere davon überzeugen">1.6</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.8" data-text="Ihre Lebensphasen planen und mit Unwägbarkeiten umgehen">1.8</span>
+                            </div>
+                            
                             <div class="table-container">
                                 <div class="table-header" onclick="toggleTable(this)">
                                     <h5>Inhalte/ Lernziele</h5>
@@ -921,6 +1002,13 @@
                         
                         <div class="lerninhalt">
                             <h4>Kompetenz 3: <span class="normal-weight">...</span></h4>
+                            
+                            <div class="schluesselkompetenzen-inline">
+                                <strong>Schlüsselkompetenzen:</strong>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.1" data-text="Zwischen relevanten und irrelevanten Quellen und Inhalten unterscheiden">1.1</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.6" data-text="Ihre eigenen Standpunkte begründen und andere davon überzeugen">1.6</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.8" data-text="Ihre Lebensphasen planen und mit Unwägbarkeiten umgehen">1.8</span>
+                            </div>
                             
                             <div class="table-container">
                                 <div class="table-header" onclick="toggleTable(this)">
@@ -1001,18 +1089,16 @@
                         <h3><strong>2. Individueller Lebensbezug:</strong> ...</h3>
                     </div>
                     <div class="lebensbezug-content">
-                        <div class="schluessel-box" onclick="toggleSchluessel(this)">
-                            <div class="schluessel-header">
-                                <h4>Schlüsselkompetenzen</h4>
-                                <span class="toggle-schluessel">▼</span>
-                            </div>
-                            <div class="schluessel-content">
-                                <p>...</p>
-                            </div>
-                        </div>
                         
                         <div class="lerninhalt">
                             <h4>Kompetenz 1: <span class="normal-weight">...</span></h4>
+                            
+                            <div class="schluesselkompetenzen-inline">
+                                <strong>Schlüsselkompetenzen:</strong>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.1" data-text="Zwischen relevanten und irrelevanten Quellen und Inhalten unterscheiden">1.1</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.6" data-text="Ihre eigenen Standpunkte begründen und andere davon überzeugen">1.6</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.8" data-text="Ihre Lebensphasen planen und mit Unwägbarkeiten umgehen">1.8</span>
+                            </div>
                             
                             <div class="table-container">
                                 <div class="table-header" onclick="toggleTable(this)">
@@ -1089,6 +1175,13 @@
                         <div class="lerninhalt">
                             <h4>Kompetenz 2: <span class="normal-weight">...</span></h4>
                             
+                            <div class="schluesselkompetenzen-inline">
+                                <strong>Schlüsselkompetenzen:</strong>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.1" data-text="Zwischen relevanten und irrelevanten Quellen und Inhalten unterscheiden">1.1</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.6" data-text="Ihre eigenen Standpunkte begründen und andere davon überzeugen">1.6</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.8" data-text="Ihre Lebensphasen planen und mit Unwägbarkeiten umgehen">1.8</span>
+                            </div>
+                            
                             <div class="table-container">
                                 <div class="table-header" onclick="toggleTable(this)">
                                     <h5>Inhalte/ Lernziele</h5>
@@ -1163,6 +1256,13 @@
                         
                         <div class="lerninhalt">
                             <h4>Kompetenz 3: <span class="normal-weight">...</span></h4>
+                            
+                            <div class="schluesselkompetenzen-inline">
+                                <strong>Schlüsselkompetenzen:</strong>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.1" data-text="Zwischen relevanten und irrelevanten Quellen und Inhalten unterscheiden">1.1</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.6" data-text="Ihre eigenen Standpunkte begründen und andere davon überzeugen">1.6</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.8" data-text="Ihre Lebensphasen planen und mit Unwägbarkeiten umgehen">1.8</span>
+                            </div>
                             
                             <div class="table-container">
                                 <div class="table-header" onclick="toggleTable(this)">
@@ -1257,22 +1357,16 @@
                         <h3><strong>1. Individueller Lebensbezug:</strong> Ich verdiene mein eigenes Geld, verwalte es und gebe es aus. </h3>
                     </div>
                     <div class="lebensbezug-content">
-                        <div class="schluessel-box" onclick="toggleSchluessel(this)">
-                            <div class="schluessel-header">
-                                <h4>Schlüsselkompetenzen</h4>
-                                <span class="toggle-schluessel">▼</span>
-                            </div>
-                            <div class="schluessel-content">
-                                <p>
-                                    <span data-k="1.1">1.1. Zwischen relevanten und irrelevanten Quellen unterscheiden​</span><br>
-                                    <span data-k="1.6">1.6. Standpunkte begründen und überzeugen​</span><br>
-                                    <span data-k="1.8">1.8. Lebensphasen planen, mit Unwägbarkeiten umgehen​</span>
-                                </p>
-                            </div>
-                        </div>
                         
                         <div class="lerninhalt">
                             <h4>Kompetenz 1: <span class="normal-weight">Anhand meiner Lohnabrechnung und Lebenssituation plane und reflektiere ich ein realistisches Budget. </span></h4>
+                            
+                            <div class="schluesselkompetenzen-inline">
+                                <strong>Schlüsselkompetenzen:</strong>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.1" data-text="Zwischen relevanten und irrelevanten Quellen und Inhalten unterscheiden">1.1</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.6" data-text="Ihre eigenen Standpunkte begründen und andere davon überzeugen">1.6</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.8" data-text="Ihre Lebensphasen planen und mit Unwägbarkeiten umgehen">1.8</span>
+                            </div>
                             
                             <div class="table-container">
                                 <div class="table-header" onclick="toggleTable(this)">
@@ -1351,6 +1445,13 @@
                         <div class="lerninhalt">
                             <h4>Kompetenz 2: <span class="normal-weight">...</span></h4>
                             
+                            <div class="schluesselkompetenzen-inline">
+                                <strong>Schlüsselkompetenzen:</strong>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.1" data-text="Zwischen relevanten und irrelevanten Quellen und Inhalten unterscheiden">1.1</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.6" data-text="Ihre eigenen Standpunkte begründen und andere davon überzeugen">1.6</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.8" data-text="Ihre Lebensphasen planen und mit Unwägbarkeiten umgehen">1.8</span>
+                            </div>
+                            
                             <div class="table-container">
                                 <div class="table-header" onclick="toggleTable(this)">
                                     <h5>Inhalte/ Lernziele</h5>
@@ -1425,6 +1526,13 @@
 
                         <div class="lerninhalt">
                             <h4>Kompetenz 3: <span class="normal-weight">...</span></h4>
+                            
+                            <div class="schluesselkompetenzen-inline">
+                                <strong>Schlüsselkompetenzen:</strong>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.1" data-text="Zwischen relevanten und irrelevanten Quellen und Inhalten unterscheiden">1.1</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.6" data-text="Ihre eigenen Standpunkte begründen und andere davon überzeugen">1.6</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.8" data-text="Ihre Lebensphasen planen und mit Unwägbarkeiten umgehen">1.8</span>
+                            </div>
                             
                             <div class="table-container">
                                 <div class="table-header" onclick="toggleTable(this)">
@@ -1505,18 +1613,16 @@
                         <h3><strong>2. Individueller Lebensbezug:</strong> ...</h3>
                     </div>
                     <div class="lebensbezug-content">
-                        <div class="schluessel-box" onclick="toggleSchluessel(this)">
-                            <div class="schluessel-header">
-                                <h4>Schlüsselkompetenzen</h4>
-                                <span class="toggle-schluessel">▼</span>
-                            </div>
-                            <div class="schluessel-content">
-                                <p>...</p>
-                            </div>
-                        </div>
                         
                         <div class="lerninhalt">
                             <h4>Kompetenz 1: <span class="normal-weight">...</span></h4>
+                            
+                            <div class="schluesselkompetenzen-inline">
+                                <strong>Schlüsselkompetenzen:</strong>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.1" data-text="Zwischen relevanten und irrelevanten Quellen und Inhalten unterscheiden">1.1</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.6" data-text="Ihre eigenen Standpunkte begründen und andere davon überzeugen">1.6</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.8" data-text="Ihre Lebensphasen planen und mit Unwägbarkeiten umgehen">1.8</span>
+                            </div>
                             
                             <div class="table-container">
                                 <div class="table-header" onclick="toggleTable(this)">
@@ -1593,6 +1699,13 @@
                         <div class="lerninhalt">
                             <h4>Kompetenz 2: <span class="normal-weight">...</span></h4>
                             
+                            <div class="schluesselkompetenzen-inline">
+                                <strong>Schlüsselkompetenzen:</strong>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.1" data-text="Zwischen relevanten und irrelevanten Quellen und Inhalten unterscheiden">1.1</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.6" data-text="Ihre eigenen Standpunkte begründen und andere davon überzeugen">1.6</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.8" data-text="Ihre Lebensphasen planen und mit Unwägbarkeiten umgehen">1.8</span>
+                            </div>
+                            
                             <div class="table-container">
                                 <div class="table-header" onclick="toggleTable(this)">
                                     <h5>Inhalte/ Lernziele</h5>
@@ -1667,6 +1780,13 @@
 
                         <div class="lerninhalt">
                             <h4>Kompetenz 3: <span class="normal-weight">...</span></h4>
+                            
+                            <div class="schluesselkompetenzen-inline">
+                                <strong>Schlüsselkompetenzen:</strong>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.1" data-text="Zwischen relevanten und irrelevanten Quellen und Inhalten unterscheiden">1.1</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.6" data-text="Ihre eigenen Standpunkte begründen und andere davon überzeugen">1.6</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.8" data-text="Ihre Lebensphasen planen und mit Unwägbarkeiten umgehen">1.8</span>
+                            </div>
                             
                             <div class="table-container">
                                 <div class="table-header" onclick="toggleTable(this)">
@@ -1761,18 +1881,16 @@
                         <h3><strong>1. Individueller Lebensbezug:</strong> ...</h3>
                     </div>
                     <div class="lebensbezug-content">
-                        <div class="schluessel-box" onclick="toggleSchluessel(this)">
-                            <div class="schluessel-header">
-                                <h4>Schlüsselkompetenzen</h4>
-                                <span class="toggle-schluessel">▼</span>
-                            </div>
-                            <div class="schluessel-content">
-                                <p>...</p>
-                            </div>
-                        </div>
                         
                         <div class="lerninhalt">
                             <h4>Kompetenz 1: <span class="normal-weight">...</span></h4>
+                            
+                            <div class="schluesselkompetenzen-inline">
+                                <strong>Schlüsselkompetenzen:</strong>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.1" data-text="Zwischen relevanten und irrelevanten Quellen und Inhalten unterscheiden">1.1</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.6" data-text="Ihre eigenen Standpunkte begründen und andere davon überzeugen">1.6</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.8" data-text="Ihre Lebensphasen planen und mit Unwägbarkeiten umgehen">1.8</span>
+                            </div>
                             
                             <div class="table-container">
                                 <div class="table-header" onclick="toggleTable(this)">
@@ -1849,6 +1967,13 @@
                         <div class="lerninhalt">
                             <h4>Kompetenz 2: <span class="normal-weight">...</span></h4>
                             
+                            <div class="schluesselkompetenzen-inline">
+                                <strong>Schlüsselkompetenzen:</strong>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.1" data-text="Zwischen relevanten und irrelevanten Quellen und Inhalten unterscheiden">1.1</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.6" data-text="Ihre eigenen Standpunkte begründen und andere davon überzeugen">1.6</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.8" data-text="Ihre Lebensphasen planen und mit Unwägbarkeiten umgehen">1.8</span>
+                            </div>
+                            
                             <div class="table-container">
                                 <div class="table-header" onclick="toggleTable(this)">
                                     <h5>Inhalte/ Lernziele</h5>
@@ -1923,6 +2048,13 @@
 
                         <div class="lerninhalt">
                             <h4>Kompetenz 3: <span class="normal-weight">...</span></h4>
+                            
+                            <div class="schluesselkompetenzen-inline">
+                                <strong>Schlüsselkompetenzen:</strong>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.1" data-text="Zwischen relevanten und irrelevanten Quellen und Inhalten unterscheiden">1.1</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.6" data-text="Ihre eigenen Standpunkte begründen und andere davon überzeugen">1.6</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.8" data-text="Ihre Lebensphasen planen und mit Unwägbarkeiten umgehen">1.8</span>
+                            </div>
                             
                             <div class="table-container">
                                 <div class="table-header" onclick="toggleTable(this)">
@@ -2003,18 +2135,16 @@
                         <h3><strong>2. Individueller Lebensbezug:</strong> ...</h3>
                     </div>
                     <div class="lebensbezug-content">
-                        <div class="schluessel-box" onclick="toggleSchluessel(this)">
-                            <div class="schluessel-header">
-                                <h4>Schlüsselkompetenzen</h4>
-                                <span class="toggle-schluessel">▼</span>
-                            </div>
-                            <div class="schluessel-content">
-                                <p>...</p>
-                            </div>
-                        </div>
                         
                         <div class="lerninhalt">
                             <h4>Kompetenz 1: <span class="normal-weight">...</span></h4>
+                            
+                            <div class="schluesselkompetenzen-inline">
+                                <strong>Schlüsselkompetenzen:</strong>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.1" data-text="Zwischen relevanten und irrelevanten Quellen und Inhalten unterscheiden">1.1</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.6" data-text="Ihre eigenen Standpunkte begründen und andere davon überzeugen">1.6</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.8" data-text="Ihre Lebensphasen planen und mit Unwägbarkeiten umgehen">1.8</span>
+                            </div>
                             
                             <div class="table-container">
                                 <div class="table-header" onclick="toggleTable(this)">
@@ -2091,6 +2221,13 @@
                         <div class="lerninhalt">
                             <h4>Kompetenz 2: <span class="normal-weight">...</span></h4>
                             
+                            <div class="schluesselkompetenzen-inline">
+                                <strong>Schlüsselkompetenzen:</strong>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.1" data-text="Zwischen relevanten und irrelevanten Quellen und Inhalten unterscheiden">1.1</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.6" data-text="Ihre eigenen Standpunkte begründen und andere davon überzeugen">1.6</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.8" data-text="Ihre Lebensphasen planen und mit Unwägbarkeiten umgehen">1.8</span>
+                            </div>
+                            
                             <div class="table-container">
                                 <div class="table-header" onclick="toggleTable(this)">
                                     <h5>Inhalte/ Lernziele</h5>
@@ -2165,6 +2302,13 @@
 
                         <div class="lerninhalt">
                             <h4>Kompetenz 3: <span class="normal-weight">...</span></h4>
+                            
+                            <div class="schluesselkompetenzen-inline">
+                                <strong>Schlüsselkompetenzen:</strong>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.1" data-text="Zwischen relevanten und irrelevanten Quellen und Inhalten unterscheiden">1.1</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.6" data-text="Ihre eigenen Standpunkte begründen und andere davon überzeugen">1.6</span>
+                                <span class="kompetenz-nummer-link" data-kompetenz="1.8" data-text="Ihre Lebensphasen planen und mit Unwägbarkeiten umgehen">1.8</span>
+                            </div>
                             
                             <div class="table-container">
                                 <div class="table-header" onclick="toggleTable(this)">
@@ -2306,6 +2450,7 @@
             icon.classList.toggle('rotated');
         }
         
+        // Tooltip functionality
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize theme headers as collapsed
             const themeHeaders = document.querySelectorAll('.theme-header');
@@ -2320,6 +2465,83 @@
             const lebensbezugHeaders = document.querySelectorAll('.lebensbezug-header');
             lebensbezugHeaders.forEach(header => {
                 header.classList.add('collapsed');
+            });
+            
+            // Create tooltip element dynamically
+            const tooltip = document.createElement('div');
+            tooltip.id = 'tooltip';
+            tooltip.className = 'tooltip';
+            document.body.appendChild(tooltip);
+            
+            console.log('Tooltip element created:', tooltip);
+            console.log('Tooltip appended to body');
+            
+            // Tooltip functionality
+            const kompetenzLinks = document.querySelectorAll('.kompetenz-nummer-link');
+            
+            console.log('Found ' + kompetenzLinks.length + ' kompetenz links');
+            
+            let hideTimeout;
+            
+            kompetenzLinks.forEach(link => {
+                link.addEventListener('mouseenter', function(e) {
+                    // Clear any pending hide timeout
+                    if (hideTimeout) {
+                        clearTimeout(hideTimeout);
+                    }
+                    
+                    const text = this.getAttribute('data-text');
+                    console.log('Showing tooltip with text:', text);
+                    
+                    // Set tooltip content
+                    tooltip.textContent = text;
+                    tooltip.style.display = 'block';
+                    tooltip.style.position = 'absolute';
+                    tooltip.style.backgroundColor = '#2d2d2d';
+                    tooltip.style.color = '#ffffff';
+                    tooltip.style.padding = '12px 16px';
+                    tooltip.style.borderRadius = '6px';
+                    tooltip.style.fontSize = '14px';
+                    tooltip.style.zIndex = '999999';
+                    tooltip.style.maxWidth = '400px';
+                    tooltip.style.boxShadow = '0 6px 20px rgba(0,0,0,0.5)';
+                    tooltip.style.border = '1px solid #555';
+                    tooltip.style.pointerEvents = 'none';
+                    tooltip.style.lineHeight = '1.5';
+                    
+                    // Position tooltip with more distance
+                    const rect = this.getBoundingClientRect();
+                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+                    
+                    let left = rect.left + scrollLeft;
+                    let top = rect.bottom + scrollTop + 15; // Mehr Abstand
+                    
+                    tooltip.style.left = left + 'px';
+                    tooltip.style.top = top + 'px';
+                    tooltip.style.opacity = '1';
+                    tooltip.classList.add('show');
+                });
+                
+                link.addEventListener('mousemove', function(e) {
+                    // Keep tooltip visible while mouse is moving over the link
+                    if (hideTimeout) {
+                        clearTimeout(hideTimeout);
+                    }
+                });
+                
+                link.addEventListener('mouseleave', function() {
+                    console.log('Mouse leaving, scheduling hide');
+                    // Add a small delay before hiding
+                    hideTimeout = setTimeout(() => {
+                        console.log('Hiding tooltip');
+                        tooltip.classList.remove('show');
+                        tooltip.style.opacity = '0';
+                        setTimeout(() => {
+                            tooltip.style.display = 'none';
+                        }, 200);
+                    }, 100); // 100ms delay
+                });
             });
         });
     </script>
