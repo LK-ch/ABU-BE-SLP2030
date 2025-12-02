@@ -201,10 +201,59 @@
             overflow: hidden;
         }
         
-        /* Neuer Stil für Freibereich */
-        .lebensbezug.freibereich {
+        /* Separate Freibereich Section */
+        .freibereich-section {
+            margin-bottom: 25px;
             background-color: #fff;
             border: 1px solid #000;
+            border-radius: 0;
+            overflow: hidden;
+        }
+        
+        .freibereich-header {
+            padding: 16px 20px;
+            cursor: pointer;
+            position: relative;
+            transition: opacity 0.3s ease;
+            user-select: none;
+            background-color: #fff;
+        }
+        
+        .freibereich-header:hover {
+            opacity: 0.8;
+        }
+        
+        .freibereich-header::after {
+            content: '▼';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s ease;
+            font-size: 1em;
+            color: #000;
+        }
+        
+        .freibereich-header.collapsed::after {
+            transform: translateY(-50%) rotate(-90deg);
+        }
+        
+        .freibereich-header h3 {
+            color: #000;
+            font-size: 1em;
+            margin-bottom: 0;
+            font-weight: 400;
+        }
+        
+        .freibereich-content {
+            padding: 0 20px 20px 20px;
+            display: none;
+            animation: slideDown 0.3s ease-out;
+            background-color: #fff;
+        }
+        
+        .freibereich-content.show {
+            display: block;
         }
         
         .lebensbezug-header {
@@ -868,9 +917,11 @@
                                             <tr>
                                                 <td class="col-gesellschaft">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -879,6 +930,7 @@
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             
@@ -895,9 +947,11 @@
                                             <tr>
                                                 <td class="col-gesellschaft">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -906,6 +960,7 @@
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -950,9 +1005,11 @@
                                             <tr>
                                                 <td class="col-gesellschaft">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -961,6 +1018,7 @@
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             
@@ -977,9 +1035,11 @@
                                             <tr>
                                                 <td class="col-gesellschaft">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -988,6 +1048,7 @@
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -1032,9 +1093,11 @@
                                             <tr>
                                                 <td class="col-gesellschaft">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -1043,6 +1106,7 @@
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             
@@ -1059,9 +1123,11 @@
                                             <tr>
                                                 <td class="col-gesellschaft">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -1070,6 +1136,7 @@
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -1122,9 +1189,11 @@
                                             <tr>
                                                 <td class="col-gesellschaft">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -1133,6 +1202,7 @@
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             
@@ -1149,9 +1219,11 @@
                                             <tr>
                                                 <td class="col-gesellschaft">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -1160,6 +1232,7 @@
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -1204,9 +1277,11 @@
                                             <tr>
                                                 <td class="col-gesellschaft">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -1215,6 +1290,7 @@
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             
@@ -1231,9 +1307,11 @@
                                             <tr>
                                                 <td class="col-gesellschaft">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -1242,6 +1320,7 @@
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -1286,9 +1365,11 @@
                                             <tr>
                                                 <td class="col-gesellschaft">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -1297,6 +1378,7 @@
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             
@@ -1313,9 +1395,11 @@
                                             <tr>
                                                 <td class="col-gesellschaft">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -1324,6 +1408,7 @@
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -1344,12 +1429,12 @@
                     </div>
                 </div>
 
-                <!-- NEUER FREIBEREICH -->
-                <div class="lebensbezug freibereich">
-                    <div class="lebensbezug-header" onclick="toggleLebensbezug(this)">
+                <!-- FREIBEREICH - SEPARATE SECTION -->
+                <div class="freibereich-section">
+                    <div class="freibereich-header" onclick="toggleFreibereich(this)">
                         <h3>Freibereich (20%)</h3>
                     </div>
-                    <div class="lebensbezug-content">
+                    <div class="freibereich-content">
                         <h4 style="font-size: 0.95em; margin-bottom: 15px; font-weight: 700;">Inhalte / Lernziele</h4>
                         
                         <table style="width: 100%; border-collapse: collapse;">
@@ -1424,10 +1509,10 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-gesellschaft">
-                                                    <p><span data-k="2.8" data-kat="gesellschaft">2.8. Wirtschaft​</span><br>Die eigene Lohnabrechnung verstehen.</p>
+                                                    <p><span data-k="2.8" data-kat="gesellschaft">2.8. Wirtschaft​</span><br>Die eigene Lohnabrechnung <strong>verstehen</strong>.</p>
                                                 </td>
                                                 <td class="col-sprache">
-                                                    <p><span data-k="4.2" data-kat="sprache">4.2. Rezeption schriftlich & bildlich​</span><br>Das Lohnabrechnungsformular durch entsprechenden Wortschatz lesen. </p>
+                                                    <p><span data-k="4.2" data-kat="sprache">4.2. Rezeption schriftlich & bildlich​</span><br>Das Lohnabrechnungsformular durch entsprechenden Wortschatz <strong>lesen</strong>. </p>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -1451,10 +1536,10 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-gesellschaft">
-                                                    <p><span data-k="2.8" data-kat="gesellschaft">2.8. Wirtschaft​</span><br>Ein eigenes Budget mit fixen und variablen Kosten aufstellen. </p>
+                                                    <p><span data-k="2.8" data-kat="gesellschaft">2.8. Wirtschaft​</span><br>Ein eigenes Budget mit fixen und variablen Kosten <strong>aufstellen</strong>. </p>
                                                 </td>
                                                 <td class="col-sprache">
-                                                    <p><span data-k="4.7" data-kat="sprache">4.7. Interaktion und Kollaboration mündlich​</span><br>Fremde und eigene Budgetplanung reflektieren.</p>
+                                                    <p><span data-k="4.7" data-kat="sprache">4.7. Interaktion und Kollaboration mündlich​</span><br>Fremde und eigene Budgetplanung <strong>reflektieren</strong>.</p>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -1462,7 +1547,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
-                                                    <p><span data-k="3.5" data-kat="digital">3.5. Problemlösung​</span><br>Budget-Tools zur Planung anwenden.
+                                                    <p><span data-k="3.5" data-kat="digital">3.5. Problemlösung​</span><br>Budget-Tools zur Planung <strong>anwenden</strong>.
                                                     <br><a href="https://budgetberatung.ch/" target="_blank" rel="noopener noreferrer" class="tool-button">🔗 Beispielhafte Instrumente/ Tools/ Webseiten</a>
                                                     </p>
                                                 </td>
@@ -1509,9 +1594,11 @@
                                             <tr>
                                                 <td class="col-gesellschaft">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -1520,6 +1607,7 @@
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             
@@ -1536,9 +1624,11 @@
                                             <tr>
                                                 <td class="col-gesellschaft">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -1547,6 +1637,7 @@
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -1591,9 +1682,11 @@
                                             <tr>
                                                 <td class="col-gesellschaft">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -1602,6 +1695,7 @@
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             
@@ -1618,9 +1712,11 @@
                                             <tr>
                                                 <td class="col-gesellschaft">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -1629,6 +1725,7 @@
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -1681,9 +1778,11 @@
                                             <tr>
                                                 <td class="col-gesellschaft">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -1692,6 +1791,7 @@
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             
@@ -1708,9 +1808,11 @@
                                             <tr>
                                                 <td class="col-gesellschaft">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -1719,6 +1821,7 @@
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -1763,9 +1866,11 @@
                                             <tr>
                                                 <td class="col-gesellschaft">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -1774,6 +1879,7 @@
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             
@@ -1790,9 +1896,11 @@
                                             <tr>
                                                 <td class="col-gesellschaft">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -1801,6 +1909,7 @@
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -1845,9 +1954,11 @@
                                             <tr>
                                                 <td class="col-gesellschaft">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -1856,6 +1967,7 @@
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             
@@ -1872,9 +1984,11 @@
                                             <tr>
                                                 <td class="col-gesellschaft">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -1883,6 +1997,7 @@
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
                                                     <p>...</p>
+                                                    <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -1900,6 +2015,41 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- FREIBEREICH - SEPARATE SECTION THEMA 2 -->
+                <div class="freibereich-section">
+                    <div class="freibereich-header" onclick="toggleFreibereich(this)">
+                        <h3>Freibereich (20%)</h3>
+                    </div>
+                    <div class="freibereich-content">
+                        <h4 style="font-size: 0.95em; margin-bottom: 15px; font-weight: 700;">Inhalte / Lernziele</h4>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tbody>
+                                <tr>
+                                    <th style="background: #fff4cc; padding: 10px; text-align: left; font-size: 0.9em; font-weight: 700; border: 1px solid #000;">Gesellschaft</th>
+                                </tr>
+                                <tr>
+                                    <td style="background: #fffef5; padding: 10px; border: 1px solid #000; font-size: 0.85em;">Wähle ein Element aus.</td>
+                                </tr>
+                                
+                                <tr>
+                                    <th style="background: #cce5ff; padding: 10px; text-align: left; font-size: 0.9em; font-weight: 700; border: 1px solid #000;">Sprache und Kommunikation</th>
+                                </tr>
+                                <tr>
+                                    <td style="background: #f5f9ff; padding: 10px; border: 1px solid #000; font-size: 0.85em;">Wähle ein Element aus.</td>
+                                </tr>
+                                
+                                <tr>
+                                    <th style="background: #d4edda; padding: 10px; text-align: left; font-size: 0.9em; font-weight: 700; border: 1px solid #000;">Medien und Digitalität</th>
+                                </tr>
+                                <tr>
+                                    <td style="background: #f0f8f0; padding: 10px; border: 1px solid #000; font-size: 0.85em;">Wähle ein Element aus.</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -1947,11 +2097,11 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-gesellschaft">
-                                                    <p><span data-k="2.1" data-kat="gesellschaft">2.1. Gesundheit & Sicherheit</span><br>Risiken einschätzen und Massnahmen zur Verbesserung der körperlichen und psychischen Gesundheit ableiten.</p>
+                                                    <p><span data-k="2.1" data-kat="gesellschaft">2.1. Gesundheit & Sicherheit</span><br><strong>Risiken</strong> einschätzen und Massnahmen zur Verbesserung der körperlichen und psychischen Gesundheit ableiten.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
-                                                    <p><span data-k="4.1" data-kat="sprache">4.1. Rezeption schriftlich & bildlich</span><br>Beiträge / Berichte verstehen und mit der eigenen Situation in Verbindung bringen.</p>
+                                                    <p><span data-k="4.1" data-kat="sprache">4.1. Rezeption schriftlich & bildlich</span><br>Beiträge / Berichte <strong>verstehen</strong> und mit der eigenen Situation in Verbindung bringen.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -1960,7 +2110,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
-                                                    <p><span data-k="3.1" data-kat="digital">3.1. Datenschutz & Sicherheit</span><br>Verantwortungsvoller Umgang mit persönlichen, schützenswerten Gesundheitsdaten.</p>
+                                                    <p><span data-k="3.1" data-kat="digital">3.1. Datenschutz & Sicherheit</span><br>Verantwortungsvoller <strong>Umgang mit</strong> persönlichen, schützenswerten Gesundheits<strong>daten</strong>.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -1977,11 +2127,11 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-gesellschaft">
-                                                    <p><span data-k="2.2" data-kat="gesellschaft">2.2. Identität & Sozialisation</span><br>Eigene und fremde Verhaltensmuster wahrnehmen und gezielt darauf reagieren.</p>
+                                                    <p><span data-k="2.2" data-kat="gesellschaft">2.2. Identität & Sozialisation</span><br>Eigene und fremde Verhaltensmuster <strong>wahrnehmen</strong> und gezielt darauf <strong>reagieren</strong>.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
-                                                    <p><span data-k="4.2" data-kat="sprache">4.2. Rezeption mündlich</span><br>Emotionen differenzieren und in Worte fassen und darauf reagieren.</p>
+                                                    <p><span data-k="4.2" data-kat="sprache">4.2. Rezeption mündlich</span><br>Emotionen <strong>differenzieren</strong> und in Worte <strong>fassen</strong> und darauf <strong>reagieren</strong>.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -1990,7 +2140,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
-                                                    <p><span data-k="3.2" data-kat="digital">3.2. Informations- & Datenkompetenz</span><br>Eigenen Umgang mit digitalen Medien und deren Folgen reflektieren.</p>
+                                                    <p><span data-k="3.2" data-kat="digital">3.2. Informations- & Datenkompetenz</span><br><strong>Eigenen Umgang</strong> mit digitalen Medien und deren Folgen <strong>reflektieren</strong>.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -2036,11 +2186,11 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-gesellschaft">
-                                                    <p><span data-k="2.3" data-kat="gesellschaft">2.3. Recht</span><br>Zwischenmenschliches Verhalten online und offline analysieren und rechtliche Konsequenzen ableiten (z. B. bei Mobbing, Beleidigung, Übergriffen, …).</p>
+                                                    <p><span data-k="2.3" data-kat="gesellschaft">2.3. Recht</span><br>Zwischenmenschliches Verhalten online und offline <strong>analysieren</strong> und rechtliche Konsequenzen <strong>ableiten</strong> (z. B. bei Mobbing, Beleidigung, Übergriffen, …).</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
-                                                    <p><span data-k="4.3" data-kat="sprache">4.3. Produktion schriftlich & bildlich</span><br>Regeln für eigene Onlinebeiträge festhalten und einhalten.</p>
+                                                    <p><span data-k="4.3" data-kat="sprache">4.3. Produktion schriftlich & bildlich</span><br>Regeln für eigene Onlinebeiträge <strong>festhalten</strong> und <strong>einhalten</strong>.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -2049,7 +2199,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
-                                                    <p><span data-k="3.3" data-kat="digital">3.3. Medienkritik</span><br>Mit Onlinetools und Websites Informationen auf Manipulation und Falschinformation überprüfen.</p>
+                                                    <p><span data-k="3.3" data-kat="digital">3.3. Medienkritik</span><br>Mit Onlinetools und Websites Informationen auf Manipulation und Falschinformation <strong>überprüfen</strong>.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -2070,7 +2220,7 @@
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
-                                                    <p><span data-k="4.4" data-kat="sprache">4.4. Sprachreflexion</span><br>In Texten das/dass richtig anwenden.</p>
+                                                    <p><span data-k="4.4" data-kat="sprache">4.4. Sprachreflexion</span><br>In Texten das/dass richtig <strong>anwenden</strong>.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -2079,7 +2229,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
-                                                    <p><span data-k="3.4" data-kat="digital">3.4. Medienkritik</span><br>Hintergrund und Folgen von Echokammern / Filterblasen kennen und darauf reagieren.</p>
+                                                    <p><span data-k="3.4" data-kat="digital">3.4. Medienkritik</span><br><strong>Hintergrund und Folgen</strong> von Echokammern / Filterblasen kennen und darauf <strong>reagieren</strong>.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -2131,11 +2281,11 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-gesellschaft">
-                                                    <p><span data-k="2.5" data-kat="gesellschaft">2.5. Wirtschaft</span><br>Versicherungsarten (Personen-, Sach-, Haftpflichtversicherung), deren Leistung und deren Funktionsweise (Solidaritätsprinzip) unterscheiden und beschreiben.</p>
+                                                    <p><span data-k="2.5" data-kat="gesellschaft">2.5. Wirtschaft</span><br>Versicherungsarten (Personen-, Sach-, Haftpflichtversicherung), deren Leistung und deren Funktionsweise (Solidaritätsprinzip) <strong>unterscheiden</strong> und <strong>beschreiben</strong>.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
-                                                    <p><span data-k="4.5" data-kat="sprache">4.5. Rezeption schriftlich & bildlich</span><br>Inhalte aus einem Sachtext erfassen, vergleichen und wiedergeben (z. B. zu Verträgen).</p>
+                                                    <p><span data-k="4.5" data-kat="sprache">4.5. Rezeption schriftlich & bildlich</span><br>Inhalte aus einem Sachtext <strong>erfassen</strong>, <strong>vergleichen</strong> und <strong>wiedergeben</strong> (z. B. zu Verträgen).</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -2144,7 +2294,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
-                                                    <p><span data-k="3.5" data-kat="digital">3.5. Problemlösung</span><br>Analog oder digital eine übersichtliche Darstellung mit verknüpften Informationen (z. B. zu Versicherungen und Versicherungsarten) erstellen.</p>
+                                                    <p><span data-k="3.5" data-kat="digital">3.5. Problemlösung</span><br>Analog oder digital eine <strong>übersichtliche Darstellung</strong> mit verknüpften Informationen (z. B. zu Versicherungen und Versicherungsarten) erstellen.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -2161,11 +2311,11 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-gesellschaft">
-                                                    <p><span data-k="2.6" data-kat="gesellschaft">2.6. Wirtschaft</span><br>Eigene Kosten aufgrund unterschiedlicher Leistungen der Krankenversicherung berechnen und ein geeignetes Modell finden.</p>
+                                                    <p><span data-k="2.6" data-kat="gesellschaft">2.6. Wirtschaft</span><br><strong>Eigene Kosten</strong> aufgrund unterschiedlicher Leistungen der Krankenversicherung <strong>berechnen</strong> und ein geeignetes Modell <strong>finden</strong>.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
-                                                    <p><span data-k="4.6" data-kat="sprache">4.6. Rezeption schriftlich & bildlich</span><br>Aussagen aus Grafiken entnehmen und Gründe dafür ableiten.</p>
+                                                    <p><span data-k="4.6" data-kat="sprache">4.6. Rezeption schriftlich & bildlich</span><br>Aussagen aus Grafiken <strong>entnehmen</strong> und Gründe dafür <strong>ableiten</strong>.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -2174,7 +2324,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
-                                                    <p><span data-k="3.6" data-kat="digital">3.6. Problemlösung</span><br>Mit einem Onlinetool die eigenen Versicherungskosten berechnen.</p>
+                                                    <p><span data-k="3.6" data-kat="digital">3.6. Problemlösung</span><br>Mit einem Onlinetool die eigenen Versicherungskosten <strong>berechnen</strong>.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -2192,6 +2342,41 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- FREIBEREICH - SEPARATE SECTION THEMA 3 -->
+                <div class="freibereich-section">
+                    <div class="freibereich-header" onclick="toggleFreibereich(this)">
+                        <h3>Freibereich (20%)</h3>
+                    </div>
+                    <div class="freibereich-content">
+                        <h4 style="font-size: 0.95em; margin-bottom: 15px; font-weight: 700;">Inhalte / Lernziele</h4>
+                        
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tbody>
+                                <tr>
+                                    <th style="background: #fff4cc; padding: 10px; text-align: left; font-size: 0.9em; font-weight: 700; border: 1px solid #000;">Gesellschaft</th>
+                                </tr>
+                                <tr>
+                                    <td style="background: #fffef5; padding: 10px; border: 1px solid #000; font-size: 0.85em;">Wähle ein Element aus.</td>
+                                </tr>
+                                
+                                <tr>
+                                    <th style="background: #cce5ff; padding: 10px; text-align: left; font-size: 0.9em; font-weight: 700; border: 1px solid #000;">Sprache und Kommunikation</th>
+                                </tr>
+                                <tr>
+                                    <td style="background: #f5f9ff; padding: 10px; border: 1px solid #000; font-size: 0.85em;">Wähle ein Element aus.</td>
+                                </tr>
+                                
+                                <tr>
+                                    <th style="background: #d4edda; padding: 10px; text-align: left; font-size: 0.9em; font-weight: 700; border: 1px solid #000;">Medien und Digitalität</th>
+                                </tr>
+                                <tr>
+                                    <td style="background: #f0f8f0; padding: 10px; border: 1px solid #000; font-size: 0.85em;">Wähle ein Element aus.</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -2245,6 +2430,19 @@
             }
         }
         
+        function toggleFreibereich(header) {
+            const content = header.nextElementSibling;
+            const isOpen = content.classList.contains('show');
+            
+            if (isOpen) {
+                content.classList.remove('show');
+                header.classList.add('collapsed');
+            } else {
+                content.classList.add('show');
+                header.classList.remove('collapsed');
+            }
+        }
+        
         function toggleSchluessel(box) {
             const content = box.querySelector('.schluessel-content');
             const icon = box.querySelector('.toggle-schluessel');
@@ -2275,6 +2473,12 @@
             // Initialize lebensbezug headers as collapsed
             const lebensbezugHeaders = document.querySelectorAll('.lebensbezug-header');
             lebensbezugHeaders.forEach(header => {
+                header.classList.add('collapsed');
+            });
+            
+            // Initialize freibereich headers as collapsed
+            const freibereichHeaders = document.querySelectorAll('.freibereich-header');
+            freibereichHeaders.forEach(header => {
                 header.classList.add('collapsed');
             });
             
