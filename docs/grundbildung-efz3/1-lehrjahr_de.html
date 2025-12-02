@@ -13,14 +13,14 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
             color: #000;
             background-color: #fff;
         }
-        
+
         /* Simplified Header */
         header {
             background: #fff;
@@ -30,7 +30,7 @@
             box-shadow: none;
             position: relative;
         }
-        
+
         .header-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -38,17 +38,17 @@
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .logo-section {
             display: flex;
             align-items: center;
         }
-        
+
         .logo-section img {
             height: 85px;
             width: auto;
         }
-        
+
         .language-switch {
             background-color: transparent;
             border: none;
@@ -60,72 +60,72 @@
             align-items: center;
             gap: 8px;
         }
-        
+
         .language-switch .current-lang {
             color: #000;
             font-weight: 400;
             border-bottom: 2px solid #dc291e;
             padding-bottom: 2px;
         }
-        
+
         .language-switch .lang-link {
             color: #000;
             text-decoration: none;
             cursor: pointer;
             transition: color 0.3s ease;
         }
-        
+
         .language-switch .lang-link:hover {
             color: #666;
             text-decoration: underline;
         }
-        
+
         /* Yellow separator strip */
         .separator-strip {
             background-color: #f9f3e8;
             height: 30px;
             width: 100%;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 30px auto 0 auto;
             padding: 20px;
         }
-        
+
         main.container {
             background-color: #fff;
         }
-        
+
         .breadcrumb {
             font-size: 0.9em;
             color: #000;
             margin-bottom: 20px;
         }
-        
+
         .breadcrumb a {
             color: #000;
             text-decoration: none;
             font-weight: 500;
         }
-        
+
         .breadcrumb a:hover {
             text-decoration: underline;
         }
-        
+
         h1 {
             color: #000;
             font-size: 2.2em;
             margin-bottom: 10px;
             font-weight: 700;
         }
-        
+
         .subtitle {
             color: #000;
             font-size: 1.1em;
             margin-bottom: 30px;
         }
-        
+
         .theme-section {
             background-color: #fff;
             border-radius: 0;
@@ -133,7 +133,7 @@
             box-shadow: none;
             overflow: hidden;
         }
-        
+
         .theme-header {
             background: #f5e6d3;
             color: black;
@@ -142,11 +142,11 @@
             position: relative;
             transition: opacity 0.3s ease;
         }
-        
+
         .theme-header:hover {
             opacity: 0.9;
         }
-        
+
         .theme-header::after {
             content: '▼';
             position: absolute;
@@ -156,33 +156,33 @@
             transition: transform 0.3s ease;
             font-size: 1em;
         }
-        
+
         .theme-header.collapsed::after {
             transform: translateY(-50%) rotate(-90deg);
         }
-        
+
         .theme-header h2 {
             font-size: 1.1em;
             margin-bottom: 6px;
             font-weight: 700;
         }
-        
+
         .theme-header .lektionen {
             font-size: 0.85em;
             opacity: 0.9;
         }
-        
+
         .theme-content {
             padding: 20px;
             display: none;
             animation: slideDown 0.3s ease-out;
             background-color: #fff;
         }
-        
+
         .theme-content.show {
             display: block;
         }
-        
+
         @keyframes slideDown {
             from {
                 opacity: 0;
@@ -193,14 +193,14 @@
                 transform: translateY(0);
             }
         }
-        
+
         .lebensbezug {
             margin-bottom: 25px;
             background-color: #f9f3e8;
             border-radius: 0;
             overflow: hidden;
         }
-        
+
         /* Separate Freibereich Section */
         .freibereich-section {
             margin-bottom: 25px;
@@ -209,7 +209,7 @@
             border-radius: 0;
             overflow: hidden;
         }
-        
+
         .freibereich-header {
             padding: 16px 20px;
             cursor: pointer;
@@ -218,11 +218,11 @@
             user-select: none;
             background-color: #fff;
         }
-        
+
         .freibereich-header:hover {
             opacity: 0.8;
         }
-        
+
         .freibereich-header::after {
             content: '▼';
             position: absolute;
@@ -233,29 +233,29 @@
             font-size: 1em;
             color: #000;
         }
-        
+
         .freibereich-header.collapsed::after {
             transform: translateY(-50%) rotate(-90deg);
         }
-        
+
         .freibereich-header h3 {
             color: #000;
             font-size: 1em;
             margin-bottom: 0;
             font-weight: 400;
         }
-        
+
         .freibereich-content {
             padding: 0 20px 20px 20px;
             display: none;
             animation: slideDown 0.3s ease-out;
             background-color: #fff;
         }
-        
+
         .freibereich-content.show {
             display: block;
         }
-        
+
         .lebensbezug-header {
             padding: 16px 20px;
             cursor: pointer;
@@ -263,11 +263,11 @@
             transition: opacity 0.3s ease;
             user-select: none;
         }
-        
+
         .lebensbezug-header:hover {
             opacity: 0.8;
         }
-        
+
         .lebensbezug-header::after {
             content: '▼';
             position: absolute;
@@ -278,35 +278,35 @@
             font-size: 1em;
             color: #000;
         }
-        
+
         .lebensbezug-header.collapsed::after {
             transform: translateY(-50%) rotate(-90deg);
         }
-        
+
         .lebensbezug-content {
             padding: 0 20px 20px 20px;
             display: none;
             animation: slideDown 0.3s ease-out;
         }
-        
+
         .lebensbezug-content.show {
             display: block;
         }
-        
+
         .lebensbezug h3 {
             color: #000;
             font-size: 1em;
             margin-bottom: 0;
             font-weight: 400;
         }
-        
+
         .lebensbezug h3 strong {
             font-weight: 400;
             font-size: 0.7em;
             display: block;
             margin-bottom: 8px;
         }
-        
+
         .schluessel-box {
             background-color: #f9f9f9;
             border: 1px solid #e0e0e0;
@@ -316,30 +316,30 @@
             cursor: pointer;
             user-select: none;
         }
-        
+
         .schluessel-box:hover {
             background-color: #f0f0f0;
         }
-        
+
         .schluessel-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .schluessel-header h4 {
             color: #000;
             font-size: 0.9em;
             font-weight: 700;
             margin: 0;
         }
-        
+
         .toggle-schluessel {
             font-size: 1em;
             color: #000;
             transition: transform 0.3s ease;
         }
-        
+
         .umsetzung-box {
             background-color: #ffffff;
             border: 1px solid #d0d0d0;
@@ -349,41 +349,41 @@
             cursor: pointer;
             user-select: none;
         }
-        
+
         .umsetzung-box:hover {
             background-color: #f9f9f9;
         }
-        
+
         .umsetzung-box .schluessel-header h4 {
             color: #000;
             font-size: 0.75em;
         }
-        
+
         .umsetzung-box .toggle-schluessel {
             color: #000;
             font-size: 0.85em;
         }
-        
+
         .toggle-schluessel.rotated {
             transform: rotate(180deg);
         }
-        
+
         .schluessel-content {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease;
         }
-        
+
         .schluessel-content.expanded {
             max-height: 1000px;
             margin-top: 10px;
         }
-        
+
         .schluessel-content p {
             color: #000;
             font-size: 0.8em;
         }
-        
+
         .lerninhalt {
             margin-bottom: 18px;
             padding: 14px;
@@ -391,18 +391,18 @@
             border-radius: 0;
             border: 1px solid #e0e0e0;
         }
-        
+
         .lerninhalt h4 {
             color: #000;
             font-size: 0.95em;
             margin-bottom: 10px;
             font-weight: 700;
         }
-        
+
         .lerninhalt h4 .normal-weight {
             font-weight: 400;
         }
-        
+
         /* Neue Styles für Schlüsselkompetenzen */
         .schluesselkompetenzen-inline {
             margin-bottom: 15px;
@@ -410,12 +410,12 @@
             font-size: 0.85em;
             color: #555;
         }
-        
+
         .schluesselkompetenzen-inline strong {
             color: #000;
             font-weight: 600;
         }
-        
+
         .kompetenz-nummer-link {
             display: inline-block;
             color: #dc291e;
@@ -429,13 +429,13 @@
             transition: all 0.2s ease;
             border: 1px solid transparent;
         }
-        
+
         .kompetenz-nummer-link:hover {
             background-color: #ffe6e6;
             border-color: #ffcccc;
             text-decoration: none;
         }
-        
+
         /* Tooltip Styles */
         .tooltip {
             position: absolute;
@@ -457,11 +457,11 @@
             white-space: normal;
             word-wrap: break-word;
         }
-        
+
         .tooltip.show {
             opacity: 1;
         }
-        
+
         .tooltip::before {
             content: '';
             position: absolute;
@@ -473,11 +473,11 @@
             border-right: 7px solid transparent;
             border-bottom: 7px solid #2d2d2d;
         }
-        
+
         .kompetenz-container {
             margin-top: 10px;
         }
-        
+
         .kompetenz-button {
             background-color: #f9f9f9;
             border: 1px solid #d0d0d0;
@@ -492,11 +492,11 @@
             display: inline-block;
             font-weight: 600;
         }
-        
+
         .kompetenz-button:hover {
             transform: translateY(-1px);
         }
-        
+
         .kompetenz-details {
             display: none;
             margin-top: 10px;
@@ -505,51 +505,51 @@
             border-radius: 4px;
             font-size: 0.85em;
         }
-        
+
         .kompetenz-details.show {
             display: block;
         }
-        
+
         .kompetenz-details.gesellschaft-detail {
             background-color: #fffef5;
         }
-        
+
         .kompetenz-details.sprache-detail {
             background-color: #f5f9ff;
         }
-        
+
         .kompetenz-details.digital-detail {
             background-color: #f0f8f0;
         }
-        
+
         .kompetenz-details ul {
             list-style: none;
             margin-left: 0;
         }
-        
+
         .kompetenz-details li {
             padding: 3px 0;
             padding-left: 18px;
             position: relative;
             color: #000;
         }
-        
+
         .kompetenz-details li::before {
             content: "•";
             position: absolute;
             left: 0;
             color: #dc291e;
         }
-        
+
         .kompetenz-nummer {
             font-weight: 700;
             color: #dc291e;
         }
-        
-        .gesellschaft { 
-            background-color: #fff9e6 !important; 
-            border-color: #fff4cc !important; 
-            color: #000 !important; 
+
+        .gesellschaft {
+            background-color: #fff9e6 !important;
+            border-color: #fff4cc !important;
+            color: #000 !important;
         }
         .gesellschaft:hover {
             background-color: #fff4cc !important;
@@ -558,11 +558,11 @@
             background: #fff4cc !important;
             color: black !important;
         }
-        
-        .sprache { 
-            background-color: #e6f2ff !important; 
-            border-color: #cce5ff !important; 
-            color: #000 !important; 
+
+        .sprache {
+            background-color: #e6f2ff !important;
+            border-color: #cce5ff !important;
+            color: #000 !important;
         }
         .sprache:hover {
             background-color: #cce5ff !important;
@@ -571,11 +571,11 @@
             background: #cce5ff !important;
             color: black !important;
         }
-        
-        .digital { 
-            background-color: #e8f5e8 !important; 
-            border-color: #d4edda !important; 
-            color: #000 !important; 
+
+        .digital {
+            background-color: #e8f5e8 !important;
+            border-color: #d4edda !important;
+            color: #000 !important;
         }
         .digital:hover {
             background-color: #d4edda !important;
@@ -584,44 +584,44 @@
             background: #d4edda !important;
             color: black !important;
         }
-        
+
         .leitidee {
             background-color: #f9f3e8;
             padding: 20px;
             border-radius: 0;
             margin-bottom: 18px;
         }
-        
+
         .leitidee h3 {
             color: #000;
             margin-bottom: 15px;
             font-weight: 400;
             font-size: 0.85em;
         }
-        
+
         .leitidee p {
             margin-bottom: 8px;
             color: #000;
             font-size: 1em;
             font-weight: 400;
         }
-        
+
         .back-link {
             text-align: center;
             padding: 40px 0;
         }
-        
+
         .back-link a {
             color: #dc291e;
             text-decoration: none;
             font-size: 1.1em;
             font-weight: 600;
         }
-        
+
         .back-link a:hover {
             text-decoration: underline;
         }
-        
+
         /* Aufklappbare Tabelle Styles */
         .table-container {
             margin-top: 14px;
@@ -630,7 +630,7 @@
             box-shadow: none;
             border: 1px solid #e0e0e0;
         }
-        
+
         .table-header {
             background: #f5e6d3;
             padding: 7px 14px;
@@ -640,38 +640,38 @@
             align-items: center;
             transition: opacity 0.3s ease;
         }
-        
+
         .table-header:hover {
             opacity: 0.9;
         }
-        
+
         .table-header h5 {
             color: #000;
             font-size: 0.9em;
             font-weight: 700;
             margin: 0;
         }
-        
+
         .table-toggle {
             color: #000;
             font-size: 1em;
             transition: transform 0.3s ease;
         }
-        
+
         .table-toggle.rotated {
             transform: rotate(180deg);
         }
-        
+
         .table-content {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.4s ease;
         }
-        
+
         .table-content.expanded {
             max-height: 2000px;
         }
-        
+
         .kompetenz-table {
             width: 100%;
             border-collapse: collapse;
@@ -679,7 +679,7 @@
             table-layout: fixed;
             margin-top: 10px;
         }
-        
+
         .kompetenz-table thead th {
             padding: 5px 10px;
             text-align: left;
@@ -689,24 +689,24 @@
             border-right: 2px solid #fff;
             width: 33.33%;
         }
-        
+
         .kompetenz-table thead th:last-child {
             border-right: none;
         }
-        
+
         .kompetenz-table thead th.col-gesellschaft {
             background: #fff4cc;
             color: #000;
         }
-        
+
         .kompetenz-table thead th.col-digital {
             background: #d4edda;
         }
-        
+
         .kompetenz-table thead th.col-sprache {
             background: #cce5ff;
         }
-        
+
         /* Header cells in tbody - making them narrower */
         .kompetenz-table tbody th {
             padding: 5px 10px;
@@ -716,16 +716,16 @@
             color: #000;
             border-right: 2px solid #fff;
         }
-        
+
         .kompetenz-table tbody th:last-child {
             border-right: none;
         }
-        
+
         .kompetenz-table tbody th.col-gesellschaft {
             background: #fff4cc;
             color: #000;
         }
-        
+
         .kompetenz-table tbody th.col-digital {
             background: #fff;
             color: #000;
@@ -733,17 +733,17 @@
             padding: 0 25%;
             border: none;
         }
-        
+
         .kompetenz-table tbody th.col-digital span {
             display: block;
             background: #d4edda;
             padding: 5px 10px;
         }
-        
+
         .kompetenz-table tbody th.col-sprache {
             background: #cce5ff;
         }
-        
+
         .kompetenz-table tbody td {
             padding: 8px 10px;
             vertical-align: top;
@@ -752,44 +752,44 @@
             border-right: 2px solid #e9ecef;
             width: 33.33%;
         }
-        
+
         .kompetenz-table tbody td:last-child {
             border-right: none;
         }
-        
+
         .kompetenz-table tbody td.col-gesellschaft {
             background-color: #fffef5;
         }
-        
+
         .kompetenz-table tbody td.col-digital {
             background-color: #fff;
         }
-        
+
         /* Center content in green cells */
         .kompetenz-table tbody td.col-digital-content {
             text-align: center;
             padding: 0 25%;
         }
-        
+
         .kompetenz-table tbody td.col-digital-content p {
             text-align: center;
             background-color: #f0f8f0;
             padding: 8px 10px;
         }
-        
+
         .kompetenz-table tbody td.col-sprache {
             background-color: #f5f9ff;
         }
-        
+
         /* Kompetenzen in Tabellen fett markieren */
         .kompetenz-table tbody td span[data-k] {
             font-weight: 700;
         }
-        
+
         .umsetzung-box-bottom {
             margin-top: 20px;
         }
-        
+
         /* Spacing row for table gaps */
         .kompetenz-table tbody tr.spacing-row td {
             background: transparent !important;
@@ -797,7 +797,7 @@
             padding: 0 !important;
             height: 20px;
         }
-        
+
         /* Kleiner Button für Tools/Webseiten */
         .tool-button {
             display: inline-block;
@@ -812,35 +812,35 @@
             transition: all 0.2s ease;
             text-decoration: none;
         }
-        
+
         .tool-button:hover {
             background-color: #e9ecef;
             border-color: #adb5bd;
         }
-        
+
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
                 gap: 15px;
             }
-            
+
             .container {
                 padding: 10px;
             }
-            
+
             .theme-header {
                 padding: 14px;
             }
-            
+
             .theme-content {
                 padding: 14px;
             }
-            
+
             .kompetenz-button {
                 font-size: 0.75em;
                 padding: 6px 10px;
             }
-            
+
             .tooltip {
                 max-width: 250px;
                 font-size: 0.8em;
@@ -860,19 +860,19 @@
             </div>
         </div>
     </header>
-    
+
     <!-- Yellow separator strip -->
     <div class="separator-strip"></div>
-    
+
     <main class="container">
         <nav class="breadcrumb">
-            <a href="../index_de.html">Schullehrplan ABU</a> / 
-            <a href="index_de.html">3-jährige Grundbildung EFZ</a> / 
+            <a href="../index_de.html">Schullehrplan ABU</a> /
+            <a href="index_de.html">3-jährige Grundbildung EFZ</a> /
             1. Lehrjahr
         </nav>
         <h1>1. Lehrjahr EFZ</h1>
         <p class="subtitle">Themen und Kompetenzen der Allgemeinbildung</p>
-        
+
         <!-- Thema 1: Meine Berufsausbildung -->
         <div class="theme-section">
             <div class="theme-header">
@@ -884,23 +884,23 @@
                     <h3>Leitidee</h3>
                     <p>Der Beginn meiner Ausbildung markiert den Beginn einer neuen Phase in meinem Leben. In diesem neuen, komplexen und vernetzten beruflichen Umfeld informiere ich mich über meine Rechte und Pflichten, kommuniziere angemessen, bin in der Lage, Konflikte zu bewältigen und mich sozial zu integrieren.</p>
                 </div>
-                
+
                 <div class="lebensbezug">
                     <div class="lebensbezug-header" onclick="toggleLebensbezug(this)">
                         <h3><strong>1. Individueller Lebensbezug:</strong> Meine Ausbildung findet im Betrieb, in der Berufsfachschule und in den überbetrieblichen Kursen statt. Dort begegne ich verschiedenen Menschen und es werden unterschiedliche Erwartungen an mich gestellt.</h3>
                     </div>
                     <div class="lebensbezug-content">
-                        
+
                         <div class="lerninhalt">
                             <h4>Kompetenz 1: <span class="normal-weight"><span class="normal-weight">An den Lernorten und im Fach ABU finde ich mich zurecht und kommuniziere gezielt.</span></span></h4>
-                            
+
                             <div class="schluesselkompetenzen-inline">
                                 <strong>Schlüsselkompetenzen:</strong>
                                 <span class="kompetenz-nummer-link" data-k="1.1" data-text="Zwischen relevanten und irrelevanten Quellen und Inhalten unterscheiden">1.1</span>
                                 <span class="kompetenz-nummer-link" data-k="1.6" data-text="Ihre eigenen Standpunkte begründen und andere davon überzeugen">1.6</span>
                                 <span class="kompetenz-nummer-link" data-k="1.8" data-text="Ihre Lebensphasen planen und mit Unwägbarkeiten umgehen">1.8</span>
                             </div>
-                            
+
                             <div class="table-container">
                                 <div class="table-header" onclick="toggleTable(this)">
                                     <h5>Inhalte/ Lernziele</h5>
@@ -937,7 +937,7 @@
                                     </table>
                                 </div>
                             </div>
-                            
+
                             <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
                                 <div class="schluessel-header">
                                     <h4>Umsetzungsbeispiel</h4>
@@ -950,7 +950,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- FREIBEREICH - SEPARATE SECTION -->
                 <div class="freibereich-section">
                     <div class="freibereich-header" onclick="toggleFreibereich(this)">
@@ -958,7 +957,7 @@
                     </div>
                     <div class="freibereich-content">
                         <h4 style="font-size: 0.95em; margin-bottom: 15px; font-weight: 700;">Inhalte / Lernziele</h4>
-                        
+
                         <table style="width: 100%; border-collapse: collapse;">
                             <tbody>
                                 <tr>
@@ -967,14 +966,14 @@
                                 <tr>
                                     <td style="background: #fffef5; padding: 10px; border: 1px solid #000; font-size: 0.85em;">Wähle ein Element aus.</td>
                                 </tr>
-                                
+
                                 <tr>
                                     <th style="background: #cce5ff; padding: 10px; text-align: left; font-size: 0.9em; font-weight: 700; border: 1px solid #000;">Sprache und Kommunikation</th>
                                 </tr>
                                 <tr>
                                     <td style="background: #f5f9ff; padding: 10px; border: 1px solid #000; font-size: 0.85em;">Wähle ein Element aus.</td>
                                 </tr>
-                                
+
                                 <tr>
                                     <th style="background: #d4edda; padding: 10px; text-align: left; font-size: 0.9em; font-weight: 700; border: 1px solid #000;">Medien und Digitalität</th>
                                 </tr>
@@ -987,7 +986,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Thema 2: Geld verdienen und ausgeben -->
         <div class="theme-section">
             <div class="theme-header">
@@ -999,22 +998,22 @@
                     <h3>Leitidee</h3>
                     <p>Mit meinem verdienten Geld gehe ich verantwortungsvoll um, lenke bewusst mein Konsumverhalten, kenne Bezahlungs- und Finanzierungsmöglichkeiten, kann Kaufverträge abschliessen und nutze dabei meine Rechte und Pflichten.</p>
                 </div>
-                
+
                 <div class="lebensbezug">
                     <div class="lebensbezug-header" onclick="toggleLebensbezug(this)">
                         <h3><strong>1. Individueller Lebensbezug:</strong> Ich verdiene mein eigenes Geld, verwalte es und gebe es aus.</h3>
                     </div>
                     <div class="lebensbezug-content">
-                        
+
                         <div class="lerninhalt">
                             <h4>Kompetenz 1: <span class="normal-weight">Anhand meiner Lohnabrechnung und Lebenssituation plane und reflektiere ich ein realistisches Budget.</span></h4>
-                            
+
                             <div class="schluesselkompetenzen-inline">
                                 <strong>Schlüsselkompetenzen:</strong>
                                 <span class="kompetenz-nummer-link" data-k="1.2" data-text="Sich selbst Ziele setzen, die Zielsetzung überprüfen und sich adaptiv verhalten">1.2</span>
                                 <span class="kompetenz-nummer-link" data-k="1.8" data-text="Eigene Lebensphasen planen und mit Unwägbarkeiten umgehen">1.8</span>
                             </div>
-                            
+
                             <div class="table-container">
                                 <div class="table-header" onclick="toggleTable(this)">
                                     <h5>Inhalte/ Lernziele</h5>
@@ -1030,11 +1029,11 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-gesellschaft">
-                                                    <p><span data-k="2.8" data-kat="gesellschaft">2.8. Wirtschaft</span><br>Die eigene <strong>Lohnabrechnung</strong> verstehen.</p>
+                                                    <p><span data-k="2.8" data-kat="gesellschaft">2.8. Wirtschaft</span><br>Die eigene Lohnabrechnung verstehen.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
-                                                    <p><span data-k="4.2" data-kat="sprache">4.2. Rezeption schriftlich & bildlich</span><br>Das Lohnabrechnungsformular durch entsprechenden <strong>Wortschatz</strong> lesen.</p>
+                                                    <p><span data-k="4.2" data-kat="sprache">4.2. Rezeption schriftlich & bildlich</span><br>Das Lohnabrechnungsformular durch entsprechenden Wortschatz lesen.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -1043,16 +1042,16 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
-                                                    <p><span data-k="3.2" data-kat="digital">3.2. Informations- & Datenkompetenz</span><br>Effizientes <strong>Navigieren</strong> auf einer Webseite.</p>
+                                                    <p><span data-k="3.2" data-kat="digital">3.2. Informations- & Datenkompetenz</span><br>Effizientes Navigieren auf einer Webseite.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
-                                            
+
                                             <!-- Spacing row -->
                                             <tr class="spacing-row">
                                                 <td colspan="2"></td>
                                             </tr>
-                                        
+
                                             <!-- Block 2 -->
                                             <tr>
                                                 <th class="col-gesellschaft" style="width: 50%;">Gesellschaft</th>
@@ -1060,11 +1059,11 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-gesellschaft">
-                                                    <p><span data-k="2.8" data-kat="gesellschaft">2.8. Wirtschaft</span><br>Ein eigenes <strong>Budget</strong> mit fixen und variablen Kosten aufstellen.</p>
+                                                    <p><span data-k="2.8" data-kat="gesellschaft">2.8. Wirtschaft</span><br>Ein eigenes Budget mit fixen und variablen Kosten aufstellen.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
-                                                    <p><span data-k="4.7" data-kat="sprache">4.7. Interaktion & Kollaboration mündlich</span><br>Fremde und eigene Budgetplanung <strong>reflektieren</strong>.</p>
+                                                    <p><span data-k="4.7" data-kat="sprache">4.7. Interaktion & Kollaboration mündlich</span><br>Fremde und eigene Budgetplanung reflektieren.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -1073,7 +1072,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
-                                                    <p><span data-k="3.5" data-kat="digital">3.5. Problemlösung</span><br>Budget-<strong>Tools</strong> zur Planung anwenden.
+                                                    <p><span data-k="3.5" data-kat="digital">3.5. Problemlösung</span><br>Budget-Tools zur Planung anwenden.
                                                     <br><a href="https://budgetberatung.ch/" target="_blank" rel="noopener noreferrer" class="tool-button">🔗 Budgetberatung.ch</a>
                                                     </p>
                                                 </td>
@@ -1082,7 +1081,7 @@
                                     </table>
                                 </div>
                             </div>
-                            
+
                             <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
                                 <div class="schluessel-header">
                                     <h4>Umsetzungsbeispiel</h4>
@@ -1093,15 +1092,14 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="lerninhalt">
                             <h4>Kompetenz 2: <span class="normal-weight">Ich vergleiche verschiedene Möglichkeiten der Verwaltung von Geld und leite daraus eine begründete Vorgehensweise ab.</span></h4>
-                            
+
                             <div class="schluesselkompetenzen-inline">
                                 <strong>Schlüsselkompetenzen:</strong>
                                 <span class="kompetenz-nummer-link" data-k="1.1" data-text="Zwischen relevanten und irrelevanten Quellen und Inhalten unterscheiden">1.1</span>
                             </div>
-                            
+
                             <div class="table-container">
                                 <div class="table-header" onclick="toggleTable(this)">
                                     <h5>Inhalte/ Lernziele</h5>
@@ -1117,11 +1115,11 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-gesellschaft">
-                                                    <p><span data-k="2.8" data-kat="gesellschaft">2.8. Wirtschaft</span><br>Zahlungsmittel und Geld<strong>verwaltungs</strong>möglichkeiten <strong>beurteilen</strong>.</p>
+                                                    <p><span data-k="2.8" data-kat="gesellschaft">2.8. Wirtschaft</span><br>Zahlungsmittel und Geldverwaltungsmöglichkeiten beurteilen.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
-                                                    <p><span data-k="4.7" data-kat="sprache">4.7. Interaktion & Kollaboration mündlich</span><br>Fachliche Informationen aus <strong>Beratungen</strong> erfassen.</p>
+                                                    <p><span data-k="4.7" data-kat="sprache">4.7. Interaktion & Kollaboration mündlich</span><br>Fachliche Informationen aus Beratungen erfassen.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -1130,16 +1128,16 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
-                                                    <p><span data-k="3.1" data-kat="digital">3.1. Datenschutz & Sicherheit</span><br><strong>Sicherheitsrisiken</strong> beim Online-Banking/-Shopping kennen.</p>
+                                                    <p><span data-k="3.1" data-kat="digital">3.1. Datenschutz & Sicherheit</span><br>Sicherheitsrisiken beim Online-Banking/-Shopping kennen.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
-                                            
+
                                             <!-- Spacing row -->
                                             <tr class="spacing-row">
                                                 <td colspan="2"></td>
                                             </tr>
-                                        
+
                                             <!-- Block 2 -->
                                             <tr>
                                                 <th class="col-gesellschaft" style="width: 50%;">Gesellschaft</th>
@@ -1147,11 +1145,11 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-gesellschaft">
-                                                    <p><span data-k="2.8" data-kat="gesellschaft">2.8. Wirtschaft</span><br>Vor- und Nachteile der Eröffnung eines <strong>Bankkontos</strong> reflektieren.</p>
+                                                    <p><span data-k="2.8" data-kat="gesellschaft">2.8. Wirtschaft</span><br>Vor- und Nachteile der Eröffnung eines Bankkontos reflektieren.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
-                                                    <p><span data-k="4.5" data-kat="sprache">4.5. Produktion schriftlich & bildlich</span><br>Ein <strong>Formular</strong> zur Kontoeröffnung ausfüllen.</p>
+                                                    <p><span data-k="4.5" data-kat="sprache">4.5. Produktion schriftlich & bildlich</span><br>Ein Formular zur Kontoeröffnung ausfüllen.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -1160,7 +1158,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
-                                                    <p><span data-k="3.2" data-kat="digital">3.2. Informations- & Datenkompetenz</span><br><strong>Navigieren</strong> auf einer E-Banking Plattform.</p>
+                                                    <p><span data-k="3.2" data-kat="digital">3.2. Informations- & Datenkompetenz</span><br>Navigieren auf einer E-Banking Plattform.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -1168,7 +1166,7 @@
                                     </table>
                                 </div>
                             </div>
-                            
+
                             <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
                                 <div class="schluessel-header">
                                     <h4>Umsetzungsbeispiel</h4>
@@ -1179,15 +1177,14 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="lerninhalt">
                             <h4>Kompetenz 3: <span class="normal-weight">Ich vergleiche verschiedene Bezahlungsmöglichkeiten und wähle in Bezug auf meine Bedürfnisse eine adäquate Lösung.</span></h4>
-                            
+
                             <div class="schluesselkompetenzen-inline">
                                 <strong>Schlüsselkompetenzen:</strong>
                                 <span class="kompetenz-nummer-link" data-k="1.2" data-text="Sich selbst Ziele setzen, die Zielsetzung überprüfen und sich adaptiv verhalten">1.2</span>
                             </div>
-                            
+
                             <div class="table-container">
                                 <div class="table-header" onclick="toggleTable(this)">
                                     <h5>Inhalte/ Lernziele</h5>
@@ -1203,11 +1200,11 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-gesellschaft">
-                                                    <p><span data-k="2.8" data-kat="gesellschaft">2.8. Wirtschaft</span><br><strong>Bezahlungsmöglichkeiten</strong> beschreiben und deren Funktionsweise und Kosten <strong>vergleichen</strong>.</p>
+                                                    <p><span data-k="2.8" data-kat="gesellschaft">2.8. Wirtschaft</span><br>Bezahlungsmöglichkeiten beschreiben und deren Funktionsweise und Kosten vergleichen.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
-                                                    <p><span data-k="4.1" data-kat="sprache">4.1. Rezeption schriftlich & bildlich</span><br><strong>Vergleiche</strong> aus Texten, Bildern und Grafiken erfassen und kritisch hinterfragen.</p>
+                                                    <p><span data-k="4.1" data-kat="sprache">4.1. Rezeption schriftlich & bildlich</span><br>Vergleiche aus Texten, Bildern und Grafiken erfassen und kritisch hinterfragen.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -1216,16 +1213,16 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
-                                                    <p><span data-k="3.2" data-kat="digital">3.2. Informations- & Datenkompetenz</span><br>Aus Vergleichsportalen relevante Informationen <strong>filtern</strong>.</p>
+                                                    <p><span data-k="3.2" data-kat="digital">3.2. Informations- & Datenkompetenz</span><br>Aus Vergleichsportalen relevante Informationen filtern.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
-                                            
+
                                             <!-- Spacing row -->
                                             <tr class="spacing-row">
                                                 <td colspan="2"></td>
                                             </tr>
-                                        
+
                                             <!-- Block 2 -->
                                             <tr>
                                                 <th class="col-gesellschaft" style="width: 50%;">Gesellschaft</th>
@@ -1233,11 +1230,11 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-gesellschaft">
-                                                    <p><span data-k="2.8" data-kat="gesellschaft">2.8. Wirtschaft</span><br><strong>Finanzierungsmöglichkeiten</strong> einschätzen und für die eigene Lebenssituation angemessene Finanzierungslösungen <strong>auswählen</strong>.</p>
+                                                    <p><span data-k="2.8" data-kat="gesellschaft">2.8. Wirtschaft</span><br>Finanzierungsmöglichkeiten einschätzen und für die eigene Lebenssituation angemessene Finanzierungslösungen auswählen.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
-                                                    <p><span data-k="4.7" data-kat="sprache">4.7. Interaktion & Kollaboration mündlich</span><br>Für persönliche <strong>Entscheidungen</strong> und Ansichten <strong>argumentieren</strong>.</p>
+                                                    <p><span data-k="4.7" data-kat="sprache">4.7. Interaktion & Kollaboration mündlich</span><br>Für persönliche Entscheidungen und Ansichten argumentieren.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -1246,7 +1243,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
-                                                    <p><span data-k="3.5" data-kat="digital">3.5. Problemlösung</span><br>Mit Hilfe digitaler Tools eigene <strong>Finanzkosten berechnen</strong>.</p>
+                                                    <p><span data-k="3.5" data-kat="digital">3.5. Problemlösung</span><br>Mit Hilfe digitaler Tools eigene Finanzkosten berechnen.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -1254,7 +1251,7 @@
                                     </table>
                                 </div>
                             </div>
-                            
+
                             <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
                                 <div class="schluessel-header">
                                     <h4>Umsetzungsbeispiel</h4>
@@ -1267,22 +1264,22 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="lebensbezug">
                     <div class="lebensbezug-header" onclick="toggleLebensbezug(this)">
                         <h3><strong>2. Individueller Lebensbezug:</strong> Ich treffe bewusst Konsumentscheidungen.</h3>
                     </div>
                     <div class="lebensbezug-content">
-                        
+
                         <div class="lerninhalt">
                             <h4>Kompetenz 1: <span class="normal-weight">Ich erkenne bewusst und unbewusst ablaufende Entscheidungsprozesse beim Konsum, treffe eigene Konsumentscheidungen adäquat zur Lebenssituation und kenne deren Auswirkungen.</span></h4>
-                            
+
                             <div class="schluesselkompetenzen-inline">
                                 <strong>Schlüsselkompetenzen:</strong>
                                 <span class="kompetenz-nummer-link" data-k="1.4" data-text="Die Perspektiven anderer Personen nachvollziehen, Konflikte lösen und fair handeln">1.4</span>
                                 <span class="kompetenz-nummer-link" data-k="1.9" data-text="Vernetzt und systemisch denken, um sozial, ökologisch und ökonomisch nachhaltig zu handeln">1.9</span>
                             </div>
-                            
+
                             <div class="table-container">
                                 <div class="table-header" onclick="toggleTable(this)">
                                     <h5>Inhalte/ Lernziele</h5>
@@ -1298,11 +1295,11 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-gesellschaft">
-                                                    <p><span data-k="2.8" data-kat="gesellschaft">2.8. Wirtschaft</span><br>Vor- und Nachteile einzelner <strong>Konsumentscheidungen</strong> (z. B. Kauf vs. Miete, Marke vs. Handelsmarke, Herkunft, neu vs. gebraucht) im persönlichen Kontext <strong>beurteilen</strong>.</p>
+                                                    <p><span data-k="2.8" data-kat="gesellschaft">2.8. Wirtschaft</span><br>Vor- und Nachteile einzelner Konsumentscheidungen (z. B. Kauf vs. Miete, Marke vs. Handelsmarke, Herkunft, neu vs. gebraucht) im persönlichen Kontext beurteilen.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
-                                                    <p><span data-k="4.3" data-kat="sprache">4.3. Produktion schriftlich & bildlich</span><br>Die eigenen Konsumentscheidungen in Szenarien darstellen und <strong>begründen</strong> (z. B. Bedarf, Wünsche, Werbeaussagen, Bewertungen, …).</p>
+                                                    <p><span data-k="4.3" data-kat="sprache">4.3. Produktion schriftlich & bildlich</span><br>Die eigenen Konsumentscheidungen in Szenarien darstellen und begründen (z. B. Bedarf, Wünsche, Werbeaussagen, Bewertungen, …).</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -1311,16 +1308,16 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
-                                                    <p><span data-k="3.3" data-kat="digital">3.3. Medienkritik</span><br>Manipulative <strong>Praktiken im Online-Handel</strong> (Bezahlmodelle, Kundenbindung, Filterblase) erkennen.</p>
+                                                    <p><span data-k="3.3" data-kat="digital">3.3. Medienkritik</span><br>Manipulative Praktiken im Online-Handel (Bezahlmodelle, Kundenbindung, Filterblase) erkennen.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
-                                            
+
                                             <!-- Spacing row -->
                                             <tr class="spacing-row">
                                                 <td colspan="2"></td>
                                             </tr>
-                                        
+
                                             <!-- Block 2 -->
                                             <tr>
                                                 <th class="col-gesellschaft" style="width: 50%;">Gesellschaft</th>
@@ -1328,11 +1325,11 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-gesellschaft">
-                                                    <p><span data-k="2.1" data-kat="gesellschaft">2.1. Ethik</span><br>Auswirkungen von eigenen Konsumentscheidungen auf <strong>Umwelt</strong> und <strong>Arbeitsbedingungen</strong> nachvollziehen.</p>
+                                                    <p><span data-k="2.1" data-kat="gesellschaft">2.1. Ethik</span><br>Auswirkungen von eigenen Konsumentscheidungen auf Umwelt und Arbeitsbedingungen nachvollziehen.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
-                                                    <p><span data-k="4.7" data-kat="sprache">4.7. Interaktion & Kollaboration mündlich</span><br>Gemeinsam Argumente zu Konsumentscheidungen <strong>entwickeln</strong> und bewerten.</p>
+                                                    <p><span data-k="4.7" data-kat="sprache">4.7. Interaktion & Kollaboration mündlich</span><br>Gemeinsam Argumente zu Konsumentscheidungen entwickeln und bewerten.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -1341,7 +1338,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
-                                                    <p><span data-k="3.4" data-kat="digital">3.4. Inhaltserstellung</span><br>Informationen zu eigenen <strong>Konsumentscheidungen</strong> (Herkunft, Ökologie, Lieferkette, Herstellung, CO2-Bilanz, Arbeitsbedingungen) <strong>recherchieren</strong> und <strong>aufbereiten</strong>.</p>
+                                                    <p><span data-k="3.4" data-kat="digital">3.4. Inhaltserstellung</span><br>Informationen zu eigenen Konsumentscheidungen (Herkunft, Ökologie, Lieferkette, Herstellung, CO2-Bilanz, Arbeitsbedingungen) recherchieren und aufbereiten.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -1349,7 +1346,7 @@
                                     </table>
                                 </div>
                             </div>
-                            
+
                             <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
                                 <div class="schluessel-header">
                                     <h4>Umsetzungsbeispiel</h4>
@@ -1360,15 +1357,14 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="lerninhalt">
                             <h4>Kompetenz 2: <span class="normal-weight">Ich schliesse einen Kaufvertrag ab, kenne meine Rechte und Pflichten und leite aus AGBs Konsequenzen und Handlungen ab.</span></h4>
-                            
+
                             <div class="schluesselkompetenzen-inline">
                                 <strong>Schlüsselkompetenzen:</strong>
                                 <span class="kompetenz-nummer-link" data-k="1.7" data-text="Die Folgen der eigenen Handlungen berücksichtigen">1.7</span>
                             </div>
-                            
+
                             <div class="table-container">
                                 <div class="table-header" onclick="toggleTable(this)">
                                     <h5>Inhalte/ Lernziele</h5>
@@ -1384,11 +1380,11 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-gesellschaft">
-                                                    <p><span data-k="2.6" data-kat="gesellschaft">2.6. Recht</span><br>Das Zustandekommen eines <strong>Kaufvertrags</strong> und die daraus entstehenden <strong>Rechte und Pflichten</strong> nachvollziehen.</p>
+                                                    <p><span data-k="2.6" data-kat="gesellschaft">2.6. Recht</span><br>Das Zustandekommen eines Kaufvertrags und die daraus entstehenden Rechte und Pflichten nachvollziehen.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
-                                                    <p><span data-k="4.1" data-kat="sprache">4.1. Rezeption schriftlich & bildlich</span><br>Aus <strong>Verträgen</strong> (insb. Versandhandel) Rechte und Pflichten <strong>herauslesen</strong>.</p>
+                                                    <p><span data-k="4.1" data-kat="sprache">4.1. Rezeption schriftlich & bildlich</span><br>Aus Verträgen (insb. Versandhandel) Rechte und Pflichten herauslesen.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -1397,16 +1393,16 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
-                                                    <p><span data-k="3.2" data-kat="digital">3.2. Informations- & Datenkompetenz</span><br>Nutzung von <strong>Verkaufsplattformen</strong> (Suchmaschinen, Vertragsbedingungen).</p>
+                                                    <p><span data-k="3.2" data-kat="digital">3.2. Informations- & Datenkompetenz</span><br>Nutzung von Verkaufsplattformen (Suchmaschinen, Vertragsbedingungen).</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
-                                            
+
                                             <!-- Spacing row -->
                                             <tr class="spacing-row">
                                                 <td colspan="2"></td>
                                             </tr>
-                                        
+
                                             <!-- Block 2 -->
                                             <tr>
                                                 <th class="col-gesellschaft" style="width: 50%;">Gesellschaft</th>
@@ -1414,11 +1410,11 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-gesellschaft">
-                                                    <p><span data-k="2.6" data-kat="gesellschaft">2.6. Recht</span><br>Vorgehen für <strong>Vertragsrücktritt</strong> und bei <strong>Vertragsverletzungen</strong> (Liefer- oder Zahlungsverzug, Mängel) kennen.</p>
+                                                    <p><span data-k="2.6" data-kat="gesellschaft">2.6. Recht</span><br>Vorgehen für Vertragsrücktritt und bei Vertragsverletzungen (Liefer- oder Zahlungsverzug, Mängel) kennen.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
-                                                    <p><span data-k="4.2" data-kat="sprache">4.2. Rezeption schriftlich & bildlich</span><br><strong>Strategien beim Lesen</strong> von linearen Texten mit typischem Fachwortschatz bei AGBs anwenden.</p>
+                                                    <p><span data-k="4.2" data-kat="sprache">4.2. Rezeption schriftlich & bildlich</span><br>Strategien beim Lesen von linearen Texten mit typischem Fachwortschatz bei AGBs anwenden.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -1427,7 +1423,7 @@
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
-                                                    <p><span data-k="4.5" data-kat="sprache">4.5. Produktion schriftlich & bildlich</span><br><strong>Textvorlage</strong> für die eigene Situation (Kulanz, Irrtum, Mangel) <strong>anpassen</strong>.</p>
+                                                    <p><span data-k="4.5" data-kat="sprache">4.5. Produktion schriftlich & bildlich</span><br>Textvorlage für die eigene Situation (Kulanz, Irrtum, Mangel) anpassen.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -1436,7 +1432,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
-                                                    <p><span data-k="3.2" data-kat="digital">3.2. Informations- & Datenkompetenz</span><br>Nutzung von <strong>Verkaufsplattformen</strong> (Suchmaschinen, Vertragsbedingungen).</p>
+                                                    <p><span data-k="3.2" data-kat="digital">3.2. Informations- & Datenkompetenz</span><br>Nutzung von Verkaufsplattformen (Suchmaschinen, Vertragsbedingungen).</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -1444,7 +1440,7 @@
                                     </table>
                                 </div>
                             </div>
-                            
+
                             <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
                                 <div class="schluessel-header">
                                     <h4>Umsetzungsbeispiel</h4>
@@ -1457,7 +1453,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- FREIBEREICH - SEPARATE SECTION THEMA 2 -->
                 <div class="freibereich-section">
                     <div class="freibereich-header" onclick="toggleFreibereich(this)">
@@ -1465,7 +1460,7 @@
                     </div>
                     <div class="freibereich-content">
                         <h4 style="font-size: 0.95em; margin-bottom: 15px; font-weight: 700;">Inhalte / Lernziele</h4>
-                        
+
                         <table style="width: 100%; border-collapse: collapse;">
                             <tbody>
                                 <tr>
@@ -1474,38 +1469,36 @@
                                 <tr>
                                     <td style="background: #fffef5; padding: 10px; border: 1px solid #000; font-size: 0.85em;">
                                         <p style="margin-bottom: 10px;"><span data-k="2.8" data-kat="gesellschaft" style="font-style: italic;">2.8. Wirtschaft</span><br>Möglichkeiten von Geld-Anlageformen vergleichen und erkennen, wie damit Geld verdient / verloren werden kann.</p>
-                                        
+
                                         <p style="margin-bottom: 10px;"><span data-k="2.8" data-kat="gesellschaft" style="font-style: italic;">2.8. Wirtschaft</span><br>Untersuchung der Rolle des Geldes</p>
-                                        
+
                                         <p style="margin-bottom: 10px;"><span data-k="2.7" data-kat="gesellschaft" style="font-style: italic;">2.7. Technologie</span><br>Funktion und Einsatz von Bitcoins und anderen virtuellen Zahlungsmittel verstehen und kritisch hinterfragen.</p>
-                                        
-                                        <p style="margin-bottom: 10px;"><span data-k="2.8" data-kat="gesellschaft" style="font-style: italic;">2.8. Wirtschaft</span><br>Beurteilen, welchen Einfluss Zinsen auf unser Anlageverhalten hat und wie Geld in verschiedene Währungen umgerechnet wird.</p>
-                                        
-                                        <p><span data-k="2.1" data-kat="gesellschaft" style="font-style: italic;">2.1. Ethik</span><br><span data-k="2.8" data-kat="gesellschaft" style="font-style: italic;">2.8. Wirtschaft</span><br>Analyse unterschiedlicher Möglichkeiten <strong>mit Geld Geld zu verdienen</strong>.</p>
+
+                                        <p><span data-k="2.1" data-kat="gesellschaft" style="font-style: italic;">2.1. Ethik</span><br><span data-k="2.8" data-kat="gesellschaft" style="font-style: italic;">2.8. Wirtschaft</span><br>Analyse unterschiedlicher Möglichkeiten mit Geld Geld zu verdienen.</p>
                                     </td>
                                 </tr>
-                                
+
                                 <tr>
                                     <th style="background: #cce5ff; padding: 10px; text-align: left; font-size: 0.9em; font-weight: 700; border: 1px solid #000;">Sprache und Kommunikation</th>
                                 </tr>
                                 <tr>
                                     <td style="background: #f5f9ff; padding: 10px; border: 1px solid #000; font-size: 0.85em;">
-                                        <p style="margin-bottom: 10px;"><span data-k="4.7" data-kat="sprache" style="font-style: italic;">4.7. Interaktion & Kollaboration mündlich</span><br><strong>Erörterung</strong> unterschiedlicher Geldvermehrungsmöglichkeiten.</p>
-                                        
-                                        <p><span data-k="4.5" data-kat="sprache" style="font-style: italic;">4.5. Produktion schriftlich & bildlich</span><br>Persönliches Konsumverhalten <strong>visualisieren</strong>.</p>
+                                        <p style="margin-bottom: 10px;"><span data-k="4.7" data-kat="sprache" style="font-style: italic;">4.7. Interaktion & Kollaboration mündlich</span><br>Erörterung unterschiedlicher Geldvermehrungsmöglichkeiten.</p>
+
+                                        <p><span data-k="4.5" data-kat="sprache" style="font-style: italic;">4.5. Produktion schriftlich & bildlich</span><br>Persönliches Konsumverhalten visualisieren.</p>
                                     </td>
                                 </tr>
-                                
+
                                 <tr>
                                     <th style="background: #d4edda; padding: 10px; text-align: left; font-size: 0.9em; font-weight: 700; border: 1px solid #000;">Medien und Digitalität</th>
                                 </tr>
                                 <tr>
                                     <td style="background: #f0f8f0; padding: 10px; border: 1px solid #000; font-size: 0.85em;">
                                         <p style="margin-bottom: 10px;"><span data-k="3.5" data-kat="digital" style="font-style: italic;">3.5. Problemlösung</span><br>Eigenes Geld mit Hilfe Geldanlagetipps aus dem Netz gewinnbringend anlegen.</p>
-                                        
+
                                         <p style="margin-bottom: 10px;"><span data-k="3.2" data-kat="digital" style="font-style: italic;">3.2. Informations- & Datenkompetenz</span><br>Vorgang beim Kauf von virtuellen Zahlungsmitteln umsetzen können.</p>
-                                        
-                                        <p><span data-k="3.4" data-kat="digital" style="font-style: italic;">3.4. Inhaltserstellung</span><br>Hintergründe zu finanziellen Erfolgsstorys <strong>recherchieren</strong>.</p>
+
+                                        <p><span data-k="3.4" data-kat="digital" style="font-style: italic;">3.4. Inhaltserstellung</span><br>Hintergründe zu finanziellen Erfolgsstorys recherchieren.</p>
                                     </td>
                                 </tr>
                             </tbody>
@@ -1514,7 +1507,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Thema 3: Gesund und sicher durchs Leben -->
         <div class="theme-section">
             <div class="theme-header">
@@ -1526,22 +1519,22 @@
                     <h3>Leitidee</h3>
                     <p>Ich sorge für mein körperliches und psychisches Wohlbefinden. Gesundheitliche und finanzielle Risiken weiss ich einzuschätzen und mich gezielt abzusichern. Gegenüber meinen Mitmenschen verhalte ich mich konstruktiv – online und offline. </p>
                 </div>
-                
+
                 <div class="lebensbezug">
                     <div class="lebensbezug-header" onclick="toggleLebensbezug(this)">
                         <h3><strong>1. Individueller Lebensbezug:</strong> Mein Körper und meine Psyche sind unterschiedlichen Einflüssen ausgesetzt. Ich wiederum habe Einfluss auf das Wohlbefinden meiner Mitmenschen. </h3>
                     </div>
                     <div class="lebensbezug-content">
-                        
+
                         <div class="lerninhalt">
                             <h4>Kompetenz 1: <span class="normal-weight">Ich reflektiere meinen eigenen Umgang sowie den meines Umfelds mit körperlichen und psychischen Gesundheitsrisiken im Alltag und entwickle daraus konkrete Strategien zur Minimierung. </span></h4>
-                            
+
                             <div class="schluesselkompetenzen-inline">
                                 <strong>Schlüsselkompetenzen:</strong>
                                 <span class="kompetenz-nummer-link" data-k="1.3" data-text="Antizipative, unternehmerische und innovative Wege der Problemlösung erkennen, entwickeln und umsetzen">1.3</span>
                                 <span class="kompetenz-nummer-link" data-k="1.8" data-text="Ihre Lebensphasen planen und mit Unwägbarkeiten umgehen">1.8</span>
                             </div>
-                            
+
                             <div class="table-container">
                                 <div class="table-header" onclick="toggleTable(this)">
                                     <h5>Inhalte/ Lernziele</h5>
@@ -1557,11 +1550,11 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-gesellschaft">
-                                                    <p><span data-k="2.1" data-kat="gesellschaft">2.1. Gesundheit & Sicherheit</span><br><strong>Risiken</strong> einschätzen und Massnahmen zur Verbesserung der körperlichen und psychischen Gesundheit ableiten.</p>
+                                                    <p><span data-k="2.1" data-kat="gesellschaft">2.1. Gesundheit & Sicherheit</span><br>Risiken einschätzen und Massnahmen zur Verbesserung der körperlichen und psychischen Gesundheit ableiten.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
-                                                    <p><span data-k="4.1" data-kat="sprache">4.1. Rezeption schriftlich & bildlich</span><br>Beiträge / Berichte <strong>verstehen</strong> und mit der eigenen Situation in Verbindung bringen.</p>
+                                                    <p><span data-k="4.1" data-kat="sprache">4.1. Rezeption schriftlich & bildlich</span><br>Beiträge / Berichte verstehen und mit der eigenen Situation in Verbindung bringen.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -1570,16 +1563,16 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
-                                                    <p><span data-k="3.1" data-kat="digital">3.1. Datenschutz & Sicherheit</span><br>Verantwortungsvoller <strong>Umgang mit</strong> persönlichen, schützenswerten Gesundheits<strong>daten</strong>.</p>
+                                                    <p><span data-k="3.1" data-kat="digital">3.1. Datenschutz & Sicherheit</span><br>Verantwortungsvoller Umgang mit persönlichen, schützenswerten Gesundheitsdaten.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
-                                            
+
                                             <!-- Spacing row -->
                                             <tr class="spacing-row">
                                                 <td colspan="2"></td>
                                             </tr>
-                                        
+
                                             <!-- Block 2 -->
                                             <tr>
                                                 <th class="col-gesellschaft" style="width: 50%;">Gesellschaft</th>
@@ -1587,11 +1580,11 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-gesellschaft">
-                                                    <p><span data-k="2.2" data-kat="gesellschaft">2.2. Identität & Sozialisation</span><br>Eigene und fremde Verhaltensmuster <strong>wahrnehmen</strong> und gezielt darauf <strong>reagieren</strong>.</p>
+                                                    <p><span data-k="2.2" data-kat="gesellschaft">2.2. Identität & Sozialisation</span><br>Eigene und fremde Verhaltensmuster wahrnehmen und gezielt darauf reagieren.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
-                                                    <p><span data-k="4.2" data-kat="sprache">4.2. Rezeption mündlich</span><br>Emotionen <strong>differenzieren</strong> und in Worte <strong>fassen</strong> und darauf <strong>reagieren</strong>.</p>
+                                                    <p><span data-k="4.2" data-kat="sprache">4.2. Rezeption mündlich</span><br>Emotionen differenzieren und in Worte fassen und darauf reagieren.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -1600,7 +1593,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
-                                                    <p><span data-k="3.2" data-kat="digital">3.2. Informations- & Datenkompetenz</span><br><strong>Eigenen Umgang</strong> mit digitalen Medien und deren Folgen <strong>reflektieren</strong>.</p>
+                                                    <p><span data-k="3.2" data-kat="digital">3.2. Informations- & Datenkompetenz</span><br>Eigenen Umgang mit digitalen Medien und deren Folgen reflektieren.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -1608,7 +1601,7 @@
                                     </table>
                                 </div>
                             </div>
-                            
+
                             <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
                                 <div class="schluessel-header">
                                     <h4>Umsetzungsbeispiel</h4>
@@ -1619,10 +1612,9 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="lerninhalt">
                             <h4>Kompetenz 2: <span class="normal-weight">Ich erkenne korrektes, manipulatives und verbotenes Verhalten online sowie offline und reagiere zielführend.</span></h4>
-                            
+
                             <div class="schluesselkompetenzen-inline">
                                 <strong>Schlüsselkompetenzen:</strong>
                                 <span class="kompetenz-nummer-link" data-k="1.5" data-text="Die eigenen Werthaltungen und Überzeugungen erkennen, verstehen, kritisch reflektieren und weiterentwickeln">1.5</span>
@@ -1630,7 +1622,7 @@
                                 <span class="kompetenz-nummer-link" data-k="1.11" data-text="Mit Mehrdeutigkeiten umgehen">1.11</span>
                                 <span class="kompetenz-nummer-link" data-k="1.12" data-text="An gesellschaftlichen Prozessen partizipieren und Handlungsspielräume nutzen">1.12</span>
                             </div>
-                            
+
                             <div class="table-container">
                                 <div class="table-header" onclick="toggleTable(this)">
                                     <h5>Inhalte/ Lernziele</h5>
@@ -1646,11 +1638,11 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-gesellschaft">
-                                                    <p><span data-k="2.3" data-kat="gesellschaft">2.3. Recht</span><br>Zwischenmenschliches Verhalten online und offline <strong>analysieren</strong> und rechtliche Konsequenzen <strong>ableiten</strong> (z. B. bei Mobbing, Beleidigung, Übergriffen, …).</p>
+                                                    <p><span data-k="2.3" data-kat="gesellschaft">2.3. Recht</span><br>Zwischenmenschliches Verhalten online und offline analysieren und rechtliche Konsequenzen ableiten (z. B. bei Mobbing, Beleidigung, Übergriffen, …).</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
-                                                    <p><span data-k="4.3" data-kat="sprache">4.3. Produktion schriftlich & bildlich</span><br>Regeln für eigene Onlinebeiträge <strong>festhalten</strong> und <strong>einhalten</strong>.</p>
+                                                    <p><span data-k="4.3" data-kat="sprache">4.3. Produktion schriftlich & bildlich</span><br>Regeln für eigene Onlinebeiträge festhalten und einhalten.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -1659,16 +1651,16 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
-                                                    <p><span data-k="3.3" data-kat="digital">3.3. Medienkritik</span><br>Mit Onlinetools und Websites Informationen auf Manipulation und Falschinformation <strong>überprüfen</strong>.</p>
+                                                    <p><span data-k="3.3" data-kat="digital">3.3. Medienkritik</span><br>Mit Onlinetools und Websites Informationen auf Manipulation und Falschinformation überprüfen.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>Rückwärts-Bildersuche, Analyse Autorschaft, Kontext- und Veröffentlichungsort</p>
                                                 </td>
                                             </tr>
-                                            
+
                                             <!-- Spacing row -->
                                             <tr class="spacing-row">
                                                 <td colspan="2"></td>
                                             </tr>
-                                        
+
                                             <!-- Block 2 -->
                                             <tr>
                                                 <th class="col-gesellschaft" style="width: 50%;">Gesellschaft</th>
@@ -1680,7 +1672,7 @@
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>Politische Grundkonflikte</p>
                                                 </td>
                                                 <td class="col-sprache">
-                                                    <p><span data-k="4.4" data-kat="sprache">4.4. Sprachreflexion</span><br>In Texten das/dass richtig <strong>anwenden</strong>.</p>
+                                                    <p><span data-k="4.4" data-kat="sprache">4.4. Sprachreflexion</span><br>In Texten das/dass richtig anwenden.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>Ersatzprobe</p>
                                                 </td>
                                             </tr>
@@ -1689,7 +1681,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
-                                                    <p><span data-k="3.4" data-kat="digital">3.4. Medienkritik</span><br><strong>Hintergrund und Folgen</strong> von Echokammern / Filterblasen kennen und darauf <strong>reagieren</strong>.</p>
+                                                    <p><span data-k="3.4" data-kat="digital">3.4. Medienkritik</span><br>Hintergrund und Folgen von Echokammern / Filterblasen kennen und darauf reagieren.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -1697,7 +1689,7 @@
                                     </table>
                                 </div>
                             </div>
-                            
+
                             <div class="umsetzung-box umsetzung-box-bottom" onclick="toggleSchluessel(this)">
                                 <div class="schluessel-header">
                                     <h4>Umsetzungsbeispiel</h4>
@@ -1710,22 +1702,22 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="lebensbezug">
                     <div class="lebensbezug-header" onclick="toggleLebensbezug(this)">
                         <h3><strong>2. Individueller Lebensbezug:</strong> Ich muss vermehrt abwägen, ob ich Risiken und deren Folgen selbst trage oder ob ich mich absichere.</h3>
                     </div>
                     <div class="lebensbezug-content">
-                        
+
                         <div class="lerninhalt">
                             <h4>Kompetenz 1: <span class="normal-weight">Ich nutze meiner Lebenssituation angepasste Versicherungen und kenne deren Leistungen.</span></h4>
-                            
+
                             <div class="schluesselkompetenzen-inline">
                                 <strong>Schlüsselkompetenzen:</strong>
                                 <span class="kompetenz-nummer-link" data-k="1.8" data-text="Ihre Lebensphasen planen und mit Unwägbarkeiten umgehen">1.8</span>
                                 <span class="kompetenz-nummer-link" data-k="1.9" data-text="Vernetzt und systemisch denken, um sozial, ökologisch und ökonomisch nachhaltig zu handeln">1.9</span>
                             </div>
-                            
+
                             <div class="table-container">
                                 <div class="table-header" onclick="toggleTable(this)">
                                     <h5>Inhalte/ Lernziele</h5>
@@ -1741,11 +1733,11 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-gesellschaft">
-                                                    <p><span data-k="2.5" data-kat="gesellschaft">2.5. Wirtschaft</span><br>Versicherungsarten (Personen-, Sach-, Haftpflichtversicherung), deren Leistung und deren Funktionsweise (Solidaritätsprinzip) <strong>unterscheiden</strong> und <strong>beschreiben</strong>.</p>
+                                                    <p><span data-k="2.5" data-kat="gesellschaft">2.5. Wirtschaft</span><br>Versicherungsarten (Personen-, Sach-, Haftpflichtversicherung), deren Leistung und deren Funktionsweise (Solidaritätsprinzip) unterscheiden und beschreiben.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
-                                                    <p><span data-k="4.5" data-kat="sprache">4.5. Rezeption schriftlich & bildlich</span><br>Inhalte aus einem Sachtext <strong>erfassen</strong>, <strong>vergleichen</strong> und <strong>wiedergeben</strong> (z. B. zu Verträgen).</p>
+                                                    <p><span data-k="4.5" data-kat="sprache">4.5. Rezeption schriftlich & bildlich</span><br>Inhalte aus einem Sachtext erfassen, vergleichen und wiedergeben (z. B. zu Verträgen).</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
@@ -1754,16 +1746,16 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
-                                                    <p><span data-k="3.5" data-kat="digital">3.5. Problemlösung</span><br>Analog oder digital eine <strong>übersichtliche Darstellung</strong> mit verknüpften Informationen (z. B. zu Versicherungen und Versicherungsarten) erstellen.</p>
+                                                    <p><span data-k="3.5" data-kat="digital">3.5. Problemlösung</span><br>Analog oder digital eine übersichtliche Darstellung mit verknüpften Informationen (z. B. zu Versicherungen und Versicherungsarten) erstellen.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                             </tr>
-                                            
+
                                             <!-- Spacing row -->
                                             <tr class="spacing-row">
                                                 <td colspan="2"></td>
                                             </tr>
-                                        
+
                                             <!-- Block 2 -->
                                             <tr>
                                                 <th class="col-gesellschaft" style="width: 50%;">Gesellschaft</th>
@@ -1771,11 +1763,11 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-gesellschaft">
-                                                    <p><span data-k="2.6" data-kat="gesellschaft">2.6. Wirtschaft</span><br><strong>Eigene Kosten</strong> aufgrund unterschiedlicher Leistungen der Krankenversicherung <strong>berechnen</strong> und ein geeignetes Modell <strong>finden</strong>.</p>
+                                                    <p><span data-k="2.6" data-kat="gesellschaft">2.6. Wirtschaft</span><br>Eigene Kosten aufgrund unterschiedlicher Leistungen der Krankenversicherung berechnen und ein geeignetes Modell finden.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>-</p>
                                                 </td>
                                                 <td class="col-sprache">
-                                                    <p><span data-k="4.6" data-kat="sprache">4.6. Rezeption schriftlich & bildlich</span><br>Aussagen aus Grafiken <strong>entnehmen</strong> und Gründe dafür <strong>ableiten</strong>.</p>
+                                                    <p><span data-k="4.6" data-kat="sprache">4.6. Rezeption schriftlich & bildlich</span><br>Aussagen aus Grafiken entnehmen und Gründe dafür ableiten.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>OVI-Modell</p>
                                                 </td>
                                             </tr>
@@ -1784,7 +1776,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="col-digital col-digital-content" colspan="2">
-                                                    <p><span data-k="3.6" data-kat="digital">3.6. Problemlösung</span><br>Mit einem Onlinetool die eigenen Versicherungskosten <strong>berechnen</strong>.</p>
+                                                    <p><span data-k="3.6" data-kat="digital">3.6. Problemlösung</span><br>Mit einem Onlinetool die eigenen Versicherungskosten berechnen.</p>
                                                     <p style="background-color: white; padding: 8px 10px; margin-top: 0; font-size: 0.75em; color: #666;">Beispielhafte Instrumente / Tools / Webseiten<br>Priminfo</p>
                                                 </td>
                                             </tr>
@@ -1804,7 +1796,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- FREIBEREICH - SEPARATE SECTION THEMA 3 -->
                 <div class="freibereich-section">
                     <div class="freibereich-header" onclick="toggleFreibereich(this)">
@@ -1812,28 +1803,28 @@
                     </div>
                     <div class="freibereich-content">
                         <h4 style="font-size: 0.95em; margin-bottom: 15px; font-weight: 700;">Inhalte / Lernziele</h4>
-                        
+
                         <table style="width: 100%; border-collapse: collapse;">
                             <tbody>
                                 <tr>
                                     <th style="background: #fff4cc; padding: 10px; text-align: left; font-size: 0.9em; font-weight: 700; border: 1px solid #000;">Gesellschaft</th>
                                 </tr>
                                 <tr>
-                                    <td style="background: #fffef5; padding: 10px; border: 1px solid #000; font-size: 0.85em;">...</td>
+                                    <td style="background: #fffef5; padding: 10px; border: 1px solid #000; font-size: 0.85em;">Wähle ein Element aus.</td>
                                 </tr>
-                                
+
                                 <tr>
                                     <th style="background: #cce5ff; padding: 10px; text-align: left; font-size: 0.9em; font-weight: 700; border: 1px solid #000;">Sprache und Kommunikation</th>
                                 </tr>
                                 <tr>
-                                    <td style="background: #f5f9ff; padding: 10px; border: 1px solid #000; font-size: 0.85em;">...</td>
+                                    <td style="background: #f5f9ff; padding: 10px; border: 1px solid #000; font-size: 0.85em;">Wähle ein Element aus.</td>
                                 </tr>
-                                
+
                                 <tr>
                                     <th style="background: #d4edda; padding: 10px; text-align: left; font-size: 0.9em; font-weight: 700; border: 1px solid #000;">Medien und Digitalität</th>
                                 </tr>
                                 <tr>
-                                    <td style="background: #f0f8f0; padding: 10px; border: 1px solid #000; font-size: 0.85em;">...</td>
+                                    <td style="background: #f0f8f0; padding: 10px; border: 1px solid #000; font-size: 0.85em;">Wähle ein Element aus.</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1841,33 +1832,33 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="back-link">
             <a href="index_de.html">← Zurück zur Übersicht EFZ</a>
         </div>
     </main>
-    
+
     <script>
         function toggleKompetenz(button, detailsId) {
             const details = document.getElementById(detailsId);
             const allButtons = button.parentElement.querySelectorAll('.kompetenz-button');
             const allDetails = button.parentElement.parentElement.querySelectorAll('.kompetenz-details');
-            
+
             allDetails.forEach(d => {
                 if (d.id !== detailsId) d.classList.remove('show');
             });
             allButtons.forEach(b => {
                 if (b !== button) b.classList.remove('active');
             });
-            
+
             details.classList.toggle('show');
             button.classList.toggle('active');
         }
-        
+
         function toggleTheme(header) {
             const content = header.nextElementSibling;
             const isOpen = content.classList.contains('show');
-            
+
             if (isOpen) {
                 content.classList.remove('show');
                 header.classList.add('collapsed');
@@ -1876,11 +1867,11 @@
                 header.classList.remove('collapsed');
             }
         }
-        
+
         function toggleLebensbezug(header) {
             const content = header.nextElementSibling;
             const isOpen = content.classList.contains('show');
-            
+
             if (isOpen) {
                 content.classList.remove('show');
                 header.classList.add('collapsed');
@@ -1889,11 +1880,11 @@
                 header.classList.remove('collapsed');
             }
         }
-        
+
         function toggleFreibereich(header) {
             const content = header.nextElementSibling;
             const isOpen = content.classList.contains('show');
-            
+
             if (isOpen) {
                 content.classList.remove('show');
                 header.classList.add('collapsed');
@@ -1902,23 +1893,23 @@
                 header.classList.remove('collapsed');
             }
         }
-        
+
         function toggleSchluessel(box) {
             const content = box.querySelector('.schluessel-content');
             const icon = box.querySelector('.toggle-schluessel');
-            
+
             content.classList.toggle('expanded');
             icon.classList.toggle('rotated');
         }
-        
+
         function toggleTable(header) {
             const content = header.nextElementSibling;
             const icon = header.querySelector('.table-toggle');
-            
+
             content.classList.toggle('expanded');
             icon.classList.toggle('rotated');
         }
-        
+
         // Tooltip functionality
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize theme headers as collapsed
@@ -1929,39 +1920,39 @@
                 });
                 header.classList.add('collapsed');
             });
-            
+
             // Initialize lebensbezug headers as collapsed
             const lebensbezugHeaders = document.querySelectorAll('.lebensbezug-header');
             lebensbezugHeaders.forEach(header => {
                 header.classList.add('collapsed');
             });
-            
+
             // Initialize freibereich headers as collapsed
             const freibereichHeaders = document.querySelectorAll('.freibereich-header');
             freibereichHeaders.forEach(header => {
                 header.classList.add('collapsed');
             });
-            
+
             // Create tooltip element dynamically
             const tooltip = document.createElement('div');
             tooltip.id = 'tooltip';
             tooltip.className = 'tooltip';
             document.body.appendChild(tooltip);
-            
+
             // Tooltip functionality
             const kompetenzLinks = document.querySelectorAll('.kompetenz-nummer-link');
-            
+
             let hideTimeout;
-            
+
             kompetenzLinks.forEach(link => {
                 link.addEventListener('mouseenter', function(e) {
                     // Clear any pending hide timeout
                     if (hideTimeout) {
                         clearTimeout(hideTimeout);
                     }
-                    
+
                     const text = this.getAttribute('data-text');
-                    
+
                     // Set tooltip content
                     tooltip.textContent = text;
                     tooltip.style.display = 'block';
@@ -1977,28 +1968,28 @@
                     tooltip.style.border = '1px solid #555';
                     tooltip.style.pointerEvents = 'none';
                     tooltip.style.lineHeight = '1.5';
-                    
+
                     // Position tooltip with more distance
                     const rect = this.getBoundingClientRect();
                     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
                     const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-                    
+
                     let left = rect.left + scrollLeft;
                     let top = rect.bottom + scrollTop + 15; // Mehr Abstand
-                    
+
                     tooltip.style.left = left + 'px';
                     tooltip.style.top = top + 'px';
                     tooltip.style.opacity = '1';
                     tooltip.classList.add('show');
                 });
-                
+
                 link.addEventListener('mousemove', function(e) {
                     // Keep tooltip visible while mouse is moving over the link
                     if (hideTimeout) {
                         clearTimeout(hideTimeout);
                     }
                 });
-                
+
                 link.addEventListener('mouseleave', function() {
                     // Add a small delay before hiding
                     hideTimeout = setTimeout(() => {
