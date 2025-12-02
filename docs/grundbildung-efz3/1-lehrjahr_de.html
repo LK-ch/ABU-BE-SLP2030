@@ -147,7 +147,21 @@
             font-size: 0.85em;
             opacity: 0.9;
         }
-        .theme-content {
+        .kompetenz-header {
+            background: #f5e6d3;
+            color: black;
+            padding: 16px 20px;
+            margin-bottom: 0;
+        }
+        .kompetenz-header h4 {
+            font-size: 1em;
+            margin: 0;
+            font-weight: 700;
+        }
+        .kompetenz-header h4 .normal-weight {
+            font-weight: 400;
+        }
+                .theme-content {
             padding: 20px;
             display: none;
             animation: slideDown 0.3s ease-out;
@@ -328,24 +342,20 @@
         }
         .lerninhalt {
             margin-bottom: 18px;
-            padding: 14px;
             background-color: #fff;
             border-radius: 0;
+            overflow: hidden;
+        }
+        .lerninhalt-content {
+            padding: 14px;
+            background-color: #fff;
             border: 1px solid #e0e0e0;
-        }
-        .lerninhalt h4 {
-            color: #000;
-            font-size: 0.95em;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-        .lerninhalt h4 .normal-weight {
-            font-weight: 400;
+            border-top: none;
         }
         /* Neue Styles für Schlüsselkompetenzen */
         .schluesselkompetenzen-inline {
             margin-bottom: 15px;
-            padding: 10px 0;
+            padding: 0;
             font-size: 0.85em;
             color: #555;
         }
@@ -535,7 +545,8 @@
         }
         /* Aufklappbare Tabelle Styles */
         .table-container {
-            margin-top: 14px;
+            margin-top: 0;
+            margin-bottom: 14px;
             border-radius: 0;
             overflow: hidden;
             box-shadow: none;
@@ -761,7 +772,10 @@
                     </div>
                     <div class="lebensbezug-content">
                         <div class="lerninhalt">
-                            <h4>Kompetenz 1: <span class="normal-weight">An den Lernorten und im Fach ABU finde ich mich zurecht und kommuniziere gezielt.</span></h4>
+                            <div class="kompetenz-header">
+                                <h4>Kompetenz 1: <span class="normal-weight">An den Lernorten und im Fach ABU finde ich mich zurecht und kommuniziere gezielt.</span></h4>
+                            </div>
+                            <div class="lerninhalt-content">
                             <div class="schluesselkompetenzen-inline">
                                 <strong>Schlüsselkompetenzen:</strong>
                                 <span class="kompetenz-nummer-link" data-k="1.1" data-text="Zwischen relevanten und irrelevanten Quellen und Inhalten unterscheiden">1.1</span>
@@ -870,8 +884,12 @@
                                 </div>
                             </div>
                         </div>
+                        </div>
                         <div class="lerninhalt">
-                            <h4>Kompetenz 2: <span class="normal-weight">Ich setze Arbeits-, Lern- und Kommunikationsstrategien so ein, dass sie mir helfen, meine Ziele zu erreichen.</span></h4>
+                            <div class="kompetenz-header">
+                                <h4>Kompetenz 2: <span class="normal-weight">Ich setze Arbeits-, Lern- und Kommunikationsstrategien so ein, dass sie mir helfen, meine Ziele zu erreichen.</span></h4>
+                            </div>
+                            <div class="lerninhalt-content">
                             <div class="schluesselkompetenzen-inline">
                                 <strong>Schlüsselkompetenzen:</strong>
                                 <span class="kompetenz-nummer-link" data-k="1.2" data-text="Sich selbst Ziele setzen, die Zielsetzung überprüfen und sich adaptiv verhalten">1.2</span>
@@ -952,6 +970,7 @@
                             </div>
                         </div>
                     </div>
+                        </div>
                 </div>
                 <div class="lebensbezug">
                     <div class="lebensbezug-header" onclick="toggleLebensbezug(this)">
@@ -959,7 +978,10 @@
                     </div>
                     <div class="lebensbezug-content">
                         <div class="lerninhalt">
-                            <h4>Kompetenz 1: <span class="normal-weight">Ich nehme meine Rechte und Pflichten wahr, so wie sie gesetzlich und vertraglich festgelegt sind.</span></h4>
+                            <div class="kompetenz-header">
+                                <h4>Kompetenz 1: <span class="normal-weight">Ich nehme meine Rechte und Pflichten wahr, so wie sie gesetzlich und vertraglich festgelegt sind.</span></h4>
+                            </div>
+                            <div class="lerninhalt-content">
                             <div class="schluesselkompetenzen-inline">
                                 <strong>Schlüsselkompetenzen:</strong>
                                 <span class="kompetenz-nummer-link" data-k="1.7" data-text="Die Folgen der eigenen Handlungen berücksichtigen">1.7</span>
@@ -1040,6 +1062,7 @@
                             </div>
                         </div>
                     </div>
+                        </div>
                 </div>
                 <!-- FREIBEREICH - SEPARATE SECTION -->
                 <div class="freibereich-section">
@@ -1104,7 +1127,10 @@
                     </div>
                     <div class="lebensbezug-content">
                         <div class="lerninhalt">
-                            <h4>Kompetenz 1: <span class="normal-weight">Anhand meiner Lohnabrechnung und Lebenssituation plane und reflektiere ich ein realistisches Budget.</span></h4>
+                            <div class="kompetenz-header">
+                                <h4>Kompetenz 1: <span class="normal-weight">Anhand meiner Lohnabrechnung und Lebenssituation plane und reflektiere ich ein realistisches Budget.</span></h4>
+                            </div>
+                            <div class="lerninhalt-content">
                             <div class="schluesselkompetenzen-inline">
                                 <strong>Schlüsselkompetenzen:</strong>
                                 <span class="kompetenz-nummer-link" data-k="1.2" data-text="Sich selbst Ziele setzen, die Zielsetzung überprüfen und sich adaptiv verhalten">1.2</span>
@@ -1185,8 +1211,12 @@
                                 </div>
                             </div>
                         </div>
+                        </div>
                         <div class="lerninhalt">
-                            <h4>Kompetenz 2: <span class="normal-weight">Ich vergleiche verschiedene Möglichkeiten der Verwaltung von Geld und leite daraus eine begründete Vorgehensweise ab.</span></h4>
+                            <div class="kompetenz-header">
+                                <h4>Kompetenz 2: <span class="normal-weight">Ich vergleiche verschiedene Möglichkeiten der Verwaltung von Geld und leite daraus eine begründete Vorgehensweise ab.</span></h4>
+                            </div>
+                            <div class="lerninhalt-content">
                             <div class="schluesselkompetenzen-inline">
                                 <strong>Schlüsselkompetenzen:</strong>
                                 <span class="kompetenz-nummer-link" data-k="1.1" data-text="Zwischen relevanten und irrelevanten Quellen und Inhalten unterscheiden">1.1</span>
@@ -1265,8 +1295,12 @@
                                 </div>
                             </div>
                         </div>
+                        </div>
                         <div class="lerninhalt">
-                            <h4>Kompetenz 3: <span class="normal-weight">Ich vergleiche verschiedene Bezahlungsmöglichkeiten und wähle in Bezug auf meine Bedürfnisse eine adäquate Lösung.</span></h4>
+                            <div class="kompetenz-header">
+                                <h4>Kompetenz 3: <span class="normal-weight">Ich vergleiche verschiedene Bezahlungsmöglichkeiten und wähle in Bezug auf meine Bedürfnisse eine adäquate Lösung.</span></h4>
+                            </div>
+                            <div class="lerninhalt-content">
                             <div class="schluesselkompetenzen-inline">
                                 <strong>Schlüsselkompetenzen:</strong>
                                 <span class="kompetenz-nummer-link" data-k="1.2" data-text="Sich selbst Ziele setzen, die Zielsetzung überprüfen und sich adaptiv verhalten">1.2</span>
@@ -1346,6 +1380,7 @@
                             </div>
                         </div>
                     </div>
+                        </div>
                 </div>
                 <div class="lebensbezug">
                     <div class="lebensbezug-header" onclick="toggleLebensbezug(this)">
@@ -1353,7 +1388,10 @@
                     </div>
                     <div class="lebensbezug-content">
                         <div class="lerninhalt">
-                            <h4>Kompetenz 1: <span class="normal-weight">Ich erkenne bewusst und unbewusst ablaufende Entscheidungsprozesse beim Konsum, treffe eigene Konsumentscheidungen adäquat zur Lebenssituation und kenne deren Auswirkungen.</span></h4>
+                            <div class="kompetenz-header">
+                                <h4>Kompetenz 1: <span class="normal-weight">Ich erkenne bewusst und unbewusst ablaufende Entscheidungsprozesse beim Konsum, treffe eigene Konsumentscheidungen adäquat zur Lebenssituation und kenne deren Auswirkungen.</span></h4>
+                            </div>
+                            <div class="lerninhalt-content">
                             <div class="schluesselkompetenzen-inline">
                                 <strong>Schlüsselkompetenzen:</strong>
                                 <span class="kompetenz-nummer-link" data-k="1.4" data-text="Die Perspektiven anderer Personen nachvollziehen, Konflikte lösen und fair handeln">1.4</span>
@@ -1433,8 +1471,12 @@
                                 </div>
                             </div>
                         </div>
+                        </div>
                         <div class="lerninhalt">
-                            <h4>Kompetenz 2: <span class="normal-weight">Ich schliesse einen Kaufvertrag ab, kenne meine Rechte und Pflichten und leite aus AGBs Konsequenzen und Handlungen ab.</span></h4>
+                            <div class="kompetenz-header">
+                                <h4>Kompetenz 2: <span class="normal-weight">Ich schliesse einen Kaufvertrag ab, kenne meine Rechte und Pflichten und leite aus AGBs Konsequenzen und Handlungen ab.</span></h4>
+                            </div>
+                            <div class="lerninhalt-content">
                             <div class="schluesselkompetenzen-inline">
                                 <strong>Schlüsselkompetenzen:</strong>
                                 <span class="kompetenz-nummer-link" data-k="1.7" data-text="Die Folgen der eigenen Handlungen berücksichtigen">1.7</span>
@@ -1523,6 +1565,7 @@
                             </div>
                         </div>
                     </div>
+                        </div>
                 </div>
                 <!-- FREIBEREICH - SEPARATE SECTION THEMA 2 -->
                 <div class="freibereich-section">
@@ -1586,7 +1629,10 @@
                     </div>
                     <div class="lebensbezug-content">
                         <div class="lerninhalt">
-                            <h4>Kompetenz 1: <span class="normal-weight">Ich reflektiere meinen eigenen Umgang sowie den meines Umfelds mit körperlichen und psychischen Gesundheitsrisiken im Alltag und entwickle daraus konkrete Strategien zur Minimierung. </span></h4>
+                            <div class="kompetenz-header">
+                                <h4>Kompetenz 1: <span class="normal-weight">Ich reflektiere meinen eigenen Umgang sowie den meines Umfelds mit körperlichen und psychischen Gesundheitsrisiken im Alltag und entwickle daraus konkrete Strategien zur Minimierung. </span></h4>
+                            </div>
+                            <div class="lerninhalt-content">
                             <div class="schluesselkompetenzen-inline">
                                 <strong>Schlüsselkompetenzen:</strong>
                                 <span class="kompetenz-nummer-link" data-k="1.3" data-text="Antizipative, unternehmerische und innovative Wege der Problemlösung erkennen, entwickeln und umsetzen">1.3</span>
@@ -1666,8 +1712,12 @@
                                 </div>
                             </div>
                         </div>
+                        </div>
                         <div class="lerninhalt">
-                            <h4>Kompetenz 2: <span class="normal-weight">Ich erkenne korrektes, manipulatives und verbotenes Verhalten online sowie offline und reagiere zielführend.</span></h4>
+                            <div class="kompetenz-header">
+                                <h4>Kompetenz 2: <span class="normal-weight">Ich erkenne korrektes, manipulatives und verbotenes Verhalten online sowie offline und reagiere zielführend.</span></h4>
+                            </div>
+                            <div class="lerninhalt-content">
                             <div class="schluesselkompetenzen-inline">
                                 <strong>Schlüsselkompetenzen:</strong>
                                 <span class="kompetenz-nummer-link" data-k="1.5" data-text="Die eigenen Werthaltungen und Überzeugungen erkennen, verstehen, kritisch reflektieren und weiterentwickeln">1.5</span>
@@ -1750,6 +1800,7 @@
                             </div>
                         </div>
                     </div>
+                        </div>
                 </div>
                 <div class="lebensbezug">
                     <div class="lebensbezug-header" onclick="toggleLebensbezug(this)">
@@ -1757,7 +1808,10 @@
                     </div>
                     <div class="lebensbezug-content">
                         <div class="lerninhalt">
-                            <h4>Kompetenz 1: <span class="normal-weight">Ich nutze meiner Lebenssituation angepasste Versicherungen und kenne deren Leistungen.</span></h4>
+                            <div class="kompetenz-header">
+                                <h4>Kompetenz 1: <span class="normal-weight">Ich nutze meiner Lebenssituation angepasste Versicherungen und kenne deren Leistungen.</span></h4>
+                            </div>
+                            <div class="lerninhalt-content">
                             <div class="schluesselkompetenzen-inline">
                                 <strong>Schlüsselkompetenzen:</strong>
                                 <span class="kompetenz-nummer-link" data-k="1.8" data-text="Ihre Lebensphasen planen und mit Unwägbarkeiten umgehen">1.8</span>
@@ -1838,6 +1892,7 @@
                             </div>
                         </div>
                     </div>
+                        </div>
                 </div>
                 <!-- FREIBEREICH - SEPARATE SECTION THEMA 3 -->
                 <div class="freibereich-section">
