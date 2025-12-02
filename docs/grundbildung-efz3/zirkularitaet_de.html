@@ -600,20 +600,6 @@
         }
 
         /* Farben für Kacheln - Schlüsselkompetenzen */
-        .kachel-schluessel-quellen,
-        .kachel-schluessel-ziele,
-        .kachel-schluessel-problemloesung,
-        .kachel-schluessel-teams,
-        .kachel-schluessel-werthaltungen,
-        .kachel-schluessel-standpunkte,
-        .kachel-schluessel-perspektiven,
-        .kachel-schluessel-lebensphasen,
-        .kachel-schluessel-vernetzt,
-        .kachel-schluessel-wandel,
-        .kachel-schluessel-mehrdeutigkeiten,
-        .kachel-schluessel-partizipieren {
-        }
-
         .kachel-schluessel-quellen h3,
         .kachel-schluessel-ziele h3,
         .kachel-schluessel-problemloesung h3,
@@ -630,16 +616,6 @@
         }
 
         /* Farben für Kacheln - Gesellschaft */
-        .kachel-ethik,
-        .kachel-identitaet,
-        .kachel-kultur,
-        .kachel-oekologie,
-        .kachel-politik,
-        .kachel-recht,
-        .kachel-tech,
-        .kachel-wirtschaft {
-        }
-
         .kachel-ethik h3,
         .kachel-identitaet h3,
         .kachel-kultur h3,
@@ -652,15 +628,6 @@
         }
 
         /* Farben für Kacheln - Digital */
-        .kachel-digital-grundlagen,
-        .kachel-digital-info,
-        .kachel-digital-kommunikation,
-        .kachel-digital-inhalt,
-        .kachel-digital-problemloesung,
-        .kachel-digital-ki,
-        .kachel-digital-ethik {
-        }
-
         .kachel-digital-grundlagen h3,
         .kachel-digital-info h3,
         .kachel-digital-kommunikation h3,
@@ -672,17 +639,6 @@
         }
 
         /* Farben für Kacheln - Sprache */
-        .kachel-sprache-rez-muendlich,
-        .kachel-sprache-rez-schriftlich,
-        .kachel-sprache-rez-audiovisuell,
-        .kachel-sprache-prod-muendlich,
-        .kachel-sprache-prod-schriftlich,
-        .kachel-sprache-prod-multimedial,
-        .kachel-sprache-int-muendlich,
-        .kachel-sprache-int-schriftlich,
-        .kachel-sprache-int-digital {
-        }
-
         .kachel-sprache-rez-muendlich h3,
         .kachel-sprache-rez-schriftlich h3,
         .kachel-sprache-rez-audiovisuell h3,
@@ -956,7 +912,7 @@
                 <div class="filter-content-inner">
                     <div class="kachel-grid">
                         <div class="kachel kachel-ethik" onclick="filterAspekt('ethik')">
-                            <h3>2.1 Ethik</h3>
+                            <h3>2.1 Gesundheit & Sicherheit</h3>
                         </div>
                         <div class="kachel kachel-identitaet" onclick="filterAspekt('identitaet')">
                             <h3>2.2 Identität und Sozialisation</h3>
@@ -993,7 +949,7 @@
                 <div class="filter-content-inner">
                     <div class="kachel-grid">
                         <div class="kachel kachel-digital-grundlagen" onclick="filterAspekt('digital-grundlagen')">
-                            <h3>3.1 Grundlagen der Informatik</h3>
+                            <h3>3.1 Datenschutz & Sicherheit</h3>
                         </div>
                         <div class="kachel kachel-digital-info" onclick="filterAspekt('digital-info')">
                             <h3>3.2 Informations- und Datenkompetenz</h3>
@@ -1172,7 +1128,7 @@
 
         // MEDIEN UND DIGITALITÄT (3.1 - 3.7)
         const digitalKompetenzen = {
-            '3.1': 'Grundlagen der Informatik',
+            '3.1': 'Datenschutz & Sicherheit',
             '3.2': 'Informations- & Datenkompetenz',
             '3.3': 'Kommunikation & Zusammenarbeit',
             '3.4': 'Inhaltserstellung',
@@ -1227,6 +1183,7 @@
                 'Identität und Sozialisation': 'Identität',
                 'Identität & Sozialisation': 'Identität',
                 'Grundlagen der Informatik': 'Informatik',
+                'Datenschutz & Sicherheit': 'Datenschutz',
                 'Informations- & Datenkompetenz': 'Info & Daten',
                 'Informations- und Datenkompetenz': 'Info & Daten',
                 'Kommunikation & Zusammenarbeit': 'Kommunikation',
@@ -1250,7 +1207,7 @@
                 'Interaktion und Kollaboration schriftlich': 'Int. schriftl.',
                 'Interaktion & Kollaboration digital': 'Int. digital',
                 'Interaktion und Kollaboration digital': 'Int. digital',
-                'Ethik': 'Ethik',
+                'Gesundheit & Sicherheit': 'Gesundheit',
                 'Kultur': 'Kultur',
                 'Ökologie': 'Ökologie',
                 'Politik': 'Politik',
@@ -1345,24 +1302,26 @@
                 
                 const schluesselkompetenzen = [];
                 
+                // KRITISCHER FIX 1: Read from data-text attribute for Schlüsselkompetenzen
                 const schluesselCell = section.querySelector('td.col-schluessel');
                 if (schluesselCell) {
                     const spans = schluesselCell.querySelectorAll('span[data-k]');
                     spans.forEach(span => {
                         const kompNr = span.getAttribute('data-k');
-                        const text = span.textContent.trim();
+                        const text = span.getAttribute('data-text') || span.textContent.trim();  // FIXED
                         if (kompNr && kompNr.startsWith('1.')) {
                             schluesselkompetenzen.push({ nr: kompNr, text: text });
                         }
                     });
                 }
                 
+                // KRITISCHER FIX 2: Read from data-text attribute in theme overview
                 const themeOverview = section.querySelector('.theme-overview, .kompetenzen-uebersicht');
                 if (themeOverview) {
                     const spans = themeOverview.querySelectorAll('span[data-k]');
                     spans.forEach(span => {
                         const kompNr = span.getAttribute('data-k');
-                        const text = span.textContent.trim();
+                        const text = span.getAttribute('data-text') || span.textContent.trim();  // FIXED
                         if (kompNr && kompNr.startsWith('1.')) {
                             const exists = schluesselkompetenzen.some(sk => sk.nr === kompNr);
                             if (!exists) {
@@ -1372,11 +1331,12 @@
                     });
                 }
                 
+                // KRITISCHER FIX 3: Read from data-text attribute in allSpans fallback
                 if (schluesselkompetenzen.length === 0) {
                     const allSpans = section.querySelectorAll('span[data-k]');
                     allSpans.forEach(span => {
                         const kompNr = span.getAttribute('data-k');
-                        const text = span.textContent.trim();
+                        const text = span.getAttribute('data-text') || span.textContent.trim();  // FIXED
                         if (kompNr && kompNr.startsWith('1.')) {
                             const exists = schluesselkompetenzen.some(sk => sk.nr === kompNr);
                             if (!exists) {
