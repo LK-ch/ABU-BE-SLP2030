@@ -1316,11 +1316,6 @@
                 themeData.schluesselkompetenzen.forEach(sk => {
                     const badge = document.createElement('div');
                     badge.className = 'schluesselkompetenz-badge';
-                    badge.style.display = 'inline-block';
-                    badge.style.marginRight = '3px';
-                    badge.style.marginBottom = '3px';
-                    badge.style.position = 'relative';
-                    badge.style.cursor = 'pointer';
                     badge.textContent = sk.nr;
                     
                     const tooltip = document.createElement('div');
@@ -1407,11 +1402,6 @@
                         unique.forEach(item => {
                             const badge = document.createElement('div');
                             badge.className = `kompetenz-badge ${bereich.cssClass}`;
-                            badge.style.display = 'inline-block';
-                            badge.style.marginRight = '3px';
-                            badge.style.marginBottom = '3px';
-                            badge.style.position = 'relative';
-                            badge.style.cursor = 'pointer';
                             badge.textContent = item.nr;
                             
                             const tooltip = document.createElement('div');
