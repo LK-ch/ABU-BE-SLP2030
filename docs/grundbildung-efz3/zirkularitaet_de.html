@@ -869,7 +869,7 @@
                 <div class="filter-content-inner">
                     <div class="kachel-grid">
                         <div class="kachel kachel-ethik" onclick="filterAspekt('ethik')">
-                            <h3>2.1 Gesundheit & Sicherheit</h3>
+                            <h3>2.1 Ethik</h3>
                         </div>
                         <div class="kachel kachel-identitaet" onclick="filterAspekt('identitaet')">
                             <h3>2.2 Identität und Sozialisation</h3>
@@ -906,7 +906,7 @@
                 <div class="filter-content-inner">
                     <div class="kachel-grid">
                         <div class="kachel kachel-digital-grundlagen" onclick="filterAspekt('digital-grundlagen')">
-                            <h3>3.1 Datenschutz & Sicherheit</h3>
+                            <h3>3.1 Grundlagen der Informatik</h3>
                         </div>
                         <div class="kachel kachel-digital-info" onclick="filterAspekt('digital-info')">
                             <h3>3.2 Informations- und Datenkompetenz</h3>
@@ -1057,6 +1057,20 @@
             'sprache-int-digital': 'sprache'
         };
 
+        // Verbesserte Sortierfunktion für Kompetenznummern (z.B. 1.1, 1.2, ..., 1.10, 1.11, 1.12)
+        function sortKompetenzen(a, b) {
+            const partsA = a.nr.split('.').map(Number);
+            const partsB = b.nr.split('.').map(Number);
+            
+            // Zuerst nach erster Ziffer sortieren
+            if (partsA[0] !== partsB[0]) {
+                return partsA[0] - partsB[0];
+            }
+            
+            // Dann nach zweiter Ziffer sortieren
+            return (partsA[1] || 0) - (partsB[1] || 0);
+        }
+
         function toggleFilterSection(sectionName) {
             const content = document.getElementById(`content-${sectionName}`);
             const toggle = document.getElementById(`toggle-${sectionName}`);
@@ -1118,10 +1132,23 @@
                 
                 const schluesselkompetenzen = [];
                 
-                const schluesselCell = section.querySelector('td.col-schluessel');
-                if (schluesselCell) {
-                    const spans = schluesselCell.querySelectorAll('span[data-k]');
+                // Gezielt nach .schluesselkompetenzen-inline suchen
+                const schluesselInlineContainers = section.querySelectorAll('.schluesselkompetenzen-inline');
+                schluesselInlineContainers.forEach(container => {
+                    const spans = container.querySelectorAll('span.kompetenz-nummer-link[data-k]');
                     spans.forEach(span => {
+                        const kompNr = span.getAttribute('data-k');
+                        const text = span.getAttribute('data-text') || span.textContent.trim();
+                        if (kompNr && kompNr.startsWith('1.')) {
+                            schluesselkompetenzen.push({ nr: kompNr, text: text });
+                        }
+                    });
+                });
+                
+                // Fallback für alte Struktur (falls noch vorhanden)
+                if (schluesselkompetenzen.length === 0) {
+                    const allSpans = section.querySelectorAll('span[data-k]');
+                    allSpans.forEach(span => {
                         const kompNr = span.getAttribute('data-k');
                         const text = span.getAttribute('data-text') || span.textContent.trim();
                         if (kompNr && kompNr.startsWith('1.')) {
@@ -1130,41 +1157,10 @@
                     });
                 }
                 
-                const themeOverview = section.querySelector('.theme-overview, .kompetenzen-uebersicht');
-                if (themeOverview) {
-                    const spans = themeOverview.querySelectorAll('span[data-k]');
-                    spans.forEach(span => {
-                        const kompNr = span.getAttribute('data-k');
-                        const text = span.getAttribute('data-text') || span.textContent.trim();
-                        if (kompNr && kompNr.startsWith('1.')) {
-                            const exists = schluesselkompetenzen.some(sk => sk.nr === kompNr);
-                            if (!exists) {
-                                schluesselkompetenzen.push({ nr: kompNr, text: text });
-                            }
-                        }
-                    });
-                }
+                // Sortieren mit verbesserter Funktion (1.1, 1.2, ..., 1.10, 1.11, 1.12)
+                schluesselkompetenzen.sort(sortKompetenzen);
                 
-                if (schluesselkompetenzen.length === 0) {
-                    const allSpans = section.querySelectorAll('span[data-k]');
-                    allSpans.forEach(span => {
-                        const kompNr = span.getAttribute('data-k');
-                        const text = span.getAttribute('data-text') || span.textContent.trim();
-                        if (kompNr && kompNr.startsWith('1.')) {
-                            const exists = schluesselkompetenzen.some(sk => sk.nr === kompNr);
-                            if (!exists) {
-                                schluesselkompetenzen.push({ nr: kompNr, text: text });
-                            }
-                        }
-                    });
-                }
-                
-                schluesselkompetenzen.sort((a, b) => {
-                    const numA = parseFloat(a.nr);
-                    const numB = parseFloat(b.nr);
-                    return numA - numB;
-                });
-                
+                // Deduplizieren
                 const uniqueSchluessel = [];
                 const seenNrs = new Set();
                 schluesselkompetenzen.forEach(sk => {
@@ -1185,7 +1181,7 @@
                     const lerninhalte = lbSection.querySelectorAll('.lerninhalt');
                     
                     lerninhalte.forEach(lerninhalt => {
-                        const kompetenzTitle = lerninhalt.querySelector('h4');
+                        const kompetenzTitle = lerninhalt.querySelector('.kompetenz-header h4');
                         const kompetenzText = kompetenzTitle ? kompetenzTitle.textContent.trim() : '';
                         
                         const inhalte = {
@@ -1194,38 +1190,44 @@
                             sprache: []
                         };
                         
-                        const gesellschaftCell = lerninhalt.querySelector('td.col-gesellschaft');
-                        if (gesellschaftCell) {
-                            const spans = gesellschaftCell.querySelectorAll('span[data-k]');
+                        // Gesellschaft Kompetenzen sammeln (ohne Deduplizierung hier)
+                        const gesellschaftCells = lerninhalt.querySelectorAll('td.col-gesellschaft');
+                        gesellschaftCells.forEach(cell => {
+                            const spans = cell.querySelectorAll('span[data-k][data-kat="gesellschaft"]');
                             spans.forEach(span => {
-                                inhalte.gesellschaft.push({ 
-                                    nr: span.getAttribute('data-k'), 
-                                    text: span.textContent.trim() 
-                                });
+                                const nr = span.getAttribute('data-k');
+                                const text = span.textContent.trim();
+                                if (nr) {
+                                    inhalte.gesellschaft.push({ nr: nr, text: text });
+                                }
                             });
-                        }
+                        });
                         
-                        const digitalCell = lerninhalt.querySelector('td.col-digital');
-                        if (digitalCell) {
-                            const spans = digitalCell.querySelectorAll('span[data-k]');
+                        // Digital Kompetenzen sammeln (ohne Deduplizierung hier)
+                        const digitalCells = lerninhalt.querySelectorAll('td.col-digital, td.col-digital-content');
+                        digitalCells.forEach(cell => {
+                            const spans = cell.querySelectorAll('span[data-k][data-kat="digital"]');
                             spans.forEach(span => {
-                                inhalte.digital.push({ 
-                                    nr: span.getAttribute('data-k'), 
-                                    text: span.textContent.trim() 
-                                });
+                                const nr = span.getAttribute('data-k');
+                                const text = span.textContent.trim();
+                                if (nr) {
+                                    inhalte.digital.push({ nr: nr, text: text });
+                                }
                             });
-                        }
+                        });
                         
-                        const spracheCell = lerninhalt.querySelector('td.col-sprache');
-                        if (spracheCell) {
-                            const spans = spracheCell.querySelectorAll('span[data-k]');
+                        // Sprache Kompetenzen sammeln (ohne Deduplizierung hier)
+                        const spracheCells = lerninhalt.querySelectorAll('td.col-sprache');
+                        spracheCells.forEach(cell => {
+                            const spans = cell.querySelectorAll('span[data-k][data-kat="sprache"]');
                             spans.forEach(span => {
-                                inhalte.sprache.push({ 
-                                    nr: span.getAttribute('data-k'), 
-                                    text: span.textContent.trim() 
-                                });
+                                const nr = span.getAttribute('data-k');
+                                const text = span.textContent.trim();
+                                if (nr) {
+                                    inhalte.sprache.push({ nr: nr, text: text });
+                                }
                             });
-                        }
+                        });
                         
                         if (kompetenzText) {
                             kompetenzen.push({
@@ -1246,6 +1248,11 @@
                     schluesselkompetenzen: uniqueSchluessel,
                     lebensbezuege: lebensbezuege
                 };
+                
+                // Debug-Ausgabe
+                console.log(`Thema ${actualThemeNr}: ${themeName}`);
+                console.log(`  Schlüsselkompetenzen: ${uniqueSchluessel.length}`, uniqueSchluessel.map(sk => sk.nr));
+                console.log(`  Lebensbezüge: ${lebensbezuege.length}`);
             });
         }
 
@@ -1301,6 +1308,7 @@
             title.textContent = themeData.name;
             card.appendChild(title);
             
+            // Schlüsselkompetenzen rendern
             if (themeData.schluesselkompetenzen && themeData.schluesselkompetenzen.length > 0) {
                 const schluesselDiv = document.createElement('div');
                 schluesselDiv.className = 'schluesselkompetenzen';
@@ -1334,6 +1342,7 @@
                 card.appendChild(schluesselDiv);
             }
             
+            // Lebensbezüge rendern mit Deduplizierung, Gruppierung und Sortierung
             themeData.lebensbezuege.forEach((lb, index) => {
                 const lbItem = document.createElement('div');
                 lbItem.className = 'lebensbezug-item';
@@ -1356,41 +1365,69 @@
                     const kompContainer = document.createElement('div');
                     kompContainer.className = 'kompetenz-detail';
                     
+                    // SCHRITT 1: Alle Kompetenzen sammeln und nach Kategorie gruppieren
+                    const grouped = {
+                        gesellschaft: [],
+                        digital: [],
+                        sprache: []
+                    };
+                    
                     lb.kompetenzen.forEach((komp) => {
-                        const bereiche = [
-                            { key: 'gesellschaft', cssClass: 'kompetenz-badge-gesellschaft', category: 'gesellschaft' },
-                            { key: 'digital', cssClass: 'kompetenz-badge-digital', category: 'digital' },
-                            { key: 'sprache', cssClass: 'kompetenz-badge-sprache', category: 'sprache' }
-                        ];
-                        
-                        bereiche.forEach(bereich => {
-                            if (komp.inhalte[bereich.key] && komp.inhalte[bereich.key].length > 0) {
-                                komp.inhalte[bereich.key].forEach(item => {
-                                    const badge = document.createElement('div');
-                                    badge.className = `kompetenz-badge ${bereich.cssClass}`;
-                                    badge.style.display = 'inline-block';
-                                    badge.style.marginRight = '3px';
-                                    badge.style.marginBottom = '3px';
-                                    badge.style.position = 'relative';
-                                    badge.style.cursor = 'pointer';
-                                    badge.textContent = item.nr;
-                                    
-                                    const tooltip = document.createElement('div');
-                                    tooltip.className = 'tooltip';
-                                    tooltip.textContent = item.text;
-                                    badge.appendChild(tooltip);
-                                    
-                                    badge.setAttribute('data-category', bereich.category);
-                                    if (item.nr) {
-                                        const parts = item.nr.split('.');
-                                        const baseNr = parts.length >= 2 ? `${parts[0]}.${parts[1]}` : item.nr;
-                                        const aspekt = kompetenzToAspekt[baseNr];
-                                        if (aspekt) badge.setAttribute('data-aspekt', aspekt);
-                                    }
-                                    
-                                    kompContainer.appendChild(badge);
+                        ['gesellschaft', 'digital', 'sprache'].forEach(category => {
+                            if (komp.inhalte[category]) {
+                                komp.inhalte[category].forEach(item => {
+                                    grouped[category].push(item);
                                 });
                             }
+                        });
+                    });
+                    
+                    // SCHRITT 2: Für jede Kategorie deduplizieren und sortieren
+                    const bereiche = [
+                        { key: 'gesellschaft', cssClass: 'kompetenz-badge-gesellschaft', category: 'gesellschaft' },
+                        { key: 'digital', cssClass: 'kompetenz-badge-digital', category: 'digital' },
+                        { key: 'sprache', cssClass: 'kompetenz-badge-sprache', category: 'sprache' }
+                    ];
+                    
+                    bereiche.forEach(bereich => {
+                        // Deduplizieren (nur innerhalb des Lebensbezugs)
+                        const seen = new Set();
+                        const unique = [];
+                        grouped[bereich.key].forEach(item => {
+                            if (!seen.has(item.nr)) {
+                                seen.add(item.nr);
+                                unique.push(item);
+                            }
+                        });
+                        
+                        // Chronologisch sortieren (z.B. 2.1, 2.2, ..., 2.8)
+                        unique.sort(sortKompetenzen);
+                        
+                        // SCHRITT 3: Badges rendern
+                        unique.forEach(item => {
+                            const badge = document.createElement('div');
+                            badge.className = `kompetenz-badge ${bereich.cssClass}`;
+                            badge.style.display = 'inline-block';
+                            badge.style.marginRight = '3px';
+                            badge.style.marginBottom = '3px';
+                            badge.style.position = 'relative';
+                            badge.style.cursor = 'pointer';
+                            badge.textContent = item.nr;
+                            
+                            const tooltip = document.createElement('div');
+                            tooltip.className = 'tooltip';
+                            tooltip.textContent = item.text;
+                            badge.appendChild(tooltip);
+                            
+                            badge.setAttribute('data-category', bereich.category);
+                            if (item.nr) {
+                                const parts = item.nr.split('.');
+                                const baseNr = parts.length >= 2 ? `${parts[0]}.${parts[1]}` : item.nr;
+                                const aspekt = kompetenzToAspekt[baseNr];
+                                if (aspekt) badge.setAttribute('data-aspekt', aspekt);
+                            }
+                            
+                            kompContainer.appendChild(badge);
                         });
                     });
                     
