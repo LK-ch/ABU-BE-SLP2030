@@ -313,6 +313,26 @@
             color: white;
         }
 
+        .main-filter-btn-zirk-gesellschaft {
+            border-color: #ff9800;
+            color: #ff9800;
+        }
+
+        .main-filter-btn-zirk-gesellschaft.active {
+            background: #ff9800;
+            color: white;
+        }
+
+        .main-filter-btn-zirk-sprache {
+            border-color: #9c27b0;
+            color: #9c27b0;
+        }
+
+        .main-filter-btn-zirk-sprache.active {
+            background: #9c27b0;
+            color: white;
+        }
+
         .reset-btn {
             background: #dc291e;
             color: white;
@@ -459,6 +479,16 @@
             border-left: none;
         }
 
+        .kompetenz-badge-zirk-gesellschaft {
+            background-color: rgba(255, 152, 0, 0.3);
+            border-left: none;
+        }
+
+        .kompetenz-badge-zirk-sprache {
+            background-color: rgba(156, 39, 176, 0.3);
+            border-left: none;
+        }
+
         .schluesselkompetenzen {
             padding: 0;
             margin: 10px 0 12px 0;
@@ -527,6 +557,14 @@
 
         .filter-section h3.color-sprache {
             color: #3385d6;
+        }
+
+        .filter-section h3.color-zirk-gesellschaft {
+            color: #ff9800;
+        }
+
+        .filter-section h3.color-zirk-sprache {
+            color: #9c27b0;
         }
 
         .filter-toggle {
@@ -641,6 +679,31 @@
         .kachel-sprache-int-schriftlich h3,
         .kachel-sprache-int-digital h3 {
             color: #3385d6;
+        }
+
+        .kachel-zirk-ges-konflikt h3,
+        .kachel-zirk-ges-nachhaltigkeit h3,
+        .kachel-zirk-ges-politisch h3,
+        .kachel-zirk-ges-recht h3,
+        .kachel-zirk-ges-geld h3,
+        .kachel-zirk-ges-versicherung h3,
+        .kachel-zirk-ges-vertrag h3 {
+            color: #ff9800;
+        }
+
+        .kachel-zirk-spr-argumentieren h3,
+        .kachel-zirk-spr-informieren h3,
+        .kachel-zirk-spr-kommunizieren h3,
+        .kachel-zirk-spr-korrespondieren h3,
+        .kachel-zirk-spr-linear h3,
+        .kachel-zirk-spr-nichtlinear h3,
+        .kachel-zirk-spr-praesentieren h3,
+        .kachel-zirk-spr-quellen h3,
+        .kachel-zirk-spr-reflektieren h3,
+        .kachel-zirk-spr-sach h3,
+        .kachel-zirk-spr-normen h3,
+        .kachel-zirk-spr-wortschatz h3 {
+            color: #9c27b0;
         }
 
         .tooltip {
@@ -803,6 +866,12 @@
             </button>
             <button class="main-filter-btn main-filter-btn-sprache" onclick="filterMainCategory('sprache')">
                 Sprache und Kommunikation
+            </button>
+            <button class="main-filter-btn main-filter-btn-zirk-gesellschaft" onclick="filterMainCategory('zirk-gesellschaft')">
+                Zirkuläre Inhalte Gesellschaft
+            </button>
+            <button class="main-filter-btn main-filter-btn-zirk-sprache" onclick="filterMainCategory('zirk-sprache')">
+                Zirkuläre Inhalte Sprache und Kommunikation
             </button>
         </div>
 
@@ -974,6 +1043,89 @@
             </div>
         </div>
 
+        <div class="filter-section">
+            <div class="filter-section-header" onclick="toggleFilterSection('zirk-gesellschaft')">
+                <h3 class="color-zirk-gesellschaft">Zirkuläre Inhalte Gesellschaft</h3>
+                <span class="filter-toggle" id="toggle-zirk-gesellschaft">▶</span>
+            </div>
+            <div class="filter-content" id="content-zirk-gesellschaft">
+                <div class="filter-content-inner">
+                    <div class="kachel-grid">
+                        <div class="kachel kachel-zirk-ges-konflikt" onclick="filterAspekt('zirk-ges-konflikt')">
+                            <h3>Konfliktmanagement</h3>
+                        </div>
+                        <div class="kachel kachel-zirk-ges-nachhaltigkeit" onclick="filterAspekt('zirk-ges-nachhaltigkeit')">
+                            <h3>Nachhaltigkeit</h3>
+                        </div>
+                        <div class="kachel kachel-zirk-ges-politisch" onclick="filterAspekt('zirk-ges-politisch')">
+                            <h3>Politische Bildung, Mitbeteiligung</h3>
+                        </div>
+                        <div class="kachel kachel-zirk-ges-recht" onclick="filterAspekt('zirk-ges-recht')">
+                            <h3>Rechtliche Bestimmungen</h3>
+                        </div>
+                        <div class="kachel kachel-zirk-ges-geld" onclick="filterAspekt('zirk-ges-geld')">
+                            <h3>Umgang mit Geld</h3>
+                        </div>
+                        <div class="kachel kachel-zirk-ges-versicherung" onclick="filterAspekt('zirk-ges-versicherung')">
+                            <h3>Versicherungen</h3>
+                        </div>
+                        <div class="kachel kachel-zirk-ges-vertrag" onclick="filterAspekt('zirk-ges-vertrag')">
+                            <h3>Vertragspartner sein</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="filter-section">
+            <div class="filter-section-header" onclick="toggleFilterSection('zirk-sprache')">
+                <h3 class="color-zirk-sprache">Zirkuläre Inhalte Sprache & Kommunikation</h3>
+                <span class="filter-toggle" id="toggle-zirk-sprache">▶</span>
+            </div>
+            <div class="filter-content" id="content-zirk-sprache">
+                <div class="filter-content-inner">
+                    <div class="kachel-grid">
+                        <div class="kachel kachel-zirk-spr-argumentieren" onclick="filterAspekt('zirk-spr-argumentieren')">
+                            <h3>Argumentieren</h3>
+                        </div>
+                        <div class="kachel kachel-zirk-spr-informieren" onclick="filterAspekt('zirk-spr-informieren')">
+                            <h3>Informieren</h3>
+                        </div>
+                        <div class="kachel kachel-zirk-spr-kommunizieren" onclick="filterAspekt('zirk-spr-kommunizieren')">
+                            <h3>Kommunizieren</h3>
+                        </div>
+                        <div class="kachel kachel-zirk-spr-korrespondieren" onclick="filterAspekt('zirk-spr-korrespondieren')">
+                            <h3>Korrespondieren</h3>
+                        </div>
+                        <div class="kachel kachel-zirk-spr-linear" onclick="filterAspekt('zirk-spr-linear')">
+                            <h3>Lineare Texte</h3>
+                        </div>
+                        <div class="kachel kachel-zirk-spr-nichtlinear" onclick="filterAspekt('zirk-spr-nichtlinear')">
+                            <h3>Nicht-lineare Texte</h3>
+                        </div>
+                        <div class="kachel kachel-zirk-spr-praesentieren" onclick="filterAspekt('zirk-spr-praesentieren')">
+                            <h3>Präsentieren</h3>
+                        </div>
+                        <div class="kachel kachel-zirk-spr-quellen" onclick="filterAspekt('zirk-spr-quellen')">
+                            <h3>Quellen befragen</h3>
+                        </div>
+                        <div class="kachel kachel-zirk-spr-reflektieren" onclick="filterAspekt('zirk-spr-reflektieren')">
+                            <h3>Reflektieren</h3>
+                        </div>
+                        <div class="kachel kachel-zirk-spr-sach" onclick="filterAspekt('zirk-spr-sach')">
+                            <h3>Sachzusammenhänge erschliessen</h3>
+                        </div>
+                        <div class="kachel kachel-zirk-spr-normen" onclick="filterAspekt('zirk-spr-normen')">
+                            <h3>Sprachliche Normen</h3>
+                        </div>
+                        <div class="kachel kachel-zirk-spr-wortschatz" onclick="filterAspekt('zirk-spr-wortschatz')">
+                            <h3>Wortschatz erweitern</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <button class="reset-btn" onclick="resetFilter()">Filter zurücksetzen</button>
     </div>
 
@@ -1057,7 +1209,26 @@
             'sprache-prod-multimedial': 'sprache',
             'sprache-int-muendlich': 'sprache',
             'sprache-int-schriftlich': 'sprache',
-            'sprache-int-digital': 'sprache'
+            'sprache-int-digital': 'sprache',
+            'zirk-ges-konflikt': 'zirk-gesellschaft',
+            'zirk-ges-nachhaltigkeit': 'zirk-gesellschaft',
+            'zirk-ges-politisch': 'zirk-gesellschaft',
+            'zirk-ges-recht': 'zirk-gesellschaft',
+            'zirk-ges-geld': 'zirk-gesellschaft',
+            'zirk-ges-versicherung': 'zirk-gesellschaft',
+            'zirk-ges-vertrag': 'zirk-gesellschaft',
+            'zirk-spr-argumentieren': 'zirk-sprache',
+            'zirk-spr-informieren': 'zirk-sprache',
+            'zirk-spr-kommunizieren': 'zirk-sprache',
+            'zirk-spr-korrespondieren': 'zirk-sprache',
+            'zirk-spr-linear': 'zirk-sprache',
+            'zirk-spr-nichtlinear': 'zirk-sprache',
+            'zirk-spr-praesentieren': 'zirk-sprache',
+            'zirk-spr-quellen': 'zirk-sprache',
+            'zirk-spr-reflektieren': 'zirk-sprache',
+            'zirk-spr-sach': 'zirk-sprache',
+            'zirk-spr-normen': 'zirk-sprache',
+            'zirk-spr-wortschatz': 'zirk-sprache'
         };
 
         // Verbesserte Sortierfunktion für Kompetenznummern (z.B. 1.1, 1.2, ..., 1.10, 1.11, 1.12)
@@ -1190,7 +1361,9 @@
                         const inhalte = {
                             gesellschaft: [],
                             digital: [],
-                            sprache: []
+                            sprache: [],
+                            zirkGesellschaft: [],
+                            zirkSprache: []
                         };
                         
                         // Gesellschaft Kompetenzen sammeln (ohne Deduplizierung hier)
@@ -1202,6 +1375,16 @@
                                 const text = span.textContent.trim();
                                 if (nr) {
                                     inhalte.gesellschaft.push({ nr: nr, text: text });
+                                }
+                            });
+                            
+                            // Zirkuläre Inhalte Gesellschaft sammeln
+                            const zirkSpans = cell.querySelectorAll('span[data-zirk-ges]');
+                            zirkSpans.forEach(span => {
+                                const aspekt = span.getAttribute('data-zirk-ges');
+                                const text = span.textContent.trim();
+                                if (aspekt) {
+                                    inhalte.zirkGesellschaft.push({ aspekt: 'zirk-ges-' + aspekt, text: text });
                                 }
                             });
                         });
@@ -1228,6 +1411,16 @@
                                 const text = span.textContent.trim();
                                 if (nr) {
                                     inhalte.sprache.push({ nr: nr, text: text });
+                                }
+                            });
+                            
+                            // Zirkuläre Inhalte Sprache sammeln
+                            const zirkSpans = cell.querySelectorAll('span[data-zirk-spr]');
+                            zirkSpans.forEach(span => {
+                                const aspekt = span.getAttribute('data-zirk-spr');
+                                const text = span.textContent.trim();
+                                if (aspekt) {
+                                    inhalte.zirkSprache.push({ aspekt: 'zirk-spr-' + aspekt, text: text });
                                 }
                             });
                         });
@@ -1367,11 +1560,13 @@
                     const grouped = {
                         gesellschaft: [],
                         digital: [],
-                        sprache: []
+                        sprache: [],
+                        zirkGesellschaft: [],
+                        zirkSprache: []
                     };
                     
                     lb.kompetenzen.forEach((komp) => {
-                        ['gesellschaft', 'digital', 'sprache'].forEach(category => {
+                        ['gesellschaft', 'digital', 'sprache', 'zirkGesellschaft', 'zirkSprache'].forEach(category => {
                             if (komp.inhalte[category]) {
                                 komp.inhalte[category].forEach(item => {
                                     grouped[category].push(item);
@@ -1384,7 +1579,9 @@
                     const bereiche = [
                         { key: 'gesellschaft', cssClass: 'kompetenz-badge-gesellschaft', category: 'gesellschaft' },
                         { key: 'digital', cssClass: 'kompetenz-badge-digital', category: 'digital' },
-                        { key: 'sprache', cssClass: 'kompetenz-badge-sprache', category: 'sprache' }
+                        { key: 'sprache', cssClass: 'kompetenz-badge-sprache', category: 'sprache' },
+                        { key: 'zirkGesellschaft', cssClass: 'kompetenz-badge-zirk-gesellschaft', category: 'zirk-gesellschaft' },
+                        { key: 'zirkSprache', cssClass: 'kompetenz-badge-zirk-sprache', category: 'zirk-sprache' }
                     ];
                     
                     bereiche.forEach(bereich => {
@@ -1392,20 +1589,28 @@
                         const seen = new Set();
                         const unique = [];
                         grouped[bereich.key].forEach(item => {
-                            if (!seen.has(item.nr)) {
-                                seen.add(item.nr);
+                            const identifier = item.nr || item.aspekt;
+                            if (!seen.has(identifier)) {
+                                seen.add(identifier);
                                 unique.push(item);
                             }
                         });
                         
                         // Chronologisch sortieren (z.B. 2.1, 2.2, ..., 2.8)
-                        unique.sort(sortKompetenzen);
+                        // Nur für nummerierte Kompetenzen sortieren
+                        if (unique.length > 0 && unique[0].nr) {
+                            unique.sort(sortKompetenzen);
+                        }
+                        // Für zirkuläre Inhalte alphabetisch nach Text sortieren
+                        else if (unique.length > 0 && unique[0].aspekt) {
+                            unique.sort((a, b) => a.text.localeCompare(b.text));
+                        }
                         
                         // SCHRITT 3: Badges rendern
                         unique.forEach(item => {
                             const badge = document.createElement('div');
                             badge.className = `kompetenz-badge ${bereich.cssClass}`;
-                            badge.textContent = item.nr;
+                            badge.textContent = item.nr || item.text;
                             
                             const tooltip = document.createElement('div');
                             tooltip.className = 'tooltip';
@@ -1418,6 +1623,8 @@
                                 const baseNr = parts.length >= 2 ? `${parts[0]}.${parts[1]}` : item.nr;
                                 const aspekt = kompetenzToAspekt[baseNr];
                                 if (aspekt) badge.setAttribute('data-aspekt', aspekt);
+                            } else if (item.aspekt) {
+                                badge.setAttribute('data-aspekt', item.aspekt);
                             }
                             
                             kompContainer.appendChild(badge);
