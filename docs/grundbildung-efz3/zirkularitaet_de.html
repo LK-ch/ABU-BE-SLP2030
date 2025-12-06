@@ -1234,6 +1234,29 @@
             'zirk-spr-wortschatz': 'zirk-sprache'
         };
 
+        // Mapping von Aspekt-IDs zu lesbaren Kategorie-Namen
+        const aspektToCategoryName = {
+            'zirk-ges-konflikt': 'Konfliktmanagement',
+            'zirk-ges-nachhaltigkeit': 'Nachhaltigkeit',
+            'zirk-ges-politisch': 'Politische Bildung, Mitbeteiligung',
+            'zirk-ges-recht': 'Rechtliche Bestimmungen',
+            'zirk-ges-geld': 'Umgang mit Geld',
+            'zirk-ges-versicherung': 'Versicherungen',
+            'zirk-ges-vertrag': 'Vertragspartner sein',
+            'zirk-spr-argumentieren': 'Argumentieren',
+            'zirk-spr-informieren': 'Informieren',
+            'zirk-spr-kommunizieren': 'Kommunizieren',
+            'zirk-spr-korrespondieren': 'Korrespondieren',
+            'zirk-spr-linear': 'Lineare Texte',
+            'zirk-spr-nichtlinear': 'Nicht-lineare Texte',
+            'zirk-spr-praesentieren': 'Präsentieren',
+            'zirk-spr-quellen': 'Quellen befragen',
+            'zirk-spr-reflektieren': 'Reflektieren',
+            'zirk-spr-sach': 'Sachzusammenhänge erschliessen',
+            'zirk-spr-normen': 'Sprachliche Normen',
+            'zirk-spr-wortschatz': 'Wortschatz erweitern'
+        };
+
         // Verbesserte Sortierfunktion für Kompetenznummern (z.B. 1.1, 1.2, ..., 1.10, 1.11, 1.12)
         function sortKompetenzen(a, b) {
             const partsA = a.nr.split('.').map(Number);
@@ -1588,50 +1611,72 @@
                     ];
                     
                     bereiche.forEach(bereich => {
-                        // Deduplizieren (nur innerhalb des Lebensbezugs)
-                        const seen = new Set();
-                        const unique = [];
-                        grouped[bereich.key].forEach(item => {
-                            const identifier = item.nr || item.aspekt;
-                            if (!seen.has(identifier)) {
-                                seen.add(identifier);
-                                unique.push(item);
-                            }
-                        });
-                        
-                        // Chronologisch sortieren (z.B. 2.1, 2.2, ..., 2.8)
-                        // Nur für nummerierte Kompetenzen sortieren
-                        if (unique.length > 0 && unique[0].nr) {
+                        // Für zirkuläre Inhalte: Gruppieren nach Aspekt und Texte sammeln
+                        if (bereich.key === 'zirkGesellschaft' || bereich.key === 'zirkSprache') {
+                            const aspektGroups = {};
+                            grouped[bereich.key].forEach(item => {
+                                if (!aspektGroups[item.aspekt]) {
+                                    aspektGroups[item.aspekt] = [];
+                                }
+                                aspektGroups[item.aspekt].push(item.text);
+                            });
+                            
+                            // Alphabetisch nach Aspekt-ID sortieren
+                            const sortedAspekte = Object.keys(aspektGroups).sort();
+                            
+                            // Badge pro Aspekt rendern
+                            sortedAspekte.forEach(aspekt => {
+                                const badge = document.createElement('div');
+                                badge.className = `kompetenz-badge ${bereich.cssClass}`;
+                                
+                                const categoryName = aspektToCategoryName[aspekt] || aspekt;
+                                badge.textContent = categoryName;
+                                
+                                const tooltip = document.createElement('div');
+                                tooltip.className = 'tooltip';
+                                const texts = aspektGroups[aspekt];
+                                tooltip.textContent = texts.length > 1 ? texts.join(', ') : texts[0];
+                                badge.appendChild(tooltip);
+                                
+                                badge.setAttribute('data-category', bereich.category);
+                                badge.setAttribute('data-aspekt', aspekt);
+                                
+                                kompContainer.appendChild(badge);
+                            });
+                        } else {
+                            // Für normale Kompetenzen: Deduplizieren wie bisher
+                            const seen = new Set();
+                            const unique = [];
+                            grouped[bereich.key].forEach(item => {
+                                if (!seen.has(item.nr)) {
+                                    seen.add(item.nr);
+                                    unique.push(item);
+                                }
+                            });
+                            
+                            // Chronologisch sortieren
                             unique.sort(sortKompetenzen);
-                        }
-                        // Für zirkuläre Inhalte alphabetisch nach Text sortieren
-                        else if (unique.length > 0 && unique[0].aspekt) {
-                            unique.sort((a, b) => a.text.localeCompare(b.text));
-                        }
-                        
-                        // SCHRITT 3: Badges rendern
-                        unique.forEach(item => {
-                            const badge = document.createElement('div');
-                            badge.className = `kompetenz-badge ${bereich.cssClass}`;
-                            badge.textContent = item.nr || item.text;
                             
-                            const tooltip = document.createElement('div');
-                            tooltip.className = 'tooltip';
-                            tooltip.textContent = item.text;
-                            badge.appendChild(tooltip);
-                            
-                            badge.setAttribute('data-category', bereich.category);
-                            if (item.nr) {
+                            // Badges rendern
+                            unique.forEach(item => {
+                                const badge = document.createElement('div');
+                                badge.className = `kompetenz-badge ${bereich.cssClass}`;
+                                badge.textContent = item.nr;
+                                
+                                const tooltip = document.createElement('div');
+                                tooltip.className = 'tooltip';
+                                tooltip.textContent = item.text;
+                                badge.appendChild(tooltip);
+                                
+                                badge.setAttribute('data-category', bereich.category);
                                 const parts = item.nr.split('.');
                                 const baseNr = parts.length >= 2 ? `${parts[0]}.${parts[1]}` : item.nr;
                                 const aspekt = kompetenzToAspekt[baseNr];
                                 if (aspekt) badge.setAttribute('data-aspekt', aspekt);
-                            } else if (item.aspekt) {
-                                badge.setAttribute('data-aspekt', item.aspekt);
-                            }
-                            
-                            kompContainer.appendChild(badge);
-                        });
+                                
+                                kompContainer.appendChild(badge);
+                            });
+                        }
                     });
                     
                     lbItem.appendChild(kompContainer);
