@@ -703,6 +703,91 @@
                 font-size: 0.8em;
             }
         }
+
+/* === PDF EXPORT BUTTON === */
+.pdf-export-container {
+    text-align: center;
+    padding: 40px 0 20px 0;
+    margin-top: 20px;
+    border-top: 2px solid #f5e6d3;
+}
+
+.pdf-export-button {
+    background-color: #dc291e;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.1em;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(220, 41, 30, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pdf-export-button:hover {
+    background-color: #b82118;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 41, 30, 0.4);
+}
+
+.pdf-export-button:active {
+    transform: translateY(0);
+}
+
+.pdf-export-button::before {
+    content: "📄";
+    font-size: 1.3em;
+}
+
+/* PDF Export - verstecke beim Drucken */
+@media print {
+    .pdf-export-container,
+    .back-link,
+    .breadcrumb,
+    header,
+    .separator-strip,
+    .umsetzung-box,
+    .theme-header::after,
+    .lebensbezug-header::after,
+    .freibereich-header::after,
+    .table-header,
+    .toggle-schluessel,
+    .table-toggle {
+        display: none !important;
+    }
+    
+    .theme-content,
+    .lebensbezug-content,
+    .freibereich-content,
+    .table-content {
+        display: block !important;
+        max-height: none !important;
+    }
+    
+    .theme-header,
+    .lebensbezug-header,
+    .freibereich-header {
+        cursor: default;
+    }
+    
+    body {
+        background: white;
+    }
+    
+    .theme-section,
+    .lebensbezug,
+    .lerninhalt {
+        page-break-inside: avoid;
+    }
+    
+    h1, h2, h3, h4 {
+        page-break-after: avoid;
+    }
+}
     </style>
 </head>
 <body>
@@ -728,7 +813,7 @@
         <div class="theme-section">
             <div class="theme-header">
                 <h2>Thema 1: Meine Berufsausbildung</h2>
-                <p class="lektionen">Empfehlung: 36 Lektionen (davon 9 Lektionen Freibereich)</p>
+                <p class="lektionen">36 Lektionen (davon 9 Lektionen Freibereich)</p>
             </div>
             <div class="theme-content">
                 <div class="leitidee">
@@ -1046,7 +1131,7 @@
         <div class="theme-section">
             <div class="theme-header">
                 <h2>Thema 2: Geld verdienen und ausgeben</h2>
-                <p class="lektionen">Empfehlung: 48 Lektionen (davon 9 Lektionen Freibereich)</p>
+                <p class="lektionen">48 Lektionen (davon 9 Lektionen Freibereich)</p>
             </div>
             <div class="theme-content">
                 <div class="leitidee">
@@ -1563,7 +1648,7 @@
         <div class="theme-section">
             <div class="theme-header">
                 <h2>Thema 3: Gesund und sicher durchs Leben</h2>
-                <p class="lektionen">Empfehlung: 36 Lektionen (davon 9 Lektionen Freibereich)</p>
+                <p class="lektionen">36 Lektionen (davon 9 Lektionen Freibereich)</p>
             </div>
             <div class="theme-content">
                 <div class="leitidee">
@@ -1871,6 +1956,9 @@
                 </div>
             </div>
         </div>
+        <div class="pdf-export-container">
+            <button class="pdf-export-button" onclick="exportToPDF()">Als PDF exportieren</button>
+        </div>
         <div class="back-link">
             <a href="index_de.html">← Zurück zur Übersicht EFZ</a>
         </div>
@@ -2002,6 +2090,54 @@
                 });
             });
         });
+
+        // === PDF EXPORT FUNKTION ===
+        function exportToPDF() {
+            // Status speichern
+            const themeHeaders = document.querySelectorAll(".theme-header");
+            const lebensbezugHeaders = document.querySelectorAll(".lebensbezug-header");
+            const freibereichHeaders = document.querySelectorAll(".freibereich-header");
+            const tableHeaders = document.querySelectorAll(".table-header");
+            const umsetzungBoxes = document.querySelectorAll(".umsetzung-box");
+            
+            // Alles aufklappen (außer Umsetzungsbeispiele)
+            themeHeaders.forEach(header => {
+                const content = header.nextElementSibling;
+                content.classList.add("show");
+                header.classList.remove("collapsed");
+            });
+            
+            lebensbezugHeaders.forEach(header => {
+                const content = header.nextElementSibling;
+                content.classList.add("show");
+                header.classList.remove("collapsed");
+            });
+            
+            freibereichHeaders.forEach(header => {
+                const content = header.nextElementSibling;
+                content.classList.add("show");
+                header.classList.remove("collapsed");
+            });
+            
+            tableHeaders.forEach(header => {
+                const content = header.nextElementSibling;
+                content.classList.add("expanded");
+            });
+            
+            // Umsetzungsbeispiele ZUGEKLAPPT lassen
+            umsetzungBoxes.forEach(box => {
+                const content = box.querySelector(".schluessel-content");
+                const icon = box.querySelector(".toggle-schluessel");
+                if (content) content.classList.remove("expanded");
+                if (icon) icon.classList.remove("rotated");
+            });
+            
+            // Kurz warten damit alles gerendert ist
+            setTimeout(() => {
+                // PDF erstellen (Browsers Druckfunktion)
+                window.print();
+            }, 500);
+        }
     </script>
 </body>
 </html>
