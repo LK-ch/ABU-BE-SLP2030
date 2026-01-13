@@ -824,6 +824,102 @@
         color: #dc291e;
         font-weight: 700;
     }
+}/* === ERWEITERTE PDF-DRUCK ANPASSUNGEN === */
+@media print {
+    /* Farbige Hintergründe im PDF beibehalten */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+    
+    /* Seitenumbrüche VOR jedem Thema */
+    .theme-section {
+        page-break-before: always;
+    }
+    
+    /* KEIN Seitenumbruch vor dem ERSTEN Thema */
+    .theme-section:first-of-type {
+        page-break-before: auto;
+    }
+    
+    /* Verhindere Zeilenumbrüche innerhalb wichtiger Elemente */
+    .theme-header,
+    .leitidee,
+    .kompetenz-header,
+    .lebensbezug-header,
+    .table-header {
+        page-break-inside: avoid;
+        page-break-after: avoid;
+    }
+    
+    /* Zusammenhängende Elemente zusammenhalten */
+    .lerninhalt {
+        page-break-inside: avoid;
+    }
+    
+    /* Farbige Hintergründe explizit erhalten */
+    .theme-header,
+    .kompetenz-header,
+    .lebensbezug,
+    .lebensbezug-header,
+    .table-header {
+        background-color: #f5e6d3 !important;
+    }
+    
+    .gesellschaft,
+    .col-gesellschaft,
+    th.col-gesellschaft,
+    td.col-gesellschaft {
+        background-color: #fff4cc !important;
+    }
+    
+    td.col-gesellschaft {
+        background-color: #fffef5 !important;
+    }
+    
+    .sprache,
+    .col-sprache,
+    th.col-sprache,
+    td.col-sprache {
+        background-color: #cce5ff !important;
+    }
+    
+    td.col-sprache {
+        background-color: #f5f9ff !important;
+    }
+    
+    .digital,
+    .col-digital,
+    th.col-digital,
+    td.col-digital {
+        background-color: #d4edda !important;
+    }
+    
+    td.col-digital-content p:first-of-type {
+        background-color: #f0f8f0 !important;
+    }
+    
+    /* Separator Strip Farbe erhalten */
+    .separator-strip {
+        background-color: #f9f3e8 !important;
+    }
+    
+    /* Freibereich Tabellen Farben */
+    table tbody td[style*="background: #fffef5"],
+    table tbody td[style*="background-color: #fffef5"] {
+        background-color: #fffef5 !important;
+    }
+    
+    table tbody td[style*="background: #f5f9ff"],
+    table tbody td[style*="background-color: #f5f9ff"] {
+        background-color: #f5f9ff !important;
+    }
+    
+    table tbody td[style*="background: #f0f8f0"],
+    table tbody td[style*="background-color: #f0f8f0"] {
+        background-color: #f0f8f0 !important;
+    }
 }
     </style>
 </head>
