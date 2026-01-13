@@ -788,6 +788,43 @@
         page-break-after: avoid;
     }
 }
+
+/* === PDF HEADER === */
+.pdf-header {
+    display: none;
+}
+
+@media print {
+    .pdf-header {
+        display: block;
+        text-align: center;
+        padding: 20px 0 30px 0;
+        border-bottom: 2px solid #dc291e;
+        margin-bottom: 30px;
+    }
+    
+    .pdf-header .pdf-date {
+        font-size: 0.9em;
+        color: #666;
+        margin-bottom: 15px;
+    }
+    
+    .pdf-header .pdf-disclaimer {
+        background-color: #fff4cc;
+        border: 2px solid #dc291e;
+        padding: 15px 20px;
+        margin: 0 auto;
+        max-width: 90%;
+        font-size: 0.85em;
+        line-height: 1.6;
+        color: #000;
+    }
+    
+    .pdf-header .pdf-disclaimer strong {
+        color: #dc291e;
+        font-weight: 700;
+    }
+}
     </style>
 </head>
 <body>
@@ -809,6 +846,14 @@
             1. Lehrjahr
         </nav>
         <h1>1. Lehrjahr EFZ</h1>
+        <div class="pdf-header">
+            <div class="pdf-date">
+                <script>document.write("Erstellt am: " + new Date().toLocaleDateString("de-CH", {day: "2-digit", month: "2-digit", year: "numeric"}));</script>
+            </div>
+            <div class="pdf-disclaimer">
+                <strong>Hinweis:</strong> Dies ist eine provisorische Version des Lehrplans, welche noch nicht den kantonalen Richtlinien bezüglich Gestaltung entspricht und nur für eine erste Diskussion geeignet ist.
+            </div>
+        </div>
         <p class="subtitle">Themen und Kompetenzen der Allgemeinbildung</p>
         <div class="theme-section">
             <div class="theme-header">
