@@ -8,262 +8,195 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Roboto', Arial, sans-serif;
+            font-weight: 400;
             line-height: 1.6;
             color: #000;
             background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-        
-        /* Header */
+
+        /* HEADER */
         header {
             background: #fff;
-            color: #000;
-            padding: 10px 20px;
-            margin-bottom: 0;
-            box-shadow: none;
-            position: relative;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 12px 24px 0 24px;
         }
-        
-        .header-container {
+
+        .header-top {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
         }
-        
+
         .logo-section {
             display: flex;
             align-items: center;
+            gap: 12px;
+            padding-bottom: 8px;
         }
-        
-        .logo-section img {
-            height: 85px;
-            width: auto;
-        }
-        
-        .language-switch {
-            background-color: transparent;
-            border: none;
-            padding: 0;
-            color: #000;
+
+        .logo-section img { height: 60px; width: auto; }
+
+        .logo-text { font-size: 0.85em; color: #000; line-height: 1.3; }
+
+        .app-title {
+            font-size: 1em;
             font-weight: 400;
-            font-size: 0.95em;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .language-switch .current-lang {
             color: #000;
-            font-weight: 400;
-            border-bottom: 2px solid #dc291e;
-            padding-bottom: 2px;
-        }
-        
-        .language-switch .lang-link {
-            color: #000;
+            padding-bottom: 12px;
             text-decoration: none;
-            cursor: pointer;
-            transition: color 0.3s ease;
+            display: inline-block;
         }
-        
-        .language-switch .lang-link:hover {
-            color: #666;
-            text-decoration: underline;
+        .app-title:hover { text-decoration: underline; }
+
+        .service-nav { display: flex; align-items: center; gap: 20px; padding-top: 4px; }
+
+        .service-nav a { font-size: 0.85em; color: #000; text-decoration: none; }
+
+        .service-nav a:hover { text-decoration: underline; }
+
+        .language-selector { display: flex; align-items: center; gap: 6px; font-size: 0.85em; }
+
+        .language-selector span { color: #666; }
+
+        .language-selector a { color: #000; text-decoration: none; }
+
+        .language-selector a.active {
+            font-weight: 700;
+            border-bottom: 2px solid #dc291e;
+            padding-bottom: 1px;
         }
-        
-        /* Yellow separator strip */
-        .separator-strip {
-            background-color: #f9f3e8;
-            height: 30px;
+
+        .language-selector a:hover { text-decoration: underline; }
+
+        /* WIP-BADGE */
+        .wip-badge {
+            display: inline-block;
+            margin-top: 6px;
+            padding: 4px 12px;
+            background-color: #fff3cd;
+            border: 1px solid #ffcc00;
+            font-size: 0.75em;
+            font-weight: 700;
+            color: #c8102e;
+            text-transform: uppercase;
+        }
+
+        /* MAIN */
+        main {
+            flex: 1;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 24px;
             width: 100%;
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 20px auto 0 auto;
-            padding: 15px;
-        }
-        
-        main.container {
-            background-color: #fff;
-        }
-        
-        .breadcrumb {
-            font-size: 0.9em;
-            color: #000;
-            margin-bottom: 20px;
-        }
-        
-        .breadcrumb a {
-            color: #000;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        .breadcrumb a:hover {
-            text-decoration: underline;
-        }
-        
+
+        .breadcrumb { font-size: 0.9em; color: #000; margin-bottom: 20px; }
+        .breadcrumb a { color: #000; text-decoration: none; font-weight: 500; }
+        .breadcrumb a:hover { text-decoration: underline; }
+
         h1 {
-            color: #000;
-            font-size: 2.2em;
-            margin-bottom: 10px;
+            font-size: 2em;
             font-weight: 700;
+            color: #000;
+            margin-bottom: 6px;
         }
-        
+
         .subtitle {
-            color: #000;
-            font-size: 1.1em;
-            margin-bottom: 30px;
-        }
-        
-        .info-box {
-            background-color: #f5e6d3;
-            border-left: 4px solid #dc291e;
-            border-radius: 0;
-            padding: 24px;
+            font-size: 0.95em;
+            color: #333;
             margin-bottom: 40px;
-            box-shadow: none;
-            border: 2px solid #e0e0e0;
-            border-left: 4px solid #dc291e;
+            line-height: 1.6;
         }
-        
-        .info-box-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            user-select: none;
-        }
-        
-        .info-box-header:hover {
-            opacity: 0.8;
-        }
-        
-        .info-box h2 {
-            color: #000;
-            font-size: 1.3em;
-            font-weight: 700;
-            margin: 0;
-        }
-        
-        .toggle-icon {
-            font-size: 1.5em;
-            color: #dc291e;
-            transition: transform 0.3s ease;
-        }
-        
-        .toggle-icon.rotated {
-            transform: rotate(180deg);
-        }
-        
-        .info-box-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-        
-        .info-box-content.expanded {
-            max-height: 1000px;
-            margin-top: 16px;
-        }
-        
-        .info-box ul {
-            list-style: none;
-            margin-left: 0;
-        }
-        
-        .info-box li {
-            position: relative;
-            padding-left: 28px;
-            margin-bottom: 12px;
-            color: #000;
-        }
-        
-        .info-box li::before {
-            content: "▸";
-            position: absolute;
-            left: 0;
-            color: #dc291e;
-            font-weight: bold;
-        }
-        
-        .info-box .highlight {
-            background-color: #fff3cd;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-weight: 600;
-        }
-        
-        .theme-overview {
-            margin-bottom: 40px;
-        }
-        
+
+        /* THEMENÜBERSICHT TABELLE */
+        .theme-overview { margin-bottom: 40px; }
+
         .theme-overview h2 {
-            margin-bottom: 20px;
-            font-size: 1.4em;
-            color: #000;
+            font-size: 1.1em;
             font-weight: 700;
+            color: #000;
+            margin-bottom: 16px;
         }
-        
+
         .theme-table {
             width: 100%;
-            max-width: 600px;
-            margin: 0 auto 40px auto;
-            background: white;
-            border-radius: 0;
-            overflow: hidden;
-            box-shadow: none;
-            border: 2px solid #e0e0e0;
+            border-collapse: collapse;
+            border: 1px solid #e0e0e0;
+            margin-bottom: 40px;
+            table-layout: fixed;
         }
-        
+
         .theme-table th {
             background: #f5e6d3;
-            padding: 12px;
-            text-align: left;
-            color: #000;
-            font-weight: 700;
-            border-bottom: 2px solid #e0e0e0;
-        }
-        
-        .theme-table td {
-            padding: 12px;
-            border-bottom: 1px solid #eee;
-            color: #000;
-        }
-        
-        .theme-table .year-cell {
-            font-weight: 600;
-            background-color: #f5e6d3;
-            vertical-align: middle;
+            padding: 10px 14px;
             text-align: center;
+            font-size: 0.85em;
+            font-weight: 700;
+            color: #000;
+            border-bottom: 2px solid #e0e0e0;
+            border-right: 1px solid #e0e0e0;
+        }
+
+        .theme-table th:last-child { border-right: none; }
+
+        .theme-table th.year-header {
             font-size: 1.1em;
             color: #dc291e;
+            width: 33.33%;
         }
-        
-        .theme-table .year-2 {
-            background-color: #f5e6d3;
+
+        .theme-table th.row-label {
+            width: 120px;
+            text-align: left;
+            font-size: 0.8em;
+            color: #555;
+            font-weight: 400;
+            background: #faf8f5;
         }
-        
-        .theme-table .year-3 {
-            background-color: #f5e6d3;
+
+        .theme-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #eee;
+            border-right: 1px solid #e0e0e0;
+            font-size: 0.88em;
+            color: #000;
+            vertical-align: top;
         }
-        
+
+        .theme-table td:last-child { border-right: none; }
+
+        .theme-table td.row-label {
+            font-style: italic;
+            color: #666;
+            font-size: 0.82em;
+            background: #faf8f5;
+            vertical-align: middle;
+        }
+
+        .theme-table tbody tr:last-child td { border-bottom: none; }
+
         .theme-table tfoot td {
             background-color: #f9f3e8;
             font-weight: 600;
+            font-size: 0.85em;
+            text-align: center;
+            border-right: 1px solid #e0e0e0;
+            border-top: 2px solid #e0e0e0;
             border-bottom: none;
         }
-        
+
+        .theme-table tfoot td:last-child { border-right: none; }
+
+        /* KARTEN */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -271,274 +204,245 @@
             margin-bottom: 40px;
         }
 
+        .card {
+            background: #f5f0e8;
+            border: 1px solid #e0d8cc;
+            padding: 30px;
+            text-decoration: none;
+            color: #000;
+            display: block;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            border-color: #dc291e;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .card h2 {
+            font-size: 1.15em;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 0.9em;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .card .meta {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid #e0d8cc;
+            font-size: 0.82em;
+            color: #555;
+        }
+
+        /* ZIRKULARITÄT */
         .zirkularitaet-container {
-            max-width: 900px;
-            margin: 0 auto 40px auto;
+            max-width: 600px;
+            margin-bottom: 40px;
         }
 
         .zirkularitaet-card {
-            background: #f5e6d3;
-            border-radius: 0;
-            padding: 35px;
-            box-shadow: none;
-            transition: all 0.3s ease;
+            background: #f5f0e8;
+            border: 1px solid #e0d8cc;
+            padding: 28px 30px;
             text-decoration: none;
-            color: inherit;
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            border: 2px solid #e0e0e0;
+            color: #000;
+            display: block;
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
 
         .zirkularitaet-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-            background-color: #ecdcc4;
+            border-color: #dc291e;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
-        .zirkularitaet-content {
-            flex: 1;
-        }
-
-        .zirkularitaet-content h3 {
-            font-size: 1.6em;
-            margin-bottom: 8px;
-            color: #000;
+        .zirkularitaet-card h2 {
+            font-size: 1.15em;
             font-weight: 700;
+            color: #000;
+            margin-bottom: 6px;
         }
 
-        .zirkularitaet-content p {
-            color: #000;
-            line-height: 1.5;
-            font-size: 1.05em;
-            font-weight: 400;
-        }
-        
-        .card {
-            background: #f5e6d3;
-            border-radius: 0;
-            padding: 30px;
-            box-shadow: none;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            position: relative;
-            overflow: hidden;
-            border: 2px solid #e0e0e0;
-        }
-        
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-            background-color: #ecdcc4;
-        }
-        
-        .card h3 {
-            font-size: 1.5em;
-            margin-bottom: 12px;
-            color: #000;
-            font-weight: 700;
-        }
-        
-        .card p {
-            color: #000;
-            line-height: 1.5;
-            font-weight: 400;
-        }
-        
-        .card .meta {
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px solid #e0e0e0;
+        .zirkularitaet-card p {
             font-size: 0.9em;
+            color: #333;
+        }
+
+        /* EXTERNE LINKS */
+        .external-links {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .external-links h3 {
+            font-size: 1em;
+            font-weight: 700;
             color: #000;
+            margin-bottom: 16px;
         }
-        
-        .back-link {
-            text-align: center;
-            padding: 40px 0;
+
+        .external-links-grid {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
         }
-        
-        .back-link a {
-            color: #dc291e;
+
+        .external-link-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 16px;
+            background-color: #f5f0e8;
+            border: 1px solid #e0d8cc;
+            color: #000;
             text-decoration: none;
-            font-size: 1.1em;
-            font-weight: 600;
+            font-size: 0.9em;
+            transition: border-color 0.2s;
         }
-        
-        .back-link a:hover {
+
+        .external-link-button:hover {
+            border-color: #dc291e;
             text-decoration: underline;
         }
-        
-        @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .logo-section img {
-                height: 70px;
-            }
-            
-            .container {
-                padding: 10px;
-            }
-            
-            h1 {
-                font-size: 1.8em;
-            }
-            
-            .card-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .theme-table {
-                font-size: 0.9em;
-                max-width: 100%;
-            }
 
-            .zirkularitaet-card {
-                flex-direction: column;
-                text-align: center;
-                padding: 25px;
-            }
+        /* FOOTER */
+        footer {
+            background: #fff;
+            border-top: 1px solid #e0e0e0;
+            padding: 14px 24px;
+            margin-top: auto;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .footer-copyright { font-size: 0.82em; color: #333; }
+        .footer-links { display: flex; gap: 24px; }
+        .footer-links a { font-size: 0.82em; font-weight: 700; color: #000; text-decoration: none; }
+        .footer-links a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .header-top { flex-direction: column; gap: 12px; }
+            .card-grid { grid-template-columns: 1fr; }
+            .theme-table { font-size: 0.85em; }
+            .footer-inner { flex-direction: column; align-items: flex-start; }
         }
     </style>
-    <script>
-        function toggleInfo() {
-            const content = document.getElementById('info-content');
-            const icon = document.getElementById('toggle-icon');
-            
-            content.classList.toggle('expanded');
-            icon.classList.toggle('rotated');
-        }
-    </script>
 </head>
 <body>
-    <!-- Header -->
+
     <header>
-        <div class="header-container">
-            <div class="logo-section">
-                <img src="../images/KTBE.png" alt="Kanton Bern Logo">
+        <div class="header-top">
+            <div>
+                <div class="logo-section">
+                    <img src="../images/KTBE.png" alt="Logo des Kantons Bern">
+                    <div class="logo-text">Kanton Bern<br>Canton de Berne</div>
+                </div>
+                <a href="../index_de.html" class="app-title">Schullehrplan ABU / Plan d'études de culture générale</a>
+                <div class="wip-badge">Website und Inhalte in Bearbeitung</div>
             </div>
-            <div class="language-switch">
-                <span class="current-lang">DE</span> | <a href="index_fr.html" class="lang-link">FR</a>
-            </div>
+            <nav class="service-nav" aria-label="Service-Navigation">
+                <a href="../kontakt_de.html">Kontakt</a>
+                <div class="language-selector">
+                    <a href="index_de.html" class="active" lang="de">DE</a>
+                    <span>|</span>
+                    <a href="index_fr.html" lang="fr">FR</a>
+                </div>
+            </nav>
         </div>
     </header>
-    
-    <!-- Yellow separator strip -->
-    <div class="separator-strip"></div>
-    
-    <main class="container">
+
+    <main>
         <nav class="breadcrumb">
             <a href="../index_de.html">Schullehrplan ABU</a> / 3-jährige Grundbildung EFZ
         </nav>
+
         <h1>3-jährige Grundbildung EFZ</h1>
         <p class="subtitle">Eidgenössisches Fähigkeitszeugnis</p>
-        
+
         <div class="theme-overview">
             <h2>Themenübersicht</h2>
             <table class="theme-table">
                 <thead>
                     <tr>
-                        <th style="width: 60px;">Jahr</th>
-                        <th>Themen</th>
-                        <th style="width: 80px; text-align: center;">Lekt.</th>
+                        <th class="year-header">1. Lehrjahr</th>
+                        <th class="year-header">2. Lehrjahr</th>
+                        <th class="year-header">3. Lehrjahr</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td rowspan="2" class="year-cell year-1">1</td>
-                        <td>
-                            <strong>1.</strong> Meine Lehre<br>
-                            <strong>2.</strong> Geld verdienen und ausgeben<br>
-                            <strong>3.</strong> Gesund und sicher durchs Leben
-                        </td>
-                        <td style="text-align: center;">xx</td>
+                        <td><strong>1.</strong> Meine Lehre</td>
+                        <td><strong>4.</strong> Nachhaltiges Handeln</td>
+                        <td><strong>7.</strong> Arbeiten im Wandel</td>
                     </tr>
                     <tr>
-                        <td style="font-style: italic; color: #666;">Weitere Lektionen</td>
-                        <td style="text-align: center;">xx</td>
+                        <td><strong>2.</strong> Geld verdienen und ausgeben</td>
+                        <td><strong>5.</strong> Meine Kultur, meine Beziehungen</td>
+                        <td><strong>8.</strong> Mein Zuhause</td>
                     </tr>
                     <tr>
-                        <td rowspan="2" class="year-cell year-2">2</td>
-                        <td>
-                            <strong>4.</strong> Nachhaltiges Handeln<br>
-                            <strong>5.</strong> Meine Kultur, meine Beziehungen<br>
-                            <strong>6.</strong> Interessen vertreten
-                        </td>
-                        <td style="text-align: center;">xx</td>
-                    </tr>
-                    <tr>
-                        <td style="font-style: italic; color: #666;">Weitere Lektionen</td>
-                        <td style="text-align: center;">xx</td>
-                    </tr>
-                    <tr>
-                        <td rowspan="3" class="year-cell year-3">3</td>
-                        <td>
-                            <strong>7.</strong> Arbeiten im Wandel<br>
-                            <strong>8.</strong> Mein Zuhause
-                        </td>
-                        <td style="text-align: center;">xx</td>
-                    </tr>
-                    <tr>
-                        <td style="font-style: italic; color: #666;">Schlussprüfung</td>
-                        <td style="text-align: center;">xx</td>
-                    </tr>
-                    <tr>
-                        <td style="font-style: italic; color: #666; border-bottom: none;">Weitere Lektionen</td>
-                        <td style="text-align: center; border-bottom: none;">xx</td>
+                        <td><strong>3.</strong> Gesund und sicher durchs Leben</td>
+                        <td><strong>6.</strong> Interessen vertreten</td>
+                        <td style="font-style:italic;color:#666;">Schlussprüfung</td>
                     </tr>
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="2" style="text-align: right;">Total pro Jahr:</td>
-                        <td style="text-align: center;">120</td>
+                        <td colspan="3" style="text-align:center;">120 Lektionen pro Jahr</td>
                     </tr>
                 </tfoot>
             </table>
         </div>
-        
+
         <div class="card-grid">
             <a href="1-lehrjahr_de.html" class="card">
-                <h3>1. Lehrjahr</h3>
-                <p>...</p>
-                <div class="meta">
-                    120 Lektionen Allgemeinbildung
-                </div>
+                <h2>1. Lehrjahr</h2>
+                <p>Themen 1–3: Berufsausbildung, Geld, Gesundheit</p>
+                <div class="meta">120 Lektionen Allgemeinbildung</div>
             </a>
-            
             <a href="2-lehrjahr_de.html" class="card">
-                <h3>2. Lehrjahr</h3>
-                <p>...</p>
-                <div class="meta">
-                    120 Lektionen Allgemeinbildung
-                </div>
+                <h2>2. Lehrjahr</h2>
+                <p>Themen 4–6: Nachhaltigkeit, Kultur, Interessen</p>
+                <div class="meta">120 Lektionen Allgemeinbildung</div>
             </a>
-            
             <a href="3-lehrjahr_de.html" class="card">
-                <h3>3. Lehrjahr</h3>
-                <p>...</p>
-                <div class="meta">
-                    120 Lektionen Allgemeinbildung inkl. VA
-                </div>
+                <h2>3. Lehrjahr</h2>
+                <p>Themen 7–8: Arbeit, Wohnen</p>
+                <div class="meta">120 Lektionen Allgemeinbildung inkl. VA</div>
             </a>
         </div>
 
         <div class="zirkularitaet-container">
             <a href="zirkularitaet_de.html" class="zirkularitaet-card">
-                <div class="zirkularitaet-content">
-                    <h3>Zirkularität</h3>
-                    <p>Spiralförmiger Kompetenzaufbau über die gesamte Lehrzeit</p>
-                </div>
+                <h2>Zirkularität</h2>
+                <p>Spiralförmiger Kompetenzaufbau über die gesamte Lehrzeit</p>
             </a>
         </div>
-        
-        <div class="back-link">
-            <a href="../index_de.html">← Zurück zur Übersicht</a>
-        </div>
+
     </main>
+
+    <footer>
+        <div class="footer-inner">
+            <span class="footer-copyright">© 2025 - Mittelschul- und Berufsbildungsamt Kanton Bern</span>
+            <nav class="footer-links" aria-label="Footer-Navigation">
+                <a href="../rechtliche-hinweise.html">Rechtliche Hinweise</a>
+                <a href="../impressum_de.html">Impressum</a>
+            </nav>
+        </div>
+    </footer>
+
 </body>
 </html>
