@@ -1,343 +1,292 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plan d'études de culture générale - Enseignement de culture générale</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan d'études de culture générale - Enseignement de culture générale</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body {
-      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-      line-height: 1.6;
-      color: #000;
-      background-color: #fff;
-    }
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #000;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-    /* Header */
-    header {
-      background: #fff;
-      color: #000;
-      padding: 10px 20px;
-      margin-bottom: 0;
-      box-shadow: none;
-      position: relative;
-    }
+        /* HEADER */
+        header {
+            background: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 12px 24px 0 24px;
+        }
 
-    .header-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+        .header-top {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
 
-    .logo-section {
-      display: flex;
-      align-items: center;
-    }
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 8px;
+        }
 
-    .logo-section img {
-      height: 85px;
-      width: auto;
-    }
+        .logo-section img { height: 60px; width: auto; }
 
-    /* Work in Progress Badge - neben Logo */
-    .wip-badge {
-      margin-left: 20px;
-      padding: 8px 16px;
-      background-color: #fff3cd;
-      border: 2px solid #ffcc00;
-      border-radius: 8px;
-      font-size: 0.75em;
-      font-weight: 700;
-      color: #c8102e;
-      text-align: center;
-      line-height: 1.3;
-      text-transform: uppercase;
-    }
+        .logo-text { font-size: 0.85em; color: #000; line-height: 1.3; }
 
-    .language-switch {
-      background-color: transparent;
-      border: none;
-      padding: 0;
-      color: #000;
-      font-weight: 400;
-      font-size: 0.95em;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
+        .app-title { font-size: 1em; font-weight: 400; color: #000; padding-bottom: 12px; }
 
-    .language-switch .current-lang {
-      color: #000;
-      font-weight: 400;
-      border-bottom: 2px solid #dc291e;
-      padding-bottom: 2px;
-    }
+        .service-nav { display: flex; align-items: center; gap: 20px; padding-top: 4px; }
 
-    .language-switch .lang-link {
-      color: #000;
-      text-decoration: none;
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
+        .service-nav a { font-size: 0.85em; color: #000; text-decoration: none; }
 
-    .language-switch .lang-link:hover {
-      color: #666;
-      text-decoration: underline;
-    }
+        .service-nav a:hover { text-decoration: underline; }
 
-    /* Yellow separator strip */
-    .separator-strip {
-      background-color: #f9f3e8;
-      height: 30px;
-      width: 100%;
-    }
+        .language-selector { display: flex; align-items: center; gap: 6px; font-size: 0.85em; }
 
-    .container {
-      max-width: 1200px;
-      margin: 20px auto 0 auto;
-      padding: 15px;
-    }
+        .language-selector span { color: #666; }
 
-    main.container {
-      background-color: #fff;
-    }
+        .language-selector a { color: #000; text-decoration: none; }
 
-    h1 {
-      font-size: 2.2em;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: #000;
-      text-align: center;
-    }
+        .language-selector a.active {
+            font-weight: 700;
+            border-bottom: 2px solid #dc291e;
+            padding-bottom: 1px;
+        }
 
-    .subtitle {
-      font-size: 1em;
-      max-width: 900px;
-      margin: 0 auto 30px;
-      line-height: 1.5;
-      color: #000;
-      text-align: center;
-    }
+        .language-selector a:hover { text-decoration: underline; }
 
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      margin-bottom: 24px;
-    }
+        /* WIP-BADGE */
+        .wip-badge {
+            display: inline-block;
+            margin-top: 6px;
+            padding: 4px 12px;
+            background-color: #fff3cd;
+            border: 1px solid #ffcc00;
+            font-size: 0.75em;
+            font-weight: 700;
+            color: #c8102e;
+            text-transform: uppercase;
+        }
 
-    .card {
-      background: #f5e6d3;
-      border-radius: 0;
-      padding: 30px;
-      box-shadow: none;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      color: inherit;
-      display: block;
-      position: relative;
-      overflow: hidden;
-      border: 2px solid #e0e0e0;
-    }
+        /* MAIN */
+        main {
+            flex: 1;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 24px;
+            width: 100%;
+        }
 
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-      background-color: #ecdcc4;
-    }
+        h1 {
+            font-size: 2em;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 10px;
+            text-align: center;
+        }
 
-    .card-icon {
-      width: 50px;
-      height: 50px;
-      margin-bottom: 20px;
-      background-color: #dc291e;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 24px;
-      font-weight: 700;
-    }
+        .subtitle {
+            font-size: 0.95em;
+            color: #333;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            line-height: 1.6;
+        }
 
-    .card h2 {
-      font-size: 1.3em;
-      margin-bottom: 10px;
-      color: #000;
-      font-weight: 700;
-    }
+        /* KARTEN */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
 
-    .card p {
-      color: #000;
-      font-size: 0.95em;
-      font-weight: 400;
-    }
+        .card {
+            background: #f5f0e8;
+            border: 1px solid #e0d8cc;
+            padding: 30px;
+            text-decoration: none;
+            color: #000;
+            display: block;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
 
-    .external-links {
-      margin-top: 40px;
-      padding-top: 30px;
-      border-top: 2px solid #f5e6d3;
-    }
+        .card:hover {
+            border-color: #dc291e;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
 
-    .external-links h3 {
-      color: #000;
-      text-align: center;
-      font-size: 1.1em;
-      margin-bottom: 20px;
-      font-weight: 700;
-    }
+        .card h2 {
+            font-size: 1.15em;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 10px;
+        }
 
-    .external-links-grid {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
+        .card p {
+            font-size: 0.9em;
+            color: #333;
+            line-height: 1.5;
+        }
 
-    .external-link-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 16px;
-      background-color: #fff3cd;
-      border: 2px solid #e0e0e0;
-      border-radius: 0;
-      text-decoration: none;
-      color: #000;
-      font-weight: 500;
-      transition: all 0.2s ease;
-    }
+        /* EXTERNE LINKS */
+        .external-links {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #e0e0e0;
+        }
 
-    .external-link-button:hover {
-      background-color: #ffe066;
-      transform: translateY(-2px);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    }
+        .external-links h3 {
+            font-size: 1em;
+            font-weight: 700;
+            color: #000;
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-    footer {
-      background: #f9f3e8;
-      color: #000;
-      text-align: center;
-      padding: 20px 20px;
-      margin-top: 50px;
-      border-top: 1px solid #e0e0e0;
-    }
+        .external-links-grid {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
 
-    footer p {
-      font-size: 0.85em;
-      margin: 0;
-      color: #000;
-    }
+        .external-link-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background-color: #f5f0e8;
+            border: 1px solid #e0d8cc;
+            text-decoration: none;
+            color: #000;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
 
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .header-container {
-        flex-direction: column;
-        gap: 15px;
-      }
+        .external-link-button:hover {
+            border-color: #dc291e;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
 
-      .logo-section {
-        flex-direction: column;
-        gap: 10px;
-      }
+        /* FOOTER */
+        footer {
+            background: #fff;
+            border-top: 1px solid #e0e0e0;
+            padding: 14px 24px;
+            margin-top: auto;
+        }
 
-      .logo-section img {
-        height: 70px;
-      }
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
 
-      .wip-badge {
-        margin-left: 0;
-        font-size: 0.65em;
-      }
+        .footer-copyright { font-size: 0.82em; color: #333; }
 
-      .container {
-        padding: 10px;
-      }
+        .footer-links { display: flex; gap: 24px; }
 
-      h1 {
-        font-size: 1.8em;
-      }
+        .footer-links a { font-size: 0.82em; font-weight: 700; color: #000; text-decoration: none; }
 
-      .subtitle {
-        font-size: 0.9em;
-      }
+        .footer-links a:hover { text-decoration: underline; }
 
-      .card-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .header-top { flex-direction: column; gap: 12px; }
+            .card-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 1.6em; }
+            .footer-inner { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
 </head>
-
 <body>
-  <!-- Header -->
-  <header>
-    <div class="header-container">
-      <div class="logo-section">
-        <img src="./images/KTBE.png" alt="Logo du canton de Berne">
-        <!-- Work in Progress Badge -->
-        <div class="wip-badge">
-          Site web et contenus en cours d'élaboration
+
+    <header>
+        <div class="header-top">
+            <div>
+                <div class="logo-section">
+                    <img src="./images/KTBE.png" alt="Logo du Canton de Berne">
+                    <div class="logo-text">Kanton Bern<br>Canton de Berne</div>
+                </div>
+                <div class="app-title">Schullehrplan ABU / Plan d'études de culture générale</div>
+                <div class="wip-badge">Site web et contenus en cours d'élaboration</div>
+            </div>
+            <nav class="service-nav" aria-label="Navigation de service">
+                <a href="contact_fr.html">Contact</a>
+                <div class="language-selector">
+                    <a href="index_de.html" lang="de">DE</a>
+                    <span>|</span>
+                    <a href="index_fr.html" class="active" lang="fr">FR</a>
+                </div>
+            </nav>
         </div>
-      </div>
-      <!-- Sprachwechsel-Button -->
-      <div class="language-switch">
-        <a href="index_de.html" class="lang-link">DE</a> | <span class="current-lang">FR</span>
-      </div>
-    </div>
-  </header>
+    </header>
 
-  <!-- Yellow separator strip -->
-  <div class="separator-strip"></div>
+    <main>
+        <h1>Plan d'études de culture générale</h1>
+        <p class="subtitle">
+            Plan d'études de culture générale pour les écoles professionnelles
+            du canton de Berne, basé sur le plan d'études cadre CG 2030
+        </p>
 
-  <main class="container">
-    <h1>Plan d'études de culture générale</h1>
-    <p class="subtitle">
-      Plan d'études de culture générale pour les écoles professionnelles 
-      du canton de Berne, basé sur le plan d'études cadre CG 2030
-    </p>
+        <div class="card-grid">
+            <a href="grundbildung-eba/index_fr.html" class="card">
+                <h2>Formation de base de 2 ans AFP</h2>
+                <p>Plan d'études pour la formation professionnelle initiale de deux ans avec attestation fédérale de formation professionnelle</p>
+            </a>
+            <a href="grundbildung-efz3/index_fr.html" class="card">
+                <h2>Formation de base de 3 ans CFC</h2>
+                <p>Plan d'études pour la formation professionnelle initiale de trois ans avec certificat fédéral de capacité</p>
+            </a>
+            <a href="grundbildung-efz4/index_fr.html" class="card">
+                <h2>Formation de base de 4 ans CFC</h2>
+                <p>Plan d'études pour la formation professionnelle initiale de quatre ans avec certificat fédéral de capacité</p>
+            </a>
+        </div>
 
-    <div class="card-grid">
-      <a href="grundbildung-eba/index_fr.html" class="card">
-        <h2>Formation de base de 2 ans AFP</h2>
-        <p>Plan d'études pour la formation professionnelle initiale de deux ans avec attestation fédérale de formation professionnelle</p>
-      </a>
+        <div class="external-links">
+            <h3>Bases légales</h3>
+            <div class="external-links-grid">
+                <a href="https://backend.sbfi.admin.ch/fileservice/sdweb-docs-prod-sbfitestch-files/files/2025/07/01/a429d879-d581-4c26-a973-fbcedc8fadd7.pdf" target="_blank" class="external-link-button">
+                    Plan d'études cadre CG 2030 ↗
+                </a>
+                <a href="https://www.fedlex.admin.ch/eli/oc/2025/263/fr" target="_blank" class="external-link-button">
+                    Ordonnance OFCG ↗
+                </a>
+            </div>
+        </div>
+    </main>
 
-      <a href="grundbildung-efz3/index_fr.html" class="card">
-        <h2>Formation de base de 3 ans CFC</h2>
-        <p>Plan d'études pour la formation professionnelle initiale de trois ans avec certificat fédéral de capacité</p>
-      </a>
+    <footer>
+        <div class="footer-inner">
+            <span class="footer-copyright">© 2025 - Office de l'enseignement secondaire du 2e degré et de la formation professionnelle, Canton de Berne</span>
+            <nav class="footer-links" aria-label="Navigation du pied de page">
+                <a href="mentions_legales.html">Mentions légales</a>
+                <a href="impressum_fr.html">Impressum</a>
+            </nav>
+        </div>
+    </footer>
 
-      <a href="grundbildung-efz4/index_fr.html" class="card">
-        <h2>Formation de base de 4 ans CFC</h2>
-        <p>Plan d'études pour la formation professionnelle initiale de quatre ans avec certificat fédéral de capacité</p>
-      </a>
-    </div>
-    <div class="external-links">
-      <h3>Bases légales</h3>
-      <div class="external-links-grid">
-        <a href="https://backend.sbfi.admin.ch/fileservice/sdweb-docs-prod-sbfitestch-files/files/2025/07/01/a429d879-d581-4c26-a973-fbcedc8fadd7.pdf" target="_blank" class="external-link-button">
-          <span>Plan d'études cadre CG 2030 ↗</span>
-        </a>
-        <a href="https://www.fedlex.admin.ch/eli/oc/2025/263/fr" target="_blank" class="external-link-button">
-          <span>Ordonnance OFCG ↗</span>
-        </a>
-      </div>
-    </div>
-  </main>
-
-  <footer>
-    <p>Mise en œuvre numérique avec le soutien du Digital Learning Hub Zurich (DLH) - merci beaucoup pour la collaboration !</p>
-  </footer>
 </body>
 </html>
