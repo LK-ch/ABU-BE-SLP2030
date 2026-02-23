@@ -1,0 +1,329 @@
+<style>
+    .theme-content-inner { padding: 20px; background-color: #fff; font-family: 'Roboto', Arial, sans-serif; }
+    .leitidee { background-color: #f9f3e8; padding: 20px; margin-bottom: 18px; }
+    .leitidee h3 { color: #000; margin-bottom: 10px; font-weight: 400; font-size: 0.85em; }
+    .leitidee p { color: #000; font-size: 1em; }
+    .lebensbezug { margin-bottom: 25px; background-color: #f9f3e8; overflow: hidden; }
+    .lebensbezug-header { padding: 16px 20px; cursor: pointer; position: relative; user-select: none; }
+    .lebensbezug-header::after { content: '▼'; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); transition: transform 0.3s ease; }
+    .lebensbezug-header.collapsed::after { transform: translateY(-50%) rotate(-90deg); }
+    .lebensbezug-header h3 { color: #000; font-size: 1em; font-weight: 400; margin: 0; }
+    .lebensbezug-header h3 strong { font-weight: 400; font-size: 0.7em; display: block; margin-bottom: 4px; }
+    .lebensbezug-content { padding: 0 20px 20px 20px; display: none; }
+    .lebensbezug-content.show { display: block; }
+    .freibereich-section { margin-bottom: 25px; background-color: #fff; border: 1px solid #000; overflow: hidden; }
+    .freibereich-header { padding: 16px 20px; cursor: pointer; position: relative; user-select: none; background-color: #fff; }
+    .freibereich-header::after { content: '▼'; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); transition: transform 0.3s ease; }
+    .freibereich-header.collapsed::after { transform: translateY(-50%) rotate(-90deg); }
+    .freibereich-header h3 { color: #000; font-size: 1em; font-weight: 400; margin: 0; }
+    .freibereich-content { padding: 0 20px 20px 20px; display: none; background-color: #fff; }
+    .freibereich-content.show { display: block; }
+    .lerninhalt { margin-bottom: 18px; background-color: #fff; overflow: hidden; }
+    .lerninhalt-content { padding: 14px; background-color: #fff; border: 1px solid #e0e0e0; }
+    .kompetenz-header { background: #f5e6d3; color: black; padding: 16px 20px 20px 20px; margin-bottom: 3px; }
+    .kompetenz-header h4 { font-size: 1em; margin: 0; font-weight: 700; }
+    .kompetenz-header h4 .normal-weight { font-weight: 400; }
+    .schluesselkompetenzen-inline { margin-top: 12px; font-size: 0.85em; }
+    .kompetenz-nummer-link { display: inline-block; color: #dc291e; font-weight: 700; cursor: pointer; margin-right: 8px; padding: 2px 5px; border: 1px solid transparent; border-radius: 3px; transition: all 0.2s; text-decoration: none; }
+    .kompetenz-nummer-link:hover { background-color: #ffe6e6; border-color: #ffcccc; }
+    .table-container { margin-bottom: 20px; border: 1px solid #e0e0e0; overflow: hidden; }
+    .table-header { background: #f5e6d3; padding: 7px 14px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .table-header h5 { color: #000; font-size: 0.9em; font-weight: 700; margin: 0; }
+    .table-toggle { color: #000; transition: transform 0.3s ease; }
+    .table-toggle.rotated { transform: rotate(180deg); }
+    .table-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .table-content.expanded { max-height: 4000px; }
+    .kompetenz-table { width: 100%; border-collapse: collapse; background-color: #fff; table-layout: fixed; margin-top: 10px; }
+    .kompetenz-table tbody th { padding: 5px 10px; text-align: left; font-size: 0.75em; font-weight: 700; color: #000; }
+    .kompetenz-table tbody th.col-gesellschaft { background: #fff4cc; }
+    .kompetenz-table tbody th.col-sprache { background: #cce5ff; }
+    .kompetenz-table tbody th.col-digital { background: #fff; text-align: center; padding: 0 25%; border: none; }
+    .kompetenz-table tbody th.col-digital span { display: block; background: #d4edda; padding: 5px 10px; }
+    .kompetenz-table tbody td { padding: 8px 10px; vertical-align: top; font-size: 0.8em; color: #000; border-right: 2px solid #e9ecef; width: 50%; }
+    .kompetenz-table tbody td:last-child { border-right: none; }
+    .kompetenz-table tbody td.col-gesellschaft { background-color: #fffef5; }
+    .kompetenz-table tbody td.col-sprache { background-color: #f5f9ff; }
+    .kompetenz-table tbody td.col-digital-content { text-align: center; padding: 0 25%; background-color: #fff; }
+    .kompetenz-table tbody td.col-digital-content p { background-color: #f0f8f0; padding: 8px 10px; text-align: center; }
+    .kompetenz-table tbody td.col-digital-content p.white-bg { background-color: #fff !important; }
+    .kompetenz-table tbody tr.spacing-row td { background: transparent !important; border: none !important; padding: 0 !important; height: 20px; }
+    .umsetzung-box { background-color: #fff; border: 1px solid #d0d0d0; padding: 4px 8px; margin-top: 14px; cursor: pointer; user-select: none; }
+    .umsetzung-box .schluessel-header { display: flex; justify-content: space-between; align-items: center; }
+    .umsetzung-box .schluessel-header h4 { font-size: 0.75em; color: #000; font-weight: 700; margin: 0; }
+    .toggle-schluessel { color: #000; transition: transform 0.3s ease; }
+    .toggle-schluessel.rotated { transform: rotate(180deg); }
+    .schluessel-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .schluessel-content.expanded { max-height: 500px; margin-top: 8px; }
+    .schluessel-content p { font-size: 0.8em; color: #000; }
+</style>
+
+<div class="theme-content-inner">
+    <div class="leitidee">
+        <h3>Leitidee</h3>
+        <p>Ich sorge für mein körperliches und psychisches Wohlbefinden. Gesundheitliche und finanzielle Risiken weiss ich einzuschätzen und mich gezielt abzusichern. Gegenüber meinen Mitmenschen verhalte ich mich konstruktiv – online und offline.</p>
+    </div>
+
+    <!-- LEBENSBEZUG 1 -->
+    <div class="lebensbezug">
+        <div class="lebensbezug-header collapsed" onclick="toggleLB(this)">
+            <h3><strong>1. Individueller Lebensbezug:</strong> Mein Körper und meine Psyche sind unterschiedlichen Einflüssen ausgesetzt. Ich wiederum habe Einfluss auf das Wohlbefinden meiner Mitmenschen.</h3>
+        </div>
+        <div class="lebensbezug-content">
+
+            <!-- Kompetenz 1 -->
+            <div class="lerninhalt">
+                <div class="kompetenz-header">
+                    <h4>Kompetenz 1: <span class="normal-weight">Ich reflektiere meinen eigenen Umgang sowie den meines Umfelds mit körperlichen und psychischen Gesundheitsrisiken im Alltag und entwickle daraus konkrete Strategien zur Minimierung.</span></h4>
+                    <div class="schluesselkompetenzen-inline">
+                        <strong>Schlüsselkompetenzen:</strong>
+                        <span class="kompetenz-nummer-link" data-text="Die eigenen Werthaltungen und Überzeugungen erkennen, verstehen, kritisch reflektieren und weiterentwickeln">1.5</span>
+                        <span class="kompetenz-nummer-link" data-text="Unterschiedliche Standpunkte nachvollziehen und das gegenseitige Verständnis fördern">1.7</span>
+                        <span class="kompetenz-nummer-link" data-text="Ihre Lebensphasen planen und mit Unwägbarkeiten umgehen">1.8</span>
+                    </div>
+                </div>
+                <div class="lerninhalt-content">
+                    <div class="table-container">
+                        <div class="table-header" onclick="toggleTbl(this)"><h5>Inhalte</h5><span class="table-toggle">▼</span></div>
+                        <div class="table-content">
+                            <table class="kompetenz-table">
+                                <tbody>
+                                    <tr>
+                                        <th class="col-gesellschaft" style="width:50%;">Gesellschaft</th>
+                                        <th class="col-sprache" style="width:50%;">Sprache und Kommunikation</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-gesellschaft">
+                                            <p><span>2.2. Identität und Sozialisation</span><br><strong>Risiken</strong> einschätzen und Massnahmen zur Verbesserung der körperlichen und psychischen Gesundheit ableiten.</p>
+                                            <p style="background:#fff;padding:8px 10px;margin-top:0;font-size:0.75em;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>-</p>
+                                        </td>
+                                        <td class="col-sprache">
+                                            <p><span>4.3. Rezeption audiovisuell</span><br>Beiträge / Berichte <strong>verstehen</strong> und mit der eigenen Situation in Verbindung bringen.</p>
+                                            <p style="background:#fff;padding:8px 10px;margin-top:0;font-size:0.75em;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>-</p>
+                                        </td>
+                                    </tr>
+                                    <tr><th class="col-digital" colspan="2"><span>Medien und Digitalität</span></th></tr>
+                                    <tr>
+                                        <td class="col-digital-content" colspan="2">
+                                            <p><span>3.6. Ethische &amp; reflektive Haltung</span><br>Verantwortungsvoller <strong>Umgang mit</strong> schützenswerten <strong>Daten</strong> (Gesundheit, Persönlichkeit).</p>
+                                            <p class="white-bg" style="padding:8px 10px;margin-top:0;font-size:0.75em;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>-</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="spacing-row"><td colspan="2"></td></tr>
+                                    <tr>
+                                        <th class="col-gesellschaft" style="width:50%;">Gesellschaft</th>
+                                        <th class="col-sprache" style="width:50%;">Sprache und Kommunikation</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-gesellschaft">
+                                            <p><span>2.2. Identität &amp; Sozialisation</span><br><span>2.3. Kultur</span><br>Eigene und fremde <strong>Verhaltensmuster</strong> wahrnehmen und gezielt darauf reagieren.</p>
+                                            <p style="background:#fff;padding:8px 10px;margin-top:0;font-size:0.75em;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>-</p>
+                                        </td>
+                                        <td class="col-sprache">
+                                            <p><span>4.5. Produktion schriftlich &amp; bildlich</span><br><strong>Emotionen</strong> differenzieren und <strong>in Worte fassen</strong> und darauf reagieren.</p>
+                                            <p style="background:#fff;padding:8px 10px;margin-top:0;font-size:0.75em;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>-</p>
+                                        </td>
+                                    </tr>
+                                    <tr><th class="col-digital" colspan="2"><span>Medien und Digitalität</span></th></tr>
+                                    <tr>
+                                        <td class="col-digital-content" colspan="2">
+                                            <p><span>3.6. Ethische &amp; reflektive Haltung</span><br><strong>Eigenen Umgang</strong> mit digitalen Medien und deren Folgen reflektieren.</p>
+                                            <p class="white-bg" style="padding:8px 10px;margin-top:0;font-size:0.75em;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>-</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="umsetzung-box" onclick="toggleUms(this)">
+                        <div class="schluessel-header"><h4>Umsetzungsbeispiel</h4><span class="toggle-schluessel">▼</span></div>
+                        <div class="schluessel-content"><p>-</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kompetenz 2 -->
+            <div class="lerninhalt">
+                <div class="kompetenz-header">
+                    <h4>Kompetenz 2: <span class="normal-weight">Ich erkenne korrektes, manipulatives und verbotenes Verhalten online sowie offline und reagiere zielführend.</span></h4>
+                    <div class="schluesselkompetenzen-inline">
+                        <strong>Schlüsselkompetenzen:</strong>
+                        <span class="kompetenz-nummer-link" data-text="Die eigenen Werthaltungen und Überzeugungen erkennen, verstehen, kritisch reflektieren und weiterentwickeln">1.5</span>
+                        <span class="kompetenz-nummer-link" data-text="Sich in einem sich ständig verändernden Umfeld zurechtfinden und sich an dieses anpassen">1.10</span>
+                        <span class="kompetenz-nummer-link" data-text="Mit Mehrdeutigkeiten umgehen">1.11</span>
+                        <span class="kompetenz-nummer-link" data-text="An gesellschaftlichen Prozessen partizipieren und Handlungsspielräume nutzen">1.12</span>
+                    </div>
+                </div>
+                <div class="lerninhalt-content">
+                    <div class="table-container">
+                        <div class="table-header" onclick="toggleTbl(this)"><h5>Inhalte</h5><span class="table-toggle">▼</span></div>
+                        <div class="table-content">
+                            <table class="kompetenz-table">
+                                <tbody>
+                                    <tr>
+                                        <th class="col-gesellschaft" style="width:50%;">Gesellschaft</th>
+                                        <th class="col-sprache" style="width:50%;">Sprache und Kommunikation</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-gesellschaft">
+                                            <p><span>2.1. Ethik</span><br><span>2.6. Recht</span><br>Zwischenmenschliches Verhalten online und offline analysieren und <strong>rechtliche Konsequenzen</strong> ableiten (z. B. bei Mobbing, Beleidigung, Übergriffen, …).</p>
+                                            <p style="background:#fff;padding:8px 10px;margin-top:0;font-size:0.75em;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>-</p>
+                                        </td>
+                                        <td class="col-sprache">
+                                            <p><span>4.9. Interaktion und Kollaboration digital</span><br>Regeln für eigene <strong>Onlinebeiträge</strong> festhalten und einhalten.</p>
+                                            <p style="background:#fff;padding:8px 10px;margin-top:0;font-size:0.75em;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>-</p>
+                                        </td>
+                                    </tr>
+                                    <tr><th class="col-digital" colspan="2"><span>Medien und Digitalität</span></th></tr>
+                                    <tr>
+                                        <td class="col-digital-content" colspan="2">
+                                            <p><span>3.2. Informations- &amp; Datenkompetenz</span><br>Mit Onlinetools und Websites Informationen auf <strong>Manipulation und Falschinformation</strong> überprüfen.</p>
+                                            <p class="white-bg" style="padding:8px 10px;margin-top:0;font-size:0.75em;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>Rückwärts-Bildersuche, Analyse Autorschaft, Kontext- und Veröffentlichungsort</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="spacing-row"><td colspan="2"></td></tr>
+                                    <tr>
+                                        <th class="col-gesellschaft" style="width:50%;">Gesellschaft</th>
+                                        <th class="col-sprache" style="width:50%;">Sprache und Kommunikation</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-gesellschaft">
+                                            <p><span>2.5. Politik</span><br><strong>Politische Haltungen</strong> (links – rechts) in Gesundheits- und Gesellschaftsfragen einordnen.</p>
+                                            <p style="background:#fff;padding:8px 10px;margin-top:0;font-size:0.75em;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>Politische Grundkonflikte</p>
+                                        </td>
+                                        <td class="col-sprache">
+                                            <p><span>4.5. Produktion schriftlich &amp; bildlich</span><br>In Texten <strong>das / dass</strong> richtig anwenden (sprachliche Normen).</p>
+                                            <p style="background:#fff;padding:8px 10px;margin-top:0;font-size:0.75em;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>Ersatzprobe</p>
+                                        </td>
+                                    </tr>
+                                    <tr><th class="col-digital" colspan="2"><span>Medien und Digitalität</span></th></tr>
+                                    <tr>
+                                        <td class="col-digital-content" colspan="2">
+                                            <p><span>3.2. Informations- &amp; Datenkompetenz</span><br>Hintergrund und Folgen von <strong>Echokammern / Filterblasen</strong> kennen und darauf reagieren.</p>
+                                            <p class="white-bg" style="padding:8px 10px;margin-top:0;font-size:0.75em;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>-</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="umsetzung-box" onclick="toggleUms(this)">
+                        <div class="schluessel-header"><h4>Umsetzungsbeispiel</h4><span class="toggle-schluessel">▼</span></div>
+                        <div class="schluessel-content"><p>-</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LEBENSBEZUG 2 -->
+    <div class="lebensbezug">
+        <div class="lebensbezug-header collapsed" onclick="toggleLB(this)">
+            <h3><strong>2. Individueller Lebensbezug:</strong> Ich muss vermehrt abwägen, ob ich Risiken und deren Folgen selbst trage oder ob ich mich absichere.</h3>
+        </div>
+        <div class="lebensbezug-content">
+
+            <!-- Kompetenz 1 -->
+            <div class="lerninhalt">
+                <div class="kompetenz-header">
+                    <h4>Kompetenz 1: <span class="normal-weight">Ich nutze meiner Lebenssituation angepasste Versicherungen und kenne deren Leistungen.</span></h4>
+                    <div class="schluesselkompetenzen-inline">
+                        <strong>Schlüsselkompetenzen:</strong>
+                        <span class="kompetenz-nummer-link" data-text="Ihre Lebensphasen planen und mit Unwägbarkeiten umgehen">1.8</span>
+                        <span class="kompetenz-nummer-link" data-text="Vernetzt und systemisch denken, um sozial, ökologisch und ökonomisch nachhaltig zu handeln">1.9</span>
+                    </div>
+                </div>
+                <div class="lerninhalt-content">
+                    <div class="table-container">
+                        <div class="table-header" onclick="toggleTbl(this)"><h5>Inhalte</h5><span class="table-toggle">▼</span></div>
+                        <div class="table-content">
+                            <table class="kompetenz-table">
+                                <tbody>
+                                    <tr>
+                                        <th class="col-gesellschaft" style="width:50%;">Gesellschaft</th>
+                                        <th class="col-sprache" style="width:50%;">Sprache und Kommunikation</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-gesellschaft">
+                                            <p><span>2.2. Identität und Sozialisation</span><br><span>2.6. Recht</span><br><strong>Versicherungsarten</strong> (Personen-, Sach-, Haftpflichtversicherung), deren Leistung und deren <strong>Funktionsweise</strong> (Solidaritätsprinzip) unterscheiden und beschreiben.</p>
+                                            <p style="background:#fff;padding:8px 10px;margin-top:0;font-size:0.75em;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>-</p>
+                                        </td>
+                                        <td class="col-sprache">
+                                            <p><span>4.2. Rezeption schriftlich &amp; bildlich</span><br><span>4.5. Produktion schriftlich &amp; bildlich</span><br>Inhalte aus einem Sachtext <strong>erfassen, vergleichen und wiedergeben</strong> (z. B. zu Verträgen).</p>
+                                            <p style="background:#fff;padding:8px 10px;margin-top:0;font-size:0.75em;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>-</p>
+                                        </td>
+                                    </tr>
+                                    <tr><th class="col-digital" colspan="2"><span>Medien und Digitalität</span></th></tr>
+                                    <tr>
+                                        <td class="col-digital-content" colspan="2">
+                                            <p><span>3.3. Inhaltserstellung</span><br>Analog oder digital eine übersichtliche Darstellung mit <strong>verknüpften Informationen</strong> (z. B. zu Versicherungen und Versicherungsarten) erstellen.</p>
+                                            <p class="white-bg" style="padding:8px 10px;margin-top:0;font-size:0.75em;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>-</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="spacing-row"><td colspan="2"></td></tr>
+                                    <tr>
+                                        <th class="col-gesellschaft" style="width:50%;">Gesellschaft</th>
+                                        <th class="col-sprache" style="width:50%;">Sprache und Kommunikation</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-gesellschaft">
+                                            <p><span>2.8. Wirtschaft</span><br>Eigene Kosten aufgrund unterschiedlicher Leistungen der <strong>Krankenversicherung</strong> berechnen und ein geeignetes Modell finden.</p>
+                                            <p style="background:#fff;padding:8px 10px;margin-top:0;font-size:0.75em;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>-</p>
+                                        </td>
+                                        <td class="col-sprache">
+                                            <p><span>4.2. Rezeption schriftlich &amp; bildlich</span><br><span>4.4. Produktion mündlich</span><br>Aussagen aus <strong>Grafiken</strong> entnehmen und Gründe dafür ableiten.</p>
+                                            <p style="background:#fff;padding:8px 10px;margin-top:0;font-size:0.75em;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>OVI-Modell</p>
+                                        </td>
+                                    </tr>
+                                    <tr><th class="col-digital" colspan="2"><span>Medien und Digitalität</span></th></tr>
+                                    <tr>
+                                        <td class="col-digital-content" colspan="2">
+                                            <p><span>3.4. Problemlösung</span><br>Mit einem <strong>Onlinetool</strong> die eigenen Versicherungskosten berechnen.</p>
+                                            <p class="white-bg" style="padding:8px 10px;margin-top:0;font-size:0.75em;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>Priminfo</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="umsetzung-box" onclick="toggleUms(this)">
+                        <div class="schluessel-header"><h4>Umsetzungsbeispiel</h4><span class="toggle-schluessel">▼</span></div>
+                        <div class="schluessel-content"><p>-</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FREIBEREICH -->
+    <div class="freibereich-section">
+        <div class="freibereich-header collapsed" onclick="toggleFB(this)">
+            <h3>Freibereich (20%)</h3>
+        </div>
+        <div class="freibereich-content">
+            <h4 style="font-size:0.9em;margin-bottom:15px;font-weight:700;">Inhalte / Lernziele</h4>
+            <table style="width:100%;border-collapse:collapse;">
+                <tbody>
+                    <tr><th style="background:#fff4cc;padding:5px 10px;text-align:left;font-size:0.75em;font-weight:700;border:1px solid #000;">Gesellschaft</th></tr>
+                    <tr><td style="background:#fffef5;padding:8px 10px;border:1px solid #000;font-size:0.8em;">
+                        <p style="margin-bottom:0;"><em>…</em></p>
+                    </td></tr>
+                    <tr><th style="background:#cce5ff;padding:5px 10px;text-align:left;font-size:0.75em;font-weight:700;border:1px solid #000;">Sprache und Kommunikation</th></tr>
+                    <tr><td style="background:#f5f9ff;padding:8px 10px;border:1px solid #000;font-size:0.8em;">
+                        <p style="margin-bottom:0;"><em>…</em></p>
+                    </td></tr>
+                    <tr><th style="background:#d4edda;padding:5px 10px;text-align:left;font-size:0.75em;font-weight:700;border:1px solid #000;">Medien und Digitalität</th></tr>
+                    <tr><td style="background:#f0f8f0;padding:8px 10px;border:1px solid #000;font-size:0.8em;">
+                        <p style="margin-bottom:0;"><em>…</em></p>
+                    </td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+function toggleLB(header) { const c = header.nextElementSibling; c.classList.toggle('show'); header.classList.toggle('collapsed'); }
+function toggleFB(header) { const c = header.nextElementSibling; c.classList.toggle('show'); header.classList.toggle('collapsed'); }
+function toggleTbl(header) { const c = header.nextElementSibling; const i = header.querySelector('.table-toggle'); c.classList.toggle('expanded'); i.classList.toggle('rotated'); }
+function toggleUms(box) { const c = box.querySelector('.schluessel-content'); const i = box.querySelector('.toggle-schluessel'); c.classList.toggle('expanded'); i.classList.toggle('rotated'); }
+</script>
