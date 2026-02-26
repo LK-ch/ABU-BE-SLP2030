@@ -105,6 +105,11 @@
     display: none;
   }
 
+  /* ── Zirkuläre Sprachinhalte (unsichtbar, für Zirkularitätsseite) ── */
+  .zirk-tag { display: none; }
+  /* ── Sprachnormen (unsichtbar, für Zirkularitätsseite) ── */
+  .norm-tag { display: none; }
+
   /* ── Gesellschafts-Tag ── */
   .ges-tag {
     font-weight: 700;
@@ -192,7 +197,7 @@
                       <p>
                         <span class="sprach-tag">4.2. Expositorisch (erklärend)</span><br>
                         <span class="form-label">Produktiv schriftlich &amp; bildlich</span><span class="form-code" data-form="Ps"></span>, <span class="form-label">Interaktion &amp; Kollaboration schriftlich</span><span class="form-code" data-form="Ik_s"></span><br>
-                        Mit formellen Formulierungs- und Orthografiehilfen adressat*innengerecht <strong>schriftlich kommunizieren</strong> mit Ansprechpersonen aus den drei Lernorten.
+                        <span class="zirk-tag" data-zirk="si-schriftlich-kom"></span><span class="norm-tag" data-norm="norm-gross-klein"></span><span class="norm-tag" data-norm="norm-formell"></span>Mit formellen Formulierungs- und Orthografiehilfen adressat*innengerecht <strong>schriftlich kommunizieren</strong> mit Ansprechpersonen aus den drei Lernorten.
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>Höflichkeit, «Kerntext eines Geschäftsbriefes» (EHB), duden.de</p>
                     </td>
@@ -228,7 +233,7 @@
                         <br>
                         <span class="sprach-tag">4.1. Deskriptiv (beschreibend)</span><br>
                         <span class="form-label">Produktiv multimedial</span><span class="form-code" data-form="Pmm"></span>, <span class="form-label">Produktiv mündlich</span><span class="form-code" data-form="Pm"></span><br>
-                        Ein <strong>Interview</strong> vorbereiten, durchführen, auswerten und präsentieren (z.&nbsp;B. Vorstellung des Lehrbetriebs mit Einbindung eines Interviews und eigenen Erfahrungen).
+                        <span class="zirk-tag" data-zirk="si-interview"></span><span class="zirk-tag" data-zirk="si-praesentieren"></span>Ein <strong>Interview</strong> vorbereiten, durchführen, auswerten und präsentieren (z.&nbsp;B. Vorstellung des Lehrbetriebs mit Einbindung eines Interviews und eigenen Erfahrungen).
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Beschreiben mit OPA» (EHB), «Checkliste: In 20 Schritten zum Interview» (EHB)</p>
                     </td>
@@ -285,7 +290,7 @@
                       <p>
                         <span class="sprach-tag">4.5. Reflexiv (reflektierend)</span><br>
                         <span class="form-label">Produktiv schriftlich &amp; bildlich</span><span class="form-code" data-form="Ps"></span><br>
-                        Durch eine <strong>Sachstruktur</strong> (z.&nbsp;B. Mindmap, Netzwerk) Lernstrategien visualisieren und reflektieren.
+                        <span class="zirk-tag" data-zirk="si-lernstrategien"></span>Durch eine <strong>Sachstruktur</strong> (z.&nbsp;B. Mindmap, Netzwerk) Lernstrategien visualisieren und reflektieren.
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>Sachstruktur</p>
                     </td>
@@ -317,7 +322,7 @@
                       <p>
                         <span class="sprach-tag">4.3. Argumentativ (überzeugend)</span><br>
                         <span class="form-label">Interaktion &amp; Kollaboration mündlich</span><span class="form-code" data-form="Ik_m"></span><br>
-                        Situationsgerechte und respektvolle <strong>Kommunikationsformen</strong> anwenden (verbal und nonverbal) um <strong>Rollenkonflikte</strong> konstruktiv zu lösen.
+                        <span class="zirk-tag" data-zirk="si-kommunikation"></span>Situationsgerechte und respektvolle <strong>Kommunikationsformen</strong> anwenden (verbal und nonverbal) um <strong>Rollenkonflikte</strong> konstruktiv zu lösen.
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Kommunikationsfreundliche Gesprächstechniken» (EHB), «Redemittel für Konflikte» (EHB)</p>
                     </td>
@@ -384,7 +389,7 @@
                       <p>
                         <span class="sprach-tag">4.2. Expositorisch (erklärend)</span><br>
                         <span class="form-label">Interaktion &amp; Kollaboration mündlich</span><span class="form-code" data-form="Ik_m"></span><br>
-                        Informationen aus <strong>Verträgen</strong>, Richtlinien der Betriebe etc. erfassen.
+                        <span class="zirk-tag" data-zirk="si-inhalte-erfassen"></span>Informationen aus <strong>Verträgen</strong>, Richtlinien der Betriebe etc. erfassen.
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>–</p>
                     </td>
@@ -416,7 +421,7 @@
                       <p>
                         <span class="sprach-tag">4.1. Deskriptiv (beschreibend)</span><br>
                         <span class="form-label">Produktiv mündlich</span><span class="form-code" data-form="Pm"></span>, <span class="form-label">Produktiv schriftlich &amp; bildlich</span><span class="form-code" data-form="Ps"></span><br>
-                        <strong>Lösungsansätze</strong> in herausfordernden Situationen beschreiben.
+                        <span class="zirk-tag" data-zirk="si-loesungsansaetze"></span><strong>Lösungsansätze</strong> in herausfordernden Situationen beschreiben.
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Beschreiben mit OPA» (EHB)</p>
                     </td>
@@ -515,9 +520,6 @@
 
 </div><!-- /theme-content-inner -->
 
-<!-- ══════════════════════════════════════════
-     LEGENDE (Sprachttypen + Formkürzel)
-══════════════════════════════════════════ -->
 <script>
 /* ── Toggle helpers ── */
 function toggleLB(header) {
