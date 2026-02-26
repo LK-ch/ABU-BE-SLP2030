@@ -78,6 +78,10 @@
   .schluessel-content { max-height: 0; overflow: hidden; transition: max-height .3s; }
   .schluessel-content.expanded { max-height: 500px; margin-top: 8px; }
   .schluessel-content p { font-size: 0.8em; color: #000; }
+
+  /* ── Zirkuläre Sprachinhalte (unsichtbar, für Zirkularitätsseite) ── */
+  .norm-tag { display: none; }
+
 </style>
 
 <div class="theme-content-inner">
@@ -128,7 +132,7 @@
                       <p>
                         <span class="sprach-tag">4.2. Expositorisch (erklärend)</span><br>
                         <span class="form-label">Rezeptiv audiovisuell</span><span class="form-code" data-form="Ra"></span><br>
-                        Informationen aus Beiträgen / Berichten <strong>erfassen</strong> und mit der eigenen Situation in Verbindung bringen.
+                        <span class="zirk-tag" data-zirk="si-inhalte-erfassen"></span>Informationen aus Beiträgen / Berichten <strong>erfassen</strong> und mit der eigenen Situation in Verbindung bringen.
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>–</p>
                     </td>
@@ -161,7 +165,8 @@
                       <p>
                         <span class="sprach-tag">4.3. Argumentativ (überzeugend)</span><br>
                         <span class="form-label">Produktiv schriftlich &amp; bildlich</span><span class="form-code" data-form="Ps"></span><br>
-                        Position beziehen zu ausgewählten risikohaften Verhalten mit korrekter Anwendung von <strong>das/dass</strong>.
+                        <span class="zirk-tag" data-zirk="si-position"></span><span class="norm-tag" data-norm="norm-das-dass"></span>Position beziehen zu ausgewählten risikohaften Verhalten mit korrekter Anwendung von <strong>das/dass</strong>.
+
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Ersatzprobe für das Erkennen des Relativpronomens «das»» (EHB)</p>
                     </td>
@@ -219,7 +224,8 @@
                       <p>
                         <span class="sprach-tag">4.4. Diskursiv (interagierend)</span><br>
                         <span class="form-label">Interaktion &amp; Kollaboration mündlich</span><span class="form-code" data-form="Ik_m"></span><br>
-                        In heiklen Situationen wertschätzend und lösungsorientiert <strong>kommunizieren</strong>.
+                        <span class="zirk-tag" data-zirk="si-loesungsorient"></span>In heiklen Situationen wertschätzend und lösungsorientiert <strong>kommunizieren</strong>.
+                        
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>–</p>
                     </td>
@@ -252,7 +258,8 @@
                         <span class="sprach-tag">4.5. Reflexiv (reflektierend)</span><br>
                         <span class="form-label">Produktiv mündlich</span><span class="form-code" data-form="Pm"></span>,
                         <span class="form-label">Produktiv schriftlich &amp; bildlich</span><span class="form-code" data-form="Ps"></span><br>
-                        Eigenes und fremdes Verhalten in digitalen Räumen <strong>reflektieren</strong>.
+                        <span class="zirk-tag" data-zirk="si-verhalten"></span>Eigenes und fremdes Verhalten in digitalen Räumen <strong>reflektieren</strong>.
+                        
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>–</p>
                     </td>
@@ -321,7 +328,8 @@
                       <p>
                         <span class="sprach-tag">4.2. Expositorisch (erklärend)</span><br>
                         <span class="form-label">Rezeptiv schriftlich &amp; bildlich</span><span class="form-code" data-form="Rs"></span><br>
-                        Inhalte aus einem Sachtext <strong>erfassen, vergleichen und wiedergeben</strong> (z. B. zu Verträgen).
+                        Inhalte aus einem Sachtext <strong>erfassen, vergleichen und wiedergeben</strong>
+                         (z. B. zu Verträgen).
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Lesephasen und ihre Funktion» (EHB), «Redemittel für Vergleiche» (EHB)</p>
                     </td>
@@ -355,7 +363,8 @@
                         <span class="sprach-tag">4.1. Deskriptiv (beschreibend)</span><br>
                         <span class="form-label">Produktiv schriftlich &amp; bildlich</span><span class="form-code" data-form="Ps"></span>,
                         <span class="form-label">Interaktion &amp; Kollaboration schriftlich</span><span class="form-code" data-form="Ik_s"></span><br>
-                        Adressatengerechte <strong>Schadensmeldung</strong> unter Berücksichtigung sprachlicher Normen (Gross-/Kleinschreibung) verfassen.
+                        <span class="zirk-tag" data-zirk="si-geschaeftsbrief"></span><span class="norm-tag" data-norm="norm-gross-klein"></span><span class="norm-tag" data-norm="norm-formell"></span>Adressatengerechte <strong>Schadensmeldung</strong> unter Berücksichtigung sprachlicher Normen (Gross-/Kleinschreibung) verfassen.
+
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>Höflichkeit, «Kerntext eines Geschäftsbriefes» (EHB), duden.de, Grossschreibung</p>
                     </td>
@@ -388,7 +397,8 @@
                         <span class="sprach-tag">4.2. Expositorisch (erklärend)</span><br>
                         <span class="form-label">Rezeptiv schriftlich &amp; bildlich</span><span class="form-code" data-form="Rs"></span>,
                         <span class="form-label">Produktiv mündlich</span><span class="form-code" data-form="Pm"></span><br>
-                        Aussagen aus <strong>Grafiken</strong> entnehmen und Gründe dafür ableiten.
+                        <span class="zirk-tag" data-zirk="si-grafiken"></span>Aussagen aus <strong>Grafiken</strong> entnehmen und Gründe dafür ableiten.
+                        
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Grafiken lesen mit OVI» (EHB), «Textelemente von Grafiken und ihre Funktionen» (EHB)</p>
                     </td>
