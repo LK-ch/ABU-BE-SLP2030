@@ -78,6 +78,10 @@
   .schluessel-content { max-height: 0; overflow: hidden; transition: max-height .3s; }
   .schluessel-content.expanded { max-height: 500px; margin-top: 8px; }
   .schluessel-content p { font-size: 0.8em; color: #000; }
+
+  /* ── Zirkuläre Sprachinhalte (unsichtbar, für Zirkularitätsseite) ── */
+  .norm-tag { display: none; }
+
 </style>
 
 <div class="theme-content-inner">
@@ -127,7 +131,8 @@
                       <p>
                         <span class="sprach-tag">4.1. Deskriptiv (beschreibend)</span><br>
                         <span class="form-label">Rezeptiv schriftlich &amp; bildlich</span><span class="form-code" data-form="Rs"></span><br>
-                        Mit passenden Strategien wesentliche <strong>Informationen</strong> aus einem offiziellen Dokument herauslesen.
+                        <span class="zirk-tag" data-zirk="si-infos-vertrag"></span>Mit passenden Strategien wesentliche <strong>Informationen</strong> aus einem offiziellen Dokument herauslesen.
+                        
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>–</p>
                     </td>
@@ -165,7 +170,8 @@
                       <p>
                         <span class="sprach-tag">4.1. Deskriptiv (beschreibend)</span><br>
                         <span class="form-label">Rezeptiv audiovisuell</span><span class="form-code" data-form="Ra"></span><br>
-                        Zentrale Aussagen zu Schulden und deren Vermeidung aus Beiträgen <strong>erfassen</strong>.
+                        <span class="zirk-tag" data-zirk="si-aussagen"></span>Zentrale Aussagen zu Schulden und deren Vermeidung aus Beiträgen <strong>erfassen</strong>.
+                        
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>–</p>
                     </td>
@@ -218,7 +224,8 @@
                       <p>
                         <span class="sprach-tag">4.1. Deskriptiv (beschreibend)</span><br>
                         <span class="form-label">Produktiv mündlich</span><span class="form-code" data-form="Pm"></span><br>
-                        <strong>Rechercheergebnisse</strong> an Gleichaltrige nachvollziehbar vermitteln.
+                        <span class="zirk-tag" data-zirk="si-recherche"></span><strong>Rechercheergebnisse</strong> an Gleichaltrige nachvollziehbar vermitteln.
+                        
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>–</p>
                     </td>
@@ -274,7 +281,8 @@
                         <span class="sprach-tag">4.2. Expositorisch (erklärend)</span><br>
                         <span class="form-label">Rezeptiv schriftlich &amp; bildlich</span><span class="form-code" data-form="Rs"></span>,
                         <span class="form-label">Rezeptiv audiovisuell</span><span class="form-code" data-form="Ra"></span><br>
-                        Inhalte aus digitalen und analogen Sach- und Fachtexten <strong>erfassen</strong> (Medienbeitrag, Lehrmittel, Lernunterlagen etc.).
+                        Inhalte aus digitalen und analogen Sach- und Fachtexten <strong>erfassen</strong>
+                         (Medienbeitrag, Lehrmittel, Lernunterlagen etc.).
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Lesen und zusammenfassen mit TIK» (EHB)</p>
                     </td>
@@ -303,7 +311,8 @@
                       <p>
                         <span class="sprach-tag">4.3. Argumentativ (überzeugend)</span><br>
                         <span class="form-label">Produktiv schriftlich &amp; bildlich</span><span class="form-code" data-form="Ps"></span><br>
-                        Eltern und andere Geldgeber*innen faktenbezogen <strong>überzeugen</strong> für eine Anschaffung.
+                        <span class="zirk-tag" data-zirk="si-ueberzeugen"></span>Eltern und andere Geldgeber*innen faktenbezogen <strong>überzeugen</strong> für eine Anschaffung.
+                        
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Argumentativer 3-Schritt» (EHB)</p>
                     </td>
@@ -371,7 +380,8 @@
                         <span class="sprach-tag">4.5. Reflexiv (reflektierend)</span><br>
                         <span class="form-label">Produktiv mündlich</span><span class="form-code" data-form="Pm"></span>,
                         <span class="form-label">Produktiv schriftlich &amp; bildlich</span><span class="form-code" data-form="Ps"></span><br>
-                        Persönliches <strong>Kaufverhalten reflektieren</strong>.
+                        <span class="zirk-tag" data-zirk="si-verhalten"></span>Persönliches <strong>Kaufverhalten reflektieren</strong>.
+                        
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>–</p>
                     </td>
@@ -400,7 +410,8 @@
                       <p>
                         <span class="sprach-tag">4.5. Reflexiv (reflektierend)</span><br>
                         <span class="form-label">Produktiv mündlich</span><span class="form-code" data-form="Pm"></span><br>
-                        Sprachliche Mittel in Werbung erkennen und deren Einfluss auf Kaufentscheidungen <strong>reflektieren</strong>.
+                        <span class="zirk-tag" data-zirk="si-einfluss-sprache"></span>Sprachliche Mittel in Werbung erkennen und deren Einfluss auf Kaufentscheidungen <strong>reflektieren</strong>.
+                        
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>–</p>
                     </td>
@@ -432,7 +443,8 @@
                       <p>
                         <span class="sprach-tag">4.1. Deskriptiv (beschreibend)</span><br>
                         <span class="form-label">Produktiv multimedial</span><span class="form-code" data-form="Pmm"></span><br>
-                        Einen Konsumentscheid aufgrund vorgegebener Kriterien <strong>präsentieren</strong>.
+                        <span class="zirk-tag" data-zirk="si-praesentieren"></span>Einen Konsumentscheid aufgrund vorgegebener Kriterien <strong>präsentieren</strong>.
+                        
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«In 10 Schritten zur Präsentation» (EHB)</p>
                     </td>
@@ -509,7 +521,8 @@
                       <p>
                         <span class="sprach-tag">4.2. Expositorisch (erklärend)</span><br>
                         <span class="form-label">Produktiv schriftlich &amp; bildlich</span><span class="form-code" data-form="Ps"></span><br>
-                        Anspruchsvolle Zusammenhänge in <strong>«Wenn-dann-Aussagen»</strong> umformulieren.
+                        <span class="zirk-tag" data-zirk="si-zusammenhaenge"></span>Anspruchsvolle Zusammenhänge in <strong>«Wenn-dann-Aussagen»</strong> umformulieren.
+                        
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Rechtliche Regeln in Wenn-dann-Aussagen umformulieren» (EHB)</p>
                     </td>
@@ -538,7 +551,8 @@
                       <p>
                         <span class="sprach-tag">4.2. Expositorisch (erklärend)</span><br>
                         <span class="form-label">Rezeptiv schriftlich &amp; bildlich</span><span class="form-code" data-form="Rs"></span><br>
-                        <strong>Strategien beim Lesen</strong> von Texten mit typischem Fachwortschatz (z.B. allgemeinen Geschäftsbedingungen) anwenden.
+                        <strong>Strategien beim Lesen</strong> von Texten mit typischem Fachwortschatz
+                         (z.B. allgemeinen Geschäftsbedingungen) anwenden.
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Lesephasen und ihre Funktion» (EHB)</p>
                     </td>
@@ -549,7 +563,8 @@
                       <p>
                         <span class="sprach-tag">4.1. Deskriptiv (beschreibend)</span><br>
                         <span class="form-label">Produktiv schriftlich &amp; bildlich</span><span class="form-code" data-form="Ps"></span><br>
-                        <strong>Textvorlage</strong> für die eigene Situation (Kulanz, Irrtum, Mangel) <strong>anpassen</strong>.
+                        <span class="zirk-tag" data-zirk="si-geschaeftsbrief"></span><span class="norm-tag" data-norm="norm-gross-klein"></span><span class="norm-tag" data-norm="norm-formell"></span><strong>Textvorlage</strong> für die eigene Situation (Kulanz, Irrtum, Mangel) <strong>anpassen</strong>.
+
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>–</p>
                     </td>
