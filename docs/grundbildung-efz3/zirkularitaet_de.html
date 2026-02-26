@@ -288,14 +288,8 @@ const SI_THEME_MAP = {
   'si-formell':         [1,2,3]
 };
 
-// Build reverse: theme → set of sprach-inhalt IDs
-const THEME_SI = {};
-for (const [siId, themes] of Object.entries(SI_THEME_MAP)) {
-  themes.forEach(t => {
-    if (!THEME_SI[t]) THEME_SI[t] = new Set();
-    THEME_SI[t].add(siId);
-  });
-}
+// THEME_SI is no longer needed - sprachInhalte are now parsed dynamically from theme HTML files
+// via .zirk-spr[data-zirk-spr] and .norm-tag[data-norm] hidden spans
 
 function aid(nr) {
   const p = nr.split('.')[0];
@@ -354,8 +348,16 @@ function parseThemaHTML(html, themeNr) {
   doc.querySelectorAll('.freibereich-content .dig-tag').forEach(s=>{const m=s.textContent.match(/^(3\.\d+)/);if(m)fb.digital.add(m[1]);});
   doc.querySelectorAll('.freibereich-content .sprach-tag').forEach(s=>{const m=s.textContent.match(/^(4\.\d+)/);if(m)fb.sprache.add(m[1]);});
 
-  // Get Sprach-Inhalte for this theme from static mapping
-  const siIds = THEME_SI[themeNr] || new Set();
+  // Dynamic: extract zirk-tag and norm-tag from hidden spans in theme HTML
+  const siIds = new Set();
+  doc.querySelectorAll('.zirk-tag[data-zirk]').forEach(el => {
+    siIds.add(el.getAttribute('data-zirk'));
+  });
+  doc.querySelectorAll('.norm-tag[data-norm]').forEach(el => {
+    // Norm IDs are stored as "norm-gross-klein" → map to filter ID "si-gross-klein"
+    const normId = el.getAttribute('data-norm');
+    if (normId) siIds.add(normId.replace('norm-', 'si-'));
+  });
 
   return {
     schluessel:[...skSet].sort(sortNr),
@@ -369,9 +371,14 @@ function parseThemaHTML(html, themeNr) {
    RENDERING
    ══════════════════════════════════════════ */
 
-// All Sprach-Inhalt definitions flat
+// All Sprach-Inhalt definitions flat (including norm IDs with and without si- prefix)
 const SI_ALL = {};
 Object.values(SPRACH_INHALTE).forEach(arr => arr.forEach(si => { SI_ALL[si.id] = si.label; }));
+// Also add lookup without si- prefix for norm tags parsed from HTML
+// e.g. "gross-klein" → "Gross-/Kleinschreibung"
+Object.values(SPRACH_INHALTE).forEach(arr => arr.forEach(si => {
+  if (si.id.startsWith('si-')) SI_ALL[si.id.replace('si-','')] = si.label;
+}));
 
 function renderTimeline() {
   const c = document.getElementById('timeline-container');
@@ -475,7 +482,10 @@ function createCard(theme, data) {
     item.appendChild(label);
     const kd=document.createElement('div');kd.className='kompetenz-detail';
     data.sprachInhalte.sort().forEach(siId=>{
-      kd.appendChild(mkBadge(SI_ALL[siId]||siId,'badge-sprach-inhalt','sprach-inhalt',siId,SI_ALL[siId]||siId));
+      // Normalize: ensure si- prefix for filter matching
+      const normalId = siId.startsWith('si-') ? siId : 'si-' + siId;
+      const label = SI_ALL[siId] || SI_ALL[normalId] || siId;
+      kd.appendChild(mkBadge(label,'badge-sprach-inhalt','sprach-inhalt',normalId,label));
     });
     item.appendChild(kd);card.appendChild(item);
   }
