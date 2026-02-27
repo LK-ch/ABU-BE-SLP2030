@@ -565,20 +565,6 @@ function createCard(theme, data) {
     item.appendChild(kd);card.appendChild(item);
   });
 
-  const fb=data.freibereich;
-  const fbAll=[...fb.gesellschaft,...fb.digital,...fb.sprache];
-  if(fbAll.length){
-    const item=document.createElement('div');item.className='lebensbezug-item';
-    const label=document.createElement('span');label.className='lebensbezug-label';label.textContent='Freibereich';label.style.position='relative';
-    const tt=document.createElement('div');tt.className='tooltip';tt.textContent='Zusätzliche Themen und Vertiefungen (20%)';label.appendChild(tt);
-    item.appendChild(label);
-    const kd=document.createElement('div');kd.className='kompetenz-detail';
-    fb.gesellschaft.sort(sortNr).forEach(nr=>kd.appendChild(mkBadge(nr,'badge-gesellschaft','gesellschaft',aid(nr),GES[nr]||nr)));
-    fb.digital.sort(sortNr).forEach(nr=>kd.appendChild(mkBadge(nr,'badge-digital','digital',aid(nr),DIG[nr]||nr)));
-    fb.sprache.sort(sortNr).forEach(nr=>kd.appendChild(mkBadge(nr,'badge-sprache','sprache',aid(nr),SPR[nr]||nr)));
-    item.appendChild(kd);card.appendChild(item);
-  }
-
   if(data.sprachInhalte && data.sprachInhalte.length){
     const item=document.createElement('div');item.className='lebensbezug-item';
     const label=document.createElement('span');label.className='lebensbezug-label';label.textContent='Sprachinhalte (zirkulär)';label.style.position='relative';
