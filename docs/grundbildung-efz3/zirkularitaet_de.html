@@ -12,14 +12,27 @@
 body{font-family:'Roboto',-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif;line-height:1.6;color:#000;background:#fff;font-size:15px}
 
 /* ── Header ── */
-header{background:#fff;padding:10px 20px}
-.header-container{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
-.logo-section img{height:85px;width:auto}
-.language-switch{font-size:.95em;display:inline-flex;align-items:center;gap:8px}
-.language-switch .current-lang{font-weight:500;border-bottom:2px solid #dc291e;padding-bottom:2px}
-.language-switch .lang-link{color:#000;text-decoration:none;cursor:pointer;transition:color .2s}
-.language-switch .lang-link:hover{color:#666}
-.separator-strip{background:#f9f3e8;height:30px;width:100%}
+header{background:#fff;border-bottom:1px solid #e0e0e0;padding:12px 24px 0 24px}
+.header-top{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start}
+.logo-section{display:flex;align-items:center;gap:12px;padding-bottom:8px}
+.logo-section img{height:60px;width:auto}
+.app-title{font-size:1em;font-weight:400;color:#000;padding-bottom:12px}
+.service-nav{display:flex;align-items:center;gap:20px;padding-top:4px}
+.service-nav a{font-size:.85em;color:#000;text-decoration:none}
+.service-nav a:hover{text-decoration:underline}
+.language-selector{display:flex;align-items:center;gap:6px;font-size:.85em}
+.language-selector span{color:#666}
+.language-selector a{color:#000;text-decoration:none}
+.language-selector a.active{font-weight:700;border-bottom:2px solid #dc291e;padding-bottom:1px}
+.language-selector a:hover{text-decoration:underline}
+
+/* ── Footer ── */
+footer{background:#fff;border-top:1px solid #e0e0e0;padding:14px 24px;margin-top:40px}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-copyright{font-size:.82em;color:#333}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:.82em;font-weight:700;color:#000;text-decoration:none}
+.footer-links a:hover{text-decoration:underline}
 
 /* ── Container ── */
 .container{max-width:1200px;margin:30px auto 0;padding:20px;background:#fff}
@@ -46,9 +59,12 @@ h1{color:#000;font-size:2.2em;margin-bottom:10px;font-weight:700;line-height:1.3
 /* ── Section title ── */
 .section-title{font-size:1.8em;font-weight:700;color:#dc291e;margin:40px 0 20px;padding-bottom:10px;border-bottom:2px solid #dc291e;text-align:center}
 
-/* ── Main filter buttons ── */
-.main-filter-container{display:flex;justify-content:center;gap:12px;margin:20px 0 25px;flex-wrap:wrap}
-.main-filter-btn{background:#fff;border:2px solid #ddd;padding:10px 22px;border-radius:4px;cursor:pointer;font-size:1em;font-weight:500;transition:all .2s;color:#333}
+/* ── Main filter area ── */
+.filter-area{margin:20px 0 25px;}
+.main-filter-container{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:0}
+
+/* Main filter buttons */
+.main-filter-btn{background:#fff;border:2px solid #ddd;padding:10px 22px;border-radius:4px;cursor:pointer;font-size:1em;font-weight:500;transition:all .2s;color:#333;display:inline-flex;align-items:center;gap:6px}
 .main-filter-btn:hover{transform:translateY(-1px);box-shadow:0 2px 8px rgba(0,0,0,.12)}
 .main-filter-btn.active{box-shadow:0 2px 10px rgba(0,0,0,.15)}
 .mfb-schluessel{border-color:#dc291e;color:#dc291e}.mfb-schluessel.active{background:#dc291e;color:#fff}
@@ -57,8 +73,35 @@ h1{color:#000;font-size:2.2em;margin-bottom:10px;font-weight:700;line-height:1.3
 .mfb-sprache{border-color:#3385d6;color:#3385d6}.mfb-sprache.active{background:#3385d6;color:#fff}
 .mfb-sprach-inhalt{border-color:#7b68c4;color:#7b68c4}.mfb-sprach-inhalt.active{background:#7b68c4;color:#fff}
 
-.reset-btn{background:#dc291e;color:#fff;border:none;padding:.7rem 1.4rem;border-radius:4px;cursor:pointer;font-size:1rem;font-weight:500;transition:all .2s;margin-bottom:20px}
-.reset-btn:hover{background:#a00d24;transform:translateY(-1px)}
+/* Arrow indicator on buttons */
+.btn-arrow{font-size:.7em;transition:transform .2s;display:inline-block}
+.main-filter-btn.open .btn-arrow{transform:rotate(180deg)}
+
+/* ── Dropdown panel ── */
+.filter-dropdown{display:none;background:#fafafa;border:1px solid #e0e0e0;border-radius:6px;padding:16px 20px;margin-top:10px;animation:fadeIn .15s ease}
+.filter-dropdown.visible{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+
+.dropdown-inner{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start}
+
+/* Sprach-Inhalte grouped layout */
+.si-group{width:100%;display:flex;flex-direction:column;gap:6px}
+.si-group-header{font-size:.8em;font-weight:700;color:#3385d6;padding:4px 0 4px;border-bottom:1px solid #ddd;margin-top:8px}
+.si-group-header:first-child{margin-top:0}
+.si-group-row{display:flex;flex-wrap:wrap;gap:6px}
+
+/* Norm header */
+.si-norm-header{color:#c44500 !important}
+
+/* ── Sub-filter kacheln (inline chips) ── */
+.chip{background:#fff;border:1px solid #ddd;padding:6px 14px;border-radius:20px;cursor:pointer;font-size:.85em;font-weight:500;transition:all .15s;white-space:nowrap;color:#444}
+.chip:hover{transform:translateY(-1px);box-shadow:0 2px 5px rgba(0,0,0,.1)}
+.chip.active{box-shadow:0 1px 5px rgba(0,0,0,.2)}
+.chip-schluessel.active{background:#dc291e;color:#fff;border-color:#dc291e}
+.chip-gesellschaft.active{background:#ffd966;color:#333;border-color:#d4a500}
+.chip-digital.active{background:#4db380;color:#fff;border-color:#4db380}
+.chip-sprache.active{background:#3385d6;color:#fff;border-color:#3385d6}
+.chip-sprach-inhalt.active{background:#7b68c4;color:#fff;border-color:#7b68c4}
 
 /* ── Timeline ── */
 .timeline-grid{display:flex;gap:16px;margin-top:25px;align-items:flex-start}
@@ -95,44 +138,33 @@ h1{color:#000;font-size:2.2em;margin-bottom:10px;font-weight:700;line-height:1.3
 .tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:7px solid transparent;border-top-color:rgba(0,0,0,.9)}
 .kompetenz-badge:hover .tooltip,.schluesselkompetenz-badge:hover .tooltip,.lebensbezug-label:hover .tooltip{opacity:1}
 
-/* ── Filter sections ── */
-.filter-section{margin-bottom:16px;background:#fafafa;border-radius:4px;overflow:hidden;border:1px solid #e0e0e0}
-.filter-section-header{cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:16px 20px;user-select:none;transition:background .2s}
-.filter-section-header:hover{background:#f0f0f0}
-.filter-section h3{font-size:1.1em;margin:0;font-weight:700}
-.fs-schluessel{color:#dc291e}.fs-gesellschaft{color:#d4a500}.fs-digital{color:#4db380}.fs-sprache{color:#3385d6}.fs-sprach-inhalt{color:#7b68c4}
-.filter-toggle{font-size:1em;transition:transform .2s;font-weight:bold;opacity:.6}
-.filter-toggle.open{transform:rotate(90deg)}
-.filter-content{max-height:0;overflow:hidden;transition:max-height .3s}
-.filter-content.open{max-height:1200px}
-.filter-content-inner{padding:0 20px 20px}
-
-.sprach-type-label{font-size:.8em;font-weight:700;color:#3385d6;margin:12px 0 6px;padding:4px 0;border-bottom:1px solid #ddd}
-.sprach-type-label:first-child{margin-top:0}
-
-/* ── Kacheln ── */
-.kachel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
-.kachel{background:#fff;padding:12px;border-radius:4px;cursor:pointer;transition:all .2s;box-shadow:0 1px 2px rgba(0,0,0,.05);min-height:60px;display:flex;align-items:center;justify-content:center;text-align:center}
-.kachel:hover{transform:translateY(-2px);box-shadow:0 2px 6px rgba(0,0,0,.1)}
-.kachel.active{box-shadow:0 2px 8px rgba(0,0,0,.2);outline:2px solid currentColor}
-.kachel h3{font-size:.9em;margin:0;line-height:1.4;font-weight:500}
-.k-schluessel h3{color:#dc291e}.k-gesellschaft h3{color:#d4a500}.k-digital h3{color:#4db380}.k-sprache h3{color:#3385d6}.k-sprach-inhalt h3{color:#7b68c4}
-
 .loading{text-align:center;padding:40px;color:#dc291e;font-weight:500}
 
+.chip-reset{font-style:italic;opacity:.8;border-style:dashed;width:100%}
+.chip-reset:hover{opacity:1}
+
 @media(max-width:1200px){.timeline-grid{flex-direction:column;gap:20px}.year-column{width:100%}}
-@media(max-width:768px){body{font-size:14px}h1{font-size:1.8em}.container{padding:15px}.kachel-grid{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}.kachel{padding:10px;min-height:50px}.kachel h3{font-size:.8em}.year-header h2{font-size:1.1em}.theme-card h3{font-size:.95em}.main-filter-btn{padding:8px 16px;font-size:.9em}.logo-section img{height:70px}}
+@media(max-width:768px){body{font-size:14px}h1{font-size:1.8em}.container{padding:15px}.year-header h2{font-size:1.1em}.theme-card h3{font-size:.95em}.main-filter-btn{padding:8px 16px;font-size:.9em}.logo-section img{height:70px}.chip{font-size:.8em;padding:5px 11px}}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="header-container">
-    <div class="logo-section"><img src="images/KTBE.png" alt="Kanton Bern Logo"></div>
-    <div class="language-switch"><span class="current-lang">DE</span> | <a href="zirkularitaet_fr.html" class="lang-link">FR</a></div>
+  <div class="header-top">
+    <div>
+      <div class="logo-section"><img src="../images/KTBE.png" alt="Logo des Kantons Bern"></div>
+      <div class="app-title">Schullehrplan ABU / Plan d'études de culture générale</div>
+    </div>
+    <nav class="service-nav" aria-label="Service-Navigation">
+      <a href="../kontakt_de.html">Kontakt</a>
+      <div class="language-selector">
+        <a href="zirkularitaet_de.html" class="active" lang="de">DE</a>
+        <span>|</span>
+        <a href="zirkularitaet_fr.html" lang="fr">FR</a>
+      </div>
+    </nav>
   </div>
 </header>
-<div class="separator-strip"></div>
 
 <div class="container">
   <nav class="breadcrumb">
@@ -146,7 +178,30 @@ h1{color:#000;font-size:2.2em;margin-bottom:10px;font-weight:700;line-height:1.3
 
   <a href="index_de.html" class="back-btn">← Zurück zur Übersicht 3-jährige Grundbildung EFZ</a>
 
-  <div class="status-info">
+  <div class="section-title">Kompetenzaufbau über die Lehrjahre</div>
+
+  <!-- ── Filter area with dropdowns ── -->
+  <div class="filter-area">
+    <div class="main-filter-container" id="main-filter-btns">
+      <button class="main-filter-btn mfb-schluessel" id="btn-schluessel" onclick="toggleDropdown('schluessel')">Schlüsselkompetenzen <span class="btn-arrow">▾</span></button>
+      <button class="main-filter-btn mfb-gesellschaft" id="btn-gesellschaft" onclick="toggleDropdown('gesellschaft')">Gesellschaft <span class="btn-arrow">▾</span></button>
+      <button class="main-filter-btn mfb-digital" id="btn-digital" onclick="toggleDropdown('digital')">Medien und Digitalität <span class="btn-arrow">▾</span></button>
+      <button class="main-filter-btn mfb-sprache" id="btn-sprache" onclick="toggleDropdown('sprache')">Sprachtypen <span class="btn-arrow">▾</span></button>
+      <button class="main-filter-btn mfb-sprach-inhalt" id="btn-sprach-inhalt" onclick="toggleDropdown('sprach-inhalt')">Sprachinhalte (zirkulär) <span class="btn-arrow">▾</span></button>
+    </div>
+
+    <!-- Dropdown panels (one per category, rendered below buttons) -->
+    <div class="filter-dropdown" id="dropdown-schluessel"></div>
+    <div class="filter-dropdown" id="dropdown-gesellschaft"></div>
+    <div class="filter-dropdown" id="dropdown-digital"></div>
+    <div class="filter-dropdown" id="dropdown-sprache"></div>
+    <div class="filter-dropdown" id="dropdown-sprach-inhalt"></div>
+  </div>
+
+  <div id="loading" class="loading">Lade Kompetenzen aus dem Lehrplan...</div>
+  <div id="timeline-container" class="timeline-grid" style="display:none;"></div>
+
+  <div class="status-info" style="margin-top:50px;">
     <div class="status-info-header" onclick="toggleStatusInfo()">
       <h2>Vorgaben gemäss Rahmenlehrplan ABU 2025</h2>
       <span class="status-info-toggle">▶</span>
@@ -163,29 +218,6 @@ h1{color:#000;font-size:2.2em;margin-bottom:10px;font-weight:700;line-height:1.3
       </ul>
     </div>
   </div>
-
-  <div class="section-title">Kompetenzaufbau über die Lehrjahre</div>
-
-  <div class="main-filter-container">
-    <button class="main-filter-btn mfb-schluessel" onclick="filterMain('schluessel')">Schlüsselkompetenzen</button>
-    <button class="main-filter-btn mfb-gesellschaft" onclick="filterMain('gesellschaft')">Gesellschaft</button>
-    <button class="main-filter-btn mfb-digital" onclick="filterMain('digital')">Medien und Digitalität</button>
-    <button class="main-filter-btn mfb-sprache" onclick="filterMain('sprache')">Sprachtypen</button>
-    <button class="main-filter-btn mfb-sprach-inhalt" onclick="filterMain('sprach-inhalt')">Sprachinhalte (zirkulär)</button>
-  </div>
-
-  <div id="loading" class="loading">Lade Kompetenzen aus dem Lehrplan...</div>
-  <div id="timeline-container" class="timeline-grid" style="display:none;"></div>
-
-  <div class="section-title" style="margin-top:50px">Filter nach Kompetenzen</div>
-
-  <div class="filter-section"><div class="filter-section-header" onclick="toggleFS('schluessel')"><h3 class="fs-schluessel">Schlüsselkompetenzen</h3><span class="filter-toggle" id="toggle-schluessel">▶</span></div><div class="filter-content" id="content-schluessel"><div class="filter-content-inner"><div class="kachel-grid" id="kacheln-schluessel"></div></div></div></div>
-  <div class="filter-section"><div class="filter-section-header" onclick="toggleFS('gesellschaft')"><h3 class="fs-gesellschaft">Aspekte Gesellschaft</h3><span class="filter-toggle" id="toggle-gesellschaft">▶</span></div><div class="filter-content" id="content-gesellschaft"><div class="filter-content-inner"><div class="kachel-grid" id="kacheln-gesellschaft"></div></div></div></div>
-  <div class="filter-section"><div class="filter-section-header" onclick="toggleFS('digital')"><h3 class="fs-digital">Medien und Digitalität</h3><span class="filter-toggle" id="toggle-digital">▶</span></div><div class="filter-content" id="content-digital"><div class="filter-content-inner"><div class="kachel-grid" id="kacheln-digital"></div></div></div></div>
-  <div class="filter-section"><div class="filter-section-header" onclick="toggleFS('sprache')"><h3 class="fs-sprache">Sprachtypen</h3><span class="filter-toggle" id="toggle-sprache">▶</span></div><div class="filter-content" id="content-sprache"><div class="filter-content-inner"><div class="kachel-grid" id="kacheln-sprache"></div></div></div></div>
-  <div class="filter-section"><div class="filter-section-header" onclick="toggleFS('sprach-inhalt')"><h3 class="fs-sprach-inhalt">Sprachinhalte (zirkulär)</h3><span class="filter-toggle" id="toggle-sprach-inhalt">▶</span></div><div class="filter-content" id="content-sprach-inhalt"><div class="filter-content-inner" id="kacheln-sprach-inhalt"></div></div></div>
-
-  <button class="reset-btn" onclick="resetFilter()">Filter zurücksetzen</button>
 </div>
 
 <script>
@@ -223,8 +255,6 @@ const GES = {'2.1':'Ethik','2.2':'Identität und Sozialisation','2.3':'Kultur','
 const DIG = {'3.1':'Grundlagen der Informatik','3.2':'Informations- & Datenkompetenz','3.3':'Inhaltserstellung','3.4':'Problemlösung','3.5':'KI-spezifische Komponenten','3.6':'Ethische & reflektive Haltung'};
 const SPR = {'4.1':'Deskriptiv (beschreibend)','4.2':'Expositorisch (erklärend)','4.3':'Argumentativ (überzeugend)','4.4':'Diskursiv (interagierend)','4.5':'Reflexiv (reflektierend)'};
 
-// Sprachinhalte: sub-items under each Sprachtyp (from Word doc)
-// Plus Normen section for recurring language norms
 const SPRACH_INHALTE = {
   '4.1': [
     {id:'si-praesentieren',  label:'Präsentieren'},
@@ -262,34 +292,11 @@ const SPRACH_INHALTE = {
   ]
 };
 
-// Which themes have which Sprachinhalte (from Word doc cell colors + norm annotations)
-const SI_THEME_MAP = {
-  'si-praesentieren':   [1,2],
-  'si-loesungsansaetze': [1],
-  'si-infos-vertrag':   [2],
-  'si-aussagen':        [2],
-  'si-recherche':       [2],
-  'si-geschaeftsbrief': [2,3],
-  'si-schriftlich-kom': [1],
-  'si-inhalte-erfassen':[1,2,3],
-  'si-zusammenhaenge':  [2],
-  'si-lesestrategien':  [2],
-  'si-grafiken':        [3],
-  'si-kommunikation':   [1],
-  'si-ueberzeugen':     [2],
-  'si-position':        [3],
-  'si-interview':       [1],
-  'si-loesungsorient':  [3],
-  'si-lernstrategien':  [1],
-  'si-verhalten':       [2,3],
-  'si-einfluss-sprache':[2],
-  'si-gross-klein':     [1,2,3],
-  'si-das-dass':        [3],
-  'si-formell':         [1,2,3]
-};
-
-// THEME_SI is no longer needed - sprachInhalte are now parsed dynamically from theme HTML files
-// via .zirk-spr[data-zirk-spr] and .norm-tag[data-norm] hidden spans
+const SI_ALL = {};
+Object.values(SPRACH_INHALTE).forEach(arr => arr.forEach(si => {
+  SI_ALL[si.id] = si.label;
+  if (si.id.startsWith('si-')) SI_ALL[si.id.replace('si-','')] = si.label;
+}));
 
 function aid(nr) {
   const p = nr.split('.')[0];
@@ -314,7 +321,8 @@ function sortNr(a,b) { const pa=a.split('.').map(Number),pb=b.split('.').map(Num
    ══════════════════════════════════════════ */
 
 let themenData = {};
-let activeFilter = null, activeMainFilter = null;
+let activeFilter = null;
+let openDropdown = null; // which dropdown is currently open
 
 function parseThemaHTML(html, themeNr) {
   const doc = new DOMParser().parseFromString(html, 'text/html');
@@ -348,13 +356,9 @@ function parseThemaHTML(html, themeNr) {
   doc.querySelectorAll('.freibereich-content .dig-tag').forEach(s=>{const m=s.textContent.match(/^(3\.\d+)/);if(m)fb.digital.add(m[1]);});
   doc.querySelectorAll('.freibereich-content .sprach-tag').forEach(s=>{const m=s.textContent.match(/^(4\.\d+)/);if(m)fb.sprache.add(m[1]);});
 
-  // Dynamic: extract zirk-tag and norm-tag from hidden spans in theme HTML
   const siIds = new Set();
-  doc.querySelectorAll('.zirk-tag[data-zirk]').forEach(el => {
-    siIds.add(el.getAttribute('data-zirk'));
-  });
+  doc.querySelectorAll('.zirk-tag[data-zirk]').forEach(el => { siIds.add(el.getAttribute('data-zirk')); });
   doc.querySelectorAll('.norm-tag[data-norm]').forEach(el => {
-    // Norm IDs are stored as "norm-gross-klein" → map to filter ID "si-gross-klein"
     const normId = el.getAttribute('data-norm');
     if (normId) siIds.add(normId.replace('norm-', 'si-'));
   });
@@ -368,21 +372,103 @@ function parseThemaHTML(html, themeNr) {
 }
 
 /* ══════════════════════════════════════════
-   RENDERING
+   DROPDOWN RENDERING
    ══════════════════════════════════════════ */
 
-// All Sprach-Inhalt definitions flat (including norm IDs with and without si- prefix)
-const SI_ALL = {};
-Object.values(SPRACH_INHALTE).forEach(arr => arr.forEach(si => { SI_ALL[si.id] = si.label; }));
-// Also add lookup without si- prefix for norm tags parsed from HTML
-// e.g. "gross-klein" → "Gross-/Kleinschreibung"
-Object.values(SPRACH_INHALTE).forEach(arr => arr.forEach(si => {
-  if (si.id.startsWith('si-')) SI_ALL[si.id.replace('si-','')] = si.label;
-}));
+function renderDropdowns() {
+  // Schlüsselkompetenzen
+  const dsk = document.getElementById('dropdown-schluessel');
+  const rowSk = document.createElement('div'); rowSk.className = 'dropdown-inner';
+  rowSk.appendChild(makeChipReset('Alle Schlüsselkompetenzen anzeigen', 'chip-schluessel'));
+  Object.entries(SK).sort((a,b)=>sortNr(a[0],b[0])).forEach(([nr, text]) => {
+    rowSk.appendChild(makeChip(nr+' '+text, aid(nr), 'chip-schluessel'));
+  });
+  dsk.appendChild(rowSk);
+
+  // Gesellschaft
+  const dges = document.getElementById('dropdown-gesellschaft');
+  const rowGes = document.createElement('div'); rowGes.className = 'dropdown-inner';
+  rowGes.appendChild(makeChipReset('Alle Aspekte anzeigen', 'chip-gesellschaft'));
+  Object.entries(GES).sort((a,b)=>sortNr(a[0],b[0])).forEach(([nr, text]) => {
+    rowGes.appendChild(makeChip(nr+' '+text, aid(nr), 'chip-gesellschaft'));
+  });
+  dges.appendChild(rowGes);
+
+  // Digital
+  const ddig = document.getElementById('dropdown-digital');
+  const rowDig = document.createElement('div'); rowDig.className = 'dropdown-inner';
+  rowDig.appendChild(makeChipReset('Alle Kompetenzen anzeigen', 'chip-digital'));
+  Object.entries(DIG).sort((a,b)=>sortNr(a[0],b[0])).forEach(([nr, text]) => {
+    rowDig.appendChild(makeChip(nr+' '+text, aid(nr), 'chip-digital'));
+  });
+  ddig.appendChild(rowDig);
+
+  // Sprachtypen
+  const dspr = document.getElementById('dropdown-sprache');
+  const rowSpr = document.createElement('div'); rowSpr.className = 'dropdown-inner';
+  rowSpr.appendChild(makeChipReset('Alle Sprachtypen anzeigen', 'chip-sprache'));
+  Object.entries(SPR).sort((a,b)=>sortNr(a[0],b[0])).forEach(([nr, text]) => {
+    rowSpr.appendChild(makeChip(nr+' '+text, aid(nr), 'chip-sprache'));
+  });
+  dspr.appendChild(rowSpr);
+
+  // Sprachinhalte - grouped
+  const dsi = document.getElementById('dropdown-sprach-inhalt');
+  const siGroup = document.createElement('div'); siGroup.className = 'si-group';
+  // "Alle" row at top
+  const allSiRow = document.createElement('div'); allSiRow.className = 'si-group-row';
+  allSiRow.appendChild(makeChipReset('Alle Sprachinhalte anzeigen', 'chip-sprach-inhalt'));
+  siGroup.appendChild(allSiRow);
+  const sprKeys = Object.keys(SPRACH_INHALTE).filter(k=>k!=='normen').sort(sortNr);
+  sprKeys.forEach(sprNr => {
+    const lbl = document.createElement('div');
+    lbl.className = 'si-group-header';
+    lbl.textContent = sprNr + ' ' + (SPR[sprNr] || sprNr);
+    siGroup.appendChild(lbl);
+    const row = document.createElement('div'); row.className = 'si-group-row';
+    SPRACH_INHALTE[sprNr].forEach(si => {
+      row.appendChild(makeChip(si.label, si.id, 'chip-sprach-inhalt'));
+    });
+    siGroup.appendChild(row);
+  });
+  if (SPRACH_INHALTE['normen']) {
+    const lbl = document.createElement('div');
+    lbl.className = 'si-group-header si-norm-header';
+    lbl.textContent = 'Normen / Konventionen / Sprachbewusstheit';
+    siGroup.appendChild(lbl);
+    const row = document.createElement('div'); row.className = 'si-group-row';
+    SPRACH_INHALTE['normen'].forEach(si => {
+      row.appendChild(makeChip(si.label, si.id, 'chip-sprach-inhalt'));
+    });
+    siGroup.appendChild(row);
+  }
+  dsi.appendChild(siGroup);
+}
+
+function makeChipReset(label, chipClass) {
+  const c = document.createElement('div');
+  c.className = 'chip chip-reset ' + chipClass;
+  c.textContent = '↺ ' + label;
+  c.onclick = () => resetFilter();
+  return c;
+}
+
+function makeChip(label, aspekt, chipClass) {
+  const c = document.createElement('div');
+  c.className = 'chip ' + chipClass;
+  c.textContent = label;
+  c.setAttribute('data-aspekt', aspekt);
+  c.onclick = () => filterAspekt(aspekt, c);
+  return c;
+}
+
+/* ══════════════════════════════════════════
+   RENDERING TIMELINE
+   ══════════════════════════════════════════ */
 
 function renderTimeline() {
-  const c = document.getElementById('timeline-container');
-  c.innerHTML = '';
+  const cont = document.getElementById('timeline-container');
+  cont.innerHTML = '';
   const yNames = ['Grundlagen','Vertiefung','Transfer'];
   for (let y=1;y<=3;y++) {
     const col = document.createElement('div');
@@ -393,7 +479,7 @@ function renderTimeline() {
       const data = themenData[theme.nr];
       col.appendChild(data ? createCard(theme,data) : createPlaceholder(theme));
     });
-    c.appendChild(col);
+    cont.appendChild(col);
   }
 }
 
@@ -429,7 +515,6 @@ function createCard(theme, data) {
   h3.textContent=`Thema ${theme.nr}: ${theme.name}`;
   card.appendChild(h3);
 
-  // Schlüsselkompetenzen
   if (data.schluessel.length) {
     const sd=document.createElement('div');sd.className='schluesselkompetenzen';
     data.schluessel.forEach(nr => {
@@ -441,7 +526,6 @@ function createCard(theme, data) {
     card.appendChild(sd);
   }
 
-  // Lebensbezüge
   data.lebensbezuege.forEach((lb,idx) => {
     const item=document.createElement('div');item.className='lebensbezug-item';
     const label=document.createElement('span');label.className='lebensbezug-label';label.textContent=`Lebensbezug ${idx+1}`;label.style.position='relative';
@@ -459,7 +543,6 @@ function createCard(theme, data) {
     item.appendChild(kd);card.appendChild(item);
   });
 
-  // Freibereich
   const fb=data.freibereich;
   const fbAll=[...fb.gesellschaft,...fb.digital,...fb.sprache];
   if(fbAll.length){
@@ -474,7 +557,6 @@ function createCard(theme, data) {
     item.appendChild(kd);card.appendChild(item);
   }
 
-  // Sprach-Inhalte badges
   if(data.sprachInhalte && data.sprachInhalte.length){
     const item=document.createElement('div');item.className='lebensbezug-item';
     const label=document.createElement('span');label.className='lebensbezug-label';label.textContent='Sprachinhalte (zirkulär)';label.style.position='relative';
@@ -482,10 +564,9 @@ function createCard(theme, data) {
     item.appendChild(label);
     const kd=document.createElement('div');kd.className='kompetenz-detail';
     data.sprachInhalte.sort().forEach(siId=>{
-      // Normalize: ensure si- prefix for filter matching
       const normalId = siId.startsWith('si-') ? siId : 'si-' + siId;
-      const label = SI_ALL[siId] || SI_ALL[normalId] || siId;
-      kd.appendChild(mkBadge(label,'badge-sprach-inhalt','sprach-inhalt',normalId,label));
+      const lbl = SI_ALL[siId] || SI_ALL[normalId] || siId;
+      kd.appendChild(mkBadge(lbl,'badge-sprach-inhalt','sprach-inhalt',normalId,lbl));
     });
     item.appendChild(kd);card.appendChild(item);
   }
@@ -494,119 +575,91 @@ function createCard(theme, data) {
 }
 
 /* ══════════════════════════════════════════
-   FILTER KACHELN
-   ══════════════════════════════════════════ */
-
-function renderKacheln() {
-  function fill(gridId, defs, cls) {
-    const g=document.getElementById(gridId);
-    Object.entries(defs).sort((a,b)=>sortNr(a[0],b[0])).forEach(([nr,text])=>{
-      const id=aid(nr);
-      const d=document.createElement('div');d.className=`kachel ${cls}`;d.setAttribute('data-filter',id);
-      d.onclick=()=>filterAspekt(id);
-      d.innerHTML=`<h3>${nr} ${text}</h3>`;g.appendChild(d);
-    });
-  }
-  fill('kacheln-schluessel',SK,'k-schluessel');
-  fill('kacheln-gesellschaft',GES,'k-gesellschaft');
-  fill('kacheln-digital',DIG,'k-digital');
-  fill('kacheln-sprache',SPR,'k-sprache');
-
-  // Sprach-Inhalte: grouped by Sprachtyp + Normen
-  const container=document.getElementById('kacheln-sprach-inhalt');
-  const sprKeys = Object.keys(SPRACH_INHALTE).filter(k => k !== 'normen').sort(sortNr);
-  sprKeys.forEach(sprNr => {
-    const items = SPRACH_INHALTE[sprNr];
-    const lbl=document.createElement('div');lbl.className='sprach-type-label';lbl.textContent=`${sprNr} ${SPR[sprNr]}`;
-    container.appendChild(lbl);
-    const grid=document.createElement('div');grid.className='kachel-grid';
-    items.forEach(si=>{
-      const d=document.createElement('div');d.className='kachel k-sprach-inhalt';d.setAttribute('data-filter',si.id);
-      d.onclick=()=>filterAspekt(si.id);
-      d.innerHTML=`<h3>${si.label}</h3>`;grid.appendChild(d);
-    });
-    container.appendChild(grid);
-  });
-  // Normen section
-  if (SPRACH_INHALTE['normen']) {
-    const lbl=document.createElement('div');lbl.className='sprach-type-label';
-    lbl.style.color='#c44500';lbl.textContent='Normen / Konventionen / Sprachbewusstheit';
-    container.appendChild(lbl);
-    const grid=document.createElement('div');grid.className='kachel-grid';
-    SPRACH_INHALTE['normen'].forEach(si=>{
-      const d=document.createElement('div');d.className='kachel k-sprach-inhalt';d.setAttribute('data-filter',si.id);
-      d.onclick=()=>filterAspekt(si.id);
-      d.innerHTML=`<h3>${si.label}</h3>`;grid.appendChild(d);
-    });
-    container.appendChild(grid);
-  }
-}
-
-/* ══════════════════════════════════════════
    FILTER LOGIC
    ══════════════════════════════════════════ */
 
-function filterMain(cat) {
-  document.querySelectorAll('.main-filter-btn').forEach(b=>b.classList.remove('active'));
-  if(activeMainFilter===cat){activeMainFilter=null;resetFilter();return;}
-  document.querySelector('.mfb-'+cat).classList.add('active');
-  activeMainFilter=cat;activeFilter=null;
-  document.querySelectorAll('.kachel').forEach(k=>k.classList.remove('active'));
-  document.querySelectorAll('.kompetenz-badge,.schluesselkompetenz-badge').forEach(b=>{
-    b.style.display=b.getAttribute('data-category')===cat?'inline-block':'none';
-  });
-  document.querySelectorAll('.schluesselkompetenzen').forEach(sk=>{
-    sk.style.display=cat==='schluessel'?'block':'none';
-  });
-  updateVis();
+function toggleDropdown(cat) {
+  const panel = document.getElementById('dropdown-' + cat);
+  const btn = document.getElementById('btn-' + cat);
+
+  if (openDropdown === cat) {
+    // Close this dropdown
+    panel.classList.remove('visible');
+    btn.classList.remove('open', 'active');
+    openDropdown = null;
+  } else {
+    // Close any open dropdown
+    if (openDropdown) {
+      document.getElementById('dropdown-' + openDropdown).classList.remove('visible');
+      document.getElementById('btn-' + openDropdown).classList.remove('open', 'active');
+    }
+    panel.classList.add('visible');
+    btn.classList.add('open', 'active');
+    openDropdown = cat;
+  }
 }
 
-function filterAspekt(aspekt) {
-  document.querySelectorAll('.kachel').forEach(k=>k.classList.remove('active'));
-  if(activeFilter===aspekt){resetFilter();return;}
-  const k=document.querySelector(`.kachel[data-filter="${aspekt}"]`);if(k)k.classList.add('active');
-  activeFilter=aspekt;activeMainFilter=null;
-  document.querySelectorAll('.main-filter-btn').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.kompetenz-badge,.schluesselkompetenz-badge').forEach(b=>{
-    b.style.display=b.getAttribute('data-aspekt')===aspekt?'inline-block':'none';
+function filterAspekt(aspekt, chipEl) {
+  // Toggle: clicking same chip resets
+  if (activeFilter === aspekt) {
+    resetFilter();
+    return;
+  }
+  activeFilter = aspekt;
+
+  // Deactivate all chips, activate clicked
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  if (chipEl) chipEl.classList.add('active');
+
+  // Show/hide badges
+  document.querySelectorAll('.kompetenz-badge,.schluesselkompetenz-badge').forEach(b => {
+    b.style.display = b.getAttribute('data-aspekt') === aspekt ? 'inline-block' : 'none';
   });
-  document.querySelectorAll('.schluesselkompetenzen').forEach(sk=>{
-    const vis=[...sk.querySelectorAll('.schluesselkompetenz-badge')].some(b=>b.style.display!=='none');
-    sk.style.display=vis?'block':'none';
+  document.querySelectorAll('.schluesselkompetenzen').forEach(sk => {
+    const vis = [...sk.querySelectorAll('.schluesselkompetenz-badge')].some(b => b.style.display !== 'none');
+    sk.style.display = vis ? 'block' : 'none';
   });
   updateVis();
 }
 
 function updateVis() {
-  document.querySelectorAll('.lebensbezug-item').forEach(item=>{
-    const badges=item.querySelectorAll('.kompetenz-badge');
-    const vis=[...badges].some(b=>b.style.display!=='none');
-    item.style.display=vis?'block':'none';
+  document.querySelectorAll('.lebensbezug-item').forEach(item => {
+    const badges = item.querySelectorAll('.kompetenz-badge');
+    const vis = [...badges].some(b => b.style.display !== 'none');
+    item.style.display = vis ? 'block' : 'none';
   });
-  document.querySelectorAll('.theme-card:not(.placeholder):not(.schlussarbeit)').forEach(card=>{
-    const items=[...card.querySelectorAll('.lebensbezug-item')].some(i=>i.style.display!=='none');
-    const sk=card.querySelector('.schluesselkompetenzen');
-    const skVis=sk&&sk.style.display!=='none';
-    card.style.display=(items||skVis)?'block':'none';
+  document.querySelectorAll('.theme-card:not(.placeholder):not(.schlussarbeit)').forEach(card => {
+    const items = [...card.querySelectorAll('.lebensbezug-item')].some(i => i.style.display !== 'none');
+    const sk = card.querySelector('.schluesselkompetenzen');
+    const skVis = sk && sk.style.display !== 'none';
+    card.style.display = (items || skVis) ? 'block' : 'none';
   });
 }
 
 function resetFilter() {
-  activeFilter=null;activeMainFilter=null;
-  document.querySelectorAll('.kachel').forEach(k=>k.classList.remove('active'));
-  document.querySelectorAll('.main-filter-btn').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.kompetenz-badge,.schluesselkompetenz-badge').forEach(b=>{b.style.display='inline-block';});
-  document.querySelectorAll('.schluesselkompetenzen').forEach(s=>{s.style.display='block';});
-  document.querySelectorAll('.lebensbezug-item').forEach(i=>{i.style.display='block';});
-  document.querySelectorAll('.theme-card').forEach(c=>{c.style.display='block';});
+  activeFilter = null;
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.main-filter-btn').forEach(b => b.classList.remove('active'));
+  // Close open dropdown
+  if (openDropdown) {
+    document.getElementById('dropdown-' + openDropdown).classList.remove('visible');
+    document.getElementById('btn-' + openDropdown).classList.remove('open');
+    openDropdown = null;
+  }
+  document.querySelectorAll('.kompetenz-badge,.schluesselkompetenz-badge').forEach(b => { b.style.display = 'inline-block'; });
+  document.querySelectorAll('.schluesselkompetenzen').forEach(s => { s.style.display = 'block'; });
+  document.querySelectorAll('.lebensbezug-item').forEach(i => { i.style.display = 'block'; });
+  document.querySelectorAll('.theme-card').forEach(c => { c.style.display = 'block'; });
 }
 
 /* ══════════════════════════════════════════
    TOGGLES & LOAD
    ══════════════════════════════════════════ */
 
-function toggleStatusInfo(){document.querySelector('.status-info-content').classList.toggle('open');document.querySelector('.status-info-toggle').classList.toggle('open');}
-function toggleFS(name){document.getElementById('content-'+name).classList.toggle('open');document.getElementById('toggle-'+name).classList.toggle('open');}
+function toggleStatusInfo() {
+  document.querySelector('.status-info-content').classList.toggle('open');
+  document.querySelector('.status-info-toggle').classList.toggle('open');
+}
 
 async function loadData() {
   for (const theme of THEMES) {
@@ -615,16 +668,26 @@ async function loadData() {
       const r = await fetch(theme.file);
       if (!r.ok) { console.warn(`${theme.file}: ${r.status}`); continue; }
       themenData[theme.nr] = parseThemaHTML(await r.text(), theme.nr);
-      console.log(`Thema ${theme.nr} geladen:`, themenData[theme.nr]);
-    } catch(e) { console.warn(`Fehler ${theme.file}:`,e); }
+    } catch(e) { console.warn(`Fehler ${theme.file}:`, e); }
   }
-  renderKacheln();
+  renderDropdowns();
   renderTimeline();
-  document.getElementById('loading').style.display='none';
-  document.getElementById('timeline-container').style.display='flex';
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('timeline-container').style.display = 'flex';
 }
 
 document.addEventListener('DOMContentLoaded', loadData);
 </script>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copyright">© 2025 - Mittelschul- und Berufsbildungsamt Kanton Bern</span>
+    <nav class="footer-links" aria-label="Footer-Navigation">
+      <a href="../rechtliche-hinweise.html">Rechtliche Hinweise</a>
+      <a href="../impressum_de.html">Impressum</a>
+    </nav>
+  </div>
+</footer>
+
 </body>
 </html>
