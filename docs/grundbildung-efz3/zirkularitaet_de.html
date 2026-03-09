@@ -188,15 +188,13 @@ h1{color:#000;font-size:2.2em;margin-bottom:10px;font-weight:700;line-height:1.3
       <button class="main-filter-btn mfb-schluessel" id="btn-schluessel" onclick="toggleDropdown('schluessel')">Schlüsselkompetenzen <span class="btn-arrow">▾</span></button>
       <button class="main-filter-btn mfb-gesellschaft" id="btn-gesellschaft" onclick="toggleDropdown('gesellschaft')">Gesellschaft <span class="btn-arrow">▾</span></button>
       <button class="main-filter-btn mfb-digital" id="btn-digital" onclick="toggleDropdown('digital')">Medien und Digitalität <span class="btn-arrow">▾</span></button>
-      <button class="main-filter-btn mfb-sprache" id="btn-sprache" onclick="toggleDropdown('sprache')">Sprachtypen <span class="btn-arrow">▾</span></button>
-      <button class="main-filter-btn mfb-sprach-inhalt" id="btn-sprach-inhalt" onclick="toggleDropdown('sprach-inhalt')">Sprachinhalte (zirkulär) <span class="btn-arrow">▾</span></button>
+      <button class="main-filter-btn mfb-sprach-inhalt" id="btn-sprach-inhalt" onclick="toggleDropdown('sprach-inhalt')">Sprache &amp; Kommunikation <span class="btn-arrow">▾</span></button>
     </div>
 
     <!-- Dropdown panels (one per category, rendered below buttons) -->
     <div class="filter-dropdown" id="dropdown-schluessel"></div>
     <div class="filter-dropdown" id="dropdown-gesellschaft"></div>
     <div class="filter-dropdown" id="dropdown-digital"></div>
-    <div class="filter-dropdown" id="dropdown-sprache"></div>
     <div class="filter-dropdown" id="dropdown-sprach-inhalt"></div>
   </div>
 
@@ -327,12 +325,10 @@ let openDropdown = null;
 function parseThemaHTML(html, themeNr) {
   const doc = new DOMParser().parseFromString(html, 'text/html');
   const skSet = new Set();
-  // Schlüsselkompetenzen: now read from the block under Leitidee
   doc.querySelectorAll('.schluesselkompetenzen-block .kompetenz-nummer-link, .schluesselkompetenzen-inline .kompetenz-nummer-link').forEach(el => {
     const t = el.textContent.trim();
     if (/^1\.\d+$/.test(t)) skSet.add(t);
   });
-  // Fallback: also check all kompetenz-nummer-link if nothing found above
   if (skSet.size === 0) {
     doc.querySelectorAll('.kompetenz-nummer-link').forEach(el => {
       const t = el.textContent.trim();
@@ -378,48 +374,35 @@ function parseThemaHTML(html, themeNr) {
    ══════════════════════════════════════════ */
 
 function renderDropdowns() {
-  // Schlüsselkompetenzen
+  // Schlüsselkompetenzen — no reset chip, chips only
   const dsk = document.getElementById('dropdown-schluessel');
   const rowSk = document.createElement('div'); rowSk.className = 'dropdown-inner';
-  rowSk.appendChild(makeChipReset('Alle Schlüsselkompetenzen anzeigen', 'schluessel', 'chip-schluessel'));
   Object.entries(SK).sort((a,b)=>sortNr(a[0],b[0])).forEach(([nr, text]) => {
     rowSk.appendChild(makeChip(nr+' '+text, aid(nr), 'chip-schluessel'));
   });
   dsk.appendChild(rowSk);
 
-  // Gesellschaft
+  // Gesellschaft — no reset chip
   const dges = document.getElementById('dropdown-gesellschaft');
   const rowGes = document.createElement('div'); rowGes.className = 'dropdown-inner';
-  rowGes.appendChild(makeChipReset('Alle Aspekte anzeigen', 'gesellschaft', 'chip-gesellschaft'));
   Object.entries(GES).sort((a,b)=>sortNr(a[0],b[0])).forEach(([nr, text]) => {
     rowGes.appendChild(makeChip(nr+' '+text, aid(nr), 'chip-gesellschaft'));
   });
   dges.appendChild(rowGes);
 
-  // Digital
+  // Digital — no reset chip
   const ddig = document.getElementById('dropdown-digital');
   const rowDig = document.createElement('div'); rowDig.className = 'dropdown-inner';
-  rowDig.appendChild(makeChipReset('Alle Kompetenzen anzeigen', 'digital', 'chip-digital'));
   Object.entries(DIG).sort((a,b)=>sortNr(a[0],b[0])).forEach(([nr, text]) => {
     rowDig.appendChild(makeChip(nr+' '+text, aid(nr), 'chip-digital'));
   });
   ddig.appendChild(rowDig);
 
-  // Sprachtypen
-  const dspr = document.getElementById('dropdown-sprache');
-  const rowSpr = document.createElement('div'); rowSpr.className = 'dropdown-inner';
-  rowSpr.appendChild(makeChipReset('Alle Sprachtypen anzeigen', 'sprache', 'chip-sprache'));
-  Object.entries(SPR).sort((a,b)=>sortNr(a[0],b[0])).forEach(([nr, text]) => {
-    rowSpr.appendChild(makeChip(nr+' '+text, aid(nr), 'chip-sprache'));
-  });
-  dspr.appendChild(rowSpr);
-
-  // Sprachinhalte - grouped
+  // Sprache & Kommunikation — Sprachinhalte grouped + Sprachtypen as collapsible sub-section
   const dsi = document.getElementById('dropdown-sprach-inhalt');
   const siGroup = document.createElement('div'); siGroup.className = 'si-group';
-  const allSiRow = document.createElement('div'); allSiRow.className = 'si-group-row';
-  allSiRow.appendChild(makeChipReset('Alle Sprachinhalte anzeigen', 'sprach-inhalt', 'chip-sprach-inhalt'));
-  siGroup.appendChild(allSiRow);
+
+  // Sprachinhalte by type
   const sprKeys = Object.keys(SPRACH_INHALTE).filter(k=>k!=='normen').sort(sortNr);
   sprKeys.forEach(sprNr => {
     const lbl = document.createElement('div');
@@ -432,6 +415,8 @@ function renderDropdowns() {
     });
     siGroup.appendChild(row);
   });
+
+  // Normen
   if (SPRACH_INHALTE['normen']) {
     const lbl = document.createElement('div');
     lbl.className = 'si-group-header si-norm-header';
@@ -443,6 +428,30 @@ function renderDropdowns() {
     });
     siGroup.appendChild(row);
   }
+
+  // Sprachtypen as collapsible sub-section
+  const sprTypenToggle = document.createElement('div');
+  sprTypenToggle.className = 'si-group-header si-sprtyp-toggle';
+  sprTypenToggle.style.cursor = 'pointer';
+  sprTypenToggle.style.color = '#3385d6';
+  sprTypenToggle.style.userSelect = 'none';
+  sprTypenToggle.innerHTML = '▶ Sprachtypen (nach Typ filtern)';
+  siGroup.appendChild(sprTypenToggle);
+
+  const sprTypenPanel = document.createElement('div');
+  sprTypenPanel.className = 'si-group-row';
+  sprTypenPanel.style.display = 'none';
+  Object.entries(SPR).sort((a,b)=>sortNr(a[0],b[0])).forEach(([nr, text]) => {
+    sprTypenPanel.appendChild(makeChip(nr+' '+text, aid(nr), 'chip-sprache'));
+  });
+  siGroup.appendChild(sprTypenPanel);
+
+  sprTypenToggle.addEventListener('click', () => {
+    const open = sprTypenPanel.style.display !== 'none';
+    sprTypenPanel.style.display = open ? 'none' : 'flex';
+    sprTypenToggle.innerHTML = (open ? '▶' : '▼') + ' Sprachtypen (nach Typ filtern)';
+  });
+
   dsi.appendChild(siGroup);
 }
 
@@ -462,7 +471,10 @@ function filterCategory(cat, chipEl) {
   if (chipEl) chipEl.classList.add('active');
 
   document.querySelectorAll('.kompetenz-badge').forEach(b => {
-    b.style.display = b.getAttribute('data-category') === cat ? 'inline-block' : 'none';
+    const bcat = b.getAttribute('data-category');
+    // sprach-inhalt button shows both sprach-inhalt and sprache badges
+    const show = bcat === cat || (cat === 'sprach-inhalt' && bcat === 'sprache');
+    b.style.display = show ? 'inline-block' : 'none';
   });
   document.querySelectorAll('.schluesselkompetenz-badge').forEach(b => {
     b.style.display = cat === 'schluessel' ? 'inline-block' : 'none';
@@ -587,19 +599,24 @@ function createCard(theme, data) {
 function toggleDropdown(cat) {
   const panel = document.getElementById('dropdown-' + cat);
   const btn = document.getElementById('btn-' + cat);
+  if (!panel || !btn) return;
 
   if (openDropdown === cat) {
     panel.classList.remove('visible');
-    btn.classList.remove('open', 'active');
+    btn.classList.remove('open');
     openDropdown = null;
   } else {
     if (openDropdown) {
-      document.getElementById('dropdown-' + openDropdown).classList.remove('visible');
-      document.getElementById('btn-' + openDropdown).classList.remove('open', 'active');
+      const oldPanel = document.getElementById('dropdown-' + openDropdown);
+      const oldBtn = document.getElementById('btn-' + openDropdown);
+      if (oldPanel) oldPanel.classList.remove('visible');
+      if (oldBtn) oldBtn.classList.remove('open');
     }
     panel.classList.add('visible');
     btn.classList.add('open', 'active');
     openDropdown = cat;
+    // Immediately apply full-category filter on open
+    filterCategory(cat, null);
   }
 }
 
