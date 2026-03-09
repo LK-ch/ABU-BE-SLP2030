@@ -72,7 +72,7 @@ h1{color:#000;font-size:2.2em;margin-bottom:10px;font-weight:700;line-height:1.3
 .mfb-gesellschaft{border-color:#ffd966;color:#d4a500}.mfb-gesellschaft.active{background:#ffd966;color:#333}
 .mfb-digital{border-color:#4db380;color:#4db380}.mfb-digital.active{background:#4db380;color:#fff}
 .mfb-sprache{border-color:#3385d6;color:#3385d6}.mfb-sprache.active{background:#3385d6;color:#fff}
-.mfb-sprach-inhalt{border-color:#7b68c4;color:#7b68c4}.mfb-sprach-inhalt.active{background:#7b68c4;color:#fff}
+.mfb-sprach-inhalt{border-color:#3385d6;color:#3385d6}.mfb-sprach-inhalt.active{background:#3385d6;color:#fff}
 
 /* Arrow indicator on buttons */
 .btn-arrow{font-size:.7em;transition:transform .2s;display:inline-block}
@@ -102,7 +102,7 @@ h1{color:#000;font-size:2.2em;margin-bottom:10px;font-weight:700;line-height:1.3
 .chip-gesellschaft.active{background:#ffd966;color:#333;border-color:#d4a500}
 .chip-digital.active{background:#4db380;color:#fff;border-color:#4db380}
 .chip-sprache.active{background:#3385d6;color:#fff;border-color:#3385d6}
-.chip-sprach-inhalt.active{background:#7b68c4;color:#fff;border-color:#7b68c4}
+.chip-sprach-inhalt.active{background:#3385d6;color:#fff;border-color:#3385d6}
 
 /* ── Timeline ── */
 .timeline-grid{display:flex;gap:16px;margin-top:25px;align-items:flex-start}
@@ -129,7 +129,7 @@ h1{color:#000;font-size:2.2em;margin-bottom:10px;font-weight:700;line-height:1.3
 .badge-gesellschaft{background:rgba(255,217,102,.3)}
 .badge-digital{background:rgba(77,179,128,.3)}
 .badge-sprache{background:rgba(51,133,214,.3)}
-.badge-sprach-inhalt{background:rgba(123,104,196,.25)}
+.badge-sprach-inhalt{background:rgba(51,133,214,.2)}
 
 .schluesselkompetenzen{padding:0;margin:10px 0 12px;line-height:1}
 .schluesselkompetenz-badge{display:inline-block;background:rgba(220,41,30,.12);padding:4px 10px;margin:2px 3px 2px 0;border-radius:2px;font-size:.85em;font-weight:500;color:#dc291e;position:relative;cursor:pointer;line-height:1}
@@ -143,6 +143,15 @@ h1{color:#000;font-size:2.2em;margin-bottom:10px;font-weight:700;line-height:1.3
 
 .chip-reset{font-style:italic;opacity:.8;border-style:dashed;width:100%}
 .chip-reset:hover{opacity:1}
+
+/* Gesellschaft aspect group with sub-items */
+.ges-group{width:100%;display:flex;flex-direction:column;gap:4px}
+.ges-aspect-row{display:flex;align-items:center;gap:0;flex-wrap:wrap}
+.ges-toggle-btn{background:none;border:none;cursor:pointer;color:#d4a500;font-size:.75em;padding:2px 5px;line-height:1;flex-shrink:0;transition:transform .15s}
+.ges-toggle-btn.open{transform:rotate(90deg)}
+.ges-sub-items{display:none;flex-wrap:wrap;gap:4px;margin:4px 0 6px 28px}
+.ges-sub-items.visible{display:flex}
+.ges-sub-chip{background:#fff8e1;border:1px solid #f0c040;padding:3px 10px;border-radius:12px;font-size:.78em;color:#7a5800;cursor:default;white-space:nowrap}
 
 @media(max-width:1200px){.timeline-grid{flex-direction:column;gap:20px}.year-column{width:100%}}
 @media(max-width:768px){body{font-size:14px}h1{font-size:1.8em}.container{padding:15px}.year-header h2{font-size:1.1em}.theme-card h3{font-size:.95em}.main-filter-btn{padding:8px 16px;font-size:.9em}.logo-section img{height:70px}.chip{font-size:.8em;padding:5px 11px}}
@@ -252,6 +261,18 @@ const SK = {
   '1.12':'Partizipation'
 };
 const GES = {'2.1':'Ethik','2.2':'Identität und Sozialisation','2.3':'Kultur','2.4':'Ökologie','2.5':'Politik','2.6':'Recht','2.7':'Technologische und digitale Transformation','2.8':'Wirtschaft'};
+
+// Konkrete Inhalte pro Gesellschafts-Aspekt (aus Schullehrplan)
+const GES_INHALTE = {
+  '2.1': ['Konsumentscheide überprüfen','Zwischenmenschliches Verhalten'],
+  '2.2': ['BFS und Fach ABU','3 Lernorte','Arbeits- und Lernverhalten','Meine Rolle','Bedürfnisse und Kaufverhalten','Risiken und Strategien','Verhaltensmuster'],
+  '2.3': [],
+  '2.4': ['Konsumentscheide überprüfen'],
+  '2.5': [],
+  '2.6': ['Lehrvertrag','Rechte und Pflichten','Handlungsfähigkeit','Rechtsgültiger Vertrag','Vertragsrücktritt und Vertragsverletzungen','Rechtliche Konsequenzen','Versicherungsarten und deren Funktionsweise'],
+  '2.7': ['Siehe «Medien und Digitalität»'],
+  '2.8': ['Lohnabrechnung','Budget','Sparmöglichkeiten','Zahlungsmittel','Finanzierungsarten','Konsumentscheide überprüfen','Nutzen verschiedener Versicherungen','Unfall- und Krankenversicherung']
+};
 const DIG = {'3.1':'Grundlagen IT-Anwendungen','3.2':'Informations- & Datenkompetenz','3.3':'Inhaltserstellung','3.4':'Problemlösung','3.5':'KI-spezifische Komponenten','3.6':'Reflektive Haltung & verantwortungsvoller Umgang'};
 const SPR = {'4.1':'Deskriptiv (beschreibend)','4.2':'Expositorisch (erklärend)','4.3':'Argumentativ (überzeugend)','4.4':'Diskursiv (interagierend)','4.5':'Reflexiv (reflektierend)'};
 
@@ -382,13 +403,49 @@ function renderDropdowns() {
   });
   dsk.appendChild(rowSk);
 
-  // Gesellschaft — no reset chip
+  // Gesellschaft — grouped with collapsible sub-items per aspect
   const dges = document.getElementById('dropdown-gesellschaft');
-  const rowGes = document.createElement('div'); rowGes.className = 'dropdown-inner';
+  const gesGroup = document.createElement('div'); gesGroup.className = 'ges-group';
   Object.entries(GES).sort((a,b)=>sortNr(a[0],b[0])).forEach(([nr, text]) => {
-    rowGes.appendChild(makeChip(nr+' '+text, aid(nr), 'chip-gesellschaft'));
+    const subItems = GES_INHALTE[nr] || [];
+    const row = document.createElement('div'); row.className = 'ges-aspect-row';
+
+    // Toggle button (only if sub-items exist)
+    if (subItems.length) {
+      const toggleBtn = document.createElement('button');
+      toggleBtn.className = 'ges-toggle-btn';
+      toggleBtn.textContent = '▶';
+      toggleBtn.title = 'Inhalte anzeigen';
+      row.appendChild(toggleBtn);
+
+      const chip = makeChip(nr + ' ' + text, aid(nr), 'chip-gesellschaft');
+      row.appendChild(chip);
+
+      const subPanel = document.createElement('div'); subPanel.className = 'ges-sub-items';
+      subItems.forEach(item => {
+        const sc = document.createElement('div'); sc.className = 'ges-sub-chip';
+        sc.textContent = item;
+        subPanel.appendChild(sc);
+      });
+
+      toggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const open = subPanel.classList.contains('visible');
+        subPanel.classList.toggle('visible', !open);
+        toggleBtn.classList.toggle('open', !open);
+      });
+
+      gesGroup.appendChild(row);
+      gesGroup.appendChild(subPanel);
+    } else {
+      // No sub-items: just the chip, indented to align
+      const spacer = document.createElement('span'); spacer.style.width = '24px'; spacer.style.flexShrink = '0'; spacer.style.display = 'inline-block';
+      row.appendChild(spacer);
+      row.appendChild(makeChip(nr + ' ' + text, aid(nr), 'chip-gesellschaft'));
+      gesGroup.appendChild(row);
+    }
   });
-  dges.appendChild(rowGes);
+  dges.appendChild(gesGroup);
 
   // Digital — no reset chip
   const ddig = document.getElementById('dropdown-digital');
@@ -398,59 +455,81 @@ function renderDropdowns() {
   });
   ddig.appendChild(rowDig);
 
-  // Sprache & Kommunikation — Sprachinhalte grouped + Sprachtypen as collapsible sub-section
+  // Sprache & Kommunikation — each Sprachtyp as collapsible row (analog to GES)
   const dsi = document.getElementById('dropdown-sprach-inhalt');
-  const siGroup = document.createElement('div'); siGroup.className = 'si-group';
+  const siGroup = document.createElement('div'); siGroup.className = 'ges-group';
 
-  // Sprachinhalte by type
+  // Main Sprachtypen with their Inhalte as sub-items
   const sprKeys = Object.keys(SPRACH_INHALTE).filter(k=>k!=='normen').sort(sortNr);
   sprKeys.forEach(sprNr => {
-    const lbl = document.createElement('div');
-    lbl.className = 'si-group-header';
-    lbl.textContent = sprNr + ' ' + (SPR[sprNr] || sprNr);
-    siGroup.appendChild(lbl);
-    const row = document.createElement('div'); row.className = 'si-group-row';
-    SPRACH_INHALTE[sprNr].forEach(si => {
-      row.appendChild(makeChip(si.label, si.id, 'chip-sprach-inhalt'));
+    const subItems = SPRACH_INHALTE[sprNr];
+    const row = document.createElement('div'); row.className = 'ges-aspect-row';
+
+    const toggleBtn = document.createElement('button');
+    toggleBtn.className = 'ges-toggle-btn';
+    toggleBtn.textContent = '▶';
+    toggleBtn.title = 'Inhalte anzeigen';
+    row.appendChild(toggleBtn);
+
+    row.appendChild(makeChip(sprNr + ' ' + (SPR[sprNr] || sprNr), aid(sprNr), 'chip-sprache'));
+
+    const subPanel = document.createElement('div'); subPanel.className = 'ges-sub-items';
+    subItems.forEach(si => {
+      const sc = document.createElement('div'); sc.className = 'chip chip-sprach-inhalt';
+      sc.style.borderRadius = '12px';
+      sc.textContent = si.label;
+      sc.setAttribute('data-aspekt', si.id);
+      sc.onclick = () => filterAspekt(si.id, sc);
+      subPanel.appendChild(sc);
     });
+
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = subPanel.classList.contains('visible');
+      subPanel.classList.toggle('visible', !open);
+      toggleBtn.classList.toggle('open', !open);
+    });
+
     siGroup.appendChild(row);
+    siGroup.appendChild(subPanel);
   });
 
-  // Normen
+  // Normen as collapsible row
   if (SPRACH_INHALTE['normen']) {
-    const lbl = document.createElement('div');
-    lbl.className = 'si-group-header si-norm-header';
-    lbl.textContent = 'Normen / Konventionen / Sprachbewusstheit';
-    siGroup.appendChild(lbl);
-    const row = document.createElement('div'); row.className = 'si-group-row';
-    SPRACH_INHALTE['normen'].forEach(si => {
-      row.appendChild(makeChip(si.label, si.id, 'chip-sprach-inhalt'));
+    const normenItems = SPRACH_INHALTE['normen'];
+    const row = document.createElement('div'); row.className = 'ges-aspect-row';
+
+    const toggleBtn = document.createElement('button');
+    toggleBtn.className = 'ges-toggle-btn';
+    toggleBtn.style.color = '#c44500';
+    toggleBtn.textContent = '▶';
+    row.appendChild(toggleBtn);
+
+    const labelEl = document.createElement('div');
+    labelEl.style.cssText = 'font-size:.85em;font-weight:600;color:#c44500;padding:6px 10px;cursor:default;';
+    labelEl.textContent = 'Normen / Konventionen / Sprachbewusstheit';
+    row.appendChild(labelEl);
+
+    const subPanel = document.createElement('div'); subPanel.className = 'ges-sub-items';
+    normenItems.forEach(si => {
+      const sc = document.createElement('div'); sc.className = 'chip chip-sprach-inhalt';
+      sc.style.cssText = 'border-radius:12px;background:#fff3ee;border-color:#c44500;color:#7a2800;';
+      sc.textContent = si.label;
+      sc.setAttribute('data-aspekt', si.id);
+      sc.onclick = () => filterAspekt(si.id, sc);
+      subPanel.appendChild(sc);
     });
+
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = subPanel.classList.contains('visible');
+      subPanel.classList.toggle('visible', !open);
+      toggleBtn.classList.toggle('open', !open);
+    });
+
     siGroup.appendChild(row);
+    siGroup.appendChild(subPanel);
   }
-
-  // Sprachtypen as collapsible sub-section
-  const sprTypenToggle = document.createElement('div');
-  sprTypenToggle.className = 'si-group-header si-sprtyp-toggle';
-  sprTypenToggle.style.cursor = 'pointer';
-  sprTypenToggle.style.color = '#3385d6';
-  sprTypenToggle.style.userSelect = 'none';
-  sprTypenToggle.innerHTML = '▶ Sprachtypen (nach Typ filtern)';
-  siGroup.appendChild(sprTypenToggle);
-
-  const sprTypenPanel = document.createElement('div');
-  sprTypenPanel.className = 'si-group-row';
-  sprTypenPanel.style.display = 'none';
-  Object.entries(SPR).sort((a,b)=>sortNr(a[0],b[0])).forEach(([nr, text]) => {
-    sprTypenPanel.appendChild(makeChip(nr+' '+text, aid(nr), 'chip-sprache'));
-  });
-  siGroup.appendChild(sprTypenPanel);
-
-  sprTypenToggle.addEventListener('click', () => {
-    const open = sprTypenPanel.style.display !== 'none';
-    sprTypenPanel.style.display = open ? 'none' : 'flex';
-    sprTypenToggle.innerHTML = (open ? '▶' : '▼') + ' Sprachtypen (nach Typ filtern)';
-  });
 
   dsi.appendChild(siGroup);
 }
