@@ -374,10 +374,39 @@ function parseThemaHTML(html, themeNr) {
       const te = li.querySelector('.kompetenz-header h4');
       const title = te ? te.textContent.trim() : '';
       const ges=new Set(), dig=new Set(), spr=new Set();
-      li.querySelectorAll('.ges-tag').forEach(s => { const m=s.textContent.match(/^(2\.\d+)/); if(m) ges.add(m[1]); });
+      // Map aspect nr -> set of concrete content strings
+      const gesInhalte = {};
+      li.querySelectorAll('.ges-tag').forEach(s => {
+        const m = s.textContent.match(/^(2\.\d+)/);
+        if (!m) return;
+        const nr = m[1];
+        ges.add(nr);
+        // Grab the text of the <p> containing this tag (strip the tag text itself)
+        const p = s.closest('p');
+        if (p) {
+          // Get full text, remove the tag label (e.g. "2.2. Identität und Sozialisation") and trim
+          let raw = p.textContent.replace(/^\s*\d+\.\d+\.[^\n]*\n?/gm, '').trim();
+          // Also remove other ges-tag labels that appear in same <p>
+          p.querySelectorAll('.ges-tag').forEach(t => { raw = raw.replace(t.textContent, ''); });
+          // Remove tool-hint content
+          const hint = p.querySelector('.tool-hint');
+          if (hint) raw = raw.replace(hint.textContent, '');
+          // Clean up whitespace
+          raw = raw.replace(/\s+/g, ' ').trim();
+          // Extract first sentence / meaningful fragment (up to 80 chars)
+          const snippet = raw.split(/[.\n]/)[0].trim();
+          if (snippet.length > 3) {
+            if (!gesInhalte[nr]) gesInhalte[nr] = new Set();
+            gesInhalte[nr].add(snippet);
+          }
+        }
+      });
       li.querySelectorAll('.dig-tag').forEach(s => { const m=s.textContent.match(/^(3\.\d+)/); if(m) dig.add(m[1]); });
       li.querySelectorAll('.sprach-tag').forEach(s => { const m=s.textContent.match(/^(4\.\d+)/); if(m) spr.add(m[1]); });
-      komps.push({ title, gesellschaft:[...ges].sort(sortNr), digital:[...dig].sort(sortNr), sprache:[...spr].sort(sortNr) });
+      // Convert gesInhalte sets to arrays
+      const gesInhalteArr = {};
+      Object.entries(gesInhalte).forEach(([k,v]) => { gesInhalteArr[k] = [...v]; });
+      komps.push({ title, gesellschaft:[...ges].sort(sortNr), digital:[...dig].sort(sortNr), sprache:[...spr].sort(sortNr), gesInhalte: gesInhalteArr });
     });
     lebensbezuege.push({ text:txt, kompetenzen:komps });
   });
@@ -677,8 +706,18 @@ function createCard(theme, data) {
 
     item.appendChild(kd);
 
-    // Collapsible Gesellschaft sub-items
-    const gesSubItems = [...allG].sort(sortNr).flatMap(nr => GES_INHALTE[nr] || []);
+    // Collapsible Gesellschaft sub-items — merge from all kompetenzen in this lebensbezug
+    const gesSubMap = {}; // nr -> Set of strings
+    lb.kompetenzen.forEach(k => {
+      if (!k.gesInhalte) return;
+      Object.entries(k.gesInhalte).forEach(([nr, items]) => {
+        if (!gesSubMap[nr]) gesSubMap[nr] = new Set();
+        items.forEach(i => gesSubMap[nr].add(i));
+      });
+    });
+    const gesSubAll = [...allG].flatMap(nr => [...(gesSubMap[nr] || [])]);
+    // Fall back to static GES_INHALTE if nothing parsed
+    const gesSubItems = gesSubAll.length ? gesSubAll : [...allG].sort(sortNr).flatMap(nr => GES_INHALTE[nr] || []);
     if (gesSubItems.length) {
       const gesLabel = document.createElement('span');
       gesLabel.className = 'lebensbezug-label';
