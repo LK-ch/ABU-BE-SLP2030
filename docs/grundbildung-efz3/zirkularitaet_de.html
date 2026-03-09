@@ -149,9 +149,15 @@ h1{color:#000;font-size:2.2em;margin-bottom:10px;font-weight:700;line-height:1.3
 .ges-aspect-row{display:flex;align-items:center;gap:0;flex-wrap:wrap}
 .ges-toggle-btn{background:none;border:none;cursor:pointer;color:#d4a500;font-size:.75em;padding:2px 5px;line-height:1;flex-shrink:0;transition:transform .15s}
 .ges-toggle-btn.open{transform:rotate(90deg)}
+.ges-toggle-btn.blue{color:#3385d6}
 .ges-sub-items{display:none;flex-wrap:wrap;gap:4px;margin:4px 0 6px 28px}
 .ges-sub-items.visible{display:flex}
-.ges-sub-chip{background:#fff8e1;border:1px solid #f0c040;padding:3px 10px;border-radius:12px;font-size:.78em;color:#7a5800;cursor:default;white-space:nowrap}
+.ges-sub-chip{background:#fff8e1;border:1px solid #f0c040;padding:3px 10px;border-radius:12px;font-size:.78em;color:#7a5800;cursor:pointer;white-space:nowrap;transition:all .15s}
+.ges-sub-chip:hover{background:#ffd966;border-color:#d4a500;transform:translateY(-1px)}
+.ges-sub-chip.active{background:#ffd966;border-color:#d4a500;font-weight:600}
+.spr-sub-chip{background:#e8f2fd;border:1px solid #3385d6;padding:3px 10px;border-radius:12px;font-size:.78em;color:#1a5fa8;cursor:pointer;white-space:nowrap;transition:all .15s}
+.spr-sub-chip:hover{background:#3385d6;color:#fff;transform:translateY(-1px)}
+.spr-sub-chip.active{background:#3385d6;color:#fff;font-weight:600}
 
 @media(max-width:1200px){.timeline-grid{flex-direction:column;gap:20px}.year-column{width:100%}}
 @media(max-width:768px){body{font-size:14px}h1{font-size:1.8em}.container{padding:15px}.year-header h2{font-size:1.1em}.theme-card h3{font-size:.95em}.main-filter-btn{padding:8px 16px;font-size:.9em}.logo-section img{height:70px}.chip{font-size:.8em;padding:5px 11px}}
@@ -425,6 +431,12 @@ function renderDropdowns() {
       subItems.forEach(item => {
         const sc = document.createElement('div'); sc.className = 'ges-sub-chip';
         sc.textContent = item;
+        // Clicking a sub-item filters by the parent aspect
+        sc.onclick = () => {
+          document.querySelectorAll('.ges-sub-chip,.spr-sub-chip').forEach(c => c.classList.remove('active'));
+          sc.classList.add('active');
+          filterAspekt(aid(nr), sc);
+        };
         subPanel.appendChild(sc);
       });
 
@@ -466,7 +478,7 @@ function renderDropdowns() {
     const row = document.createElement('div'); row.className = 'ges-aspect-row';
 
     const toggleBtn = document.createElement('button');
-    toggleBtn.className = 'ges-toggle-btn';
+    toggleBtn.className = 'ges-toggle-btn blue';
     toggleBtn.textContent = '▶';
     toggleBtn.title = 'Inhalte anzeigen';
     row.appendChild(toggleBtn);
@@ -475,11 +487,14 @@ function renderDropdowns() {
 
     const subPanel = document.createElement('div'); subPanel.className = 'ges-sub-items';
     subItems.forEach(si => {
-      const sc = document.createElement('div'); sc.className = 'chip chip-sprach-inhalt';
-      sc.style.borderRadius = '12px';
+      const sc = document.createElement('div'); sc.className = 'spr-sub-chip';
       sc.textContent = si.label;
       sc.setAttribute('data-aspekt', si.id);
-      sc.onclick = () => filterAspekt(si.id, sc);
+      sc.onclick = () => {
+        document.querySelectorAll('.ges-sub-chip,.spr-sub-chip').forEach(c => c.classList.remove('active'));
+        sc.classList.add('active');
+        filterAspekt(si.id, sc);
+      };
       subPanel.appendChild(sc);
     });
 
@@ -499,36 +514,41 @@ function renderDropdowns() {
     const normenItems = SPRACH_INHALTE['normen'];
     const row = document.createElement('div'); row.className = 'ges-aspect-row';
 
-    const toggleBtn = document.createElement('button');
-    toggleBtn.className = 'ges-toggle-btn';
-    toggleBtn.style.color = '#c44500';
-    toggleBtn.textContent = '▶';
-    row.appendChild(toggleBtn);
+    const toggleBtn2 = document.createElement('button');
+    toggleBtn2.className = 'ges-toggle-btn';
+    toggleBtn2.style.color = '#c44500';
+    toggleBtn2.textContent = '▶';
+    row.appendChild(toggleBtn2);
 
     const labelEl = document.createElement('div');
     labelEl.style.cssText = 'font-size:.85em;font-weight:600;color:#c44500;padding:6px 10px;cursor:default;';
     labelEl.textContent = 'Normen / Konventionen / Sprachbewusstheit';
     row.appendChild(labelEl);
 
-    const subPanel = document.createElement('div'); subPanel.className = 'ges-sub-items';
+    const subPanel2 = document.createElement('div'); subPanel2.className = 'ges-sub-items';
     normenItems.forEach(si => {
-      const sc = document.createElement('div'); sc.className = 'chip chip-sprach-inhalt';
-      sc.style.cssText = 'border-radius:12px;background:#fff3ee;border-color:#c44500;color:#7a2800;';
+      const sc = document.createElement('div');
+      sc.className = 'spr-sub-chip';
+      sc.style.cssText = 'background:#fff3ee;border-color:#c44500;color:#7a2800;';
       sc.textContent = si.label;
       sc.setAttribute('data-aspekt', si.id);
-      sc.onclick = () => filterAspekt(si.id, sc);
-      subPanel.appendChild(sc);
+      sc.onclick = () => {
+        document.querySelectorAll('.ges-sub-chip,.spr-sub-chip').forEach(c => c.classList.remove('active'));
+        sc.classList.add('active');
+        filterAspekt(si.id, sc);
+      };
+      subPanel2.appendChild(sc);
     });
 
-    toggleBtn.addEventListener('click', (e) => {
+    toggleBtn2.addEventListener('click', (e) => {
       e.stopPropagation();
-      const open = subPanel.classList.contains('visible');
-      subPanel.classList.toggle('visible', !open);
-      toggleBtn.classList.toggle('open', !open);
+      const open = subPanel2.classList.contains('visible');
+      subPanel2.classList.toggle('visible', !open);
+      toggleBtn2.classList.toggle('open', !open);
     });
 
     siGroup.appendChild(row);
-    siGroup.appendChild(subPanel);
+    siGroup.appendChild(subPanel2);
   }
 
   dsi.appendChild(siGroup);
