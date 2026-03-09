@@ -675,19 +675,44 @@ function createCard(theme, data) {
     [...allD].sort(sortNr).forEach(nr=>kd.appendChild(mkBadge(nr,'badge-digital','digital',aid(nr),DIG[nr]||nr)));
     [...allS].sort(sortNr).forEach(nr=>kd.appendChild(mkBadge(nr,'badge-sprache','sprache',aid(nr),SPR[nr]||nr)));
 
-    item.appendChild(kd);card.appendChild(item);
+    item.appendChild(kd);
+
+    // Collapsible Gesellschaft sub-items
+    const gesSubItems = [...allG].sort(sortNr).flatMap(nr => GES_INHALTE[nr] || []);
+    if (gesSubItems.length) {
+      const gesLabel = document.createElement('span');
+      gesLabel.className = 'lebensbezug-label';
+      gesLabel.style.cssText = 'position:relative;cursor:pointer;margin-top:4px;display:inline-block;';
+      gesLabel.textContent = 'Inhalte Gesellschaft';
+      const gesSubPanel = document.createElement('div');
+      gesSubPanel.style.cssText = 'display:none;flex-wrap:wrap;gap:4px;margin-top:4px;';
+      gesSubItems.forEach(txt => {
+        const sc = document.createElement('div'); sc.className = 'ges-sub-chip';
+        sc.textContent = txt; gesSubPanel.appendChild(sc);
+      });
+      gesLabel.addEventListener('click', () => {
+        gesSubPanel.style.display = gesSubPanel.style.display === 'none' ? 'flex' : 'none';
+      });
+      item.appendChild(gesLabel);
+      item.appendChild(gesSubPanel);
+    }
+
+    card.appendChild(item);
   });
 
   if(data.sprachInhalte && data.sprachInhalte.length){
     const item=document.createElement('div');item.className='lebensbezug-item';
-    const label=document.createElement('span');label.className='lebensbezug-label';label.textContent='Sprachinhalte (zirkulär)';label.style.position='relative';
-    const tt=document.createElement('div');tt.className='tooltip';tt.textContent='Wiederkehrende sprachliche Handlungen';label.appendChild(tt);
+    const label=document.createElement('span');label.className='lebensbezug-label';label.textContent='Sprachinhalte';label.style.position='relative';label.style.cursor='pointer';
+    const tt=document.createElement('div');tt.className='tooltip';tt.textContent='Klicken zum Anzeigen / Verbergen';label.appendChild(tt);
     item.appendChild(label);
-    const kd=document.createElement('div');kd.className='kompetenz-detail';
+    const kd=document.createElement('div');kd.className='kompetenz-detail';kd.style.display='none';
     data.sprachInhalte.sort().forEach(siId=>{
       const normalId = siId.startsWith('si-') ? siId : 'si-' + siId;
       const lbl = SI_ALL[siId] || SI_ALL[normalId] || siId;
       kd.appendChild(mkBadge(lbl,'badge-sprach-inhalt','sprach-inhalt',normalId,lbl));
+    });
+    label.addEventListener('click', () => {
+      kd.style.display = kd.style.display === 'none' ? 'block' : 'none';
     });
     item.appendChild(kd);card.appendChild(item);
   }
