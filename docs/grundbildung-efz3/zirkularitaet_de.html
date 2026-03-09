@@ -261,10 +261,9 @@ const SPRACH_INHALTE = {
   '4.1': [
     {id:'si-praesentieren',  label:'Präsentieren'},
     {id:'si-loesungsansaetze',label:'Lösungsansätze beschreiben'},
-    {id:'si-infos-vertrag',  label:'Informationen (aus einem Vertrag) herauslesen'},
-    {id:'si-aussagen',       label:'Aussagen (aus Hörtexten/Videos) erfassen'},
     {id:'si-recherche',      label:'Rechercheergebnisse vermitteln'},
-    {id:'si-geschaeftsbrief',label:'Textvorlage anpassen mit Gross-/Kleinschreibung'}
+    {id:'si-geschaeftsbrief',label:'Textvorlage anpassen mit Gross-/Kleinschreibung'},
+    {id:'si-schriftlich-kom',label:'Zielgruppengerecht schriftlich kommunizieren mit Gross-/Kleinschreibung'}
   ],
   '4.2': [
     {id:'si-schriftlich-kom',label:'Zielgruppengerecht schriftlich kommunizieren mit Gross-/Kleinschreibung'},
@@ -360,14 +359,9 @@ function parseThemaHTML(html, themeNr) {
     lebensbezuege.push({ text:txt, kompetenzen:komps });
   });
 
-  const fb = {gesellschaft:new Set(),digital:new Set(),sprache:new Set()};
-  doc.querySelectorAll('.freibereich-content .ges-tag').forEach(s=>{const m=s.textContent.match(/^(2\.\d+)/);if(m)fb.gesellschaft.add(m[1]);});
-  doc.querySelectorAll('.freibereich-content .dig-tag').forEach(s=>{const m=s.textContent.match(/^(3\.\d+)/);if(m)fb.digital.add(m[1]);});
-  doc.querySelectorAll('.freibereich-content .sprach-tag').forEach(s=>{const m=s.textContent.match(/^(4\.\d+)/);if(m)fb.sprache.add(m[1]);});
-
   const siIds = new Set();
-  doc.querySelectorAll('.zirk-tag[data-zirk]').forEach(el => { siIds.add(el.getAttribute('data-zirk')); });
-  doc.querySelectorAll('.norm-tag[data-norm]').forEach(el => {
+  doc.querySelectorAll('.lebensbezug .zirk-tag[data-zirk]').forEach(el => { siIds.add(el.getAttribute('data-zirk')); });
+  doc.querySelectorAll('.lebensbezug .norm-tag[data-norm]').forEach(el => {
     const normId = el.getAttribute('data-norm');
     if (normId) siIds.add(normId.replace('norm-', 'si-'));
   });
@@ -375,7 +369,6 @@ function parseThemaHTML(html, themeNr) {
   return {
     schluessel:[...skSet].sort(sortNr),
     lebensbezuege,
-    freibereich:{gesellschaft:[...fb.gesellschaft].sort(sortNr),digital:[...fb.digital].sort(sortNr),sprache:[...fb.sprache].sort(sortNr)},
     sprachInhalte:[...siIds]
   };
 }
