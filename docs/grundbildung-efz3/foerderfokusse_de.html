@@ -231,6 +231,7 @@ const DIG = {
   '3.5':'KI-spezifische Komponenten','3.6':'Reflektive Haltung & verantwortungsvoller Umgang'
 };
 const SPR = {
+  '4.':'Rezeption',
   '4.1':'Deskriptiv (beschreibend)','4.2':'Expositorisch (erklärend)',
   '4.3':'Argumentativ (überzeugend)','4.4':'Diskursiv (interagierend)',
   '4.5':'Reflexiv (reflektierend)'
@@ -271,6 +272,11 @@ const DIG_INHALTE = {
 
 // SPRACH_INHALTE: used for dropdown AND for filtering badges in cards
 const SPRACH_INHALTE = {
+  '4.':[
+    {id:'si-inhalte-erfassen',label:'Inhalte erfassen'},
+    {id:'si-lesestrategien',  label:'Strategien beim Lesen anwenden'},
+    {id:'si-grafiken',        label:'Grafiken'}
+  ],
   '4.1':[
     {id:'si-praesentieren',   label:'Präsentieren'},
     {id:'si-loesungsansaetze',label:'Lösungsansätze beschreiben'},
@@ -280,10 +286,7 @@ const SPRACH_INHALTE = {
   ],
   '4.2':[
     {id:'si-schriftlich-kom', label:'Zielgruppengerecht schriftlich kommunizieren mit Gross-/Kleinschreibung'},
-    {id:'si-inhalte-erfassen',label:'Inhalte erfassen'},
-    {id:'si-zusammenhaenge',  label:'Zusammenhänge umformulieren'},
-    {id:'si-lesestrategien',  label:'Strategien beim Lesen anwenden'},
-    {id:'si-grafiken',        label:'Grafiken'}
+    {id:'si-zusammenhaenge',  label:'Zusammenhänge umformulieren'}
   ],
   '4.3':[
     {id:'si-ueberzeugen',     label:'Faktenbezogen überzeugen'},
@@ -331,18 +334,17 @@ const THEMEN_DATA = {
     lebensbezuege: [
       { text:'Meine Ausbildung findet im Betrieb, in der Berufsfachschule und in den überbetrieblichen Kursen statt.',
         kompetenzen:[
-          {gesellschaft:['2.2','2.5'],digital:['3.1','3.2'],sprache:['4.1','4.2','4.4']},
+          {gesellschaft:['2.2','2.5'],digital:['3.1','3.2'],sprache:['4.','4.1','4.4']},
           {gesellschaft:['2.2'],      digital:['3.1','3.6'],sprache:['4.1','4.5']}
         ]
       },
       { text:'Ich habe durch das Gesetz und meinen Arbeitsvertrag Rechte und Pflichten.',
         kompetenzen:[
-          {gesellschaft:['2.6'],digital:['3.4'],sprache:['4.1','4.2']}
+          {gesellschaft:['2.6'],digital:['3.4'],sprache:['4.','4.1']}
         ]
       }
     ],
-    // KORREKTUR: 'si-recherche' bleibt bei T1 (PDF: T1 Deskriptiv hat "Rechercheergebnisse vermitteln" ✓)
-    sprachInhalte:['si-praesentieren','si-loesungsansaetze','si-recherche','si-interview','si-loesungsorient','si-lernstrategien','si-schriftlich-kom','si-inhalte-erfassen']
+    sprachInhalte:['si-inhalte-erfassen','si-praesentieren','si-loesungsansaetze','si-recherche','si-interview','si-loesungsorient','si-lernstrategien','si-schriftlich-kom']
   },
   2: {
     schluessel: ['1.5','1.6','1.8','1.9'],
@@ -366,20 +368,19 @@ const THEMEN_DATA = {
     lebensbezuege: [
       { text:'Ich verdiene mein eigenes Geld, verwalte es und gebe es aus.',
         kompetenzen:[
-          {gesellschaft:['2.8'],digital:['3.2','3.4'],sprache:['4.2','4.1']},
+          {gesellschaft:['2.8'],digital:['3.2','3.4'],sprache:['4.','4.1']},
           {gesellschaft:['2.8'],digital:['3.4'],      sprache:['4.1']},
-          {gesellschaft:['2.8'],digital:['3.2'],      sprache:['4.2','4.3']}
+          {gesellschaft:['2.8'],digital:['3.2'],      sprache:['4.','4.3']}
         ]
       },
       { text:'Ich treffe täglich Kauf- und Konsumentscheidungen und bin dabei mit Rechten und Pflichten konfrontiert.',
         kompetenzen:[
           {gesellschaft:['2.1','2.2','2.4','2.8'],digital:['3.4','3.5'],sprache:['4.1','4.5']},
-          {gesellschaft:['2.6'],                  digital:['3.2'],      sprache:['4.1','4.2']}
+          {gesellschaft:['2.6'],                  digital:['3.2'],      sprache:['4.','4.1']}
         ]
       }
     ],
-    // KORREKTUR: 'si-recherche' entfernt (PDF T2 Deskriptiv: nur Präsentation + Textvorlage)
-    sprachInhalte:['si-inhalte-erfassen','si-ueberzeugen','si-verhalten','si-einfluss-sprache','si-lesestrategien','si-zusammenhaenge','si-praesentieren','si-geschaeftsbrief']
+    sprachInhalte:['si-inhalte-erfassen','si-lesestrategien','si-zusammenhaenge','si-ueberzeugen','si-verhalten','si-einfluss-sprache','si-praesentieren','si-geschaeftsbrief']
   },
   3: {
     schluessel: ['1.1','1.7','1.8'],
@@ -399,18 +400,17 @@ const THEMEN_DATA = {
     lebensbezuege: [
       { text:'Mein Körper und meine Psyche sind unterschiedlichen Einflüssen ausgesetzt.',
         kompetenzen:[
-          {gesellschaft:['2.2'],      digital:['3.6'],      sprache:['4.2','4.3','4.5']},
+          {gesellschaft:['2.2'],      digital:['3.6'],      sprache:['4.','4.3','4.5']},
           {gesellschaft:['2.1','2.6'],digital:['3.2'],      sprache:['4.4','4.5']}
         ]
       },
       { text:'Ich muss abwägen, ob ich Risiken und deren Folgen selbst trage oder wie ich mich absichere.',
         kompetenzen:[
-          // KORREKTUR: 3.3 entfernt (PDF T3 Inhaltserstellung: leer); 3.5 neu (PDF T3 KI-spez.: Persönliche Daten)
-          {gesellschaft:['2.2','2.6','2.8'],digital:['3.4','3.5'],sprache:['4.1','4.2']}
+          {gesellschaft:['2.2','2.6','2.8'],digital:['3.4','3.5'],sprache:['4.','4.1']}
         ]
       }
     ],
-    sprachInhalte:['si-inhalte-erfassen','si-position','si-loesungsorient','si-verhalten','si-grafiken','si-schriftlich-kom']
+    sprachInhalte:['si-inhalte-erfassen','si-grafiken','si-position','si-loesungsorient','si-verhalten','si-schriftlich-kom']
   }
 };
 
@@ -425,7 +425,7 @@ function aid(nr) {
   return nr;
 }
 function sortNr(a,b){
-  const pa=a.split('.').map(Number), pb=b.split('.').map(Number);
+  const pa=a.split('.').map(s=>s===''?-1:Number(s)), pb=b.split('.').map(s=>s===''?-1:Number(s));
   return pa[0]!==pb[0] ? pa[0]-pb[0] : (pa[1]||0)-(pb[1]||0);
 }
 
