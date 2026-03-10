@@ -568,9 +568,13 @@ function createCard(theme, data) {
   [...allS].sort(sortNr).forEach(nr=>kd.appendChild(mkBadge(nr,'badge-sprache','sprache',aid(nr),SPR[nr]||nr)));
   card.appendChild(kd);
 
-  // Gesellschaftsinhalte chips — always visible
+  // Gesellschaftsinhalte chips — always visible, deduplicated per theme
+  const _seenGes = new Set();
   const gesChips = [...allG].sort(sortNr).flatMap(nr =>
-    (data.gesInhalte && data.gesInhalte[nr]) ? data.gesInhalte[nr].map(txt=>({txt,nr})) : []
+    (data.gesInhalte && data.gesInhalte[nr]) ? data.gesInhalte[nr].filter(txt => {
+      if (_seenGes.has(txt)) return false;
+      _seenGes.add(txt); return true;
+    }).map(txt=>({txt,nr})) : []
   );
   if (gesChips.length) {
     const wrap = document.createElement('div');
@@ -591,8 +595,11 @@ function createCard(theme, data) {
     const wrap = document.createElement('div');
     wrap.className = 'card-inhalte-block'; wrap.setAttribute('data-block','spr');
     wrap.style.cssText = 'display:flex;flex-wrap:wrap;gap:4px;margin-top:4px;';
+    const _seenSpr = new Set();
     data.sprachInhalte.forEach(siId => {
       const normId = siId.startsWith('si-') ? siId : 'si-'+siId;
+      if (_seenSpr.has(normId)) return;
+      _seenSpr.add(normId);
       const lbl = SI_ALL[normId] || siId;
       const sc = document.createElement('span'); sc.className = 'card-spr-chip';
       sc.setAttribute('data-si-id', normId);
