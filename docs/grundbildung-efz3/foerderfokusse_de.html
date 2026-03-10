@@ -102,6 +102,8 @@ h1{color:#000;font-size:2.2em;margin-bottom:10px;font-weight:700;line-height:1.3
 /* In-card Inhalte chips */
 .card-ges-chip{background:#fff8e1;border:1px solid #f0c040;padding:2px 9px;border-radius:10px;font-size:.76em;color:#7a5800;white-space:nowrap;transition:opacity .15s,outline .1s;display:inline-block}
 .card-spr-chip{background:#e8f2fd;border:1px solid #9ec8f0;padding:2px 9px;border-radius:10px;font-size:.76em;color:#1a5080;white-space:nowrap;transition:opacity .15s,outline .1s;display:inline-block}
+/* NEW: Digital Inhalte chips */
+.card-dig-chip{background:#e6f7ef;border:1px solid #80c9a0;padding:2px 9px;border-radius:10px;font-size:.76em;color:#1a6040;white-space:nowrap;transition:opacity .15s,outline .1s;display:inline-block}
 
 /* Gesellschaft & Sprache dropdown groups */
 .ges-group{width:100%;display:flex;flex-direction:column;gap:4px}
@@ -109,6 +111,7 @@ h1{color:#000;font-size:2.2em;margin-bottom:10px;font-weight:700;line-height:1.3
 .ges-toggle-btn{background:none;border:none;cursor:pointer;color:#d4a500;font-size:.75em;padding:2px 5px;line-height:1;flex-shrink:0;transition:transform .15s}
 .ges-toggle-btn.open{transform:rotate(90deg)}
 .ges-toggle-btn.blue{color:#3385d6}
+.ges-toggle-btn.green{color:#4db380}
 .ges-sub-items{display:none;flex-wrap:wrap;gap:4px;margin:4px 0 6px 28px}
 .ges-sub-items.visible{display:flex}
 .ges-sub-chip{background:#fff8e1;border:1px solid #f0c040;padding:3px 10px;border-radius:12px;font-size:.78em;color:#7a5800;cursor:pointer;white-space:nowrap;transition:all .15s}
@@ -117,6 +120,10 @@ h1{color:#000;font-size:2.2em;margin-bottom:10px;font-weight:700;line-height:1.3
 .spr-sub-chip{background:#e8f2fd;border:1px solid #3385d6;padding:3px 10px;border-radius:12px;font-size:.78em;color:#1a5fa8;cursor:pointer;white-space:nowrap;transition:all .15s}
 .spr-sub-chip:hover{background:#3385d6;color:#fff;transform:translateY(-1px)}
 .spr-sub-chip.active{background:#3385d6;color:#fff;font-weight:600}
+/* NEW: Digital sub-chips */
+.dig-sub-chip{background:#e6f7ef;border:1px solid #4db380;padding:3px 10px;border-radius:12px;font-size:.78em;color:#1a6040;cursor:pointer;white-space:nowrap;transition:all .15s}
+.dig-sub-chip:hover{background:#4db380;color:#fff;transform:translateY(-1px)}
+.dig-sub-chip.active{background:#4db380;color:#fff;font-weight:600}
 /* In-card Gesellschaft sub-chips */
 .card-ges-sub{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
 .card-ges-chip{background:#fff8e1;border:1px solid #f0c040;padding:2px 8px;border-radius:10px;font-size:.75em;color:#7a5800;white-space:nowrap}
@@ -230,6 +237,7 @@ const SPR = {
 };
 
 // Global GES_INHALTE for dropdown (all themes combined)
+// KORREKTUR PDF: '2.8' ergänzt um 'Bedürfnisse und Kaufverhalten' (aus T2, Aspekt Wirtschaft)
 const GES_INHALTE = {
   '2.1':['Zwischenmenschliches Verhalten','Konsumentscheide überprüfen'],
   '2.2':['BFS und Fach ABU','3 Lernorte','Arbeits- und Lernverhalten','Meine Rolle',
@@ -244,9 +252,21 @@ const GES_INHALTE = {
           'Versicherungsarten und deren Funktionsweise','Nutzen verschiedener Versicherungen'],
   '2.7':['Siehe «Medien und Digitalität»'],
   '2.8':['Lohnabrechnung','Einfacher Wirtschaftskreislauf','Budget','Angebote von Geldinstituten',
-          'Zahlungsmittel','Finanzierungsarten','Kaufbeeinflussung und Werbefallen',
-          'Konsumentscheide überprüfen','Unfall- und Krankenversicherung',
-          'Nutzen verschiedener Versicherungen']
+          'Zahlungsmittel','Finanzierungsarten','Bedürfnisse und Kaufverhalten',
+          'Kaufbeeinflussung und Werbefallen','Konsumentscheide überprüfen',
+          'Unfall- und Krankenversicherung','Nutzen verschiedener Versicherungen']
+};
+
+// Global DIG_INHALTE for dropdown (alle Themen kombiniert, dedupliziert)
+const DIG_INHALTE = {
+  '3.1':['Grundfunktionen von Programmen','Organisationsunterstützung und Lernhilfen'],
+  '3.2':['Nutzung von KI, Angabe von Quellen','Navigieren','Quellenbeurteilung',
+          'Verkaufsplattformen','Echokammern, Filterblasen','Manipulationen und Falschinformationen'],
+  '3.3':['Verknüpfte Informationen'],
+  '3.4':['Recherche','Online-Gesetze und -Verordnungen','Tools',
+          'Online-Konsumentenhilfen','Online-Vorlagen','Online-Tool'],
+  '3.5':['Persönliche Daten'],
+  '3.6':['Digitale Zusammenarbeit','Schützenswerte Daten','Umgang mit digitalen Medien']
 };
 
 // SPRACH_INHALTE: used for dropdown AND for filtering badges in cards
@@ -287,6 +307,10 @@ Object.values(SPRACH_INHALTE).forEach(arr => arr.forEach(si => {
 }));
 
 // Per-theme data
+// KORREKTUREN gemäss PDF (massgebend):
+// T1: gesInhalte unverändert; sprachInhalte unverändert; digInhalte neu ergänzt
+// T2: gesInhalte['2.8'] ergänzt um 'Bedürfnisse und Kaufverhalten'; sprachInhalte: 'si-recherche' entfernt; digInhalte neu
+// T3: lebensbezuege digital: 3.3 entfernt (nicht im PDF für T3); digInhalte neu
 const THEMEN_DATA = {
   1: {
     schluessel: ['1.2','1.4','1.10'],
@@ -296,6 +320,13 @@ const THEMEN_DATA = {
       '2.5':['Mitgestaltungsmöglichkeiten'],
       '2.6':['Rechtsordnung und Lehrvertrag','Gesetzliche Grundlagen'],
       '2.7':['Siehe «Medien und Digitalität»']
+    },
+    // NEU: Digitale Inhalte pro Aspekt (aus PDF Seite 3, T1)
+    digInhalte: {
+      '3.1':['Grundfunktionen von Programmen','Organisationsunterstützung und Lernhilfen'],
+      '3.2':['Nutzung von KI, Angabe von Quellen'],
+      '3.4':['Recherche','Online-Gesetze und -Verordnungen','Tools'],
+      '3.6':['Digitale Zusammenarbeit']
     },
     lebensbezuege: [
       { text:'Meine Ausbildung findet im Betrieb, in der Berufsfachschule und in den überbetrieblichen Kursen statt.',
@@ -310,17 +341,27 @@ const THEMEN_DATA = {
         ]
       }
     ],
-    sprachInhalte:['si-praesentieren','si-loesungsansaetze','si-interview','si-loesungsorient','si-lernstrategien','si-schriftlich-kom','si-inhalte-erfassen']
+    // KORREKTUR: 'si-recherche' bleibt bei T1 (PDF: T1 Deskriptiv hat "Rechercheergebnisse vermitteln" ✓)
+    sprachInhalte:['si-praesentieren','si-loesungsansaetze','si-recherche','si-interview','si-loesungsorient','si-lernstrategien','si-schriftlich-kom','si-inhalte-erfassen']
   },
   2: {
     schluessel: ['1.5','1.6','1.8','1.9'],
+    // KORREKTUR: '2.8' ergänzt um 'Bedürfnisse und Kaufverhalten' (PDF Seite 2, T2 Wirtschaft)
     gesInhalte: {
       '2.1':['Konsumentscheide überprüfen'],
       '2.2':['Bedürfnisse und Kaufverhalten'],
       '2.4':['Konsumentscheide überprüfen'],
       '2.6':['Handlungsfähigkeit','Rechtsgültiger Vertrag','Vertragsrücktritt und Vertragsverletzungen'],
       '2.7':['Siehe «Medien und Digitalität»'],
-      '2.8':['Lohnabrechnung','Einfacher Wirtschaftskreislauf','Budget','Angebote von Geldinstituten','Zahlungsmittel','Finanzierungsarten','Kaufbeeinflussung und Werbefallen','Konsumentscheide überprüfen']
+      '2.8':['Lohnabrechnung','Einfacher Wirtschaftskreislauf','Budget','Angebote von Geldinstituten',
+             'Zahlungsmittel','Finanzierungsarten','Bedürfnisse und Kaufverhalten',
+             'Kaufbeeinflussung und Werbefallen','Konsumentscheide überprüfen']
+    },
+    // NEU: Digitale Inhalte pro Aspekt (aus PDF Seite 3, T2)
+    digInhalte: {
+      '3.2':['Navigieren','Quellenbeurteilung','Verkaufsplattformen','Echokammern, Filterblasen','Manipulationen und Falschinformationen'],
+      '3.4':['Recherche','Online-Konsumentenhilfen','Online-Vorlagen','Online-Tool'],
+      '3.5':['Persönliche Daten']
     },
     lebensbezuege: [
       { text:'Ich verdiene mein eigenes Geld, verwalte es und gebe es aus.',
@@ -337,7 +378,8 @@ const THEMEN_DATA = {
         ]
       }
     ],
-    sprachInhalte:['si-inhalte-erfassen','si-recherche','si-ueberzeugen','si-verhalten','si-einfluss-sprache','si-lesestrategien','si-zusammenhaenge','si-praesentieren','si-geschaeftsbrief']
+    // KORREKTUR: 'si-recherche' entfernt (PDF T2 Deskriptiv: nur Präsentation + Textvorlage)
+    sprachInhalte:['si-inhalte-erfassen','si-ueberzeugen','si-verhalten','si-einfluss-sprache','si-lesestrategien','si-zusammenhaenge','si-praesentieren','si-geschaeftsbrief']
   },
   3: {
     schluessel: ['1.1','1.7','1.8'],
@@ -348,6 +390,12 @@ const THEMEN_DATA = {
       '2.7':['Siehe «Medien und Digitalität»'],
       '2.8':['Unfall- und Krankenversicherung','Nutzen verschiedener Versicherungen']
     },
+    // NEU: Digitale Inhalte pro Aspekt (aus PDF Seite 3, T3)
+    digInhalte: {
+      '3.4':['Recherche','Online-Vorlagen','Online-Tool'],
+      '3.5':['Persönliche Daten'],
+      '3.6':['Schützenswerte Daten','Umgang mit digitalen Medien']
+    },
     lebensbezuege: [
       { text:'Mein Körper und meine Psyche sind unterschiedlichen Einflüssen ausgesetzt.',
         kompetenzen:[
@@ -357,7 +405,8 @@ const THEMEN_DATA = {
       },
       { text:'Ich muss abwägen, ob ich Risiken und deren Folgen selbst trage oder wie ich mich absichere.',
         kompetenzen:[
-          {gesellschaft:['2.2','2.6','2.8'],digital:['3.3','3.4'],sprache:['4.1','4.2']}
+          // KORREKTUR: 3.3 entfernt (PDF T3 Inhaltserstellung: leer); 3.5 neu (PDF T3 KI-spez.: Persönliche Daten)
+          {gesellschaft:['2.2','2.6','2.8'],digital:['3.4','3.5'],sprache:['4.1','4.2']}
         ]
       }
     ],
@@ -422,9 +471,8 @@ function renderDropdowns() {
         const sc = document.createElement('div'); sc.className = 'ges-sub-chip';
         sc.textContent = item;
         sc.onclick = () => {
-          document.querySelectorAll('.ges-sub-chip,.spr-sub-chip').forEach(c=>c.classList.remove('active'));
+          document.querySelectorAll('.ges-sub-chip,.spr-sub-chip,.dig-sub-chip').forEach(c=>c.classList.remove('active'));
           sc.classList.add('active');
-          // Filter cards: show only those containing this text in their gesInhalte
           filterByGesText(item);
         };
         subPanel.appendChild(sc);
@@ -446,13 +494,45 @@ function renderDropdowns() {
   });
   dges.appendChild(gesGroup);
 
-  // ── Digital ──
+  // ── Digital — collapsible sub-items per aspect ──
   const ddig = document.getElementById('dropdown-digital');
-  const rowDig = document.createElement('div'); rowDig.className = 'dropdown-inner';
+  const digGroup = document.createElement('div'); digGroup.className = 'ges-group';
   Object.entries(DIG).sort((a,b)=>sortNr(a[0],b[0])).forEach(([nr,text]) => {
-    rowDig.appendChild(makeChip(nr+' '+text, aid(nr), 'chip-digital'));
+    const subItems = DIG_INHALTE[nr] || [];
+    const row = document.createElement('div'); row.className = 'ges-aspect-row';
+    if (subItems.length) {
+      const toggleBtn = document.createElement('button');
+      toggleBtn.className = 'ges-toggle-btn green'; toggleBtn.textContent = '▶';
+      row.appendChild(toggleBtn);
+      const chip = makeChip(nr+' '+text, aid(nr), 'chip-digital');
+      row.appendChild(chip);
+      const subPanel = document.createElement('div'); subPanel.className = 'ges-sub-items';
+      subItems.forEach(item => {
+        const sc = document.createElement('div'); sc.className = 'dig-sub-chip';
+        sc.textContent = item;
+        sc.onclick = () => {
+          document.querySelectorAll('.ges-sub-chip,.spr-sub-chip,.dig-sub-chip').forEach(c=>c.classList.remove('active'));
+          sc.classList.add('active');
+          filterByDigText(item);
+        };
+        subPanel.appendChild(sc);
+      });
+      const doToggle = (e) => {
+        e.stopPropagation();
+        subPanel.classList.toggle('visible');
+        toggleBtn.classList.toggle('open');
+      };
+      toggleBtn.addEventListener('click', doToggle);
+      chip.addEventListener('click', (e) => { e.stopPropagation(); doToggle(e); });
+      digGroup.appendChild(row); digGroup.appendChild(subPanel);
+    } else {
+      const spacer = document.createElement('span'); spacer.style.cssText='width:24px;flex-shrink:0;display:inline-block';
+      row.appendChild(spacer);
+      row.appendChild(makeChip(nr+' '+text, aid(nr), 'chip-digital'));
+      digGroup.appendChild(row);
+    }
   });
-  ddig.appendChild(rowDig);
+  ddig.appendChild(digGroup);
 
   // ── Sprache & Kommunikation — collapsible Sprachtypen with sub-items ──
   const dsi = document.getElementById('dropdown-sprach-inhalt');
@@ -470,9 +550,8 @@ function renderDropdowns() {
       const sc = document.createElement('div'); sc.className = 'spr-sub-chip';
       sc.textContent = si.label;
       sc.onclick = () => {
-        document.querySelectorAll('.ges-sub-chip,.spr-sub-chip').forEach(c=>c.classList.remove('active'));
+        document.querySelectorAll('.ges-sub-chip,.spr-sub-chip,.dig-sub-chip').forEach(c=>c.classList.remove('active'));
         sc.classList.add('active');
-        // Filter cards: show only those containing this si.id in sprachInhalte badges
         filterBySiId(si.id);
       };
       subPanel.appendChild(sc);
@@ -591,6 +670,30 @@ function createCard(theme, data) {
     card.appendChild(wrap);
   }
 
+  // Digitalinhalte chips — always visible, deduplicated per theme
+  if (data.digInhalte) {
+    const _seenDig = new Set();
+    const digChips = [...allD].sort(sortNr).flatMap(nr =>
+      (data.digInhalte && data.digInhalte[nr]) ? data.digInhalte[nr].filter(txt => {
+        if (_seenDig.has(txt)) return false;
+        _seenDig.add(txt); return true;
+      }).map(txt=>({txt,nr})) : []
+    );
+    if (digChips.length) {
+      const wrap = document.createElement('div');
+      wrap.className = 'card-inhalte-block'; wrap.setAttribute('data-block','dig');
+      wrap.style.cssText = 'display:flex;flex-wrap:wrap;gap:4px;margin-top:4px;';
+      digChips.forEach(({txt,nr}) => {
+        const sc = document.createElement('span'); sc.className = 'card-dig-chip';
+        sc.setAttribute('data-dig-text', txt);
+        sc.setAttribute('data-dig-aspekt', nr);
+        sc.textContent = txt;
+        wrap.appendChild(sc);
+      });
+      card.appendChild(wrap);
+    }
+  }
+
   // Sprachinhalte chips — always visible
   if (data.sprachInhalte && data.sprachInhalte.length) {
     const wrap = document.createElement('div');
@@ -639,7 +742,7 @@ function filterCategory(cat) {
   activeFilter = 'cat:'+cat;
   document.getElementById('btn-reset').classList.remove('active');
   document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
-  document.querySelectorAll('.ges-sub-chip,.spr-sub-chip').forEach(c=>c.classList.remove('active'));
+  document.querySelectorAll('.ges-sub-chip,.spr-sub-chip,.dig-sub-chip').forEach(c=>c.classList.remove('active'));
   resetChipHighlights();
 
   const isGes = cat === 'gesellschaft';
@@ -650,7 +753,7 @@ function filterCategory(cat) {
   // Show/hide aspekt badges
   document.querySelectorAll('.kompetenz-badge').forEach(b => {
     const bc = b.getAttribute('data-category');
-    b.style.display = (bc===cat || (isSpr && bc==='sprache')) ? 'inline-block' : 'none';
+    b.style.display = (bc===cat || (isSpr && bc==='sprache') || (isDig && bc==='digital')) ? 'inline-block' : 'none';
   });
   document.querySelectorAll('.schluesselkompetenz-badge').forEach(b => {
     b.style.display = isSk ? 'inline-block' : 'none';
@@ -661,6 +764,7 @@ function filterCategory(cat) {
 
   // Show/hide inhalte chip blocks
   document.querySelectorAll('.card-inhalte-block[data-block="ges"]').forEach(b=>b.style.display = isGes ? 'flex' : 'none');
+  document.querySelectorAll('.card-inhalte-block[data-block="dig"]').forEach(b=>b.style.display = isDig ? 'flex' : 'none');
   document.querySelectorAll('.card-inhalte-block[data-block="spr"]').forEach(b=>b.style.display = isSpr ? 'flex' : 'none');
 
   updateVis();
@@ -672,7 +776,7 @@ function filterAspekt(aspekt, chipEl) {
   activeFilter = aspekt;
   document.getElementById('btn-reset').classList.remove('active');
   document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
-  document.querySelectorAll('.ges-sub-chip,.spr-sub-chip').forEach(c=>c.classList.remove('active'));
+  document.querySelectorAll('.ges-sub-chip,.spr-sub-chip,.dig-sub-chip').forEach(c=>c.classList.remove('active'));
   if (chipEl) chipEl.classList.add('active');
   resetChipHighlights();
 
@@ -687,13 +791,21 @@ function filterAspekt(aspekt, chipEl) {
   // Also show relevant inhalte block, dim non-matching chips
   const isGesAsp = aspekt.startsWith('ges-');
   const isSprAsp = aspekt.startsWith('spr-');
+  const isDigAsp = aspekt.startsWith('dig-');
   document.querySelectorAll('.card-inhalte-block[data-block="ges"]').forEach(b=>b.style.display = isGesAsp ? 'flex' : 'none');
+  document.querySelectorAll('.card-inhalte-block[data-block="dig"]').forEach(b=>b.style.display = isDigAsp ? 'flex' : 'none');
   document.querySelectorAll('.card-inhalte-block[data-block="spr"]').forEach(b=>b.style.display = isSprAsp ? 'flex' : 'none');
 
   if (isGesAsp) {
     const nr = aspekt.replace('ges-','');
     document.querySelectorAll('.card-ges-chip').forEach(c => {
       c.style.opacity = c.getAttribute('data-ges-aspekt')===nr ? '1' : '0.2';
+    });
+  }
+  if (isDigAsp) {
+    const nr = aspekt.replace('dig-','');
+    document.querySelectorAll('.card-dig-chip').forEach(c => {
+      c.style.opacity = c.getAttribute('data-dig-aspekt')===nr ? '1' : '0.2';
     });
   }
   if (isSprAsp) {
@@ -717,8 +829,9 @@ function filterByGesText(txt) {
   document.querySelectorAll('.kompetenz-badge,.schluesselkompetenz-badge').forEach(b=>b.style.display='none');
   document.querySelectorAll('.schluesselkompetenzen').forEach(sk=>sk.style.display='none');
 
-  // Show ges inhalte blocks, hide spr
+  // Show ges inhalte blocks, hide dig + spr
   document.querySelectorAll('.card-inhalte-block[data-block="ges"]').forEach(b=>b.style.display='flex');
+  document.querySelectorAll('.card-inhalte-block[data-block="dig"]').forEach(b=>b.style.display='none');
   document.querySelectorAll('.card-inhalte-block[data-block="spr"]').forEach(b=>b.style.display='none');
 
   // Dim all ges chips except the matching one
@@ -736,6 +849,32 @@ function filterByGesText(txt) {
   });
 }
 
+// Filter cards to only those containing this Digital-Inhalt text
+function filterByDigText(txt) {
+  activeFilter = 'dig-text:'+txt;
+  document.getElementById('btn-reset').classList.remove('active');
+  resetChipHighlights();
+
+  document.querySelectorAll('.kompetenz-badge,.schluesselkompetenz-badge').forEach(b=>b.style.display='none');
+  document.querySelectorAll('.schluesselkompetenzen').forEach(sk=>sk.style.display='none');
+
+  document.querySelectorAll('.card-inhalte-block[data-block="ges"]').forEach(b=>b.style.display='none');
+  document.querySelectorAll('.card-inhalte-block[data-block="dig"]').forEach(b=>b.style.display='flex');
+  document.querySelectorAll('.card-inhalte-block[data-block="spr"]').forEach(b=>b.style.display='none');
+
+  document.querySelectorAll('.card-dig-chip').forEach(c => {
+    const match = c.getAttribute('data-dig-text')===txt;
+    c.style.opacity = match ? '1' : '0.15';
+    c.style.fontWeight = match ? '700' : '';
+    c.style.outline = match ? '2px solid #4db380' : '';
+  });
+
+  document.querySelectorAll('.theme-card:not(.placeholder):not(.schlussarbeit)').forEach(card => {
+    const has = [...card.querySelectorAll('.card-dig-chip')].some(c=>c.getAttribute('data-dig-text')===txt);
+    card.style.display = has ? 'block' : 'none';
+  });
+}
+
 // Filter cards to only those containing this Sprachinhalt si-id — show ONLY that chip highlighted
 function filterBySiId(siId) {
   activeFilter = 'si:'+siId;
@@ -746,6 +885,7 @@ function filterBySiId(siId) {
   document.querySelectorAll('.schluesselkompetenzen').forEach(sk=>sk.style.display='none');
 
   document.querySelectorAll('.card-inhalte-block[data-block="ges"]').forEach(b=>b.style.display='none');
+  document.querySelectorAll('.card-inhalte-block[data-block="dig"]').forEach(b=>b.style.display='none');
   document.querySelectorAll('.card-inhalte-block[data-block="spr"]').forEach(b=>b.style.display='flex');
 
   document.querySelectorAll('.card-spr-chip').forEach(c => {
@@ -762,7 +902,7 @@ function filterBySiId(siId) {
 }
 
 function resetChipHighlights() {
-  document.querySelectorAll('.card-ges-chip,.card-spr-chip').forEach(c => {
+  document.querySelectorAll('.card-ges-chip,.card-spr-chip,.card-dig-chip').forEach(c => {
     c.style.opacity = ''; c.style.fontWeight = ''; c.style.outline = '';
   });
 }
@@ -777,7 +917,7 @@ function updateVis() {
 function resetFilter() {
   activeFilter = null;
   document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
-  document.querySelectorAll('.ges-sub-chip,.spr-sub-chip').forEach(c=>c.classList.remove('active'));
+  document.querySelectorAll('.ges-sub-chip,.spr-sub-chip,.dig-sub-chip').forEach(c=>c.classList.remove('active'));
   document.querySelectorAll('.main-filter-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('btn-reset').classList.add('active');
   if (openDropdown) {
