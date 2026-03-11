@@ -281,6 +281,13 @@ const DIG_INHALTE = {
   '3.6':['Digitale Zusammenarbeit','Schützenswerte Daten','Umgang mit digitalen Medien']
 };
 
+// ── Rezeption Inhalte (für Dropdown) ──
+const REZ_INHALTE = [
+  {id:'si-inhalte-erfassen', label:'Inhalte erfassen'},
+  {id:'si-lesestrategien',   label:'Strategien beim Lesen anwenden'},
+  {id:'si-grafiken',         label:'Grafiken'}
+];
+
 // ── Sprache & Kommunikation Inhalte ──
 const SPRACH_INHALTE = {
   '4.1':[
@@ -590,6 +597,29 @@ function renderDropdowns() {
   // ── Sprache & Kommunikation — collapsible Sprachtypen with sub-items ──
   const dsi = document.getElementById('dropdown-sprach-inhalt');
   const siGroup = document.createElement('div'); siGroup.className = 'ges-group';
+
+  // Rezeption zuerst (4.)
+  const rezRow = document.createElement('div'); rezRow.className = 'ges-aspect-row';
+  const rezToggle = document.createElement('button'); rezToggle.className = 'ges-toggle-btn blue'; rezToggle.textContent = '▶';
+  rezRow.appendChild(rezToggle);
+  const rezChip = makeChip('4. Rezeption', 'spr-rez', 'chip-sprache');
+  rezRow.appendChild(rezChip);
+  const rezPanel = document.createElement('div'); rezPanel.className = 'ges-sub-items';
+  REZ_INHALTE.forEach(si => {
+    const sc = document.createElement('div'); sc.className = 'spr-sub-chip';
+    sc.textContent = si.label;
+    sc.onclick = () => {
+      document.querySelectorAll('.ges-sub-chip,.spr-sub-chip,.dig-sub-chip').forEach(c=>c.classList.remove('active'));
+      sc.classList.add('active');
+      filterBySiId(si.id);
+    };
+    rezPanel.appendChild(sc);
+  });
+  const doToggleRez = (e) => { e.stopPropagation(); rezPanel.classList.toggle('visible'); rezToggle.classList.toggle('open'); };
+  rezToggle.addEventListener('click', doToggleRez);
+  rezChip.addEventListener('click', (e) => { e.stopPropagation(); doToggleRez(e); });
+  siGroup.appendChild(rezRow); siGroup.appendChild(rezPanel);
+
   Object.keys(SPRACH_INHALTE).sort(sortNr).forEach(sprNr => {
     const subItems = SPRACH_INHALTE[sprNr];
     const row = document.createElement('div'); row.className = 'ges-aspect-row';
@@ -883,7 +913,9 @@ function filterAspekt(aspekt, chipEl) {
   }
   if (isSprAsp) {
     const sprNr = aspekt.replace('spr-','');
-    const validIds = new Set((SPRACH_INHALTE[sprNr]||[]).map(s=>s.id));
+    const validIds = sprNr === 'rez'
+      ? new Set(REZ_INHALTE.map(s=>s.id))
+      : new Set((SPRACH_INHALTE[sprNr]||[]).map(s=>s.id));
     document.querySelectorAll('.card-spr-chip').forEach(c => {
       c.style.opacity = validIds.has(c.getAttribute('data-si-id')) ? '1' : '0.2';
     });
