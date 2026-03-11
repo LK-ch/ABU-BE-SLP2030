@@ -116,7 +116,6 @@
 
         @keyframes spin { to { transform: rotate(360deg); } }
 
-        
         /* PDF EXPORT */
         .pdf-export-container {
             text-align: center;
@@ -161,26 +160,6 @@
             .thema-arrow { display: none !important; }
             * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
         }
-
-        /* ── Lehrjahr-Trennlinie ── */
-        .lehrjahr-title {
-            font-size: 1.1em;
-            font-weight: 700;
-            color: #000;
-            margin: 28px 0 12px 0;
-            padding-bottom: 6px;
-            border-bottom: 2px solid #dc291e;
-        }
-
-        /* ── Themen in Erarbeitung ── */
-        .thema-header--pending {
-            opacity: 0.55;
-            cursor: default;
-            pointer-events: none;
-        }
-        .thema-header--pending .lektionen::before {
-            content: "⏳ ";
-        }
     </style>
 </head>
 <body>
@@ -207,14 +186,12 @@
     <main>
         <nav class="breadcrumb">
             <a href="../index_de.html">Schullehrplan ABU</a> /
-            2-jährige Grundbildung EBA
+            <a href="index_de.html">2-jährige Grundbildung EBA</a> /
+            1. Lehrjahr
         </nav>
 
-        <h1>Schullehrplan ABU – EBA</h1>
+        <h1>1. Lehrjahr EBA</h1>
         <p class="subtitle">2-jährige berufliche Grundbildung mit eidgenössischem Berufsattest</p>
-
-        <!-- ── 1. LEHRJAHR ── -->
-        <h2 class="lehrjahr-title">1. Lehrjahr</h2>
 
         <!-- THEMA 1 -->
         <div class="thema-section" id="section-thema1">
@@ -252,57 +229,6 @@
             <div class="thema-content" id="content-thema3"></div>
         </div>
 
-        <!-- ── 2. LEHRJAHR ── -->
-        <h2 class="lehrjahr-title">2. Lehrjahr</h2>
-
-        <!-- THEMA 4 -->
-        <div class="thema-section" id="section-thema4">
-            <div class="thema-header thema-header--pending" onclick="toggleThema('thema4', 'thema4.html', this)">
-                <div class="thema-header-left">
-                    <h2>Thema 4: Meine Kultur, meine Beziehungen</h2>
-                    <span class="lektionen">In Erarbeitung</span>
-                </div>
-                <span class="thema-arrow">▼</span>
-            </div>
-            <div class="thema-content" id="content-thema4"></div>
-        </div>
-
-        <!-- THEMA 5 -->
-        <div class="thema-section" id="section-thema5">
-            <div class="thema-header thema-header--pending" onclick="toggleThema('thema5', 'thema5.html', this)">
-                <div class="thema-header-left">
-                    <h2>Thema 5: Interessen vertreten</h2>
-                    <span class="lektionen">In Erarbeitung</span>
-                </div>
-                <span class="thema-arrow">▼</span>
-            </div>
-            <div class="thema-content" id="content-thema5"></div>
-        </div>
-
-        <!-- THEMA 8 -->
-        <div class="thema-section" id="section-thema8">
-            <div class="thema-header thema-header--pending" onclick="toggleThema('thema8', 'thema8.html', this)">
-                <div class="thema-header-left">
-                    <h2>Thema 8: Arbeiten im Wandel</h2>
-                    <span class="lektionen">In Erarbeitung</span>
-                </div>
-                <span class="thema-arrow">▼</span>
-            </div>
-            <div class="thema-content" id="content-thema8"></div>
-        </div>
-
-        <!-- THEMA 9 -->
-        <div class="thema-section" id="section-thema9">
-            <div class="thema-header thema-header--pending" onclick="toggleThema('thema9', 'thema9.html', this)">
-                <div class="thema-header-left">
-                    <h2>Thema 9: Mein Zuhause</h2>
-                    <span class="lektionen">In Erarbeitung</span>
-                </div>
-                <span class="thema-arrow">▼</span>
-            </div>
-            <div class="thema-content" id="content-thema9"></div>
-        </div>
-
         <div class="pdf-export-container">
             <button class="pdf-export-button" onclick="exportToPDF()">Als PDF exportieren</button>
         </div>
@@ -319,7 +245,6 @@
     </footer>
 
     <script>
-        // Cache für geladene Inhalte
         const loadedThemen = {};
 
         async function toggleThema(id, file, headerEl) {
@@ -333,14 +258,11 @@
                 return;
             }
 
-            // Öffnen
             content.classList.add('show');
             arrow.classList.add('open');
 
-            // Bereits geladen? Dann direkt anzeigen
             if (loadedThemen[id]) return;
 
-            // Ladeindikator
             content.innerHTML = '<div class="thema-loading">Inhalte werden geladen…</div>';
 
             try {
@@ -350,14 +272,12 @@
                 content.innerHTML = html;
                 loadedThemen[id] = true;
 
-                // Scripts im geladenen Inhalt ausführen
                 content.querySelectorAll('script').forEach(oldScript => {
                     const newScript = document.createElement('script');
                     newScript.textContent = oldScript.textContent;
                     document.body.appendChild(newScript);
                 });
 
-                // Tooltips initialisieren
                 initTooltips(content);
 
             } catch (e) {
@@ -391,15 +311,10 @@
         }
 
         async function exportToPDF() {
-            // Alle Themen laden und öffnen
             const themen = [
                 { id: 'thema1', file: 'thema1.html' },
                 { id: 'thema2', file: 'thema2.html' },
-                { id: 'thema3', file: 'thema3.html' },
-                { id: 'thema4', file: 'thema4.html' },
-                { id: 'thema5', file: 'thema5.html' },
-                { id: 'thema8', file: 'thema8.html' },
-                { id: 'thema9', file: 'thema9.html' }
+                { id: 'thema3', file: 'thema3.html' }
             ];
 
             for (const thema of themen) {
@@ -416,11 +331,10 @@
                         loadedThemen[thema.id] = true;
                     } catch(e) {}
                 }
-                
+
                 content.classList.add('show');
                 arrow.classList.add('open');
 
-                // Alle Unterelemente aufklappen
                 content.querySelectorAll('.theme-content, .lebensbezug-content, .freibereich-content').forEach(el => el.classList.add('show'));
                 content.querySelectorAll('.table-content').forEach(el => el.classList.add('expanded'));
                 content.querySelectorAll('.schluessel-content').forEach(el => el.classList.remove('expanded'));
