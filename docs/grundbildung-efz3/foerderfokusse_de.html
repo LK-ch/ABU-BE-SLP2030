@@ -99,16 +99,10 @@ h1{color:#000;font-size:2.2em;margin-bottom:10px;font-weight:700;line-height:1.3
 .tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:7px solid transparent;border-top-color:rgba(0,0,0,.9)}
 .kompetenz-badge:hover .tooltip,.schluesselkompetenz-badge:hover .tooltip,.lebensbezug-label:hover .tooltip{opacity:1}
 .loading{text-align:center;padding:40px;color:#dc291e;font-weight:500}
-
-/* In-card chips */
 .card-ges-chip{background:#fff8e1;border:1px solid #f0c040;padding:2px 9px;border-radius:10px;font-size:.76em;color:#7a5800;white-space:nowrap;transition:opacity .15s,outline .1s;display:inline-block}
 .card-spr-chip{background:#e8f2fd;border:1px solid #9ec8f0;padding:2px 9px;border-radius:10px;font-size:.76em;color:#1a5080;white-space:nowrap;transition:opacity .15s,outline .1s;display:inline-block}
-/* NEW: Digital in-card chips */
 .card-dig-chip{background:#e6f6ee;border:1px solid #4db380;padding:2px 9px;border-radius:10px;font-size:.76em;color:#1a5e35;white-space:nowrap;transition:opacity .15s,outline .1s;display:inline-block}
-/* Sprache Texttyp-Label in Karten */
 .spr-type-label{font-size:.7em;font-weight:600;color:#1a5fa8;min-width:72px;flex-shrink:0;padding-top:1px;}
-
-/* Gesellschaft & Sprache dropdown groups */
 .ges-group{width:100%;display:flex;flex-direction:column;gap:4px}
 .ges-aspect-row{display:flex;align-items:center;gap:0;flex-wrap:wrap}
 .ges-toggle-btn{background:none;border:none;cursor:pointer;color:#d4a500;font-size:.75em;padding:2px 5px;line-height:1;flex-shrink:0;transition:transform .15s}
@@ -123,11 +117,9 @@ h1{color:#000;font-size:2.2em;margin-bottom:10px;font-weight:700;line-height:1.3
 .spr-sub-chip{background:#e8f2fd;border:1px solid #3385d6;padding:3px 10px;border-radius:12px;font-size:.78em;color:#1a5fa8;cursor:pointer;white-space:nowrap;transition:all .15s}
 .spr-sub-chip:hover{background:#3385d6;color:#fff;transform:translateY(-1px)}
 .spr-sub-chip.active{background:#3385d6;color:#fff;font-weight:600}
-/* NEW: Digital sub-chips in dropdown */
 .dig-sub-chip{background:#e6f6ee;border:1px solid #4db380;padding:3px 10px;border-radius:12px;font-size:.78em;color:#1a5e35;cursor:pointer;white-space:nowrap;transition:all .15s}
 .dig-sub-chip:hover{background:#4db380;color:#fff;transform:translateY(-1px)}
 .dig-sub-chip.active{background:#4db380;color:#fff;font-weight:600}
-
 @media(max-width:1200px){.timeline-grid{flex-direction:column;gap:20px}.year-column{width:100%}}
 @media(max-width:768px){body{font-size:14px}h1{font-size:1.8em}.container{padding:15px}.year-header h2{font-size:1.1em}.theme-card h3{font-size:.95em}.main-filter-btn{padding:8px 16px;font-size:.9em}.logo-section img{height:70px}.chip{font-size:.8em;padding:5px 11px}}
 </style>
@@ -195,15 +187,15 @@ h1{color:#000;font-size:2.2em;margin-bottom:10px;font-weight:700;line-height:1.3
 
   <div class="status-info" style="margin-top:50px;">
     <div class="status-info-header" onclick="toggleStatusInfo()">
-      <h2>Vorgaben gemäss Rahmenlehrplan ABU 2025</h2>
-      <span class="status-info-toggle">▶</span>
+      <h2>Vorgaben gemäss Rahmenlehrplan ABU 2030</h2>
+      <span class="status-info-toggle" id="statusinfo-toggle">▶</span>
     </div>
-    <div class="status-info-content">
+    <div class="status-info-content" id="statusinfo-content">
       <ul>
         <li><span>▸</span>Pro Thema werden mindestens <strong>3 Schlüsselkompetenzen</strong> bewusst gefördert</li>
         <li><span>▸</span>Lerninhalte aus mindestens <strong>3 Aspekten</strong> des Lernbereichs Gesellschaft</li>
-        <li><span>▸</span>Berücksichtigung von <strong>3 Sprachtypen</strong> pro Thema</li>
-        <li><span>▸</span>Kompetenzen aus allen <strong>Sprachtypen</strong> unter Berücksichtigung von Konvention, Normen und Sprachbewusstheit</li>
+        <li><span>▸</span>Berücksichtigung von <strong>3 Sprachmodi</strong> pro Thema</li>
+        <li><span>▸</span>Kompetenzen aus allen <strong>Sprachmodi</strong> unter Berücksichtigung von Konvention, Normen und Sprachbewusstheit</li>
         <li><span>▸</span>Bis zum Abschluss: Aufbau aller <strong>12 Schlüsselkompetenzen</strong> und Kompetenzen aus allen <strong>8 gesellschaftlichen Aspekten</strong></li>
         <li><span>▸</span>Integration der <strong>Schlussarbeit</strong> im letzten Lehrjahr</li>
         <li><span>▸</span>Spiralförmiges Curriculum mit formativen und summativen Kompetenznachweisen</li>
@@ -213,8 +205,6 @@ h1{color:#000;font-size:2.2em;margin-bottom:10px;font-weight:700;line-height:1.3
 </div>
 
 <script>
-/* ══════════════════ DATA ══════════════════ */
-
 const THEMES = [
   { nr:1, name:'Meine Berufsausbildung',         year:1, file:'thema1_de.html' },
   { nr:2, name:'Geld verdienen und ausgeben',     year:1, file:'thema2_de.html' },
@@ -249,7 +239,6 @@ const SPR = {
   '4.5':'Reflexiv (reflektierend)'
 };
 
-// ── Gesellschaft Inhalte (für Dropdown) ──
 const GES_INHALTE = {
   '2.1':['Zwischenmenschliches Verhalten','Konsumentscheide überprüfen'],
   '2.2':['BFS und Fach ABU','3 Lernorte','Arbeits- und Lernverhalten','Meine Rolle',
@@ -269,7 +258,6 @@ const GES_INHALTE = {
           'Unfall- und Krankenversicherung','Nutzen verschiedener Versicherungen']
 };
 
-// ── Medien & Digitalität Inhalte (für Dropdown + Karten-Chips) ──
 const DIG_INHALTE = {
   '3.1':['Grundfunktionen von Programmen','Organisationsunterstützung und Lernhilfen'],
   '3.2':['Nutzung von KI, Angabe von Quellen','Navigieren','Quellenbeurteilung',
@@ -281,14 +269,12 @@ const DIG_INHALTE = {
   '3.6':['Digitale Zusammenarbeit','Schützenswerte Daten','Umgang mit digitalen Medien']
 };
 
-// ── Rezeption Inhalte (für Dropdown) ──
 const REZ_INHALTE = [
   {id:'si-inhalte-erfassen', label:'Inhalte erfassen'},
   {id:'si-lesestrategien',   label:'Strategien beim Lesen anwenden'},
   {id:'si-grafiken',         label:'Grafiken'}
 ];
 
-// ── Sprache & Kommunikation Inhalte ──
 const SPRACH_INHALTE = {
   '4.1':[
     {id:'si-praesentieren',   label:'Präsentieren'},
@@ -319,19 +305,14 @@ const SPRACH_INHALTE = {
   ]
 };
 
-// Build SI_ALL lookup: id -> label
 const SI_ALL = {};
 Object.values(SPRACH_INHALTE).forEach(arr => arr.forEach(si => {
   SI_ALL[si.id] = si.label;
 }));
 
-// ══════════════════════════════════════════════════════
-// PER-THEME DATA — Themen 1–3 gemäss PDF abgeglichen
-// ══════════════════════════════════════════════════════
 const THEMEN_DATA = {
   1: {
     schluessel: ['1.2','1.4','1.10'],
-    // Gesellschaft: gem. PDF Seite 2
     gesInhalte: {
       '2.1':['Zwischenmenschliches Verhalten'],
       '2.2':['BFS und Fach ABU','3 Lernorte','Arbeits- und Lernverhalten','Meine Rolle'],
@@ -339,7 +320,6 @@ const THEMEN_DATA = {
       '2.6':['Rechtsordnung und Lehrvertrag','Gesetzliche Grundlagen'],
       '2.7':['Siehe «Medien und Digitalität»']
     },
-    // Medien & Digitalität: gem. PDF Seite 3
     digInhalte: {
       '3.1':['Grundfunktionen von Programmen','Organisationsunterstützung und Lernhilfen'],
       '3.2':['Nutzung von KI, Angabe von Quellen','Navigieren','Quellenbeurteilung'],
@@ -359,12 +339,6 @@ const THEMEN_DATA = {
         ]
       }
     ],
-    // Sprache & Kommunikation: gem. PDF Seite 3
-    // Rezeption: Inhalte erfassen
-    // Produktion deskriptiv: Präsentieren, Lösungsansätze beschreiben, Rechercheergebnisse vermitteln
-    // Produktion expositorisch: Zielgruppengerecht schriftlich kommunizieren
-    // Diskursiv: Interview, Lösungsorientiert kommunizieren
-    // Reflektiv: Lernstrategien mit Sachstruktur reflektieren, Verhalten reflektieren
     sprachInhalte:{
       'rez': ['si-inhalte-erfassen'],
       '4.1': ['si-praesentieren','si-loesungsansaetze','si-recherche'],
@@ -376,8 +350,6 @@ const THEMEN_DATA = {
 
   2: {
     schluessel: ['1.5','1.6','1.8','1.9'],
-    // Gesellschaft: gem. PDF Seite 2
-    // KORREKTUR: Bedürfnisse und Kaufverhalten auch unter 2.8; 2.2 hat es ebenfalls
     gesInhalte: {
       '2.1':['Konsumentscheide überprüfen'],
       '2.2':['Bedürfnisse und Kaufverhalten'],
@@ -388,7 +360,6 @@ const THEMEN_DATA = {
              'Zahlungsmittel','Finanzierungsarten',
              'Kaufbeeinflussung und Werbefallen','Konsumentscheide überprüfen']
     },
-    // Medien & Digitalität: gem. PDF Seite 3
     digInhalte: {
       '3.2':['Verkaufsplattformen','Echokammern, Filterblasen','Manipulationen und Falschinformationen'],
       '3.4':['Recherche','Online-Konsumentenhilfen','Online-Vorlagen','Online-Tool'],
@@ -409,15 +380,6 @@ const THEMEN_DATA = {
         ]
       }
     ],
-    // Sprache & Kommunikation: gem. PDF Seite 3
-    // Rezeption: Inhalte erfassen, Strategien beim Lesen anwenden
-    // Produktion deskriptiv: Textvorlage anpassen, Zielgruppengerecht schriftlich kommunizieren
-    // Produktion expositorisch: Zusammenhänge umformulieren
-    // Argumentativ: Faktenbezogen überzeugen
-    // Reflektiv: Verhalten reflektieren, Sprachliche Mittel reflektieren
-    // KORREKTUR: si-geschaeftsbrief → si-textvorlage (korrekte ID gemäss PDF-Label)
-    // KORREKTUR: si-position (Position beziehen) war im alten Code, im PDF steht es bei T2 NICHT — entfernt
-    // KORREKTUR: si-einfluss-sprache hinzugefügt (Sprachliche Mittel reflektieren, PDF T2 ✓)
     sprachInhalte:{
       'rez': ['si-inhalte-erfassen','si-lesestrategien'],
       '4.1': ['si-praesentieren','si-textvorlage','si-schriftlich-kom'],
@@ -428,7 +390,6 @@ const THEMEN_DATA = {
 
   3: {
     schluessel: ['1.1','1.7','1.8'],
-    // Gesellschaft: gem. PDF Seite 2
     gesInhalte: {
       '2.1':['Zwischenmenschliches Verhalten'],
       '2.2':['Risiken und Strategien','Verhaltensmuster','Versicherungsarten und deren Funktionsweise'],
@@ -436,8 +397,6 @@ const THEMEN_DATA = {
       '2.7':['Siehe «Medien und Digitalität»'],
       '2.8':['Unfall- und Krankenversicherung','Nutzen verschiedener Versicherungen']
     },
-    // Medien & Digitalität: gem. PDF Seite 3
-    // KORREKTUR: 3.5 Persönliche Daten + 3.6 Schützenswerte Daten / Umgang hinzugefügt
     digInhalte: {
       '3.5':['Persönliche Daten'],
       '3.6':['Schützenswerte Daten','Umgang mit digitalen Medien']
@@ -455,16 +414,6 @@ const THEMEN_DATA = {
         ]
       }
     ],
-    // Sprache & Kommunikation: gem. PDF Seite 3
-    // Rezeption: Inhalte erfassen, Grafiken
-    // Produktion deskriptiv: (nicht explizit für T3 im PDF) — entfernt
-    // Produktion expositorisch: (implizit via Lebensbezüge 4.2)
-    // Argumentativ: Position beziehen mit das/dass, Faktenbezogen überzeugen
-    // Diskursiv: Lösungsorientiert kommunizieren
-    // Reflektiv: Verhalten reflektieren
-    // KORREKTUR: si-einfluss-sprache (Sprachliche Mittel reflektieren) war im alten Code —
-    //   im PDF steht es für T3 NICHT explizit → entfernt
-    // KORREKTUR: si-schriftlich-kom bleibt (Zielgruppengerecht schriftlich kommunizieren, T3 expositorisch)
     sprachInhalte:{
       'rez': ['si-inhalte-erfassen','si-grafiken'],
       '4.3': ['si-ueberzeugen','si-position'],
@@ -489,12 +438,8 @@ function sortNr(a,b){
   return pa[0]!==pb[0] ? pa[0]-pb[0] : (pa[1]||0)-(pb[1]||0);
 }
 
-/* ══════════════════ STATE ══════════════════ */
-
 let activeFilter = null;
 let openDropdown = null;
-
-/* ══════════════════ DROPDOWN RENDERING ══════════════════ */
 
 function makeChip(label, aspekt, chipClass) {
   const c = document.createElement('div');
@@ -506,7 +451,6 @@ function makeChip(label, aspekt, chipClass) {
 }
 
 function renderDropdowns() {
-  // ── Schlüsselkompetenzen ──
   const dsk = document.getElementById('dropdown-schluessel');
   const rowSk = document.createElement('div'); rowSk.className = 'dropdown-inner';
   Object.entries(SK).sort((a,b)=>sortNr(a[0],b[0])).forEach(([nr,text]) => {
@@ -514,7 +458,6 @@ function renderDropdowns() {
   });
   dsk.appendChild(rowSk);
 
-  // ── Gesellschaft — collapsible sub-items per aspect ──
   const dges = document.getElementById('dropdown-gesellschaft');
   const gesGroup = document.createElement('div'); gesGroup.className = 'ges-group';
   Object.entries(GES).sort((a,b)=>sortNr(a[0],b[0])).forEach(([nr,text]) => {
@@ -537,11 +480,7 @@ function renderDropdowns() {
         };
         subPanel.appendChild(sc);
       });
-      const doToggle = (e) => {
-        e.stopPropagation();
-        subPanel.classList.toggle('visible');
-        toggleBtn.classList.toggle('open');
-      };
+      const doToggle = (e) => { e.stopPropagation(); subPanel.classList.toggle('visible'); toggleBtn.classList.toggle('open'); };
       toggleBtn.addEventListener('click', doToggle);
       chip.addEventListener('click', (e) => { e.stopPropagation(); doToggle(e); });
       gesGroup.appendChild(row); gesGroup.appendChild(subPanel);
@@ -554,7 +493,6 @@ function renderDropdowns() {
   });
   dges.appendChild(gesGroup);
 
-  // ── Digital — collapsible sub-items per aspect ──
   const ddig = document.getElementById('dropdown-digital');
   const digGroup = document.createElement('div'); digGroup.className = 'ges-group';
   Object.entries(DIG).sort((a,b)=>sortNr(a[0],b[0])).forEach(([nr,text]) => {
@@ -577,11 +515,7 @@ function renderDropdowns() {
         };
         subPanel.appendChild(sc);
       });
-      const doToggle = (e) => {
-        e.stopPropagation();
-        subPanel.classList.toggle('visible');
-        toggleBtn.classList.toggle('open');
-      };
+      const doToggle = (e) => { e.stopPropagation(); subPanel.classList.toggle('visible'); toggleBtn.classList.toggle('open'); };
       toggleBtn.addEventListener('click', doToggle);
       chip.addEventListener('click', (e) => { e.stopPropagation(); doToggle(e); });
       digGroup.appendChild(row); digGroup.appendChild(subPanel);
@@ -594,11 +528,8 @@ function renderDropdowns() {
   });
   ddig.appendChild(digGroup);
 
-  // ── Sprache & Kommunikation — collapsible Sprachtypen with sub-items ──
   const dsi = document.getElementById('dropdown-sprach-inhalt');
   const siGroup = document.createElement('div'); siGroup.className = 'ges-group';
-
-  // Rezeption zuerst (4.)
   const rezRow = document.createElement('div'); rezRow.className = 'ges-aspect-row';
   const rezToggle = document.createElement('button'); rezToggle.className = 'ges-toggle-btn blue'; rezToggle.textContent = '▶';
   rezRow.appendChild(rezToggle);
@@ -639,19 +570,13 @@ function renderDropdowns() {
       };
       subPanel.appendChild(sc);
     });
-    const doToggle = (e) => {
-      e.stopPropagation();
-      subPanel.classList.toggle('visible');
-      toggleBtn.classList.toggle('open');
-    };
+    const doToggle = (e) => { e.stopPropagation(); subPanel.classList.toggle('visible'); toggleBtn.classList.toggle('open'); };
     toggleBtn.addEventListener('click', doToggle);
     sprChip.addEventListener('click', (e) => { e.stopPropagation(); doToggle(e); });
     siGroup.appendChild(row); siGroup.appendChild(subPanel);
   });
   dsi.appendChild(siGroup);
 }
-
-/* ══════════════════ TIMELINE RENDERING ══════════════════ */
 
 function renderTimeline() {
   const cont = document.getElementById('timeline-container');
@@ -694,8 +619,6 @@ function mkBadge(text, cssClass, cat, aspekt, tipText) {
 
 function createCard(theme, data) {
   const card = document.createElement('div'); card.className = 'theme-card';
-
-  // Title
   const h3 = document.createElement('h3');
   if (theme.file) {
     h3.innerHTML = '<a href="'+theme.file+'">Thema '+theme.nr+': '+theme.name+'</a>';
@@ -704,7 +627,6 @@ function createCard(theme, data) {
   }
   card.appendChild(h3);
 
-  // Schlüsselkompetenzen
   if (data.schluessel && data.schluessel.length) {
     const sd = document.createElement('div'); sd.className = 'schluesselkompetenzen';
     data.schluessel.forEach(nr => {
@@ -716,52 +638,49 @@ function createCard(theme, data) {
     card.appendChild(sd);
   }
 
-  // Collect all unique aspects flat
   const allG=new Set(), allD=new Set(), allS=new Set();
   data.lebensbezuege.forEach(lb => lb.kompetenzen.forEach(k => {
     k.gesellschaft.forEach(n=>allG.add(n));
     k.digital.forEach(n=>allD.add(n));
     k.sprache.forEach(n=>allS.add(n));
   }));
-  // 4.5 Reflexiv: aus sprachInhalte ergänzen falls vorhanden
   if (data.sprachInhalte && !Array.isArray(data.sprachInhalte)) {
     if (data.sprachInhalte['rez'] && data.sprachInhalte['rez'].length) allS.add('rez');
     if (data.sprachInhalte['4.5'] && data.sprachInhalte['4.5'].length) allS.add('4.5');
   }
 
-  // Aspekt-Badges — Rezeption vor 4.x, dann 4.x sortiert
   const kd = document.createElement('div'); kd.className = 'kompetenz-detail';
   [...allG].sort(sortNr).forEach(nr=>kd.appendChild(mkBadge(nr,'badge-gesellschaft','gesellschaft',aid(nr),GES[nr]||nr)));
   [...allD].sort(sortNr).forEach(nr=>kd.appendChild(mkBadge(nr,'badge-digital','digital',aid(nr),DIG[nr]||nr)));
-  // Sprache: Rez. zuerst, dann 4.x
   const sprBadges = [...allS].filter(n=>n!=='rez').sort(sortNr);
   if (allS.has('rez')) kd.appendChild(mkBadge('4.','badge-sprache','sprache','spr-rez','Rezeption'));
   sprBadges.forEach(nr=>kd.appendChild(mkBadge(nr,'badge-sprache','sprache',aid(nr),SPR[nr]||nr)));
   card.appendChild(kd);
 
-  // ── Gesellschaftsinhalte chips ──
-  const _seenGes = new Set();
-  const gesChips = [...allG].sort(sortNr).flatMap(nr =>
-    (data.gesInhalte && data.gesInhalte[nr]) ? data.gesInhalte[nr].filter(txt => {
-      if (_seenGes.has(txt)) return false;
-      _seenGes.add(txt); return true;
-    }).map(txt=>({txt,nr})) : []
-  );
-  if (gesChips.length) {
+  // ── Gesellschaftsinhalte chips — alle Aspekte pro Text sammeln ──
+  const gesTextToAspekts = new Map();
+  [...allG].sort(sortNr).forEach(nr => {
+    if (data.gesInhalte && data.gesInhalte[nr]) {
+      data.gesInhalte[nr].forEach(txt => {
+        if (!gesTextToAspekts.has(txt)) gesTextToAspekts.set(txt, []);
+        gesTextToAspekts.get(txt).push(nr);
+      });
+    }
+  });
+  if (gesTextToAspekts.size) {
     const wrap = document.createElement('div');
     wrap.className = 'card-inhalte-block'; wrap.setAttribute('data-block','ges');
     wrap.style.cssText = 'display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;';
-    gesChips.forEach(({txt,nr}) => {
+    gesTextToAspekts.forEach((aspekts, txt) => {
       const sc = document.createElement('span'); sc.className = 'card-ges-chip';
       sc.setAttribute('data-ges-text', txt);
-      sc.setAttribute('data-ges-aspekt', nr);
+      sc.setAttribute('data-ges-aspekt', aspekts.join(','));
       sc.textContent = txt;
       wrap.appendChild(sc);
     });
     card.appendChild(wrap);
   }
 
-  // ── Medien & Digitalität Inhalte chips (NEU) ──
   if (data.digInhalte) {
     const _seenDig = new Set();
     const digChips = [...allD].sort(sortNr).flatMap(nr =>
@@ -785,7 +704,6 @@ function createCard(theme, data) {
     }
   }
 
-  // ── Sprachinhalte chips — flach, ohne Texttyp-Label ──
   if (data.sprachInhalte && typeof data.sprachInhalte === 'object' && !Array.isArray(data.sprachInhalte)) {
     const outer = document.createElement('div');
     outer.className = 'card-inhalte-block'; outer.setAttribute('data-block','spr');
@@ -803,27 +721,10 @@ function createCard(theme, data) {
       });
     });
     card.appendChild(outer);
-  } else if (data.sprachInhalte && Array.isArray(data.sprachInhalte) && data.sprachInhalte.length) {
-    const wrap = document.createElement('div');
-    wrap.className = 'card-inhalte-block'; wrap.setAttribute('data-block','spr');
-    wrap.style.cssText = 'display:flex;flex-wrap:wrap;gap:4px;margin-top:4px;';
-    const _seenSpr = new Set();
-    data.sprachInhalte.forEach(siId => {
-      const normId = siId.startsWith('si-') ? siId : 'si-'+siId;
-      if (_seenSpr.has(normId)) return;
-      _seenSpr.add(normId);
-      const sc = document.createElement('span'); sc.className = 'card-spr-chip';
-      sc.setAttribute('data-si-id', normId);
-      sc.textContent = SI_ALL[normId] || siId;
-      wrap.appendChild(sc);
-    });
-    card.appendChild(wrap);
   }
 
   return card;
 }
-
-/* ══════════════════ FILTER LOGIC ══════════════════ */
 
 function toggleDropdown(cat) {
   const panel = document.getElementById('dropdown-'+cat);
@@ -850,27 +751,19 @@ function filterCategory(cat) {
   document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
   document.querySelectorAll('.ges-sub-chip,.spr-sub-chip,.dig-sub-chip').forEach(c=>c.classList.remove('active'));
   resetChipHighlights();
-
   const isGes = cat === 'gesellschaft';
   const isSpr = cat === 'sprach-inhalt';
   const isSk  = cat === 'schluessel';
   const isDig = cat === 'digital';
-
   document.querySelectorAll('.kompetenz-badge').forEach(b => {
     const bc = b.getAttribute('data-category');
     b.style.display = (bc===cat || (isSpr && bc==='sprache') || (isDig && bc==='digital')) ? 'inline-block' : 'none';
   });
-  document.querySelectorAll('.schluesselkompetenz-badge').forEach(b => {
-    b.style.display = isSk ? 'inline-block' : 'none';
-  });
-  document.querySelectorAll('.schluesselkompetenzen').forEach(sk => {
-    sk.style.display = isSk ? 'block' : 'none';
-  });
-
+  document.querySelectorAll('.schluesselkompetenz-badge').forEach(b => { b.style.display = isSk ? 'inline-block' : 'none'; });
+  document.querySelectorAll('.schluesselkompetenzen').forEach(sk => { sk.style.display = isSk ? 'block' : 'none'; });
   document.querySelectorAll('.card-inhalte-block[data-block="ges"]').forEach(b=>b.style.display = isGes ? 'flex' : 'none');
   document.querySelectorAll('.card-inhalte-block[data-block="dig"]').forEach(b=>b.style.display = isDig ? 'flex' : 'none');
   document.querySelectorAll('.card-inhalte-block[data-block="spr"]').forEach(b=>b.style.display = isSpr ? 'flex' : 'none');
-
   updateVis();
 }
 
@@ -882,7 +775,6 @@ function filterAspekt(aspekt, chipEl) {
   document.querySelectorAll('.ges-sub-chip,.spr-sub-chip,.dig-sub-chip').forEach(c=>c.classList.remove('active'));
   if (chipEl) chipEl.classList.add('active');
   resetChipHighlights();
-
   document.querySelectorAll('.kompetenz-badge,.schluesselkompetenz-badge').forEach(b => {
     b.style.display = b.getAttribute('data-aspekt')===aspekt ? 'inline-block' : 'none';
   });
@@ -890,19 +782,17 @@ function filterAspekt(aspekt, chipEl) {
     const vis = [...sk.querySelectorAll('.schluesselkompetenz-badge')].some(b=>b.style.display!=='none');
     sk.style.display = vis ? 'block' : 'none';
   });
-
   const isGesAsp = aspekt.startsWith('ges-');
   const isSprAsp = aspekt.startsWith('spr-');
   const isDigAsp = aspekt.startsWith('dig-');
-
   document.querySelectorAll('.card-inhalte-block[data-block="ges"]').forEach(b=>b.style.display = isGesAsp ? 'flex' : 'none');
   document.querySelectorAll('.card-inhalte-block[data-block="dig"]').forEach(b=>b.style.display = isDigAsp ? 'flex' : 'none');
   document.querySelectorAll('.card-inhalte-block[data-block="spr"]').forEach(b=>b.style.display = isSprAsp ? 'flex' : 'none');
-
   if (isGesAsp) {
     const nr = aspekt.replace('ges-','');
     document.querySelectorAll('.card-ges-chip').forEach(c => {
-      c.style.opacity = c.getAttribute('data-ges-aspekt')===nr ? '1' : '0.2';
+      const aspekts = c.getAttribute('data-ges-aspekt').split(',');
+      c.style.opacity = aspekts.includes(nr) ? '1' : '0.2';
     });
   }
   if (isDigAsp) {
@@ -920,7 +810,6 @@ function filterAspekt(aspekt, chipEl) {
       c.style.opacity = validIds.has(c.getAttribute('data-si-id')) ? '1' : '0.2';
     });
   }
-
   updateVis();
 }
 
@@ -928,13 +817,11 @@ function filterByGesText(txt) {
   activeFilter = 'ges-text:'+txt;
   document.getElementById('btn-reset').classList.remove('active');
   resetChipHighlights();
-
   document.querySelectorAll('.kompetenz-badge,.schluesselkompetenz-badge').forEach(b=>b.style.display='none');
   document.querySelectorAll('.schluesselkompetenzen').forEach(sk=>sk.style.display='none');
   document.querySelectorAll('.card-inhalte-block[data-block="ges"]').forEach(b=>b.style.display='flex');
   document.querySelectorAll('.card-inhalte-block[data-block="dig"]').forEach(b=>b.style.display='none');
   document.querySelectorAll('.card-inhalte-block[data-block="spr"]').forEach(b=>b.style.display='none');
-
   document.querySelectorAll('.card-ges-chip').forEach(c => {
     const match = c.getAttribute('data-ges-text')===txt;
     c.style.opacity = match ? '1' : '0.15';
@@ -951,13 +838,11 @@ function filterByDigText(txt) {
   activeFilter = 'dig-text:'+txt;
   document.getElementById('btn-reset').classList.remove('active');
   resetChipHighlights();
-
   document.querySelectorAll('.kompetenz-badge,.schluesselkompetenz-badge').forEach(b=>b.style.display='none');
   document.querySelectorAll('.schluesselkompetenzen').forEach(sk=>sk.style.display='none');
   document.querySelectorAll('.card-inhalte-block[data-block="ges"]').forEach(b=>b.style.display='none');
   document.querySelectorAll('.card-inhalte-block[data-block="dig"]').forEach(b=>b.style.display='flex');
   document.querySelectorAll('.card-inhalte-block[data-block="spr"]').forEach(b=>b.style.display='none');
-
   document.querySelectorAll('.card-dig-chip').forEach(c => {
     const match = c.getAttribute('data-dig-text')===txt;
     c.style.opacity = match ? '1' : '0.15';
@@ -974,13 +859,11 @@ function filterBySiId(siId) {
   activeFilter = 'si:'+siId;
   document.getElementById('btn-reset').classList.remove('active');
   resetChipHighlights();
-
   document.querySelectorAll('.kompetenz-badge,.schluesselkompetenz-badge').forEach(b=>b.style.display='none');
   document.querySelectorAll('.schluesselkompetenzen').forEach(sk=>sk.style.display='none');
   document.querySelectorAll('.card-inhalte-block[data-block="ges"]').forEach(b=>b.style.display='none');
   document.querySelectorAll('.card-inhalte-block[data-block="dig"]').forEach(b=>b.style.display='none');
   document.querySelectorAll('.card-inhalte-block[data-block="spr"]').forEach(b=>b.style.display='flex');
-
   document.querySelectorAll('.card-spr-chip').forEach(c => {
     const match = c.getAttribute('data-si-id')===siId;
     c.style.opacity = match ? '1' : '0.15';
@@ -1031,8 +914,8 @@ function toggleUebersicht() {
 }
 
 function toggleStatusInfo() {
-  document.querySelector('.status-info-content').classList.toggle('open');
-  document.querySelector('.status-info-toggle').classList.toggle('open');
+  document.getElementById('statusinfo-content').classList.toggle('open');
+  document.getElementById('statusinfo-toggle').classList.toggle('open');
 }
 
 function initApp() {
@@ -1048,7 +931,7 @@ document.addEventListener('DOMContentLoaded', initApp);
 
 <footer>
   <div class="footer-inner">
-    <span class="footer-copyright">© 2025 - Mittelschul- und Berufsbildungsamt Kanton Bern</span>
+    <span class="footer-copyright">© 2026 - Mittelschul- und Berufsbildungsamt Kanton Bern</span>
     <nav class="footer-links" aria-label="Footer-Navigation">
       <a href="../rechtliche-hinweise.html">Rechtliche Hinweise</a>
       <a href="../impressum_de.html">Impressum</a>
