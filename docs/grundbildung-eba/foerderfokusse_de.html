@@ -596,7 +596,7 @@ function renderDropdowns() {
 function renderTimeline() {
   const cont = document.getElementById('timeline-container');
   cont.innerHTML = '';
-  const yNames = ['Grundlagen','Transfer'];
+  const yNames = ['Grundlagen','Aufbau'];
   for (let y=1;y<=2;y++) {
     const col = document.createElement('div'); col.className = 'year-column';
     col.innerHTML = '<div class="year-header"><h2>'+y+'. Lehrjahr</h2><p>'+yNames[y-1]+'</p></div>';
