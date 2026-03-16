@@ -163,10 +163,10 @@
   <!-- ── Compétences clés ── -->
   <div class="schluesselkompetenzen-block">
     <h3>Compétences clés</h3>
-    <span class="kompetenz-nummer-link" data-text="Se fixer des objectifs, les évaluer et adopter un comportement adaptatif">1.2</span>
-    <span class="kompetenz-nummer-link" data-text="Travailler de manière efficace et ciblée au sein d'équipes diverses">1.4</span>
-    <span class="kompetenz-nummer-link" data-text="Comprendre les différents points de vue et promouvoir la compréhension mutuelle">1.7</span>
-    <span class="kompetenz-nummer-link" data-text="Composer avec un environnement en constante évolution et s'y adapter">1.10</span>
+    <span class="kompetenz-nummer-link" data-text="Se fixer des objectifs, les évaluer et adopter un comportement adaptatif : Afin de garantir l'efficacité de l'apprentissage, il est important d'établir des priorités, de se fixer des objectifs d'apprentissage, d'évaluer les progrès réalisés et d'adapter les stratégies d'apprentissage lorsque les ressources limitées entraînent des conflits d'objectifs.">1.2</span>
+    <span class="kompetenz-nummer-link" data-text="Travailler de manière efficace et ciblée au sein d'équipes diverses : Afin de travailler de manière efficace et respectueuse au sein d'équipes diverses et dans des rôles variés, il est important de développer la coopération, la communication et la coordination avec les autres membres de l'équipe, de partager la responsabilité des résultats et de faire preuve de flexibilité.">1.4</span>
+    <span class="kompetenz-nummer-link" data-text="Comprendre les différents points de vue et promouvoir la compréhension mutuelle : Afin de créer un environnement inclusif et respectueux propice à la recherche de consensus entre des intérêts divergents, il est important de pouvoir changer de perspective, de développer l'empathie et de faire preuve de tolérance.">1.7</span>
+    <span class="kompetenz-nummer-link" data-text="Composer avec un environnement en constante évolution et s'y adapter : Afin de subsister dans des contextes de vie qui évoluent rapidement, il est important de pouvoir adopter une attitude constructive face aux changements, de faire preuve de flexibilité et de mobilité, d'opter pour un comportement durable et de renforcer sa capacité d'adaptation.">1.10</span>
   </div>
 
   <!-- ══════════════════════════════════════════
@@ -537,6 +537,24 @@ function toggleUms(box) {
 
 /* ── Compétences clés tooltip ── */
 document.querySelectorAll('.kompetenz-nummer-link').forEach(el => {
+  el.addEventListener('mouseenter', function(e) {
+    let tooltip = document.getElementById('tooltip');
+    if (!tooltip) {
+      tooltip = document.createElement('div');
+      tooltip.id = 'tooltip';
+      tooltip.style.cssText = 'position:absolute;background:#2d2d2d;color:#fff;padding:10px 14px;font-size:0.85em;max-width:380px;z-index:99999;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,0.4);border:1px solid #555;line-height:1.5;font-family:Roboto,Arial,sans-serif;';
+      document.body.appendChild(tooltip);
+    }
+    tooltip.textContent = this.getAttribute('data-text');
+    tooltip.style.display = 'block';
+    const rect = this.getBoundingClientRect();
+    tooltip.style.left = (rect.left + window.scrollX) + 'px';
+    tooltip.style.top  = (rect.bottom + window.scrollY + 10) + 'px';
+  });
+  el.addEventListener('mouseleave', function() {
+    const tooltip = document.getElementById('tooltip');
+    if (tooltip) tooltip.style.display = 'none';
+  });
 });
 </script>
 </body>
