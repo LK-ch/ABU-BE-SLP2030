@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aperçu des thèmes – CFC 3 ans</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Roboto',-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif;line-height:1.6;color:#000;background:#fff;font-size:15px}
+header{background:#fff;border-bottom:1px solid #e0e0e0;padding:12px 24px 0 24px}
+.header-top{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start}
+.logo-section{display:flex;align-items:center;gap:12px;padding-bottom:8px}
+.logo-section img{height:60px;width:auto}
+.app-title{font-size:1em;font-weight:400;color:#000;padding-bottom:12px;text-decoration:none;display:inline-block}
+.app-title:hover{text-decoration:underline}
+.service-nav{display:flex;align-items:center;gap:20px;padding-top:4px}
+.service-nav a{font-size:.85em;color:#000;text-decoration:none}
+.service-nav a:hover{text-decoration:underline}
+.language-selector{display:flex;align-items:center;gap:6px;font-size:.85em}
+.language-selector span{color:#666}
+.language-selector a{color:#000;text-decoration:none}
+.language-selector a.active{font-weight:700;border-bottom:2px solid #dc291e;padding-bottom:1px}
+.language-selector a:hover{text-decoration:underline}
+footer{background:#fff;border-top:1px solid #e0e0e0;padding:14px 24px;margin-top:40px}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-copyright{font-size:.82em;color:#333}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:.82em;font-weight:700;color:#000;text-decoration:none}
+.footer-links a:hover{text-decoration:underline}
+.container{max-width:1200px;margin:30px auto 0;padding:20px;background:#fff}
+.breadcrumb{font-size:.9em;color:#666;margin-bottom:20px}
+.breadcrumb a{color:#000;text-decoration:none;font-weight:500}
+.breadcrumb a:hover{text-decoration:underline}
+h1{color:#000;font-size:2.2em;margin-bottom:10px;font-weight:700;line-height:1.3}
+.subtitle{color:#000;font-size:1.1em;margin-bottom:30px;font-weight:300}
+.back-btn{background:#fff;border:2px solid #dc291e;padding:.6rem 1.2rem;border-radius:4px;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;margin-bottom:1.5rem;transition:all .2s;text-decoration:none;color:#dc291e;font-weight:500;font-size:.9em}
+.back-btn:hover{background:#dc291e;color:#fff;transform:translateX(-3px)}
+.status-info{background:#f9f3e8;padding:20px;margin-bottom:25px}
+.status-info h2{color:#dc291e;margin-bottom:15px;font-size:1.1em;font-weight:700}
+.status-info-header{cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none}
+.status-info-toggle{font-size:1em;transition:transform .2s;color:#dc291e;font-weight:bold}
+.status-info-toggle.open{transform:rotate(90deg)}
+.status-info-content{max-height:0;overflow:hidden;transition:max-height .3s}
+.status-info-content.open{max-height:800px}
+.status-info ul{list-style:none;padding-left:0;margin-top:15px}
+.status-info li{padding:.4rem 0 .4rem 1.5rem;position:relative;font-size:1em}
+.status-info li span{position:absolute;left:0;color:#dc291e;font-weight:bold}
+.section-title{font-size:1.8em;font-weight:700;color:#dc291e;margin:40px 0 20px;padding-bottom:10px;border-bottom:2px solid #dc291e;text-align:center}
+.filter-area{margin:20px 0 25px}
+.main-filter-container{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:0}
+.main-filter-btn{background:#fff;border:2px solid #ddd;padding:10px 22px;border-radius:4px;cursor:pointer;font-size:1em;font-weight:500;transition:all .2s;color:#333;display:inline-flex;align-items:center;gap:6px}
+.main-filter-btn:hover{transform:translateY(-1px);box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.main-filter-btn.active{box-shadow:0 2px 10px rgba(0,0,0,.15)}
+.mfb-reset{border-color:#555;color:#555}.mfb-reset.active{background:#555;color:#fff}
+.mfb-schluessel{border-color:#dc291e;color:#dc291e}.mfb-schluessel.active{background:#dc291e;color:#fff}
+.mfb-gesellschaft{border-color:#ffd966;color:#d4a500}.mfb-gesellschaft.active{background:#ffd966;color:#333}
+.mfb-digital{border-color:#4db380;color:#4db380}.mfb-digital.active{background:#4db380;color:#fff}
+.mfb-sprach-inhalt{border-color:#3385d6;color:#3385d6}.mfb-sprach-inhalt.active{background:#3385d6;color:#fff}
+.btn-arrow{font-size:.7em;transition:transform .2s;display:inline-block}
+.main-filter-btn.open .btn-arrow{transform:rotate(180deg)}
+.filter-dropdown{display:none;background:#fafafa;border:1px solid #e0e0e0;border-radius:6px;padding:16px 20px;margin-top:10px;animation:fadeIn .15s ease}
+.filter-dropdown.visible{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.dropdown-inner{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start}
+.chip{background:#fff;border:1px solid #ddd;padding:6px 14px;border-radius:20px;cursor:pointer;font-size:.85em;font-weight:500;transition:all .15s;white-space:nowrap;color:#444}
+.chip:hover{transform:translateY(-1px);box-shadow:0 2px 5px rgba(0,0,0,.1)}
+.chip.active{box-shadow:0 1px 5px rgba(0,0,0,.2)}
+.chip-schluessel.active{background:#dc291e;color:#fff;border-color:#dc291e}
+.chip-gesellschaft.active{background:#ffd966;color:#333;border-color:#d4a500}
+.chip-digital.active{background:#4db380;color:#fff;border-color:#4db380}
+.chip-sprache.active{background:#3385d6;color:#fff;border-color:#3385d6}
+.chip-sprach-inhalt.active{background:#3385d6;color:#fff;border-color:#3385d6}
+.timeline-grid{display:flex;gap:16px;margin-top:25px;align-items:flex-start}
+.year-column{flex:1;background:#fff;border-radius:6px;padding:12px;box-shadow:0 2px 8px rgba(0,0,0,.08);min-width:0}
+.year-header{background:linear-gradient(135deg,#dc291e,#a00d24);color:#fff;padding:14px;border-radius:4px;margin-bottom:14px;text-align:center}
+.year-header h2{font-size:1.3em;margin-bottom:4px;font-weight:700}
+.year-header p{font-size:.85em;opacity:.9;font-weight:300}
+.theme-card{background:#fafafa;border-radius:4px;padding:14px;margin-bottom:14px;transition:all .2s}
+.theme-card:hover{transform:translateX(2px);box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.theme-card h3{color:#dc291e;font-size:1.05em;margin-bottom:10px;font-weight:700;line-height:1.3}
+.theme-card h3 a{color:inherit;text-decoration:none}
+.theme-card h3 a:hover{text-decoration:underline}
+.theme-card.placeholder{opacity:.5}.theme-card.placeholder h3{color:#999}
+.theme-card.schlussarbeit{background:#f5e6d3;opacity:.7}.theme-card.schlussarbeit h3{color:#a00d24}
+.lebensbezug-item{background:#fff;padding:8px 10px;margin-bottom:8px;border-radius:3px}
+.lebensbezug-label{font-size:.75em;color:#666;text-transform:uppercase;font-weight:500;margin-bottom:3px;display:inline-block;letter-spacing:.3px;cursor:pointer;position:relative;border-bottom:1px dotted #999}
+.lebensbezug-label:hover{color:#dc291e;border-bottom-color:#dc291e}
+.kompetenz-detail{margin-top:8px;font-size:.85em}
+.kompetenz-badge{display:inline-block;font-size:.85em;padding:4px 10px;margin:2px 3px 2px 0;border-radius:2px;font-weight:500;position:relative;cursor:pointer;line-height:1}
+.badge-gesellschaft{background:rgba(255,217,102,.3)}
+.badge-digital{background:rgba(77,179,128,.3)}
+.badge-sprache{background:rgba(51,133,214,.3)}
+.badge-sprach-inhalt{background:rgba(51,133,214,.2)}
+.schluesselkompetenzen{padding:0;margin:10px 0 12px;line-height:1}
+.schluesselkompetenz-badge{display:inline-block;background:rgba(220,41,30,.12);padding:4px 10px;margin:2px 3px 2px 0;border-radius:2px;font-size:.85em;font-weight:500;color:#dc291e;position:relative;cursor:pointer;line-height:1}
+.tooltip{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.9);color:#fff;padding:10px 14px;border-radius:4px;font-size:.9em;pointer-events:none;opacity:0;transition:opacity .2s;z-index:1000;margin-bottom:10px;max-width:300px;white-space:normal;text-align:center;line-height:1.5}
+.tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:7px solid transparent;border-top-color:rgba(0,0,0,.9)}
+.kompetenz-badge:hover .tooltip,.schluesselkompetenz-badge:hover .tooltip,.lebensbezug-label:hover .tooltip{opacity:1}
+.loading{text-align:center;padding:40px;color:#dc291e;font-weight:500}
+.card-ges-chip{background:#fff8e1;border:1px solid #f0c040;padding:2px 9px;border-radius:10px;font-size:.76em;color:#7a5800;white-space:nowrap;transition:opacity .15s,outline .1s;display:inline-block}
+.card-spr-chip{background:#e8f2fd;border:1px solid #9ec8f0;padding:2px 9px;border-radius:10px;font-size:.76em;color:#1a5080;white-space:nowrap;transition:opacity .15s,outline .1s;display:inline-block}
+.card-dig-chip{background:#e6f6ee;border:1px solid #4db380;padding:2px 9px;border-radius:10px;font-size:.76em;color:#1a5e35;white-space:nowrap;transition:opacity .15s,outline .1s;display:inline-block}
+.ges-group{width:100%;display:flex;flex-direction:column;gap:4px}
+.ges-aspect-row{display:flex;align-items:center;gap:0;flex-wrap:wrap}
+.ges-toggle-btn{background:none;border:none;cursor:pointer;color:#d4a500;font-size:.75em;padding:2px 5px;line-height:1;flex-shrink:0;transition:transform .15s}
+.ges-toggle-btn.open{transform:rotate(90deg)}
+.ges-toggle-btn.blue{color:#3385d6}
+.ges-toggle-btn.green{color:#4db380}
+.ges-sub-items{display:none;flex-wrap:wrap;gap:4px;margin:4px 0 6px 28px}
+.ges-sub-items.visible{display:flex}
+.ges-sub-chip{background:#fff8e1;border:1px solid #f0c040;padding:3px 10px;border-radius:12px;font-size:.78em;color:#7a5800;cursor:pointer;white-space:nowrap;transition:all .15s}
+.ges-sub-chip:hover{background:#ffd966;border-color:#d4a500;transform:translateY(-1px)}
+.ges-sub-chip.active{background:#ffd966;border-color:#d4a500;font-weight:600}
+.spr-sub-chip{background:#e8f2fd;border:1px solid #3385d6;padding:3px 10px;border-radius:12px;font-size:.78em;color:#1a5fa8;cursor:pointer;white-space:nowrap;transition:all .15s}
+.spr-sub-chip:hover{background:#3385d6;color:#fff;transform:translateY(-1px)}
+.spr-sub-chip.active{background:#3385d6;color:#fff;font-weight:600}
+.dig-sub-chip{background:#e6f6ee;border:1px solid #4db380;padding:3px 10px;border-radius:12px;font-size:.78em;color:#1a5e35;cursor:pointer;white-space:nowrap;transition:all .15s}
+.dig-sub-chip:hover{background:#4db380;color:#fff;transform:translateY(-1px)}
+.dig-sub-chip.active{background:#4db380;color:#fff;font-weight:600}
+@media(max-width:1200px){.timeline-grid{flex-direction:column;gap:20px}.year-column{width:100%}}
+@media(max-width:768px){body{font-size:14px}h1{font-size:1.8em}.container{padding:15px}.year-header h2{font-size:1.1em}.theme-card h3{font-size:.95em}.main-filter-btn{padding:8px 16px;font-size:.9em}.logo-section img{height:60px}.chip{font-size:.8em;padding:5px 11px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <div>
+      <div class="logo-section"><img src="../images/KTBE.png" alt="Logo du canton de Berne"></div>
+      <a href="../index_fr.html" class="app-title">Schullehrplan ABU / Plan d'études de culture générale</a>
+    </div>
+    <nav class="service-nav" aria-label="Navigation de service">
+      <a href="../contact_fr.html">Contact</a>
+      <div class="language-selector">
+        <a href="zirkularitaet_de.html" lang="de">DE</a>
+        <span>|</span>
+        <a href="apercuthemes.html" class="active" lang="fr">FR</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <nav class="breadcrumb">
+    <a href="../index_fr.html">Plan d'études de culture générale</a> /
+    <a href="index_fr.html">Formation professionnelle initiale CFC 3 ans</a> /
+    Aperçu des thèmes
+  </nav>
+
+  <h1>Aperçu des thèmes</h1>
+  <p class="subtitle">Développement des compétences en spirale tout au long de l'apprentissage</p>
+  <a href="index_fr.html" class="back-btn">← Retour à l'aperçu de la formation professionnelle initiale CFC 3 ans</a>
+
+  <div class="status-info" style="margin-bottom:25px;background:#fff;padding:0;">
+    <div class="status-info-header" onclick="toggleUebersicht()" style="padding:10px 0;">
+      <div class="section-title" style="margin:0;padding-bottom:10px;border-bottom:2px solid #dc291e;flex:1;text-align:center;cursor:pointer;">Aperçu des thèmes</div>
+      <span class="status-info-toggle" id="uebersicht-toggle" style="margin-left:12px;font-size:1.1em;">▶</span>
+    </div>
+    <div class="status-info-content" id="uebersicht-content">
+      <div style="margin-top:15px;">
+        <img src="images/ffefz.png" alt="Aperçu des thèmes CFC" style="width:100%;height:auto;border-radius:4px;">
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">Développement des compétences par année</div>
+
+  <div class="filter-area">
+    <div class="main-filter-container" id="main-filter-btns">
+      <button class="main-filter-btn mfb-reset" id="btn-reset" onclick="resetFilter()">Tout afficher</button>
+      <button class="main-filter-btn mfb-schluessel" id="btn-schluessel" onclick="toggleDropdown('schluessel')">Compétences clés <span class="btn-arrow">▾</span></button>
+      <button class="main-filter-btn mfb-gesellschaft" id="btn-gesellschaft" onclick="toggleDropdown('gesellschaft')">Société <span class="btn-arrow">▾</span></button>
+      <button class="main-filter-btn mfb-digital" id="btn-digital" onclick="toggleDropdown('digital')">Médias et numérique <span class="btn-arrow">▾</span></button>
+      <button class="main-filter-btn mfb-sprach-inhalt" id="btn-sprach-inhalt" onclick="toggleDropdown('sprach-inhalt')">Langue &amp; communication <span class="btn-arrow">▾</span></button>
+    </div>
+    <div class="filter-dropdown" id="dropdown-schluessel"></div>
+    <div class="filter-dropdown" id="dropdown-gesellschaft"></div>
+    <div class="filter-dropdown" id="dropdown-digital"></div>
+    <div class="filter-dropdown" id="dropdown-sprach-inhalt"></div>
+  </div>
+
+  <div id="loading" class="loading">Chargement des compétences du plan d'études…</div>
+  <div id="timeline-container" class="timeline-grid" style="display:none;"></div>
+
+  <div class="status-info" style="margin-top:50px;">
+    <div class="status-info-header" onclick="toggleStatusInfo()">
+      <h2>Exigences selon le plan-cadre d'études CG 2030</h2>
+      <span class="status-info-toggle" id="statusinfo-toggle">▶</span>
+    </div>
+    <div class="status-info-content" id="statusinfo-content">
+      <ul>
+        <li><span>▸</span>Par thème, au moins <strong>3 compétences clés</strong> sont consciemment encouragées</li>
+        <li><span>▸</span>Contenus d'apprentissage issus d'au moins <strong>3 aspects</strong> du domaine Société</li>
+        <li><span>▸</span>Prise en compte de <strong>3 modes de communication</strong> par thème</li>
+        <li><span>▸</span>Compétences de tous les <strong>modes de communication</strong> en tenant compte des conventions, normes et conscience de la langue</li>
+        <li><span>▸</span>Jusqu'à la fin : développement des <strong>12 compétences clés</strong> et compétences de tous les <strong>8 aspects de la société</strong></li>
+        <li><span>▸</span>Intégration du <strong>travail de fin d'études</strong> lors de la dernière année</li>
+        <li><span>▸</span>Curriculum en spirale avec attestations de compétences formatives et sommatives</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+const THEMES = [
+  { nr:1, name:'Ma formation professionnelle',              year:1, file:'1-lehrjahr_fr.html' },
+  { nr:2, name:'Gagner et dépenser de l\'argent',           year:1, file:'1-lehrjahr_fr.html' },
+  { nr:3, name:'En bonne santé et en sécurité tout au long de la vie', year:1, file:'1-lehrjahr_fr.html' },
+  { nr:4, name:'Ma culture, mes relations',                 year:2 },
+  { nr:5, name:'Représenter les intérêts',                  year:2 },
+  { nr:6, name:'Action durable',                            year:2 },
+  { nr:0, name:'Travail de fin d\'études',                  year:3, schlussarbeit:true },
+  { nr:8, name:'Travailler en transition',                   year:3 },
+  { nr:9, name:'Ma maison',                                 year:3 }
+];
+
+const SK = {
+  '1.1':'Sources distinctives',
+  '1.2':'Fixation et ajustement des objectifs',
+  '1.3':'Innovation et résolution de problèmes',
+  '1.4':'Travail d\'équipe',
+  '1.5':'Refléter les valeurs',
+  '1.6':'Justification des points de vue',
+  '1.7':'Promouvoir la compréhension',
+  '1.8':'Phases de vie planifiées',
+  '1.9':'Durabilité',
+  '1.10':'Personnalisation',
+  '1.11':'Ambiguïté',
+  '1.12':'Participation'
+};
+
+const SK_LONG = {
+  '1.1':'Faire la différence entre sources et contenus pertinents et non pertinents : Afin de pouvoir adopter une approche critique par rapport à la diversité des sources et des contenus médiatiques, y compris par rapport aux applications de l\'intelligence artificielle, il est important de filtrer, de sélectionner, d\'évaluer et d\'organiser les informations communiquées. Ainsi, les informations pertinentes sont rendues utilisables.',
+  '1.2':'Se fixer des objectifs, les évaluer et adopter un comportement adaptatif : Afin de garantir l\'efficacité de l\'apprentissage, il est important d\'établir des priorités, de se fixer des objectifs d\'apprentissage, d\'évaluer les progrès réalisés et d\'adapter les stratégies d\'apprentissage lorsque les ressources limitées entraînent des conflits d\'objectifs.',
+  '1.3':'Identifier, développer et mettre en œuvre des moyens de résolution de problèmes innovants, entrepreneuriaux et anticipatifs : Afin de pouvoir relever des défis complexes, il est important de disposer d\'un large éventail de ressources permettant de rassembler des idées, de développer, d\'évaluer et d\'appliquer des solutions innovantes et d\'être ainsi capable de penser et d\'agir de manière conceptuelle, flexible, anticipative et créative. Il faut aussi être capable d\'utiliser avec discernement les nouvelles technologies de l\'information et de la communication.',
+  '1.4':'Travailler de manière efficace et ciblée au sein d\'équipes diverses : Afin de travailler de manière efficace et respectueuse au sein d\'équipes diverses et dans des rôles variés, il est important de développer la coopération, la communication et la coordination avec les autres membres de l\'équipe, de partager la responsabilité des résultats et de faire preuve de flexibilité.',
+  '1.5':'Identifier, comprendre et développer ses propres valeurs et convictions et y réfléchir de manière critique : Afin de franchir les étapes d\'un développement personnel menant à une vie autodéterminée, il est important de s\'interroger sur ses valeurs et ses convictions personnelles, d\'élargir ses perspectives et de construire une base éthique réfléchie pour ses propres actions.',
+  '1.6':'Justifier son point de vue et amener les autres à le partager : Afin de rallier les autres à ses propres idées et points de vue, il est important d\'exprimer et de défendre efficacement ses pensées et ses idées, de présenter des arguments de façon claire et convaincante et de perfectionner ses capacités en matière de communication.',
+  '1.7':'Comprendre les différents points de vue et promouvoir la compréhension mutuelle : Afin de créer un environnement inclusif et respectueux propice à la recherche de consensus entre des intérêts divergents, il est important de pouvoir changer de perspective, de développer l\'empathie et de faire preuve de tolérance.',
+  '1.8':'Planifier les étapes de sa vie et gérer les impondérables : Afin de planifier et d\'organiser les différentes étapes de la vie à moyen et long terme, il est important de développer des ressources personnelles, sociales et matérielles et de les utiliser de manière ciblée selon le principe de l\'auto-efficacité. Il faut notamment être capable de mobiliser des ressources pour gérer son parcours aussi bien personnel que professionnel et de prendre en considération sa santé physique et psychique.',
+  '1.9':'Penser de manière systémique afin d\'agir de manière durable sur les plans social, écologique et économique : Une approche analytique et une capacité de pensée systémique sont indispensables afin de comprendre les liens et les interdépendances complexes aux niveaux local et global ainsi que leurs interactions et leurs conséquences et d\'en déduire des actions possibles en faveur du développement durable.',
+  '1.10':'Composer avec un environnement en constante évolution et s\'y adapter : Afin de subsister dans des contextes de vie qui évoluent rapidement, il est important de pouvoir adopter une attitude constructive face aux changements, de faire preuve de flexibilité et de mobilité, d\'opter pour un comportement durable et de renforcer sa capacité d\'adaptation.',
+  '1.11':'Composer avec les ambiguïtés : Afin de pouvoir faire face aux doutes et aux incertitudes, il est important d\'analyser des situations complexes, de prendre en compte différentes perspectives et de supporter les incohérences et les ambiguïtés.',
+  '1.12':'Participer aux processus sociétaux et exploiter les marges de manœuvre : Afin de participer activement aux développements de la société dans un environnement interculturel, il est important d\'identifier et d\'analyser les processus politiques, les conflits d\'intérêts des divers groupes d\'acteurs et les rapports de force, et d\'explorer les marges de manœuvre individuelles et collectives.'
+};
+
+const GES = {
+  '2.1':'Éthique',
+  '2.2':'Identité et socialisation',
+  '2.3':'Culture',
+  '2.4':'Écologie',
+  '2.5':'Politique',
+  '2.6':'Droit',
+  '2.7':'Transformation technologique et numérique',
+  '2.8':'Économie'
+};
+
+const DIG = {
+  '3.1':'Bases des applications informatiques',
+  '3.2':'Littératie informationnelle et des données',
+  '3.3':'Création de contenu',
+  '3.4':'Résolution de problèmes',
+  '3.5':'Composants spécifiques à l\'IA',
+  '3.6':'Attitude réflexive et gestion responsable'
+};
+
+const SPR = {
+  '4.1':'Descriptif (descriptif)',
+  '4.2':'Explicatif (explicatif)',
+  '4.3':'Argumentatif (persuasif)',
+  '4.4':'Discursif (interaction)',
+  '4.5':'Réfléchissant (réfléchissant)'
+};
+
+const GES_INHALTE = {
+  '2.1':['Examiner les décisions des consommateurs','Comportement interpersonnel'],
+  '2.2':['BFS et matière ABU','3 lieux d\'apprentissage','Travail et apprentissage des comportements',
+          'Mon rôle','Besoins et comportement d\'achat','Risques et stratégies',
+          'Schémas comportementaux','Types d\'assurance et leur fonctionnement'],
+  '2.3':[],
+  '2.4':['Examiner les décisions des consommateurs'],
+  '2.5':['Opportunités de participation'],
+  '2.6':['Système juridique et contrat d\'apprentissage','Fondement juridique',
+          'Capacité à jouer','Contrat juridique',
+          'Retrait du contrat et ruptures de contrat','Conséquences juridiques',
+          'Types d\'assurance et leur fonctionnement','Avantages de différentes polices d\'assurance'],
+  '2.7':['Voir « Médias et numérique »'],
+  '2.8':['Comptabilité de la paie','Cycle économique simple','Budget',
+          'Offres des institutions financières','Moyens de paiement','Types de financement',
+          'Pièges à l\'influence et à la publicité','Examiner les décisions des consommateurs',
+          'Assurance accident et santé','Avantages de différentes polices d\'assurance']
+};
+
+const DIG_INHALTE = {
+  '3.1':['Fonctions de base des programmes','Soutien organisationnel et supports pédagogiques'],
+  '3.2':['Utilisation de l\'IA, indication des sources','Naviguer','Évaluation des sources',
+          'Plateformes de vente','Chambres d\'écho, bulles filtrantes','Manipulations et désinformation'],
+  '3.3':['Informations connexes'],
+  '3.4':['Recherche','Lois et réglementations en ligne','Outils',
+          'Assistance en ligne aux consommateurs','Modèles en ligne','Outil en ligne'],
+  '3.5':['Données personnelles'],
+  '3.6':['Collaboration numérique','Données à protéger','Gestion des médias numériques']
+};
+
+const REZ_INHALTE = [
+  {id:'si-inhalte-erfassen', label:'Capture de contenu'},
+  {id:'si-lesestrategien',   label:'Application des stratégies de lecture'},
+  {id:'si-grafiken',         label:'Graphismes'}
+];
+
+const SPRACH_INHALTE = {
+  '4.1':[
+    {id:'si-praesentieren',    label:'Présentation'},
+    {id:'si-loesungsansaetze', label:'Décrire les solutions'},
+    {id:'si-recherche',        label:'Communication des résultats de la recherche'},
+    {id:'si-textvorlage',      label:'Personnaliser le modèle de texte avec des majuscules et minuscules'},
+    {id:'si-schriftlich-kom',  label:'Communiquer par écrit de manière appropriée au groupe cible – majuscules'}
+  ],
+  '4.2':[
+    {id:'si-schriftlich-kom',  label:'Communiquer par écrit de manière appropriée au groupe cible – majuscules'},
+    {id:'si-inhalte-erfassen', label:'Capture de contenu'},
+    {id:'si-zusammenhaenge',   label:'Reformulation des contextes'},
+    {id:'si-lesestrategien',   label:'Application des stratégies de lecture'},
+    {id:'si-grafiken',         label:'Graphismes'}
+  ],
+  '4.3':[
+    {id:'si-ueberzeugen',  label:'Convaincre sur la base des faits'},
+    {id:'si-position',     label:'Prendre position avec le / que'}
+  ],
+  '4.4':[
+    {id:'si-interview',      label:'Entretien'},
+    {id:'si-loesungsorient', label:'Communication orientée solution'}
+  ],
+  '4.5':[
+    {id:'si-lernstrategien',   label:'Réflexion sur les stratégies d\'apprentissage avec la structure de la matière'},
+    {id:'si-verhalten',        label:'Réflexion sur le comportement'},
+    {id:'si-einfluss-sprache', label:'Réflexion sur les moyens linguistiques'}
+  ]
+};
+
+const SI_ALL = {};
+Object.values(SPRACH_INHALTE).forEach(arr => arr.forEach(si => { SI_ALL[si.id] = si.label; }));
+
+const THEMEN_DATA = {
+  1: {
+    schluessel: ['1.2','1.4','1.7','1.10'],
+    gesInhalte: {
+      '2.1':['Comportement interpersonnel'],
+      '2.2':['BFS et matière ABU','3 lieux d\'apprentissage','Travail et apprentissage des comportements','Mon rôle'],
+      '2.5':['Opportunités de participation'],
+      '2.6':['Système juridique et contrat d\'apprentissage','Fondement juridique'],
+      '2.7':['Voir « Médias et numérique »']
+    },
+    digInhalte: {
+      '3.1':['Fonctions de base des programmes','Soutien organisationnel et supports pédagogiques'],
+      '3.2':['Utilisation de l\'IA, indication des sources','Naviguer','Évaluation des sources'],
+      '3.4':['Recherche','Lois et réglementations en ligne','Outils'],
+      '3.6':['Collaboration numérique']
+    },
+    lebensbezuege: [
+      { text:'Ma formation se déroule en entreprise, à l\'école professionnelle et aux cours interentreprises.',
+        kompetenzen:[
+          {gesellschaft:['2.2','2.5'],digital:['3.1','3.2'],sprache:['4.1','4.2','4.4']},
+          {gesellschaft:['2.2'],      digital:['3.1','3.6'],sprache:['4.1','4.5']}
+        ]
+      },
+      { text:'La loi et mon contrat d\'apprentissage me confèrent des droits et des obligations.',
+        kompetenzen:[
+          {gesellschaft:['2.6'],digital:['3.4'],sprache:['4.1','4.2']}
+        ]
+      }
+    ],
+    sprachInhalte:{
+      'rez': ['si-inhalte-erfassen'],
+      '4.1': ['si-praesentieren','si-loesungsansaetze','si-recherche'],
+      '4.2': ['si-schriftlich-kom'],
+      '4.4': ['si-interview','si-loesungsorient'],
+      '4.5': ['si-lernstrategien']
+    }
+  },
+
+  2: {
+    schluessel: ['1.5','1.6','1.8','1.9'],
+    gesInhalte: {
+      '2.1':['Examiner les décisions des consommateurs'],
+      '2.2':['Besoins et comportement d\'achat'],
+      '2.4':['Examiner les décisions des consommateurs'],
+      '2.6':['Capacité à jouer','Contrat juridique','Retrait du contrat et ruptures de contrat'],
+      '2.7':['Voir « Médias et numérique »'],
+      '2.8':['Comptabilité de la paie','Cycle économique simple','Budget',
+             'Offres des institutions financières','Moyens de paiement','Types de financement',
+             'Pièges à l\'influence et à la publicité','Examiner les décisions des consommateurs']
+    },
+    digInhalte: {
+      '3.2':['Plateformes de vente','Chambres d\'écho, bulles filtrantes','Manipulations et désinformation'],
+      '3.4':['Recherche','Assistance en ligne aux consommateurs','Modèles en ligne','Outil en ligne'],
+      '3.5':['Données personnelles']
+    },
+    lebensbezuege: [
+      { text:'Je gagne mon propre argent, je le gère et je le dépense.',
+        kompetenzen:[
+          {gesellschaft:['2.8'],digital:['3.2','3.4'],sprache:['4.2','4.1']},
+          {gesellschaft:['2.8'],digital:['3.4'],      sprache:['4.1']},
+          {gesellschaft:['2.8'],digital:['3.2'],      sprache:['4.2','4.3']}
+        ]
+      },
+      { text:'Je prends quotidiennement des décisions d\'achat et de consommation soumises à des droits et des obligations.',
+        kompetenzen:[
+          {gesellschaft:['2.1','2.2','2.4','2.8'],digital:['3.4','3.5'],sprache:['4.1','4.5']},
+          {gesellschaft:['2.6'],                  digital:['3.2'],      sprache:['4.1','4.2']}
+        ]
+      }
+    ],
+    sprachInhalte:{
+      'rez': ['si-inhalte-erfassen','si-lesestrategien'],
+      '4.1': ['si-praesentieren','si-textvorlage','si-schriftlich-kom'],
+      '4.2': ['si-zusammenhaenge'],
+      '4.5': ['si-verhalten','si-einfluss-sprache']
+    }
+  },
+
+  3: {
+    schluessel: ['1.1','1.7','1.8','1.11'],
+    gesInhalte: {
+      '2.1':['Comportement interpersonnel'],
+      '2.2':['Risques et stratégies','Schémas comportementaux','Types d\'assurance et leur fonctionnement'],
+      '2.6':['Conséquences juridiques','Types d\'assurance et leur fonctionnement','Avantages de différentes polices d\'assurance'],
+      '2.7':['Voir « Médias et numérique »'],
+      '2.8':['Assurance accident et santé','Avantages de différentes polices d\'assurance']
+    },
+    digInhalte: {
+      '3.5':['Données personnelles'],
+      '3.6':['Données à protéger','Gestion des médias numériques']
+    },
+    lebensbezuege: [
+      { text:'Mon corps et mon psychisme sont soumis à différentes influences.',
+        kompetenzen:[
+          {gesellschaft:['2.2'],      digital:['3.6'],sprache:['4.2','4.3','4.5']},
+          {gesellschaft:['2.1','2.6'],digital:['3.2'],sprache:['4.4','4.5']}
+        ]
+      },
+      { text:'J\'analyse les risques et leurs conséquences afin de décider de manière responsable.',
+        kompetenzen:[
+          {gesellschaft:['2.2','2.6','2.8'],digital:['3.3','3.4'],sprache:['4.1','4.2']}
+        ]
+      }
+    ],
+    sprachInhalte:{
+      'rez': ['si-inhalte-erfassen','si-grafiken'],
+      '4.3': ['si-ueberzeugen','si-position'],
+      '4.4': ['si-loesungsorient'],
+      '4.5': ['si-verhalten']
+    }
+  }
+};
+
+/* ══════════════════ HELPERS ══════════════════ */
+function aid(nr) {
+  const p = nr.split('.')[0];
+  if(p==='1') return 'sk-'+nr;
+  if(p==='2') return 'ges-'+nr;
+  if(p==='3') return 'dig-'+nr;
+  if(p==='4') return 'spr-'+nr;
+  return nr;
+}
+function sortNr(a,b){
+  const pa=a.split('.').map(Number), pb=b.split('.').map(Number);
+  return pa[0]!==pb[0] ? pa[0]-pb[0] : (pa[1]||0)-(pb[1]||0);
+}
+
+let activeFilter = null;
+let openDropdown = null;
+
+function makeChip(label, aspekt, chipClass) {
+  const c = document.createElement('div');
+  c.className = 'chip '+chipClass;
+  c.textContent = label;
+  c.setAttribute('data-aspekt', aspekt);
+  c.onclick = () => filterAspekt(aspekt, c);
+  return c;
+}
+
+function renderDropdowns() {
+  const dsk = document.getElementById('dropdown-schluessel');
+  const rowSk = document.createElement('div'); rowSk.className = 'dropdown-inner';
+  Object.entries(SK).sort((a,b)=>sortNr(a[0],b[0])).forEach(([nr,text]) => {
+    rowSk.appendChild(makeChip(nr+' '+text, aid(nr), 'chip-schluessel'));
+  });
+  dsk.appendChild(rowSk);
+
+  const dges = document.getElementById('dropdown-gesellschaft');
+  const gesGroup = document.createElement('div'); gesGroup.className = 'ges-group';
+  Object.entries(GES).sort((a,b)=>sortNr(a[0],b[0])).forEach(([nr,text]) => {
+    const subItems = GES_INHALTE[nr] || [];
+    const row = document.createElement('div'); row.className = 'ges-aspect-row';
+    if (subItems.length) {
+      const toggleBtn = document.createElement('button');
+      toggleBtn.className = 'ges-toggle-btn'; toggleBtn.textContent = '▶';
+      row.appendChild(toggleBtn);
+      const chip = makeChip(nr+' '+text, aid(nr), 'chip-gesellschaft');
+      row.appendChild(chip);
+      const subPanel = document.createElement('div'); subPanel.className = 'ges-sub-items';
+      subItems.forEach(item => {
+        const sc = document.createElement('div'); sc.className = 'ges-sub-chip';
+        sc.textContent = item;
+        sc.onclick = () => {
+          document.querySelectorAll('.ges-sub-chip,.spr-sub-chip,.dig-sub-chip').forEach(c=>c.classList.remove('active'));
+          sc.classList.add('active');
+          filterByGesText(item);
+        };
+        subPanel.appendChild(sc);
+      });
+      const doToggle = (e) => { e.stopPropagation(); subPanel.classList.toggle('visible'); toggleBtn.classList.toggle('open'); };
+      toggleBtn.addEventListener('click', doToggle);
+      chip.addEventListener('click', (e) => { e.stopPropagation(); doToggle(e); });
+      gesGroup.appendChild(row); gesGroup.appendChild(subPanel);
+    } else {
+      const spacer = document.createElement('span'); spacer.style.cssText='width:24px;flex-shrink:0;display:inline-block';
+      row.appendChild(spacer);
+      row.appendChild(makeChip(nr+' '+text, aid(nr), 'chip-gesellschaft'));
+      gesGroup.appendChild(row);
+    }
+  });
+  dges.appendChild(gesGroup);
+
+  const ddig = document.getElementById('dropdown-digital');
+  const digGroup = document.createElement('div'); digGroup.className = 'ges-group';
+  Object.entries(DIG).sort((a,b)=>sortNr(a[0],b[0])).forEach(([nr,text]) => {
+    const subItems = DIG_INHALTE[nr] || [];
+    const row = document.createElement('div'); row.className = 'ges-aspect-row';
+    if (subItems.length) {
+      const toggleBtn = document.createElement('button');
+      toggleBtn.className = 'ges-toggle-btn green'; toggleBtn.textContent = '▶';
+      row.appendChild(toggleBtn);
+      const chip = makeChip(nr+' '+text, aid(nr), 'chip-digital');
+      row.appendChild(chip);
+      const subPanel = document.createElement('div'); subPanel.className = 'ges-sub-items';
+      subItems.forEach(item => {
+        const sc = document.createElement('div'); sc.className = 'dig-sub-chip';
+        sc.textContent = item;
+        sc.onclick = () => {
+          document.querySelectorAll('.ges-sub-chip,.spr-sub-chip,.dig-sub-chip').forEach(c=>c.classList.remove('active'));
+          sc.classList.add('active');
+          filterByDigText(item);
+        };
+        subPanel.appendChild(sc);
+      });
+      const doToggle = (e) => { e.stopPropagation(); subPanel.classList.toggle('visible'); toggleBtn.classList.toggle('open'); };
+      toggleBtn.addEventListener('click', doToggle);
+      chip.addEventListener('click', (e) => { e.stopPropagation(); doToggle(e); });
+      digGroup.appendChild(row); digGroup.appendChild(subPanel);
+    } else {
+      const spacer = document.createElement('span'); spacer.style.cssText='width:24px;flex-shrink:0;display:inline-block';
+      row.appendChild(spacer);
+      row.appendChild(makeChip(nr+' '+text, aid(nr), 'chip-digital'));
+      digGroup.appendChild(row);
+    }
+  });
+  ddig.appendChild(digGroup);
+
+  const dsi = document.getElementById('dropdown-sprach-inhalt');
+  const siGroup = document.createElement('div'); siGroup.className = 'ges-group';
+  const rezRow = document.createElement('div'); rezRow.className = 'ges-aspect-row';
+  const rezToggle = document.createElement('button'); rezToggle.className = 'ges-toggle-btn blue'; rezToggle.textContent = '▶';
+  rezRow.appendChild(rezToggle);
+  const rezChip = makeChip('4. Réception', 'spr-rez', 'chip-sprache');
+  rezRow.appendChild(rezChip);
+  const rezPanel = document.createElement('div'); rezPanel.className = 'ges-sub-items';
+  REZ_INHALTE.forEach(si => {
+    const sc = document.createElement('div'); sc.className = 'spr-sub-chip';
+    sc.textContent = si.label;
+    sc.onclick = () => {
+      document.querySelectorAll('.ges-sub-chip,.spr-sub-chip,.dig-sub-chip').forEach(c=>c.classList.remove('active'));
+      sc.classList.add('active');
+      filterBySiId(si.id);
+    };
+    rezPanel.appendChild(sc);
+  });
+  const doToggleRez = (e) => { e.stopPropagation(); rezPanel.classList.toggle('visible'); rezToggle.classList.toggle('open'); };
+  rezToggle.addEventListener('click', doToggleRez);
+  rezChip.addEventListener('click', (e) => { e.stopPropagation(); doToggleRez(e); });
+  siGroup.appendChild(rezRow); siGroup.appendChild(rezPanel);
+
+  Object.keys(SPRACH_INHALTE).sort(sortNr).forEach(sprNr => {
+    const subItems = SPRACH_INHALTE[sprNr];
+    const row = document.createElement('div'); row.className = 'ges-aspect-row';
+    const toggleBtn = document.createElement('button');
+    toggleBtn.className = 'ges-toggle-btn blue'; toggleBtn.textContent = '▶';
+    row.appendChild(toggleBtn);
+    const sprChip = makeChip(sprNr+' '+(SPR[sprNr]||sprNr), aid(sprNr), 'chip-sprache');
+    row.appendChild(sprChip);
+    const subPanel = document.createElement('div'); subPanel.className = 'ges-sub-items';
+    subItems.forEach(si => {
+      const sc = document.createElement('div'); sc.className = 'spr-sub-chip';
+      sc.textContent = si.label;
+      sc.onclick = () => {
+        document.querySelectorAll('.ges-sub-chip,.spr-sub-chip,.dig-sub-chip').forEach(c=>c.classList.remove('active'));
+        sc.classList.add('active');
+        filterBySiId(si.id);
+      };
+      subPanel.appendChild(sc);
+    });
+    const doToggle = (e) => { e.stopPropagation(); subPanel.classList.toggle('visible'); toggleBtn.classList.toggle('open'); };
+    toggleBtn.addEventListener('click', doToggle);
+    sprChip.addEventListener('click', (e) => { e.stopPropagation(); doToggle(e); });
+    siGroup.appendChild(row); siGroup.appendChild(subPanel);
+  });
+  dsi.appendChild(siGroup);
+}
+
+function renderTimeline() {
+  const cont = document.getElementById('timeline-container');
+  cont.innerHTML = '';
+  const yNames = ['Fondements','Approfondissement','Transfert'];
+  for (let y=1;y<=3;y++) {
+    const col = document.createElement('div'); col.className = 'year-column';
+    col.innerHTML = '<div class="year-header"><h2>'+y+'<sup>'+(y===1?'re':'e')+'</sup> année</h2><p>'+yNames[y-1]+'</p></div>';
+    THEMES.filter(t=>t.year===y).forEach(theme => {
+      if (theme.schlussarbeit) { col.appendChild(createSchlussarbeit()); return; }
+      const data = THEMEN_DATA[theme.nr];
+      col.appendChild(data ? createCard(theme,data) : createPlaceholder(theme));
+    });
+    cont.appendChild(col);
+  }
+}
+
+function createSchlussarbeit() {
+  const d = document.createElement('div'); d.className = 'theme-card schlussarbeit';
+  d.innerHTML = '<h3>Travail de fin d\'études</h3><div class="lebensbezug-item"><span style="font-size:.8em;color:#666;">Selon les directives lors de la dernière année</span></div>';
+  return d;
+}
+
+function createPlaceholder(theme) {
+  const d = document.createElement('div'); d.className = 'theme-card placeholder';
+  d.innerHTML = '<h3>Sujet '+theme.nr+' : '+theme.name+'</h3>';
+  return d;
+}
+
+function mkBadge(text, cssClass, cat, aspekt, tipText) {
+  const b = document.createElement('div');
+  b.className = 'kompetenz-badge '+cssClass;
+  b.textContent = text;
+  b.setAttribute('data-category', cat);
+  b.setAttribute('data-aspekt', aspekt);
+  const tt = document.createElement('div'); tt.className = 'tooltip'; tt.textContent = tipText;
+  b.appendChild(tt);
+  return b;
+}
+
+function createCard(theme, data) {
+  const card = document.createElement('div'); card.className = 'theme-card';
+  const h3 = document.createElement('h3');
+  if (theme.file) {
+    h3.innerHTML = '<a href="'+theme.file+'">Sujet '+theme.nr+' : '+theme.name+'</a>';
+  } else {
+    h3.textContent = 'Sujet '+theme.nr+' : '+theme.name;
+  }
+  card.appendChild(h3);
+
+  if (data.schluessel && data.schluessel.length) {
+    const sd = document.createElement('div'); sd.className = 'schluesselkompetenzen';
+    data.schluessel.forEach(nr => {
+      const b = document.createElement('div'); b.className = 'schluesselkompetenz-badge';
+      b.textContent = nr; b.setAttribute('data-category','schluessel'); b.setAttribute('data-aspekt',aid(nr));
+      const tt = document.createElement('div'); tt.className = 'tooltip'; tt.textContent = SK_LONG[nr]||SK[nr]||nr;
+      b.appendChild(tt); sd.appendChild(b);
+    });
+    card.appendChild(sd);
+  }
+
+  const allG=new Set(), allD=new Set(), allS=new Set();
+  data.lebensbezuege.forEach(lb => lb.kompetenzen.forEach(k => {
+    k.gesellschaft.forEach(n=>allG.add(n));
+    k.digital.forEach(n=>allD.add(n));
+    k.sprache.forEach(n=>allS.add(n));
+  }));
+  if (data.sprachInhalte && !Array.isArray(data.sprachInhalte)) {
+    if (data.sprachInhalte['rez'] && data.sprachInhalte['rez'].length) allS.add('rez');
+    if (data.sprachInhalte['4.5'] && data.sprachInhalte['4.5'].length) allS.add('4.5');
+  }
+
+  const kd = document.createElement('div'); kd.className = 'kompetenz-detail';
+  [...allG].sort(sortNr).forEach(nr=>kd.appendChild(mkBadge(nr,'badge-gesellschaft','gesellschaft',aid(nr),GES[nr]||nr)));
+  [...allD].sort(sortNr).forEach(nr=>kd.appendChild(mkBadge(nr,'badge-digital','digital',aid(nr),DIG[nr]||nr)));
+  const sprBadges = [...allS].filter(n=>n!=='rez').sort(sortNr);
+  if (allS.has('rez')) kd.appendChild(mkBadge('4.','badge-sprache','sprache','spr-rez','Réception'));
+  sprBadges.forEach(nr=>kd.appendChild(mkBadge(nr,'badge-sprache','sprache',aid(nr),SPR[nr]||nr)));
+  card.appendChild(kd);
+
+  const gesTextToAspekts = new Map();
+  [...allG].sort(sortNr).forEach(nr => {
+    if (data.gesInhalte && data.gesInhalte[nr]) {
+      data.gesInhalte[nr].forEach(txt => {
+        if (!gesTextToAspekts.has(txt)) gesTextToAspekts.set(txt, []);
+        gesTextToAspekts.get(txt).push(nr);
+      });
+    }
+  });
+  if (gesTextToAspekts.size) {
+    const wrap = document.createElement('div');
+    wrap.className = 'card-inhalte-block'; wrap.setAttribute('data-block','ges');
+    wrap.style.cssText = 'display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;';
+    gesTextToAspekts.forEach((aspekts, txt) => {
+      const sc = document.createElement('span'); sc.className = 'card-ges-chip';
+      sc.setAttribute('data-ges-text', txt);
+      sc.setAttribute('data-ges-aspekt', aspekts.join(','));
+      sc.textContent = txt;
+      wrap.appendChild(sc);
+    });
+    card.appendChild(wrap);
+  }
+
+  if (data.digInhalte) {
+    const _seenDig = new Set();
+    const digChips = [...allD].sort(sortNr).flatMap(nr =>
+      (data.digInhalte[nr]) ? data.digInhalte[nr].filter(txt => {
+        if (_seenDig.has(txt)) return false;
+        _seenDig.add(txt); return true;
+      }).map(txt=>({txt,nr})) : []
+    );
+    if (digChips.length) {
+      const wrap = document.createElement('div');
+      wrap.className = 'card-inhalte-block'; wrap.setAttribute('data-block','dig');
+      wrap.style.cssText = 'display:flex;flex-wrap:wrap;gap:4px;margin-top:4px;';
+      digChips.forEach(({txt,nr}) => {
+        const sc = document.createElement('span'); sc.className = 'card-dig-chip';
+        sc.setAttribute('data-dig-text', txt);
+        sc.setAttribute('data-dig-aspekt', nr);
+        sc.textContent = txt;
+        wrap.appendChild(sc);
+      });
+      card.appendChild(wrap);
+    }
+  }
+
+  if (data.sprachInhalte && typeof data.sprachInhalte === 'object' && !Array.isArray(data.sprachInhalte)) {
+    const outer = document.createElement('div');
+    outer.className = 'card-inhalte-block'; outer.setAttribute('data-block','spr');
+    outer.style.cssText = 'display:flex;flex-wrap:wrap;gap:4px;margin-top:4px;';
+    const _seen = new Set();
+    Object.values(data.sprachInhalte).forEach(ids => {
+      (ids||[]).forEach(siId => {
+        const normId = siId.startsWith('si-') ? siId : 'si-'+siId;
+        if (_seen.has(normId)) return;
+        _seen.add(normId);
+        const sc = document.createElement('span'); sc.className = 'card-spr-chip';
+        sc.setAttribute('data-si-id', normId);
+        sc.textContent = SI_ALL[normId] || siId;
+        outer.appendChild(sc);
+      });
+    });
+    card.appendChild(outer);
+  }
+
+  return card;
+}
+
+function toggleDropdown(cat) {
+  const panel = document.getElementById('dropdown-'+cat);
+  const btn   = document.getElementById('btn-'+cat);
+  if (!panel || !btn) return;
+  if (openDropdown === cat) {
+    panel.classList.remove('visible'); btn.classList.remove('open','active');
+    openDropdown = null;
+  } else {
+    if (openDropdown) {
+      document.getElementById('dropdown-'+openDropdown).classList.remove('visible');
+      const ob = document.getElementById('btn-'+openDropdown);
+      if(ob) ob.classList.remove('open','active');
+    }
+    panel.classList.add('visible'); btn.classList.add('open','active');
+    openDropdown = cat;
+    filterCategory(cat);
+  }
+}
+
+function filterCategory(cat) {
+  activeFilter = 'cat:'+cat;
+  document.getElementById('btn-reset').classList.remove('active');
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  document.querySelectorAll('.ges-sub-chip,.spr-sub-chip,.dig-sub-chip').forEach(c=>c.classList.remove('active'));
+  resetChipHighlights();
+  const isGes = cat === 'gesellschaft';
+  const isSpr = cat === 'sprach-inhalt';
+  const isSk  = cat === 'schluessel';
+  const isDig = cat === 'digital';
+  document.querySelectorAll('.kompetenz-badge').forEach(b => {
+    const bc = b.getAttribute('data-category');
+    b.style.display = (bc===cat || (isSpr && bc==='sprache') || (isDig && bc==='digital')) ? 'inline-block' : 'none';
+  });
+  document.querySelectorAll('.schluesselkompetenz-badge').forEach(b => { b.style.display = isSk ? 'inline-block' : 'none'; });
+  document.querySelectorAll('.schluesselkompetenzen').forEach(sk => { sk.style.display = isSk ? 'block' : 'none'; });
+  document.querySelectorAll('.card-inhalte-block[data-block="ges"]').forEach(b=>b.style.display = isGes ? 'flex' : 'none');
+  document.querySelectorAll('.card-inhalte-block[data-block="dig"]').forEach(b=>b.style.display = isDig ? 'flex' : 'none');
+  document.querySelectorAll('.card-inhalte-block[data-block="spr"]').forEach(b=>b.style.display = isSpr ? 'flex' : 'none');
+  updateVis();
+}
+
+function filterAspekt(aspekt, chipEl) {
+  if (activeFilter === aspekt) { resetFilter(); return; }
+  activeFilter = aspekt;
+  document.getElementById('btn-reset').classList.remove('active');
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  document.querySelectorAll('.ges-sub-chip,.spr-sub-chip,.dig-sub-chip').forEach(c=>c.classList.remove('active'));
+  if (chipEl) chipEl.classList.add('active');
+  resetChipHighlights();
+  document.querySelectorAll('.kompetenz-badge,.schluesselkompetenz-badge').forEach(b => {
+    b.style.display = b.getAttribute('data-aspekt')===aspekt ? 'inline-block' : 'none';
+  });
+  document.querySelectorAll('.schluesselkompetenzen').forEach(sk => {
+    const vis = [...sk.querySelectorAll('.schluesselkompetenz-badge')].some(b=>b.style.display!=='none');
+    sk.style.display = vis ? 'block' : 'none';
+  });
+  const isGesAsp = aspekt.startsWith('ges-');
+  const isSprAsp = aspekt.startsWith('spr-');
+  const isDigAsp = aspekt.startsWith('dig-');
+  document.querySelectorAll('.card-inhalte-block[data-block="ges"]').forEach(b=>b.style.display = isGesAsp ? 'flex' : 'none');
+  document.querySelectorAll('.card-inhalte-block[data-block="dig"]').forEach(b=>b.style.display = isDigAsp ? 'flex' : 'none');
+  document.querySelectorAll('.card-inhalte-block[data-block="spr"]').forEach(b=>b.style.display = isSprAsp ? 'flex' : 'none');
+  if (isGesAsp) {
+    const nr = aspekt.replace('ges-','');
+    document.querySelectorAll('.card-ges-chip').forEach(c => {
+      const aspekts = c.getAttribute('data-ges-aspekt').split(',');
+      c.style.opacity = aspekts.includes(nr) ? '1' : '0.2';
+    });
+  }
+  if (isDigAsp) {
+    const nr = aspekt.replace('dig-','');
+    document.querySelectorAll('.card-dig-chip').forEach(c => {
+      c.style.opacity = c.getAttribute('data-dig-aspekt')===nr ? '1' : '0.2';
+    });
+  }
+  if (isSprAsp) {
+    const sprNr = aspekt.replace('spr-','');
+    const validIds = sprNr === 'rez'
+      ? new Set(REZ_INHALTE.map(s=>s.id))
+      : new Set((SPRACH_INHALTE[sprNr]||[]).map(s=>s.id));
+    document.querySelectorAll('.card-spr-chip').forEach(c => {
+      c.style.opacity = validIds.has(c.getAttribute('data-si-id')) ? '1' : '0.2';
+    });
+  }
+  updateVis();
+}
+
+function filterByGesText(txt) {
+  activeFilter = 'ges-text:'+txt;
+  document.getElementById('btn-reset').classList.remove('active');
+  resetChipHighlights();
+  document.querySelectorAll('.kompetenz-badge,.schluesselkompetenz-badge').forEach(b=>b.style.display='none');
+  document.querySelectorAll('.schluesselkompetenzen').forEach(sk=>sk.style.display='none');
+  document.querySelectorAll('.card-inhalte-block[data-block="ges"]').forEach(b=>b.style.display='flex');
+  document.querySelectorAll('.card-inhalte-block[data-block="dig"]').forEach(b=>b.style.display='none');
+  document.querySelectorAll('.card-inhalte-block[data-block="spr"]').forEach(b=>b.style.display='none');
+  document.querySelectorAll('.card-ges-chip').forEach(c => {
+    const match = c.getAttribute('data-ges-text')===txt;
+    c.style.opacity = match ? '1' : '0.15';
+    c.style.fontWeight = match ? '700' : '';
+    c.style.outline = match ? '2px solid #d4a500' : '';
+  });
+  document.querySelectorAll('.theme-card:not(.placeholder):not(.schlussarbeit)').forEach(card => {
+    const has = [...card.querySelectorAll('.card-ges-chip')].some(c=>c.getAttribute('data-ges-text')===txt);
+    card.style.display = has ? 'block' : 'none';
+  });
+}
+
+function filterByDigText(txt) {
+  activeFilter = 'dig-text:'+txt;
+  document.getElementById('btn-reset').classList.remove('active');
+  resetChipHighlights();
+  document.querySelectorAll('.kompetenz-badge,.schluesselkompetenz-badge').forEach(b=>b.style.display='none');
+  document.querySelectorAll('.schluesselkompetenzen').forEach(sk=>sk.style.display='none');
+  document.querySelectorAll('.card-inhalte-block[data-block="ges"]').forEach(b=>b.style.display='none');
+  document.querySelectorAll('.card-inhalte-block[data-block="dig"]').forEach(b=>b.style.display='flex');
+  document.querySelectorAll('.card-inhalte-block[data-block="spr"]').forEach(b=>b.style.display='none');
+  document.querySelectorAll('.card-dig-chip').forEach(c => {
+    const match = c.getAttribute('data-dig-text')===txt;
+    c.style.opacity = match ? '1' : '0.15';
+    c.style.fontWeight = match ? '700' : '';
+    c.style.outline = match ? '2px solid #4db380' : '';
+  });
+  document.querySelectorAll('.theme-card:not(.placeholder):not(.schlussarbeit)').forEach(card => {
+    const has = [...card.querySelectorAll('.card-dig-chip')].some(c=>c.getAttribute('data-dig-text')===txt);
+    card.style.display = has ? 'block' : 'none';
+  });
+}
+
+function filterBySiId(siId) {
+  activeFilter = 'si:'+siId;
+  document.getElementById('btn-reset').classList.remove('active');
+  resetChipHighlights();
+  document.querySelectorAll('.kompetenz-badge,.schluesselkompetenz-badge').forEach(b=>b.style.display='none');
+  document.querySelectorAll('.schluesselkompetenzen').forEach(sk=>sk.style.display='none');
+  document.querySelectorAll('.card-inhalte-block[data-block="ges"]').forEach(b=>b.style.display='none');
+  document.querySelectorAll('.card-inhalte-block[data-block="dig"]').forEach(b=>b.style.display='none');
+  document.querySelectorAll('.card-inhalte-block[data-block="spr"]').forEach(b=>b.style.display='flex');
+  document.querySelectorAll('.card-spr-chip').forEach(c => {
+    const match = c.getAttribute('data-si-id')===siId;
+    c.style.opacity = match ? '1' : '0.15';
+    c.style.fontWeight = match ? '700' : '';
+    c.style.outline = match ? '2px solid #3385d6' : '';
+  });
+  document.querySelectorAll('.theme-card:not(.placeholder):not(.schlussarbeit)').forEach(card => {
+    const has = [...card.querySelectorAll('.card-spr-chip')].some(c=>c.getAttribute('data-si-id')===siId);
+    card.style.display = has ? 'block' : 'none';
+  });
+}
+
+function resetChipHighlights() {
+  document.querySelectorAll('.card-ges-chip,.card-spr-chip,.card-dig-chip').forEach(c => {
+    c.style.opacity = ''; c.style.fontWeight = ''; c.style.outline = '';
+  });
+}
+
+function updateVis() {
+  document.querySelectorAll('.theme-card:not(.placeholder):not(.schlussarbeit)').forEach(card => {
+    const anyBadge = [...card.querySelectorAll('.kompetenz-badge,.schluesselkompetenz-badge')].some(b=>b.style.display!=='none');
+    card.style.display = anyBadge ? 'block' : 'none';
+  });
+}
+
+function resetFilter() {
+  activeFilter = null;
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  document.querySelectorAll('.ges-sub-chip,.spr-sub-chip,.dig-sub-chip').forEach(c=>c.classList.remove('active'));
+  document.querySelectorAll('.main-filter-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('btn-reset').classList.add('active');
+  if (openDropdown) {
+    document.getElementById('dropdown-'+openDropdown).classList.remove('visible');
+    const ob = document.getElementById('btn-'+openDropdown);
+    if(ob) ob.classList.remove('open','active');
+    openDropdown = null;
+  }
+  document.querySelectorAll('.kompetenz-badge,.schluesselkompetenz-badge').forEach(b=>b.style.display='inline-block');
+  document.querySelectorAll('.schluesselkompetenzen').forEach(s=>s.style.display='block');
+  document.querySelectorAll('.theme-card').forEach(c=>c.style.display='block');
+  document.querySelectorAll('.card-inhalte-block').forEach(b=>b.style.display='flex');
+  resetChipHighlights();
+}
+
+function toggleUebersicht() {
+  document.getElementById('uebersicht-content').classList.toggle('open');
+  document.getElementById('uebersicht-toggle').classList.toggle('open');
+}
+
+function toggleStatusInfo() {
+  document.getElementById('statusinfo-content').classList.toggle('open');
+  document.getElementById('statusinfo-toggle').classList.toggle('open');
+}
+
+function initApp() {
+  renderDropdowns();
+  renderTimeline();
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('timeline-container').style.display = 'flex';
+  document.getElementById('btn-reset').classList.add('active');
+}
+
+document.addEventListener('DOMContentLoaded', initApp);
+</script>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copyright">© 2025 - Office de l'enseignement secondaire du 2e degré et de la formation professionnelle, Canton de Berne</span>
+    <nav class="footer-links" aria-label="Navigation du pied de page">
+      <a href="../mentions_legales.html">Mentions légales</a>
+      <a href="../impressum_fr.html">Impressum</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>
