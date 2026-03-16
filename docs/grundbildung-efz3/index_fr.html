@@ -58,26 +58,19 @@
         .app-title:hover { text-decoration: underline; }
 
         .service-nav { display: flex; align-items: center; gap: 20px; padding-top: 4px; }
-
         .service-nav a { font-size: 0.85em; color: #000; text-decoration: none; }
-
         .service-nav a:hover { text-decoration: underline; }
 
         .language-selector { display: flex; align-items: center; gap: 6px; font-size: 0.85em; }
-
         .language-selector span { color: #666; }
-
         .language-selector a { color: #000; text-decoration: none; }
-
         .language-selector a.active {
             font-weight: 700;
             border-bottom: 2px solid #dc291e;
             padding-bottom: 1px;
         }
-
         .language-selector a:hover { text-decoration: underline; }
 
-        /* WIP-BADGE */
         .wip-badge {
             display: inline-block;
             margin-top: 6px;
@@ -103,29 +96,14 @@
         .breadcrumb a { color: #000; text-decoration: none; font-weight: 500; }
         .breadcrumb a:hover { text-decoration: underline; }
 
-        h1 {
-            font-size: 2em;
-            font-weight: 700;
-            color: #000;
-            margin-bottom: 6px;
-        }
+        h1 { font-size: 2em; font-weight: 700; color: #000; margin-bottom: 6px; }
 
-        .subtitle {
-            font-size: 0.95em;
-            color: #333;
-            margin-bottom: 40px;
-            line-height: 1.6;
-        }
+        .subtitle { font-size: 0.95em; color: #333; margin-bottom: 40px; line-height: 1.6; }
 
         /* THEMENÜBERSICHT TABELLE */
         .theme-overview { margin-bottom: 40px; }
 
-        .theme-overview h2 {
-            font-size: 1.1em;
-            font-weight: 700;
-            color: #000;
-            margin-bottom: 16px;
-        }
+        .theme-overview h2 { font-size: 1.1em; font-weight: 700; color: #000; margin-bottom: 16px; }
 
         .theme-table {
             width: 100%;
@@ -138,31 +116,15 @@
         .theme-table th {
             background: #f5e6d3;
             padding: 10px 14px;
-            text-align: left;
+            text-align: center;
             font-size: 0.85em;
             font-weight: 700;
             color: #000;
             border-bottom: 2px solid #e0e0e0;
             border-right: 1px solid #e0e0e0;
         }
-
         .theme-table th:last-child { border-right: none; }
-
-        .theme-table th.year-header {
-            text-align: center;
-            color: #dc291e;
-            font-size: 1em;
-            width: 33.33%;
-        }
-
-        .theme-table th.row-label {
-            width: 120px;
-            text-align: left;
-            font-size: 0.8em;
-            color: #555;
-            font-weight: 400;
-            background: #faf8f5;
-        }
+        .theme-table th.year-header { font-size: 1.1em; color: #dc291e; width: 33.33%; }
 
         .theme-table td {
             padding: 10px 14px;
@@ -172,17 +134,7 @@
             color: #000;
             vertical-align: top;
         }
-
         .theme-table td:last-child { border-right: none; }
-
-        .theme-table td.row-label {
-            font-style: italic;
-            color: #666;
-            font-size: 0.82em;
-            background: #faf8f5;
-            vertical-align: middle;
-        }
-
         .theme-table tbody tr:last-child td { border-bottom: none; }
 
         .theme-table tfoot td {
@@ -194,13 +146,19 @@
             border-top: 2px solid #e0e0e0;
             border-bottom: none;
         }
-
         .theme-table tfoot td:last-child { border-right: none; }
 
         /* KARTEN */
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .card-grid-full {
+            display: grid;
+            grid-template-columns: 1fr;
             gap: 24px;
             margin-bottom: 40px;
         }
@@ -214,25 +172,12 @@
             display: block;
             transition: border-color 0.2s, box-shadow 0.2s;
         }
-
         .card:hover {
             border-color: #dc291e;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-
-        .card h2 {
-            font-size: 1.15em;
-            font-weight: 700;
-            color: #000;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            font-size: 0.9em;
-            color: #333;
-            line-height: 1.5;
-        }
-
+        .card h2 { font-size: 1.15em; font-weight: 700; color: #000; margin-bottom: 10px; }
+        .card p { font-size: 0.9em; color: #333; line-height: 1.5; }
         .card .meta {
             margin-top: 14px;
             padding-top: 14px;
@@ -241,94 +186,9 @@
             color: #555;
         }
 
-        /* CIRCULARITÉ */
-        .zirkularitaet-container {
-            max-width: 600px;
-            margin-bottom: 40px;
-        }
-
-        .zirkularitaet-card {
-            background: #f5f0e8;
-            border: 1px solid #e0d8cc;
-            padding: 28px 30px;
-            text-decoration: none;
-            color: #000;
-            display: block;
-            transition: border-color 0.2s, box-shadow 0.2s;
-        }
-
-        .zirkularitaet-card:hover {
-            border-color: #dc291e;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .zirkularitaet-card h2 {
-            font-size: 1.15em;
-            font-weight: 700;
-            color: #000;
-            margin-bottom: 6px;
-        }
-
-        .zirkularitaet-card p {
-            font-size: 0.9em;
-            color: #333;
-        }
-
-        /* LIENS EXTERNES */
-        .external-links {
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid #e0e0e0;
-        }
-
-        .external-links h3 {
-            font-size: 1em;
-            font-weight: 700;
-            color: #000;
-            margin-bottom: 16px;
-        }
-
-        .external-links-grid {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .external-link-button {
-            display: inline-flex;
-            align-items: center;
-            padding: 10px 16px;
-            background-color: #f5f0e8;
-            border: 1px solid #e0d8cc;
-            color: #000;
-            text-decoration: none;
-            font-size: 0.9em;
-            transition: border-color 0.2s;
-        }
-
-        .external-link-button:hover {
-            border-color: #dc291e;
-            text-decoration: underline;
-        }
-
         /* FOOTER */
-        footer {
-            background: #fff;
-            border-top: 1px solid #e0e0e0;
-            padding: 14px 24px;
-            margin-top: auto;
-        }
-
-        .footer-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
+        footer { background: #fff; border-top: 1px solid #e0e0e0; padding: 14px 24px; margin-top: auto; }
+        .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
         .footer-copyright { font-size: 0.82em; color: #333; }
         .footer-links { display: flex; gap: 24px; }
         .footer-links a { font-size: 0.82em; font-weight: 700; color: #000; text-decoration: none; }
@@ -377,7 +237,6 @@
             <table class="theme-table">
                 <thead>
                     <tr>
-                        <th class="row-label"></th>
                         <th class="year-header">1re année</th>
                         <th class="year-header">2e année</th>
                         <th class="year-header">3e année</th>
@@ -385,36 +244,24 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="row-label">Thèmes</td>
-                        <td>
-                            <strong>1.</strong> Mon apprentissage<br>
-                            <strong>2.</strong> Gagner et dépenser de l'argent<br>
-                            <strong>3.</strong> Vivre sainement
-                        </td>
-                        <td>
-                            <strong>4.</strong> Agir de manière durable<br>
-                            <strong>5.</strong> Ma culture, mes relations<br>
-                            <strong>6.</strong> Défendre ses intérêts
-                        </td>
-                        <td>
-                            <strong>7.</strong> Travail en mutation<br>
-                            <strong>8.</strong> Mon chez-moi<br>
-                            <span style="font-style:italic;color:#666;">Examen final</span>
-                        </td>
+                        <td><strong>Thème 1 :</strong> Mon apprentissage</td>
+                        <td><strong>Thème 4 :</strong> Agir de manière durable</td>
+                        <td style="font-style:italic;color:#666;">Examen final</td>
                     </tr>
                     <tr>
-                        <td class="row-label">Autres leçons</td>
-                        <td style="color:#666;font-style:italic;">xx</td>
-                        <td style="color:#666;font-style:italic;">xx</td>
-                        <td style="color:#666;font-style:italic;">xx</td>
+                        <td><strong>Thème 2 :</strong> Gagner et dépenser de l'argent</td>
+                        <td><strong>Thème 5 :</strong> Ma culture, mes relations</td>
+                        <td><strong>Thème 7 :</strong> Travail en mutation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Thème 3 :</strong> Vivre sainement</td>
+                        <td><strong>Thème 6 :</strong> Défendre ses intérêts</td>
+                        <td><strong>Thème 8 :</strong> Mon chez-moi</td>
                     </tr>
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td style="text-align:right;background:#f9f3e8;">Total leçons :</td>
-                        <td>120</td>
-                        <td>120</td>
-                        <td>120</td>
+                        <td colspan="3" style="text-align:center;">120 périodes par année</td>
                     </tr>
                 </tfoot>
             </table>
@@ -438,12 +285,13 @@
             </a>
         </div>
 
-        <div class="zirkularitaet-container">
-            <a href="zirkularitaet_fr.html" class="zirkularitaet-card">
+        <div class="card-grid-full">
+            <a href="zirkularitaet_fr.html" class="card">
                 <h2>Circularité</h2>
                 <p>Développement des compétences en spirale tout au long de l'apprentissage</p>
             </a>
- 
+        </div>
+
     </main>
 
     <footer>
