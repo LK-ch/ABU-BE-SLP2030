@@ -1,548 +1,354 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Schullehrplan ABU – Meine Berufsausbildung</title>
-<style>
-  /* ── Base ── */
-  .theme-content-inner {
-    padding: 20px;
-    background-color: #fff;
-    font-family: 'Roboto', Arial, sans-serif;
-  }
-  .leitidee {
-    background-color: #f9f3e8;
-    padding: 20px;
-    margin-bottom: 18px;
-  }
-  .leitidee h3 { color: #000; margin-bottom: 10px; font-weight: 400; font-size: 0.85em; }
-  .leitidee p  { color: #000; font-size: 1em; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3-jährige Grundbildung EFZ - Schullehrplan ABU</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-  /* ── Schlüsselkompetenzen unter Leitidee ── */
-  .schluesselkompetenzen-block {
-    background-color: #f9f3e8;
-    padding: 20px;
-    margin-bottom: 18px;
-  }
-  .schluesselkompetenzen-block h3 {
-    color: #000; font-size: 0.85em; font-weight: 400; margin: 0 0 10px 0;
-  }
-  .schluesselkompetenzen-block .kompetenz-nummer-link {
-    display: inline-block; color: #dc291e; font-weight: 700; cursor: pointer;
-    margin-right: 4px; padding: 2px 5px; border: 1px solid transparent;
-    border-radius: 3px; transition: all .2s; text-decoration: none;
-    font-style: normal;
-  }
-  .schluesselkompetenzen-block .kompetenz-nummer-link:hover { background: #ffe6e6; border-color: #ffcccc; }
+        /* HEADER */
+        header { background: #fff; border-bottom: 1px solid #e0e0e0; padding: 12px 24px 0 24px; }
+        .header-top { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; }
+        .logo-section { display: flex; align-items: center; gap: 12px; padding-bottom: 8px; }
+        .logo-section img { height: 60px; width: auto; }
+        .logo-text { font-size: 0.85em; color: #000; line-height: 1.3; }
+        .app-title { font-size: 1em; font-weight: 400; color: #000; padding-bottom: 12px; }
+        .service-nav { display: flex; align-items: center; gap: 20px; padding-top: 4px; }
+        .service-nav a { font-size: 0.85em; color: #000; text-decoration: none; }
+        .service-nav a:hover { text-decoration: underline; }
+        .language-selector { display: flex; align-items: center; gap: 6px; font-size: 0.85em; }
+        .language-selector span { color: #666; }
+        .language-selector a { color: #000; text-decoration: none; }
+        .language-selector a.active { font-weight: 700; border-bottom: 2px solid #dc291e; padding-bottom: 1px; }
+        .language-selector a:hover { text-decoration: underline; }
 
-  /* ── Lebensbezug ── */
-  .lebensbezug { margin-bottom: 25px; background-color: #f9f3e8; overflow: hidden; }
-  .lebensbezug-header { padding: 16px 20px; cursor: pointer; position: relative; user-select: none; }
-  .lebensbezug-header::after {
-    content: '▼'; position: absolute; right: 20px; top: 50%;
-    transform: translateY(-50%); transition: transform .3s;
-  }
-  .lebensbezug-header.collapsed::after { transform: translateY(-50%) rotate(-90deg); }
-  .lebensbezug-header h3 { color: #000; font-size: 1em; font-weight: 400; margin: 0; }
-  .lebensbezug-header h3 strong { font-weight: 400; font-size: 0.7em; display: block; margin-bottom: 4px; }
-  .lebensbezug-content { padding: 0 20px 20px; display: none; }
-  .lebensbezug-content.show { display: block; }
+        /* MAIN */
+        main { flex: 1; max-width: 1200px; margin: 30px auto 0 auto; padding: 20px; width: 100%; }
 
-  /* ── Freibereich ── */
-  .freibereich-section { margin-bottom: 25px; background-color: #fff; border: 1px solid #000; overflow: hidden; }
-  .freibereich-header { padding: 16px 20px; cursor: pointer; position: relative; user-select: none; background: #fff; }
-  .freibereich-header::after {
-    content: '▼'; position: absolute; right: 20px; top: 50%;
-    transform: translateY(-50%); transition: transform .3s;
-  }
-  .freibereich-header.collapsed::after { transform: translateY(-50%) rotate(-90deg); }
-  .freibereich-header h3 { color: #000; font-size: 1em; font-weight: 400; margin: 0; }
-  .freibereich-content { padding: 0 20px 20px; display: none; background: #fff; }
-  .freibereich-content.show { display: block; }
+        .breadcrumb { font-size: 0.9em; color: #000; margin-bottom: 20px; }
+        .breadcrumb a { color: #000; text-decoration: none; font-weight: 500; }
+        .breadcrumb a:hover { text-decoration: underline; }
 
-  /* ── Kompetenz ── */
-  .lerninhalt { margin-bottom: 18px; background: #fff; overflow: hidden; }
-  .lerninhalt-content { padding: 14px; background: #fff; border: 1px solid #e0e0e0; }
-  .kompetenz-header { background: #f5e6d3; color: #000; padding: 16px 20px 20px; margin-bottom: 3px; }
-  .kompetenz-header h4 { font-size: 1em; margin: 0; font-weight: 700; }
-  .kompetenz-header h4 .normal-weight { font-weight: 400; }
+        h1 { color: #000; font-size: 2em; margin-bottom: 6px; font-weight: 700; }
+        .subtitle { color: #333; font-size: 0.95em; margin-bottom: 30px; }
 
-  /* ── Table ── */
-  .table-container { margin-bottom: 20px; border: 1px solid #e0e0e0; overflow: hidden; }
-  .table-header {
-    background: #f5e6d3; padding: 7px 14px; cursor: pointer;
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  .table-header h5 { color: #000; font-size: 0.9em; font-weight: 700; margin: 0; }
-  .table-toggle { color: #000; transition: transform .3s; }
-  .table-toggle.rotated { transform: rotate(180deg); }
-  .table-content { max-height: 0; overflow: hidden; transition: max-height .4s ease; }
-  .table-content.expanded { max-height: 4000px; }
+        /* THEMEN-AKKORDEON */
+        .thema-section {
+            margin-bottom: 16px;
+            border: 1px solid #e0e0e0;
+            overflow: hidden;
+        }
 
-  .kompetenz-table { width: 100%; border-collapse: collapse; background: #fff; table-layout: fixed; margin-top: 10px; }
-  .kompetenz-table tbody th { padding: 5px 10px; text-align: left; font-size: 0.75em; font-weight: 700; color: #000; }
-  .kompetenz-table tbody th.col-gesellschaft { background: #fff4cc; }
-  .kompetenz-table tbody th.col-sprache      { background: #cce5ff; }
-  .kompetenz-table tbody th.col-digital      { background: #fff; text-align: center; padding: 0 25%; border: none; }
-  .kompetenz-table tbody th.col-digital span { display: block; background: #d4edda; padding: 5px 10px; }
-  .kompetenz-table tbody td { padding: 8px 10px; vertical-align: top; font-size: 0.8em; color: #000; border-right: 2px solid #e9ecef; width: 50%; }
-  .kompetenz-table tbody td:last-child { border-right: none; }
-  .kompetenz-table tbody td.col-gesellschaft  { background: #fffef5; }
-  .kompetenz-table tbody td.col-sprache       { background: #f5f9ff; }
-  .kompetenz-table tbody td.col-digital-content { text-align: center; padding: 0 25%; background: #fff; }
-  .kompetenz-table tbody td.col-digital-content p { background: #f0f8f0; padding: 8px 10px; text-align: center; }
-  .kompetenz-table tbody tr.spacing-row td { background: transparent !important; border: none !important; padding: 0 !important; height: 20px; }
+        .thema-header {
+            background: #f5f0e8;
+            padding: 18px 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: background-color 0.2s;
+        }
 
-  /* ── Sprachtag ── */
-  .sprach-tag {
-    display: inline;
-    font-weight: 700;
-    font-size: 0.92em;
-    color: #003366;
-  }
+        .thema-header:hover { background-color: #ecdcc4; }
 
-  /* ── Formbezeichnung ── */
-  .form-label {
-    display: inline;
-    font-size: 0.85em;
-    font-style: italic;
-    color: #333;
-  }
+        .thema-header-left h2 {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 4px;
+        }
 
-  .form-code { display: none; }
-  .zirk-tag { display: none; }
-  .norm-tag { display: none; }
+        .thema-header-left .lektionen {
+            font-size: 0.82em;
+            color: #555;
+        }
 
-  /* ── Gesellschafts-Tag ── */
-  .ges-tag {
-    font-weight: 700;
-    color: #7a5c00;
-    font-size: 0.92em;
-  }
+        .thema-arrow {
+            font-size: 1em;
+            color: #000;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 16px;
+        }
 
-  /* ── Digital-Tag ── */
-  .dig-tag {
-    font-weight: 700;
-    color: #1a6e2e;
-    font-size: 0.92em;
-  }
+        .thema-arrow.open { transform: rotate(180deg); }
 
-  /* ── Tool-Hinweis ── */
-  .tool-hint {
-    background: #fff;
-    padding: 8px 10px;
-    margin-top: 0;
-    font-size: 0.75em;
-  }
+        .thema-content {
+            display: none;
+            background-color: #fff;
+        }
 
-  /* ── Umsetzung ── */
-  .umsetzung-box {
-    background: #fff; border: 1px solid #d0d0d0; padding: 4px 8px;
-    margin-top: 14px; cursor: pointer; user-select: none;
-  }
-  .umsetzung-box .schluessel-header { display: flex; justify-content: space-between; align-items: center; }
-  .umsetzung-box .schluessel-header h4 { font-size: 0.75em; color: #000; font-weight: 700; margin: 0; }
-  .toggle-schluessel { color: #000; transition: transform .3s; }
-  .toggle-schluessel.rotated { transform: rotate(180deg); }
-  .schluessel-content { max-height: 0; overflow: hidden; transition: max-height .3s; }
-  .schluessel-content.expanded { max-height: 500px; margin-top: 8px; }
-  .schluessel-content p { font-size: 0.8em; color: #000; }
-</style>
+        .thema-content.show { display: block; }
+
+        .thema-loading {
+            padding: 30px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .thema-loading::before {
+            content: '';
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #e0e0e0;
+            border-top-color: #dc291e;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* PDF EXPORT */
+        .pdf-export-container {
+            text-align: center;
+            padding: 40px 0 20px 0;
+            margin-top: 30px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .pdf-export-button {
+            background-color: #dc291e;
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pdf-export-button:hover { background-color: #b82118; }
+        .pdf-export-button::before { content: "📄"; }
+
+        /* FOOTER */
+        footer { background: #fff; border-top: 1px solid #e0e0e0; padding: 14px 24px; margin-top: auto; }
+        .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .footer-copyright { font-size: 0.82em; color: #333; }
+        .footer-links { display: flex; gap: 24px; }
+        .footer-links a { font-size: 0.82em; font-weight: 700; color: #000; text-decoration: none; }
+        .footer-links a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .header-top { flex-direction: column; gap: 12px; }
+            .footer-inner { flex-direction: column; align-items: flex-start; }
+        }
+
+        @media print {
+            header, .breadcrumb, .pdf-export-container, footer { display: none !important; }
+            .thema-content { display: block !important; }
+            .thema-arrow { display: none !important; }
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+        }
+    </style>
 </head>
 <body>
 
-<div class="theme-content-inner">
-
-  <!-- ── Leitidee ── -->
-  <div class="leitidee">
-    <h3>Leitidee</h3>
-    <p>Der Beginn meiner beruflichen Ausbildung markiert den Beginn einer neuen Phase in meinem Leben. In diesem neuen, komplexen und vernetzten beruflichen Umfeld informiere ich mich über meine Rechte und Pflichten, kommuniziere angemessen, bin in der Lage, Konflikte zu bewältigen und mich sozial zu integrieren.</p>
-  </div>
-
-  <!-- ── Schlüsselkompetenzen ── -->
-  <div class="schluesselkompetenzen-block">
-    <h3>Schlüsselkompetenzen</h3>
-    <span class="kompetenz-nummer-link" data-text="Sich selbst Ziele setzen, die Zielsetzung überprüfen und sich adaptiv verhalten: Um effektiv und effizient zu lernen, ist es wichtig, bei einem aufgrund eingeschränkter Ressourcen entstehenden Zielkonflikt zu priorisieren, sich Lernziele zu setzen, Fortschritte zu bewerten und Lernstrategien anzupassen.">1.2</span>
-    <span class="kompetenz-nummer-link" data-text="In unterschiedlichen Teams zielgerichtet und effizient arbeiten: Um in verschiedenen Teams und in unterschiedlichen Rollen effizient und respektvoll zu arbeiten, ist es wichtig, Kooperation, Kommunikation und Koordination mit anderen Teammitgliedern zu entwickeln, gemeinsam Verantwortung für Ergebnisse zu übernehmen sowie flexibel zu sein.">1.4</span>
-    <span class="kompetenz-nummer-link" data-text="Unterschiedliche Standpunkte nachvollziehen und das gegenseitige Verständnis fördern: Um eine inklusive und respektvolle Umgebung zu schaffen und damit eine Konsensfindung zwischen unterschiedlichen Interessen zu ermöglichen, ist es wichtig, die Perspektive wechseln zu können, Empathie zu entwickeln und Toleranz zu zeigen.">1.7</span>
-    <span class="kompetenz-nummer-link" data-text="Sich in einem sich ständig verändernden Umfeld zurechtfinden und sich an dieses anpassen: Um in sich schnell wandelnden Lebenskontexten bestehen zu können, ist es wichtig, mit Veränderungen konstruktiv umgehen zu können, flexibel zu sein, sich nachhaltig zu verhalten, mobil zu sein und die Fähigkeit zur Anpassung zu stärken.">1.10</span>
-  </div>
-
-  <!-- ══════════════════════════════════════════
-       LEBENSBEZUG 1
-  ══════════════════════════════════════════ -->
-  <div class="lebensbezug">
-    <div class="lebensbezug-header collapsed" onclick="toggleLB(this)">
-      <h3><strong>1. Individueller Lebensbezug:</strong> Meine Ausbildung findet im Betrieb, in der Berufsfachschule und in den überbetrieblichen Kursen statt. Dort begegne ich verschiedenen Menschen und es werden unterschiedliche Erwartungen an mich gestellt.</h3>
-    </div>
-    <div class="lebensbezug-content">
-
-      <!-- ─── Kompetenz 1 ─── -->
-      <div class="lerninhalt">
-        <div class="kompetenz-header">
-          <h4>Kompetenz 1: <span class="normal-weight">An den Lernorten und im Fach ABU finde ich mich zurecht und kommuniziere gezielt.</span></h4>
-        </div>
-        <div class="lerninhalt-content">
-          <div class="table-container">
-            <div class="table-header" onclick="toggleTbl(this)"><h5>Inhalte</h5><span class="table-toggle">▼</span></div>
-            <div class="table-content">
-              <table class="kompetenz-table">
-                <tbody>
-                  <!-- Block 1 -->
-                  <tr>
-                    <th class="col-gesellschaft" style="width:50%;">Gesellschaft</th>
-                    <th class="col-sprache" style="width:50%;">Sprache und Kommunikation</th>
-                  </tr>
-                  <tr>
-                    <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.2. Identität und Sozialisation</span><br>
-                         Aufbau und Abläufe der <strong>Berufsfachschule</strong> und des <strong>Fachs ABU</strong> benennen und Angebote gezielt nutzen.</p>
-                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Organigramm» (EHB)</p>
-                    </td>
-                    <td class="col-sprache">
-                      <p>
-                        <span class="sprach-tag">4.2. Expositorisch (erklärend)</span><br>
-                        <span class="form-label">Produktion schriftlich &amp; bildlich</span><span class="form-code" data-form="Ps"></span>, <span class="form-label">Interaktion &amp; Kollaboration schriftlich</span><span class="form-code" data-form="Ik_s"></span><br>
-                        <span class="zirk-tag" data-zirk="si-schriftlich-kom"></span><span class="norm-tag" data-norm="norm-gross-klein"></span><span class="norm-tag" data-norm="norm-formell"></span>Mit formellen <strong>Formulierungshilfen</strong> und Berücksichtigung der <strong>Gross-/Kleinschreibung</strong> <strong>zielgruppengerecht schriftlich</strong> (mit Ansprechpersonen aus den drei Lernorten) <strong>kommunizieren</strong>.
-                      </p>
-                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>Höflichkeit, «Kerntext eines Geschäftsbriefes» (EHB), duden.de</p>
-                    </td>
-                  </tr>
-                  <!-- Digital Block 1 -->
-                  <tr><th class="col-digital" colspan="2"><span>Medien und Digitalität</span></th></tr>
-                  <tr>
-                    <td class="col-digital-content" colspan="2">
-                      <p><span class="dig-tag">3.2. Informations- &amp; Datenkompetenz</span><br>
-                         Vorgaben der Schule zur <strong>Nutzung von KI</strong> und der <strong>Angabe</strong> von <strong>Quellen</strong> anwenden.</p>
-                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>Text</p>
-                    </td>
-                  </tr>
-
-                  <tr class="spacing-row"><td colspan="2"></td></tr>
-
-                  <!-- Block 2 -->
-                  <tr>
-                    <th class="col-gesellschaft" style="width:50%;">Gesellschaft</th>
-                    <th class="col-sprache" style="width:50%;">Sprache und Kommunikation</th>
-                  </tr>
-                  <tr>
-                    <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.2. Identität und Sozialisation</span><br>
-                         <span class="ges-tag">2.5. Politik</span><br>
-                         Meine Aufgaben und <strong>Mitgestaltungsmöglichkeiten</strong> an den <strong>3 Lernorten</strong> (Betrieb, Schule, ÜK) benennen und anwenden.</p>
-                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Anspruchsgruppen» (EHB)</p>
-                    </td>
-                    <td class="col-sprache">
-                      <p>
-                        <span class="sprach-tag">4.4. Diskursiv (interagierend)</span><br>
-                        <span class="form-label">Interaktion &amp; Kollaboration mündlich</span><span class="form-code" data-form="Ik_m"></span>
-                        <br>
-                        <span class="sprach-tag">4.1. Deskriptiv (beschreibend)</span><br>
-                        <span class="form-label">Produktion multimedial</span><span class="form-code" data-form="Pmm"></span>, <span class="form-label">Produktion mündlich</span><span class="form-code" data-form="Pm"></span><br>
-                        <span class="zirk-tag" data-zirk="si-interview"></span><span class="zirk-tag" data-zirk="si-praesentieren"></span>Ein <strong>Interview</strong> vorbereiten, durchführen, auswerten und <strong>präsentieren</strong> (z.&nbsp;B. Vorstellung des Lehrbetriebs mit Einbindung eines Interviews und eigenen Erfahrungen).
-                      </p>
-                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Beschreiben mit OPA» (EHB), «Checkliste: In 20 Schritten zum Interview» (EHB)</p>
-                    </td>
-                  </tr>
-                  <!-- Digital Block 2 -->
-                  <tr><th class="col-digital" colspan="2"><span>Medien und Digitalität</span></th></tr>
-                  <tr>
-                    <td class="col-digital-content" colspan="2">
-                      <p><span class="dig-tag">3.1. Grundlagen IT-Anwendungen</span><br>
-                         <strong>Grundfunktionen von Programmen</strong> (z.B. Bild, Text) zur Bearbeitung und Gestaltung anwenden.</p>
-                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>–</p>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+    <header>
+        <div class="header-top">
+            <div>
+                <div class="logo-section">
+                    <img src="../images/KTBE.png" alt="Logo des Kantons Bern">
+                </div>
+                <div class="app-title">Schullehrplan ABU / Plan d'études de culture générale</div>
             </div>
-          </div>
-          <div class="umsetzung-box" onclick="toggleUms(this)">
-            <div class="schluessel-header"><h4>Umsetzungsbeispiel</h4><span class="toggle-schluessel">▼</span></div>
-            <div class="schluessel-content"><p>Text</p></div>
-          </div>
+            <nav class="service-nav" aria-label="Service-Navigation">
+                <a href="../kontakt_de.html">Kontakt</a>
+                <div class="language-selector">
+                    <a href="index_de.html" class="active" lang="de">DE</a>
+                    <span>|</span>
+                    <a href="index_fr.html" lang="fr">FR</a>
+                </div>
+            </nav>
         </div>
-      </div>
+    </header>
 
-      <!-- ─── Kompetenz 2 ─── -->
-      <div class="lerninhalt">
-        <div class="kompetenz-header">
-          <h4>Kompetenz 2: <span class="normal-weight">Ich setze Arbeits-, Lern- und Kommunikationsstrategien so ein, dass sie mir helfen, meine Ziele zu erreichen.</span></h4>
-        </div>
-        <div class="lerninhalt-content">
-          <div class="table-container">
-            <div class="table-header" onclick="toggleTbl(this)"><h5>Inhalte</h5><span class="table-toggle">▼</span></div>
-            <div class="table-content">
-              <table class="kompetenz-table">
-                <tbody>
-                  <!-- Block 1 -->
-                  <tr>
-                    <th class="col-gesellschaft" style="width:50%;">Gesellschaft</th>
-                    <th class="col-sprache" style="width:50%;">Sprache und Kommunikation</th>
-                  </tr>
-                  <tr>
-                    <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.2. Identität und Sozialisation</span><br>
-                         Das eigene <strong>Arbeits- und Lernverhalten</strong> im neuen Umfeld analysieren und gegebenenfalls anpassen.</p>
-                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Einstellungen» (EHB)</p>
-                    </td>
-                    <td class="col-sprache">
-                      <p>
-                        <span class="sprach-tag">4.5. Reflexiv (reflektierend)</span><br>
-                        <span class="form-label">Produktion schriftlich &amp; bildlich</span><span class="form-code" data-form="Ps"></span><br>
-                        <span class="zirk-tag" data-zirk="si-lernstrategien"></span>Durch eine <strong>Sachstruktur</strong> (z.B. Mindmap, Netzwerk) <strong>Lernstrategien</strong> visualisieren und <strong>reflektieren</strong>.
-                      </p>
-                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>Sachstruktur</p>
-                    </td>
-                  </tr>
-                  <!-- Digital Block 1 -->
-                  <tr><th class="col-digital" colspan="2"><span>Medien und Digitalität</span></th></tr>
-                  <tr>
-                    <td class="col-digital-content" colspan="2">
-                      <p><span class="dig-tag">3.1. Grundlagen IT-Anwendungen</span><br>
-                         (Digitale) Tools als <strong>Organisationsunterstützung</strong> und/oder <strong>Lernhilfen</strong> nutzen (Kalender, Lernhilfen, …).</p>
-                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>–</p>
-                    </td>
-                  </tr>
+    <main>
+        <nav class="breadcrumb">
+            <a href="../index_de.html">Schullehrplan ABU</a> /
+            3-jährige Grundbildung EFZ
+        </nav>
 
-                  <tr class="spacing-row"><td colspan="2"></td></tr>
+        <h1>1. Lehrjahr EFZ</h1>
+        <p class="subtitle">3-jährige berufliche Grundbildung mit eidgenössischem Fähigkeitszeugnis</p>
 
-                  <!-- Block 2 -->
-                  <tr>
-                    <th class="col-gesellschaft" style="width:50%;">Gesellschaft</th>
-                    <th class="col-sprache" style="width:50%;">Sprache und Kommunikation</th>
-                  </tr>
-                  <tr>
-                    <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.2. Identität und Sozialisation</span><br>
-                         Erwartungen an <strong>meine Rolle</strong> in unterschiedlichen Gruppen erkennen.</p>
-                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Rollentheorie» (EHB)</p>
-                    </td>
-                    <td class="col-sprache">
-                      <p>
-                        <span class="sprach-tag">4.4. Diskursiv (interagierend)</span><br>
-                        <span class="form-label">Interaktion &amp; Kollaboration mündlich</span><span class="form-code" data-form="Ik_m"></span><br>
-                        <span class="zirk-tag" data-zirk="si-loesungsorient"></span><strong>Lösungsorientiert kommunizieren</strong> (verbal und nonverbal) um Rollenkonflikte konstruktiv zu lösen.
-                      </p>
-                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Kommunikationsfreundliche Gesprächstechniken» (EHB), «Redemittel für Konflikte» (EHB)</p>
-                    </td>
-                  </tr>
-                  <!-- Digital Block 2 -->
-                  <tr><th class="col-digital" colspan="2"><span>Medien und Digitalität</span></th></tr>
-                  <tr>
-                    <td class="col-digital-content" colspan="2">
-                      <p><span class="dig-tag">3.6. Reflektive Haltung &amp; verantwortungsvoller Umgang</span><br>
-                         Apps/Programme (z.&nbsp;B. Klassenchat) für die <strong>digitale Zusammenarbeit</strong> verwenden.</p>
-                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>–</p>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+        <!-- THEMA 1 -->
+        <div class="thema-section" id="section-thema1">
+            <div class="thema-header" onclick="toggleThema('thema1', 'thema1.html', this)">
+                <div class="thema-header-left">
+                    <h2>Thema 1: Meine Berufsausbildung</h2>
+                    <span class="lektionen">Empfehlung: 36 Lektionen (davon 9 Lektionen Freibereich)</span>
+                </div>
+                <span class="thema-arrow">▼</span>
             </div>
-          </div>
-          <div class="umsetzung-box" onclick="toggleUms(this)">
-            <div class="schluessel-header"><h4>Umsetzungsbeispiel</h4><span class="toggle-schluessel">▼</span></div>
-            <div class="schluessel-content"><p>Text</p></div>
-          </div>
+            <div class="thema-content" id="content-thema1"></div>
         </div>
-      </div>
 
-    </div><!-- /lebensbezug-content -->
-  </div><!-- /lebensbezug 1 -->
-
-  <!-- ══════════════════════════════════════════
-       LEBENSBEZUG 2
-  ══════════════════════════════════════════ -->
-  <div class="lebensbezug">
-    <div class="lebensbezug-header collapsed" onclick="toggleLB(this)">
-      <h3><strong>2. Individueller Lebensbezug:</strong> Ich habe durch das Gesetz und meinen Arbeitsvertrag Rechte und Pflichten.</h3>
-    </div>
-    <div class="lebensbezug-content">
-
-      <!-- ─── Kompetenz 1 ─── -->
-      <div class="lerninhalt">
-        <div class="kompetenz-header">
-          <h4>Kompetenz 1: <span class="normal-weight">Ich wende meine Rechte und Pflichten an, so wie sie gesetzlich und vertraglich festgelegt sind.</span></h4>
-        </div>
-        <div class="lerninhalt-content">
-          <div class="table-container">
-            <div class="table-header" onclick="toggleTbl(this)"><h5>Inhalte</h5><span class="table-toggle">▼</span></div>
-            <div class="table-content">
-              <table class="kompetenz-table">
-                <tbody>
-                  <!-- Block 1 -->
-                  <tr>
-                    <th class="col-gesellschaft" style="width:50%;">Gesellschaft</th>
-                    <th class="col-sprache" style="width:50%;">Sprache und Kommunikation</th>
-                  </tr>
-                  <tr>
-                    <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.6. Recht</span><br>
-                         Basierend auf der <strong>Rechtsordnung</strong> der Schweiz die Rechte und Pflichten der Vertragsparteien beim <strong>Lehrvertrag</strong> verstehen und in einem Vertrag überprüfen.</p>
-                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Zwingende, dispositive und relativ zwingende Rechtsvorschriften» (EHB), «Pflichten der Berufslernenden und Arbeitgebenden» (EHB), «Wichtige Rechtsquellen im Arbeitsrecht und deren Beziehung untereinander» (EHB)</p>
-                    </td>
-                    <td class="col-sprache">
-                      <p>
-                        <span class="sprach-tag">4. Rezeption</span><br>
-                        <span class="form-label">Interaktion &amp; Kollaboration mündlich</span><span class="form-code" data-form="Ik_m"></span><br>
-                        <span class="zirk-tag" data-zirk="si-inhalte-erfassen"></span><strong>Inhalte</strong> aus Verträgen, Richtlinien der Betriebe, etc. <strong>erfassen</strong>.
-                      </p>
-                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>–</p>
-                    </td>
-                  </tr>
-                  <!-- Digital Block 1 -->
-                  <tr><th class="col-digital" colspan="2"><span>Medien und Digitalität</span></th></tr>
-                  <tr>
-                    <td class="col-digital-content" colspan="2">
-                      <p><span class="dig-tag">3.4. Problemlösung</span><br>
-                         <strong>Recherche</strong> zu eigenen Rechten und Pflichten auf geeigneten Webseiten durchführen.</p>
-                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br><a href="https://www.rechte-der-lernenden.ch/" target="_blank">rechte-der-lernenden.ch</a></p>
-                    </td>
-                  </tr>
-
-                  <tr class="spacing-row"><td colspan="2"></td></tr>
-
-                  <!-- Block 2 -->
-                  <tr>
-                    <th class="col-gesellschaft" style="width:50%;">Gesellschaft</th>
-                    <th class="col-sprache" style="width:50%;">Sprache und Kommunikation</th>
-                  </tr>
-                  <tr>
-                    <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.6. Recht</span><br>
-                         Situationen während des Lehrverhältnisses aufgrund der <strong>gesetzlichen Grundlagen</strong> überprüfen.</p>
-                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Verträge und Gesetzesartikel erfassen» (EHB), bkd.be.ch, berufsbildung.ch, Chummerchaschte</p>
-                    </td>
-                    <td class="col-sprache">
-                      <p>
-                        <span class="sprach-tag">4.1. Deskriptiv (beschreibend)</span><br>
-                        <span class="form-label">Produktion mündlich</span><span class="form-code" data-form="Pm"></span>, <span class="form-label">Produktion schriftlich &amp; bildlich</span><span class="form-code" data-form="Ps"></span><br>
-                        <span class="zirk-tag" data-zirk="si-loesungsansaetze"></span><strong>Lösungsansätze</strong> in herausfordernden Situationen <strong>beschreiben</strong>.
-                      </p>
-                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Beschreiben mit OPA» (EHB)</p>
-                    </td>
-                  </tr>
-                  <!-- Digital Block 2 -->
-                  <tr><th class="col-digital" colspan="2"><span>Medien und Digitalität</span></th></tr>
-                  <tr>
-                    <td class="col-digital-content" colspan="2">
-                      <p><span class="dig-tag">3.4. Problemlösung</span><br>
-                         <strong>Online-Gesetze und -Verordnungen</strong> in konkreten Fällen anwenden.</p>
-                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br><a href="https://www.fedlex.admin.ch/" target="_blank">fedlex.admin.ch</a>, beobachter.ch</p>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+        <!-- THEMA 2 -->
+        <div class="thema-section" id="section-thema2">
+            <div class="thema-header" onclick="toggleThema('thema2', 'thema2.html', this)">
+                <div class="thema-header-left">
+                    <h2>Thema 2: Geld verdienen und ausgeben</h2>
+                    <span class="lektionen">Empfehlung: 48 Lektionen (davon 9 Lektionen Freibereich)</span>
+                </div>
+                <span class="thema-arrow">▼</span>
             </div>
-          </div>
-          <div class="umsetzung-box" onclick="toggleUms(this)">
-            <div class="schluessel-header"><h4>Umsetzungsbeispiel</h4><span class="toggle-schluessel">▼</span></div>
-            <div class="schluessel-content"><p>Text</p></div>
-          </div>
+            <div class="thema-content" id="content-thema2"></div>
         </div>
-      </div>
 
-    </div><!-- /lebensbezug-content -->
-  </div><!-- /lebensbezug 2 -->
+        <!-- THEMA 3 -->
+        <div class="thema-section" id="section-thema3">
+            <div class="thema-header" onclick="toggleThema('thema3', 'thema3.html', this)">
+                <div class="thema-header-left">
+                    <h2>Thema 3: Gesund und sicher durchs Leben</h2>
+                    <span class="lektionen">Empfehlung: 36 Lektionen (davon 9 Lektionen Freibereich)</span>
+                </div>
+                <span class="thema-arrow">▼</span>
+            </div>
+            <div class="thema-content" id="content-thema3"></div>
+        </div>
 
-  <!-- ══════════════════════════════════════════
-       FREIBEREICH
-  ══════════════════════════════════════════ -->
-  <div class="freibereich-section">
-    <div class="freibereich-header collapsed" onclick="toggleFB(this)">
-      <h3>Freibereich (20%)</h3>
-    </div>
-    <div class="freibereich-content">
-      <h4 style="font-size:0.9em;margin-bottom:15px;font-weight:700;">Inhalte / Lernziele</h4>
-      <table style="width:100%;border-collapse:collapse;">
-        <tbody>
-          <!-- Gesellschaft -->
-          <tr><th style="background:#fff4cc;padding:5px 10px;text-align:left;font-size:0.75em;font-weight:700;border:1px solid #000;">Gesellschaft</th></tr>
-          <tr><td style="background:#fffef5;padding:8px 10px;border:1px solid #000;font-size:0.8em;">
-            <p style="margin-bottom:10px;"><span class="ges-tag">2.2. Identität und Sozialisation</span><br>
-               Das schweizerische Bildungssystem am Beispiel des <strong>beruflichen Werdegangs</strong> einer Berufsperson darlegen.</p>
-            <p style="margin-bottom:10px;"><span class="ges-tag">2.2. Identität und Sozialisation</span><br>
-               Die eigene <strong>Tätigkeit</strong> (z.&nbsp;B. im Betrieb) aufzeigen.</p>
-            <p style="margin-bottom:10px;"><span class="ges-tag">2.1. Ethik</span><br>
-               Eigene <strong>moralische Überzeugungen</strong> mit denen anderer Personen abgleichen.<br>
-               <span style="font-size:0.9em;color:#666;">Beispiel: «Tugend und Berufsethos» (EHB)</span></p>
-            <p style="margin-bottom:10px;"><span class="ges-tag">2.3. Kultur</span><br>
-               <strong>Verhaltenserwartungen</strong> (z.&nbsp;B. an Leute in Ausbildung) verschiedener Kulturen und Generationen analysieren.<br>
-               <span style="font-size:0.9em;color:#666;">Beispiel: «Tugend und Berufsethos» (EHB)</span></p>
-            <p style="margin-bottom:0;"><span class="ges-tag">2.1. Ethik</span><br>
-               In einem <strong>moralischen Dilemma</strong> den eigenen Standpunkt erörtern.<br>
-               <span style="font-size:0.9em;color:#666;">Beispiel: «Moralisches Dilemma» (EHB)</span></p>
-          </td></tr>
+        <div class="pdf-export-container">
+            <button class="pdf-export-button" onclick="exportToPDF()">Als PDF exportieren</button>
+        </div>
+    </main>
 
-          <!-- Sprache -->
-          <tr><th style="background:#cce5ff;padding:5px 10px;text-align:left;font-size:0.75em;font-weight:700;border:1px solid #000;">Sprache und Kommunikation</th></tr>
-          <tr><td style="background:#f5f9ff;padding:8px 10px;border:1px solid #000;font-size:0.8em;">
-            <p style="margin-bottom:10px;">
-              <span class="sprach-tag">4.2. Expositorisch (erklärend)</span> &nbsp;
-              <span class="form-label">Rezeption schriftlich &amp; bildlich</span><span class="form-code" data-form="Rs"></span><br>
-              Inhalte aus einem Gespräch <strong>chronologisch gliedern</strong> und in Stichworten wiedergeben.</p>
-            <p style="margin-bottom:10px;">
-              <span class="sprach-tag">4.2. Expositorisch (erklärend)</span> &nbsp;
-              <span class="form-label">Produktion multimedial</span><span class="form-code" data-form="Pmm"></span><br>
-              Den eigenen Tagesablauf mit allen Arbeitsschritten <strong>strukturiert wiedergeben</strong>.<br>
-              <span style="font-size:0.9em;color:#666;">Beispiel: «Der Bericht» (EHB)</span></p>
-            <p style="margin-bottom:10px;">
-              <span class="sprach-tag">4.4. Diskursiv (interagierend)</span> &nbsp;
-              <span class="form-label">Interaktion &amp; Kollaboration mündlich</span><span class="form-code" data-form="Ik_m"></span><br>
-              Berufliche Situationen in einem <strong>Rollenspiel</strong> darstellen.</p>
-            <p style="margin-bottom:0;">
-              <span class="sprach-tag">4.1. Deskriptiv (beschreibend)</span> &nbsp;
-              <span class="form-label">Rezeption audiovisuell</span><span class="form-code" data-form="Ra"></span><br>
-              Generationsbezogene/kulturelle <strong>Verhaltensweisen</strong> (z.&nbsp;B. mithilfe von multimedialen Inhalten) erläutern.<br>
-              <span style="font-size:0.9em;color:#666;">Beispiel: «Perspektivenwechsel zur Problemanalyse» (EHB)</span></p>
-          </td></tr>
+    <footer>
+        <div class="footer-inner">
+            <span class="footer-copyright">© 2025 - Mittelschul- und Berufsbildungsamt Kanton Bern</span>
+            <nav class="footer-links" aria-label="Footer-Navigation">
+                <a href="../rechtliche-hinweise.html">Rechtliche Hinweise</a>
+                <a href="../impressum_de.html">Impressum</a>
+            </nav>
+        </div>
+    </footer>
 
-          <!-- Digitalität -->
-          <tr><th style="background:#d4edda;padding:5px 10px;text-align:left;font-size:0.75em;font-weight:700;border:1px solid #000;">Medien und Digitalität</th></tr>
-          <tr><td style="background:#f0f8f0;padding:8px 10px;border:1px solid #000;font-size:0.8em;">
-            <p style="margin-bottom:10px;"><span class="dig-tag">3.2. Informations- &amp; Datenkompetenz</span><br>
-               Ausbildungsrelevante Websites, IT-Infrastrukturen und <strong>digitale Werkzeuge</strong> einrichten und sicher nutzen.</p>
-            <p style="margin-bottom:10px;"><span class="dig-tag">3.1. Grundlagen IT-Anwendungen</span><br>
-               Mit online-Tools <strong>eine Zeitachse</strong> mit Fixpunkten <strong>gestalten</strong>.</p>
-            <p style="margin-bottom:10px;"><span class="dig-tag">3.1. Grundlagen IT-Anwendungen</span><br>
-               <strong>Informatikanwendungen</strong> sinnvoll einsetzen.</p>
-            <p style="margin-bottom:0;"><span class="dig-tag">3.1. Grundlagen IT-Anwendungen</span><br>
-               <strong>Entwicklung</strong> und Vielfalt der Medien beschreiben.</p>
-          </td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+    <script>
+        // Cache für geladene Inhalte
+        const loadedThemen = {};
 
-</div><!-- /theme-content-inner -->
+        async function toggleThema(id, file, headerEl) {
+            const content = document.getElementById('content-' + id);
+            const arrow = headerEl.querySelector('.thema-arrow');
+            const isOpen = content.classList.contains('show');
 
-<script>
-/* ── Toggle helpers ── */
-function toggleLB(header) {
-  header.nextElementSibling.classList.toggle('show');
-  header.classList.toggle('collapsed');
-}
-function toggleFB(header) {
-  header.nextElementSibling.classList.toggle('show');
-  header.classList.toggle('collapsed');
-}
-function toggleTbl(header) {
-  const content = header.nextElementSibling;
-  const icon    = header.querySelector('.table-toggle');
-  content.classList.toggle('expanded');
-  icon.classList.toggle('rotated');
-}
-function toggleUms(box) {
-  const content = box.querySelector('.schluessel-content');
-  const icon    = box.querySelector('.toggle-schluessel');
-  content.classList.toggle('expanded');
-  icon.classList.toggle('rotated');
-}
+            if (isOpen) {
+                content.classList.remove('show');
+                arrow.classList.remove('open');
+                return;
+            }
 
-/* ── Schlüsselkompetenzen tooltip ── */
-document.querySelectorAll('.kompetenz-nummer-link').forEach(el => {
-});
-</script>
+            // Öffnen
+            content.classList.add('show');
+            arrow.classList.add('open');
+
+            // Bereits geladen? Dann direkt anzeigen
+            if (loadedThemen[id]) return;
+
+            // Ladeindikator
+            content.innerHTML = '<div class="thema-loading">Inhalte werden geladen…</div>';
+
+            try {
+                const response = await fetch(file);
+                if (!response.ok) throw new Error('Datei nicht gefunden');
+                const html = await response.text();
+                content.innerHTML = html;
+                loadedThemen[id] = true;
+
+                // Scripts im geladenen Inhalt ausführen
+                content.querySelectorAll('script').forEach(oldScript => {
+                    const newScript = document.createElement('script');
+                    newScript.textContent = oldScript.textContent;
+                    document.body.appendChild(newScript);
+                });
+
+                // Tooltips initialisieren
+                initTooltips(content);
+
+            } catch (e) {
+                content.innerHTML = '<div class="thema-loading" style="color:#dc291e;">⚠ Inhalt konnte nicht geladen werden. Bitte stelle sicher, dass die Seite über einen Server läuft (z.B. GitHub Pages).</div>';
+            }
+        }
+
+        function initTooltips(container) {
+            const tooltip = document.getElementById('tooltip') || (() => {
+                const t = document.createElement('div');
+                t.id = 'tooltip';
+                t.style.cssText = 'position:absolute;background:#2d2d2d;color:#fff;padding:10px 14px;font-size:0.85em;max-width:380px;z-index:99999;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,0.4);border:1px solid #555;display:none;line-height:1.5;font-family:Roboto,Arial,sans-serif;';
+                document.body.appendChild(t);
+                return t;
+            })();
+
+            let hideTimeout;
+            container.querySelectorAll('.kompetenz-nummer-link').forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    if (hideTimeout) clearTimeout(hideTimeout);
+                    tooltip.textContent = this.getAttribute('data-text');
+                    tooltip.style.display = 'block';
+                    const rect = this.getBoundingClientRect();
+                    tooltip.style.left = (rect.left + window.scrollX) + 'px';
+                    tooltip.style.top = (rect.bottom + window.scrollY + 10) + 'px';
+                });
+                link.addEventListener('mouseleave', () => {
+                    hideTimeout = setTimeout(() => { tooltip.style.display = 'none'; }, 120);
+                });
+            });
+        }
+
+        async function exportToPDF() {
+            // Alle Themen laden und öffnen
+            const themen = [
+                { id: 'thema1', file: 'thema1.html' },
+                { id: 'thema2', file: 'thema2.html' },
+                { id: 'thema3', file: 'thema3.html' }
+            ];
+
+            for (const thema of themen) {
+                const content = document.getElementById('content-' + thema.id);
+                const header = document.querySelector('#section-' + thema.id + ' .thema-header');
+                const arrow = header.querySelector('.thema-arrow');
+
+                if (!loadedThemen[thema.id]) {
+                    content.innerHTML = '<div class="thema-loading">Wird geladen…</div>';
+                    try {
+                        const response = await fetch(thema.file);
+                        const html = await response.text();
+                        content.innerHTML = html;
+                        loadedThemen[thema.id] = true;
+                    } catch(e) {}
+                }
+                
+                content.classList.add('show');
+                arrow.classList.add('open');
+
+                // Alle Unterelemente aufklappen
+                content.querySelectorAll('.theme-content, .lebensbezug-content, .freibereich-content').forEach(el => el.classList.add('show'));
+                content.querySelectorAll('.table-content').forEach(el => el.classList.add('expanded'));
+                content.querySelectorAll('.schluessel-content').forEach(el => el.classList.remove('expanded'));
+            }
+
+            setTimeout(() => { window.print(); }, 600);
+        }
+    </script>
 </body>
 </html>
