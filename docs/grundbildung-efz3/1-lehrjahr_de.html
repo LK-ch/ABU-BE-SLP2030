@@ -25,7 +25,8 @@
         .logo-section { display: flex; align-items: center; gap: 12px; padding-bottom: 8px; }
         .logo-section img { height: 60px; width: auto; }
         .logo-text { font-size: 0.85em; color: #000; line-height: 1.3; }
-        .app-title { font-size: 1em; font-weight: 400; color: #000; padding-bottom: 12px; }
+        .app-title { font-size: 1em; font-weight: 400; color: #000; padding-bottom: 12px; text-decoration: none; display: inline-block; }
+        .app-title:hover { text-decoration: underline; }
         .service-nav { display: flex; align-items: center; gap: 20px; padding-top: 4px; }
         .service-nav a { font-size: 0.85em; color: #000; text-decoration: none; }
         .service-nav a:hover { text-decoration: underline; }
@@ -170,14 +171,14 @@
                 <div class="logo-section">
                     <img src="../images/KTBE.png" alt="Logo des Kantons Bern">
                 </div>
-                <div class="app-title">Schullehrplan ABU / Plan d'études de culture générale</div>
+                <a href="../index_de.html" class="app-title">Schullehrplan ABU / Plan d'études de culture générale</a>
             </div>
             <nav class="service-nav" aria-label="Service-Navigation">
                 <a href="../kontakt_de.html">Kontakt</a>
                 <div class="language-selector">
-                    <a href="index_de.html" class="active" lang="de">DE</a>
+                    <a href="1-lehrjahr_de.html" class="active" lang="de">DE</a>
                     <span>|</span>
-                    <a href="index_fr.html" lang="fr">FR</a>
+                    <a href="1-lehrjahr_fr.html" lang="fr">FR</a>
                 </div>
             </nav>
         </div>
@@ -244,7 +245,6 @@
     </footer>
 
     <script>
-        // Cache für geladene Inhalte
         const loadedThemen = {};
 
         async function toggleThema(id, file, headerEl) {
@@ -258,14 +258,11 @@
                 return;
             }
 
-            // Öffnen
             content.classList.add('show');
             arrow.classList.add('open');
 
-            // Bereits geladen? Dann direkt anzeigen
             if (loadedThemen[id]) return;
 
-            // Ladeindikator
             content.innerHTML = '<div class="thema-loading">Inhalte werden geladen…</div>';
 
             try {
@@ -275,14 +272,12 @@
                 content.innerHTML = html;
                 loadedThemen[id] = true;
 
-                // Scripts im geladenen Inhalt ausführen
                 content.querySelectorAll('script').forEach(oldScript => {
                     const newScript = document.createElement('script');
                     newScript.textContent = oldScript.textContent;
                     document.body.appendChild(newScript);
                 });
 
-                // Tooltips initialisieren
                 initTooltips(content);
 
             } catch (e) {
@@ -316,7 +311,6 @@
         }
 
         async function exportToPDF() {
-            // Alle Themen laden und öffnen
             const themen = [
                 { id: 'thema1', file: 'thema1.html' },
                 { id: 'thema2', file: 'thema2.html' },
@@ -337,11 +331,10 @@
                         loadedThemen[thema.id] = true;
                     } catch(e) {}
                 }
-                
+
                 content.classList.add('show');
                 arrow.classList.add('open');
 
-                // Alle Unterelemente aufklappen
                 content.querySelectorAll('.theme-content, .lebensbezug-content, .freibereich-content').forEach(el => el.classList.add('show'));
                 content.querySelectorAll('.table-content').forEach(el => el.classList.add('expanded'));
                 content.querySelectorAll('.schluessel-content').forEach(el => el.classList.remove('expanded'));
