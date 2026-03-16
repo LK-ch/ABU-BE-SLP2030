@@ -75,6 +75,12 @@
 
         .service-nav a:hover { text-decoration: underline; }
 
+        .language-selector { display: flex; align-items: center; gap: 6px; font-size: 0.85em; }
+        .language-selector span { color: #666; }
+        .language-selector a { color: #000; text-decoration: none; }
+        .language-selector a.active { font-weight: 700; border-bottom: 2px solid #dc291e; padding-bottom: 1px; }
+        .language-selector a:hover { text-decoration: underline; }
+
         main {
             flex: 1;
             max-width: 1200px;
@@ -172,8 +178,7 @@
             <div>
                 <div class="logo-section">
                     <img src="./images/KTBE.png" alt="Logo du Canton de Berne">
-                    <div class="logo-text">
-                    </div>
+                    <div class="logo-text"></div>
                 </div>
                 <a href="index_fr.html" class="app-title">Schullehrplan ABU / Plan d'études de culture générale</a>
             </div>
@@ -201,7 +206,7 @@
             <span class="footer-copyright">© 2025 - Office de l'enseignement secondaire du 2e degré et de la formation professionnelle, Canton de Berne</span>
             <nav class="footer-links" aria-label="Navigation du pied de page">
                 <a href="mentions_legales.html">Mentions légales</a>
-                <a href="impressum.html">Impressum</a>
+                <a href="impressum_fr.html">Impressum</a>
             </nav>
         </div>
     </footer>
