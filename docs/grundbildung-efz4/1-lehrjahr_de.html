@@ -43,7 +43,44 @@
         .breadcrumb a:hover { text-decoration: underline; }
 
         h1 { color: #000; font-size: 2em; margin-bottom: 6px; font-weight: 700; }
-        .subtitle { color: #333; font-size: 0.95em; margin-bottom: 30px; }
+        .subtitle { color: #333; font-size: 0.95em; margin-bottom: 20px; }
+
+        /* TOOLBAR */
+        .page-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+
+        .btn-expand-all {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #fff;
+            color: #000;
+            border: 1px solid #000;
+            padding: 8px 18px;
+            font-family: 'Roboto', Arial, sans-serif;
+            font-size: 0.88em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.15s, color 0.15s;
+            line-height: 1.4;
+            white-space: nowrap;
+        }
+
+        .btn-expand-all:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .btn-expand-all .btn-icon {
+            display: inline-block;
+            font-size: 0.9em;
+            transition: transform 0.2s;
+        }
 
         /* THEMEN-AKKORDEON */
         .thema-section {
@@ -152,10 +189,11 @@
         @media (max-width: 768px) {
             .header-top { flex-direction: column; gap: 12px; }
             .footer-inner { flex-direction: column; align-items: flex-start; }
+            .page-toolbar { justify-content: flex-start; }
         }
 
         @media print {
-            header, .breadcrumb, .pdf-export-container, footer { display: none !important; }
+            header, .breadcrumb, .page-toolbar, .pdf-export-container, footer { display: none !important; }
             .thema-content { display: block !important; }
             .thema-arrow { display: none !important; }
             * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
@@ -191,6 +229,14 @@
 
         <h1>1. Lehrjahr EFZ</h1>
         <p class="subtitle">4-jährige berufliche Grundbildung mit eidgenössischem Fähigkeitszeugnis</p>
+
+        <!-- TOOLBAR MIT ALLES-AUFKLAPPEN-BUTTON -->
+        <div class="page-toolbar">
+            <button class="btn-expand-all" id="btn-expand-all" onclick="toggleAll()">
+                <span class="btn-icon" aria-hidden="true">▼</span>
+                Alles aufklappen
+            </button>
+        </div>
 
         <!-- THEMA 1 -->
         <div class="thema-section" id="section-thema1">
@@ -244,8 +290,36 @@
     </footer>
 
     <script>
-        // Cache für geladene Inhalte
         const loadedThemen = {};
+
+        const themenConfig = [
+            { id: 'thema1', file: 'thema1.html' },
+            { id: 'thema2', file: 'thema2.html' },
+            { id: 'thema3', file: 'thema3.html' }
+        ];
+
+        async function loadThema(id, file) {
+            if (loadedThemen[id]) return;
+            const content = document.getElementById('content-' + id);
+            content.innerHTML = '<div class="thema-loading">Inhalte werden geladen…</div>';
+            try {
+                const response = await fetch(file);
+                if (!response.ok) throw new Error('Datei nicht gefunden');
+                const html = await response.text();
+                content.innerHTML = html;
+                loadedThemen[id] = true;
+
+                content.querySelectorAll('script').forEach(oldScript => {
+                    const newScript = document.createElement('script');
+                    newScript.textContent = oldScript.textContent;
+                    document.body.appendChild(newScript);
+                });
+
+                initTooltips(content);
+            } catch (e) {
+                content.innerHTML = '<div class="thema-loading" style="color:#dc291e;">⚠ Inhalt konnte nicht geladen werden. Bitte stelle sicher, dass die Seite über einen Server läuft (z.B. GitHub Pages).</div>';
+            }
+        }
 
         async function toggleThema(id, file, headerEl) {
             const content = document.getElementById('content-' + id);
@@ -255,39 +329,68 @@
             if (isOpen) {
                 content.classList.remove('show');
                 arrow.classList.remove('open');
-                return;
+            } else {
+                content.classList.add('show');
+                arrow.classList.add('open');
+                await loadThema(id, file);
             }
 
-            // Öffnen
-            content.classList.add('show');
-            arrow.classList.add('open');
+            updateToggleAllButton();
+        }
 
-            // Bereits geladen? Dann direkt anzeigen
-            if (loadedThemen[id]) return;
+        function allAreOpen() {
+            return themenConfig.every(t => {
+                const c = document.getElementById('content-' + t.id);
+                return c && c.classList.contains('show');
+            });
+        }
 
-            // Ladeindikator
-            content.innerHTML = '<div class="thema-loading">Inhalte werden geladen…</div>';
-
-            try {
-                const response = await fetch(file);
-                if (!response.ok) throw new Error('Datei nicht gefunden');
-                const html = await response.text();
-                content.innerHTML = html;
-                loadedThemen[id] = true;
-
-                // Scripts im geladenen Inhalt ausführen
-                content.querySelectorAll('script').forEach(oldScript => {
-                    const newScript = document.createElement('script');
-                    newScript.textContent = oldScript.textContent;
-                    document.body.appendChild(newScript);
-                });
-
-                // Tooltips initialisieren
-                initTooltips(content);
-
-            } catch (e) {
-                content.innerHTML = '<div class="thema-loading" style="color:#dc291e;">⚠ Inhalt konnte nicht geladen werden. Bitte stelle sicher, dass die Seite über einen Server läuft (z.B. GitHub Pages).</div>';
+        function updateToggleAllButton() {
+            const btn = document.getElementById('btn-expand-all');
+            if (allAreOpen()) {
+                btn.innerHTML = '<span class="btn-icon" style="display:inline-block;transform:rotate(180deg);" aria-hidden="true">▼</span> Alles zuklappen';
+                btn.classList.add('all-open');
+            } else {
+                btn.innerHTML = '<span class="btn-icon" aria-hidden="true">▼</span> Alles aufklappen';
+                btn.classList.remove('all-open');
             }
+        }
+
+        function expandThemaContent(content) {
+            // Lebensbezüge aufklappen
+            content.querySelectorAll('.lebensbezug-content').forEach(el => el.classList.add('show'));
+            content.querySelectorAll('.lebensbezug-header').forEach(el => el.classList.remove('collapsed'));
+            // Tabellen aufklappen
+            content.querySelectorAll('.table-content').forEach(el => el.classList.add('expanded'));
+            content.querySelectorAll('.table-toggle').forEach(el => el.classList.add('rotated'));
+        }
+
+        function collapseThemaContent(content) {
+            content.querySelectorAll('.lebensbezug-content').forEach(el => el.classList.remove('show'));
+            content.querySelectorAll('.lebensbezug-header').forEach(el => el.classList.add('collapsed'));
+            content.querySelectorAll('.table-content').forEach(el => el.classList.remove('expanded'));
+            content.querySelectorAll('.table-toggle').forEach(el => el.classList.remove('rotated'));
+        }
+
+        async function toggleAll() {
+            const shouldOpen = !allAreOpen();
+            const promises = themenConfig.map(async t => {
+                const content = document.getElementById('content-' + t.id);
+                const section = document.getElementById('section-' + t.id);
+                const arrow = section.querySelector('.thema-arrow');
+                if (shouldOpen) {
+                    content.classList.add('show');
+                    arrow.classList.add('open');
+                    await loadThema(t.id, t.file);
+                    expandThemaContent(content);
+                } else {
+                    content.classList.remove('show');
+                    arrow.classList.remove('open');
+                    collapseThemaContent(content);
+                }
+            });
+            await Promise.all(promises);
+            updateToggleAllButton();
         }
 
         function initTooltips(container) {
@@ -316,32 +419,15 @@
         }
 
         async function exportToPDF() {
-            // Alle Themen laden und öffnen
-            const themen = [
-                { id: 'thema1', file: 'thema1.html' },
-                { id: 'thema2', file: 'thema2.html' },
-                { id: 'thema3', file: 'thema3.html' }
-            ];
-
-            for (const thema of themen) {
+            for (const thema of themenConfig) {
                 const content = document.getElementById('content-' + thema.id);
-                const header = document.querySelector('#section-' + thema.id + ' .thema-header');
-                const arrow = header.querySelector('.thema-arrow');
+                const section = document.getElementById('section-' + thema.id);
+                const arrow = section.querySelector('.thema-arrow');
 
-                if (!loadedThemen[thema.id]) {
-                    content.innerHTML = '<div class="thema-loading">Wird geladen…</div>';
-                    try {
-                        const response = await fetch(thema.file);
-                        const html = await response.text();
-                        content.innerHTML = html;
-                        loadedThemen[thema.id] = true;
-                    } catch(e) {}
-                }
-                
+                await loadThema(thema.id, thema.file);
                 content.classList.add('show');
                 arrow.classList.add('open');
 
-                // Alle Unterelemente aufklappen
                 content.querySelectorAll('.theme-content, .lebensbezug-content, .freibereich-content').forEach(el => el.classList.add('show'));
                 content.querySelectorAll('.table-content').forEach(el => el.classList.add('expanded'));
                 content.querySelectorAll('.schluessel-content').forEach(el => el.classList.remove('expanded'));
