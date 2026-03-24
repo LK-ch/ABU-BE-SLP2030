@@ -365,9 +365,6 @@
             // Lebensbezüge aufklappen
             content.querySelectorAll('.lebensbezug-content').forEach(el => el.classList.add('show'));
             content.querySelectorAll('.lebensbezug-header').forEach(el => el.classList.remove('collapsed'));
-            // Freibereich aufklappen
-            content.querySelectorAll('.freibereich-content').forEach(el => el.classList.add('show'));
-            content.querySelectorAll('.freibereich-header').forEach(el => el.classList.remove('collapsed'));
             // Tabellen aufklappen
             content.querySelectorAll('.table-content').forEach(el => el.classList.add('expanded'));
             content.querySelectorAll('.table-toggle').forEach(el => el.classList.add('rotated'));
@@ -376,8 +373,6 @@
         function collapseThemaContent(content) {
             content.querySelectorAll('.lebensbezug-content').forEach(el => el.classList.remove('show'));
             content.querySelectorAll('.lebensbezug-header').forEach(el => el.classList.add('collapsed'));
-            content.querySelectorAll('.freibereich-content').forEach(el => el.classList.remove('show'));
-            content.querySelectorAll('.freibereich-header').forEach(el => el.classList.add('collapsed'));
             content.querySelectorAll('.table-content').forEach(el => el.classList.remove('expanded'));
             content.querySelectorAll('.table-toggle').forEach(el => el.classList.remove('rotated'));
         }
