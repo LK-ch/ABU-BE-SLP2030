@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1re année de formation CFC - Plan d'études de culture générale</title>
+    <title>Formation professionnelle initiale de 3 ans CFC - Plan d'études eCG</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
             font-family: 'Roboto', Arial, sans-serif;
+            font-weight: 400;
             line-height: 1.6;
             color: #000;
             background-color: #fff;
@@ -19,176 +21,187 @@
             min-height: 100vh;
         }
 
-        /* EN-TÊTE */
-        header { background: #fff; border-bottom: 1px solid #e0e0e0; padding: 12px 24px 0 24px; }
-        .header-top { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; }
-        .logo-section { display: flex; align-items: center; gap: 12px; padding-bottom: 8px; }
+        /* HEADER */
+        header {
+            background: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 12px 24px 0 24px;
+        }
+
+        .header-top {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 8px;
+        }
+
         .logo-section img { height: 60px; width: auto; }
-        .app-title { font-size: 1em; font-weight: 400; color: #000; padding-bottom: 12px; }
+
+        .app-title {
+            font-size: 1em;
+            font-weight: 400;
+            color: #000;
+            padding-bottom: 12px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .app-title:hover { text-decoration: underline; }
+
         .service-nav { display: flex; align-items: center; gap: 20px; padding-top: 4px; }
         .service-nav a { font-size: 0.85em; color: #000; text-decoration: none; }
         .service-nav a:hover { text-decoration: underline; }
+
         .language-selector { display: flex; align-items: center; gap: 6px; font-size: 0.85em; }
         .language-selector span { color: #666; }
         .language-selector a { color: #000; text-decoration: none; }
-        .language-selector a.active { font-weight: 700; border-bottom: 2px solid #dc291e; padding-bottom: 1px; }
+        .language-selector a.active {
+            font-weight: 700;
+            border-bottom: 2px solid #dc291e;
+            padding-bottom: 1px;
+        }
         .language-selector a:hover { text-decoration: underline; }
 
-        /* CONTENU PRINCIPAL */
-        main { flex: 1; max-width: 1200px; margin: 30px auto 0 auto; padding: 20px; width: 100%; }
+        .wip-badge {
+            display: inline-block;
+            margin-top: 6px;
+            padding: 4px 12px;
+            background-color: #fff3cd;
+            border: 1px solid #ffcc00;
+            font-size: 0.75em;
+            font-weight: 700;
+            color: #000;
+            text-transform: uppercase;
+        }
+
+        /* MAIN */
+        main {
+            flex: 1;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 24px;
+            width: 100%;
+        }
 
         .breadcrumb { font-size: 0.9em; color: #000; margin-bottom: 20px; }
         .breadcrumb a { color: #000; text-decoration: none; font-weight: 500; }
         .breadcrumb a:hover { text-decoration: underline; }
 
-        h1 { color: #000; font-size: 2em; margin-bottom: 6px; font-weight: 700; }
-        .subtitle { color: #333; font-size: 0.95em; margin-bottom: 20px; }
+        h1 { font-size: 2em; font-weight: 700; color: #000; margin-bottom: 6px; }
 
-        /* TEXTES D'INTRODUCTION */
-        .intro-text {
+        .subtitle { font-size: 0.95em; color: #333; margin-bottom: 40px; line-height: 1.6; }
+
+        /* APERÇU DES THÈMES */
+        .theme-overview { margin-bottom: 40px; }
+
+        .theme-overview h2 { font-size: 1.1em; font-weight: 700; color: #000; margin-bottom: 16px; }
+
+        .theme-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #e0e0e0;
+            margin-bottom: 24px;
+            table-layout: fixed;
+        }
+
+        .theme-table th {
+            background: #f5e6d3;
+            padding: 10px 14px;
+            text-align: center;
+            font-size: 0.85em;
+            font-weight: 700;
+            color: #000;
+            border-bottom: 2px solid #e0e0e0;
+            border-right: 1px solid #e0e0e0;
+        }
+        .theme-table th:last-child { border-right: none; }
+        .theme-table th.year-header { font-size: 1.1em; color: #000; width: 33.33%; }
+
+        .theme-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #eee;
+            border-right: 1px solid #e0e0e0;
+            font-size: 0.88em;
+            color: #000;
+            vertical-align: top;
+        }
+        .theme-table td:last-child { border-right: none; }
+        .theme-table tbody tr:last-child td { border-bottom: none; }
+
+        .theme-table tfoot td {
+            background-color: #f9f3e8;
+            font-weight: 600;
+            font-size: 0.85em;
+            text-align: center;
+            border-right: 1px solid #e0e0e0;
+            border-top: 2px solid #e0e0e0;
+            border-bottom: none;
+        }
+        .theme-table tfoot td:last-child { border-right: none; }
+
+        .theme-note {
             font-size: 1em;
             line-height: 1.7;
             color: #000;
-            margin-bottom: 20px;
-            text-align: justify;
+            margin-bottom: 40px;
         }
 
-        /* BARRE D'OUTILS */
-        .page-toolbar {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            margin-bottom: 20px;
-            gap: 10px;
+        /* CARTES */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 24px;
         }
 
-        .btn-expand-all {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background-color: #fff;
-            color: #000;
-            border: 1px solid #000;
-            padding: 8px 18px;
-            font-family: 'Roboto', Arial, sans-serif;
-            font-size: 0.88em;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.15s, color 0.15s;
-            line-height: 1.4;
-            white-space: nowrap;
+        .card-grid-full {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin-bottom: 40px;
         }
 
-        .btn-expand-all:hover {
-            background-color: #000;
-            color: #fff;
-        }
-
-        .btn-expand-all .btn-icon {
-            display: inline-block;
-            font-size: 0.9em;
-            transition: transform 0.2s;
-        }
-
-        /* ACCORDÉON DES THÈMES */
-        .thema-section {
-            margin-bottom: 16px;
-            border: 1px solid #e0e0e0;
-            overflow: hidden;
-        }
-
-        .thema-header {
+        .card {
             background: #f5f0e8;
-            padding: 18px 24px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            user-select: none;
-            transition: background-color 0.2s;
-        }
-
-        .thema-header:hover { background-color: #ecdcc4; }
-
-        .thema-header-left h2 {
-            font-size: 1.1em;
-            font-weight: 700;
+            border: 1px solid #e0d8cc;
+            padding: 30px;
+            text-decoration: none;
             color: #000;
-            margin-bottom: 4px;
+            display: block;
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
-
-        .thema-header-left .lektionen {
+        .card:hover {
+            border-color: #dc291e;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .card h2 { font-size: 1.15em; font-weight: 700; color: #000; margin-bottom: 10px; }
+        .card p { font-size: 0.9em; color: #333; line-height: 1.5; }
+        .card .meta {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid #e0d8cc;
             font-size: 0.82em;
             color: #555;
         }
 
-        .thema-arrow {
-            font-size: 1em;
-            color: #000;
-            transition: transform 0.3s ease;
-            flex-shrink: 0;
-            margin-left: 16px;
-        }
-
-        .thema-arrow.open { transform: rotate(180deg); }
-
-        .thema-content {
-            display: none;
-            background-color: #fff;
-        }
-
-        .thema-content.show { display: block; }
-
-        .thema-loading {
-            padding: 30px;
-            text-align: center;
-            color: #666;
-            font-size: 0.9em;
-        }
-
-        .thema-loading::before {
-            content: '';
-            display: inline-block;
-            width: 18px;
-            height: 18px;
-            border: 2px solid #e0e0e0;
-            border-top-color: #dc291e;
-            border-radius: 50%;
-            animation: spin 0.7s linear infinite;
-            margin-right: 10px;
-            vertical-align: middle;
-        }
-
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        /* EXPORT PDF */
-        .pdf-export-container {
-            text-align: center;
-            padding: 40px 0 20px 0;
-            margin-top: 30px;
-            border-top: 1px solid #e0e0e0;
-        }
-
-        .pdf-export-button {
-            background-color: #dc291e;
-            color: white;
-            border: none;
-            padding: 12px 32px;
-            font-size: 1em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .pdf-export-button:hover { background-color: #b82118; }
-        .pdf-export-button::before { content: "📄"; }
-
-        /* PIED DE PAGE */
+        /* FOOTER */
         footer { background: #fff; border-top: 1px solid #e0e0e0; padding: 14px 24px; margin-top: auto; }
-        .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
         .footer-copyright { font-size: 0.82em; color: #333; }
         .footer-links { display: flex; gap: 24px; }
         .footer-links a { font-size: 0.82em; font-weight: 700; color: #000; text-decoration: none; }
@@ -196,15 +209,9 @@
 
         @media (max-width: 768px) {
             .header-top { flex-direction: column; gap: 12px; }
+            .card-grid { grid-template-columns: 1fr; }
+            .theme-table { font-size: 0.85em; }
             .footer-inner { flex-direction: column; align-items: flex-start; }
-            .page-toolbar { justify-content: flex-start; }
-        }
-
-        @media print {
-            header, .breadcrumb, .page-toolbar, .pdf-export-container, footer { display: none !important; }
-            .thema-content { display: block !important; }
-            .thema-arrow { display: none !important; }
-            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
         }
     </style>
 </head>
@@ -216,14 +223,15 @@
                 <div class="logo-section">
                     <img src="../images/KTBE.png" alt="Logo du canton de Berne">
                 </div>
-                <div class="app-title">Schullehrplan ABU / Plan d'études de culture générale</div>
+                <a href="../index_fr.html" class="app-title">Schullehrplan ABU / Plan d'études de culture générale</a>
+                <div class="wip-badge">Site web et contenus en cours d'élaboration</div>
             </div>
             <nav class="service-nav" aria-label="Navigation de service">
                 <a href="../kontakt_fr.html">Contact</a>
                 <div class="language-selector">
-                    <a href="1-lehrjahr_de.html" lang="de">DE</a>
+                    <a href="index_de.html" lang="de">DE</a>
                     <span>|</span>
-                    <a href="1-lehrjahr_fr.html" class="active" lang="fr">FR</a>
+                    <a href="index_fr.html" class="active" lang="fr">FR</a>
                 </div>
             </nav>
         </div>
@@ -231,65 +239,78 @@
 
     <main>
         <nav class="breadcrumb">
-            <a href="../index_fr.html">Plan d'études de culture générale</a> /
-            Formation professionnelle initiale CFC 3 ans
+            <a href="../index_fr.html">Plan d'études eCG</a> / Formation professionnelle initiale de 3 ans CFC
         </nav>
 
-        <h1>1<sup>re</sup> année de formation CFC</h1>
-        <p class="subtitle">Formation professionnelle initiale de 3 ans sanctionnée par un certificat fédéral de capacité</p>
+        <h1>Formation professionnelle initiale de 3 ans CFC</h1>
+        <p class="subtitle">Certificat fédéral de capacité</p>
 
-        <!-- BARRE D'OUTILS -->
-        <div class="page-toolbar">
-            <button class="btn-expand-all" id="btn-expand-all" onclick="toggleAll()">
-                <span class="btn-icon" aria-hidden="true">▼</span>
-                Tout déplier
-            </button>
+        <div class="theme-overview">
+            <h2>Vue d'ensemble des thèmes</h2>
+            <table class="theme-table">
+                <thead>
+                    <tr>
+                        <th class="year-header">1<sup>re</sup> année de formation</th>
+                        <th class="year-header">2<sup>e</sup> année de formation</th>
+                        <th class="year-header">3<sup>e</sup> année de formation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Thème 1 :</strong> Ma formation professionnelle</td>
+                        <td><strong>Thème 4 :</strong> Ma culture, mes relations</td>
+                        <td style="font-style:italic;color:#666;">Travail final</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Thème 2 :</strong> Mes revenus, mes dépenses</td>
+                        <td><strong>Thème 5 :</strong> Exprimer son opinion</td>
+                        <td><strong>Thème 8 :</strong> Mon avenir professionnel</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Thème 3 :</strong> Ma sécurité, mon bien-être</td>
+                        <td><strong>Thème 6 :</strong> Ma consommation, mon influence</td>
+                        <td><strong>Thème 9 :</strong> Mon domicile</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" style="text-align:center;">120 périodes par année</td>
+                    </tr>
+                </tfoot>
+            </table>
+
         </div>
 
-        <!-- THÈME 1 -->
-        <div class="thema-section" id="section-thema1">
-            <div class="thema-header" onclick="toggleThema('thema1', 'theme1.html', this)">
-                <div class="thema-header-left">
-                    <h2>Thème 1 : Ma formation professionnelle</h2>
-                    <span class="lektionen">Recommandation : 36 périodes (dont 9 périodes de domaine libre)</span>
-                </div>
-                <span class="thema-arrow">▼</span>
-            </div>
-            <div class="thema-content" id="content-thema1"></div>
+        <div class="card-grid">
+            <a href="1-lehrjahr_fr.html" class="card">
+                <h2>Plan d'études 1<sup>re</sup> année de formation</h2>
+                <p>Thèmes 1–3 : Formation professionnelle, revenus et dépenses, sécurité et bien-être</p>
+                <div class="meta">120 périodes de culture générale</div>
+            </a>
+            <a href="2-lehrjahr_fr.html" class="card">
+                <h2>Plan d'études 2<sup>e</sup> année de formation</h2>
+                <p>Thèmes 4–6 : Culture, opinion, consommation</p>
+                <div class="meta">120 périodes de culture générale</div>
+            </a>
+            <a href="3-lehrjahr_fr.html" class="card">
+                <h2>Plan d'études 3<sup>e</sup> année de formation</h2>
+                <p>Thèmes 8–9 : Avenir professionnel, domicile</p>
+                <div class="meta">120 périodes de culture générale incl. TF</div>
+            </a>
         </div>
 
-        <!-- THÈME 2 -->
-        <div class="thema-section" id="section-thema2">
-            <div class="thema-header" onclick="toggleThema('thema2', 'theme2.html', this)">
-                <div class="thema-header-left">
-                    <h2>Thème 2 : Gagner et dépenser de l'argent</h2>
-                    <span class="lektionen">Recommandation : 48 périodes (dont 9 périodes de domaine libre)</span>
-                </div>
-                <span class="thema-arrow">▼</span>
-            </div>
-            <div class="thema-content" id="content-thema2"></div>
+        <div class="card-grid-full">
+            <a href="apercuthemes_fr.html" class="card">
+                <h2>Axes de promotion</h2>
+                <p>Vue d'ensemble du développement spiralaire des compétences sur l'ensemble de la formation</p>
+            </a>
         </div>
 
-        <!-- THÈME 3 -->
-        <div class="thema-section" id="section-thema3">
-            <div class="thema-header" onclick="toggleThema('thema3', 'theme3.html', this)">
-                <div class="thema-header-left">
-                    <h2>Thème 3 : Santé et sécurité au quotidien</h2>
-                    <span class="lektionen">Recommandation : 36 périodes (dont 9 périodes de domaine libre)</span>
-                </div>
-                <span class="thema-arrow">▼</span>
-            </div>
-            <div class="thema-content" id="content-thema3"></div>
-        </div>
-
-        <div class="pdf-export-container">
-            <button class="pdf-export-button" onclick="exportToPDF()">Exporter en PDF</button>
-        </div>
     </main>
 
     <footer>
         <div class="footer-inner">
-            <span class="footer-copyright">© 2025 – Office de l'enseignement secondaire du 2<sup>e</sup> degré et de la formation professionnelle du canton de Berne</span>
+            <span class="footer-copyright">© 2026 - Office de l'enseignement secondaire du 2<sup>e</sup> degré et de la formation professionnelle du canton de Berne</span>
             <nav class="footer-links" aria-label="Navigation du pied de page">
                 <a href="../rechtliche-hinweise_fr.html">Mentions légales</a>
                 <a href="../impressum_fr.html">Impressum</a>
@@ -297,150 +318,5 @@
         </div>
     </footer>
 
-    <script>
-        const loadedThemen = {};
-
-        const themenConfig = [
-            { id: 'thema1', file: 'theme1.html' },
-            { id: 'thema2', file: 'theme2.html' },
-            { id: 'thema3', file: 'theme3.html' }
-        ];
-
-        async function loadThema(id, file) {
-            if (loadedThemen[id]) return;
-            const content = document.getElementById('content-' + id);
-            content.innerHTML = '<div class="thema-loading">Chargement du contenu…</div>';
-            try {
-                const response = await fetch(file);
-                if (!response.ok) throw new Error('Fichier introuvable');
-                const html = await response.text();
-                content.innerHTML = html;
-                loadedThemen[id] = true;
-
-                content.querySelectorAll('script').forEach(oldScript => {
-                    const newScript = document.createElement('script');
-                    newScript.textContent = oldScript.textContent;
-                    document.body.appendChild(newScript);
-                });
-
-                initTooltips(content);
-            } catch (e) {
-                content.innerHTML = '<div class="thema-loading" style="color:#dc291e;">⚠ Le contenu n\'a pas pu être chargé. Veuillez vous assurer que la page est accessible via un serveur (p. ex. GitHub Pages).</div>';
-            }
-        }
-
-        async function toggleThema(id, file, headerEl) {
-            const content = document.getElementById('content-' + id);
-            const arrow = headerEl.querySelector('.thema-arrow');
-            const isOpen = content.classList.contains('show');
-
-            if (isOpen) {
-                content.classList.remove('show');
-                arrow.classList.remove('open');
-            } else {
-                content.classList.add('show');
-                arrow.classList.add('open');
-                await loadThema(id, file);
-            }
-
-            updateToggleAllButton();
-        }
-
-        function allAreOpen() {
-            return themenConfig.every(t => {
-                const c = document.getElementById('content-' + t.id);
-                return c && c.classList.contains('show');
-            });
-        }
-
-        function updateToggleAllButton() {
-            const btn = document.getElementById('btn-expand-all');
-            if (allAreOpen()) {
-                btn.innerHTML = '<span class="btn-icon" style="display:inline-block;transform:rotate(180deg);" aria-hidden="true">▼</span> Tout replier';
-                btn.classList.add('all-open');
-            } else {
-                btn.innerHTML = '<span class="btn-icon" aria-hidden="true">▼</span> Tout déplier';
-                btn.classList.remove('all-open');
-            }
-        }
-
-        function expandThemaContent(content) {
-            content.querySelectorAll('.lebensbezug-content').forEach(el => el.classList.add('show'));
-            content.querySelectorAll('.lebensbezug-header').forEach(el => el.classList.remove('collapsed'));
-            content.querySelectorAll('.table-content').forEach(el => el.classList.add('expanded'));
-            content.querySelectorAll('.table-toggle').forEach(el => el.classList.add('rotated'));
-        }
-
-        function collapseThemaContent(content) {
-            content.querySelectorAll('.lebensbezug-content').forEach(el => el.classList.remove('show'));
-            content.querySelectorAll('.lebensbezug-header').forEach(el => el.classList.add('collapsed'));
-            content.querySelectorAll('.table-content').forEach(el => el.classList.remove('expanded'));
-            content.querySelectorAll('.table-toggle').forEach(el => el.classList.remove('rotated'));
-        }
-
-        async function toggleAll() {
-            const shouldOpen = !allAreOpen();
-            const promises = themenConfig.map(async t => {
-                const content = document.getElementById('content-' + t.id);
-                const section = document.getElementById('section-' + t.id);
-                const arrow = section.querySelector('.thema-arrow');
-                if (shouldOpen) {
-                    content.classList.add('show');
-                    arrow.classList.add('open');
-                    await loadThema(t.id, t.file);
-                    expandThemaContent(content);
-                } else {
-                    content.classList.remove('show');
-                    arrow.classList.remove('open');
-                    collapseThemaContent(content);
-                }
-            });
-            await Promise.all(promises);
-            updateToggleAllButton();
-        }
-
-        function initTooltips(container) {
-            const tooltip = document.getElementById('tooltip') || (() => {
-                const t = document.createElement('div');
-                t.id = 'tooltip';
-                t.style.cssText = 'position:absolute;background:#2d2d2d;color:#fff;padding:10px 14px;font-size:0.85em;max-width:380px;z-index:99999;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,0.4);border:1px solid #555;display:none;line-height:1.5;font-family:Roboto,Arial,sans-serif;';
-                document.body.appendChild(t);
-                return t;
-            })();
-
-            let hideTimeout;
-            container.querySelectorAll('.kompetenz-nummer-link').forEach(link => {
-                link.addEventListener('mouseenter', function() {
-                    if (hideTimeout) clearTimeout(hideTimeout);
-                    tooltip.textContent = this.getAttribute('data-text');
-                    tooltip.style.display = 'block';
-                    const rect = this.getBoundingClientRect();
-                    tooltip.style.left = (rect.left + window.scrollX) + 'px';
-                    tooltip.style.top = (rect.bottom + window.scrollY + 10) + 'px';
-                });
-                link.addEventListener('mouseleave', () => {
-                    hideTimeout = setTimeout(() => { tooltip.style.display = 'none'; }, 120);
-                });
-            });
-        }
-
-        async function exportToPDF() {
-            for (const thema of themenConfig) {
-                const content = document.getElementById('content-' + thema.id);
-                const section = document.getElementById('section-' + thema.id);
-                const arrow = section.querySelector('.thema-arrow');
-
-                await loadThema(thema.id, thema.file);
-                content.classList.add('show');
-                arrow.classList.add('open');
-
-                content.querySelectorAll('.theme-content, .lebensbezug-content, .freibereich-content').forEach(el => el.classList.add('show'));
-                content.querySelectorAll('.table-content').forEach(el => el.classList.add('expanded'));
-                content.querySelectorAll('.schluessel-content').forEach(el => el.classList.remove('expanded'));
-            }
-
-            setTimeout(() => { window.print(); }, 600);
-        }
-    </script>
 </body>
 </html>
