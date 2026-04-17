@@ -122,7 +122,7 @@
             width: 100%;
             border-collapse: collapse;
             border: 1px solid #e0e0e0;
-            margin-bottom: 40px;
+            margin-bottom: 24px;
             table-layout: fixed;
         }
 
@@ -170,6 +170,13 @@
 
         .theme-table tfoot td:last-child { border-right: none; }
 
+        .theme-note {
+            font-size: 1em;
+            line-height: 1.7;
+            color: #000;
+            margin-bottom: 40px;
+        }
+
         /* KARTEN */
         .card-grid {
             display: grid;
@@ -212,39 +219,6 @@
             border-top: 1px solid #e0d8cc;
             font-size: 0.82em;
             color: #555;
-        }
-
-        /* FÖRDERFOKUSSE */
-        .zirkularitaet-container {
-            max-width: 600px;
-            margin-bottom: 40px;
-        }
-
-        .zirkularitaet-card {
-            background: #f5f0e8;
-            border: 1px solid #e0d8cc;
-            padding: 28px 30px;
-            text-decoration: none;
-            color: #000;
-            display: block;
-            transition: border-color 0.2s, box-shadow 0.2s;
-        }
-
-        .zirkularitaet-card:hover {
-            border-color: #dc291e;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .zirkularitaet-card h2 {
-            font-size: 1.15em;
-            font-weight: 700;
-            color: #000;
-            margin-bottom: 6px;
-        }
-
-        .zirkularitaet-card p {
-            font-size: 0.9em;
-            color: #333;
         }
 
         /* FOOTER */
@@ -341,6 +315,8 @@
                     </tr>
                 </tfoot>
             </table>
+
+            <p class="theme-note">Die Themen sind den jeweiligen Lehrjahren verbindlich zugeordnet, ihre Reihenfolge innerhalb eines Jahres kann jedoch angepasst werden.</p>
         </div>
 
         <div class="card-grid">
