@@ -9,17 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Roboto', Arial, sans-serif;
-            line-height: 1.6;
-            color: #000;
-            background-color: #fff;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        /* HEADER */
+        body { font-family: 'Roboto', Arial, sans-serif; line-height: 1.6; color: #000; background-color: #fff; display: flex; flex-direction: column; min-height: 100vh; }
         header { background: #fff; border-bottom: 1px solid #e0e0e0; padding: 12px 24px 0 24px; }
         .header-top { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; }
         .logo-section { display: flex; align-items: center; gap: 12px; padding-bottom: 8px; }
@@ -34,170 +24,40 @@
         .language-selector a { color: #000; text-decoration: none; }
         .language-selector a.active { font-weight: 700; border-bottom: 2px solid #dc291e; padding-bottom: 1px; }
         .language-selector a:hover { text-decoration: underline; }
-
-        /* MAIN */
         main { flex: 1; max-width: 1200px; margin: 30px auto 0 auto; padding: 20px; width: 100%; }
-
         .breadcrumb { font-size: 0.9em; color: #000; margin-bottom: 20px; }
         .breadcrumb a { color: #000; text-decoration: none; font-weight: 500; }
         .breadcrumb a:hover { text-decoration: underline; }
-
         h1 { color: #000; font-size: 2em; margin-bottom: 6px; font-weight: 700; }
         .subtitle { color: #333; font-size: 0.95em; margin-bottom: 20px; }
-
-        /* TOOLBAR */
-        .page-toolbar {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            margin-bottom: 20px;
-            gap: 10px;
-        }
-
-        .btn-expand-all {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background-color: #fff;
-            color: #000;
-            border: 1px solid #000;
-            padding: 8px 18px;
-            font-family: 'Roboto', Arial, sans-serif;
-            font-size: 0.88em;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.15s, color 0.15s;
-            line-height: 1.4;
-            white-space: nowrap;
-        }
-
-        .btn-expand-all:hover {
-            background-color: #000;
-            color: #fff;
-        }
-
-        .btn-expand-all .btn-icon {
-            display: inline-block;
-            font-size: 0.9em;
-            transition: transform 0.2s;
-        }
-
-        /* THEMEN-AKKORDEON */
-        .thema-section {
-            margin-bottom: 16px;
-            border: 1px solid #e0e0e0;
-            overflow: hidden;
-        }
-
-        .thema-header {
-            background: #f5f0e8;
-            padding: 18px 24px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            user-select: none;
-            transition: background-color 0.2s;
-        }
-
+        .page-toolbar { display: flex; align-items: center; justify-content: flex-end; margin-bottom: 20px; gap: 10px; }
+        .btn-expand-all { display: inline-flex; align-items: center; gap: 8px; background-color: #fff; color: #000; border: 1px solid #000; padding: 8px 18px; font-family: 'Roboto', Arial, sans-serif; font-size: 0.88em; font-weight: 500; cursor: pointer; transition: background-color 0.15s, color 0.15s; line-height: 1.4; white-space: nowrap; }
+        .btn-expand-all:hover { background-color: #000; color: #fff; }
+        .btn-expand-all .btn-icon { display: inline-block; font-size: 0.9em; transition: transform 0.2s; }
+        .thema-section { margin-bottom: 16px; border: 1px solid #e0e0e0; overflow: hidden; }
+        .thema-header { background: #f5f0e8; padding: 18px 24px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; transition: background-color 0.2s; }
         .thema-header:hover { background-color: #ecdcc4; }
-
-        .thema-header-left h2 {
-            font-size: 1.1em;
-            font-weight: 700;
-            color: #000;
-            margin-bottom: 4px;
-        }
-
-        .thema-header-left .lektionen {
-            font-size: 0.82em;
-            color: #555;
-        }
-
-        .thema-arrow {
-            font-size: 1em;
-            color: #000;
-            transition: transform 0.3s ease;
-            flex-shrink: 0;
-            margin-left: 16px;
-        }
-
+        .thema-header-left h2 { font-size: 1.1em; font-weight: 700; color: #000; margin-bottom: 4px; }
+        .thema-header-left .lektionen { font-size: 0.82em; color: #555; }
+        .thema-arrow { font-size: 1em; color: #000; transition: transform 0.3s ease; flex-shrink: 0; margin-left: 16px; }
         .thema-arrow.open { transform: rotate(180deg); }
-
-        .thema-content {
-            display: none;
-            background-color: #fff;
-        }
-
+        .thema-content { display: none; background-color: #fff; }
         .thema-content.show { display: block; }
-
-        .thema-loading {
-            padding: 30px;
-            text-align: center;
-            color: #666;
-            font-size: 0.9em;
-        }
-
-        .thema-loading::before {
-            content: '';
-            display: inline-block;
-            width: 18px;
-            height: 18px;
-            border: 2px solid #e0e0e0;
-            border-top-color: #dc291e;
-            border-radius: 50%;
-            animation: spin 0.7s linear infinite;
-            margin-right: 10px;
-            vertical-align: middle;
-        }
-
+        .thema-loading { padding: 30px; text-align: center; color: #666; font-size: 0.9em; }
+        .thema-loading::before { content: ''; display: inline-block; width: 18px; height: 18px; border: 2px solid #e0e0e0; border-top-color: #dc291e; border-radius: 50%; animation: spin 0.7s linear infinite; margin-right: 10px; vertical-align: middle; }
         @keyframes spin { to { transform: rotate(360deg); } }
-
-        /* PDF EXPORT */
-        .pdf-export-container {
-            text-align: center;
-            padding: 40px 0 20px 0;
-            margin-top: 30px;
-            border-top: 1px solid #e0e0e0;
-        }
-
-        .pdf-export-button {
-            background-color: #dc291e;
-            color: white;
-            border: none;
-            padding: 12px 32px;
-            font-size: 1em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
+        .pdf-export-container { text-align: center; padding: 40px 0 20px 0; margin-top: 30px; border-top: 1px solid #e0e0e0; }
+        .pdf-export-button { background-color: #dc291e; color: white; border: none; padding: 12px 32px; font-size: 1em; font-weight: 600; cursor: pointer; transition: all 0.2s ease; display: inline-flex; align-items: center; gap: 8px; }
         .pdf-export-button:hover { background-color: #b82118; }
         .pdf-export-button::before { content: "📄"; }
-
-        /* FOOTER */
         footer { background: #fff; border-top: 1px solid #e0e0e0; padding: 14px 24px; margin-top: auto; }
         .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
         .footer-copyright { font-size: 0.82em; color: #333; }
         .footer-links { display: flex; gap: 24px; }
         .footer-links a { font-size: 0.82em; font-weight: 700; color: #000; text-decoration: none; }
         .footer-links a:hover { text-decoration: underline; }
-
-        @media (max-width: 768px) {
-            .header-top { flex-direction: column; gap: 12px; }
-            .footer-inner { flex-direction: column; align-items: flex-start; }
-            .page-toolbar { justify-content: flex-start; }
-        }
-
-        @media print {
-            header, .breadcrumb, .page-toolbar, .pdf-export-container, footer { display: none !important; }
-            .thema-content { display: block !important; }
-            .thema-arrow { display: none !important; }
-            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-        }
+        @media (max-width: 768px) { .header-top { flex-direction: column; gap: 12px; } .footer-inner { flex-direction: column; align-items: flex-start; } .page-toolbar { justify-content: flex-start; } }
+        @media print { header, .breadcrumb, .page-toolbar, .pdf-export-container, footer { display: none !important; } .thema-content { display: block !important; } .thema-arrow { display: none !important; } * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; } }
     </style>
 </head>
 <body>
@@ -230,7 +90,6 @@
         <h1>1. Lehrjahr EFZ</h1>
         <p class="subtitle">4-jährige berufliche Grundbildung mit eidgenössischem Fähigkeitszeugnis</p>
 
-        <!-- TOOLBAR MIT ALLES-AUFKLAPPEN-BUTTON -->
         <div class="page-toolbar">
             <button class="btn-expand-all" id="btn-expand-all" onclick="toggleAll()">
                 <span class="btn-icon" aria-hidden="true">▼</span>
@@ -238,7 +97,6 @@
             </button>
         </div>
 
-        <!-- THEMA 1 -->
         <div class="thema-section" id="section-thema1">
             <div class="thema-header" onclick="toggleThema('thema1', 'thema1.html', this)">
                 <div class="thema-header-left">
@@ -250,7 +108,6 @@
             <div class="thema-content" id="content-thema1"></div>
         </div>
 
-        <!-- THEMA 2 -->
         <div class="thema-section" id="section-thema2">
             <div class="thema-header" onclick="toggleThema('thema2', 'thema2.html', this)">
                 <div class="thema-header-left">
@@ -262,7 +119,6 @@
             <div class="thema-content" id="content-thema2"></div>
         </div>
 
-        <!-- THEMA 3 -->
         <div class="thema-section" id="section-thema3">
             <div class="thema-header" onclick="toggleThema('thema3', 'thema3.html', this)">
                 <div class="thema-header-left">
@@ -315,7 +171,8 @@
                     document.body.appendChild(newScript);
                 });
 
-                initTooltips(content);
+                // Keine initTooltips — Themen verwalten ihre Panels selbst
+
             } catch (e) {
                 content.innerHTML = '<div class="thema-loading" style="color:#dc291e;">⚠ Inhalt konnte nicht geladen werden. Bitte stelle sicher, dass die Seite über einen Server läuft (z.B. GitHub Pages).</div>';
             }
@@ -325,7 +182,6 @@
             const content = document.getElementById('content-' + id);
             const arrow = headerEl.querySelector('.thema-arrow');
             const isOpen = content.classList.contains('show');
-
             if (isOpen) {
                 content.classList.remove('show');
                 arrow.classList.remove('open');
@@ -334,7 +190,6 @@
                 arrow.classList.add('open');
                 await loadThema(id, file);
             }
-
             updateToggleAllButton();
         }
 
@@ -357,10 +212,8 @@
         }
 
         function expandThemaContent(content) {
-            // Lebensbezüge aufklappen
             content.querySelectorAll('.lebensbezug-content').forEach(el => el.classList.add('show'));
             content.querySelectorAll('.lebensbezug-header').forEach(el => el.classList.remove('collapsed'));
-            // Tabellen aufklappen
             content.querySelectorAll('.table-content').forEach(el => el.classList.add('expanded'));
             content.querySelectorAll('.table-toggle').forEach(el => el.classList.add('rotated'));
         }
@@ -393,46 +246,18 @@
             updateToggleAllButton();
         }
 
-        function initTooltips(container) {
-            const tooltip = document.getElementById('tooltip') || (() => {
-                const t = document.createElement('div');
-                t.id = 'tooltip';
-                t.style.cssText = 'position:absolute;background:#2d2d2d;color:#fff;padding:10px 14px;font-size:0.85em;max-width:380px;z-index:99999;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,0.4);border:1px solid #555;display:none;line-height:1.5;font-family:Roboto,Arial,sans-serif;';
-                document.body.appendChild(t);
-                return t;
-            })();
-
-            let hideTimeout;
-            container.querySelectorAll('.kompetenz-nummer-link').forEach(link => {
-                link.addEventListener('mouseenter', function() {
-                    if (hideTimeout) clearTimeout(hideTimeout);
-                    tooltip.textContent = this.getAttribute('data-text');
-                    tooltip.style.display = 'block';
-                    const rect = this.getBoundingClientRect();
-                    tooltip.style.left = (rect.left + window.scrollX) + 'px';
-                    tooltip.style.top = (rect.bottom + window.scrollY + 10) + 'px';
-                });
-                link.addEventListener('mouseleave', () => {
-                    hideTimeout = setTimeout(() => { tooltip.style.display = 'none'; }, 120);
-                });
-            });
-        }
-
         async function exportToPDF() {
             for (const thema of themenConfig) {
                 const content = document.getElementById('content-' + thema.id);
                 const section = document.getElementById('section-' + thema.id);
                 const arrow = section.querySelector('.thema-arrow');
-
                 await loadThema(thema.id, thema.file);
                 content.classList.add('show');
                 arrow.classList.add('open');
-
                 content.querySelectorAll('.theme-content, .lebensbezug-content, .freibereich-content').forEach(el => el.classList.add('show'));
                 content.querySelectorAll('.table-content').forEach(el => el.classList.add('expanded'));
                 content.querySelectorAll('.schluessel-content').forEach(el => el.classList.remove('expanded'));
             }
-
             setTimeout(() => { window.print(); }, 600);
         }
     </script>
