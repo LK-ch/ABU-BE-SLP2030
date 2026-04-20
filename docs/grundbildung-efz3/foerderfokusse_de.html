@@ -6,12 +6,47 @@
 <title>Förderfokusse – EFZ 3</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@500;700&display=swap" rel="stylesheet">
 <style>
+/* ============================================================
+   Design Tokens – Kanton Bern
+   ============================================================ */
+:root{
+  --kbe-red:#dc291e;
+  --kbe-red-dark:#a00d24;
+  --c-text:#111;
+  --c-text-soft:#333;
+  --c-muted:#666;
+  --c-border:#e0e0e0;
+  --c-border-soft:#ececec;
+  --c-bg-soft:#fafafa;
+  --c-bg-accent:#f9f3e8;
+
+  --cat-sk:#dc291e;      --cat-sk-soft:rgba(220,41,30,.12);
+  --cat-ges:#d4a500;     --cat-ges-soft:rgba(255,217,102,.3);
+  --cat-ges-bg:#fff8e1;  --cat-ges-border:#f0c040;
+  --cat-dig:#4db380;     --cat-dig-soft:rgba(77,179,128,.25);
+  --cat-dig-bg:#e6f6ee;  --cat-dig-border:#4db380;
+  --cat-spr:#3385d6;     --cat-spr-soft:rgba(51,133,214,.22);
+  --cat-spr-bg:#e8f2fd;  --cat-spr-border:#9ec8f0;
+
+  --radius-sm:3px;
+  --radius-md:6px;
+
+  --shadow-sm:0 2px 6px rgba(0,0,0,.07);
+  --shadow-md:0 4px 14px rgba(0,0,0,.09);
+}
+
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Roboto',-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif;line-height:1.6;color:#000;background:#fff;font-size:15px}
-header{background:#fff;border-bottom:1px solid #e0e0e0;padding:12px 24px 0 24px}
-.header-top{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Roboto',-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif;
+  line-height:1.6;color:var(--c-text);background:#fff;font-size:15px;
+}
+
+/* Header / Footer */
+header{background:#fff;border-bottom:1px solid var(--c-border);padding:12px 24px 0}
+.header-top{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px}
 .logo-section{display:flex;align-items:center;gap:12px;padding-bottom:8px}
 .logo-section img{height:60px;width:auto}
 .app-title{font-size:1em;font-weight:400;color:#000;padding-bottom:12px}
@@ -21,101 +56,364 @@ header{background:#fff;border-bottom:1px solid #e0e0e0;padding:12px 24px 0 24px}
 .language-selector{display:flex;align-items:center;gap:6px;font-size:.85em}
 .language-selector span{color:#666}
 .language-selector a{color:#000;text-decoration:none}
-.language-selector a.active{font-weight:700;border-bottom:2px solid #dc291e;padding-bottom:1px}
-.language-selector a:hover{text-decoration:underline}
-footer{background:#fff;border-top:1px solid #e0e0e0;padding:14px 24px;margin-top:40px}
+.language-selector a.active{font-weight:700;border-bottom:2px solid var(--kbe-red);padding-bottom:1px}
+footer{background:#fff;border-top:1px solid var(--c-border);padding:14px 24px;margin-top:50px}
 .footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
-.footer-copyright{font-size:.82em;color:#333}
+.footer-copyright{font-size:.82em;color:var(--c-text-soft)}
 .footer-links{display:flex;gap:24px}
 .footer-links a{font-size:.82em;font-weight:700;color:#000;text-decoration:none}
 .footer-links a:hover{text-decoration:underline}
-.container{max-width:1200px;margin:30px auto 0;padding:20px;background:#fff}
-.breadcrumb{font-size:.9em;color:#666;margin-bottom:20px}
+
+/* Container / Headings */
+.container{max-width:1200px;margin:30px auto 0;padding:20px}
+.breadcrumb{font-size:.9em;color:var(--c-muted);margin-bottom:20px}
 .breadcrumb a{color:#000;text-decoration:none;font-weight:500}
 .breadcrumb a:hover{text-decoration:underline}
-h1{color:#000;font-size:2.2em;margin-bottom:10px;font-weight:700;line-height:1.3}
-.subtitle{color:#000;font-size:1.1em;margin-bottom:30px;font-weight:300}
-.back-btn{background:#fff;border:2px solid #dc291e;padding:.6rem 1.2rem;border-radius:4px;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;margin-bottom:1.5rem;transition:all .2s;text-decoration:none;color:#dc291e;font-weight:500;font-size:.9em}
-.back-btn:hover{background:#dc291e;color:#fff;transform:translateX(-3px)}
-.intro-text{font-size:1em;line-height:1.7;color:#000;margin:0 0 20px 0}
-.status-info{background:#f9f3e8;padding:20px;margin-bottom:25px}
-.status-info h2{color:#dc291e;margin-bottom:15px;font-size:1.1em;font-weight:700}
+h1{
+  font-family:'Roboto Slab','Roboto',serif;
+  color:#000;font-size:2.2em;margin-bottom:10px;font-weight:700;line-height:1.25;letter-spacing:-.01em;
+}
+.subtitle{color:var(--c-text-soft);font-size:1.1em;margin-bottom:30px;font-weight:300}
+.back-btn{
+  background:#fff;border:2px solid var(--kbe-red);padding:.6rem 1.2rem;border-radius:var(--radius-sm);
+  display:inline-flex;align-items:center;gap:.4rem;margin-bottom:1.5rem;
+  transition:all .2s;text-decoration:none;color:var(--kbe-red);font-weight:500;font-size:.9em;
+}
+.back-btn:hover{background:var(--kbe-red);color:#fff;transform:translateX(-3px)}
+.intro-text{font-size:1em;line-height:1.7;margin:0 0 20px 0}
+
+.section-title{
+  font-family:'Roboto Slab','Roboto',serif;
+  font-size:1.8em;font-weight:700;color:var(--kbe-red);
+  margin:40px 0 20px;padding-bottom:10px;border-bottom:2px solid var(--kbe-red);
+  text-align:center;letter-spacing:-.01em;
+}
+
+/* Kollapsible */
+.status-info{background:var(--c-bg-accent);padding:20px;margin-bottom:25px;border-radius:var(--radius-md)}
+.status-info h2{color:var(--kbe-red);margin-bottom:15px;font-size:1.1em;font-weight:700}
 .status-info-header{cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none}
-.status-info-toggle{font-size:1em;transition:transform .2s;color:#dc291e;font-weight:bold}
+.status-info-toggle{font-size:1em;transition:transform .2s;color:var(--kbe-red);font-weight:bold}
 .status-info-toggle.open{transform:rotate(90deg)}
-.status-info-content{max-height:0;overflow:hidden;transition:max-height .3s}
-.status-info-content.open{max-height:800px}
+.status-info-content{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.status-info-content.open{max-height:1400px}
 .status-info ul{list-style:none;padding-left:0;margin-top:15px}
 .status-info li{padding:.4rem 0 .4rem 1.5rem;position:relative;font-size:1em}
-.status-info li span{position:absolute;left:0;color:#dc291e;font-weight:bold}
-.section-title{font-size:1.8em;font-weight:700;color:#dc291e;margin:40px 0 20px;padding-bottom:10px;border-bottom:2px solid #dc291e;text-align:center}
+.status-info li span{position:absolute;left:0;color:var(--kbe-red);font-weight:bold}
+
+/* ============================================================
+   Filter-Leiste
+   ============================================================ */
 .filter-area{margin:20px 0 25px}
-.main-filter-container{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:0}
-.main-filter-btn{background:#fff;border:2px solid #ddd;padding:10px 22px;border-radius:4px;cursor:pointer;font-size:1em;font-weight:500;transition:all .2s;color:#333;display:inline-flex;align-items:center;gap:6px}
-.main-filter-btn:hover{transform:translateY(-1px);box-shadow:0 2px 8px rgba(0,0,0,.12)}
-.main-filter-btn.active{box-shadow:0 2px 10px rgba(0,0,0,.15)}
-.mfb-reset{border-color:#555;color:#555}.mfb-reset.active{background:#555;color:#fff}
-.mfb-schluessel{border-color:#dc291e;color:#dc291e}.mfb-schluessel.active{background:#dc291e;color:#fff}
-.mfb-gesellschaft{border-color:#ffd966;color:#d4a500}.mfb-gesellschaft.active{background:#ffd966;color:#333}
-.mfb-digital{border-color:#4db380;color:#4db380}.mfb-digital.active{background:#4db380;color:#fff}
-.mfb-sprach-inhalt{border-color:#3385d6;color:#3385d6}.mfb-sprach-inhalt.active{background:#3385d6;color:#fff}
-.btn-arrow{font-size:.7em;transition:transform .2s;display:inline-block}
+.main-filter-container{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.main-filter-btn{
+  background:#fff;border:2px solid #ddd;padding:10px 20px;
+  border-radius:var(--radius-sm);cursor:pointer;font-size:.98em;font-weight:500;
+  color:var(--c-text-soft);font-family:inherit;
+  display:inline-flex;align-items:center;gap:6px;transition:all .15s;
+}
+.main-filter-btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+.main-filter-btn.active{box-shadow:var(--shadow-md)}
+.mfb-reset{border-color:#555;color:#555}
+.mfb-reset.active{background:#555;color:#fff}
+.mfb-schluessel{border-color:var(--cat-sk);color:var(--cat-sk)}
+.mfb-schluessel.active{background:var(--cat-sk);color:#fff}
+.mfb-gesellschaft{border-color:#e0b94a;color:#a8810a}
+.mfb-gesellschaft.active{background:#ffd966;color:#333;border-color:#d4a500}
+.mfb-digital{border-color:var(--cat-dig);color:var(--cat-dig)}
+.mfb-digital.active{background:var(--cat-dig);color:#fff}
+.mfb-sprach{border-color:var(--cat-spr);color:var(--cat-spr)}
+.mfb-sprach.active{background:var(--cat-spr);color:#fff}
+.btn-arrow{font-size:.7em;transition:transform .2s}
 .main-filter-btn.open .btn-arrow{transform:rotate(180deg)}
-.filter-dropdown{display:none;background:#fafafa;border:1px solid #e0e0e0;border-radius:6px;padding:16px 20px;margin-top:10px;animation:fadeIn .15s ease}
+
+.filter-dropdown{
+  display:none;background:var(--c-bg-soft);
+  border:1px solid var(--c-border);border-radius:var(--radius-md);
+  padding:18px 20px;margin-top:10px;animation:fadeIn .18s ease;
+}
 .filter-dropdown.visible{display:block}
 @keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
-.dropdown-inner{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start}
-.chip{background:#fff;border:1px solid #ddd;padding:6px 14px;border-radius:20px;cursor:pointer;font-size:.85em;font-weight:500;transition:all .15s;white-space:nowrap;color:#444}
-.chip:hover{transform:translateY(-1px);box-shadow:0 2px 5px rgba(0,0,0,.1)}
-.chip.active{box-shadow:0 1px 5px rgba(0,0,0,.2)}
-.chip-schluessel.active{background:#dc291e;color:#fff;border-color:#dc291e}
+
+.chip{
+  background:#fff;border:1px solid #ddd;padding:6px 14px;border-radius:20px;
+  cursor:pointer;font-size:.85em;font-weight:500;transition:all .15s;
+  white-space:nowrap;color:#444;font-family:inherit;
+}
+.chip:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+.chip.active{box-shadow:0 1px 5px rgba(0,0,0,.25)}
+.chip-schluessel.active{background:var(--cat-sk);color:#fff;border-color:var(--cat-sk)}
 .chip-gesellschaft.active{background:#ffd966;color:#333;border-color:#d4a500}
-.chip-digital.active{background:#4db380;color:#fff;border-color:#4db380}
-.chip-sprache.active{background:#3385d6;color:#fff;border-color:#3385d6}
+.chip-digital.active{background:var(--cat-dig);color:#fff;border-color:var(--cat-dig)}
+.chip-sprache.active{background:var(--cat-spr);color:#fff;border-color:var(--cat-spr)}
+
+.sub-chip.active{outline:2px solid currentColor;outline-offset:1px;font-weight:700}
+
+/* Sprach-Filter: Tabs */
+.spr-tabs{
+  display:flex;gap:0;margin-bottom:16px;border-bottom:2px solid var(--c-border);flex-wrap:wrap;
+}
+.spr-tab{
+  background:none;border:none;padding:9px 18px;cursor:pointer;
+  font-size:.92em;font-weight:500;color:var(--c-muted);
+  border-bottom:2px solid transparent;margin-bottom:-2px;
+  transition:all .15s;font-family:inherit;
+}
+.spr-tab:hover{color:var(--cat-spr)}
+.spr-tab.active{color:var(--cat-spr);border-bottom-color:var(--cat-spr);font-weight:700}
+.spr-panel{display:none}
+.spr-panel.active{display:block}
+
+/* Kommunikationsmodi-Matrix */
+.modi-matrix{
+  display:grid;grid-template-columns:auto repeat(5,1fr);gap:6px;
+  background:#fff;padding:14px;border-radius:var(--radius-sm);
+  border:1px solid var(--c-border-soft);
+}
+.modi-matrix-header{
+  font-size:.78em;font-weight:700;color:var(--c-muted);
+  text-align:center;padding:6px 4px;
+}
+.modi-matrix-row-label{
+  font-size:.88em;font-weight:600;color:var(--cat-spr);
+  padding:8px 10px;display:flex;align-items:center;
+}
+.modi-cell{
+  background:#fff;border:1px solid var(--cat-spr-border);color:var(--cat-spr);
+  padding:8px 6px;border-radius:var(--radius-sm);cursor:pointer;
+  font-size:.85em;font-weight:500;transition:all .15s;
+  text-align:center;font-family:inherit;
+}
+.modi-cell:hover:not(.disabled){background:var(--cat-spr-bg);transform:translateY(-1px)}
+.modi-cell.active{background:var(--cat-spr);color:#fff;font-weight:700}
+.modi-cell.disabled{
+  opacity:.3;cursor:not-allowed;background:#f5f5f5;border-color:#ddd;color:#999;
+}
+/* Klickbarer Spalten-Header in der Modi-Matrix */
+.modi-col-header{
+  background:#fff;border:1px solid var(--c-border);border-bottom:2px solid var(--cat-spr);
+  padding:8px 4px;border-radius:var(--radius-sm) var(--radius-sm) 0 0;
+  cursor:pointer;font-family:inherit;transition:all .15s;
+  text-align:center;
+}
+.modi-col-header:hover{background:var(--cat-spr-bg);transform:translateY(-1px)}
+.modi-col-header.active{background:var(--cat-spr);border-color:var(--cat-spr)}
+.modi-col-header.active div{color:#fff !important}
+.modi-hint{
+  font-size:.82em;color:var(--c-muted);margin-top:12px;font-style:italic;
+  padding:8px 12px;background:#fff;border-left:3px solid var(--cat-spr);
+  border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+/* ============================================================
+   Suchleiste
+   ============================================================ */
+.search-bar{
+  max-width:600px;margin:0 auto 14px;position:relative;
+}
+.search-input{
+  width:100%;padding:11px 40px 11px 42px;
+  border:2px solid var(--c-border);border-radius:var(--radius-sm);
+  font-size:1em;font-family:inherit;color:var(--c-text);
+  background:#fff;transition:border-color .15s,box-shadow .15s;
+}
+.search-input:focus{
+  outline:none;border-color:var(--kbe-red);
+  box-shadow:0 0 0 3px rgba(220,41,30,.12);
+}
+.search-icon{
+  position:absolute;left:14px;top:50%;transform:translateY(-50%);
+  pointer-events:none;color:var(--c-muted);font-size:1.05em;
+}
+.search-clear{
+  position:absolute;right:8px;top:50%;transform:translateY(-50%);
+  background:none;border:none;cursor:pointer;
+  color:var(--c-muted);font-size:1.2em;padding:4px 8px;
+  border-radius:var(--radius-sm);font-family:inherit;line-height:1;
+  display:none;
+}
+.search-clear.visible{display:block}
+.search-clear:hover{background:#f0f0f0;color:var(--c-text)}
+.search-suggestions{
+  font-size:.8em;color:var(--c-muted);text-align:center;margin-top:6px;font-style:italic;
+}
+
+/* Text-Highlight innerhalb Chips und Badges */
+mark.search-hit{
+  background:#fff3a0;color:inherit;padding:0 2px;border-radius:2px;font-weight:700;
+  box-shadow:0 0 0 1px rgba(180,140,0,.35);
+}
+
+/* Aktiver-Filter-Anzeige */
+.active-filter-bar{
+  display:none;margin:18px auto 0;max-width:900px;
+  padding:10px 16px;background:#fff;border:1px solid var(--c-border);
+  border-left:4px solid var(--kbe-red);border-radius:var(--radius-sm);
+  font-size:.92em;color:var(--c-text-soft);
+  align-items:center;gap:12px;flex-wrap:wrap;box-shadow:var(--shadow-sm);
+}
+.active-filter-bar.visible{display:flex}
+.active-filter-label{font-weight:500;color:var(--c-muted)}
+.active-filter-value{font-weight:700;color:var(--kbe-red)}
+.active-filter-count{font-size:.85em;color:var(--c-muted);margin-left:auto}
+.active-filter-clear{
+  background:none;border:1px solid #ccc;padding:4px 12px;border-radius:var(--radius-sm);
+  cursor:pointer;font-size:.85em;color:var(--c-text-soft);font-family:inherit;
+}
+.active-filter-clear:hover{background:#f5f5f5;border-color:#999}
+
+/* Filter-Gruppe (Aspekt-Chip + Sub-Chips in einer Reihe) */
+.filter-group{display:flex;flex-direction:column;gap:10px;width:100%}
+.filter-row{
+  display:flex;flex-wrap:wrap;align-items:center;gap:6px;
+  padding:6px 0;border-bottom:1px dashed var(--c-border-soft);
+}
+.filter-row:last-child{border-bottom:none}
+
+/* Toggle-Pfeil vor jedem Aspekt-Chip (klappt Sub-Chips auf/zu) */
+.filter-toggle{
+  background:none;border:none;cursor:pointer;
+  font-size:.75em;padding:2px 5px;line-height:1;flex-shrink:0;
+  transition:transform .2s;font-family:inherit;width:22px;
+  display:inline-flex;align-items:center;justify-content:center;
+}
+.filter-toggle.open{transform:rotate(90deg)}
+.filter-toggle-ges{color:var(--cat-ges)}
+.filter-toggle-dig{color:var(--cat-dig)}
+.filter-toggle-spr{color:var(--cat-spr)}
+.filter-toggle-invisible{visibility:hidden}
+
+.sub-chip-group{
+  display:none;flex-wrap:wrap;gap:4px;margin:6px 0 4px 30px;width:100%;
+  animation:subChipFade .15s ease;
+}
+.sub-chip-group.visible{display:flex}
+@keyframes subChipFade{from{opacity:0;transform:translateY(-2px)}to{opacity:1;transform:translateY(0)}}
+.sub-chip{
+  padding:3px 10px;border-radius:12px;font-size:.78em;cursor:pointer;
+  transition:all .15s;font-family:inherit;line-height:1.3;
+}
+.sub-chip-ges{background:var(--cat-ges-bg);border:1px solid var(--cat-ges-border);color:#7a5800}
+.sub-chip-ges:hover{background:#ffd966}
+.sub-chip-dig{background:var(--cat-dig-bg);border:1px solid var(--cat-dig-border);color:#1a5e35}
+.sub-chip-dig:hover{background:var(--cat-dig);color:#fff}
+.sub-chip-spr{background:var(--cat-spr-bg);border:1px solid var(--cat-spr-border);color:#1a5080}
+.sub-chip-spr:hover{background:var(--cat-spr);color:#fff}
+
+/* ============================================================
+   Timeline / Karten
+   ============================================================ */
 .timeline-grid{display:flex;gap:16px;margin-top:25px;align-items:flex-start}
-.year-column{flex:1;background:#fff;border-radius:6px;padding:12px;box-shadow:0 2px 8px rgba(0,0,0,.08);min-width:0}
-.year-header{background:linear-gradient(135deg,#dc291e,#a00d24);color:#fff;padding:14px;border-radius:4px;margin-bottom:14px;text-align:center}
-.year-header h2{font-size:1.3em;font-weight:700}
-.theme-card{background:#fafafa;border-radius:4px;padding:14px;margin-bottom:14px;transition:all .2s}
-.theme-card:hover{transform:translateX(2px);box-shadow:0 2px 6px rgba(0,0,0,.08)}
-.theme-card h3{color:#dc291e;font-size:1.05em;margin-bottom:10px;font-weight:700;line-height:1.3}
-.theme-card h3 a{color:inherit;text-decoration:none}
-.theme-card h3 a:hover{text-decoration:underline}
-.theme-card.placeholder{opacity:.5}.theme-card.placeholder h3{color:#999}
-.theme-card.schlussarbeit{background:#f5e6d3;opacity:.7}.theme-card.schlussarbeit h3{color:#a00d24}
-.kompetenz-detail{margin-top:8px;font-size:.85em}
-.kompetenz-badge{display:inline-block;font-size:.85em;padding:4px 10px;margin:2px 3px 2px 0;border-radius:2px;font-weight:500;position:relative;cursor:pointer;line-height:1}
-.badge-gesellschaft{background:rgba(255,217,102,.3)}
-.badge-digital{background:rgba(77,179,128,.3)}
-.badge-sprache{background:rgba(51,133,214,.3)}
-.schluesselkompetenzen{padding:0;margin:10px 0 12px;line-height:1}
-.schluesselkompetenz-badge{display:inline-block;background:rgba(220,41,30,.12);padding:4px 10px;margin:2px 3px 2px 0;border-radius:2px;font-size:.85em;font-weight:500;color:#dc291e;position:relative;cursor:pointer;line-height:1}
-.tooltip{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.9);color:#fff;padding:10px 14px;border-radius:4px;font-size:.9em;pointer-events:none;opacity:0;transition:opacity .2s;z-index:1000;margin-bottom:10px;max-width:300px;white-space:normal;text-align:center;line-height:1.5}
-.tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:7px solid transparent;border-top-color:rgba(0,0,0,.9)}
-.kompetenz-badge:hover .tooltip,.schluesselkompetenz-badge:hover .tooltip{opacity:1}
-.loading{text-align:center;padding:40px;color:#dc291e;font-weight:500}
-.card-ges-chip{background:#fff8e1;border:1px solid #f0c040;padding:2px 9px;border-radius:10px;font-size:.76em;color:#7a5800;white-space:nowrap;transition:opacity .15s,outline .1s;display:inline-block}
-.card-spr-chip{background:#e8f2fd;border:1px solid #9ec8f0;padding:2px 9px;border-radius:10px;font-size:.76em;color:#1a5080;white-space:nowrap;transition:opacity .15s,outline .1s;display:inline-block}
-.card-dig-chip{background:#e6f6ee;border:1px solid #4db380;padding:2px 9px;border-radius:10px;font-size:.76em;color:#1a5e35;white-space:nowrap;transition:opacity .15s,outline .1s;display:inline-block}
-.ges-group{width:100%;display:flex;flex-direction:column;gap:4px}
-.ges-aspect-row{display:flex;align-items:center;gap:0;flex-wrap:wrap}
-.ges-toggle-btn{background:none;border:none;cursor:pointer;color:#d4a500;font-size:.75em;padding:2px 5px;line-height:1;flex-shrink:0;transition:transform .15s}
-.ges-toggle-btn.open{transform:rotate(90deg)}
-.ges-toggle-btn.blue{color:#3385d6}
-.ges-toggle-btn.green{color:#4db380}
-.ges-sub-items{display:none;flex-wrap:wrap;gap:4px;margin:4px 0 6px 28px}
-.ges-sub-items.visible{display:flex}
-.ges-sub-chip{background:#fff8e1;border:1px solid #f0c040;padding:3px 10px;border-radius:12px;font-size:.78em;color:#7a5800;cursor:pointer;white-space:nowrap;transition:all .15s}
-.ges-sub-chip:hover{background:#ffd966;border-color:#d4a500;transform:translateY(-1px)}
-.ges-sub-chip.active{background:#ffd966;border-color:#d4a500;font-weight:600}
-.spr-sub-chip{background:#e8f2fd;border:1px solid #3385d6;padding:3px 10px;border-radius:12px;font-size:.78em;color:#1a5fa8;cursor:pointer;white-space:nowrap;transition:all .15s}
-.spr-sub-chip:hover{background:#3385d6;color:#fff;transform:translateY(-1px)}
-.spr-sub-chip.active{background:#3385d6;color:#fff;font-weight:600}
-.dig-sub-chip{background:#e6f6ee;border:1px solid #4db380;padding:3px 10px;border-radius:12px;font-size:.78em;color:#1a5e35;cursor:pointer;white-space:nowrap;transition:all .15s}
-.dig-sub-chip:hover{background:#4db380;color:#fff;transform:translateY(-1px)}
-.dig-sub-chip.active{background:#4db380;color:#fff;font-weight:600}
-@media(max-width:1200px){.timeline-grid{flex-direction:column;gap:20px}.year-column{width:100%}}
-@media(max-width:768px){body{font-size:14px}h1{font-size:1.8em}.container{padding:15px}.year-header h2{font-size:1.1em}.theme-card h3{font-size:.95em}.main-filter-btn{padding:8px 16px;font-size:.9em}.chip{font-size:.8em;padding:5px 11px}}
+.year-column{
+  flex:1;background:#fff;border-radius:var(--radius-md);padding:12px;
+  box-shadow:var(--shadow-sm);min-width:0;
+}
+.year-header{
+  background:linear-gradient(135deg,var(--kbe-red),var(--kbe-red-dark));
+  color:#fff;padding:14px;border-radius:var(--radius-sm);margin-bottom:14px;text-align:center;
+}
+.year-header h2{font-family:'Roboto Slab','Roboto',serif;font-size:1.3em;font-weight:700;letter-spacing:-.01em}
+
+.theme-card{
+  background:var(--c-bg-soft);border-radius:var(--radius-sm);padding:14px;
+  margin-bottom:14px;transition:all .25s;border:1px solid transparent;
+}
+.theme-card:hover{transform:translateX(2px);box-shadow:var(--shadow-sm);border-color:var(--c-border-soft)}
+.theme-card.is-match{
+  border-color:var(--kbe-red);box-shadow:0 0 0 2px rgba(220,41,30,.1);
+}
+.theme-card.is-dimmed{opacity:.3}
+.theme-card h3{color:var(--kbe-red);font-size:1.05em;margin-bottom:10px;font-weight:700;line-height:1.3}
+.theme-card.schlussarbeit{background:#f5e6d3}
+.theme-card.schlussarbeit h3{color:var(--kbe-red-dark)}
+
+.card-section{margin-top:10px}
+.card-section-label{
+  font-size:.7em;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+  color:var(--c-muted);margin-bottom:4px;
+}
+
+/* Kompetenz-Badges (Nummern) */
+.badge{
+  display:inline-block;font-size:.82em;padding:3px 8px;margin:2px 3px 2px 0;
+  border-radius:2px;font-weight:600;position:relative;cursor:help;line-height:1.2;
+}
+.badge-sk{background:var(--cat-sk-soft);color:var(--cat-sk)}
+.badge-ges{background:var(--cat-ges-soft);color:#7a5800}
+.badge-dig{background:var(--cat-dig-soft);color:#1a5e35}
+.badge-spr{background:var(--cat-spr-soft);color:#1a5080}
+.badge.is-match{outline:2px solid currentColor;outline-offset:1px}
+.badge.is-dimmed{opacity:.25}
+
+/* Inhalts-Chips */
+.content-chip{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:3px 9px;border-radius:10px;font-size:.76em;white-space:normal;
+  transition:opacity .15s,outline .1s,font-weight .1s;margin:2px 3px 2px 0;
+  max-width:100%;line-height:1.3;
+}
+.chip-ges{background:var(--cat-ges-bg);border:1px solid var(--cat-ges-border);color:#7a5800}
+.chip-dig{background:var(--cat-dig-bg);border:1px solid var(--cat-dig-border);color:#1a5e35}
+.chip-spr{background:var(--cat-spr-bg);border:1px solid var(--cat-spr-border);color:#1a5080}
+.content-chip.is-match{font-weight:700;outline:2px solid currentColor;outline-offset:1px}
+.content-chip.is-dimmed{opacity:.2}
+
+.modi-markers{
+  display:inline-flex;gap:2px;font-size:.85em;opacity:.85;
+  font-weight:600;margin-left:3px;
+}
+.modi-marker{
+  background:rgba(51,133,214,.25);color:#1a5080;padding:0 4px;border-radius:3px;
+  font-size:.9em;line-height:1.3;
+}
+
+/* Tooltip */
+.tooltip{
+  position:absolute;bottom:100%;left:50%;transform:translateX(-50%);
+  background:rgba(0,0,0,.9);color:#fff;padding:8px 12px;border-radius:var(--radius-sm);
+  font-size:.85em;pointer-events:none;opacity:0;transition:opacity .2s;z-index:1000;
+  margin-bottom:8px;max-width:280px;white-space:normal;text-align:center;line-height:1.4;
+  font-weight:400;
+}
+.tooltip::after{
+  content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  border:6px solid transparent;border-top-color:rgba(0,0,0,.9);
+}
+.badge:hover .tooltip{opacity:1}
+
+/* Leere-Karte-Hinweis */
+.empty-theme-note{
+  font-size:.82em;color:var(--c-muted);font-style:italic;
+  padding:8px;background:#fff;border-radius:var(--radius-sm);
+  border:1px dashed var(--c-border);margin-top:6px;
+}
+
+/* Fokus-Modus: Wenn ein Kategorie-Filter aktiv ist, werden auf den Karten
+   nur die Sektionen der entsprechenden Kategorie angezeigt. */
+.timeline-grid.focus-ges .card-section[data-block="dig"],
+.timeline-grid.focus-ges .card-section[data-block="spr"]{display:none}
+.timeline-grid.focus-dig .card-section[data-block="ges"],
+.timeline-grid.focus-dig .card-section[data-block="spr"]{display:none}
+.timeline-grid.focus-spr .card-section[data-block="ges"],
+.timeline-grid.focus-spr .card-section[data-block="dig"]{display:none}
+
+@media(max-width:1200px){
+  .timeline-grid{flex-direction:column;gap:20px}
+  .year-column{width:100%}
+}
+@media(max-width:768px){
+  body{font-size:14px}
+  h1{font-size:1.8em}
+  .container{padding:15px}
+  .year-header h2{font-size:1.1em}
+  .theme-card h3{font-size:.95em}
+  .main-filter-btn{padding:8px 14px;font-size:.88em}
+  .chip{font-size:.8em;padding:5px 11px}
+  .modi-matrix{gap:4px;padding:10px}
+  .modi-matrix-header{font-size:.7em;padding:4px 2px}
+  .modi-cell{padding:6px 3px;font-size:.78em}
+  .modi-matrix-row-label{padding:6px 4px;font-size:.78em}
+}
 </style>
 </head>
 <body>
@@ -148,40 +446,61 @@ h1{color:#000;font-size:2.2em;margin-bottom:10px;font-weight:700;line-height:1.3
   <p class="subtitle">Spiralförmiger Kompetenzaufbau über die gesamte Lehrzeit</p>
   <a href="index_de.html" class="back-btn">← Zurück zur Übersicht 3-jährige Grundbildung EFZ</a>
 
-  <p class="intro-text">Diese Seite bietet eine Übersicht der zu fördernden <em>Schlüsselkompetenzen</em>, der <em>Aspekte</em> mit zugehörigen Inhalten aus dem Lernbereich <em>Gesellschaft</em>, der <em>Texttypen</em> mit zugehörigen Inhalten aus dem Lernbereich <em>Sprache &amp; Kommunikation</em> sowie der Kompetenzbereiche aus <em>Medien &amp; Digitalität</em>.</p>
+  <p class="intro-text">Diese Seite bietet eine Übersicht der zu fördernden <em>Schlüsselkompetenzen</em>, der <em>Aspekte</em> mit zugehörigen Inhalten aus dem Lernbereich <em>Gesellschaft</em>, der <em>Texttypen</em> und <em>Kommunikationsmodi</em> mit zugehörigen Inhalten aus dem Lernbereich <em>Sprache &amp; Kommunikation</em> sowie der Kompetenzbereiche aus <em>Medien &amp; Digitalität</em>.</p>
 
-  <p class="intro-text" style="margin-bottom:25px;">Mithilfe der Filterfunktion können die Inhalte gezielt nach Lehrjahr angezeigt und ihr Aufbau über die gesamte Ausbildung nachvollzogen werden. Die Inhalte aus dem Bereich <em>Medien &amp; Digitalität</em> überschneiden sich zu grossen Teilen mit dem <em>Gesellschafts</em>-Aspekt <em>Technologische und digitale Transformation</em>, ohne diesen jedoch abschliessend abzudecken.</p>
-
-  <div class="status-info" style="margin-bottom:25px;background:#fff;padding:0;">
-    <div class="status-info-header" onclick="toggleUebersicht()" style="padding:10px 0;">
-      <div class="section-title" style="margin:0;padding-bottom:10px;border-bottom:2px solid #dc291e;flex:1;text-align:center;cursor:pointer;">Übersicht Förderfokusse</div>
-      <span class="status-info-toggle" id="uebersicht-toggle" style="margin-left:12px;font-size:1.1em;">▶</span>
-    </div>
-    <div class="status-info-content" id="uebersicht-content">
-      <div style="margin-top:15px;">
-        <img src="images/ffefz.png" alt="Übersicht Förderfokusse EFZ" style="width:100%;height:auto;border-radius:4px;">
-      </div>
-    </div>
-  </div>
+  <p class="intro-text" style="margin-bottom:25px;">Mithilfe der Filter unten können die Themen gezielt angezeigt werden: Der aktive Filter wird unterhalb der Filterleiste angezeigt, passende Themen werden hervorgehoben. Die Inhalte aus dem Bereich <em>Medien &amp; Digitalität</em> überschneiden sich zu grossen Teilen mit dem <em>Gesellschafts</em>-Aspekt <em>Technologische und digitale Transformation</em>, ohne diesen jedoch abschliessend abzudecken.</p>
 
   <div class="section-title">Kompetenzaufbau über die Lehrjahre</div>
 
   <div class="filter-area">
+    <!-- Suchleiste -->
+    <div class="search-bar">
+      <span class="search-icon">🔍</span>
+      <input
+        type="search"
+        id="search-input"
+        class="search-input"
+        placeholder="Suchen in Inhalten, Aspekten, Themen …"
+        autocomplete="off"
+        oninput="onSearchInput(this.value)"
+        onkeydown="if(event.key==='Escape')clearSearch()"
+      >
+      <button class="search-clear" id="search-clear" onclick="clearSearch()" title="Suche löschen">✕</button>
+      <div class="search-suggestions">z.B. «Grafiken», «Budget», «Recht», «Präsentation», «Versicherung» …</div>
+    </div>
+
     <div class="main-filter-container" id="main-filter-btns">
-      <button class="main-filter-btn mfb-reset" id="btn-reset" onclick="resetFilter()">Alles anzeigen</button>
+      <button class="main-filter-btn mfb-reset active" id="btn-reset" onclick="resetFilter()">Alles anzeigen</button>
       <button class="main-filter-btn mfb-schluessel" id="btn-schluessel" onclick="toggleDropdown('schluessel')">Schlüsselkompetenzen <span class="btn-arrow">▾</span></button>
       <button class="main-filter-btn mfb-gesellschaft" id="btn-gesellschaft" onclick="toggleDropdown('gesellschaft')">Gesellschaft <span class="btn-arrow">▾</span></button>
-      <button class="main-filter-btn mfb-digital" id="btn-digital" onclick="toggleDropdown('digital')">Medien und Digitalität <span class="btn-arrow">▾</span></button>
-      <button class="main-filter-btn mfb-sprach-inhalt" id="btn-sprach-inhalt" onclick="toggleDropdown('sprach-inhalt')">Sprache &amp; Kommunikation <span class="btn-arrow">▾</span></button>
+      <button class="main-filter-btn mfb-digital" id="btn-digital" onclick="toggleDropdown('digital')">Medien &amp; Digitalität <span class="btn-arrow">▾</span></button>
+      <button class="main-filter-btn mfb-sprach" id="btn-sprach" onclick="toggleDropdown('sprach')">Sprache &amp; Kommunikation <span class="btn-arrow">▾</span></button>
     </div>
     <div class="filter-dropdown" id="dropdown-schluessel"></div>
     <div class="filter-dropdown" id="dropdown-gesellschaft"></div>
     <div class="filter-dropdown" id="dropdown-digital"></div>
-    <div class="filter-dropdown" id="dropdown-sprach-inhalt"></div>
+    <div class="filter-dropdown" id="dropdown-sprach">
+      <div class="spr-tabs">
+        <button class="spr-tab active" data-sprtab="texttypen" onclick="switchSprTab('texttypen')">Texttypen</button>
+        <button class="spr-tab" data-sprtab="modi" onclick="switchSprTab('modi')">Kommunikationsmodi</button>
+      </div>
+      <div class="spr-panel active" id="spr-panel-texttypen"></div>
+      <div class="spr-panel" id="spr-panel-modi">
+        <div class="modi-matrix" id="modi-matrix"></div>
+        <div class="modi-hint">Klick auf eine Spalte (<strong>mündlich</strong>, <strong>schriftlich</strong>, …) zeigt alle Themen mit diesem Modus – unabhängig von Rezeption, Produktion oder Interaktion. Die Matrix-Zellen zeigen, welche Kombinationen im Rahmenlehrplan vorgesehen sind.</div>
+      </div>
+    </div>
+
+    <!-- Aktiver-Filter-Anzeige -->
+    <div class="active-filter-bar" id="active-filter-bar">
+      <span class="active-filter-label">Aktiver Filter:</span>
+      <span class="active-filter-value" id="active-filter-value">—</span>
+      <span class="active-filter-count" id="active-filter-count"></span>
+      <button class="active-filter-clear" onclick="resetFilter()">Zurücksetzen ✕</button>
+    </div>
   </div>
 
-  <div id="loading" class="loading">Lade Kompetenzen aus dem Lehrplan...</div>
-  <div id="timeline-container" class="timeline-grid" style="display:none;"></div>
+  <div id="timeline-container" class="timeline-grid"></div>
 
   <div class="status-info" style="margin-top:50px;">
     <div class="status-info-header" onclick="toggleStatusInfo()">
@@ -203,39 +522,869 @@ h1{color:#000;font-size:2.2em;margin-bottom:10px;font-weight:700;line-height:1.3
 </div>
 
 <script>
-const THEMES=[{nr:1,name:'Meine Berufsausbildung',year:1,file:'thema1_de.html'},{nr:2,name:'Geld verdienen und ausgeben',year:1,file:'thema2_de.html'},{nr:3,name:'Gesund und sicher durchs Leben',year:1,file:'thema3_de.html'},{nr:4,name:'Meine Kultur, meine Beziehungen',year:2},{nr:5,name:'Interessen vertreten',year:2},{nr:6,name:'Nachhaltiges Handeln',year:2},{nr:0,name:'Schlussarbeit',year:3,schlussarbeit:true},{nr:8,name:'Arbeiten im Wandel',year:3},{nr:9,name:'Mein Zuhause',year:3}];
-const SK={'1.1':'Quellen unterscheiden','1.2':'Ziele setzen & anpassen','1.3':'Innovation & Problemlösung','1.4':'Teamarbeit','1.5':'Werthaltungen reflektieren','1.6':'Standpunkte begründen','1.7':'Verständnis fördern','1.8':'Lebensphasen planen','1.9':'Nachhaltigkeit','1.10':'Anpassung','1.11':'Mehrdeutigkeit','1.12':'Partizipation'};
-const GES={'2.1':'Ethik','2.2':'Identität und Sozialisation','2.3':'Kultur','2.4':'Ökologie','2.5':'Politik','2.6':'Recht','2.7':'Technologische und digitale Transformation','2.8':'Wirtschaft'};
-const DIG={'3.1':'Grundlagen IT-Anwendungen','3.2':'Informations- & Datenkompetenz','3.3':'Inhaltserstellung','3.4':'Problemlösung','3.5':'KI-spezifische Komponenten','3.6':'Reflektive Haltung & verantwortungsvoller Umgang'};
-const SPR={'4.1':'Deskriptiv (beschreibend)','4.2':'Expositorisch (erklärend)','4.3':'Argumentativ (überzeugend)','4.4':'Diskursiv (interagierend)','4.5':'Reflexiv (reflektierend)'};
-const GES_INHALTE={'2.1':['Zwischenmenschliches Verhalten','Konsumentscheide überprüfen'],'2.2':['BFS und Fach ABU','3 Lernorte','Arbeits- und Lernverhalten','Meine Rolle','Bedürfnisse und Kaufverhalten','Risiken und Strategien','Verhaltensmuster','Versicherungsarten und deren Funktionsweise'],'2.3':[],'2.4':['Konsumentscheide überprüfen'],'2.5':['Mitgestaltungsmöglichkeiten'],'2.6':['Rechtsordnung und Lehrvertrag','Gesetzliche Grundlagen','Handlungsfähigkeit','Rechtsgültiger Vertrag','Vertragsrücktritt und Vertragsverletzungen','Rechtliche Konsequenzen','Versicherungsarten und deren Funktionsweise','Nutzen verschiedener Versicherungen'],'2.7':['Siehe «Medien und Digitalität»'],'2.8':['Lohnabrechnung','Einfacher Wirtschaftskreislauf','Budget','Angebote von Geldinstituten','Zahlungsmittel','Finanzierungsarten','Kaufbeeinflussung und Werbefallen','Konsumentscheide überprüfen','Unfall- und Krankenversicherung','Nutzen verschiedener Versicherungen']};
-const DIG_INHALTE={'3.1':['Grundfunktionen von Programmen','Organisationsunterstützung und Lernhilfen'],'3.2':['Nutzung von KI, Angabe von Quellen','Navigieren','Quellenbeurteilung','Verkaufsplattformen','Echokammern, Filterblasen','Manipulationen und Falschinformationen'],'3.3':['Verknüpfte Informationen'],'3.4':['Recherche','Online-Gesetze und -Verordnungen','Tools','Online-Konsumentenhilfen','Online-Vorlagen','Online-Tool'],'3.5':['Persönliche Daten'],'3.6':['Digitale Zusammenarbeit','Schützenswerte Daten','Umgang mit digitalen Medien']};
-const REZ_INHALTE=[{id:'si-inhalte-erfassen',label:'Inhalte erfassen'},{id:'si-lesestrategien',label:'Strategien beim Lesen anwenden'},{id:'si-grafiken',label:'Grafiken'}];
-const SPRACH_INHALTE={'4.1':[{id:'si-praesentieren',label:'Präsentieren'},{id:'si-loesungsansaetze',label:'Lösungsansätze beschreiben'},{id:'si-recherche',label:'Rechercheergebnisse vermitteln'},{id:'si-textvorlage',label:'Textvorlage anpassen mit Gross-/Kleinschreibung'},{id:'si-schriftlich-kom',label:'Zielgruppengerecht schriftlich kommunizieren mit Gross-/Kleinschreibung'}],'4.2':[{id:'si-schriftlich-kom',label:'Zielgruppengerecht schriftlich kommunizieren mit Gross-/Kleinschreibung'},{id:'si-inhalte-erfassen',label:'Inhalte erfassen'},{id:'si-zusammenhaenge',label:'Zusammenhänge umformulieren'},{id:'si-lesestrategien',label:'Strategien beim Lesen anwenden'},{id:'si-grafiken',label:'Grafiken'}],'4.3':[{id:'si-ueberzeugen',label:'Faktenbezogen überzeugen'},{id:'si-position',label:'Position beziehen mit das/dass'}],'4.4':[{id:'si-interview',label:'Interview'},{id:'si-loesungsorient',label:'Lösungsorientiert kommunizieren'}],'4.5':[{id:'si-lernstrategien',label:'Lernstrategien mit Sachstruktur reflektieren'},{id:'si-verhalten',label:'Verhalten reflektieren'},{id:'si-einfluss-sprache',label:'Sprachliche Mittel reflektieren'}]};
-const SI_ALL={};Object.values(SPRACH_INHALTE).forEach(arr=>arr.forEach(si=>{SI_ALL[si.id]=si.label;}));
-const THEMEN_DATA={1:{schluessel:['1.2','1.4','1.10'],gesInhalte:{'2.2':['BFS und Fach ABU','3 Lernorte','Arbeits- und Lernverhalten','Meine Rolle'],'2.6':['Lehrvertrag','Rechte und Pflichten'],'2.7':['Siehe «Medien und Digitalität»']},digInhalte:{'3.1':['Grundfunktionen von Programmen','Organisationsunterstützung und Lernhilfen'],'3.2':['Nutzung von KI, Angabe von Quellen'],'3.3':['Bild- und Textdokument'],'3.4':['Recherche']},lebensbezuege:[{text:'Meine Ausbildung findet im Betrieb, in der Berufsfachschule und in den überbetrieblichen Kursen statt.',kompetenzen:[{gesellschaft:['2.2'],digital:['3.1','3.2'],sprache:['4.1','4.2','4.4']},{gesellschaft:['2.2'],digital:['3.1','3.3'],sprache:['4.1','4.5']}]},{text:'Ich habe durch den Lehrvertrag Rechte und Pflichten.',kompetenzen:[{gesellschaft:['2.6'],digital:['3.4'],sprache:['4.1','4.2']}]}],sprachInhalte:{'rez':['si-inhalte-erfassen'],'4.1':['si-situation','si-lernstrategien-t','si-loesungsansaetze'],'4.2':['si-schriftlich-kom2'],'4.4':['si-interview','si-loesungsorient'],'4.5':['si-verhalten']}},2:{schluessel:['1.5','1.6','1.8','1.9'],gesInhalte:{'2.1':['Konsumentscheide überprüfen'],'2.2':['Bedürfnisse und Kaufverhalten'],'2.4':['Konsumentscheide überprüfen'],'2.6':['Handlungsfähigkeit','Rechtsgültiger Vertrag','Vertragsrücktritt und Vertragsverletzungen'],'2.7':['Siehe «Medien und Digitalität»'],'2.8':['Lohnabrechnung','Budget','Sparmöglichkeiten','Zahlungsmittel','Finanzierungsarten','Konsumentscheide überprüfen']},digInhalte:{'3.2':['Verkaufsplattformen'],'3.4':['Tools','Online-Vorlagen','Online-Tool'],'3.5':['Persönliche Daten']},lebensbezuege:[{text:'Ich verdiene mein eigenes Geld, verwalte es und gebe es aus.',kompetenzen:[{gesellschaft:['2.8'],digital:['3.2','3.4'],sprache:['4.2','4.1']},{gesellschaft:['2.8'],digital:['3.4'],sprache:['4.1']},{gesellschaft:['2.8'],digital:['3.2'],sprache:['4.2','4.3']}]},{text:'Ich treffe täglich Kauf- und Konsumentscheidungen und bin dabei mit Rechten und Pflichten konfrontiert.',kompetenzen:[{gesellschaft:['2.1','2.2','2.4','2.8'],digital:['3.4','3.5'],sprache:['4.1','4.5']},{gesellschaft:['2.6'],digital:['3.2'],sprache:['4.1','4.2']}]}],sprachInhalte:{'rez':['si-inhalte-erfassen','si-lesestrategien'],'4.1':['si-praesentieren','si-textvorlage','si-schriftlich-kom'],'4.2':['si-schriftlich-kom2'],'4.3':['si-ueberzeugen'],'4.5':['si-verhalten']}},3:{schluessel:['1.1','1.7','1.8'],gesInhalte:{'2.1':['Zwischenmenschliches Verhalten'],'2.2':['Risiken und Strategien','Verhaltensmuster'],'2.6':['Rechtliche Konsequenzen','Versicherungsarten und deren Funktionsweise'],'2.7':['Siehe «Medien und Digitalität»'],'2.8':['Unfall- und Krankenversicherung','Nutzen verschiedener Versicherungen']},digInhalte:{'3.6':['Schützenswerte Daten','Umgang mit digitalen Medien']},lebensbezuege:[{text:'Mein Körper und meine Psyche sind unterschiedlichen Einflüssen ausgesetzt.',kompetenzen:[{gesellschaft:['2.2'],digital:['3.6'],sprache:['4.2','4.3','4.5']},{gesellschaft:['2.1','2.6'],digital:['3.6'],sprache:['4.4','4.5']}]},{text:'Ich muss abwägen, ob ich Risiken und deren Folgen selbst trage oder wie ich mich absichere.',kompetenzen:[{gesellschaft:['2.2','2.6','2.8'],digital:['3.6'],sprache:['4.1','4.2']}]}],sprachInhalte:{'rez':['si-inhalte-erfassen','si-grafiken'],'4.3':['si-ueberzeugen'],'4.4':['si-loesungsorient'],'4.5':['si-verhalten']}}};
+/* ============================================================
+   DATEN – AUSSCHLIESSLICH AUS DEM PDF
+   Quelle: SLP_Bern_Themenübersicht_EFZ_3_2026_03_31.pdf (Seiten 1-3)
+   ============================================================ */
 
-function aid(nr){const p=nr.split('.')[0];if(p==='1')return 'sk-'+nr;if(p==='2')return 'ges-'+nr;if(p==='3')return 'dig-'+nr;if(p==='4')return 'spr-'+nr;return nr;}
-function sortNr(a,b){const pa=a.split('.').map(Number),pb=b.split('.').map(Number);return pa[0]!==pb[0]?pa[0]-pb[0]:(pa[1]||0)-(pb[1]||0);}
-let activeFilter=null,openDropdown=null;
-function makeChip(label,aspekt,chipClass){const c=document.createElement('div');c.className='chip '+chipClass;c.textContent=label;c.setAttribute('data-aspekt',aspekt);c.onclick=()=>filterAspekt(aspekt,c);return c;}
-function renderDropdowns(){const dsk=document.getElementById('dropdown-schluessel');const rowSk=document.createElement('div');rowSk.className='dropdown-inner';Object.entries(SK).sort((a,b)=>sortNr(a[0],b[0])).forEach(([nr,text])=>{rowSk.appendChild(makeChip(nr+' '+text,aid(nr),'chip-schluessel'));});dsk.appendChild(rowSk);const dges=document.getElementById('dropdown-gesellschaft');const gesGroup=document.createElement('div');gesGroup.className='ges-group';Object.entries(GES).sort((a,b)=>sortNr(a[0],b[0])).forEach(([nr,text])=>{const subItems=GES_INHALTE[nr]||[];const row=document.createElement('div');row.className='ges-aspect-row';if(subItems.length){const toggleBtn=document.createElement('button');toggleBtn.className='ges-toggle-btn';toggleBtn.textContent='▶';row.appendChild(toggleBtn);const chip=makeChip(nr+' '+text,aid(nr),'chip-gesellschaft');row.appendChild(chip);const subPanel=document.createElement('div');subPanel.className='ges-sub-items';subItems.forEach(item=>{const sc=document.createElement('div');sc.className='ges-sub-chip';sc.textContent=item;sc.onclick=()=>{document.querySelectorAll('.ges-sub-chip,.spr-sub-chip,.dig-sub-chip').forEach(c=>c.classList.remove('active'));sc.classList.add('active');filterByGesText(item);};subPanel.appendChild(sc);});const doToggle=(e)=>{e.stopPropagation();subPanel.classList.toggle('visible');toggleBtn.classList.toggle('open');};toggleBtn.addEventListener('click',doToggle);chip.addEventListener('click',(e)=>{e.stopPropagation();doToggle(e);});gesGroup.appendChild(row);gesGroup.appendChild(subPanel);}else{const spacer=document.createElement('span');spacer.style.cssText='width:24px;flex-shrink:0;display:inline-block';row.appendChild(spacer);row.appendChild(makeChip(nr+' '+text,aid(nr),'chip-gesellschaft'));gesGroup.appendChild(row);}});dges.appendChild(gesGroup);const ddig=document.getElementById('dropdown-digital');const digGroup=document.createElement('div');digGroup.className='ges-group';Object.entries(DIG).sort((a,b)=>sortNr(a[0],b[0])).forEach(([nr,text])=>{const subItems=DIG_INHALTE[nr]||[];const row=document.createElement('div');row.className='ges-aspect-row';if(subItems.length){const toggleBtn=document.createElement('button');toggleBtn.className='ges-toggle-btn green';toggleBtn.textContent='▶';row.appendChild(toggleBtn);const chip=makeChip(nr+' '+text,aid(nr),'chip-digital');row.appendChild(chip);const subPanel=document.createElement('div');subPanel.className='ges-sub-items';subItems.forEach(item=>{const sc=document.createElement('div');sc.className='dig-sub-chip';sc.textContent=item;sc.onclick=()=>{document.querySelectorAll('.ges-sub-chip,.spr-sub-chip,.dig-sub-chip').forEach(c=>c.classList.remove('active'));sc.classList.add('active');filterByDigText(item);};subPanel.appendChild(sc);});const doToggle=(e)=>{e.stopPropagation();subPanel.classList.toggle('visible');toggleBtn.classList.toggle('open');};toggleBtn.addEventListener('click',doToggle);chip.addEventListener('click',(e)=>{e.stopPropagation();doToggle(e);});digGroup.appendChild(row);digGroup.appendChild(subPanel);}else{const spacer=document.createElement('span');spacer.style.cssText='width:24px;flex-shrink:0;display:inline-block';row.appendChild(spacer);row.appendChild(makeChip(nr+' '+text,aid(nr),'chip-digital'));digGroup.appendChild(row);}});ddig.appendChild(digGroup);const dsi=document.getElementById('dropdown-sprach-inhalt');const siGroup=document.createElement('div');siGroup.className='ges-group';const rezRow=document.createElement('div');rezRow.className='ges-aspect-row';const rezToggle=document.createElement('button');rezToggle.className='ges-toggle-btn blue';rezToggle.textContent='▶';rezRow.appendChild(rezToggle);const rezChip=makeChip('4. Rezeption','spr-rez','chip-sprache');rezRow.appendChild(rezChip);const rezPanel=document.createElement('div');rezPanel.className='ges-sub-items';REZ_INHALTE.forEach(si=>{const sc=document.createElement('div');sc.className='spr-sub-chip';sc.textContent=si.label;sc.onclick=()=>{document.querySelectorAll('.ges-sub-chip,.spr-sub-chip,.dig-sub-chip').forEach(c=>c.classList.remove('active'));sc.classList.add('active');filterBySiId(si.id);};rezPanel.appendChild(sc);});const doToggleRez=(e)=>{e.stopPropagation();rezPanel.classList.toggle('visible');rezToggle.classList.toggle('open');};rezToggle.addEventListener('click',doToggleRez);rezChip.addEventListener('click',(e)=>{e.stopPropagation();doToggleRez(e);});siGroup.appendChild(rezRow);siGroup.appendChild(rezPanel);Object.keys(SPRACH_INHALTE).sort(sortNr).forEach(sprNr=>{const subItems=SPRACH_INHALTE[sprNr];const row=document.createElement('div');row.className='ges-aspect-row';const toggleBtn=document.createElement('button');toggleBtn.className='ges-toggle-btn blue';toggleBtn.textContent='▶';row.appendChild(toggleBtn);const sprChip=makeChip(sprNr+' '+(SPR[sprNr]||sprNr),aid(sprNr),'chip-sprache');row.appendChild(sprChip);const subPanel=document.createElement('div');subPanel.className='ges-sub-items';subItems.forEach(si=>{const sc=document.createElement('div');sc.className='spr-sub-chip';sc.textContent=si.label;sc.onclick=()=>{document.querySelectorAll('.ges-sub-chip,.spr-sub-chip,.dig-sub-chip').forEach(c=>c.classList.remove('active'));sc.classList.add('active');filterBySiId(si.id);};subPanel.appendChild(sc);});const doToggle=(e)=>{e.stopPropagation();subPanel.classList.toggle('visible');toggleBtn.classList.toggle('open');};toggleBtn.addEventListener('click',doToggle);sprChip.addEventListener('click',(e)=>{e.stopPropagation();doToggle(e);});siGroup.appendChild(row);siGroup.appendChild(subPanel);});dsi.appendChild(siGroup);}
-function renderTimeline(){const cont=document.getElementById('timeline-container');cont.innerHTML='';for(let y=1;y<=3;y++){const col=document.createElement('div');col.className='year-column';col.innerHTML='<div class="year-header"><h2>'+y+'. Lehrjahr</h2></div>';THEMES.filter(t=>t.year===y).forEach(theme=>{const data=THEMEN_DATA[theme.nr];col.appendChild(data?createCard(theme,data):createPlaceholder(theme));});cont.appendChild(col);}}
-function createPlaceholder(theme){const d=document.createElement('div');d.className='theme-card placeholder';d.innerHTML='<h3>Thema '+theme.nr+': '+theme.name+'</h3>';return d;}
-function mkBadge(text,cssClass,cat,aspekt,tipText){const b=document.createElement('div');b.className='kompetenz-badge '+cssClass;b.textContent=text;b.setAttribute('data-category',cat);b.setAttribute('data-aspekt',aspekt);const tt=document.createElement('div');tt.className='tooltip';tt.textContent=tipText;b.appendChild(tt);return b;}
-function createCard(theme,data){const card=document.createElement('div');card.className='theme-card';const h3=document.createElement('h3');if(theme.file){h3.innerHTML='<a href="'+theme.file+'">Thema '+theme.nr+': '+theme.name+'</a>';}else{h3.textContent='Thema '+theme.nr+': '+theme.name;}card.appendChild(h3);if(data.schluessel&&data.schluessel.length){const sd=document.createElement('div');sd.className='schluesselkompetenzen';data.schluessel.forEach(nr=>{const b=document.createElement('div');b.className='schluesselkompetenz-badge';b.textContent=nr;b.setAttribute('data-category','schluessel');b.setAttribute('data-aspekt',aid(nr));const tt=document.createElement('div');tt.className='tooltip';tt.textContent=SK[nr]||nr;b.appendChild(tt);sd.appendChild(b);});card.appendChild(sd);}const allG=new Set(),allD=new Set(),allS=new Set();data.lebensbezuege.forEach(lb=>lb.kompetenzen.forEach(k=>{k.gesellschaft.forEach(n=>allG.add(n));k.digital.forEach(n=>allD.add(n));k.sprache.forEach(n=>allS.add(n));}));const kd=document.createElement('div');kd.className='kompetenz-detail';[...allG].sort(sortNr).forEach(nr=>kd.appendChild(mkBadge(nr,'badge-gesellschaft','gesellschaft',aid(nr),GES[nr]||nr)));[...allD].sort(sortNr).forEach(nr=>kd.appendChild(mkBadge(nr,'badge-digital','digital',aid(nr),DIG[nr]||nr)));const sprBadges=[...allS].filter(n=>n!=='rez').sort(sortNr);if(allS.has('rez'))kd.appendChild(mkBadge('4.','badge-sprache','sprache','spr-rez','Rezeption'));sprBadges.forEach(nr=>kd.appendChild(mkBadge(nr,'badge-sprache','sprache',aid(nr),SPR[nr]||nr)));card.appendChild(kd);const gesTextToAspekts=new Map();[...allG].sort(sortNr).forEach(nr=>{if(data.gesInhalte&&data.gesInhalte[nr]){data.gesInhalte[nr].forEach(txt=>{if(!gesTextToAspekts.has(txt))gesTextToAspekts.set(txt,[]);gesTextToAspekts.get(txt).push(nr);});}});if(gesTextToAspekts.size){const wrap=document.createElement('div');wrap.className='card-inhalte-block';wrap.setAttribute('data-block','ges');wrap.style.cssText='display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;';gesTextToAspekts.forEach((aspekts,txt)=>{const sc=document.createElement('span');sc.className='card-ges-chip';sc.setAttribute('data-ges-text',txt);sc.setAttribute('data-ges-aspekt',aspekts.join(','));sc.textContent=txt;wrap.appendChild(sc);});card.appendChild(wrap);}if(data.digInhalte){const _seenDig=new Set();const digChips=[...allD].sort(sortNr).flatMap(nr=>(data.digInhalte[nr])?data.digInhalte[nr].filter(txt=>{if(_seenDig.has(txt))return false;_seenDig.add(txt);return true;}).map(txt=>({txt,nr})):[]);if(digChips.length){const wrap=document.createElement('div');wrap.className='card-inhalte-block';wrap.setAttribute('data-block','dig');wrap.style.cssText='display:flex;flex-wrap:wrap;gap:4px;margin-top:4px;';digChips.forEach(({txt,nr})=>{const sc=document.createElement('span');sc.className='card-dig-chip';sc.setAttribute('data-dig-text',txt);sc.setAttribute('data-dig-aspekt',nr);sc.textContent=txt;wrap.appendChild(sc);});card.appendChild(wrap);}}if(data.sprachInhalte&&typeof data.sprachInhalte==='object'&&!Array.isArray(data.sprachInhalte)){const outer=document.createElement('div');outer.className='card-inhalte-block';outer.setAttribute('data-block','spr');outer.style.cssText='display:flex;flex-wrap:wrap;gap:4px;margin-top:4px;';const _seen=new Set();Object.values(data.sprachInhalte).forEach(ids=>{(ids||[]).forEach(siId=>{const normId=siId.startsWith('si-')?siId:'si-'+siId;if(_seen.has(normId))return;_seen.add(normId);const sc=document.createElement('span');sc.className='card-spr-chip';sc.setAttribute('data-si-id',normId);sc.textContent=SI_ALL[normId]||siId;outer.appendChild(sc);});});card.appendChild(outer);}return card;}
-function toggleDropdown(cat){const panel=document.getElementById('dropdown-'+cat);const btn=document.getElementById('btn-'+cat);if(!panel||!btn)return;if(openDropdown===cat){panel.classList.remove('visible');btn.classList.remove('open','active');openDropdown=null;}else{if(openDropdown){document.getElementById('dropdown-'+openDropdown).classList.remove('visible');const ob=document.getElementById('btn-'+openDropdown);if(ob)ob.classList.remove('open','active');}panel.classList.add('visible');btn.classList.add('open','active');openDropdown=cat;filterCategory(cat);}}
-function filterCategory(cat){activeFilter='cat:'+cat;document.getElementById('btn-reset').classList.remove('active');document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));document.querySelectorAll('.ges-sub-chip,.spr-sub-chip,.dig-sub-chip').forEach(c=>c.classList.remove('active'));resetChipHighlights();const isGes=cat==='gesellschaft',isSpr=cat==='sprach-inhalt',isSk=cat==='schluessel',isDig=cat==='digital';document.querySelectorAll('.kompetenz-badge').forEach(b=>{const bc=b.getAttribute('data-category');b.style.display=(bc===cat||(isSpr&&bc==='sprache')||(isDig&&bc==='digital'))?'inline-block':'none';});document.querySelectorAll('.schluesselkompetenz-badge').forEach(b=>{b.style.display=isSk?'inline-block':'none';});document.querySelectorAll('.schluesselkompetenzen').forEach(sk=>{sk.style.display=isSk?'block':'none';});document.querySelectorAll('.card-inhalte-block[data-block="ges"]').forEach(b=>b.style.display=isGes?'flex':'none');document.querySelectorAll('.card-inhalte-block[data-block="dig"]').forEach(b=>b.style.display=isDig?'flex':'none');document.querySelectorAll('.card-inhalte-block[data-block="spr"]').forEach(b=>b.style.display=isSpr?'flex':'none');updateVis();}
-function filterAspekt(aspekt,chipEl){if(activeFilter===aspekt){resetFilter();return;}activeFilter=aspekt;document.getElementById('btn-reset').classList.remove('active');document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));document.querySelectorAll('.ges-sub-chip,.spr-sub-chip,.dig-sub-chip').forEach(c=>c.classList.remove('active'));if(chipEl)chipEl.classList.add('active');resetChipHighlights();document.querySelectorAll('.kompetenz-badge,.schluesselkompetenz-badge').forEach(b=>{b.style.display=b.getAttribute('data-aspekt')===aspekt?'inline-block':'none';});document.querySelectorAll('.schluesselkompetenzen').forEach(sk=>{const vis=[...sk.querySelectorAll('.schluesselkompetenz-badge')].some(b=>b.style.display!=='none');sk.style.display=vis?'block':'none';});const isGesAsp=aspekt.startsWith('ges-'),isSprAsp=aspekt.startsWith('spr-'),isDigAsp=aspekt.startsWith('dig-');document.querySelectorAll('.card-inhalte-block[data-block="ges"]').forEach(b=>b.style.display=isGesAsp?'flex':'none');document.querySelectorAll('.card-inhalte-block[data-block="dig"]').forEach(b=>b.style.display=isDigAsp?'flex':'none');document.querySelectorAll('.card-inhalte-block[data-block="spr"]').forEach(b=>b.style.display=isSprAsp?'flex':'none');if(isGesAsp){const nr=aspekt.replace('ges-','');document.querySelectorAll('.card-ges-chip').forEach(c=>{const aspekts=c.getAttribute('data-ges-aspekt').split(',');c.style.opacity=aspekts.includes(nr)?'1':'0.2';});}if(isDigAsp){const nr=aspekt.replace('dig-','');document.querySelectorAll('.card-dig-chip').forEach(c=>{c.style.opacity=c.getAttribute('data-dig-aspekt')===nr?'1':'0.2';});}if(isSprAsp){const sprNr=aspekt.replace('spr-','');const validIds=sprNr==='rez'?new Set(REZ_INHALTE.map(s=>s.id)):new Set((SPRACH_INHALTE[sprNr]||[]).map(s=>s.id));document.querySelectorAll('.card-spr-chip').forEach(c=>{c.style.opacity=validIds.has(c.getAttribute('data-si-id'))?'1':'0.2';});}updateVis();}
-function filterByGesText(txt){activeFilter='ges-text:'+txt;document.getElementById('btn-reset').classList.remove('active');resetChipHighlights();document.querySelectorAll('.kompetenz-badge,.schluesselkompetenz-badge').forEach(b=>b.style.display='none');document.querySelectorAll('.schluesselkompetenzen').forEach(sk=>sk.style.display='none');document.querySelectorAll('.card-inhalte-block[data-block="ges"]').forEach(b=>b.style.display='flex');document.querySelectorAll('.card-inhalte-block[data-block="dig"]').forEach(b=>b.style.display='none');document.querySelectorAll('.card-inhalte-block[data-block="spr"]').forEach(b=>b.style.display='none');document.querySelectorAll('.card-ges-chip').forEach(c=>{const match=c.getAttribute('data-ges-text')===txt;c.style.opacity=match?'1':'0.15';c.style.fontWeight=match?'700':'';c.style.outline=match?'2px solid #d4a500':'';});document.querySelectorAll('.theme-card:not(.placeholder):not(.schlussarbeit)').forEach(card=>{const has=[...card.querySelectorAll('.card-ges-chip')].some(c=>c.getAttribute('data-ges-text')===txt);card.style.display=has?'block':'none';});}
-function filterByDigText(txt){activeFilter='dig-text:'+txt;document.getElementById('btn-reset').classList.remove('active');resetChipHighlights();document.querySelectorAll('.kompetenz-badge,.schluesselkompetenz-badge').forEach(b=>b.style.display='none');document.querySelectorAll('.schluesselkompetenzen').forEach(sk=>sk.style.display='none');document.querySelectorAll('.card-inhalte-block[data-block="ges"]').forEach(b=>b.style.display='none');document.querySelectorAll('.card-inhalte-block[data-block="dig"]').forEach(b=>b.style.display='flex');document.querySelectorAll('.card-inhalte-block[data-block="spr"]').forEach(b=>b.style.display='none');document.querySelectorAll('.card-dig-chip').forEach(c=>{const match=c.getAttribute('data-dig-text')===txt;c.style.opacity=match?'1':'0.15';c.style.fontWeight=match?'700':'';c.style.outline=match?'2px solid #4db380':'';});document.querySelectorAll('.theme-card:not(.placeholder):not(.schlussarbeit)').forEach(card=>{const has=[...card.querySelectorAll('.card-dig-chip')].some(c=>c.getAttribute('data-dig-text')===txt);card.style.display=has?'block':'none';});}
-function filterBySiId(siId){activeFilter='si:'+siId;document.getElementById('btn-reset').classList.remove('active');resetChipHighlights();document.querySelectorAll('.kompetenz-badge,.schluesselkompetenz-badge').forEach(b=>b.style.display='none');document.querySelectorAll('.schluesselkompetenzen').forEach(sk=>sk.style.display='none');document.querySelectorAll('.card-inhalte-block[data-block="ges"]').forEach(b=>b.style.display='none');document.querySelectorAll('.card-inhalte-block[data-block="dig"]').forEach(b=>b.style.display='none');document.querySelectorAll('.card-inhalte-block[data-block="spr"]').forEach(b=>b.style.display='flex');document.querySelectorAll('.card-spr-chip').forEach(c=>{const match=c.getAttribute('data-si-id')===siId;c.style.opacity=match?'1':'0.15';c.style.fontWeight=match?'700':'';c.style.outline=match?'2px solid #3385d6':'';});document.querySelectorAll('.theme-card:not(.placeholder):not(.schlussarbeit)').forEach(card=>{const has=[...card.querySelectorAll('.card-spr-chip')].some(c=>c.getAttribute('data-si-id')===siId);card.style.display=has?'block':'none';});}
-function resetChipHighlights(){document.querySelectorAll('.card-ges-chip,.card-spr-chip,.card-dig-chip').forEach(c=>{c.style.opacity='';c.style.fontWeight='';c.style.outline='';});}
-function updateVis(){document.querySelectorAll('.theme-card:not(.placeholder):not(.schlussarbeit)').forEach(card=>{const anyBadge=[...card.querySelectorAll('.kompetenz-badge,.schluesselkompetenz-badge')].some(b=>b.style.display!=='none');card.style.display=anyBadge?'block':'none';});}
-function resetFilter(){activeFilter=null;document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));document.querySelectorAll('.ges-sub-chip,.spr-sub-chip,.dig-sub-chip').forEach(c=>c.classList.remove('active'));document.querySelectorAll('.main-filter-btn').forEach(b=>b.classList.remove('active'));document.getElementById('btn-reset').classList.add('active');if(openDropdown){document.getElementById('dropdown-'+openDropdown).classList.remove('visible');const ob=document.getElementById('btn-'+openDropdown);if(ob)ob.classList.remove('open','active');openDropdown=null;}document.querySelectorAll('.kompetenz-badge,.schluesselkompetenz-badge').forEach(b=>b.style.display='inline-block');document.querySelectorAll('.schluesselkompetenzen').forEach(s=>s.style.display='block');document.querySelectorAll('.theme-card').forEach(c=>c.style.display='block');document.querySelectorAll('.card-inhalte-block').forEach(b=>b.style.display='flex');resetChipHighlights();}
-function toggleUebersicht(){document.getElementById('uebersicht-content').classList.toggle('open');document.getElementById('uebersicht-toggle').classList.toggle('open');}
-function toggleStatusInfo(){document.getElementById('statusinfo-content').classList.toggle('open');document.getElementById('statusinfo-toggle').classList.toggle('open');}
-function initApp(){renderDropdowns();renderTimeline();document.getElementById('loading').style.display='none';document.getElementById('timeline-container').style.display='flex';document.getElementById('btn-reset').classList.add('active');}
+const THEMES=[
+  {id:'t1', nr:1, name:'Meine Berufsausbildung',         year:1},
+  {id:'t2', nr:2, name:'Mein Lohn, meine Ausgaben',      year:1},
+  {id:'t3', nr:3, name:'Meine Sicherheit, mein Wohlbefinden',year:1},
+  {id:'t4', nr:4, name:'Meine Kultur, meine Beziehungen',year:2},
+  {id:'t5', nr:5, name:'Meine Meinung einbringen',       year:2},
+  {id:'t6', nr:6, name:'Mein Konsum, mein Einfluss',     year:2},
+  {id:'tS', nr:0, name:'Schlussarbeit',                  year:3, schlussarbeit:true},
+  {id:'t7', nr:7, name:'Meine Arbeit in Zukunft',        year:3},
+  {id:'t8', nr:8, name:'Mein Zuhause',                   year:3}
+];
+
+const SK={'1.1':'Quellen unterscheiden','1.2':'Ziele setzen & anpassen','1.3':'Innovation & Problemlösung','1.4':'Teamarbeit','1.5':'Werthaltungen reflektieren','1.6':'Standpunkte begründen','1.7':'Verständnis fördern','1.8':'Lebensphasen planen','1.9':'Nachhaltigkeit','1.10':'Anpassung','1.11':'Mehrdeutigkeit','1.12':'Partizipation'};
+const GES={'2.1':'Ethik','2.2':'Identität & Sozialisation','2.3':'Kultur','2.4':'Ökologie','2.5':'Politik','2.6':'Recht','2.7':'Technologische & digitale Transformation','2.8':'Wirtschaft'};
+const DIG={'3.1':'Grundlagen IT-Anwendungen','3.2':'Informations- & Datenkompetenz','3.3':'Inhaltserstellung','3.4':'Problemlösung','3.5':'KI-spezifische Komponenten','3.6':'Reflektive Haltung & verantwortungsvoller Umgang'};
+const SPR={'4.1':'Deskriptiv (beschreibend)','4.2':'Expositorisch (erklärend)','4.3':'Argumentativ (überzeugend)','4.4':'Diskursiv (interagierend)','4.5':'Reflexiv (reflektierend)','4.R':'Rezeption'};
+
+/* Kommunikationsmodi – Matrix wie im Rahmenlehrplan (Seite 1 PDF) */
+const MODI_ROWS=[
+  {id:'R',label:'Rezeption',            cols:['M','S','A-V']},
+  {id:'P',label:'Produktion',           cols:['M','S','M-M']},
+  {id:'I',label:'Interaktion & Kollab.',cols:['M','S','D']}
+];
+const MODI_COLS=['M','S','A-V','M-M','D'];
+const COL_LABELS={'M':'mündlich','S':'schriftlich','A-V':'audiovisuell','M-M':'multimedial','D':'digital'};
+const MODI_LABELS={
+  'R-M':'Rezeption · mündlich',
+  'R-S':'Rezeption · schriftlich & bildlich',
+  'R-A-V':'Rezeption · audiovisuell',
+  'P-M':'Produktion · mündlich',
+  'P-S':'Produktion · schriftlich & bildlich',
+  'P-M-M':'Produktion · multimedial',
+  'I-M':'Interaktion · mündlich',
+  'I-S':'Interaktion · schriftlich',
+  'I-D':'Interaktion · digital'
+};
+const MODI_AVAILABLE=new Set();
+MODI_ROWS.forEach(r=>r.cols.forEach(c=>MODI_AVAILABLE.add(r.id+'-'+c)));
+
+/* ============================================================
+   THEMEN_DATA – 1:1 aus PDF
+   Quelle: SLP_Bern_Themenübersicht_EFZ_3_2026_03_31.pdf
+   - Seite 2: Gesellschaft-Matrix (Aspekt × Thema)
+   - Seite 3: Sprache-Matrix + Medien-Matrix (mit Modi-Klammern)
+   Spaltenzuordnung visuell aus dem PDF verifiziert.
+   Im PDF befüllt sind NUR die Spalten der Themen 1, 2 und 3 (1. Lehrjahr).
+   Alle anderen Themen (4–8, Schlussarbeit) sind im PDF leer.
+   Schlüsselkompetenzen sind im PDF pro Thema NICHT ausgewiesen.
+   ============================================================ */
+const THEMEN_DATA={
+  /* ---------- Thema 1: Meine Berufsausbildung ---------- */
+  t1:{
+    sk:[],
+    ges:{
+      '2.2':['BFS und Fach ABU','3 Lernorte','Arbeits und Lernverhalten','Meine Rolle'],
+      '2.5':['Mitgestaltungsmöglichkeiten'],
+      '2.6':['Rechtsordnung und Lehrvertrag','Gesetzliche Grundlagen'],
+      '2.7':['Siehe «Medien und Digitalität»']
+    },
+    dig:{
+      '3.1':['Grundfunktionen von Programmen','Organisationsunterstützung und Lernhilfen'],
+      '3.2':['Nutzung von KI, Angabe von Quellen'],
+      '3.4':['Recherche','Online-Gesetze und -Verordnungen'],
+      '3.6':['Digitale Zusammenarbeit']
+    },
+    spr:[
+      {id:'t1-si-inhalte-erfassen',    label:'Inhalte erfassen',                                                  texttyp:'4.R', modi:['R-S']},
+      {id:'t1-si-praesentieren',       label:'Präsentation',                                                      texttyp:'4.1', modi:['P-M-M','P-M']},
+      {id:'t1-si-loesungsansaetze',    label:'Lösungsansätze beschreiben',                                        texttyp:'4.1', modi:['P-M','P-S']},
+      {id:'t1-si-schriftlich-kom',     label:'Zielgruppengerecht schriftlich kommunizieren mit Gross-/Kleinschreibung', texttyp:'4.2', modi:['P-S','I-S']},
+      {id:'t1-si-interview',           label:'Interview',                                                         texttyp:'4.4', modi:['I-M']},
+      {id:'t1-si-loesungsorient',      label:'Lösungsorientiert kommunizieren',                                   texttyp:'4.4', modi:['I-M']},
+      {id:'t1-si-lernstrategien',      label:'Lernstrategien mit Sachstruktur reflektieren',                      texttyp:'4.5', modi:['P-S']}
+    ]
+  },
+
+  /* ---------- Thema 2: Mein Lohn, meine Ausgaben ---------- */
+  t2:{
+    sk:[],
+    ges:{
+      '2.1':['Konsumentscheide überprüfen'],
+      '2.2':['Bedürfnisse und Kaufverhalten'],
+      '2.4':['Konsumentscheide überprüfen'],
+      '2.6':['Handlungsfähigkeit','Rechtsgültiger Vertrag','Vertragsrücktritt und Vertragsverletzungen'],
+      '2.7':['Siehe «Medien und Digitalität»'],
+      '2.8':['Lohnabrechnung','Einfacher Wirtschaftskreislauf','Budget','Angebote von Geldinstituten','Zahlungsmittel','Finanzierungsarten','Bedürfnisse und Kaufverhalten','Kaufbeeinflussung und Werbefallen','Konsumentscheide überprüfen']
+    },
+    dig:{
+      '3.2':['Navigieren','Quellenbeurteilung','Verkaufsplattformen'],
+      '3.4':['Tools','Recherche','Online-Konsumentenhilfen'],
+      '3.5':['Persönliche Daten']
+    },
+    spr:[
+      {id:'t2-si-inhalte-erfassen',    label:'Inhalte erfassen',                                                  texttyp:'4.R', modi:['R-S','R-A-V']},
+      {id:'t2-si-lesestrategien',      label:'Strategien beim Lesen anwenden',                                    texttyp:'4.R', modi:['R-S']},
+      {id:'t2-si-recherche',           label:'Rechercheergebnisse vermitteln',                                    texttyp:'4.1', modi:['P-M']},
+      {id:'t2-si-praesentieren',       label:'Präsentation',                                                      texttyp:'4.1', modi:['P-M-M']},
+      {id:'t2-si-textvorlage',         label:'Textvorlage anpassen mit Gross-/Kleinschreibung',                   texttyp:'4.1', modi:['P-S']},
+      {id:'t2-si-zusammenhaenge',      label:'Zusammenhänge umformulieren',                                       texttyp:'4.2', modi:['P-S']},
+      {id:'t2-si-ueberzeugen',         label:'Faktenbezogen überzeugen',                                          texttyp:'4.3', modi:['P-S']},
+      {id:'t2-si-verhalten',           label:'Verhalten reflektieren',                                            texttyp:'4.5', modi:['P-M']},
+      {id:'t2-si-einfluss-sprache',    label:'Sprachliche Mittel reflektieren',                                   texttyp:'4.5', modi:['P-M','P-S']}
+    ]
+  },
+
+  /* ---------- Thema 3: Meine Sicherheit, mein Wohlbefinden ---------- */
+  t3:{
+    sk:[],
+    ges:{
+      '2.1':['Zwischenmenschliches Verhalten'],
+      '2.2':['Risiken und Strategien','Verhaltensmuster','Versicherungsarten und deren Funktionsweise'],
+      '2.6':['Rechtliche Konsequenzen','Versicherungsarten und deren Funktionsweise','Nutzen verschiedener Versicherungen'],
+      '2.7':['Siehe «Medien und Digitalität»'],
+      '2.8':['Unfall und Krankenversicherung','Nutzen verschiedener Versicherungen']
+    },
+    dig:{
+      '3.2':['Echokammern, Filterblasen','Manipulationen und Falschinformationen'],
+      '3.3':['Verknüpfte Informationen'],
+      '3.4':['Online-Vorlagen','Online-Tool'],
+      '3.6':['Schützenswerte Daten','Umgang mit digitalen Medien']
+    },
+    spr:[
+      {id:'t3-si-inhalte-erfassen',    label:'Inhalte erfassen',                                                  texttyp:'4.R', modi:['R-A-V','R-S']},
+      {id:'t3-si-grafiken',            label:'Grafiken',                                                          texttyp:'4.R', modi:['R-S']},
+      {id:'t3-si-schriftlich-kom',     label:'Zielgruppengerecht schriftlich kommunizieren mit Gross-/Kleinschreibung', texttyp:'4.1', modi:['P-S','I-S']},
+      {id:'t3-si-position',            label:'Position beziehen mit das / dass',                                  texttyp:'4.3', modi:['P-S']},
+      {id:'t3-si-loesungsorient',      label:'Lösungsorientiert kommunizieren',                                   texttyp:'4.4', modi:['I-M']},
+      {id:'t3-si-verhalten',           label:'Verhalten reflektieren',                                            texttyp:'4.5', modi:['P-M','P-S']}
+    ]
+  },
+
+  /* ---------- Themen 4, 5, 6, 7, 8 und Schlussarbeit ----------
+     Laut PDF sind für diese Themen keine Inhalte ausgewiesen.
+     Die Matrizen auf Seite 2 und 3 haben hier leere Spalten. */
+  t4:{sk:[], ges:{}, dig:{}, spr:[], empty:true},
+  t5:{sk:[], ges:{}, dig:{}, spr:[], empty:true},
+  t6:{sk:[], ges:{}, dig:{}, spr:[], empty:true},
+  tS:{sk:[], ges:{}, dig:{}, spr:[], schlussarbeit:true},
+  t7:{sk:[], ges:{}, dig:{}, spr:[], empty:true},
+  t8:{sk:[], ges:{}, dig:{}, spr:[], empty:true}
+};
+
+/* ============================================================
+   Helpers
+   ============================================================ */
+function sortNr(a,b){const pa=a.split('.').map(x=>x==='R'?0:Number(x)),pb=b.split('.').map(x=>x==='R'?0:Number(x));return pa[0]!==pb[0]?pa[0]-pb[0]:(pa[1]||0)-(pb[1]||0);}
+
+/* State */
+let activeFilter=null;  // {kind, value, label, category, chipEl}
+let openDropdown=null;
+
+/* ============================================================
+   Dropdowns rendern
+   ============================================================ */
+function makeAspChip(label,chipClass,onClick){
+  const c=document.createElement('div');
+  c.className='chip '+chipClass;
+  c.textContent=label;
+  c.onclick=onClick;
+  return c;
+}
+
+function makeSubChip(label,subCls,onClick){
+  const c=document.createElement('div');
+  c.className='sub-chip '+subCls;
+  c.textContent=label;
+  c.onclick=onClick;
+  return c;
+}
+
+function collectContents(kind){
+  const map={};
+  Object.values(THEMEN_DATA).forEach(td=>{
+    const src = kind==='ges' ? td.ges : td.dig;
+    if(!src)return;
+    Object.entries(src).forEach(([aspNr, arr])=>{
+      if(!map[aspNr])map[aspNr]=new Set();
+      arr.forEach(t=>map[aspNr].add(t));
+    });
+  });
+  return map;
+}
+
+function renderDropdowns(){
+  /* Schlüsselkompetenzen */
+  const dsk=document.getElementById('dropdown-schluessel');
+  const rowSk=document.createElement('div');
+  rowSk.style.cssText='display:flex;flex-wrap:wrap;gap:8px;';
+  Object.entries(SK).sort((a,b)=>sortNr(a[0],b[0])).forEach(([nr,text])=>{
+    const c=makeAspChip(nr+' '+text,'chip-schluessel',null);
+    c.onclick=()=>setFilter({kind:'aspect',value:nr,label:nr+' '+text,category:'sk',chipEl:c});
+    rowSk.appendChild(c);
+  });
+  dsk.appendChild(rowSk);
+
+  /* Info-Text zu Schlüsselkompetenzen */
+  const skNote=document.createElement('div');
+  skNote.style.cssText='margin-top:12px;padding:8px 12px;background:#fff;border-left:3px solid var(--cat-sk);border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-size:.82em;color:var(--c-muted);font-style:italic;';
+  skNote.textContent='Hinweis: Die Zuordnung der 12 Schlüsselkompetenzen zu einzelnen Themen ist in der vorliegenden Themenübersicht (PDF) nicht ausgewiesen und kann daher hier nicht gefiltert werden.';
+  dsk.appendChild(skNote);
+
+  /* Gesellschaft */
+  renderGroupedDropdown('gesellschaft', GES, collectContents('ges'), 'ges','chip-gesellschaft','sub-chip-ges');
+  /* Digitalität */
+  renderGroupedDropdown('digital', DIG, collectContents('dig'), 'dig','chip-digital','sub-chip-dig');
+  /* Sprache – Texttypen */
+  renderSprachTexttypen();
+  /* Sprache – Matrix */
+  renderModiMatrix();
+}
+
+function renderGroupedDropdown(dropdownKey, labelMap, contentMap, catShort, chipClass, subCls){
+  const root=document.getElementById('dropdown-'+dropdownKey);
+  const group=document.createElement('div');group.className='filter-group';
+
+  Object.entries(labelMap).sort((a,b)=>sortNr(a[0],b[0])).forEach(([nr,text])=>{
+    const contents=[...(contentMap[nr]||[])];
+    const row=document.createElement('div');row.className='filter-row';
+
+    /* Toggle-Pfeil (nur wenn Sub-Chips existieren) */
+    const toggleBtn=document.createElement('button');
+    toggleBtn.type='button';
+    toggleBtn.textContent='▶';
+    if(contents.length){
+      toggleBtn.className='filter-toggle filter-toggle-'+catShort;
+      toggleBtn.setAttribute('aria-label','Inhalte aufklappen');
+    } else {
+      toggleBtn.className='filter-toggle filter-toggle-invisible';
+      toggleBtn.tabIndex=-1;
+    }
+    row.appendChild(toggleBtn);
+
+    const aspChip=makeAspChip(nr+' '+text, chipClass, null);
+    aspChip.onclick=()=>setFilter({kind:'aspect',value:nr,label:nr+' '+text,category:catShort,chipEl:aspChip});
+    row.appendChild(aspChip);
+
+    if(contents.length){
+      const sub=document.createElement('div');sub.className='sub-chip-group';
+      contents.forEach(txt=>{
+        const sc=makeSubChip(txt,subCls,null);
+        sc.onclick=()=>setFilter({kind:'content',value:txt,label:txt,category:catShort,chipEl:sc});
+        sub.appendChild(sc);
+      });
+
+      const doToggle=(e)=>{
+        e.stopPropagation();
+        sub.classList.toggle('visible');
+        toggleBtn.classList.toggle('open');
+      };
+      toggleBtn.addEventListener('click',doToggle);
+
+      row.appendChild(sub);
+    }
+    group.appendChild(row);
+  });
+  root.appendChild(group);
+}
+
+function renderSprachTexttypen(){
+  const root=document.getElementById('spr-panel-texttypen');
+  const group=document.createElement('div');group.className='filter-group';
+
+  /* Sammle alle spr-Einträge nach Texttyp (dedupe nach Label) */
+  const byType={};
+  Object.values(THEMEN_DATA).forEach(td=>{
+    (td.spr||[]).forEach(si=>{
+      if(!byType[si.texttyp])byType[si.texttyp]={};
+      byType[si.texttyp][si.label]={label:si.label,modi:si.modi||[]};
+    });
+  });
+
+  const order=['4.R','4.1','4.2','4.3','4.4','4.5'];
+  order.forEach(tt=>{
+    const row=document.createElement('div');row.className='filter-row';
+    const contents=byType[tt]?Object.values(byType[tt]):[];
+
+    const toggleBtn=document.createElement('button');
+    toggleBtn.type='button';
+    toggleBtn.textContent='▶';
+    if(contents.length){
+      toggleBtn.className='filter-toggle filter-toggle-spr';
+      toggleBtn.setAttribute('aria-label','Inhalte aufklappen');
+    } else {
+      toggleBtn.className='filter-toggle filter-toggle-invisible';
+      toggleBtn.tabIndex=-1;
+    }
+    row.appendChild(toggleBtn);
+
+    const aspChip=makeAspChip(tt+' '+(SPR[tt]||tt),'chip-sprache',null);
+    aspChip.onclick=()=>setFilter({kind:'aspect',value:tt,label:tt+' '+(SPR[tt]||tt),category:'spr',chipEl:aspChip});
+    row.appendChild(aspChip);
+
+    if(contents.length){
+      const sub=document.createElement('div');sub.className='sub-chip-group';
+      contents.forEach(si=>{
+        const sc=makeSubChip(si.label,'sub-chip-spr',null);
+        sc.onclick=()=>setFilter({kind:'content',value:si.label,label:si.label,category:'spr',chipEl:sc});
+        sub.appendChild(sc);
+      });
+
+      const doToggle=(e)=>{
+        e.stopPropagation();
+        sub.classList.toggle('visible');
+        toggleBtn.classList.toggle('open');
+      };
+      toggleBtn.addEventListener('click',doToggle);
+
+      row.appendChild(sub);
+    }
+    group.appendChild(row);
+  });
+  root.appendChild(group);
+}
+
+function renderModiMatrix(){
+  const matrix=document.getElementById('modi-matrix');
+  matrix.innerHTML='';
+
+  /* Ecke oben links */
+  const hCorner=document.createElement('div');hCorner.className='modi-matrix-header';matrix.appendChild(hCorner);
+
+  /* Spalten-Header sind die Filter-Buttons */
+  MODI_COLS.forEach(col=>{
+    const h=document.createElement('button');
+    h.type='button';
+    h.className='modi-col-header';
+    h.setAttribute('data-modi-col',col);
+    h.title='Alle Themen mit Modus «'+COL_LABELS[col]+'» anzeigen';
+    h.innerHTML='<div style="font-size:1.1em;color:var(--c-text);font-weight:700">'+col+'</div><div style="font-size:.85em;font-weight:400;margin-top:2px;color:var(--c-muted)">'+COL_LABELS[col]+'</div>';
+    h.onclick=()=>setFilter({
+      kind:'modi-col',
+      value:col,
+      label:col+' · '+COL_LABELS[col],
+      category:'spr',
+      chipEl:h
+    });
+    matrix.appendChild(h);
+  });
+
+  /* Datenzeilen – Zellen sind nur Indikatoren (zeigen welche Kombis existieren),
+     beim Klick filtern sie jedoch ebenfalls auf die Spalte */
+  MODI_ROWS.forEach(row=>{
+    const label=document.createElement('div');label.className='modi-matrix-row-label';label.textContent=row.label;
+    matrix.appendChild(label);
+    MODI_COLS.forEach(col=>{
+      const modiId=row.id+'-'+col;
+      const cell=document.createElement('button');
+      if(MODI_AVAILABLE.has(modiId)){
+        cell.className='modi-cell';
+        cell.textContent=col;
+        cell.title=MODI_LABELS[modiId]+' (filtert nach «'+COL_LABELS[col]+'»)';
+        cell.setAttribute('data-modi-col',col);
+        /* Klick auf Zelle -> filtere nach Spalte (wie Header) */
+        cell.onclick=()=>{
+          const headerBtn=matrix.querySelector('.modi-col-header[data-modi-col="'+col+'"]');
+          setFilter({
+            kind:'modi-col',
+            value:col,
+            label:col+' · '+COL_LABELS[col],
+            category:'spr',
+            chipEl:headerBtn || cell
+          });
+        };
+      } else {
+        cell.className='modi-cell disabled';
+        cell.textContent='—';
+        cell.disabled=true;
+      }
+      matrix.appendChild(cell);
+    });
+  });
+}
+
+/* ============================================================
+   Timeline / Karten rendern
+   ============================================================ */
+function renderTimeline(){
+  const cont=document.getElementById('timeline-container');
+  cont.innerHTML='';
+  for(let y=1;y<=3;y++){
+    const col=document.createElement('div');col.className='year-column';
+    col.innerHTML='<div class="year-header"><h2>'+y+'. Lehrjahr</h2></div>';
+    THEMES.filter(t=>t.year===y).forEach(theme=>{
+      const data=THEMEN_DATA[theme.id];
+      col.appendChild(createCard(theme,data));
+    });
+    cont.appendChild(col);
+  }
+}
+
+function createCard(theme,data){
+  const card=document.createElement('div');
+  card.className='theme-card'+(theme.schlussarbeit?' schlussarbeit':'');
+  card.setAttribute('data-theme-id',theme.id);
+
+  const h3=document.createElement('h3');
+  h3.textContent=theme.schlussarbeit?theme.name:'Thema '+theme.nr+': '+theme.name;
+  card.appendChild(h3);
+
+  if(theme.schlussarbeit){
+    const note=document.createElement('div');note.className='empty-theme-note';
+    note.textContent='Schlussarbeit – integriert Kompetenzen aus der gesamten Lehrzeit.';
+    card.appendChild(note);
+    return card;
+  }
+
+  if(!data || data.empty){
+    const note=document.createElement('div');note.className='empty-theme-note';
+    note.textContent='Für dieses Thema sind im vorliegenden Rahmenlehrplan (PDF) noch keine Inhalte ausgewiesen.';
+    card.appendChild(note);
+    return card;
+  }
+
+  /* Gesellschaft */
+  const gesAspects=Object.keys(data.ges||{}).sort(sortNr);
+  if(gesAspects.length){
+    const sect=document.createElement('div');sect.className='card-section';sect.setAttribute('data-block','ges');
+    const lbl=document.createElement('div');lbl.className='card-section-label';lbl.textContent='Gesellschaft';
+    sect.appendChild(lbl);
+    const badgeRow=document.createElement('div');
+    gesAspects.forEach(nr=>badgeRow.appendChild(mkBadge(nr,'ges',nr,GES[nr]||nr)));
+    sect.appendChild(badgeRow);
+    const chipRow=document.createElement('div');chipRow.style.cssText='margin-top:4px;';
+    gesAspects.forEach(nr=>{
+      data.ges[nr].forEach(txt=>{
+        const c=document.createElement('span');
+        c.className='content-chip chip-ges';
+        c.setAttribute('data-category','ges');
+        c.setAttribute('data-aspect',nr);
+        c.setAttribute('data-content',txt);
+        c.textContent=txt;
+        chipRow.appendChild(c);
+      });
+    });
+    sect.appendChild(chipRow);
+    card.appendChild(sect);
+  }
+
+  /* Medien & Digitalität */
+  const digAspects=Object.keys(data.dig||{}).sort(sortNr);
+  if(digAspects.length){
+    const sect=document.createElement('div');sect.className='card-section';sect.setAttribute('data-block','dig');
+    const lbl=document.createElement('div');lbl.className='card-section-label';lbl.textContent='Medien & Digitalität';
+    sect.appendChild(lbl);
+    const badgeRow=document.createElement('div');
+    digAspects.forEach(nr=>badgeRow.appendChild(mkBadge(nr,'dig',nr,DIG[nr]||nr)));
+    sect.appendChild(badgeRow);
+    const chipRow=document.createElement('div');chipRow.style.cssText='margin-top:4px;';
+    digAspects.forEach(nr=>{
+      data.dig[nr].forEach(txt=>{
+        const c=document.createElement('span');
+        c.className='content-chip chip-dig';
+        c.setAttribute('data-category','dig');
+        c.setAttribute('data-aspect',nr);
+        c.setAttribute('data-content',txt);
+        c.textContent=txt;
+        chipRow.appendChild(c);
+      });
+    });
+    sect.appendChild(chipRow);
+    card.appendChild(sect);
+  }
+
+  /* Sprache & Kommunikation */
+  if(data.spr && data.spr.length){
+    const sect=document.createElement('div');sect.className='card-section';sect.setAttribute('data-block','spr');
+    const lbl=document.createElement('div');lbl.className='card-section-label';lbl.textContent='Sprache & Kommunikation';
+    sect.appendChild(lbl);
+
+    const sprTypes=[...new Set(data.spr.map(s=>s.texttyp))].sort(sortNr);
+    const badgeRow=document.createElement('div');
+    sprTypes.forEach(tt=>badgeRow.appendChild(mkBadge(tt,'spr',tt,SPR[tt]||tt)));
+    sect.appendChild(badgeRow);
+
+    const chipRow=document.createElement('div');chipRow.style.cssText='margin-top:4px;';
+    data.spr.forEach(si=>{
+      const c=document.createElement('span');
+      c.className='content-chip chip-spr';
+      c.setAttribute('data-category','spr');
+      c.setAttribute('data-aspect',si.texttyp);
+      c.setAttribute('data-content',si.label);
+      c.setAttribute('data-modi',(si.modi||[]).join(','));
+      c.textContent=si.label;
+      if(si.modi && si.modi.length){
+        const m=document.createElement('span');m.className='modi-markers';
+        si.modi.forEach(modi=>{
+          const mm=document.createElement('span');mm.className='modi-marker';
+          mm.textContent=modi;mm.title=MODI_LABELS[modi]||modi;
+          m.appendChild(mm);
+        });
+        c.appendChild(m);
+      }
+      chipRow.appendChild(c);
+    });
+    sect.appendChild(chipRow);
+    card.appendChild(sect);
+  }
+
+  return card;
+}
+
+function mkBadge(text,cat,aspect,tipText){
+  const b=document.createElement('div');
+  b.className='badge badge-'+cat;
+  b.textContent=text;
+  b.setAttribute('data-category',cat);
+  b.setAttribute('data-aspect',aspect);
+  const tt=document.createElement('div');tt.className='tooltip';tt.textContent=tipText;
+  b.appendChild(tt);
+  return b;
+}
+
+/* ============================================================
+   Filter-System
+   ============================================================ */
+function toggleDropdown(cat){
+  const panel=document.getElementById('dropdown-'+cat);
+  const btn=document.getElementById('btn-'+cat);
+  if(!panel||!btn)return;
+  if(openDropdown===cat){
+    panel.classList.remove('visible');btn.classList.remove('open');
+    openDropdown=null;
+  } else {
+    if(openDropdown){
+      document.getElementById('dropdown-'+openDropdown).classList.remove('visible');
+      const ob=document.getElementById('btn-'+openDropdown);if(ob)ob.classList.remove('open');
+    }
+    panel.classList.add('visible');btn.classList.add('open');openDropdown=cat;
+  }
+}
+
+function switchSprTab(which){
+  document.querySelectorAll('.spr-tab').forEach(t=>t.classList.toggle('active',t.getAttribute('data-sprtab')===which));
+  document.getElementById('spr-panel-texttypen').classList.toggle('active',which==='texttypen');
+  document.getElementById('spr-panel-modi').classList.toggle('active',which==='modi');
+}
+
+function setFilter(f){
+  /* Toggle: selber Filter erneut -> reset (nicht bei Suche) */
+  if(f.kind!=='search' && activeFilter && activeFilter.kind===f.kind && activeFilter.value===f.value){
+    resetFilter();return;
+  }
+  activeFilter=f;
+
+  /* Wenn der neue Filter KEINE Suche ist, das Suchfeld leeren */
+  if(f.kind!=='search'){
+    const si=document.getElementById('search-input');
+    if(si && si.value){
+      si.value='';
+      document.getElementById('search-clear').classList.remove('visible');
+    }
+  }
+
+  /* Haupt-Buttons */
+  document.querySelectorAll('.main-filter-btn').forEach(b=>b.classList.remove('active'));
+  const mainBtnMap={sk:'btn-schluessel',ges:'btn-gesellschaft',dig:'btn-digital',spr:'btn-sprach'};
+  const mb=document.getElementById(mainBtnMap[f.category]);
+  if(mb)mb.classList.add('active');
+
+  /* Chip-States im Dropdown */
+  document.querySelectorAll('.chip, .sub-chip, .modi-cell, .modi-col-header').forEach(c=>c.classList.remove('active'));
+  if(f.chipEl)f.chipEl.classList.add('active');
+
+  applyFilter();
+  updateActiveFilterBar();
+}
+
+function resetFilter(){
+  activeFilter=null;
+  document.querySelectorAll('.main-filter-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('btn-reset').classList.add('active');
+  document.querySelectorAll('.chip, .sub-chip, .modi-cell, .modi-col-header').forEach(c=>c.classList.remove('active'));
+  if(openDropdown){
+    document.getElementById('dropdown-'+openDropdown).classList.remove('visible');
+    const ob=document.getElementById('btn-'+openDropdown);if(ob)ob.classList.remove('open');
+    openDropdown=null;
+  }
+  /* Suchfeld leeren */
+  const si=document.getElementById('search-input');
+  if(si){
+    si.value='';
+    document.getElementById('search-clear').classList.remove('visible');
+  }
+  applyFilter();
+  updateActiveFilterBar();
+}
+
+function applyFilter(){
+  const f=activeFilter;
+  const allCards=[...document.querySelectorAll('.theme-card')];
+  const timeline=document.getElementById('timeline-container');
+
+  /* Reset */
+  allCards.forEach(c=>c.classList.remove('is-match','is-dimmed'));
+  document.querySelectorAll('.badge, .content-chip').forEach(el=>el.classList.remove('is-match','is-dimmed'));
+  /* Alte Suchhervorhebungen entfernen */
+  clearSearchHighlights();
+  /* Fokus-Modus zurücksetzen */
+  timeline.classList.remove('focus-ges','focus-dig','focus-spr');
+
+  if(!f)return;
+
+  /* Spezialfall: Suche – zeigt alle Sektionen, Fokus bleibt aus */
+  if(f.kind==='search'){
+    applySearch(f.value);
+    return;
+  }
+
+  /* Fokus-Modus: Bei Kategorie-Filtern nur die relevante Sektion zeigen.
+     - Gesellschaft-Filter (aspect/content mit category='ges') -> focus-ges
+     - Digital-Filter (category='dig') -> focus-dig
+     - Sprach-Filter (category='spr', auch modi-col) -> focus-spr  */
+  if(f.category==='ges')timeline.classList.add('focus-ges');
+  else if(f.category==='dig')timeline.classList.add('focus-dig');
+  else if(f.category==='spr')timeline.classList.add('focus-spr');
+
+  allCards.forEach(card=>{
+    if(card.classList.contains('schlussarbeit')){
+      card.classList.add('is-dimmed');return;
+    }
+    let match=false;
+
+    if(f.kind==='aspect'){
+      const cat=f.category;
+      const badges=[...card.querySelectorAll('.badge[data-category="'+cat+'"]')];
+      const targetBadges=badges.filter(b=>b.getAttribute('data-aspect')===f.value);
+      if(targetBadges.length)match=true;
+      badges.forEach(b=>{
+        if(b.getAttribute('data-aspect')===f.value)b.classList.add('is-match');
+        else b.classList.add('is-dimmed');
+      });
+      const chips=[...card.querySelectorAll('.content-chip[data-category="'+cat+'"]')];
+      chips.forEach(c=>{
+        if(c.getAttribute('data-aspect')===f.value)c.classList.add('is-match');
+        else c.classList.add('is-dimmed');
+      });
+    }
+    else if(f.kind==='content'){
+      const cat=f.category;
+      const chips=[...card.querySelectorAll('.content-chip[data-category="'+cat+'"]')];
+      const matches=chips.filter(c=>c.getAttribute('data-content')===f.value);
+      if(matches.length)match=true;
+      chips.forEach(c=>{
+        if(c.getAttribute('data-content')===f.value)c.classList.add('is-match');
+        else c.classList.add('is-dimmed');
+      });
+    }
+    else if(f.kind==='modi-col'){
+      /* Match: data-modi enthält einen Eintrag der Form "<R|P|I>-<col>" */
+      const col=f.value;
+      const matchesCol = (modiStr)=>{
+        if(!modiStr)return false;
+        return modiStr.split(',').some(m=>{
+          /* m ist z.B. "R-S", "P-M-M", "I-D" ...
+             Der "Modus-Teil" nach dem ersten "-" ist die Spalte. */
+          const parts=m.split('-');
+          if(parts.length<2)return false;
+          const colPart=parts.slice(1).join('-'); // "S", "M", "A-V", "M-M", "D"
+          return colPart===col;
+        });
+      };
+      const chips=[...card.querySelectorAll('.content-chip[data-category="spr"]')];
+      const matches=chips.filter(c=>matchesCol(c.getAttribute('data-modi')||''));
+      if(matches.length)match=true;
+      chips.forEach(c=>{
+        if(matchesCol(c.getAttribute('data-modi')||''))c.classList.add('is-match');
+        else c.classList.add('is-dimmed');
+      });
+    }
+    else if(f.kind==='modi'){
+      const chips=[...card.querySelectorAll('.content-chip[data-category="spr"]')];
+      const matches=chips.filter(c=>(c.getAttribute('data-modi')||'').split(',').includes(f.value));
+      if(matches.length)match=true;
+      chips.forEach(c=>{
+        if((c.getAttribute('data-modi')||'').split(',').includes(f.value))c.classList.add('is-match');
+        else c.classList.add('is-dimmed');
+      });
+    }
+
+    if(match)card.classList.add('is-match');
+    else card.classList.add('is-dimmed');
+  });
+}
+
+function updateActiveFilterBar(){
+  const bar=document.getElementById('active-filter-bar');
+  const val=document.getElementById('active-filter-value');
+  const cnt=document.getElementById('active-filter-count');
+  if(!activeFilter){bar.classList.remove('visible');return;}
+  bar.classList.add('visible');
+  const kindLabel={
+    'aspect':'Aspekt/Texttyp',
+    'content':'Inhalt',
+    'modi':'Kommunikationsmodus',
+    'modi-col':'Kommunikationsmodus',
+    'search':'Suche'
+  }[activeFilter.kind] || 'Filter';
+  val.textContent=kindLabel+': '+activeFilter.label;
+  const matches=document.querySelectorAll('.theme-card.is-match').length;
+  cnt.textContent=matches+' Thema'+(matches===1?'':'men')+' mit Treffer';
+}
+
+/* ============================================================
+   Suche – sucht case-insensitive in:
+   - Themennamen
+   - Aspekt-Badges (über data-aspect -> Label-Map)
+   - Inhalts-Chips (Gesellschaft, Digital, Sprache)
+   Highlighted Treffer mit <mark>, dimmt Nicht-Treffer-Karten.
+   ============================================================ */
+let searchDebounce=null;
+
+function onSearchInput(raw){
+  const val=(raw||'').trim();
+  const clearBtn=document.getElementById('search-clear');
+  if(val){clearBtn.classList.add('visible');} else {clearBtn.classList.remove('visible');}
+
+  /* Debounce für flüssiges Tippen */
+  if(searchDebounce)clearTimeout(searchDebounce);
+  searchDebounce=setTimeout(()=>{
+    if(val.length===0){
+      /* Suche leeren: aktuellen Filter zurücksetzen, falls es eine Suche war */
+      if(activeFilter && activeFilter.kind==='search'){
+        resetFilter();
+      } else {
+        clearSearchHighlights();
+      }
+    } else if(val.length<2){
+      /* Zu kurz – nur Highlights entfernen, keine Aktion */
+      clearSearchHighlights();
+    } else {
+      setFilter({kind:'search',value:val,label:'«'+val+'»',category:null,chipEl:null});
+    }
+  },180);
+}
+
+function clearSearch(){
+  const input=document.getElementById('search-input');
+  input.value='';
+  document.getElementById('search-clear').classList.remove('visible');
+  if(activeFilter && activeFilter.kind==='search'){
+    resetFilter();
+  } else {
+    clearSearchHighlights();
+  }
+  input.focus();
+}
+
+function applySearch(query){
+  const q=query.toLowerCase();
+  const allCards=[...document.querySelectorAll('.theme-card')];
+
+  allCards.forEach(card=>{
+    if(card.classList.contains('schlussarbeit')){
+      card.classList.add('is-dimmed');return;
+    }
+
+    let cardMatched=false;
+
+    /* 1. Thementitel prüfen */
+    const h3=card.querySelector('h3');
+    if(h3){
+      const title=h3.textContent;
+      if(title.toLowerCase().includes(q)){
+        cardMatched=true;
+        h3.innerHTML=highlightText(title,q);
+      }
+    }
+
+    /* 2. Badges – Tooltip-Text (Aspekt-Label) prüfen */
+    [...card.querySelectorAll('.badge')].forEach(b=>{
+      const tip=b.querySelector('.tooltip');
+      const aspektLabel = tip ? tip.textContent : '';
+      if(aspektLabel.toLowerCase().includes(q)){
+        b.classList.add('is-match');
+        cardMatched=true;
+      } else {
+        b.classList.add('is-dimmed');
+      }
+    });
+
+    /* 3. Content-Chips prüfen (data-content) */
+    [...card.querySelectorAll('.content-chip')].forEach(c=>{
+      const content=c.getAttribute('data-content')||'';
+      if(content.toLowerCase().includes(q)){
+        c.classList.add('is-match');
+        cardMatched=true;
+        /* Text im Chip hervorheben – aber die Modi-Marker intakt lassen */
+        highlightChipText(c,content,q);
+      } else {
+        c.classList.add('is-dimmed');
+      }
+    });
+
+    if(cardMatched){
+      card.classList.add('is-match');
+    } else {
+      card.classList.add('is-dimmed');
+    }
+  });
+
+  updateActiveFilterBar();
+}
+
+/* Erstellt sichere Highlight-HTML aus einem String */
+function highlightText(text,q){
+  const lower=text.toLowerCase();
+  const idx=lower.indexOf(q);
+  if(idx===-1)return escapeHtml(text);
+  const before=text.slice(0,idx);
+  const hit=text.slice(idx,idx+q.length);
+  const after=text.slice(idx+q.length);
+  /* Rekursiv im Rest weitersuchen, damit Mehrfachtreffer gehighlighted werden */
+  return escapeHtml(before)+'<mark class="search-hit">'+escapeHtml(hit)+'</mark>'+highlightText(after,q);
+}
+
+/* Hebt den Text eines Content-Chips hervor, ohne eingebettete Modi-Marker zu zerstören */
+function highlightChipText(chip,originalText,q){
+  /* Modi-Marker merken (DOM-Node), dann neu zusammensetzen */
+  const markers=chip.querySelector('.modi-markers');
+  chip.innerHTML=highlightText(originalText,q);
+  if(markers)chip.appendChild(markers);
+}
+
+/* Entfernt <mark>-Hervorhebungen und stellt Original-Text wieder her */
+function clearSearchHighlights(){
+  /* Thementitel: Entferne mark-Tags, belasse reinen Text */
+  document.querySelectorAll('.theme-card h3').forEach(h3=>{
+    if(h3.querySelector('mark.search-hit')){
+      const plain=h3.textContent; // textContent liefert bereits Text ohne Tags
+      h3.textContent=plain;
+    }
+  });
+  /* Content-Chips: rekonstruiere aus data-content + Modi-Markern */
+  document.querySelectorAll('.content-chip').forEach(c=>{
+    if(c.querySelector('mark.search-hit')){
+      const text=c.getAttribute('data-content')||'';
+      const markers=c.querySelector('.modi-markers');
+      c.textContent=text;
+      if(markers)c.appendChild(markers);
+    }
+  });
+}
+
+function escapeHtml(s){
+  return s.replace(/[&<>"']/g,ch=>({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+  }[ch]));
+}
+
+function toggleStatusInfo(){
+  document.getElementById('statusinfo-content').classList.toggle('open');
+  document.getElementById('statusinfo-toggle').classList.toggle('open');
+}
+
+function initApp(){
+  renderDropdowns();
+  renderTimeline();
+}
 document.addEventListener('DOMContentLoaded',initApp);
 </script>
 
