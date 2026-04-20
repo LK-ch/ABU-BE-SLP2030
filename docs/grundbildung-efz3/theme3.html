@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Plan d'études CG – En bonne santé et en sécurité tout au long de la vie</title>
+<title>Plan d'études CG – Ma sécurité, mon bien-être</title>
 <style>
   /* ── Base ── */
   .theme-content-inner {
@@ -28,12 +28,19 @@
     color: #000; font-size: 0.85em; font-weight: 400; margin: 0 0 10px 0;
   }
   .schluesselkompetenzen-block .kompetenz-nummer-link {
-    display: inline-block; color: #dc291e; font-weight: 700; cursor: pointer;
-    margin-right: 4px; padding: 2px 5px; border: 1px solid transparent;
-    border-radius: 3px; transition: all .2s; text-decoration: none;
-    font-style: normal;
+    display: inline-flex; align-items: baseline; gap: 6px; color: #dc291e; font-weight: 700; cursor: pointer;
+    margin-right: 4px; margin-bottom: 6px; padding: 2px 8px 2px 5px; border: 1px solid transparent;
+    border-radius: 3px; transition: all .2s; text-decoration: none; font-style: normal;
+  }
+  .schluesselkompetenzen-block .kompetenz-nummer-link .knum {
+    font-weight: 700; font-size: 0.92em; white-space: nowrap;
+  }
+  .schluesselkompetenzen-block .kompetenz-nummer-link .klabel {
+    font-weight: 400; font-size: 0.85em; color: #000;
   }
   .schluesselkompetenzen-block .kompetenz-nummer-link:hover { background: #ffe6e6; border-color: #ffcccc; }
+  .schluesselkompetenzen-block .kompetenz-nummer-link.active { background: #dc291e; color: #fff; border-color: #dc291e; }
+  .schluesselkompetenzen-block .kompetenz-nummer-link.active .klabel { color: #fff; }
 
   .lebensbezug { margin-bottom: 25px; background-color: #f9f3e8; overflow: hidden; }
   .lebensbezug-header { padding: 16px 20px; cursor: pointer; position: relative; user-select: none; }
@@ -92,8 +99,6 @@
   .sprach-tag { display: inline; font-weight: 700; font-size: 0.92em; color: #003366; }
   .form-label { display: inline; font-size: 0.85em; font-style: italic; color: #333; }
   .form-code { display: none; }
-  .zirk-tag { display: none; }
-  .norm-tag { display: none; }
   .ges-tag { font-weight: 700; color: #7a5c00; font-size: 0.92em; }
   .dig-tag { font-weight: 700; color: #1a6e2e; font-size: 0.92em; }
   .tool-hint { background: #fff; padding: 8px 10px; margin-top: 0; font-size: 0.75em; }
@@ -124,10 +129,14 @@
   <!-- ── Compétences clés ── -->
   <div class="schluesselkompetenzen-block">
     <h3>Compétences clés</h3>
-    <span class="kompetenz-nummer-link" data-text="Faire la différence entre sources et contenus pertinents et non pertinents : Afin de pouvoir adopter une approche critique par rapport à la diversité des sources et des contenus médiatiques, y compris par rapport aux applications de l'intelligence artificielle, il est important de filtrer, de sélectionner, d'évaluer et d'organiser les informations communiquées. Ainsi, les informations pertinentes sont rendues utilisables.">1.1</span>
-    <span class="kompetenz-nummer-link" data-text="Comprendre les différents points de vue et promouvoir la compréhension mutuelle : Afin de créer un environnement inclusif et respectueux propice à la recherche de consensus entre des intérêts divergents, il est important de pouvoir changer de perspective, de développer l'empathie et de faire preuve de tolérance.">1.7</span>
-    <span class="kompetenz-nummer-link" data-text="Planifier les étapes de sa vie et gérer les impondérables : Afin de planifier et d'organiser les différentes étapes de la vie à moyen et long terme, il est important de développer des ressources personnelles, sociales et matérielles et de les utiliser de manière ciblée selon le principe de l'auto-efficacité. Il faut notamment être capable de mobiliser des ressources pour gérer son parcours aussi bien personnel que professionnel et de prendre en considération sa santé physique et psychique.">1.8</span>
-    <span class="kompetenz-nummer-link" data-text="Composer avec les ambiguïtés : Afin de pouvoir faire face aux doutes et aux incertitudes, il est important d'analyser des situations complexes, de prendre en compte différentes perspectives et de supporter les incohérences et les ambiguïtés.">1.11</span>
+    <span class="kompetenz-nummer-link" data-label="1.1 Sources pertinentes" data-text="Afin de pouvoir adopter une approche critique par rapport à la diversité des sources et des contenus médiatiques, y compris par rapport aux applications de l'intelligence artificielle, il est important de filtrer, de sélectionner, d'évaluer et d'organiser les informations communiquées. Ainsi, les informations pertinentes sont rendues utilisables."><span class="knum">1.1</span><span class="klabel">Sources pertinentes</span></span>
+    <span class="kompetenz-nummer-link" data-label="1.7 Promotion de la compréhension mutuelle" data-text="Afin de créer un environnement inclusif et respectueux propice à la recherche de consensus entre des intérêts divergents, il est important de pouvoir changer de perspective, de développer l'empathie et de faire preuve de tolérance."><span class="knum">1.7</span><span class="klabel">Promotion de la compréhension mutuelle</span></span>
+    <span class="kompetenz-nummer-link" data-label="1.8 Planification des étapes de vie" data-text="Afin de planifier et d'organiser les différentes étapes de la vie à moyen et long terme, il est important de développer des ressources personnelles, sociales et matérielles et de les utiliser de manière ciblée selon le principe de l'auto-efficacité. Il faut notamment être capable de mobiliser des ressources pour gérer son parcours aussi bien personnel que professionnel et de prendre en considération sa santé physique et psychique."><span class="knum">1.8</span><span class="klabel">Planification des étapes de vie</span></span>
+    <span class="kompetenz-nummer-link" data-label="1.11 Composition avec les ambiguïtés" data-text="Afin de pouvoir faire face aux doutes et aux incertitudes, il est important d'analyser des situations complexes, de prendre en compte différentes perspectives et de supporter les incohérences et les ambiguïtés."><span class="knum">1.11</span><span class="klabel">Composition avec les ambiguïtés</span></span>
+    <div id="kompetenz-panel" style="display:none;margin-top:12px;background:#fff;border:1px solid #c8b99a;padding:12px 14px;font-size:0.85em;line-height:1.6;color:#000;user-select:text;">
+      <div id="kompetenz-panel-label" style="font-weight:700;margin-bottom:6px;"></div>
+      <div id="kompetenz-panel-text"></div>
+    </div>
   </div>
 
   <!-- ══════════════════════════════════════════
@@ -158,7 +167,7 @@
                   <tr>
                     <td class="col-gesellschaft">
                       <p><span class="ges-tag">2.2. Identité et socialisation</span><br>
-                         Évaluer les risques liés à la santé physique et mentale et définir des mesures visant à l'améliorer.</p>
+                         Évaluer les risques liés à la santé physique et <strong>psychique</strong> et définir des mesures visant à l'améliorer.</p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                     <td class="col-sprache">
@@ -325,7 +334,7 @@
         </div>
         <div class="lerninhalt-content">
           <div class="table-container">
-            <div class="table-header" onclick="toggleTbl(this)"><h5>Objectifs d'évaluation</h5><span class="table-toggle">▼</span></div>
+            <div class="table-header" onclick="toggleTbl(this)"><h5>Objectifs d'apprentissage</h5><span class="table-toggle">▼</span></div>
             <div class="table-content">
               <table class="kompetenz-table">
                 <tbody>
@@ -343,7 +352,7 @@
                     </td>
                     <td class="col-sprache">
                       <p>
-                        <span class="sprach-tag">4.2. Explicatif</span><br>
+                        <span class="sprach-tag">4. Réception</span><br>
                         <span class="form-label">Réception écrite et visuelle</span><br>
                         Comprendre, comparer et restituer le contenu d'un texte spécialisé (par exemple sur les contrats).
                       </p>
@@ -371,7 +380,7 @@
                     <td class="col-gesellschaft">
                       <p><span class="ges-tag">2.8. Économie</span><br>
                          <span class="ges-tag">2.6. Droit</span><br>
-                         Identifier et justifier l'utilité personnelle de chaque assurance.</p>
+                         Identifier et justifier l'utilité personnelle (avantages) de chaque assurance.</p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                     <td class="col-sprache">
@@ -389,7 +398,7 @@
                   <tr>
                     <td class="col-digital-content" colspan="2">
                       <p><span class="dig-tag">3.4. Résolution de problèmes</span><br>
-                         Personnaliser les modèles en ligne pour son usage personnel.</p>
+                         Personnaliser les modèles d'assurance en ligne pour son usage personnel.</p>
                       <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
@@ -411,7 +420,6 @@
                       <p>
                         <span class="sprach-tag">4. Réception</span><br>
                         <span class="form-label">Réception écrite et visuelle</span><br>
-                        <span class="form-label">Production orale</span><br>
                         Interpréter des graphiques et déterminer les facteurs expliquant les résultats observés.
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
@@ -423,7 +431,7 @@
                     <td class="col-digital-content" colspan="2">
                       <p><span class="dig-tag">3.4. Résolution de problèmes</span><br>
                          Calculer ses propres frais d'assurance à l'aide d'un outil en ligne.</p>
-                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>Priminfo</p>
+                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
                 </tbody>
@@ -448,7 +456,7 @@
       <h3>Domaine libre (20%)</h3>
     </div>
     <div class="freibereich-content">
-      <h4 style="font-size:0.9em;margin-bottom:15px;font-weight:700;">Contenus / Objectifs d'apprentissage</h4>
+      <h4 style="font-size:0.9em;margin-bottom:15px;font-weight:700;">Objectifs d'apprentissage</h4>
       <table style="width:100%;border-collapse:collapse;">
         <tbody>
           <!-- Société -->
@@ -488,7 +496,7 @@
           <tr><th style="background:#d4edda;padding:5px 10px;text-align:left;font-size:0.75em;font-weight:700;border:1px solid #000;">Médias et numérique</th></tr>
           <tr><td style="background:#f0f8f0;padding:8px 10px;border:1px solid #000;font-size:0.8em;">
             <p style="margin-bottom:0;"><span class="dig-tag">3.2. Compétences en gestion des données</span><br>
-               Configurer et utiliser en toute sécurité des sites web et des outils numériques et informatiques pertinents pour la formation.</p>
+               Paramétrer et utiliser en toute sécurité des sites web et des outils numériques et informatiques pertinents pour la formation.</p>
           </td></tr>
         </tbody>
       </table>
@@ -519,24 +527,27 @@ function toggleUms(box) {
   icon.classList.toggle('rotated');
 }
 
+/* ── Compétences clés – panel cliquable ── */
 document.querySelectorAll('.kompetenz-nummer-link').forEach(el => {
-  el.addEventListener('mouseenter', function(e) {
-    let tooltip = document.getElementById('tooltip');
-    if (!tooltip) {
-      tooltip = document.createElement('div');
-      tooltip.id = 'tooltip';
-      tooltip.style.cssText = 'position:absolute;background:#2d2d2d;color:#fff;padding:10px 14px;font-size:0.85em;max-width:380px;z-index:99999;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,0.4);border:1px solid #555;line-height:1.5;font-family:Roboto,Arial,sans-serif;';
-      document.body.appendChild(tooltip);
+  el.addEventListener('click', function() {
+    const panel    = document.getElementById('kompetenz-panel');
+    const panelLbl = document.getElementById('kompetenz-panel-label');
+    const panelTxt = document.getElementById('kompetenz-panel-text');
+    const label    = this.getAttribute('data-label');
+    const text     = this.getAttribute('data-text');
+
+    if (panel.style.display !== 'none' && panelLbl.textContent === label) {
+      panel.style.display = 'none';
+      document.querySelectorAll('.kompetenz-nummer-link').forEach(e => e.classList.remove('active'));
+      return;
     }
-    tooltip.textContent = this.getAttribute('data-text');
-    tooltip.style.display = 'block';
-    const rect = this.getBoundingClientRect();
-    tooltip.style.left = (rect.left + window.scrollX) + 'px';
-    tooltip.style.top  = (rect.bottom + window.scrollY + 10) + 'px';
-  });
-  el.addEventListener('mouseleave', function() {
-    const tooltip = document.getElementById('tooltip');
-    if (tooltip) tooltip.style.display = 'none';
+
+    panelLbl.textContent = label;
+    panelTxt.textContent = text;
+    panel.style.display  = 'block';
+
+    document.querySelectorAll('.kompetenz-nummer-link').forEach(e => e.classList.remove('active'));
+    this.classList.add('active');
   });
 });
 </script>
