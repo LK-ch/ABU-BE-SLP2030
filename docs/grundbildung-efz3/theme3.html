@@ -114,6 +114,9 @@
   .schluessel-content { max-height: 0; overflow: hidden; transition: max-height .3s; }
   .schluessel-content.expanded { max-height: 500px; margin-top: 8px; }
   .schluessel-content p { font-size: 0.8em; color: #000; }
+  /* Kein Browser-Tooltip */
+  .kompetenz-nummer-link[title] { pointer-events: auto; }
+  .kompetenz-nummer-link::after { display: none !important; }
 </style>
 </head>
 <body>
@@ -529,7 +532,9 @@ function toggleUms(box) {
 
 /* ── Compétences clés – panel cliquable ── */
 document.querySelectorAll('.kompetenz-nummer-link').forEach(el => {
+  el.title = '';
   el.addEventListener('click', function() {
+    this.title = '';
     const panel    = document.getElementById('kompetenz-panel');
     const panelLbl = document.getElementById('kompetenz-panel-label');
     const panelTxt = document.getElementById('kompetenz-panel-text');
@@ -548,6 +553,7 @@ document.querySelectorAll('.kompetenz-nummer-link').forEach(el => {
 
     document.querySelectorAll('.kompetenz-nummer-link').forEach(e => e.classList.remove('active'));
     this.classList.add('active');
+    this.removeAttribute('title');
   });
 });
 </script>
