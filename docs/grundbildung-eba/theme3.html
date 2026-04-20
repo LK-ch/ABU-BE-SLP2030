@@ -11,8 +11,12 @@
   .leitidee p  { color: #000; font-size: 1em; }
   .schluesselkompetenzen-block { background-color: #f9f3e8; padding: 20px; margin-bottom: 18px; }
   .schluesselkompetenzen-block h3 { color: #000; font-size: 0.85em; font-weight: 400; margin: 0 0 10px 0; }
-  .schluesselkompetenzen-block .kompetenz-nummer-link { display: inline-block; color: #dc291e; font-weight: 700; cursor: pointer; margin-right: 8px; padding: 2px 5px; border: 1px solid transparent; border-radius: 3px; transition: all .2s; text-decoration: none; }
+  .schluesselkompetenzen-block .kompetenz-nummer-link { display: inline-flex; align-items: baseline; gap: 6px; color: #dc291e; font-weight: 700; cursor: pointer; margin-right: 4px; margin-bottom: 6px; padding: 2px 8px 2px 5px; border: 1px solid transparent; border-radius: 3px; transition: all .2s; text-decoration: none; font-style: normal; }
+  .schluesselkompetenzen-block .kompetenz-nummer-link .knum { font-weight: 700; font-size: 0.92em; white-space: nowrap; }
+  .schluesselkompetenzen-block .kompetenz-nummer-link .klabel { font-weight: 400; font-size: 0.85em; color: #000; }
   .schluesselkompetenzen-block .kompetenz-nummer-link:hover { background: #ffe6e6; border-color: #ffcccc; }
+  .schluesselkompetenzen-block .kompetenz-nummer-link.active { background: #dc291e; color: #fff; border-color: #dc291e; }
+  .schluesselkompetenzen-block .kompetenz-nummer-link.active .klabel { color: #fff; }
   .lebensbezug { margin-bottom: 25px; background-color: #f9f3e8; overflow: hidden; }
   .lebensbezug-header { padding: 16px 20px; cursor: pointer; position: relative; user-select: none; }
   .lebensbezug-header::after { content: '▼'; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); transition: transform .3s; }
@@ -69,33 +73,26 @@
 </style>
 </head>
 <body>
-
 <div class="theme-content-inner">
-
-  <!-- ── Idée directrice ── -->
   <div class="leitidee">
     <h3>Idée directrice</h3>
     <p>Je veille à mon bien-être physique et psychique. Je sais évaluer les risques sanitaires et financiers et m'assurer de manière adaptée. J'adopte une attitude collaborative envers mes semblables, en ligne et hors ligne.</p>
   </div>
-
-  <!-- ── Compétences clés ── -->
   <div class="schluesselkompetenzen-block">
     <h3>Compétences clés</h3>
-    <span class="kompetenz-nummer-link" data-text="Faire la différence entre sources et contenus pertinents et non pertinents">1.1</span>
-    <span class="kompetenz-nummer-link" data-text="Comprendre les différents points de vue et promouvoir la compréhension mutuelle">1.7</span>
-    <span class="kompetenz-nummer-link" data-text="Planifier les étapes de sa vie et gérer les impondérables">1.8</span>
+    <span class="kompetenz-nummer-link" data-label="1.1 Sources pertinentes" data-text="Faire la différence entre sources et contenus pertinents et non pertinents : Afin de pouvoir adopter une approche critique par rapport à la diversité des sources et des contenus médiatiques, y compris par rapport aux applications de l'intelligence artificielle, il est important de filtrer, de sélectionner, d'évaluer et d'organiser les informations communiquées."><span class="knum">1.1</span><span class="klabel">Sources pertinentes</span></span>
+    <span class="kompetenz-nummer-link" data-label="1.7 Promotion de la compréhension mutuelle" data-text="Comprendre les différents points de vue et promouvoir la compréhension mutuelle : Afin de créer un environnement inclusif et respectueux propice à la recherche de consensus entre des intérêts divergents, il est important de pouvoir changer de perspective, de développer l'empathie et de faire preuve de tolérance."><span class="knum">1.7</span><span class="klabel">Promotion de la compréhension mutuelle</span></span>
+    <span class="kompetenz-nummer-link" data-label="1.8 Planification des étapes de vie" data-text="Planifier les étapes de sa vie et gérer les impondérables : Afin de planifier et d'organiser les différentes étapes de la vie à moyen et long terme, il est important de développer des ressources personnelles, sociales et matérielles et de les utiliser de manière ciblée selon le principe de l'auto-efficacité."><span class="knum">1.8</span><span class="klabel">Planification des étapes de vie</span></span>
+    <div id="kompetenz-panel" style="display:none;margin-top:12px;background:#fff;border:1px solid #c8b99a;padding:12px 14px;font-size:0.85em;line-height:1.6;color:#000;user-select:text;">
+      <div id="kompetenz-panel-label" style="font-weight:700;margin-bottom:6px;"></div>
+      <div id="kompetenz-panel-text"></div>
+    </div>
   </div>
-
-  <!-- ══════════════════════════════════════════
-       CONTEXTE DE VIE 1
-  ══════════════════════════════════════════ -->
   <div class="lebensbezug">
     <div class="lebensbezug-header collapsed" onclick="toggleLB(this)">
       <h3>1. Contexte de vie : Mon corps et mon psychisme sont soumis à différentes influences. À mon tour, je prends conscience que je peux exercer une influence sur le bien-être de mes semblables.</h3>
     </div>
     <div class="lebensbezug-content">
-
-      <!-- ─── Compétence 1 ─── -->
       <div class="lerninhalt">
         <div class="kompetenz-header">
           <h4>Compétence 1 : <span class="normal-weight">Je réfléchis à ma propre attitude et à celle de mon entourage face aux risques physiques et psychiques dans la vie quotidienne et j'élabore des stratégies concrètes pour les minimiser.</span></h4>
@@ -106,15 +103,13 @@
             <div class="table-content">
               <table class="kompetenz-table">
                 <tbody>
-                  <!-- Bloc 1 -->
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Domaine d'apprentissage société</th>
                     <th class="col-sprache" style="width:50%;">Domaine d'apprentissage langue &amp; communication</th>
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.2. Identité et socialisation</span><br>
-                         Évaluer <strong>les risques</strong> liés à la santé physique et psychique et définir <strong>des mesures</strong> visant à la maintenir.</p>
+                      <p><span class="ges-tag">2.2. Identité et socialisation</span><br>Évaluer <strong>les risques</strong> liés à la santé physique et psychique et définir <strong>des mesures</strong> visant à la maintenir.</p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br><a href="https://wie-gehts-dir.ch/" target="_blank" rel="noopener noreferrer">wie-geht's-dir.ch</a>, <a href="https://feel-ok.ch/" target="_blank" rel="noopener noreferrer">feel-ok.ch</a>, <a href="https://hirncoach.ch/" target="_blank" rel="noopener noreferrer">hirncoach.ch</a>, <a href="https://shareyourrisk.ch/" target="_blank" rel="noopener noreferrer">shareyourrisk.ch</a></p>
                     </td>
                     <td class="col-sprache">
@@ -126,27 +121,21 @@
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
-                  <!-- Bloc numérique 1 -->
                   <tr><th class="col-digital" colspan="2"><span>Domaine de compétence médias &amp; numérique</span></th></tr>
                   <tr>
                     <td class="col-digital-content" colspan="2">
-                      <p><span class="dig-tag">3.6. Attitude réflexive et utilisation responsable</span><br>
-                         Reconnaître <strong>les données sensibles</strong> (par exemple concernant la santé ou la personnalité) et les traiter de manière conforme.</p>
+                      <p><span class="dig-tag">3.6. Attitude réflexive et utilisation responsable</span><br>Reconnaître <strong>les données sensibles</strong> (par exemple concernant la santé ou la personnalité) et les traiter de manière conforme.</p>
                       <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
-
                   <tr class="spacing-row"><td colspan="2"></td></tr>
-
-                  <!-- Bloc 2 -->
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Domaine d'apprentissage société</th>
                     <th class="col-sprache" style="width:50%;">Domaine d'apprentissage langue &amp; communication</th>
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.2. Identité et socialisation</span><br>
-                         Discerner <strong>ses propres schémas comportementaux</strong> et ceux des autres, et y réagir de manière appropriée.</p>
+                      <p><span class="ges-tag">2.2. Identité et socialisation</span><br>Discerner <strong>ses propres schémas comportementaux</strong> et ceux des autres, et y réagir de manière appropriée.</p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                     <td class="col-sprache">
@@ -158,12 +147,10 @@
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
-                  <!-- Bloc numérique 2 -->
                   <tr><th class="col-digital" colspan="2"><span>Domaine de compétence médias &amp; numérique</span></th></tr>
                   <tr>
                     <td class="col-digital-content" colspan="2">
-                      <p><span class="dig-tag">3.6. Attitude réflexive et utilisation responsable</span><br>
-                         Analyser <strong>sa propre utilisation</strong> des médias numériques et en déduire les conséquences possibles.</p>
+                      <p><span class="dig-tag">3.6. Attitude réflexive et utilisation responsable</span><br>Analyser <strong>sa propre utilisation</strong> des médias numériques et en déduire les conséquences possibles.</p>
                       <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
@@ -177,8 +164,6 @@
           </div>
         </div>
       </div>
-
-      <!-- ─── Compétence 2 ─── -->
       <div class="lerninhalt">
         <div class="kompetenz-header">
           <h4>Compétence 2 : <span class="normal-weight">Je suis capable d'identifier les comportements appropriés, manipulateurs ou interdits en ligne comme hors ligne, et d'y réagir de manière adéquate.</span></h4>
@@ -189,15 +174,13 @@
             <div class="table-content">
               <table class="kompetenz-table">
                 <tbody>
-                  <!-- Bloc 1 -->
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Domaine d'apprentissage société</th>
                     <th class="col-sprache" style="width:50%;">Domaine d'apprentissage langue &amp; communication</th>
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.1. Éthique</span><br>
-                         Classer <strong>les comportements interpersonnels</strong> en ligne et hors ligne (appropriés, manipulateurs, interdits).</p>
+                      <p><span class="ges-tag">2.1. Éthique</span><br>Classer <strong>les comportements interpersonnels</strong> en ligne et hors ligne (appropriés, manipulateurs, interdits).</p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                     <td class="col-sprache">
@@ -209,27 +192,21 @@
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
-                  <!-- Bloc numérique 1 -->
                   <tr><th class="col-digital" colspan="2"><span>Domaine de compétence médias &amp; numérique</span></th></tr>
                   <tr>
                     <td class="col-digital-content" colspan="2">
-                      <p><span class="dig-tag">3.2. Compétences en gestion des données</span><br>
-                         Connaître les conséquences des <strong>chambres d'écho et bulles de filtre</strong> et adapter son comportement numérique en conséquence.</p>
+                      <p><span class="dig-tag">3.2. Compétences en gestion des données</span><br>Connaître les conséquences des <strong>chambres d'écho et bulles de filtre</strong> et adapter son comportement numérique en conséquence.</p>
                       <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
-
                   <tr class="spacing-row"><td colspan="2"></td></tr>
-
-                  <!-- Bloc 2 -->
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Domaine d'apprentissage société</th>
                     <th class="col-sprache" style="width:50%;">Domaine d'apprentissage langue &amp; communication</th>
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.6. Droit</span><br>
-                         Évaluer <strong>les conséquences juridiques</strong> dans les situations délicates (par exemple en cas de harcèlement, d'insultes, d'agressions, etc.) et agir en conséquence.</p>
+                      <p><span class="ges-tag">2.6. Droit</span><br>Évaluer <strong>les conséquences juridiques</strong> dans les situations délicates (par exemple en cas de harcèlement, d'insultes, d'agressions, etc.) et agir en conséquence.</p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                     <td class="col-sprache">
@@ -241,12 +218,10 @@
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
-                  <!-- Bloc numérique 2 -->
                   <tr><th class="col-digital" colspan="2"><span>Domaine de compétence médias &amp; numérique</span></th></tr>
                   <tr>
                     <td class="col-digital-content" colspan="2">
-                      <p><span class="dig-tag">3.2. Compétences en gestion des données</span><br>
-                         Vérifier les informations à l'aide d'outils en ligne et de sites web afin de détecter <strong>toute manipulation ou fausse information.</strong></p>
+                      <p><span class="dig-tag">3.2. Compétences en gestion des données</span><br>Vérifier les informations à l'aide d'outils en ligne et de sites web afin de détecter <strong>toute manipulation ou fausse information.</strong></p>
                       <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
@@ -260,20 +235,13 @@
           </div>
         </div>
       </div>
-
     </div>
-  </div><!-- /contexte de vie 1 -->
-
-  <!-- ══════════════════════════════════════════
-       CONTEXTE DE VIE 2
-  ══════════════════════════════════════════ -->
+  </div>
   <div class="lebensbezug">
     <div class="lebensbezug-header collapsed" onclick="toggleLB(this)">
       <h3>2. Contexte de vie : J'analyse les risques et leurs conséquences afin de décider de manière responsable si je les assume ou si je me protège.</h3>
     </div>
     <div class="lebensbezug-content">
-
-      <!-- ─── Compétence 1 ─── -->
       <div class="lerninhalt">
         <div class="kompetenz-header">
           <h4>Compétence 1 : <span class="normal-weight">Je souscris des assurances adaptées à ma situation personnelle et je connais leurs prestations.</span></h4>
@@ -284,15 +252,13 @@
             <div class="table-content">
               <table class="kompetenz-table">
                 <tbody>
-                  <!-- Bloc 1 -->
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Domaine d'apprentissage société</th>
                     <th class="col-sprache" style="width:50%;">Domaine d'apprentissage langue &amp; communication</th>
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.6. Droit</span><br>
-                         Distinguer <strong>les différents types d'assurance</strong> (assurance de personnes, assurance de choses et assurance de patrimoine) et décrire <strong>leur fonctionnement</strong> (principe de solidarité).</p>
+                      <p><span class="ges-tag">2.6. Droit</span><br>Distinguer <strong>les différents types d'assurance</strong> (assurance de personnes, assurance de choses et assurance de patrimoine) et décrire <strong>leur fonctionnement</strong> (principe de solidarité).</p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                     <td class="col-sprache">
@@ -304,18 +270,14 @@
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
-
                   <tr class="spacing-row"><td colspan="2"></td></tr>
-
-                  <!-- Bloc 2 -->
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Domaine d'apprentissage société</th>
                     <th class="col-sprache" style="width:50%;">Domaine d'apprentissage langue &amp; communication</th>
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.8. Économie</span><br>
-                         Identifier et justifier l'utilité personnelle de chaque assurance.</p>
+                      <p><span class="ges-tag">2.8. Économie</span><br>Identifier et justifier l'utilité personnelle de chaque assurance.</p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                     <td class="col-sprache">
@@ -327,27 +289,21 @@
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
-                  <!-- Bloc numérique 2 -->
                   <tr><th class="col-digital" colspan="2"><span>Domaine de compétence médias &amp; numérique</span></th></tr>
                   <tr>
                     <td class="col-digital-content" colspan="2">
-                      <p><span class="dig-tag">3.4. Résolution de problèmes</span><br>
-                         Personnaliser <strong>les modèles d'assurances en ligne</strong> pour son usage personnel.</p>
+                      <p><span class="dig-tag">3.4. Résolution de problèmes</span><br>Personnaliser <strong>les modèles d'assurances en ligne</strong> pour son usage personnel.</p>
                       <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
-
                   <tr class="spacing-row"><td colspan="2"></td></tr>
-
-                  <!-- Bloc 3 -->
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Domaine d'apprentissage société</th>
                     <th class="col-sprache" style="width:50%;">Domaine d'apprentissage langue &amp; communication</th>
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.8. Économie</span><br>
-                         Distinguer ses propres coûts <strong>en matière d'assurance accident et maladie</strong>, comparer et sélectionner les modèles d'assurance de base appropriés.</p>
+                      <p><span class="ges-tag">2.8. Économie</span><br>Distinguer ses propres coûts <strong>en matière d'assurance accident et maladie</strong>, comparer et sélectionner les modèles d'assurance de base appropriés.</p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                     <td class="col-sprache">
@@ -359,12 +315,10 @@
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
-                  <!-- Bloc numérique 3 -->
                   <tr><th class="col-digital" colspan="2"><span>Domaine de compétence médias &amp; numérique</span></th></tr>
                   <tr>
                     <td class="col-digital-content" colspan="2">
-                      <p><span class="dig-tag">3.4. Résolution de problèmes</span><br>
-                         Comparer ses propres frais d'assurance à l'aide <strong>d'un outil en ligne.</strong></p>
+                      <p><span class="dig-tag">3.4. Résolution de problèmes</span><br>Comparer ses propres frais d'assurance à l'aide <strong>d'un outil en ligne.</strong></p>
                       <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br><a href="https://www.priminfo.admin.ch/" target="_blank" rel="noopener noreferrer">priminfo.ch</a></p>
                     </td>
                   </tr>
@@ -378,13 +332,8 @@
           </div>
         </div>
       </div>
-
     </div>
-  </div><!-- /contexte de vie 2 -->
-
-  <!-- ══════════════════════════════════════════
-       DOMAINE LIBRE
-  ══════════════════════════════════════════ -->
+  </div>
   <div class="freibereich-section">
     <div class="freibereich-header collapsed" onclick="toggleFB(this)">
       <h3>Domaine libre (20 %)</h3>
@@ -395,55 +344,50 @@
         <tbody>
           <tr><th style="background:#fff4cc;padding:5px 10px;text-align:left;font-size:0.75em;font-weight:700;border:1px solid #000;">Domaine d'apprentissage société</th></tr>
           <tr><td style="background:#fffef5;padding:8px 10px;border:1px solid #000;font-size:0.8em;">
-            <p style="margin-bottom:10px;"><span class="ges-tag">2.5. Politique</span><br>
-               Classer <strong>les positions politiques</strong> (gauche – droite) en matière de santé et de questions sociales.</p>
-            <p style="margin-bottom:10px;"><span class="ges-tag">2.2. Identité et socialisation</span><br>
-               Discuter du <strong>stress au travail.</strong></p>
-            <p style="margin-bottom:10px;"><span class="ges-tag">2.2. Identité et socialisation</span><br>
-               Identifier <strong>les activités de loisirs favorables à la santé.</strong></p>
-            <p style="margin-bottom:0;"><span class="ges-tag">2.8. Économie</span><br>
-               Évaluer <strong>les prestations</strong> de l'assurance complémentaire facultative pour sa propre situation.</p>
+            <p style="margin-bottom:10px;"><span class="ges-tag">2.5. Politique</span><br>Classer <strong>les positions politiques</strong> (gauche – droite) en matière de santé et de questions sociales.</p>
+            <p style="margin-bottom:10px;"><span class="ges-tag">2.2. Identité et socialisation</span><br>Discuter du <strong>stress au travail.</strong></p>
+            <p style="margin-bottom:10px;"><span class="ges-tag">2.2. Identité et socialisation</span><br>Identifier <strong>les activités de loisirs favorables à la santé.</strong></p>
+            <p style="margin-bottom:0;"><span class="ges-tag">2.8. Économie</span><br>Évaluer <strong>les prestations</strong> de l'assurance complémentaire facultative pour sa propre situation.</p>
           </td></tr>
-
           <tr><th style="background:#cce5ff;padding:5px 10px;text-align:left;font-size:0.75em;font-weight:700;border:1px solid #000;">Domaine d'apprentissage langue &amp; communication</th></tr>
           <tr><td style="background:#f5f9ff;padding:8px 10px;border:1px solid #000;font-size:0.8em;">
-            <p style="margin-bottom:10px;">
-              <span class="sprach-tag">4.2. Explicatif (expliquant)</span> &nbsp;
-              <span class="form-label">Interaction et collaboration orales</span><br>
-              <strong>Participer activement aux discussions</strong> concernant des situations familières et justifier son point de vue personnel.</p>
-            <p style="margin-bottom:10px;">
-              <span class="sprach-tag">4.1. Descriptif (décrivant)</span> &nbsp;
-              <span class="form-label">Production orale</span>, <span class="form-label">Production multimédia</span><br>
-              <strong>Présenter</strong> un mini-reportage personnel sur un sinistre.</p>
-            <p style="margin-bottom:10px;">
-              <span class="sprach-tag">4.1. Descriptif (décrivant)</span> &nbsp;
-              <span class="form-label">Production orale</span><br>
-              <strong>Différencier les émotions</strong>,les exprimer avec des mots et y réagir.</p>
-            <p style="margin-bottom:0;">
-              <span class="sprach-tag">4.5. Réflexif (réfléchissant)</span> &nbsp;
-              <span class="form-label">Production orale</span>, <span class="form-label">Production écrite et visuelle</span><br>
-              <strong>Réfléchir</strong> à son propre comportement et à celui des autres dans les espaces numériques.</p>
+            <p style="margin-bottom:10px;"><span class="sprach-tag">4.2. Explicatif (expliquant)</span> &nbsp;<span class="form-label">Interaction et collaboration orales</span><br><strong>Participer activement aux discussions</strong> concernant des situations familières et justifier son point de vue personnel.</p>
+            <p style="margin-bottom:10px;"><span class="sprach-tag">4.1. Descriptif (décrivant)</span> &nbsp;<span class="form-label">Production orale</span>, <span class="form-label">Production multimédia</span><br><strong>Présenter</strong> un mini-reportage personnel sur un sinistre.</p>
+            <p style="margin-bottom:10px;"><span class="sprach-tag">4.1. Descriptif (décrivant)</span> &nbsp;<span class="form-label">Production orale</span><br><strong>Différencier les émotions</strong>, les exprimer avec des mots et y réagir.</p>
+            <p style="margin-bottom:0;"><span class="sprach-tag">4.5. Réflexif (réfléchissant)</span> &nbsp;<span class="form-label">Production orale</span>, <span class="form-label">Production écrite et visuelle</span><br><strong>Réfléchir</strong> à son propre comportement et à celui des autres dans les espaces numériques.</p>
           </td></tr>
-
           <tr><th style="background:#d4edda;padding:5px 10px;text-align:left;font-size:0.75em;font-weight:700;border:1px solid #000;">Domaine de compétence médias &amp; numérique</th></tr>
           <tr><td style="background:#f0f8f0;padding:8px 10px;border:1px solid #000;font-size:0.8em;">
-            <p style="margin-bottom:0;"><span class="dig-tag">3.2. Compétences en gestion des données</span><br>
-               Paramétrer et utiliser en toute sécurité des sites web et <strong>des outils numériques</strong> et informatiques pertinents pour la formation.</p>
+            <p style="margin-bottom:0;"><span class="dig-tag">3.2. Compétences en gestion des données</span><br>Paramétrer et utiliser en toute sécurité des sites web et <strong>des outils numériques</strong> et informatiques pertinents pour la formation.</p>
           </td></tr>
         </tbody>
       </table>
     </div>
   </div>
-
-</div><!-- /theme-content-inner -->
-
+</div>
 <script>
 function toggleLB(header) { header.nextElementSibling.classList.toggle('show'); header.classList.toggle('collapsed'); }
 function toggleFB(header) { header.nextElementSibling.classList.toggle('show'); header.classList.toggle('collapsed'); }
 function toggleTbl(header) { const c = header.nextElementSibling; const i = header.querySelector('.table-toggle'); c.classList.toggle('expanded'); i.classList.toggle('rotated'); }
 function toggleUms(box) { const c = box.querySelector('.schluessel-content'); const i = box.querySelector('.toggle-schluessel'); c.classList.toggle('expanded'); i.classList.toggle('rotated'); }
 document.querySelectorAll('.kompetenz-nummer-link').forEach(el => {
-  el.setAttribute('title', 'Compétence clé ' + el.textContent.trim() + ' : ' + el.dataset.text);
+  el.addEventListener('click', function() {
+    const panel = document.getElementById('kompetenz-panel');
+    const panelLbl = document.getElementById('kompetenz-panel-label');
+    const panelTxt = document.getElementById('kompetenz-panel-text');
+    const label = this.getAttribute('data-label');
+    const text = this.getAttribute('data-text');
+    if (panel.style.display !== 'none' && panelLbl.textContent === label) {
+      panel.style.display = 'none';
+      document.querySelectorAll('.kompetenz-nummer-link').forEach(e => e.classList.remove('active'));
+      return;
+    }
+    panelLbl.textContent = label;
+    panelTxt.textContent = text;
+    panel.style.display = 'block';
+    document.querySelectorAll('.kompetenz-nummer-link').forEach(e => e.classList.remove('active'));
+    this.classList.add('active');
+  });
 });
 </script>
 </body>
