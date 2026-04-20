@@ -11,8 +11,12 @@
   .leitidee p  { color: #000; font-size: 1em; }
   .schluesselkompetenzen-block { background-color: #f9f3e8; padding: 20px; margin-bottom: 18px; }
   .schluesselkompetenzen-block h3 { color: #000; font-size: 0.85em; font-weight: 400; margin: 0 0 10px 0; }
-  .schluesselkompetenzen-block .kompetenz-nummer-link { display: inline-block; color: #dc291e; font-weight: 700; cursor: pointer; margin-right: 4px; padding: 2px 5px; border: 1px solid transparent; border-radius: 3px; transition: all .2s; text-decoration: none; font-style: normal; }
+  .schluesselkompetenzen-block .kompetenz-nummer-link { display: inline-flex; align-items: baseline; gap: 6px; color: #dc291e; font-weight: 700; cursor: pointer; margin-right: 4px; margin-bottom: 6px; padding: 2px 8px 2px 5px; border: 1px solid transparent; border-radius: 3px; transition: all .2s; text-decoration: none; font-style: normal; }
+  .schluesselkompetenzen-block .kompetenz-nummer-link .knum { font-weight: 700; font-size: 0.92em; white-space: nowrap; }
+  .schluesselkompetenzen-block .kompetenz-nummer-link .klabel { font-weight: 400; font-size: 0.85em; color: #000; }
   .schluesselkompetenzen-block .kompetenz-nummer-link:hover { background: #ffe6e6; border-color: #ffcccc; }
+  .schluesselkompetenzen-block .kompetenz-nummer-link.active { background: #dc291e; color: #fff; border-color: #dc291e; }
+  .schluesselkompetenzen-block .kompetenz-nummer-link.active .klabel { color: #fff; }
   .lebensbezug { margin-bottom: 25px; background-color: #f9f3e8; overflow: hidden; }
   .lebensbezug-header { padding: 16px 20px; cursor: pointer; position: relative; user-select: none; }
   .lebensbezug-header::after { content: '▼'; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); transition: transform .3s; }
@@ -69,33 +73,26 @@
 </style>
 </head>
 <body>
-
 <div class="theme-content-inner">
-
-  <!-- ── Idée directrice ── -->
   <div class="leitidee">
     <h3>Idée directrice</h3>
     <p>Le début de ma formation professionnelle initiale marque le début d'une nouvelle étape dans ma vie. Dans ce nouvel environnement professionnel complexe et interconnecté, je m'informe sur mes droits et mes devoirs, je communique de manière appropriée, je suis capable de gérer les conflits et de m'intégrer socialement.</p>
   </div>
-
-  <!-- ── Compétences clés ── -->
   <div class="schluesselkompetenzen-block">
     <h3>Compétences clés</h3>
-    <span class="kompetenz-nummer-link" data-text="Se fixer des objectifs, les évaluer et adopter un comportement adaptatif">1.2</span>
-    <span class="kompetenz-nummer-link" data-text="Travailler de manière efficace et ciblée au sein d'équipes diverses">1.4</span>
-    <span class="kompetenz-nummer-link" data-text="Composer avec un environnement en constante évolution et s'y adapter">1.10</span>
+    <span class="kompetenz-nummer-link" data-label="1.2 Fixation, évaluation et ajustement des objectifs" data-text="Se fixer des objectifs, les évaluer et adopter un comportement adaptatif : Afin de garantir l'efficacité de l'apprentissage, il est important d'établir des priorités, de se fixer des objectifs d'apprentissage, d'évaluer les progrès réalisés et d'adapter les stratégies d'apprentissage lorsque les ressources limitées entraînent des conflits d'objectifs."><span class="knum">1.2</span><span class="klabel">Fixation, évaluation et ajustement des objectifs</span></span>
+    <span class="kompetenz-nummer-link" data-label="1.4 Travail d'équipe" data-text="Travailler de manière efficace et ciblée au sein d'équipes diverses : Afin de travailler de manière efficace et respectueuse au sein d'équipes diverses et dans des rôles variés, il est important de développer la coopération, la communication et la coordination avec les autres membres de l'équipe, de partager la responsabilité des résultats et de faire preuve de flexibilité."><span class="knum">1.4</span><span class="klabel">Travail d'équipe</span></span>
+    <span class="kompetenz-nummer-link" data-label="1.10 Adaptation à l'environnement" data-text="Composer avec un environnement en constante évolution et s'y adapter : Afin de subsister dans des contextes de vie qui évoluent rapidement, il est important de pouvoir adopter une attitude constructive face aux changements, de faire preuve de flexibilité et de mobilité, d'opter pour un comportement durable et de renforcer sa capacité d'adaptation."><span class="knum">1.10</span><span class="klabel">Adaptation à l'environnement</span></span>
+    <div id="kompetenz-panel" style="display:none;margin-top:12px;background:#fff;border:1px solid #c8b99a;padding:12px 14px;font-size:0.85em;line-height:1.6;color:#000;user-select:text;">
+      <div id="kompetenz-panel-label" style="font-weight:700;margin-bottom:6px;"></div>
+      <div id="kompetenz-panel-text"></div>
+    </div>
   </div>
-
-  <!-- ══════════════════════════════════════════
-       CONTEXTE DE VIE 1
-  ══════════════════════════════════════════ -->
   <div class="lebensbezug">
     <div class="lebensbezug-header collapsed" onclick="toggleLB(this)">
       <h3><strong>1. Contexte de vie :</strong> Ma formation se déroule en entreprise, à l'école professionnelle et aux cours interentreprises. J'y rencontre différentes personnes qui ont des attentes à mon égard.</h3>
     </div>
     <div class="lebensbezug-content">
-
-      <!-- ─── Compétence 1 ─── -->
       <div class="lerninhalt">
         <div class="kompetenz-header">
           <h4>Compétence 1 : <span class="normal-weight">Je m'y retrouve entre les différents lieux d'apprentissage, dont l'enseignement de la culture générale. Je communique également de manière ciblée au sein de ces différents environnements.</span></h4>
@@ -106,7 +103,6 @@
             <div class="table-content">
               <table class="kompetenz-table">
                 <tbody>
-                  <!-- Bloc 1 -->
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Domaine d'apprentissage société</th>
                     <th class="col-sprache" style="width:50%;">Domaine d'apprentissage langue &amp; communication</th>
@@ -126,7 +122,6 @@
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
-                  <!-- Bloc numérique 1 -->
                   <tr><th class="col-digital" colspan="2"><span>Domaine de compétence médias &amp; numérique</span></th></tr>
                   <tr>
                     <td class="col-digital-content" colspan="2">
@@ -135,10 +130,7 @@
                       <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
-
                   <tr class="spacing-row"><td colspan="2"></td></tr>
-
-                  <!-- Bloc 2 -->
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Domaine d'apprentissage société</th>
                     <th class="col-sprache" style="width:50%;">Domaine d'apprentissage langue &amp; communication</th>
@@ -164,7 +156,6 @@
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
-                  <!-- Bloc numérique 2 -->
                   <tr><th class="col-digital" colspan="2"><span>Domaine de compétence médias &amp; numérique</span></th></tr>
                   <tr>
                     <td class="col-digital-content" colspan="2">
@@ -183,8 +174,6 @@
           </div>
         </div>
       </div>
-
-      <!-- ─── Compétence 2 ─── -->
       <div class="lerninhalt">
         <div class="kompetenz-header">
           <h4>Compétence 2 : <span class="normal-weight">J'utilise des stratégies de travail, d'apprentissage et de communication qui m'aident à atteindre mes objectifs.</span></h4>
@@ -195,7 +184,6 @@
             <div class="table-content">
               <table class="kompetenz-table">
                 <tbody>
-                  <!-- Bloc 1 -->
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Domaine d'apprentissage société</th>
                     <th class="col-sprache" style="width:50%;">Domaine d'apprentissage langue &amp; communication</th>
@@ -215,7 +203,6 @@
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
-                  <!-- Bloc numérique 1 -->
                   <tr><th class="col-digital" colspan="2"><span>Domaine de compétence médias &amp; numérique</span></th></tr>
                   <tr>
                     <td class="col-digital-content" colspan="2">
@@ -224,10 +211,7 @@
                       <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
-
                   <tr class="spacing-row"><td colspan="2"></td></tr>
-
-                  <!-- Bloc 2 -->
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Domaine d'apprentissage société</th>
                     <th class="col-sprache" style="width:50%;">Domaine d'apprentissage langue &amp; communication</th>
@@ -257,20 +241,13 @@
           </div>
         </div>
       </div>
-
     </div>
-  </div><!-- /contexte de vie 1 -->
-
-  <!-- ══════════════════════════════════════════
-       CONTEXTE DE VIE 2
-  ══════════════════════════════════════════ -->
+  </div>
   <div class="lebensbezug">
     <div class="lebensbezug-header collapsed" onclick="toggleLB(this)">
       <h3><strong>2. Contexte de vie :</strong> La loi et mon contrat d'apprentissage me confèrent des droits et des obligations.</h3>
     </div>
     <div class="lebensbezug-content">
-
-      <!-- ─── Compétence 1 ─── -->
       <div class="lerninhalt">
         <div class="kompetenz-header">
           <h4>Compétence 1 : <span class="normal-weight">J'exerce mes droits et mes obligations tels qu'ils sont définis par la loi et le contrat.</span></h4>
@@ -281,7 +258,6 @@
             <div class="table-content">
               <table class="kompetenz-table">
                 <tbody>
-                  <!-- Bloc 1 -->
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Domaine d'apprentissage société</th>
                     <th class="col-sprache" style="width:50%;">Domaine d'apprentissage langue &amp; communication</th>
@@ -301,10 +277,7 @@
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
-
                   <tr class="spacing-row"><td colspan="2"></td></tr>
-
-                  <!-- Bloc 2 -->
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Domaine d'apprentissage société</th>
                     <th class="col-sprache" style="width:50%;">Domaine d'apprentissage langue &amp; communication</th>
@@ -324,7 +297,6 @@
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
-                  <!-- Bloc numérique -->
                   <tr><th class="col-digital" colspan="2"><span>Domaine de compétence médias &amp; numérique</span></th></tr>
                   <tr>
                     <td class="col-digital-content" colspan="2">
@@ -343,13 +315,8 @@
           </div>
         </div>
       </div>
-
     </div>
-  </div><!-- /contexte de vie 2 -->
-
-  <!-- ══════════════════════════════════════════
-       DOMAINE LIBRE
-  ══════════════════════════════════════════ -->
+  </div>
   <div class="freibereich-section">
     <div class="freibereich-header collapsed" onclick="toggleFB(this)">
       <h3>Domaine libre (20 %)</h3>
@@ -360,55 +327,50 @@
         <tbody>
           <tr><th style="background:#fff4cc;padding:5px 10px;text-align:left;font-size:0.75em;font-weight:700;border:1px solid #000;">Domaine d'apprentissage société</th></tr>
           <tr><td style="background:#fffef5;padding:8px 10px;border:1px solid #000;font-size:0.8em;">
-            <p style="margin-bottom:10px;"><span class="ges-tag">2.2. Identité et socialisation</span><br>
-               Démontrer son <strong>activité ou routine</strong> quotidienne (par exemple dans l'entreprise).</p>
-            <p style="margin-bottom:10px;"><span class="ges-tag">2.1. Éthique</span><br>
-               Comparer <strong>ses propres convictions morales</strong> à celles des autres.</p>
-            <p style="margin-bottom:0;"><span class="ges-tag">2.3. Culture</span><br>
-               <strong>Analyser les attentes comportementales</strong> (par exemple, envers les personnes en formation) de différentes cultures et générations.</p>
+            <p style="margin-bottom:10px;"><span class="ges-tag">2.2. Identité et socialisation</span><br>Démontrer son <strong>activité ou routine</strong> quotidienne (par exemple dans l'entreprise).</p>
+            <p style="margin-bottom:10px;"><span class="ges-tag">2.1. Éthique</span><br>Comparer <strong>ses propres convictions morales</strong> à celles des autres.</p>
+            <p style="margin-bottom:0;"><span class="ges-tag">2.3. Culture</span><br><strong>Analyser les attentes comportementales</strong> (par exemple, envers les personnes en formation) de différentes cultures et générations.</p>
           </td></tr>
-
           <tr><th style="background:#cce5ff;padding:5px 10px;text-align:left;font-size:0.75em;font-weight:700;border:1px solid #000;">Domaine d'apprentissage langue &amp; communication</th></tr>
           <tr><td style="background:#f5f9ff;padding:8px 10px;border:1px solid #000;font-size:0.8em;">
-            <p style="margin-bottom:10px;">
-              <span class="sprach-tag">4.2. Explicatif</span> &nbsp;
-              <span class="form-label">Production écrite et visuelle</span><br>
-              Structurer le contenu d'une brève instruction et le résumer sous forme de <strong>mots-clés</strong>.</p>
-            <p style="margin-bottom:10px;">
-              <span class="sprach-tag">4.2. Explicatif</span> &nbsp;
-              <span class="form-label">Production multimédia</span><br>
-              <strong>Décrire de manière structurée</strong> son emploi du temps quotidien avec toutes les étapes de travail.</p>
-            <p style="margin-bottom:10px;">
-              <span class="sprach-tag">4.4. Interactif</span> &nbsp;
-              <span class="form-label">Interaction et collaboration orales</span><br>
-              Interpréter par <strong>un jeu de rôle</strong> différentes situations professionnelles.</p>
-            <p style="margin-bottom:0;">
-              <span class="sprach-tag">4.1. Descriptif</span> &nbsp;
-              <span class="form-label">Production orale</span><br>
-              Décrire les comportements <strong>générationnels/culturels</strong> (par exemple sur l'utilisation des contenus multimédias).</p>
+            <p style="margin-bottom:10px;"><span class="sprach-tag">4.2. Explicatif</span> &nbsp;<span class="form-label">Production écrite et visuelle</span><br>Structurer le contenu d'une brève instruction et le résumer sous forme de <strong>mots-clés</strong>.</p>
+            <p style="margin-bottom:10px;"><span class="sprach-tag">4.2. Explicatif</span> &nbsp;<span class="form-label">Production multimédia</span><br><strong>Décrire de manière structurée</strong> son emploi du temps quotidien avec toutes les étapes de travail.</p>
+            <p style="margin-bottom:10px;"><span class="sprach-tag">4.4. Interactif</span> &nbsp;<span class="form-label">Interaction et collaboration orales</span><br>Interpréter par <strong>un jeu de rôle</strong> différentes situations professionnelles.</p>
+            <p style="margin-bottom:0;"><span class="sprach-tag">4.1. Descriptif</span> &nbsp;<span class="form-label">Production orale</span><br>Décrire les comportements <strong>générationnels/culturels</strong> (par exemple sur l'utilisation des contenus multimédias).</p>
           </td></tr>
-
           <tr><th style="background:#d4edda;padding:5px 10px;text-align:left;font-size:0.75em;font-weight:700;border:1px solid #000;">Domaine de compétence médias &amp; numérique</th></tr>
           <tr><td style="background:#f0f8f0;padding:8px 10px;border:1px solid #000;font-size:0.8em;">
-            <p style="margin-bottom:10px;"><span class="dig-tag">3.2. Compétences en gestion des données</span><br>
-               Utiliser en toute sécurité des sites web et des <strong>outils numériques</strong> et informatiques pertinents pour la formation.</p>
-            <p style="margin-bottom:0;"><span class="dig-tag">3.1. Bases des applications numériques</span><br>
-               Utiliser <strong>les applications informatiques</strong> de manière appropriée.</p>
+            <p style="margin-bottom:10px;"><span class="dig-tag">3.2. Compétences en gestion des données</span><br>Utiliser en toute sécurité des sites web et des <strong>outils numériques</strong> et informatiques pertinents pour la formation.</p>
+            <p style="margin-bottom:0;"><span class="dig-tag">3.1. Bases des applications numériques</span><br>Utiliser <strong>les applications informatiques</strong> de manière appropriée.</p>
           </td></tr>
         </tbody>
       </table>
     </div>
   </div>
-
-</div><!-- /theme-content-inner -->
-
+</div>
 <script>
 function toggleLB(header) { header.nextElementSibling.classList.toggle('show'); header.classList.toggle('collapsed'); }
 function toggleFB(header) { header.nextElementSibling.classList.toggle('show'); header.classList.toggle('collapsed'); }
 function toggleTbl(header) { const c = header.nextElementSibling; const i = header.querySelector('.table-toggle'); c.classList.toggle('expanded'); i.classList.toggle('rotated'); }
 function toggleUms(box) { const c = box.querySelector('.schluessel-content'); const i = box.querySelector('.toggle-schluessel'); c.classList.toggle('expanded'); i.classList.toggle('rotated'); }
 document.querySelectorAll('.kompetenz-nummer-link').forEach(el => {
-  el.setAttribute('title', 'Compétence clé ' + el.textContent.trim() + ' : ' + el.dataset.text);
+  el.addEventListener('click', function() {
+    const panel = document.getElementById('kompetenz-panel');
+    const panelLbl = document.getElementById('kompetenz-panel-label');
+    const panelTxt = document.getElementById('kompetenz-panel-text');
+    const label = this.getAttribute('data-label');
+    const text = this.getAttribute('data-text');
+    if (panel.style.display !== 'none' && panelLbl.textContent === label) {
+      panel.style.display = 'none';
+      document.querySelectorAll('.kompetenz-nummer-link').forEach(e => e.classList.remove('active'));
+      return;
+    }
+    panelLbl.textContent = label;
+    panelTxt.textContent = text;
+    panel.style.display = 'block';
+    document.querySelectorAll('.kompetenz-nummer-link').forEach(e => e.classList.remove('active'));
+    this.classList.add('active');
+  });
 });
 </script>
 </body>
