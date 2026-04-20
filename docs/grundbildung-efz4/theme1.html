@@ -1,1 +1,572 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan d'études CG – Ma formation professionnelle</title>
+<style>
+  /* ── Base ── */
+  .theme-content-inner {
+    padding: 20px;
+    background-color: #fff;
+    font-family: 'Roboto', Arial, sans-serif;
+  }
+  .leitidee {
+    background-color: #f9f3e8;
+    padding: 20px;
+    margin-bottom: 18px;
+  }
+  .leitidee h3 { color: #000; margin-bottom: 10px; font-weight: 400; font-size: 0.85em; }
+  .leitidee p  { color: #000; font-size: 1em; }
 
+  /* ── Schlüsselkompetenzen unter Leitidee ── */
+  .schluesselkompetenzen-block {
+    background-color: #f9f3e8;
+    padding: 20px;
+    margin-bottom: 18px;
+  }
+  .schluesselkompetenzen-block h3 {
+    color: #000; font-size: 0.85em; font-weight: 400; margin: 0 0 10px 0;
+  }
+  .schluesselkompetenzen-block .kompetenz-nummer-link {
+    display: inline-block; color: #dc291e; font-weight: 700; cursor: pointer;
+    margin-right: 4px; padding: 2px 5px; border: 1px solid transparent;
+    border-radius: 3px; transition: all .2s; text-decoration: none;
+    font-style: normal;
+  }
+  .schluesselkompetenzen-block .kompetenz-nummer-link:hover { background: #ffe6e6; border-color: #ffcccc; }
+  .schluesselkompetenzen-block .kompetenz-nummer-link.active { background: #dc291e; color: #fff; border-color: #dc291e; }
+
+  /* ── Lebensbezug ── */
+  .lebensbezug { margin-bottom: 25px; background-color: #f9f3e8; overflow: hidden; }
+  .lebensbezug-header { padding: 16px 20px; cursor: pointer; position: relative; user-select: none; }
+  .lebensbezug-header::after {
+    content: '▼'; position: absolute; right: 20px; top: 50%;
+    transform: translateY(-50%); transition: transform .3s;
+  }
+  .lebensbezug-header.collapsed::after { transform: translateY(-50%) rotate(-90deg); }
+  .lebensbezug-header h3 { color: #000; font-size: 1em; font-weight: 400; margin: 0; }
+  .lebensbezug-header h3 strong { font-weight: 400; font-size: 0.7em; display: block; margin-bottom: 4px; }
+  .lebensbezug-content { padding: 0 20px 20px; display: none; }
+  .lebensbezug-content.show { display: block; }
+
+  /* ── Freibereich ── */
+  .freibereich-section { margin-bottom: 25px; background-color: #fff; border: 1px solid #000; overflow: hidden; }
+  .freibereich-header { padding: 16px 20px; cursor: pointer; position: relative; user-select: none; background: #fff; }
+  .freibereich-header::after {
+    content: '▼'; position: absolute; right: 20px; top: 50%;
+    transform: translateY(-50%); transition: transform .3s;
+  }
+  .freibereich-header.collapsed::after { transform: translateY(-50%) rotate(-90deg); }
+  .freibereich-header h3 { color: #000; font-size: 1em; font-weight: 400; margin: 0; }
+  .freibereich-content { padding: 0 20px 20px; display: none; background: #fff; }
+  .freibereich-content.show { display: block; }
+
+  /* ── Kompetenz ── */
+  .lerninhalt { margin-bottom: 18px; background: #fff; overflow: hidden; }
+  .lerninhalt-content { padding: 14px; background: #fff; border: 1px solid #e0e0e0; }
+  .kompetenz-header { background: #f5e6d3; color: #000; padding: 16px 20px 20px; margin-bottom: 3px; }
+  .kompetenz-header h4 { font-size: 1em; margin: 0; font-weight: 700; }
+  .kompetenz-header h4 .normal-weight { font-weight: 400; }
+
+  /* ── Table ── */
+  .table-container { margin-bottom: 20px; border: 1px solid #e0e0e0; overflow: hidden; }
+  .table-header {
+    background: #f5e6d3; padding: 7px 14px; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .table-header h5 { color: #000; font-size: 0.9em; font-weight: 700; margin: 0; }
+  .table-toggle { color: #000; transition: transform .3s; }
+  .table-toggle.rotated { transform: rotate(180deg); }
+  .table-content { max-height: 0; overflow: hidden; transition: max-height .4s ease; }
+  .table-content.expanded { max-height: 4000px; }
+
+  .kompetenz-table { width: 100%; border-collapse: collapse; background: #fff; table-layout: fixed; margin-top: 10px; }
+  .kompetenz-table tbody th { padding: 5px 10px; text-align: left; font-size: 0.75em; font-weight: 700; color: #000; }
+  .kompetenz-table tbody th.col-gesellschaft { background: #fff4cc; }
+  .kompetenz-table tbody th.col-sprache      { background: #cce5ff; }
+  .kompetenz-table tbody th.col-digital      { background: #fff; text-align: center; padding: 0 25%; border: none; }
+  .kompetenz-table tbody th.col-digital span { display: block; background: #d4edda; padding: 5px 10px; }
+  .kompetenz-table tbody td { padding: 8px 10px; vertical-align: top; font-size: 0.8em; color: #000; border-right: 2px solid #e9ecef; width: 50%; }
+  .kompetenz-table tbody td:last-child { border-right: none; }
+  .kompetenz-table tbody td.col-gesellschaft  { background: #fffef5; }
+  .kompetenz-table tbody td.col-sprache       { background: #f5f9ff; }
+  .kompetenz-table tbody td.col-digital-content { text-align: center; padding: 0 25%; background: #fff; }
+  .kompetenz-table tbody td.col-digital-content p { background: #f0f8f0; padding: 8px 10px; text-align: center; }
+  .kompetenz-table tbody tr.spacing-row td { background: transparent !important; border: none !important; padding: 0 !important; height: 20px; }
+
+  /* ── Sprachtag ── */
+  .sprach-tag {
+    display: inline;
+    font-weight: 700;
+    font-size: 0.92em;
+    color: #003366;
+  }
+
+  /* ── Formbezeichnung ── */
+  .form-label {
+    display: inline;
+    font-size: 0.85em;
+    font-style: italic;
+    color: #333;
+  }
+
+  .form-code { display: none; }
+  .zirk-tag { display: none; }
+  .norm-tag { display: none; }
+
+  /* ── Gesellschafts-Tag ── */
+  .ges-tag {
+    font-weight: 700;
+    color: #7a5c00;
+    font-size: 0.92em;
+  }
+
+  /* ── Digital-Tag ── */
+  .dig-tag {
+    font-weight: 700;
+    color: #1a6e2e;
+    font-size: 0.92em;
+  }
+
+  /* ── Tool-Hinweis ── */
+  .tool-hint {
+    background: #fff;
+    padding: 8px 10px;
+    margin-top: 0;
+    font-size: 0.75em;
+  }
+
+  /* ── Umsetzung ── */
+  .umsetzung-box {
+    background: #fff; border: 1px solid #d0d0d0; padding: 4px 8px;
+    margin-top: 14px; cursor: pointer; user-select: none;
+  }
+  .umsetzung-box .schluessel-header { display: flex; justify-content: space-between; align-items: center; }
+  .umsetzung-box .schluessel-header h4 { font-size: 0.75em; color: #000; font-weight: 700; margin: 0; }
+  .toggle-schluessel { color: #000; transition: transform .3s; }
+  .toggle-schluessel.rotated { transform: rotate(180deg); }
+  .schluessel-content { max-height: 0; overflow: hidden; transition: max-height .3s; }
+  .schluessel-content.expanded { max-height: 500px; margin-top: 8px; }
+  .schluessel-content p { font-size: 0.8em; color: #000; }
+</style>
+</head>
+<body>
+
+<div class="theme-content-inner">
+
+  <!-- ── Idée directrice ── -->
+  <div class="leitidee">
+    <h3>Idée directrice</h3>
+    <p>Le début de ma formation professionnelle initiale marque le début d'une nouvelle étape dans ma vie. Dans ce nouvel environnement professionnel complexe et interconnecté, je m'informe sur mes droits et mes devoirs, je communique de manière appropriée, je suis capable de gérer les conflits et de m'intégrer socialement.</p>
+  </div>
+
+  <!-- ── Compétences clés ── -->
+  <div class="schluesselkompetenzen-block">
+    <h3>Compétences clés</h3>
+    <span class="kompetenz-nummer-link" data-label="1.2 Fixation, évaluation et ajustement des objectifs" data-text="Afin de garantir l'efficacité de l'apprentissage, il est important d'établir des priorités, de se fixer des objectifs d'apprentissage, d'évaluer les progrès réalisés et d'adapter les stratégies d'apprentissage lorsque les ressources limitées entraînent des conflits d'objectifs.">1.2</span>
+    <span class="kompetenz-nummer-link" data-label="1.4 Travail d'équipe" data-text="Afin de travailler de manière efficace et respectueuse au sein d'équipes diverses et dans des rôles variés, il est important de développer la coopération, la communication et la coordination avec les autres membres de l'équipe, de partager la responsabilité des résultats et de faire preuve de flexibilité.">1.4</span>
+    <span class="kompetenz-nummer-link" data-label="1.7 Promotion de la compréhension mutuelle" data-text="Afin de créer un environnement inclusif et respectueux propice à la recherche de consensus entre des intérêts divergents, il est important de pouvoir changer de perspective, de développer l'empathie et de faire preuve de tolérance.">1.7</span>
+    <span class="kompetenz-nummer-link" data-label="1.10 Adaptation à l'environnement" data-text="Afin de subsister dans des contextes de vie qui évoluent rapidement, il est important de pouvoir adopter une attitude constructive face aux changements, de faire preuve de flexibilité et de mobilité, d'opter pour un comportement durable et de renforcer sa capacité d'adaptation.">1.10</span>
+    <div id="kompetenz-panel" style="display:none;margin-top:12px;background:#fff;border:1px solid #c8b99a;padding:12px 14px;font-size:0.85em;line-height:1.6;color:#000;user-select:text;">
+      <div id="kompetenz-panel-label" style="font-weight:700;margin-bottom:6px;"></div>
+      <div id="kompetenz-panel-text"></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       CONTEXTE DE VIE 1
+  ══════════════════════════════════════════ -->
+  <div class="lebensbezug">
+    <div class="lebensbezug-header collapsed" onclick="toggleLB(this)">
+      <h3><strong>1. Contexte de vie :</strong> Ma formation se déroule en entreprise, à l'école professionnelle et aux cours interentreprises. J'y rencontre différentes personnes qui ont des attentes à mon égard.</h3>
+    </div>
+    <div class="lebensbezug-content">
+
+      <!-- ─── Compétence 1 ─── -->
+      <div class="lerninhalt">
+        <div class="kompetenz-header">
+          <h4>Compétence 1 : <span class="normal-weight">Je m'y retrouve entre les différents lieux d'apprentissage, dont l'enseignement de la culture générale. Je communique également de manière ciblée au sein de ces différents environnements.</span></h4>
+        </div>
+        <div class="lerninhalt-content">
+          <div class="table-container">
+            <div class="table-header" onclick="toggleTbl(this)"><h5>Objectifs d'apprentissage</h5><span class="table-toggle">▼</span></div>
+            <div class="table-content">
+              <table class="kompetenz-table">
+                <tbody>
+                  <!-- Bloc 1 -->
+                  <tr>
+                    <th class="col-gesellschaft" style="width:50%;">Société</th>
+                    <th class="col-sprache" style="width:50%;">Langue et communication</th>
+                  </tr>
+                  <tr>
+                    <td class="col-gesellschaft">
+                      <p><span class="ges-tag">2.2. Identité et socialisation</span><br>
+                         Déterminer <strong>l'organisation</strong> et le <strong>fonctionnement de l'école professionnelle</strong>, dont l'enseignement de la <strong>culture générale</strong> et utiliser les offres de l'école de manière ciblée.</p>
+                      <p class="tool-hint"><span style="color:#666;">Exemples de produits tangibles / outils / sites web</span><br>– Site web/intranet de l'école professionnelle<br>– Ordonnance de formation<br>– Plan d'études</p>
+                    </td>
+                    <td class="col-sprache">
+                      <p>
+                        <span class="sprach-tag">4.2. Explicatif</span><br>
+                        <span class="form-label">Production écrite et visuelle</span><span class="form-code" data-form="Ps"></span>, <span class="form-label">Interaction et collaboration écrites</span><span class="form-code" data-form="Ik_s"></span><br>
+                        Communiquer <strong>par écrit de manière appropriée</strong> avec les interlocuteurs des <strong>trois lieux d'apprentissage</strong> avec le soutien d'<strong>aides formelles à la formulation</strong> et à l'<strong>orthographe</strong> en tenant compte de la <strong>ponctuation</strong>.
+                      </p>
+                      <p class="tool-hint"><span style="color:#666;">Exemples de produits tangibles / outils / sites web</span><br>– Analyse des exemples de communication numérique professionnelles (Teams, email, etc.)<br>– Travail d'exemples insuffisants<br>– Rédaction d'un courriel selon une consigne<br>– La communication écrite en Suisse (2026), édition LEP. <a href="https://www.editionslep.ch/lacommunication-ecrite-en-suisse" target="_blank">editionslep.ch</a></p>
+                    </td>
+                  </tr>
+                  <!-- Bloc numérique 1 -->
+                  <tr><th class="col-digital" colspan="2"><span>Médias et numérique</span></th></tr>
+                  <tr>
+                    <td class="col-digital-content" colspan="2">
+                      <p><span class="dig-tag">3.2. Compétences en gestion des données</span><br>
+                         Appliquer les <strong>directives de l'école</strong> concernant l'<strong>utilisation de l'IA</strong> et la <strong>mention des sources</strong>.</p>
+                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Exemples de produits tangibles / outils / sites web</span><br>–</p>
+                    </td>
+                  </tr>
+
+                  <tr class="spacing-row"><td colspan="2"></td></tr>
+
+                  <!-- Bloc 2 -->
+                  <tr>
+                    <th class="col-gesellschaft" style="width:50%;">Société</th>
+                    <th class="col-sprache" style="width:50%;">Langue et communication</th>
+                  </tr>
+                  <tr>
+                    <td class="col-gesellschaft">
+                      <p><span class="ges-tag">2.2. Identité et socialisation</span><br>
+                         <span class="ges-tag">2.5. Politique</span><br>
+                         Définir et assumer mes <strong>responsabilités dans les trois lieux d'apprentissage</strong> (entreprise, école, cours interentreprises).</p>
+                      <p class="tool-hint"><span style="color:#666;">Exemples de produits tangibles / outils / sites web</span><br>–</p>
+                    </td>
+                    <td class="col-sprache">
+                      <p>
+                        <span class="sprach-tag">4.4. Interactif</span><br>
+                        <span class="form-label">Interaction et collaboration orales</span><span class="form-code" data-form="Ik_m"></span>
+                        <br>
+                        <span class="sprach-tag">4.1. Descriptif</span><br>
+                        <span class="form-label">Production multimédia</span><span class="form-code" data-form="Pmm"></span>, <span class="form-label">Production orale</span><span class="form-code" data-form="Pm"></span><br>
+                        <strong>Préparer</strong>, <strong>mener</strong>, <strong>évaluer</strong> et <strong>présenter un entretien</strong> (par exemple en lien avec l'entreprise formatrice).
+                      </p>
+                      <p class="tool-hint"><span style="color:#666;">Exemples de produits tangibles / outils / sites web</span><br>– Création d'une vidéo ou d'une présentation (powerpoint, canva, prezi, etc.)</p>
+                    </td>
+                  </tr>
+                  <!-- Bloc numérique 2 -->
+                  <tr><th class="col-digital" colspan="2"><span>Médias et numérique</span></th></tr>
+                  <tr>
+                    <td class="col-digital-content" colspan="2">
+                      <p><span class="dig-tag">3.1. Bases des applications numériques</span><br>
+                         Utiliser les <strong>fonctions de base des programmes</strong> (image, texte, son, film) pour le <strong>traitement</strong> et la <strong>conception</strong>.</p>
+                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Exemples de produits tangibles / outils / sites web</span><br>–</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="umsetzung-box" onclick="toggleUms(this)">
+            <div class="schluessel-header"><h4>Exemples de mise en œuvre</h4><span class="toggle-schluessel">▼</span></div>
+            <div class="schluessel-content"><p>Texte</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── Compétence 2 ─── -->
+      <div class="lerninhalt">
+        <div class="kompetenz-header">
+          <h4>Compétence 2 : <span class="normal-weight">J'utilise des stratégies de travail, d'apprentissage et de communication qui m'aident à atteindre mes objectifs.</span></h4>
+        </div>
+        <div class="lerninhalt-content">
+          <div class="table-container">
+            <div class="table-header" onclick="toggleTbl(this)"><h5>Objectifs d'apprentissage</h5><span class="table-toggle">▼</span></div>
+            <div class="table-content">
+              <table class="kompetenz-table">
+                <tbody>
+                  <!-- Bloc 1 -->
+                  <tr>
+                    <th class="col-gesellschaft" style="width:50%;">Société</th>
+                    <th class="col-sprache" style="width:50%;">Langue et communication</th>
+                  </tr>
+                  <tr>
+                    <td class="col-gesellschaft">
+                      <p><span class="ges-tag">2.2. Identité et socialisation</span><br>
+                         Analyser son propre <strong>comportement au travail</strong>, ainsi qu'à l'école et l'<strong>adapter si nécessaire</strong>.</p>
+                      <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
+                    </td>
+                    <td class="col-sprache">
+                      <p>
+                        <span class="sprach-tag">4.5. Réflexif</span><br>
+                        <span class="form-label">Production écrite et visuelle</span><span class="form-code" data-form="Ps"></span><br>
+                        Représenter les <strong>stratégies à l'apprentissage</strong> à l'aide d'une <strong>structure factuelle</strong> (carte mentale).
+                      </p>
+                      <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
+                    </td>
+                  </tr>
+                  <!-- Bloc numérique 1 -->
+                  <tr><th class="col-digital" colspan="2"><span>Médias et numérique</span></th></tr>
+                  <tr>
+                    <td class="col-digital-content" colspan="2">
+                      <p><span class="dig-tag">3.1. Bases des applications numériques</span><br>
+                         Utiliser des <strong>outils (numériques)</strong> comme <strong>aide à l'organisation</strong> et/ou à l'<strong>apprentissage</strong> (calendriers, aides à l'apprentissage, etc.).</p>
+                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
+                    </td>
+                  </tr>
+
+                  <tr class="spacing-row"><td colspan="2"></td></tr>
+
+                  <!-- Bloc 2 -->
+                  <tr>
+                    <th class="col-gesellschaft" style="width:50%;">Société</th>
+                    <th class="col-sprache" style="width:50%;">Langue et communication</th>
+                  </tr>
+                  <tr>
+                    <td class="col-gesellschaft">
+                      <p><span class="ges-tag">2.2. Identité et socialisation</span><br>
+                         Différencier les <strong>attentes liées à mon rôle</strong> au sein de <strong>différents groupes</strong> et identifier les <strong>conflits potentiels</strong>.</p>
+                      <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
+                    </td>
+                    <td class="col-sprache">
+                      <p>
+                        <span class="sprach-tag">4.4. Interactif</span><br>
+                        <span class="form-label">Interaction et collaboration orales</span><span class="form-code" data-form="Ik_m"></span><br>
+                        <strong>Communiquer de manière orientée solution</strong> (verbales et non verbales) pour <strong>résoudre les conflits</strong> de manière constructive.
+                      </p>
+                      <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
+                    </td>
+                  </tr>
+                  <!-- Bloc numérique 2 -->
+                  <tr><th class="col-digital" colspan="2"><span>Médias et numérique</span></th></tr>
+                  <tr>
+                    <td class="col-digital-content" colspan="2">
+                      <p><span class="dig-tag">3.6. Attitude réflexive et utilisation responsable</span><br>
+                         Employer les <strong>applications/programmes</strong> (par exemple le <strong>chat de classe</strong>) pour la <strong>collaboration numérique</strong>.</p>
+                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="umsetzung-box" onclick="toggleUms(this)">
+            <div class="schluessel-header"><h4>Exemples de mise en œuvre</h4><span class="toggle-schluessel">▼</span></div>
+            <div class="schluessel-content"><p>Texte</p></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /lebensbezug-content -->
+  </div><!-- /contexte de vie 1 -->
+
+  <!-- ══════════════════════════════════════════
+       CONTEXTE DE VIE 2
+  ══════════════════════════════════════════ -->
+  <div class="lebensbezug">
+    <div class="lebensbezug-header collapsed" onclick="toggleLB(this)">
+      <h3><strong>2. Contexte de vie :</strong> La loi et mon contrat d'apprentissage me confèrent des droits et des obligations.</h3>
+    </div>
+    <div class="lebensbezug-content">
+
+      <!-- ─── Compétence 1 ─── -->
+      <div class="lerninhalt">
+        <div class="kompetenz-header">
+          <h4>Compétence 1 : <span class="normal-weight">J'exerce mes droits et mes obligations tels qu'ils sont définis par la loi et le contrat.</span></h4>
+        </div>
+        <div class="lerninhalt-content">
+          <div class="table-container">
+            <div class="table-header" onclick="toggleTbl(this)"><h5>Objectifs d'apprentissage</h5><span class="table-toggle">▼</span></div>
+            <div class="table-content">
+              <table class="kompetenz-table">
+                <tbody>
+                  <!-- Bloc 1 -->
+                  <tr>
+                    <th class="col-gesellschaft" style="width:50%;">Société</th>
+                    <th class="col-sprache" style="width:50%;">Langue et communication</th>
+                  </tr>
+                  <tr>
+                    <td class="col-gesellschaft">
+                      <p><span class="ges-tag">2.6. Droit</span><br>
+                         Identifier et appliquer les <strong>droits et obligations des parties contractantes</strong> du <strong>contrat d'apprentissage</strong> à l'aide du <strong>droit suisse</strong>.</p>
+                      <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
+                    </td>
+                    <td class="col-sprache">
+                      <p>
+                        <span class="sprach-tag">4. Réception</span><br>
+                        <span class="form-label">Interaction et collaboration orales</span><span class="form-code" data-form="Ik_m"></span><br>
+                        <strong>Comparer</strong> des contenus issus de <strong>contrats</strong>, de <strong>directives d'entreprises</strong>, etc.
+                      </p>
+                      <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
+                    </td>
+                  </tr>
+                  <!-- Bloc numérique 1 -->
+                  <tr><th class="col-digital" colspan="2"><span>Médias et numérique</span></th></tr>
+                  <tr>
+                    <td class="col-digital-content" colspan="2">
+                      <p><span class="dig-tag">3.4. Résolution de problèmes</span><br>
+                         Effectuer des <strong>recherches sur ses propres droits et obligations</strong> auprès de <strong>sites web appropriés</strong>.</p>
+                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>Site web « Je connais mes droits »</p>
+                    </td>
+                  </tr>
+
+                  <tr class="spacing-row"><td colspan="2"></td></tr>
+
+                  <!-- Bloc 2 -->
+                  <tr>
+                    <th class="col-gesellschaft" style="width:50%;">Société</th>
+                    <th class="col-sprache" style="width:50%;">Langue et communication</th>
+                  </tr>
+                  <tr>
+                    <td class="col-gesellschaft">
+                      <p><span class="ges-tag">2.6. Droit</span><br>
+                         Examiner sur la base des <strong>dispositions légales</strong>, des situations liées au <strong>contrat d'apprentissage</strong> et formuler des <strong>pistes de solution</strong>.</p>
+                      <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
+                    </td>
+                    <td class="col-sprache">
+                      <p>
+                        <span class="sprach-tag">4.1. Descriptif</span><br>
+                        <span class="form-label">Production orale</span><span class="form-code" data-form="Pm"></span>, <span class="form-label">Production écrite et visuelle</span><span class="form-code" data-form="Ps"></span><br>
+                        <!-- CORRECTION 1: "Dresser" au lieu de "Rechercher des solutions possibles" -->
+                        <strong>Dresser</strong> des solutions possibles aux situations critiques liées au <strong>contrat d'apprentissage</strong>.
+                      </p>
+                      <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
+                    </td>
+                  </tr>
+                  <!-- Bloc numérique 2 -->
+                  <tr><th class="col-digital" colspan="2"><span>Médias et numérique</span></th></tr>
+                  <tr>
+                    <td class="col-digital-content" colspan="2">
+                      <p><span class="dig-tag">3.4. Résolution de problèmes</span><br>
+                         <!-- CORRECTION 2: "S'appuyer" au lieu de "Employer" -->
+                         S'appuyer des <strong>lois et règlements en ligne</strong> dans des <strong>cas concrets</strong>.</p>
+                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="umsetzung-box" onclick="toggleUms(this)">
+            <div class="schluessel-header"><h4>Exemples de mise en œuvre</h4><span class="toggle-schluessel">▼</span></div>
+            <div class="schluessel-content"><p>Texte</p></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /lebensbezug-content -->
+  </div><!-- /contexte de vie 2 -->
+
+  <!-- ══════════════════════════════════════════
+       DOMAINE LIBRE
+  ══════════════════════════════════════════ -->
+  <div class="freibereich-section">
+    <div class="freibereich-header collapsed" onclick="toggleFB(this)">
+      <h3>Domaine libre (20%)</h3>
+    </div>
+    <div class="freibereich-content">
+      <h4 style="font-size:0.9em;margin-bottom:15px;font-weight:700;">Objectifs d'apprentissage</h4>
+      <table style="width:100%;border-collapse:collapse;">
+        <tbody>
+          <!-- Société -->
+          <tr><th style="background:#fff4cc;padding:5px 10px;text-align:left;font-size:0.75em;font-weight:700;border:1px solid #000;">Société</th></tr>
+          <tr><td style="background:#fffef5;padding:8px 10px;border:1px solid #000;font-size:0.8em;">
+            <p style="margin-bottom:10px;"><span class="ges-tag">2.2. Identité et socialisation</span><br>
+               Définir le <strong>système de formation suisse</strong> à partir de l'exemple du <strong>parcours professionnel</strong> d'un professionnel.</p>
+            <p style="margin-bottom:10px;"><span class="ges-tag">2.2. Identité et socialisation</span><br>
+               Présenter sa <strong>propre activité</strong>.</p>
+            <p style="margin-bottom:10px;"><span class="ges-tag">2.1. Éthique</span><br>
+               Comparer ses propres <strong>convictions morales</strong> à celles des autres.</p>
+            <p style="margin-bottom:10px;"><span class="ges-tag">2.3. Culture</span><br>
+               Analyser les <strong>attentes comportementales</strong> (par exemple, au sein de son entreprise) de <strong>différentes cultures et générations</strong>.</p>
+            <p style="margin-bottom:0;"><span class="ges-tag">2.1. Éthique</span><br>
+               Défendre son propre avis dans un <strong>dilemme moral</strong>.</p>
+          </td></tr>
+
+          <!-- Langue et communication -->
+          <tr><th style="background:#cce5ff;padding:5px 10px;text-align:left;font-size:0.75em;font-weight:700;border:1px solid #000;">Langue et communication</th></tr>
+          <tr><td style="background:#f5f9ff;padding:8px 10px;border:1px solid #000;font-size:0.8em;">
+            <p style="margin-bottom:10px;">
+              <span class="sprach-tag">4.2. Explicatif</span> &nbsp;
+              <span class="form-label">Réception écrite et visuelle</span><span class="form-code" data-form="Rs"></span><br>
+              <strong>Structurer chronologiquement</strong> le contenu d'une conversation et le <strong>résumer en quelques mots-clés</strong>.</p>
+            <p style="margin-bottom:10px;">
+              <span class="sprach-tag">4.2. Explicatif</span> &nbsp;
+              <span class="form-label">Production multimédia</span><span class="form-code" data-form="Pmm"></span><br>
+              <strong>Reproduire de manière structurée</strong> son emploi du temps quotidien avec toutes les étapes de travail.</p>
+            <p style="margin-bottom:10px;">
+              <span class="sprach-tag">4.4. Interactif</span> &nbsp;
+              <span class="form-label">Interaction et collaboration orales</span><span class="form-code" data-form="Ik_m"></span><br>
+              Interpréter par un <strong>jeu de rôle</strong> différentes <strong>situations professionnelles</strong>.</p>
+            <p style="margin-bottom:0;">
+              <span class="sprach-tag">4.1. Descriptif</span> &nbsp;
+              <span class="form-label">Production orale</span><span class="form-code" data-form="Ra"></span><br>
+              Identifier les questions <strong>comportementales liées à la génération/culture</strong> (par exemple sur l'utilisation des contenus multimédias).</p>
+          </td></tr>
+
+          <!-- Médias et numérique -->
+          <tr><th style="background:#d4edda;padding:5px 10px;text-align:left;font-size:0.75em;font-weight:700;border:1px solid #000;">Médias et numérique</th></tr>
+          <tr><td style="background:#f0f8f0;padding:8px 10px;border:1px solid #000;font-size:0.8em;">
+            <p style="margin-bottom:10px;"><span class="dig-tag">3.2. Compétences en gestion des données</span><br>
+               <!-- CORRECTION 3: "Paramétrer" au lieu de "Configurer" -->
+               Paramétrer et utiliser en toute sécurité des <strong>sites web</strong> et des <strong>outils numériques et informatiques</strong> pertinents pour la formation.</p>
+            <p style="margin-bottom:10px;"><span class="dig-tag">3.1. Bases des applications numériques</span><br>
+               Concevoir <strong>une chronologie avec des points fixes</strong> à l'aide d'un <strong>outil en ligne</strong>.</p>
+            <p style="margin-bottom:10px;"><span class="dig-tag">3.1. Bases des applications numériques</span><br>
+               Utiliser les <strong>applications informatiques</strong> de manière appropriée.</p>
+            <p style="margin-bottom:0;"><span class="dig-tag">3.1. Bases des applications numériques</span><br>
+               Décrire le <strong>développement</strong> et la <strong>diversité des médias</strong>.</p>
+          </td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div><!-- /theme-content-inner -->
+
+<script>
+/* ── Toggle helpers ── */
+function toggleLB(header) {
+  header.nextElementSibling.classList.toggle('show');
+  header.classList.toggle('collapsed');
+}
+function toggleFB(header) {
+  header.nextElementSibling.classList.toggle('show');
+  header.classList.toggle('collapsed');
+}
+function toggleTbl(header) {
+  const content = header.nextElementSibling;
+  const icon    = header.querySelector('.table-toggle');
+  content.classList.toggle('expanded');
+  icon.classList.toggle('rotated');
+}
+function toggleUms(box) {
+  const content = box.querySelector('.schluessel-content');
+  const icon    = box.querySelector('.toggle-schluessel');
+  content.classList.toggle('expanded');
+  icon.classList.toggle('rotated');
+}
+
+/* ── Compétences clés – panel cliquable ── */
+document.querySelectorAll('.kompetenz-nummer-link').forEach(el => {
+  el.addEventListener('click', function() {
+    const panel     = document.getElementById('kompetenz-panel');
+    const panelLbl  = document.getElementById('kompetenz-panel-label');
+    const panelTxt  = document.getElementById('kompetenz-panel-text');
+    const label     = this.getAttribute('data-label');
+    const text      = this.getAttribute('data-text');
+
+    // Si on clique sur le même bouton et que le panel est déjà ouvert → fermer
+    if (panel.style.display !== 'none' && panelLbl.textContent === label) {
+      panel.style.display = 'none';
+      document.querySelectorAll('.kompetenz-nummer-link').forEach(e => e.classList.remove('active'));
+      return;
+    }
+
+    panelLbl.textContent = label;
+    panelTxt.textContent = text;
+    panel.style.display  = 'block';
+
+    document.querySelectorAll('.kompetenz-nummer-link').forEach(e => e.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
