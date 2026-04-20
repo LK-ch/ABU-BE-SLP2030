@@ -29,12 +29,20 @@
     color: #000; font-size: 0.85em; font-weight: 400; margin: 0 0 10px 0;
   }
   .schluesselkompetenzen-block .kompetenz-nummer-link {
-    display: inline-block; color: #dc291e; font-weight: 700; cursor: pointer;
-    margin-right: 4px; padding: 2px 5px; border: 1px solid transparent;
+    display: inline-flex; align-items: baseline; gap: 6px; color: #dc291e; font-weight: 700; cursor: pointer;
+    margin-right: 4px; margin-bottom: 6px; padding: 2px 8px 2px 5px; border: 1px solid transparent;
     border-radius: 3px; transition: all .2s; text-decoration: none;
     font-style: normal;
   }
+  .schluesselkompetenzen-block .kompetenz-nummer-link .knum {
+    font-weight: 700; font-size: 0.92em; white-space: nowrap;
+  }
+  .schluesselkompetenzen-block .kompetenz-nummer-link .klabel {
+    font-weight: 400; font-size: 0.85em; color: #000;
+  }
   .schluesselkompetenzen-block .kompetenz-nummer-link:hover { background: #ffe6e6; border-color: #ffcccc; }
+  .schluesselkompetenzen-block .kompetenz-nummer-link.active { background: #dc291e; color: #fff; border-color: #dc291e; }
+  .schluesselkompetenzen-block .kompetenz-nummer-link.active .klabel { color: #fff; }
 
   /* ── Lebensbezug ── */
   .lebensbezug { margin-bottom: 25px; background-color: #f9f3e8; overflow: hidden; }
@@ -163,10 +171,14 @@
   <!-- ── Compétences clés ── -->
   <div class="schluesselkompetenzen-block">
     <h3>Compétences clés</h3>
-    <span class="kompetenz-nummer-link" data-text="Se fixer des objectifs, les évaluer et adopter un comportement adaptatif : Afin de garantir l'efficacité de l'apprentissage, il est important d'établir des priorités, de se fixer des objectifs d'apprentissage, d'évaluer les progrès réalisés et d'adapter les stratégies d'apprentissage lorsque les ressources limitées entraînent des conflits d'objectifs.">1.2</span>
-    <span class="kompetenz-nummer-link" data-text="Travailler de manière efficace et ciblée au sein d'équipes diverses : Afin de travailler de manière efficace et respectueuse au sein d'équipes diverses et dans des rôles variés, il est important de développer la coopération, la communication et la coordination avec les autres membres de l'équipe, de partager la responsabilité des résultats et de faire preuve de flexibilité.">1.4</span>
-    <span class="kompetenz-nummer-link" data-text="Comprendre les différents points de vue et promouvoir la compréhension mutuelle : Afin de créer un environnement inclusif et respectueux propice à la recherche de consensus entre des intérêts divergents, il est important de pouvoir changer de perspective, de développer l'empathie et de faire preuve de tolérance.">1.7</span>
-    <span class="kompetenz-nummer-link" data-text="Composer avec un environnement en constante évolution et s'y adapter : Afin de subsister dans des contextes de vie qui évoluent rapidement, il est important de pouvoir adopter une attitude constructive face aux changements, de faire preuve de flexibilité et de mobilité, d'opter pour un comportement durable et de renforcer sa capacité d'adaptation.">1.10</span>
+    <span class="kompetenz-nummer-link" data-label="1.2 Fixation, évaluation et ajustement des objectifs" data-text="Afin de garantir l'efficacité de l'apprentissage, il est important d'établir des priorités, de se fixer des objectifs d'apprentissage, d'évaluer les progrès réalisés et d'adapter les stratégies d'apprentissage lorsque les ressources limitées entraînent des conflits d'objectifs."><span class="knum">1.2</span><span class="klabel">Fixation, évaluation et ajustement des objectifs</span></span>
+    <span class="kompetenz-nummer-link" data-label="1.4 Travail d'équipe" data-text="Afin de travailler de manière efficace et respectueuse au sein d'équipes diverses et dans des rôles variés, il est important de développer la coopération, la communication et la coordination avec les autres membres de l'équipe, de partager la responsabilité des résultats et de faire preuve de flexibilité."><span class="knum">1.4</span><span class="klabel">Travail d'équipe</span></span>
+    <span class="kompetenz-nummer-link" data-label="1.7 Promotion de la compréhension mutuelle" data-text="Afin de créer un environnement inclusif et respectueux propice à la recherche de consensus entre des intérêts divergents, il est important de pouvoir changer de perspective, de développer l'empathie et de faire preuve de tolérance."><span class="knum">1.7</span><span class="klabel">Promotion de la compréhension mutuelle</span></span>
+    <span class="kompetenz-nummer-link" data-label="1.10 Adaptation à l'environnement" data-text="Afin de subsister dans des contextes de vie qui évoluent rapidement, il est important de pouvoir adopter une attitude constructive face aux changements, de faire preuve de flexibilité et de mobilité, d'opter pour un comportement durable et de renforcer sa capacité d'adaptation."><span class="knum">1.10</span><span class="klabel">Adaptation à l'environnement</span></span>
+    <div id="kompetenz-panel" style="display:none;margin-top:12px;background:#fff;border:1px solid #c8b99a;padding:12px 14px;font-size:0.85em;line-height:1.6;color:#000;user-select:text;">
+      <div id="kompetenz-panel-label" style="font-weight:700;margin-bottom:6px;"></div>
+      <div id="kompetenz-panel-text"></div>
+    </div>
   </div>
 
   <!-- ══════════════════════════════════════════
@@ -418,7 +430,8 @@
                       <p>
                         <span class="sprach-tag">4.1. Descriptif</span><br>
                         <span class="form-label">Production orale</span><span class="form-code" data-form="Pm"></span>, <span class="form-label">Production écrite et visuelle</span><span class="form-code" data-form="Ps"></span><br>
-                        <strong>Rechercher des solutions possibles</strong> aux situations critiques liées au <strong>contrat d'apprentissage</strong>.
+                        <!-- CORRECTION 1: "Dresser" au lieu de "Rechercher des solutions possibles" -->
+                        <strong>Dresser</strong> des solutions possibles aux situations critiques liées au <strong>contrat d'apprentissage</strong>.
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
@@ -428,7 +441,8 @@
                   <tr>
                     <td class="col-digital-content" colspan="2">
                       <p><span class="dig-tag">3.4. Résolution de problèmes</span><br>
-                         Employer des <strong>lois et règlements en ligne</strong> dans des <strong>cas concrets</strong>.</p>
+                         <!-- CORRECTION 2: "S'appuyer" au lieu de "Employer" -->
+                         S'appuyer des <strong>lois et règlements en ligne</strong> dans des <strong>cas concrets</strong>.</p>
                       <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
@@ -497,7 +511,8 @@
           <tr><th style="background:#d4edda;padding:5px 10px;text-align:left;font-size:0.75em;font-weight:700;border:1px solid #000;">Médias et numérique</th></tr>
           <tr><td style="background:#f0f8f0;padding:8px 10px;border:1px solid #000;font-size:0.8em;">
             <p style="margin-bottom:10px;"><span class="dig-tag">3.2. Compétences en gestion des données</span><br>
-               Configurer et utiliser en toute sécurité des <strong>sites web</strong> et des <strong>outils numériques et informatiques</strong> pertinents pour la formation.</p>
+               <!-- CORRECTION 3: "Paramétrer" au lieu de "Configurer" -->
+               Paramétrer et utiliser en toute sécurité des <strong>sites web</strong> et des <strong>outils numériques et informatiques</strong> pertinents pour la formation.</p>
             <p style="margin-bottom:10px;"><span class="dig-tag">3.1. Bases des applications numériques</span><br>
                Concevoir <strong>une chronologie avec des points fixes</strong> à l'aide d'un <strong>outil en ligne</strong>.</p>
             <p style="margin-bottom:10px;"><span class="dig-tag">3.1. Bases des applications numériques</span><br>
@@ -535,25 +550,28 @@ function toggleUms(box) {
   icon.classList.toggle('rotated');
 }
 
-/* ── Compétences clés tooltip ── */
+/* ── Compétences clés – panel cliquable ── */
 document.querySelectorAll('.kompetenz-nummer-link').forEach(el => {
-  el.addEventListener('mouseenter', function(e) {
-    let tooltip = document.getElementById('tooltip');
-    if (!tooltip) {
-      tooltip = document.createElement('div');
-      tooltip.id = 'tooltip';
-      tooltip.style.cssText = 'position:absolute;background:#2d2d2d;color:#fff;padding:10px 14px;font-size:0.85em;max-width:380px;z-index:99999;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,0.4);border:1px solid #555;line-height:1.5;font-family:Roboto,Arial,sans-serif;';
-      document.body.appendChild(tooltip);
+  el.addEventListener('click', function() {
+    const panel     = document.getElementById('kompetenz-panel');
+    const panelLbl  = document.getElementById('kompetenz-panel-label');
+    const panelTxt  = document.getElementById('kompetenz-panel-text');
+    const label     = this.getAttribute('data-label');
+    const text      = this.getAttribute('data-text');
+
+    // Si on clique sur le même bouton et que le panel est déjà ouvert → fermer
+    if (panel.style.display !== 'none' && panelLbl.textContent === label) {
+      panel.style.display = 'none';
+      document.querySelectorAll('.kompetenz-nummer-link').forEach(e => e.classList.remove('active'));
+      return;
     }
-    tooltip.textContent = this.getAttribute('data-text');
-    tooltip.style.display = 'block';
-    const rect = this.getBoundingClientRect();
-    tooltip.style.left = (rect.left + window.scrollX) + 'px';
-    tooltip.style.top  = (rect.bottom + window.scrollY + 10) + 'px';
-  });
-  el.addEventListener('mouseleave', function() {
-    const tooltip = document.getElementById('tooltip');
-    if (tooltip) tooltip.style.display = 'none';
+
+    panelLbl.textContent = label;
+    panelTxt.textContent = text;
+    panel.style.display  = 'block';
+
+    document.querySelectorAll('.kompetenz-nummer-link').forEach(e => e.classList.remove('active'));
+    this.classList.add('active');
   });
 });
 </script>
