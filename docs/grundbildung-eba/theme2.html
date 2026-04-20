@@ -11,8 +11,12 @@
   .leitidee p  { color: #000; font-size: 1em; }
   .schluesselkompetenzen-block { background-color: #f9f3e8; padding: 20px; margin-bottom: 18px; }
   .schluesselkompetenzen-block h3 { color: #000; font-size: 0.85em; font-weight: 400; margin: 0 0 10px 0; }
-  .schluesselkompetenzen-block .kompetenz-nummer-link { display: inline-block; color: #dc291e; font-weight: 700; cursor: pointer; margin-right: 8px; padding: 2px 5px; border: 1px solid transparent; border-radius: 3px; transition: all .2s; text-decoration: none; }
+  .schluesselkompetenzen-block .kompetenz-nummer-link { display: inline-flex; align-items: baseline; gap: 6px; color: #dc291e; font-weight: 700; cursor: pointer; margin-right: 4px; margin-bottom: 6px; padding: 2px 8px 2px 5px; border: 1px solid transparent; border-radius: 3px; transition: all .2s; text-decoration: none; font-style: normal; }
+  .schluesselkompetenzen-block .kompetenz-nummer-link .knum { font-weight: 700; font-size: 0.92em; white-space: nowrap; }
+  .schluesselkompetenzen-block .kompetenz-nummer-link .klabel { font-weight: 400; font-size: 0.85em; color: #000; }
   .schluesselkompetenzen-block .kompetenz-nummer-link:hover { background: #ffe6e6; border-color: #ffcccc; }
+  .schluesselkompetenzen-block .kompetenz-nummer-link.active { background: #dc291e; color: #fff; border-color: #dc291e; }
+  .schluesselkompetenzen-block .kompetenz-nummer-link.active .klabel { color: #fff; }
   .lebensbezug { margin-bottom: 25px; background-color: #f9f3e8; overflow: hidden; }
   .lebensbezug-header { padding: 16px 20px; cursor: pointer; position: relative; user-select: none; }
   .lebensbezug-header::after { content: '▼'; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); transition: transform .3s; }
@@ -55,9 +59,6 @@
   .kompetenz-table tbody tr.spacing-row td { background: transparent !important; border: none !important; padding: 0 !important; height: 20px; }
   .sprach-tag { display: inline; font-weight: 700; font-size: 0.92em; color: #003366; }
   .form-label { display: inline; font-size: 0.85em; font-style: italic; color: #333; }
-  .form-code { display: none; }
-  .zirk-tag { display: none; }
-  .norm-tag { display: none; }
   .ges-tag { font-weight: 700; color: #7a5c00; font-size: 0.92em; }
   .dig-tag { font-weight: 700; color: #1a6e2e; font-size: 0.92em; }
   .tool-hint { background: #fff; padding: 8px 10px; margin-top: 0; font-size: 0.75em; }
@@ -72,34 +73,27 @@
 </style>
 </head>
 <body>
-
 <div class="theme-content-inner">
-
-  <!-- ── Idée directrice ── -->
   <div class="leitidee">
     <h3>Idée directrice</h3>
     <p>Je gère mon argent de manière responsable, je contrôle consciemment mes habitudes de consommation, je choisis les modes de paiement et les options de financements adaptés. Je suis capable de conclure des contrats de vente, j'exerce mes droits et je respecte mes obligations.</p>
   </div>
-
-  <!-- ── Compétences clés ── -->
   <div class="schluesselkompetenzen-block">
     <h3>Compétences clés</h3>
-    <span class="kompetenz-nummer-link" data-text="Identifier, comprendre et développer ses propres valeurs et convictions et y réfléchir de manière critique">1.5</span>
-    <span class="kompetenz-nummer-link" data-text="Justifier son point de vue et amener les autres à le partager">1.6</span>
-    <span class="kompetenz-nummer-link" data-text="Planifier les étapes de sa vie et gérer les impondérables">1.8</span>
-    <span class="kompetenz-nummer-link" data-text="Penser de manière systémique afin d'agir de manière durable sur les plans social, écologique et économique">1.9</span>
+    <span class="kompetenz-nummer-link" data-label="1.5 Valeurs en pensée critique" data-text="Identifier, comprendre et développer ses propres valeurs et convictions et y réfléchir de manière critique : Afin de développer une identité propre et authentique, il est important de reconnaître ses propres valeurs et convictions, de les remettre en question et de les adapter si nécessaire."><span class="knum">1.5</span><span class="klabel">Valeurs en pensée critique</span></span>
+    <span class="kompetenz-nummer-link" data-label="1.6 Justification et partage du point de vue" data-text="Justifier son point de vue et amener les autres à le partager : Afin de défendre son opinion de manière convaincante, il est important de structurer ses arguments, de les présenter clairement et d'être capable de tenir compte du point de vue des autres."><span class="knum">1.6</span><span class="klabel">Justification et partage du point de vue</span></span>
+    <span class="kompetenz-nummer-link" data-label="1.8 Planification des étapes de vie" data-text="Planifier les étapes de sa vie et gérer les impondérables : Afin de planifier et d'organiser les différentes étapes de la vie à moyen et long terme, il est important de développer des ressources personnelles, sociales et matérielles et de les utiliser de manière ciblée selon le principe de l'auto-efficacité."><span class="knum">1.8</span><span class="klabel">Planification des étapes de vie</span></span>
+    <span class="kompetenz-nummer-link" data-label="1.9 Durabilité" data-text="Penser de manière systémique afin d'agir de manière durable sur les plans social, écologique et économique : Afin de pouvoir agir de manière responsable et durable, il est important de comprendre les interdépendances entre les systèmes sociaux, écologiques et économiques et d'en tenir compte dans ses décisions."><span class="knum">1.9</span><span class="klabel">Durabilité</span></span>
+    <div id="kompetenz-panel" style="display:none;margin-top:12px;background:#fff;border:1px solid #c8b99a;padding:12px 14px;font-size:0.85em;line-height:1.6;color:#000;user-select:text;">
+      <div id="kompetenz-panel-label" style="font-weight:700;margin-bottom:6px;"></div>
+      <div id="kompetenz-panel-text"></div>
+    </div>
   </div>
-
-  <!-- ══════════════════════════════════════════
-       CONTEXTE DE VIE 1
-  ══════════════════════════════════════════ -->
   <div class="lebensbezug">
     <div class="lebensbezug-header collapsed" onclick="toggleLB(this)">
       <h3>1. Contexte de vie : Je gagne mon propre argent, je le gère et je le dépense.</h3>
     </div>
     <div class="lebensbezug-content">
-
-      <!-- ─── Compétence 1 ─── -->
       <div class="lerninhalt">
         <div class="kompetenz-header">
           <h4>Compétence 1 : <span class="normal-weight">Je planifie et analyse un budget réaliste en fonction de ma fiche de salaire et de ma situation personnelle.</span></h4>
@@ -110,15 +104,13 @@
             <div class="table-content">
               <table class="kompetenz-table">
                 <tbody>
-                  <!-- Bloc 1 -->
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Domaine d'apprentissage société</th>
                     <th class="col-sprache" style="width:50%;">Domaine d'apprentissage langue &amp; communication</th>
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.8. Économie</span><br>
-                         Comprendre sa propre <strong>fiche de salaire</strong>.</p>
+                      <p><span class="ges-tag">2.8. Économie</span><br>Comprendre sa propre <strong>fiche de salaire</strong>.</p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                     <td class="col-sprache">
@@ -130,18 +122,14 @@
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
-
                   <tr class="spacing-row"><td colspan="2"></td></tr>
-
-                  <!-- Bloc 2 -->
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Domaine d'apprentissage société</th>
                     <th class="col-sprache" style="width:50%;">Domaine d'apprentissage langue &amp; communication</th>
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.8. Économie</span><br>
-                         Établir son propre <strong>budget</strong> avec des coûts fixes et variables et identifier <strong>des opportunités d'économies</strong>.</p>
+                      <p><span class="ges-tag">2.8. Économie</span><br>Établir son propre <strong>budget</strong> avec des coûts fixes et variables et identifier <strong>des opportunités d'économies</strong>.</p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                     <td class="col-sprache">
@@ -153,12 +141,10 @@
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
-                  <!-- Bloc numérique -->
                   <tr><th class="col-digital" colspan="2"><span>Domaine de compétence médias &amp; numérique</span></th></tr>
                   <tr>
                     <td class="col-digital-content" colspan="2">
-                      <p><span class="dig-tag">3.4. Résolution de problèmes</span><br>
-                         Utiliser des <strong>outils budgétaires</strong> pour la planification.</p>
+                      <p><span class="dig-tag">3.4. Résolution de problèmes</span><br>Utiliser des <strong>outils budgétaires</strong> pour la planification.</p>
                       <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br><a href="https://budgetberatung.ch/" target="_blank" rel="noopener noreferrer">budgetberatung.ch</a>, <a href="https://schulden.ch/" target="_blank" rel="noopener noreferrer">schulden.ch</a></p>
                     </td>
                   </tr>
@@ -172,8 +158,6 @@
           </div>
         </div>
       </div>
-
-      <!-- ─── Compétence 2 ─── -->
       <div class="lerninhalt">
         <div class="kompetenz-header">
           <h4>Compétence 2 : <span class="normal-weight">J'utilise les modes de paiement et de financement de manière ciblée et justifiée.</span></h4>
@@ -184,15 +168,13 @@
             <div class="table-content">
               <table class="kompetenz-table">
                 <tbody>
-                  <!-- Bloc 1 -->
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Domaine d'apprentissage société</th>
                     <th class="col-sprache" style="width:50%;">Domaine d'apprentissage langue &amp; communication</th>
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.8. Économie</span><br>
-                         <strong>Utiliser les moyens de paiement</strong> (crédit, débit, etc.) de manière ciblée en fonction de la situation.</p>
+                      <p><span class="ges-tag">2.8. Économie</span><br><strong>Utiliser les moyens de paiement</strong> (crédit, débit, etc.) de manière ciblée en fonction de la situation.</p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                     <td class="col-sprache">
@@ -204,18 +186,14 @@
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
-
                   <tr class="spacing-row"><td colspan="2"></td></tr>
-
-                  <!-- Bloc 2 -->
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Domaine d'apprentissage société</th>
                     <th class="col-sprache" style="width:50%;">Domaine d'apprentissage langue &amp; communication</th>
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.8. Économie</span><br>
-                         Évaluer les coûts et les risques liés <strong>aux différents types de financement</strong> (autofinancement, paiement échelonné, crédit à la consommation, leasing, pièges de l'endettement) lors d'un achat important.</p>
+                      <p><span class="ges-tag">2.8. Économie</span><br>Évaluer les coûts et les risques liés <strong>aux différents types de financement</strong> (autofinancement, paiement échelonné, crédit à la consommation, leasing, pièges de l'endettement) lors d'un achat important.</p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                     <td class="col-sprache">
@@ -237,20 +215,13 @@
           </div>
         </div>
       </div>
-
     </div>
-  </div><!-- /contexte de vie 1 -->
-
-  <!-- ══════════════════════════════════════════
-       CONTEXTE DE VIE 2
-  ══════════════════════════════════════════ -->
+  </div>
   <div class="lebensbezug">
     <div class="lebensbezug-header collapsed" onclick="toggleLB(this)">
       <h3>2. Contexte de vie : Je prends quotidiennement des décisions d'achat et de consommation qui sont soumises à des droits et des obligations.</h3>
     </div>
     <div class="lebensbezug-content">
-
-      <!-- ─── Compétence 1 ─── -->
       <div class="lerninhalt">
         <div class="kompetenz-header">
           <h4>Compétence 1 : <span class="normal-weight">J'analyse mes habitudes de consommation et j'adopte des stratégies favorisant une consommation responsable.</span></h4>
@@ -261,15 +232,13 @@
             <div class="table-content">
               <table class="kompetenz-table">
                 <tbody>
-                  <!-- Bloc 1 -->
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Domaine d'apprentissage société</th>
                     <th class="col-sprache" style="width:50%;">Domaine d'apprentissage langue &amp; communication</th>
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.2. Identité et socialisation</span><br>
-                         Identifier <strong>ses besoins</strong> et analyser <strong>son comportement d'achat</strong>.</p>
+                      <p><span class="ges-tag">2.2. Identité et socialisation</span><br>Identifier <strong>ses besoins</strong> et analyser <strong>son comportement d'achat</strong>.</p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                     <td class="col-sprache">
@@ -281,29 +250,21 @@
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
-                  <!-- Bloc numérique 1 -->
                   <tr><th class="col-digital" colspan="2"><span>Domaine de compétence médias &amp; numérique</span></th></tr>
                   <tr>
                     <td class="col-digital-content" colspan="2">
-                      <p><span class="dig-tag">3.5. Éléments spécifiques à l'IA</span><br>
-                         Comprendre l'influence de l'exploitation <strong>des données personnelles</strong> sur les contenus proposés en ligne.</p>
+                      <p><span class="dig-tag">3.5. Éléments spécifiques à l'IA</span><br>Comprendre l'influence de l'exploitation <strong>des données personnelles</strong> sur les contenus proposés en ligne.</p>
                       <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
-
                   <tr class="spacing-row"><td colspan="2"></td></tr>
-
-                  <!-- Bloc 2 -->
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Domaine d'apprentissage société</th>
                     <th class="col-sprache" style="width:50%;">Domaine d'apprentissage langue &amp; communication</th>
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.1. Éthique</span><br>
-                         <span class="ges-tag">2.4. Écologie</span><br>
-                         <span class="ges-tag">2.8. Économie</span><br>
-                         Evaluer <strong>les décisions de consommation</strong> (sur les plans économiques, écologiques et sociaux) et en déduire un comportement quotidien.</p>
+                      <p><span class="ges-tag">2.1. Éthique</span><br><span class="ges-tag">2.4. Écologie</span><br><span class="ges-tag">2.8. Économie</span><br>Evaluer <strong>les décisions de consommation</strong> (sur les plans économiques, écologiques et sociaux) et en déduire un comportement quotidien.</p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                     <td class="col-sprache">
@@ -315,12 +276,10 @@
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
-                  <!-- Bloc numérique 2 -->
                   <tr><th class="col-digital" colspan="2"><span>Domaine de compétence médias &amp; numérique</span></th></tr>
                   <tr>
                     <td class="col-digital-content" colspan="2">
-                      <p><span class="dig-tag">3.3. Création de contenu</span><br>
-                         <strong>Créer une image et un document texte.</strong></p>
+                      <p><span class="dig-tag">3.3. Création de contenu</span><br><strong>Créer une image et un document texte.</strong></p>
                       <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
@@ -334,8 +293,6 @@
           </div>
         </div>
       </div>
-
-      <!-- ─── Compétence 2 ─── -->
       <div class="lerninhalt">
         <div class="kompetenz-header">
           <h4>Compétence 2 : <span class="normal-weight">Je vérifie les conditions contractuelles, j'assume mes obligations et je fais valoir mes droits.</span></h4>
@@ -346,31 +303,25 @@
             <div class="table-content">
               <table class="kompetenz-table">
                 <tbody>
-                  <!-- Bloc 1 -->
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Domaine d'apprentissage société</th>
                     <th class="col-sprache" style="width:50%;">Domaine d'apprentissage langue &amp; communication</th>
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.6. Droit</span><br>
-                         Évaluer <strong>la capacité de discernement</strong> et d'action en matière de conclusion de contrats (y compris en ligne) et de responsabilité.</p>
+                      <p><span class="ges-tag">2.6. Droit</span><br>Évaluer <strong>la capacité de discernement</strong> et d'action en matière de conclusion de contrats (y compris en ligne) et de responsabilité.</p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                     <td class="col-sprache"></td>
                   </tr>
-
                   <tr class="spacing-row"><td colspan="2"></td></tr>
-
-                  <!-- Bloc 2 -->
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Domaine d'apprentissage société</th>
                     <th class="col-sprache" style="width:50%;">Domaine d'apprentissage langue &amp; communication</th>
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.6. Droit</span><br>
-                         Déterminer le moment où <strong>un contrat est juridiquement valable</strong> (y compris en ligne) et les conséquences y relatives.</p>
+                      <p><span class="ges-tag">2.6. Droit</span><br>Déterminer le moment où <strong>un contrat est juridiquement valable</strong> (y compris en ligne) et les conséquences y relatives.</p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                     <td class="col-sprache">
@@ -382,18 +333,14 @@
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
-
                   <tr class="spacing-row"><td colspan="2"></td></tr>
-
-                  <!-- Bloc 3 -->
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Domaine d'apprentissage société</th>
                     <th class="col-sprache" style="width:50%;">Domaine d'apprentissage langue &amp; communication</th>
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.6. Droit</span><br>
-                         Décrire <strong>la procédure à suivre en cas de résiliations du contrat ou d'inexécutions du contrat</strong> (retard de livraison ou de paiement, défaut).</p>
+                      <p><span class="ges-tag">2.6. Droit</span><br>Décrire <strong>la procédure à suivre en cas de résiliations du contrat ou d'inexécutions du contrat</strong> (retard de livraison ou de paiement, défaut).</p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                     <td class="col-sprache">
@@ -405,12 +352,10 @@
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
-                  <!-- Bloc numérique -->
                   <tr><th class="col-digital" colspan="2"><span>Domaine de compétence médias &amp; numérique</span></th></tr>
                   <tr>
                     <td class="col-digital-content" colspan="2">
-                      <p><span class="dig-tag">3.2. Compétences en gestion des données</span><br>
-                         Utiliser <strong>des plateformes de vente</strong> (moteurs de recherche, etc.) de manière ciblée.</p>
+                      <p><span class="dig-tag">3.2. Compétences en gestion des données</span><br>Utiliser <strong>des plateformes de vente</strong> (moteurs de recherche, etc.) de manière ciblée.</p>
                       <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
@@ -424,13 +369,8 @@
           </div>
         </div>
       </div>
-
     </div>
-  </div><!-- /contexte de vie 2 -->
-
-  <!-- ══════════════════════════════════════════
-       DOMAINE LIBRE
-  ══════════════════════════════════════════ -->
+  </div>
   <div class="freibereich-section">
     <div class="freibereich-header collapsed" onclick="toggleFB(this)">
       <h3>Domaine libre (20 %)</h3>
@@ -441,60 +381,53 @@
         <tbody>
           <tr><th style="background:#fff4cc;padding:5px 10px;text-align:left;font-size:0.75em;font-weight:700;border:1px solid #000;">Domaine d'apprentissage société</th></tr>
           <tr><td style="background:#fffef5;padding:8px 10px;border:1px solid #000;font-size:0.8em;">
-            <p style="margin-bottom:10px;"><span class="ges-tag">2.1. Éthique</span><br>
-               <span class="ges-tag">2.8. Économie</span><br>
-               Analyser les différentes possibilités <strong>d'investissement liées à l'argent</strong>.</p>
-            <p style="margin-bottom:10px;"><span class="ges-tag">2.1. Éthique</span><br>
-               Prendre position sur «&nbsp;l'argent fait le bonheur&nbsp;».</p>
-            <p style="margin-bottom:10px;"><span class="ges-tag">2.2. Identité et socialisation</span><br>
-               Reconnaitre ses propres <strong>risques d'addiction lors d'achat en ligne</strong> et y faire face si nécessaire.</p>
-            <p style="margin-bottom:0;"><span class="ges-tag">2.2. Identité et socialisation</span><br>
-               Reconnaître <strong>les influences sur les achats et les pièges publicitaires</strong> et y faire face.</p>
+            <p style="margin-bottom:10px;"><span class="ges-tag">2.1. Éthique</span><br><span class="ges-tag">2.8. Économie</span><br>Analyser les différentes possibilités <strong>d'investissement liées à l'argent</strong>.</p>
+            <p style="margin-bottom:10px;"><span class="ges-tag">2.1. Éthique</span><br>Prendre position sur «&nbsp;l'argent fait le bonheur&nbsp;».</p>
+            <p style="margin-bottom:10px;"><span class="ges-tag">2.2. Identité et socialisation</span><br>Reconnaitre ses propres <strong>risques d'addiction lors d'achat en ligne</strong> et y faire face si nécessaire.</p>
+            <p style="margin-bottom:0;"><span class="ges-tag">2.2. Identité et socialisation</span><br>Reconnaître <strong>les influences sur les achats et les pièges publicitaires</strong> et y faire face.</p>
           </td></tr>
-
           <tr><th style="background:#cce5ff;padding:5px 10px;text-align:left;font-size:0.75em;font-weight:700;border:1px solid #000;">Domaine d'apprentissage langue &amp; communication</th></tr>
           <tr><td style="background:#f5f9ff;padding:8px 10px;border:1px solid #000;font-size:0.8em;">
-            <p style="margin-bottom:10px;">
-              <span class="sprach-tag">4.2. Explicatif (expliquant)</span> &nbsp;
-              <span class="form-label">Interaction et collaboration orales</span><br>
-              <strong>Mener une discussion</strong> sur les différentes possibilités d'augmenter son capital.</p>
-            <p style="margin-bottom:10px;">
-              <span class="sprach-tag">4.1. Descriptif (décrivant)</span> &nbsp;
-              <span class="form-label">Production écrite et visuelle</span><br>
-              <strong>Analyser son comportement</strong> de consommation personnel.</p>
-            <p style="margin-bottom:0;">
-              <span class="sprach-tag">4. Réception</span> &nbsp;
-              <span class="form-label">Réception écrite et visuelle</span><br>
-              <strong>Comprendre un texte</strong> littéraire.</p>
+            <p style="margin-bottom:10px;"><span class="sprach-tag">4.2. Explicatif (expliquant)</span> &nbsp;<span class="form-label">Interaction et collaboration orales</span><br><strong>Mener une discussion</strong> sur les différentes possibilités d'augmenter son capital.</p>
+            <p style="margin-bottom:10px;"><span class="sprach-tag">4.1. Descriptif (décrivant)</span> &nbsp;<span class="form-label">Production écrite et visuelle</span><br><strong>Analyser son comportement</strong> de consommation personnel.</p>
+            <p style="margin-bottom:0;"><span class="sprach-tag">4. Réception</span> &nbsp;<span class="form-label">Réception écrite et visuelle</span><br><strong>Comprendre un texte</strong> littéraire.</p>
           </td></tr>
-
           <tr><th style="background:#d4edda;padding:5px 10px;text-align:left;font-size:0.75em;font-weight:700;border:1px solid #000;">Domaine de compétence médias &amp; numérique</th></tr>
           <tr><td style="background:#f0f8f0;padding:8px 10px;border:1px solid #000;font-size:0.8em;">
-            <p style="margin-bottom:10px;"><span class="dig-tag">3.2. Compétences en gestion des données</span><br>
-               Paramétrer et utiliser en toute sécurité des sites web, des applications et <strong>outils numériques</strong> pertinents pour la formation.</p>
-            <p style="margin-bottom:10px;"><span class="dig-tag">3.4. Résolution de problèmes</span><br>
-               Investir <strong>son argent de manière rentable</strong> à l'aide de conseils financiers trouvés sur Internet.</p>
-            <p style="margin-bottom:10px;"><span class="dig-tag">3.2. Compétences en gestion des données</span><br>
-               Définir le processus d'achat <strong>de moyens de paiement virtuels.</strong></p>
-            <p style="margin-bottom:10px;"><span class="dig-tag">3.3. Création de contenu</span><br>
-               Rechercher les raisons qui expliquent <strong>les réussites financières.</strong></p>
-            <p style="margin-bottom:0;"><span class="dig-tag">3.4. Résolution de problèmes</span><br>
-               <strong>Rechercher</strong> des informations.</p>
+            <p style="margin-bottom:10px;"><span class="dig-tag">3.2. Compétences en gestion des données</span><br>Paramétrer et utiliser en toute sécurité des sites web, des applications et <strong>outils numériques</strong> pertinents pour la formation.</p>
+            <p style="margin-bottom:10px;"><span class="dig-tag">3.4. Résolution de problèmes</span><br>Investir <strong>son argent de manière rentable</strong> à l'aide de conseils financiers trouvés sur Internet.</p>
+            <p style="margin-bottom:10px;"><span class="dig-tag">3.2. Compétences en gestion des données</span><br>Définir le processus d'achat <strong>de moyens de paiement virtuels.</strong></p>
+            <p style="margin-bottom:10px;"><span class="dig-tag">3.3. Création de contenu</span><br>Rechercher les raisons qui expliquent <strong>les réussites financières.</strong></p>
+            <p style="margin-bottom:0;"><span class="dig-tag">3.4. Résolution de problèmes</span><br><strong>Rechercher</strong> des informations.</p>
           </td></tr>
         </tbody>
       </table>
     </div>
   </div>
-
-</div><!-- /theme-content-inner -->
-
+</div>
 <script>
 function toggleLB(header) { header.nextElementSibling.classList.toggle('show'); header.classList.toggle('collapsed'); }
 function toggleFB(header) { header.nextElementSibling.classList.toggle('show'); header.classList.toggle('collapsed'); }
 function toggleTbl(header) { const c = header.nextElementSibling; const i = header.querySelector('.table-toggle'); c.classList.toggle('expanded'); i.classList.toggle('rotated'); }
 function toggleUms(box) { const c = box.querySelector('.schluessel-content'); const i = box.querySelector('.toggle-schluessel'); c.classList.toggle('expanded'); i.classList.toggle('rotated'); }
 document.querySelectorAll('.kompetenz-nummer-link').forEach(el => {
-  el.setAttribute('title', 'Compétence clé ' + el.textContent.trim() + ' : ' + el.dataset.text);
+  el.addEventListener('click', function() {
+    const panel = document.getElementById('kompetenz-panel');
+    const panelLbl = document.getElementById('kompetenz-panel-label');
+    const panelTxt = document.getElementById('kompetenz-panel-text');
+    const label = this.getAttribute('data-label');
+    const text = this.getAttribute('data-text');
+    if (panel.style.display !== 'none' && panelLbl.textContent === label) {
+      panel.style.display = 'none';
+      document.querySelectorAll('.kompetenz-nummer-link').forEach(e => e.classList.remove('active'));
+      return;
+    }
+    panelLbl.textContent = label;
+    panelTxt.textContent = text;
+    panel.style.display = 'block';
+    document.querySelectorAll('.kompetenz-nummer-link').forEach(e => e.classList.remove('active'));
+    this.classList.add('active');
+  });
 });
 </script>
 </body>
