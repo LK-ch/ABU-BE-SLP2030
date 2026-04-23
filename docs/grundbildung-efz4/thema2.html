@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Schullehrplan ABU – Geld verdienen und ausgeben</title>
+<title>Schullehrplan ABU – Mein Lohn, meine Ausgaben</title>
 <style>
   /* ── Base ── */
   .theme-content-inner { padding: 20px; background-color: #fff; font-family: 'Roboto', Arial, sans-serif; }
@@ -11,23 +11,15 @@
   .leitidee h3 { color: #000; margin-bottom: 10px; font-weight: 400; font-size: 0.85em; }
   .leitidee p  { color: #000; font-size: 1em; }
 
-  /* ── Schlüsselkompetenzen unter Leitidee ── */
-  .schluesselkompetenzen-block {
-    background-color: #f9f3e8;
-    padding: 20px;
-    margin-bottom: 18px;
-  }
-  .schluesselkompetenzen-block h3 {
-    color: #000; font-size: 0.85em; font-weight: 400; margin: 0 0 10px 0;
-  }
-  .schluesselkompetenzen-block .kompetenz-nummer-link {
-    display: inline-block; color: #dc291e; font-weight: 700; cursor: pointer;
-    margin-right: 8px; padding: 2px 5px; border: 1px solid transparent;
-    border-radius: 3px; transition: all .2s; text-decoration: none;
-  }
+  .schluesselkompetenzen-block { background-color: #f9f3e8; padding: 20px; margin-bottom: 18px; }
+  .schluesselkompetenzen-block h3 { color: #000; font-size: 0.85em; font-weight: 400; margin: 0 0 10px 0; }
+  .schluesselkompetenzen-block .kompetenz-nummer-link { display: inline-flex; align-items: baseline; gap: 6px; color: #dc291e; font-weight: 700; cursor: pointer; margin-right: 4px; margin-bottom: 6px; padding: 2px 8px 2px 5px; border: 1px solid transparent; border-radius: 3px; transition: all .2s; text-decoration: none; font-style: normal; }
+  .schluesselkompetenzen-block .kompetenz-nummer-link .knum { font-weight: 700; font-size: 0.92em; white-space: nowrap; }
+  .schluesselkompetenzen-block .kompetenz-nummer-link .klabel { font-weight: 400; font-size: 0.85em; color: #000; }
   .schluesselkompetenzen-block .kompetenz-nummer-link:hover { background: #ffe6e6; border-color: #ffcccc; }
+  .schluesselkompetenzen-block .kompetenz-nummer-link.active { background: #dc291e; color: #fff; border-color: #dc291e; }
+  .schluesselkompetenzen-block .kompetenz-nummer-link.active .klabel { color: #fff; }
 
-  /* ── Lebensbezug ── */
   .lebensbezug { margin-bottom: 25px; background-color: #f9f3e8; overflow: hidden; }
   .lebensbezug-header { padding: 16px 20px; cursor: pointer; position: relative; user-select: none; }
   .lebensbezug-header::after { content: '▼'; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); transition: transform .3s; }
@@ -36,8 +28,6 @@
   .lebensbezug-header h3 strong { font-weight: 400; font-size: 0.7em; display: block; margin-bottom: 4px; }
   .lebensbezug-content { padding: 0 20px 20px; display: none; }
   .lebensbezug-content.show { display: block; }
-
-  /* ── Freibereich ── */
   .freibereich-section { margin-bottom: 25px; background-color: #fff; border: 1px solid #000; overflow: hidden; }
   .freibereich-header { padding: 16px 20px; cursor: pointer; position: relative; user-select: none; background: #fff; }
   .freibereich-header::after { content: '▼'; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); transition: transform .3s; }
@@ -45,15 +35,11 @@
   .freibereich-header h3 { color: #000; font-size: 1em; font-weight: 400; margin: 0; }
   .freibereich-content { padding: 0 20px 20px; display: none; background: #fff; }
   .freibereich-content.show { display: block; }
-
-  /* ── Kompetenz ── */
   .lerninhalt { margin-bottom: 18px; background: #fff; overflow: hidden; }
   .lerninhalt-content { padding: 14px; background: #fff; border: 1px solid #e0e0e0; }
   .kompetenz-header { background: #f5e6d3; color: #000; padding: 16px 20px 20px; margin-bottom: 3px; }
   .kompetenz-header h4 { font-size: 1em; margin: 0; font-weight: 700; }
   .kompetenz-header h4 .normal-weight { font-weight: 400; }
-
-  /* ── Table ── */
   .table-container { margin-bottom: 20px; border: 1px solid #e0e0e0; overflow: hidden; }
   .table-header { background: #f5e6d3; padding: 7px 14px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
   .table-header h5 { color: #000; font-size: 0.9em; font-weight: 700; margin: 0; }
@@ -61,7 +47,6 @@
   .table-toggle.rotated { transform: rotate(180deg); }
   .table-content { max-height: 0; overflow: hidden; transition: max-height .4s ease; }
   .table-content.expanded { max-height: 4000px; }
-
   .kompetenz-table { width: 100%; border-collapse: collapse; background: #fff; table-layout: fixed; margin-top: 10px; }
   .kompetenz-table tbody th { padding: 5px 10px; text-align: left; font-size: 0.75em; font-weight: 700; color: #000; }
   .kompetenz-table tbody th.col-gesellschaft { background: #fff4cc; }
@@ -76,21 +61,14 @@
   .kompetenz-table tbody td.col-digital-content p { background: #f0f8f0; padding: 8px 10px; text-align: center; }
   .kompetenz-table tbody td.col-digital-content p.white-bg { background-color: #fff !important; }
   .kompetenz-table tbody tr.spacing-row td { background: transparent !important; border: none !important; padding: 0 !important; height: 20px; }
-
-  /* ── Sprachtag (blau) ── */
   .sprach-tag { display: inline; font-weight: 700; font-size: 0.92em; color: #003366; }
   .form-label { display: inline; font-size: 0.85em; font-style: italic; color: #333; }
   .form-code { display: none; }
   .zirk-tag { display: none; }
   .norm-tag { display: none; }
-  /* ── Gesellschafts-Tag (gelb/braun) ── */
   .ges-tag { font-weight: 700; color: #7a5c00; font-size: 0.92em; }
-  /* ── Digital-Tag (grün) ── */
   .dig-tag { font-weight: 700; color: #1a6e2e; font-size: 0.92em; }
-  /* ── Tool-Hinweis ── */
   .tool-hint { background: #fff; padding: 8px 10px; margin-top: 0; font-size: 0.75em; }
-
-  /* ── Umsetzung ── */
   .umsetzung-box { background: #fff; border: 1px solid #d0d0d0; padding: 4px 8px; margin-top: 14px; cursor: pointer; user-select: none; }
   .umsetzung-box .schluessel-header { display: flex; justify-content: space-between; align-items: center; }
   .umsetzung-box .schluessel-header h4 { font-size: 0.75em; color: #000; font-weight: 700; margin: 0; }
@@ -105,7 +83,6 @@
 
 <div class="theme-content-inner">
 
-  <!-- ── Leitidee ── -->
   <div class="leitidee">
     <h3>Leitidee</h3>
     <p>Mit meinem verdienten Geld gehe ich verantwortungsvoll um, lenke bewusst mein Konsumverhalten, wähle passende Bezahlungs- und Finanzierungsmöglichkeiten, kann Kaufverträge abschliessen, nutze dabei meine Rechte und halte meine Pflichten ein.</p>
@@ -114,10 +91,14 @@
   <!-- ── Schlüsselkompetenzen ── -->
   <div class="schluesselkompetenzen-block">
     <h3>Schlüsselkompetenzen</h3>
-    <span class="kompetenz-nummer-link" data-text="Die eigenen Werthaltungen und Überzeugungen erkennen, verstehen, kritisch reflektieren und weiterentwickeln">1.5</span>
-    <span class="kompetenz-nummer-link" data-text="Die eigenen Standpunkte begründen und andere davon überzeugen">1.6</span>
-    <span class="kompetenz-nummer-link" data-text="Eigene Lebensphasen planen und mit Unwägbarkeiten umgehen">1.8</span>
-    <span class="kompetenz-nummer-link" data-text="Vernetzt und systemisch denken, um sozial, ökologisch und ökonomisch nachhaltig zu handeln">1.9</span>
+    <span class="kompetenz-nummer-link" data-label="1.5 Die eigenen Werthaltungen und Überzeugungen erkennen, verstehen, kritisch reflektieren und" data-text="Die eigenen Werthaltungen und Überzeugungen erkennen, verstehen, kritisch reflektieren und weiterentwickeln: Um persönliche Entwicklungsschritte hin zu einem selbstbestimmten Leben zu machen, ist es wichtig, die persönlichen Werte und Überzeugungen zu hinterfragen, die Perspektiven zu erweitern und eine reflektierte, ethische Grundlage für das eigene Handeln zu entwickeln."><span class="knum">1.5</span><span class="klabel">Die eigenen Werthaltungen und Überzeugungen erkennen, verstehen, kritisch reflektieren und</span></span>
+    <span class="kompetenz-nummer-link" data-label="1.6 Die eigenen Standpunkte begründen und andere davon überzeugen" data-text="Die eigenen Standpunkte begründen und andere davon überzeugen: Um andere von den eigenen Ideen und Standpunkten zu überzeugen, ist es wichtig, eigene Gedanken und Ideen effektiv zu artikulieren und zu vertreten sowie Argumente klar und überzeugend zu präsentieren und die Kommunikationsfähigkeiten zu verbessern."><span class="knum">1.6</span><span class="klabel">Die eigenen Standpunkte begründen und andere davon überzeugen</span></span>
+    <span class="kompetenz-nummer-link" data-label="1.8 Eigene Lebensphasen planen und mit Unwägbarkeiten umgehen" data-text="Eigene Lebensphasen planen und mit Unwägbarkeiten umgehen: Um mittel- und langfristige Lebensphasen zu planen und zu gestalten, ist es wichtig, persönliche, soziale und materielle Ressourcen aufzubauen und diese gezielt und selbstwirksam einzusetzen. Dazu gehören Ressourcen zur Lebens- und Laufbahngestaltung sowie Reflexionen zur physischen und psychischen Gesundheit."><span class="knum">1.8</span><span class="klabel">Eigene Lebensphasen planen und mit Unwägbarkeiten umgehen</span></span>
+    <span class="kompetenz-nummer-link" data-label="1.9 Vernetzt und systemisch denken, um sozial, ökologisch und ökonomisch nachhaltig zu handeln" data-text="Vernetzt und systemisch denken, um sozial, ökologisch und ökonomisch nachhaltig zu handeln: Um komplexe lokale und globale Zusammenhänge und Abhängigkeiten und deren Wechsel- und Auswirkungen zu verstehen sowie Handlungsmöglichkeiten für eine nachhaltige Entwicklung abzuleiten, ist es wichtig, multidisziplinär und vernetzt denken und analysieren zu können."><span class="knum">1.9</span><span class="klabel">Vernetzt und systemisch denken, um sozial, ökologisch und ökonomisch nachhaltig zu handeln</span></span>
+    <div id="kompetenz-panel" style="display:none;margin-top:12px;background:#fff;border:1px solid #c8b99a;padding:12px 14px;font-size:0.85em;line-height:1.6;color:#000;user-select:text;">
+      <div id="kompetenz-panel-label" style="font-weight:700;margin-bottom:6px;"></div>
+      <div id="kompetenz-panel-text"></div>
+    </div>
   </div>
 
   <!-- ══════════════════════════════════════════
@@ -146,24 +127,21 @@
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.8. Wirtschaft</span><br>
-                         Die eigene <strong>Lohnabrechnung</strong> verstehen.</p>
-                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>–</p>
+                      <p><span class="ges-tag">2.8. Wirtschaft</span><br>Die eigene <strong>Lohnabrechnung</strong> verstehen.</p>
+                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>-</p>
                     </td>
                     <td class="col-sprache">
-                      <!-- KORREKTUR: 4. Rezeption statt 4.2 Expositorisch -->
                       <p>
                         <span class="sprach-tag">4. Rezeption</span><br>
                         <span class="form-label">Rezeption schriftlich &amp; bildlich</span><span class="form-code" data-form="Rs"></span><br>
                         <span class="zirk-tag" data-zirk="si-inhalte-erfassen"></span>Mit passenden Strategien wesentliche <strong>Inhalte</strong> aus einem offiziellen Dokument <strong>erfassen</strong>.
                       </p>
-                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>–</p>
+                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>-</p>
                     </td>
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.8. Wirtschaft</span><br>
-                         Die eigene Rolle als Geldverdienende im <strong>einfachen Wirtschaftskreislauf</strong> beschreiben.</p>
+                      <p><span class="ges-tag">2.8. Wirtschaft</span><br>Die eigene Rolle als Geldverdienende im <strong>einfachen Wirtschaftskreislauf</strong> beschreiben.</p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Wirtschaftskreislauf» (EHB)</p>
                     </td>
                     <td class="col-sprache"></td>
@@ -171,39 +149,33 @@
                   <tr><th class="col-digital" colspan="2"><span>Medien und Digitalität</span></th></tr>
                   <tr>
                     <td class="col-digital-content" colspan="2">
-                      <p><span class="dig-tag">3.2. Informations- &amp; Datenkompetenz</span><br>
-                         Effizient auf einer Webseite <strong>navigieren</strong>.</p>
-                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>–</p>
+                      <p><span class="dig-tag">3.2. Informations- &amp; Datenkompetenz</span><br>Effizient auf einer Webseite <strong>navigieren</strong>.</p>
+                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>-</p>
                     </td>
                   </tr>
-
                   <tr class="spacing-row"><td colspan="2"></td></tr>
-
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Gesellschaft</th>
                     <th class="col-sprache" style="width:50%;">Sprache und Kommunikation</th>
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.8. Wirtschaft</span><br>
-                         Ein eigenes <strong>Budget</strong> mit fixen und variablen Kosten aufstellen und mit einem fremden Budget vergleichen.</p>
+                      <p><span class="ges-tag">2.8. Wirtschaft</span><br>Ein eigenes <strong>Budget</strong> mit fixen und variablen Kosten aufstellen und mit einem fremden Budget vergleichen.</p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Budget mit fixen und variablen Kosten» (EHB)</p>
                     </td>
                     <td class="col-sprache">
-                      <!-- KORREKTUR: 4. Rezeption statt 4.2 Expositorisch -->
                       <p>
                         <span class="sprach-tag">4. Rezeption</span><br>
                         <span class="form-label">Rezeption audiovisuell</span><span class="form-code" data-form="Ra"></span><br>
                         <span class="zirk-tag" data-zirk="si-inhalte-erfassen"></span>Zentrale <strong>Inhalte</strong> zu Schulden und deren Vermeidung aus Beiträgen <strong>erfassen</strong>.
                       </p>
-                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>–</p>
+                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>-</p>
                     </td>
                   </tr>
                   <tr><th class="col-digital" colspan="2"><span>Medien und Digitalität</span></th></tr>
                   <tr>
                     <td class="col-digital-content" colspan="2">
-                      <p><span class="dig-tag">3.4. Problemlösung</span><br>
-                         Budget-<strong>Tools</strong> zur Planung anwenden.</p>
+                      <p><span class="dig-tag">3.4. Problemlösung</span><br>Budget-<strong>Tools</strong> zur Planung anwenden.</p>
                       <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br><a href="https://budgetberatung.ch/" target="_blank" rel="noopener noreferrer">budgetberatung.ch</a>, <a href="https://schulden.ch/" target="_blank" rel="noopener noreferrer">schulden.ch</a></p>
                     </td>
                   </tr>
@@ -213,7 +185,7 @@
           </div>
           <div class="umsetzung-box" onclick="toggleUms(this)">
             <div class="schluessel-header"><h4>Umsetzungsbeispiel</h4><span class="toggle-schluessel">▼</span></div>
-            <div class="schluessel-content"><p>Text</p></div>
+            <div class="schluessel-content"><p>-</p></div>
           </div>
         </div>
       </div>
@@ -235,8 +207,7 @@
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.8. Wirtschaft</span><br>
-                         <strong>Angebote von Geldinstituten</strong> (z. B. Konti, Geldtransfer) für den Zahlungsverkehr und um zu sparen vergleichen und beurteilen.</p>
+                      <p><span class="ges-tag">2.8. Wirtschaft</span><br><strong>Angebote von Geldinstituten</strong> (z. B. Konti, Geldtransfer) für den Zahlungsverkehr und um zu sparen vergleichen und beurteilen.</p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Das magische Dreieck der Geldanlage» (SRF)</p>
                     </td>
                     <td class="col-sprache">
@@ -245,15 +216,14 @@
                         <span class="form-label">Produktion mündlich</span><span class="form-code" data-form="Pm"></span><br>
                         <span class="zirk-tag" data-zirk="si-recherche"></span><strong>Rechercheergebnisse</strong> an Gleichaltrige nachvollziehbar <strong>vermitteln</strong>.
                       </p>
-                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>–</p>
+                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>-</p>
                     </td>
                   </tr>
                   <tr><th class="col-digital" colspan="2"><span>Medien und Digitalität</span></th></tr>
                   <tr>
                     <td class="col-digital-content" colspan="2">
-                      <p><span class="dig-tag">3.4. Problemlösung</span><br>
-                         Informationen zu Angeboten <strong>recherchieren</strong> und Quellen analysieren.</p>
-                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>–</p>
+                      <p><span class="dig-tag">3.4. Problemlösung</span><br>Informationen zu Angeboten <strong>recherchieren</strong> und Quellen analysieren.</p>
+                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>-</p>
                     </td>
                   </tr>
                 </tbody>
@@ -262,7 +232,7 @@
           </div>
           <div class="umsetzung-box" onclick="toggleUms(this)">
             <div class="schluessel-header"><h4>Umsetzungsbeispiel</h4><span class="toggle-schluessel">▼</span></div>
-            <div class="schluessel-content"><p>Text</p></div>
+            <div class="schluessel-content"><p>-</p></div>
           </div>
         </div>
       </div>
@@ -284,38 +254,32 @@
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.8. Wirtschaft</span><br>
-                         <strong>Zahlungsmittel</strong> (Kredit, Debit, etc.) situativ gezielt einsetzen.</p>
+                      <p><span class="ges-tag">2.8. Wirtschaft</span><br><strong>Zahlungsmittel</strong> (Kredit, Debit, etc.) situativ gezielt einsetzen.</p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Zahlungsmittel» (EHB)</p>
                     </td>
                     <td class="col-sprache">
-                      <!-- KORREKTUR: 4. Rezeption statt 4.2 Expositorisch -->
                       <p>
                         <span class="sprach-tag">4. Rezeption</span><br>
                         <span class="form-label">Rezeption schriftlich &amp; bildlich</span><span class="form-code" data-form="Rs"></span>,
                         <span class="form-label">Rezeption audiovisuell</span><span class="form-code" data-form="Ra"></span><br>
-                        <span class="zirk-tag" data-zirk="si-inhalte-erfassen"></span><strong>Inhalte</strong> aus digitalen und analogen Sach- und Fachtexten <strong>erfassen</strong>
-                         (Medienbeitrag, Lehrmittel, Lernunterlagen etc.).
+                        <span class="zirk-tag" data-zirk="si-inhalte-erfassen"></span><strong>Inhalte</strong> aus digitalen und analogen Sach- und Fachtexten <strong>erfassen</strong> (Medienbeitrag, Lehrmittel, Lernunterlagen etc.).
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Lesen und zusammenfassen mit TIK» (EHB)</p>
                     </td>
                   </tr>
-
                   <tr class="spacing-row"><td colspan="2"></td></tr>
-
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Gesellschaft</th>
                     <th class="col-sprache" style="width:50%;">Sprache und Kommunikation</th>
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.8. Wirtschaft</span><br>
-                         Kosten und Risiken bei <strong>Finanzierungsarten</strong> (Eigenfinanzierung, Ratenzahlung, Konsumkredit, Leasing, Schuldenfallen) bei einer grösseren Anschaffung beurteilen.</p>
+                      <p><span class="ges-tag">2.8. Wirtschaft</span><br>Kosten und Risiken bei <strong>Finanzierungsarten</strong> (Eigenfinanzierung, Ratenzahlung, Konsumkredit, Leasing, Schuldenfallen) bei einer grösseren Anschaffung beurteilen.</p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Finanzierung einer grossen Anschaffung: Entscheidungskriterien» (EHB), «Leasing, Konsumkredit und Barkauf» (EHB)</p>
                     </td>
                     <td class="col-sprache">
                       <p>
-                        <span class="sprach-tag">4.3. Argumentativ (überzeugend)</span><br>
+                        <span class="sprach-tag">4.3. Argumentativ (überzeugen wollend)</span><br>
                         <span class="form-label">Produktion schriftlich &amp; bildlich</span><span class="form-code" data-form="Ps"></span><br>
                         <span class="zirk-tag" data-zirk="si-ueberzeugen"></span>Eltern und andere Geldgebende <strong>faktenbezogen überzeugen</strong> für eine Anschaffung.
                       </p>
@@ -325,8 +289,7 @@
                   <tr><th class="col-digital" colspan="2"><span>Medien und Digitalität</span></th></tr>
                   <tr>
                     <td class="col-digital-content" colspan="2">
-                      <p><span class="dig-tag">3.2. Informations- &amp; Datenkompetenz</span><br>
-                         <strong>Quellenbeurteilung</strong> (Absichten, Hintergründe, Vertraulichkeit).</p>
+                      <p><span class="dig-tag">3.2. Informations- &amp; Datenkompetenz</span><br><strong>Quellenbeurteilung</strong> (Absichten, Hintergründe, Vertraulichkeit).</p>
                       <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Internetquellen im Check» (EHB)</p>
                     </td>
                   </tr>
@@ -336,7 +299,7 @@
           </div>
           <div class="umsetzung-box" onclick="toggleUms(this)">
             <div class="schluessel-header"><h4>Umsetzungsbeispiel</h4><span class="toggle-schluessel">▼</span></div>
-            <div class="schluessel-content"><p>Text</p></div>
+            <div class="schluessel-content"><p>-</p></div>
           </div>
         </div>
       </div>
@@ -370,8 +333,7 @@
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.2. Identität und Sozialisation</span><br>
-                         Meine <strong>Bedürfnisse</strong> identifizieren und mein <strong>Kaufverhalten</strong> analysieren.</p>
+                      <p><span class="ges-tag">2.2. Identität und Sozialisation</span><br>Meine <strong>Bedürfnisse</strong> identifizieren und mein <strong>Kaufverhalten</strong> analysieren.</p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Kaufkriterien und (Kauf-)Motive nach Maslow» (EHB), «Vernünftige und verantwortungsvolle Kaufentscheide» (EHB)</p>
                     </td>
                     <td class="col-sprache">
@@ -379,22 +341,19 @@
                         <span class="sprach-tag">4.5. Reflexiv (reflektierend)</span><br>
                         <span class="form-label">Produktion mündlich</span><span class="form-code" data-form="Pm"></span>,
                         <span class="form-label">Produktion schriftlich &amp; bildlich</span><span class="form-code" data-form="Ps"></span><br>
-                        <span class="zirk-tag" data-zirk="si-verhalten"></span>Persönliches Kauf-<strong>verhalten reflektieren</strong>.
+                        <span class="zirk-tag" data-zirk="si-verhalten"></span>Persönliches <strong>Kaufverhalten reflektieren</strong>.
                       </p>
-                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>–</p>
+                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>-</p>
                     </td>
                   </tr>
-
                   <tr class="spacing-row"><td colspan="2"></td></tr>
-
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Gesellschaft</th>
                     <th class="col-sprache" style="width:50%;">Sprache und Kommunikation</th>
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.8. Wirtschaft</span><br>
-                         <strong>Kaufbeeinflussung und Werbefallen</strong> erkennen und darauf reagieren.</p>
+                      <p><span class="ges-tag">2.8. Wirtschaft</span><br><strong>Kaufbeeinflussung und Werbefallen</strong> erkennen und darauf reagieren.</p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Umgang mit Online-Werbung» (EHB)</p>
                     </td>
                     <td class="col-sprache">
@@ -403,30 +362,24 @@
                         <span class="form-label">Produktion mündlich</span><span class="form-code" data-form="Pm"></span><br>
                         <span class="zirk-tag" data-zirk="si-einfluss-sprache"></span><strong>Sprachliche Mittel</strong> in Werbung erkennen und deren Einfluss auf Kaufentscheidungen <strong>reflektieren</strong>.
                       </p>
-                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>–</p>
+                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>-</p>
                     </td>
                   </tr>
                   <tr><th class="col-digital" colspan="2"><span>Medien und Digitalität</span></th></tr>
                   <tr>
                     <td class="col-digital-content" colspan="2">
-                      <p><span class="dig-tag">3.5. KI-spezifische Komponenten</span><br>
-                         Erkennen, wie <strong>persönliche Daten</strong> die Anzeige von Online-Inhalten beeinflussen.</p>
-                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>–</p>
+                      <p><span class="dig-tag">3.5. KI-spezifische Komponenten</span><br>Erkennen, wie <strong>persönliche Daten</strong> die Anzeige von Online-Inhalten beeinflussen.</p>
+                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>-</p>
                     </td>
                   </tr>
-
                   <tr class="spacing-row"><td colspan="2"></td></tr>
-
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Gesellschaft</th>
                     <th class="col-sprache" style="width:50%;">Sprache und Kommunikation</th>
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.1. Ethik</span><br>
-                         <span class="ges-tag">2.4. Ökologie</span><br>
-                         <span class="ges-tag">2.8. Wirtschaft</span><br>
-                         <strong>Konsumentscheide</strong> auf deren Nachhaltigkeit <strong>überprüfen</strong> (wirtschaftlich, ökologisch, sozial) und daraus Alltagsverhalten ableiten (z. B. moralische Verantwortung als Konsumierende reflektieren).</p>
+                      <p><span class="ges-tag">2.1. Ethik</span><br><span class="ges-tag">2.4. Ökologie</span><br><span class="ges-tag">2.8. Wirtschaft</span><br><strong>Konsumentscheide</strong> auf deren Nachhaltigkeit <strong>überprüfen</strong> (wirtschaftlich, ökologisch, sozial) und daraus Alltagsverhalten ableiten (z. B. moralische Verantwortung als Konsumierende reflektieren).</p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Nachhaltigkeitseinschätzung» (EHB), «Entscheidungsmatrix – Entscheiden anhand von Kriterien» (EHB)</p>
                     </td>
                     <td class="col-sprache">
@@ -441,9 +394,8 @@
                   <tr><th class="col-digital" colspan="2"><span>Medien und Digitalität</span></th></tr>
                   <tr>
                     <td class="col-digital-content" colspan="2">
-                      <p><span class="dig-tag">3.4. Problemlösung</span><br>
-                         <strong>Online-Konsumentenhilfen</strong> (Preisvergleich, ökologische Verträglichkeit, soziale Fragen) testen und anwenden.</p>
-                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>–</p>
+                      <p><span class="dig-tag">3.4. Problemlösung</span><br><strong>Online-Konsumentenhilfen</strong> (Preisvergleich, ökologische Verträglichkeit, soziale Fragen) testen und anwenden.</p>
+                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>-</p>
                     </td>
                   </tr>
                 </tbody>
@@ -452,7 +404,7 @@
           </div>
           <div class="umsetzung-box" onclick="toggleUms(this)">
             <div class="schluessel-header"><h4>Umsetzungsbeispiel</h4><span class="toggle-schluessel">▼</span></div>
-            <div class="schluessel-content"><p>Text</p></div>
+            <div class="schluessel-content"><p>-</p></div>
           </div>
         </div>
       </div>
@@ -474,23 +426,19 @@
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.6. Recht</span><br>
-                         Urteils- und <strong>Handlungsfähigkeit</strong> in Bezug auf Vertragsabschluss (auch online) und Haftung beurteilen.</p>
+                      <p><span class="ges-tag">2.6. Recht</span><br>Urteils- und <strong>Handlungsfähigkeit</strong> in Bezug auf Vertragsabschluss (auch online) und Haftung beurteilen.</p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Handlungsfähigkeit und Urteilsfähigkeit» (EHB)</p>
                     </td>
                     <td class="col-sprache"></td>
                   </tr>
-
                   <tr class="spacing-row"><td colspan="2"></td></tr>
-
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Gesellschaft</th>
                     <th class="col-sprache" style="width:50%;">Sprache und Kommunikation</th>
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.6. Recht</span><br>
-                         Wann ein <strong>rechtsgültiger Vertrag</strong> zustande kommt und die Folgen dabei bestimmen (auch online).</p>
+                      <p><span class="ges-tag">2.6. Recht</span><br>Wann ein <strong>rechtsgültiger Vertrag</strong> zustande kommt und die Folgen dabei bestimmen (auch online).</p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Rechtliche Regeln in Wenn-dann-Aussagen umformulieren» (EHB), «Vertragsabschluss bei einem Kauf» (EHB)</p>
                     </td>
                     <td class="col-sprache">
@@ -502,26 +450,21 @@
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Rechtliche Regeln in Wenn-dann-Aussagen umformulieren» (EHB)</p>
                     </td>
                   </tr>
-
                   <tr class="spacing-row"><td colspan="2"></td></tr>
-
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Gesellschaft</th>
                     <th class="col-sprache" style="width:50%;">Sprache und Kommunikation</th>
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.6. Recht</span><br>
-                         Vorgehen für <strong>Vertragsrücktritt</strong> und bei <strong>Vertragsverletzungen</strong> (Liefer- oder Zahlungsverzug, Mängel) beschreiben.</p>
+                      <p><span class="ges-tag">2.6. Recht</span><br>Vorgehen für <strong>Vertragsrücktritt</strong> und bei <strong>Vertragsverletzungen</strong> (Liefer- oder Zahlungsverzug, Mängel) beschreiben.</p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Von einem Vertrag zurücktreten» (EHB)</p>
                     </td>
                     <td class="col-sprache">
-                      <!-- KORREKTUR: 4. Rezeption statt 4.2 Expositorisch -->
                       <p>
                         <span class="sprach-tag">4. Rezeption</span><br>
                         <span class="form-label">Rezeption schriftlich &amp; bildlich</span><span class="form-code" data-form="Rs"></span><br>
-                        <span class="zirk-tag" data-zirk="si-lesestrategien"></span><strong>Strategien beim Lesen</strong> von Texten mit typischem Fachwortschatz
-                         (z.B. allgemeinen Geschäftsbedingungen) <strong>anwenden</strong>.
+                        <span class="zirk-tag" data-zirk="si-lesestrategien"></span><strong>Strategien beim Lesen</strong> von Texten mit typischem Fachwortschatz (z.B. allgemeinen Geschäftsbedingungen) <strong>anwenden</strong>.
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Lesephasen und ihre Funktion» (EHB)</p>
                     </td>
@@ -534,15 +477,14 @@
                         <span class="form-label">Produktion schriftlich &amp; bildlich</span><span class="form-code" data-form="Ps"></span><br>
                         <span class="zirk-tag" data-zirk="si-geschaeftsbrief"></span><span class="norm-tag" data-norm="norm-gross-klein"></span><span class="norm-tag" data-norm="norm-formell"></span><strong>Textvorlage</strong> für die eigene Situation (Kulanz, Irrtum, Mangel) <strong>anpassen</strong> mit Berücksichtigung der <strong>Gross-/Kleinschreibung</strong>.
                       </p>
-                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>–</p>
+                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>-</p>
                     </td>
                   </tr>
                   <tr><th class="col-digital" colspan="2"><span>Medien und Digitalität</span></th></tr>
                   <tr>
                     <td class="col-digital-content" colspan="2">
-                      <p><span class="dig-tag">3.2. Informations- &amp; Datenkompetenz</span><br>
-                         <strong>Verkaufsplattformen</strong> gezielt nutzen (Suchmaschinen, Vertragsbedingungen).</p>
-                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>–</p>
+                      <p><span class="dig-tag">3.2. Informations- &amp; Datenkompetenz</span><br><strong>Verkaufsplattformen</strong> gezielt nutzen (Suchmaschinen, Vertragsbedingungen).</p>
+                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>-</p>
                     </td>
                   </tr>
                 </tbody>
@@ -551,7 +493,7 @@
           </div>
           <div class="umsetzung-box" onclick="toggleUms(this)">
             <div class="schluessel-header"><h4>Umsetzungsbeispiel</h4><span class="toggle-schluessel">▼</span></div>
-            <div class="schluessel-content"><p>Text</p></div>
+            <div class="schluessel-content"><p>-</p></div>
           </div>
         </div>
       </div>
@@ -567,59 +509,32 @@
       <h3>Freibereich (20%)</h3>
     </div>
     <div class="freibereich-content">
-      <h4 style="font-size:0.9em;margin-bottom:15px;font-weight:700;">Inhalte / Lernziele</h4>
+      <h4 style="font-size:0.9em;margin-bottom:15px;font-weight:700;">Inhalte</h4>
       <table style="width:100%;border-collapse:collapse;">
         <tbody>
           <tr><th style="background:#fff4cc;padding:5px 10px;text-align:left;font-size:0.75em;font-weight:700;border:1px solid #000;">Gesellschaft</th></tr>
           <tr><td style="background:#fffef5;padding:8px 10px;border:1px solid #000;font-size:0.8em;">
-            <p style="margin-bottom:10px;"><span class="ges-tag">2.8. Wirtschaft</span><br>
-               Möglichkeiten von <strong>Geld-Anlageformen</strong> vergleichen und erkennen, wie damit Geld verdient / verloren werden kann.</p>
-            <p style="margin-bottom:10px;"><span class="ges-tag">2.8. Wirtschaft</span><br>
-               <strong>Entstehung des Geldes</strong> untersuchen.</p>
-            <p style="margin-bottom:10px;"><span class="ges-tag">2.7. Technologische und digitale Transformation</span><br>
-               Funktion und Einsatz von Bitcoins und anderen <strong>virtuellen Zahlungsmitteln</strong> verstehen und kritisch hinterfragen.</p>
-            <p style="margin-bottom:10px;"><span class="ges-tag">2.8. Wirtschaft</span><br>
-               <strong>Einfluss der Zinsen</strong> auf unser Anlageverhalten und wie Geld in verschiedene Währungen umgerechnet wird beurteilen.</p>
-            <p style="margin-bottom:10px;"><span class="ges-tag">2.1. Ethik</span> / <span class="ges-tag">2.8. Wirtschaft</span><br>
-               Unterschiedliche Möglichkeiten <strong>mit Geld Geld zu verdienen</strong> analysieren.</p>
-            <p style="margin-bottom:10px;"><span class="ges-tag">2.1. Ethik</span><br>
-               «<strong>Macht Geld glücklich</strong>» analysieren.</p>
-            <p style="margin-bottom:10px;"><span class="ges-tag">2.2. Identität und Sozialisation</span><br>
-               Eigene <strong>Suchtrisiken beim Online-Shopping</strong> erkennen und gegebenenfalls Massnahmen ergreifen.</p>
-            <p style="margin-bottom:0;"><span class="ges-tag">2.1. Ethik</span><br>
-               In einem <strong>moralischen Dilemma</strong> den eigenen Standpunkt erörtern.<br>
-               <span style="font-size:0.9em;color:#666;">Beispiel: «Moralisches Dilemma» (EHB)</span></p>
+            <p style="margin-bottom:10px;"><span class="ges-tag">2.8. Wirtschaft</span><br>Möglichkeiten von <strong>Geld-Anlageformen</strong> vergleichen und erkennen, wie damit Geld verdient / verloren werden kann.</p>
+            <p style="margin-bottom:10px;"><span class="ges-tag">2.8. Wirtschaft</span><br><strong>Entstehung des Geldes</strong> untersuchen.</p>
+            <p style="margin-bottom:10px;"><span class="ges-tag">2.7. Technologische und digitale Transformation</span><br>Funktion und Einsatz von Bitcoins und anderen <strong>virtuellen Zahlungsmitteln</strong> verstehen und kritisch hinterfragen.</p>
+            <p style="margin-bottom:10px;"><span class="ges-tag">2.8. Wirtschaft</span><br><strong>Einfluss der Zinsen</strong> auf unser Anlageverhalten und wie Geld in verschiedene Währungen umgerechnet wird beurteilen.</p>
+            <p style="margin-bottom:10px;"><span class="ges-tag">2.1. Ethik</span><br><span class="ges-tag">2.8. Wirtschaft</span><br>Unterschiedliche Möglichkeiten <strong>mit Geld Geld zu verdienen</strong> analysieren.</p>
+            <p style="margin-bottom:10px;"><span class="ges-tag">2.1. Ethik</span><br>«<strong>Macht Geld glücklich</strong>» analysieren.</p>
+            <p style="margin-bottom:10px;"><span class="ges-tag">2.2. Identität und Sozialisation</span><br>Eigene <strong>Suchtrisiken beim Online-Shopping</strong> erkennen und gegebenenfalls Massnahmen ergreifen.</p>
+            <p style="margin-bottom:0;"><span class="ges-tag">2.1. Ethik</span><br>In einem <strong>moralischen Dilemma</strong> den eigenen Standpunkt erörtern.<br><span style="font-size:0.9em;color:#666;">Beispielhafte Instrumente / Tools / Webseiten: «Moralisches Dilemma» (EHB)</span></p>
           </td></tr>
-
           <tr><th style="background:#cce5ff;padding:5px 10px;text-align:left;font-size:0.75em;font-weight:700;border:1px solid #000;">Sprache und Kommunikation</th></tr>
           <tr><td style="background:#f5f9ff;padding:8px 10px;border:1px solid #000;font-size:0.8em;">
-            <p style="margin-bottom:10px;">
-              <span class="sprach-tag">4.2. Expositorisch (erklärend)</span> &nbsp;
-              <span class="form-label">Interaktion &amp; Kollaboration mündlich</span><span class="form-code" data-form="Ik_m"></span><br>
-              Unterschiedliche <strong>Geldvermehrungsmöglichkeiten</strong> erörtern.</p>
-            <p style="margin-bottom:10px;">
-              <span class="sprach-tag">4.1. Deskriptiv (beschreibend)</span> &nbsp;
-              <span class="form-label">Produktion schriftlich &amp; bildlich</span><span class="form-code" data-form="Ps"></span><br>
-              Persönliches <strong>Konsumverhalten</strong> visualisieren.<br>
-              <span style="font-size:0.9em;color:#666;">Beispiel: Mindmap</span></p>
-            <!-- KORREKTUR: 4. Rezeption statt 4.2 Expositorisch -->
-            <p style="margin-bottom:0;">
-              <span class="sprach-tag">4. Rezeption</span> &nbsp;
-              <span class="form-label">Rezeption schriftlich &amp; bildlich</span><span class="form-code" data-form="Rs"></span><br>
-              Einen <strong>literarischen Text</strong> verstehen.<br>
-              <span style="font-size:0.9em;color:#666;">Beispiel: «Lesephasen und ihre Funktion» (EHB)</span></p>
+            <p style="margin-bottom:10px;"><span class="sprach-tag">4.2. Expositorisch (erklärend)</span> &nbsp;<span class="form-label">Interaktion &amp; Kollaboration mündlich</span><span class="form-code" data-form="Ik_m"></span><br>Unterschiedliche <strong>Geldvermehrungsmöglichkeiten</strong> erörtern.</p>
+            <p style="margin-bottom:10px;"><span class="sprach-tag">4.1. Deskriptiv (beschreibend)</span> &nbsp;<span class="form-label">Produktion schriftlich &amp; bildlich</span><span class="form-code" data-form="Ps"></span><br>Persönliches <strong>Konsumverhalten</strong> visualisieren.<br><span style="font-size:0.9em;color:#666;">Beispielhafte Instrumente / Tools / Webseiten: Mindmap</span></p>
+            <p style="margin-bottom:0;"><span class="sprach-tag">4. Rezeption</span> &nbsp;<span class="form-label">Rezeption schriftlich &amp; bildlich</span><span class="form-code" data-form="Rs"></span><br>Einen <strong>literarischen Text</strong> verstehen.<br><span style="font-size:0.9em;color:#666;">Beispielhafte Instrumente / Tools / Webseiten: «Lesephasen und ihre Funktion» (EHB)</span></p>
           </td></tr>
-
           <tr><th style="background:#d4edda;padding:5px 10px;text-align:left;font-size:0.75em;font-weight:700;border:1px solid #000;">Medien und Digitalität</th></tr>
           <tr><td style="background:#f0f8f0;padding:8px 10px;border:1px solid #000;font-size:0.8em;">
-            <p style="margin-bottom:10px;"><span class="dig-tag">3.2. Informations- &amp; Datenkompetenz</span><br>
-               Ausbildungsrelevante Websites, IT-Infrastrukturen und <strong>digitale Werkzeuge</strong> einrichten und sicher nutzen.</p>
-            <p style="margin-bottom:10px;"><span class="dig-tag">3.4. Problemlösung</span><br>
-               Eigenes Geld mit Hilfe <strong>Geldanlagetipps</strong> aus dem Netz gewinnbringend anlegen.</p>
-            <p style="margin-bottom:10px;"><span class="dig-tag">3.2. Informations- &amp; Datenkompetenz</span><br>
-               Vorgang beim Kauf von <strong>virtuellen Zahlungsmitteln</strong> umsetzen können.</p>
-            <p style="margin-bottom:0;"><span class="dig-tag">3.3. Inhaltserstellung</span><br>
-               Hintergründe zu <strong>finanziellen Erfolgsstorys</strong> recherchieren.</p>
+            <p style="margin-bottom:10px;"><span class="dig-tag">3.2. Informations- &amp; Datenkompetenz</span><br>Ausbildungsrelevante Websites, IT-Infrastrukturen und <strong>digitale Werkzeuge</strong> einrichten und sicher nutzen.</p>
+            <p style="margin-bottom:10px;"><span class="dig-tag">3.4. Problemlösung</span><br>Eigenes Geld mit Hilfe <strong>Geldanlagetipps</strong> aus dem Netz gewinnbringend anlegen.</p>
+            <p style="margin-bottom:10px;"><span class="dig-tag">3.2. Informations- &amp; Datenkompetenz</span><br>Vorgang beim Kauf von <strong>virtuellen Zahlungsmitteln</strong> umsetzen können.</p>
+            <p style="margin-bottom:0;"><span class="dig-tag">3.3. Inhaltserstellung</span><br>Hintergründe zu <strong>finanziellen Erfolgsstorys</strong> recherchieren.</p>
           </td></tr>
         </tbody>
       </table>
@@ -634,9 +549,24 @@ function toggleFB(header) { header.nextElementSibling.classList.toggle('show'); 
 function toggleTbl(header) { const c = header.nextElementSibling; const i = header.querySelector('.table-toggle'); c.classList.toggle('expanded'); i.classList.toggle('rotated'); }
 function toggleUms(box) { const c = box.querySelector('.schluessel-content'); const i = box.querySelector('.toggle-schluessel'); c.classList.toggle('expanded'); i.classList.toggle('rotated'); }
 
-/* ── Schlüsselkompetenzen tooltip ── */
 document.querySelectorAll('.kompetenz-nummer-link').forEach(el => {
-  el.setAttribute('title', 'Schlüsselkompetenz ' + el.textContent.trim() + ': ' + el.dataset.text);
+  el.addEventListener('click', function() {
+    const panel = document.getElementById('kompetenz-panel');
+    const panelLbl = document.getElementById('kompetenz-panel-label');
+    const panelTxt = document.getElementById('kompetenz-panel-text');
+    const label = this.getAttribute('data-label');
+    const text = this.getAttribute('data-text');
+    if (panel.style.display !== 'none' && panelLbl.textContent === label) {
+      panel.style.display = 'none';
+      document.querySelectorAll('.kompetenz-nummer-link').forEach(e => e.classList.remove('active'));
+      return;
+    }
+    panelLbl.textContent = label;
+    panelTxt.textContent = text;
+    panel.style.display = 'block';
+    document.querySelectorAll('.kompetenz-nummer-link').forEach(e => e.classList.remove('active'));
+    this.classList.add('active');
+  });
 });
 </script>
 </body>
