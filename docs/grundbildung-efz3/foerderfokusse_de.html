@@ -390,10 +390,16 @@ mark.search-hit{
 
 /* Fokus-Modus: Wenn ein Kategorie-Filter aktiv ist, werden auf den Karten
    nur die Sektionen der entsprechenden Kategorie angezeigt. */
+.timeline-grid.focus-sk  .card-section[data-block="ges"],
+.timeline-grid.focus-sk  .card-section[data-block="dig"],
+.timeline-grid.focus-sk  .card-section[data-block="spr"]{display:none}
+.timeline-grid.focus-ges .card-section[data-block="sk"],
 .timeline-grid.focus-ges .card-section[data-block="dig"],
 .timeline-grid.focus-ges .card-section[data-block="spr"]{display:none}
+.timeline-grid.focus-dig .card-section[data-block="sk"],
 .timeline-grid.focus-dig .card-section[data-block="ges"],
 .timeline-grid.focus-dig .card-section[data-block="spr"]{display:none}
+.timeline-grid.focus-spr .card-section[data-block="sk"],
 .timeline-grid.focus-spr .card-section[data-block="ges"],
 .timeline-grid.focus-spr .card-section[data-block="dig"]{display:none}
 
@@ -579,7 +585,7 @@ MODI_ROWS.forEach(r=>r.cols.forEach(c=>MODI_AVAILABLE.add(r.id+'-'+c)));
 const THEMEN_DATA={
   /* ---------- Thema 1: Meine Berufsausbildung ---------- */
   t1:{
-    sk:[],
+    sk:['1.2','1.4','1.7','1.10'],
     ges:{
       '2.2':['BFS und Fach ABU','3 Lernorte','Arbeits und Lernverhalten','Meine Rolle'],
       '2.5':['Mitgestaltungsmöglichkeiten'],
@@ -605,7 +611,7 @@ const THEMEN_DATA={
 
   /* ---------- Thema 2: Mein Lohn, meine Ausgaben ---------- */
   t2:{
-    sk:[],
+    sk:['1.5','1.6','1.8','1.9'],
     ges:{
       '2.1':['Konsumentscheide überprüfen'],
       '2.2':['Bedürfnisse und Kaufverhalten'],
@@ -634,7 +640,7 @@ const THEMEN_DATA={
 
   /* ---------- Thema 3: Meine Sicherheit, mein Wohlbefinden ---------- */
   t3:{
-    sk:[],
+    sk:['1.1','1.7','1.8','1.11'],
     ges:{
       '2.1':['Zwischenmenschliches Verhalten'],
       '2.2':['Risiken und Strategien','Verhaltensmuster','Versicherungsarten und deren Funktionsweise'],
@@ -722,11 +728,7 @@ function renderDropdowns(){
   });
   dsk.appendChild(rowSk);
 
-  /* Info-Text zu Schlüsselkompetenzen */
-  const skNote=document.createElement('div');
-  skNote.style.cssText='margin-top:12px;padding:8px 12px;background:#fff;border-left:3px solid var(--cat-sk);border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-size:.82em;color:var(--c-muted);font-style:italic;';
-  skNote.textContent='Hinweis: Die Zuordnung der 12 Schlüsselkompetenzen zu einzelnen Themen ist in der vorliegenden Themenübersicht (PDF) nicht ausgewiesen und kann daher hier nicht gefiltert werden.';
-  dsk.appendChild(skNote);
+  /* SK-Filter aktiv: Zuordnung gemäss Themen-Steckbriefen */
 
   /* Gesellschaft */
   renderGroupedDropdown('gesellschaft', GES, collectContents('ges'), 'ges','chip-gesellschaft','sub-chip-ges');
@@ -940,6 +942,17 @@ function createCard(theme,data){
     return card;
   }
 
+  /* Schlüsselkompetenzen */
+  if(data.sk && data.sk.length){
+    const sect=document.createElement('div');sect.className='card-section';sect.setAttribute('data-block','sk');
+    const lbl=document.createElement('div');lbl.className='card-section-label';lbl.textContent='Schlüsselkompetenzen';
+    sect.appendChild(lbl);
+    const badgeRow=document.createElement('div');
+    data.sk.sort(sortNr).forEach(nr=>badgeRow.appendChild(mkBadge(nr,'sk',nr,SK[nr]||nr)));
+    sect.appendChild(badgeRow);
+    card.appendChild(sect);
+  }
+
   /* Gesellschaft */
   const gesAspects=Object.keys(data.ges||{}).sort(sortNr);
   if(gesAspects.length){
@@ -1125,7 +1138,7 @@ function applyFilter(){
   /* Alte Suchhervorhebungen entfernen */
   clearSearchHighlights();
   /* Fokus-Modus zurücksetzen */
-  timeline.classList.remove('focus-ges','focus-dig','focus-spr');
+  timeline.classList.remove('focus-sk','focus-ges','focus-dig','focus-spr');
 
   if(!f)return;
 
@@ -1136,10 +1149,12 @@ function applyFilter(){
   }
 
   /* Fokus-Modus: Bei Kategorie-Filtern nur die relevante Sektion zeigen.
-     - Gesellschaft-Filter (aspect/content mit category='ges') -> focus-ges
+     - Schluesselkompetenz-Filter (category='sk') -> focus-sk
+     - Gesellschaft-Filter (category='ges') -> focus-ges
      - Digital-Filter (category='dig') -> focus-dig
      - Sprach-Filter (category='spr', auch modi-col) -> focus-spr  */
-  if(f.category==='ges')timeline.classList.add('focus-ges');
+  if(f.category==='sk')timeline.classList.add('focus-sk');
+  else if(f.category==='ges')timeline.classList.add('focus-ges');
   else if(f.category==='dig')timeline.classList.add('focus-dig');
   else if(f.category==='spr')timeline.classList.add('focus-spr');
 
