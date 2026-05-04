@@ -925,7 +925,7 @@ function createCard(theme,data){
   card.setAttribute('data-theme-id',theme.id);
 
   const h3=document.createElement('h3');
-  h3.textContent=theme.schlussarbeit?theme.name:'Thema '+theme.nr+': '+theme.name;
+  h3.textContent=theme.name;
   card.appendChild(h3);
 
   if(theme.schlussarbeit){
