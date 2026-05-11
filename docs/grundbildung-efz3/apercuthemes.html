@@ -207,14 +207,14 @@ h1{color:#000;font-size:2.2em;margin-bottom:10px;font-weight:700;line-height:1.3
 <script>
 const THEMES = [
   { nr:1, name:'Ma formation professionnelle',              year:1, file:'1-lehrjahr_fr.html' },
-  { nr:2, name:'Gagner et dépenser de l\'argent',           year:1, file:'1-lehrjahr_fr.html' },
-  { nr:3, name:'En bonne santé et en sécurité tout au long de la vie', year:1, file:'1-lehrjahr_fr.html' },
+  { nr:2, name:'Mon salaire, mes dépenses',                 year:1, file:'1-lehrjahr_fr.html' },
+  { nr:3, name:'Ma sécurité, mon bien-être',                year:1, file:'1-lehrjahr_fr.html' },
   { nr:4, name:'Ma culture, mes relations',                 year:2 },
-  { nr:5, name:'Représenter les intérêts',                  year:2 },
-  { nr:6, name:'Action durable',                            year:2 },
-  { nr:0, name:'Travail de fin d\'études',                  year:3, schlussarbeit:true },
-  { nr:8, name:'Travailler en transition',                   year:3 },
-  { nr:9, name:'Ma maison',                                 year:3 }
+  { nr:5, name:'Exprimer non opinion',                      year:2 },
+  { nr:6, name:'Ma consommation, mon influence',            year:2 },
+  { nr:0, name:'Travail final',                             year:3, schlussarbeit:true },
+  { nr:8, name:'Mon travail dans la futur',                 year:3 },
+  { nr:9, name:'Mon domicile',                              year:3 }
 ];
 
 const SK = {
@@ -259,105 +259,108 @@ const GES = {
 };
 
 const DIG = {
-  '3.1':'Bases des applications informatiques',
-  '3.2':'Littératie informationnelle et des données',
+  '3.1':'Bases des applications numériques',
+  '3.2':'Compétences en gestion des données',
   '3.3':'Création de contenu',
   '3.4':'Résolution de problèmes',
-  '3.5':'Composants spécifiques à l\'IA',
-  '3.6':'Attitude réflexive et gestion responsable'
+  '3.5':'Eléments spécifiques à l\'IA',
+  '3.6':'Attitude réflexive et utilisation responsable'
 };
 
 const SPR = {
   '4.1':'Descriptif (descriptif)',
   '4.2':'Explicatif (explicatif)',
   '4.3':'Argumentatif (persuasif)',
-  '4.4':'Discursif (interaction)',
-  '4.5':'Réfléchissant (réfléchissant)'
+  '4.4':'Interactif (interaction)',
+  '4.5':'Réfléxif (réfléchissant)'
 };
 
 const GES_INHALTE = {
-  '2.1':['Examiner les décisions des consommateurs','Comportement interpersonnel'],
-  '2.2':['BFS et matière ABU','3 lieux d\'apprentissage','Travail et apprentissage des comportements',
-          'Mon rôle','Besoins et comportement d\'achat','Risques et stratégies',
-          'Schémas comportementaux','Types d\'assurance et leur fonctionnement'],
+  '2.1':['Évaluer des décisions de consommation','Comportements interpersonnels'],
+  '2.2':['L\'école professionnelle et l\'eCG','Les 3 lieux d\'apprentissage','Comportement au travail et à l\'école',
+          'Attentes liées à son rôle','Besoins et comportement d\'achat','Les Risques et des mesures',
+          'Schémas comportementaux','Types d\'assurances et leur fonctionnement'],
   '2.3':[],
-  '2.4':['Examiner les décisions des consommateurs'],
+  '2.4':['Évaluer des décisions de consommation'],
   '2.5':['Opportunités de participation'],
-  '2.6':['Système juridique et contrat d\'apprentissage','Fondement juridique',
-          'Capacité à jouer','Contrat juridique',
-          'Retrait du contrat et ruptures de contrat','Conséquences juridiques',
-          'Types d\'assurance et leur fonctionnement','Avantages de différentes polices d\'assurance'],
+  '2.6':['Contrat d\'apprentissage et droit suisse','Fondement juridique','Droit et obligations',
+          'Capacité de discernement','Un Contrat est juridique valable',
+          'Résiliation ou inéxécution du contrat','Conséquences juridiques',
+          'Types d\'assurances et leur fonctionnement','assurance accident et maladie'],
   '2.7':['Voir « Médias et numérique »'],
-  '2.8':['Comptabilité de la paie','Cycle économique simple','Budget',
-          'Offres des institutions financières','Moyens de paiement','Types de financement',
-          'Pièges à l\'influence et à la publicité','Examiner les décisions des consommateurs',
-          'Assurance accident et santé','Avantages de différentes polices d\'assurance']
+  '2.8':['Fiche de salaire','Circuit économique simplifié','Budget',
+          'Offres des établissements financiers','Moyens de paiement','Différents types de financement',
+          'Besoins et comportement d\'achat','Influences sur les achats et pièges publicitaires',
+          'Évaluer des décisions de consommation','Utilité de chaque assurance']
 };
 
 const DIG_INHALTE = {
-  '3.1':['Fonctions de base des programmes','Soutien organisationnel et supports pédagogiques'],
-  '3.2':['Utilisation de l\'IA, indication des sources','Naviguer','Évaluation des sources',
-          'Plateformes de vente','Chambres d\'écho, bulles filtrantes','Manipulations et désinformation'],
-  '3.3':['Informations connexes'],
-  '3.4':['Recherche','Lois et réglementations en ligne','Outils',
-          'Assistance en ligne aux consommateurs','Modèles en ligne','Outil en ligne'],
-  '3.5':['Données personnelles'],
-  '3.6':['Collaboration numérique','Données à protéger','Gestion des médias numériques']
+  '3.1':['Fonctions de base des programmes','Outils comme aide à l\'organisation et/ou à l\'apprentissage'],
+  '3.2':['Utilisation de l\'IA, mention des sources','Naviguer','Évaluation des sources',
+          'Utilisation des plateformes de vente','Mécanismes des chambres d\'écho et bulles de filtre','Manipulations et désinformation'],
+  '3.3':['Informations pertinentes'],
+  '3.4':['Recherche','Les lois et réglements en ligne','Utilisation des outils budgétaires',
+          'Recherche d\'informations','Modèles en ligne','outil en ligne',
+          'Utilisation d\'outils en ligne destinés aux consommateurs'],
+  '3.5':['Exploitation des données personnelles'],
+  '3.6':['Collaboration numérique','Données sensibles','Utilisation des médias numériques']
 };
 
 const REZ_INHALTE = [
-  {id:'si-inhalte-erfassen', label:'Capture de contenu'},
-  {id:'si-lesestrategien',   label:'Application des stratégies de lecture'},
-  {id:'si-grafiken',         label:'Graphismes'}
+  {id:'si-comparer-contenus', label:'Comparer des contenus'},
+  {id:'si-comprendre-contenu', label:'Comprendre le contenu'},
+  {id:'si-distinguer-elements', label:'Distinguer les éléments clés'},
+  {id:'si-strategies-lecture',  label:'Appliquer des stratégies de lecture'},
+  {id:'si-recueillir-info',     label:'Recueillir des informations'},
+  {id:'si-interpreter-graphiques', label:'Interpréter des graphiques'}
 ];
 
 const SPRACH_INHALTE = {
   '4.1':[
-    {id:'si-praesentieren',    label:'Présentation'},
-    {id:'si-loesungsansaetze', label:'Décrire les solutions'},
-    {id:'si-recherche',        label:'Communication des résultats de la recherche'},
-    {id:'si-textvorlage',      label:'Personnaliser le modèle de texte avec des majuscules et minuscules'},
-    {id:'si-schriftlich-kom',  label:'Communiquer par écrit de manière appropriée au groupe cible – majuscules'}
+    {id:'si-presenter-entretien', label:'Présenter un entretien'},
+    {id:'si-decrire-solutions',   label:'Décrire des solutions'},
+    {id:'si-synthetiser-resultats', label:'Synthétiser les résultats de recherche'},
+    {id:'si-presenter-decision',  label:'Présenter une décision'},
+    {id:'si-adapter-modele',      label:'Adapter le modèle de texte en tenant compte de la ponctuation'},
+    {id:'si-ecrit-adapte-interlocuteur', label:'Communiquer par écrit de manière adaptée à l\'interlocuteur en tenant compte de la ponctuation'}
   ],
   '4.2':[
-    {id:'si-schriftlich-kom',  label:'Communiquer par écrit de manière appropriée au groupe cible – majuscules'},
-    {id:'si-inhalte-erfassen', label:'Capture de contenu'},
-    {id:'si-zusammenhaenge',   label:'Reformulation des contextes'},
-    {id:'si-lesestrategien',   label:'Application des stratégies de lecture'},
-    {id:'si-grafiken',         label:'Graphismes'}
+    {id:'si-ecrit-groupe-cible', label:'Communiquer par écrit de manière appropriée au groupe cible en tenant compte de la ponctuation'},
+    {id:'si-reformuler-contextes', label:'Reformuler des contextes'}
   ],
   '4.3':[
-    {id:'si-ueberzeugen',  label:'Convaincre sur la base des faits'},
-    {id:'si-position',     label:'Prendre position avec le / que'}
+    {id:'si-convaincre-faits',  label:'Convaincre en s\'appuyant sur des faits'},
+    {id:'si-prendre-position',  label:'Prendre position'}
   ],
   '4.4':[
-    {id:'si-interview',      label:'Entretien'},
-    {id:'si-loesungsorient', label:'Communication orientée solution'}
+    {id:'si-mener-entretien',   label:'Mener un entretien'},
+    {id:'si-communiquer-solution', label:'Communiquer de manière orientée solution'},
+    {id:'si-communiquer-respectueuse', label:'Communiquer de manière respectueuse et constructive'}
   ],
   '4.5':[
-    {id:'si-lernstrategien',   label:'Réflexion sur les stratégies d\'apprentissage avec la structure de la matière'},
-    {id:'si-verhalten',        label:'Réflexion sur le comportement'},
-    {id:'si-einfluss-sprache', label:'Réflexion sur les moyens linguistiques'}
+    {id:'si-reflechir-strategies', label:'Réfléchir sur les stratégies d\'apprentissage'},
+    {id:'si-analyser-comportement', label:'Analyser son comportement'},
+    {id:'si-analyser-procedes', label:'Analyser les procédés linguistiques'}
   ]
 };
 
 const SI_ALL = {};
 Object.values(SPRACH_INHALTE).forEach(arr => arr.forEach(si => { SI_ALL[si.id] = si.label; }));
+REZ_INHALTE.forEach(si => { SI_ALL[si.id] = si.label; });
 
 const THEMEN_DATA = {
   1: {
     schluessel: ['1.2','1.4','1.7','1.10'],
     gesInhalte: {
-      '2.1':['Comportement interpersonnel'],
-      '2.2':['BFS et matière ABU','3 lieux d\'apprentissage','Travail et apprentissage des comportements','Mon rôle'],
+      '2.2':['L\'école professionnelle et l\'eCG','Les 3 lieux d\'apprentissage','Comportement au travail et à l\'école','Attentes liées à son rôle'],
       '2.5':['Opportunités de participation'],
-      '2.6':['Système juridique et contrat d\'apprentissage','Fondement juridique'],
+      '2.6':['Contrat d\'apprentissage et droit suisse','Fondement juridique','Droit et obligations'],
       '2.7':['Voir « Médias et numérique »']
     },
     digInhalte: {
-      '3.1':['Fonctions de base des programmes','Soutien organisationnel et supports pédagogiques'],
-      '3.2':['Utilisation de l\'IA, indication des sources','Naviguer','Évaluation des sources'],
-      '3.4':['Recherche','Lois et réglementations en ligne','Outils'],
+      '3.1':['Fonctions de base des programmes','Outils comme aide à l\'organisation et/ou à l\'apprentissage'],
+      '3.2':['Utilisation de l\'IA, mention des sources'],
+      '3.4':['Recherche','Les lois et réglements en ligne'],
       '3.6':['Collaboration numérique']
     },
     lebensbezuege: [
@@ -374,30 +377,31 @@ const THEMEN_DATA = {
       }
     ],
     sprachInhalte:{
-      'rez': ['si-inhalte-erfassen'],
-      '4.1': ['si-praesentieren','si-loesungsansaetze','si-recherche'],
-      '4.2': ['si-schriftlich-kom'],
-      '4.4': ['si-interview','si-loesungsorient'],
-      '4.5': ['si-lernstrategien']
+      'rez': ['si-comparer-contenus'],
+      '4.1': ['si-presenter-entretien','si-decrire-solutions'],
+      '4.2': ['si-ecrit-groupe-cible'],
+      '4.4': ['si-mener-entretien','si-communiquer-solution'],
+      '4.5': ['si-reflechir-strategies']
     }
   },
 
   2: {
     schluessel: ['1.5','1.6','1.8','1.9'],
     gesInhalte: {
-      '2.1':['Examiner les décisions des consommateurs'],
+      '2.1':['Évaluer des décisions de consommation'],
       '2.2':['Besoins et comportement d\'achat'],
-      '2.4':['Examiner les décisions des consommateurs'],
-      '2.6':['Capacité à jouer','Contrat juridique','Retrait du contrat et ruptures de contrat'],
+      '2.4':['Évaluer des décisions de consommation'],
+      '2.6':['Capacité de discernement','Un Contrat est juridique valable','Résiliation ou inéxécution du contrat'],
       '2.7':['Voir « Médias et numérique »'],
-      '2.8':['Comptabilité de la paie','Cycle économique simple','Budget',
-             'Offres des institutions financières','Moyens de paiement','Types de financement',
-             'Pièges à l\'influence et à la publicité','Examiner les décisions des consommateurs']
+      '2.8':['Fiche de salaire','Circuit économique simplifié','Budget',
+             'Offres des établissements financiers','Moyens de paiement','Différents types de financement',
+             'Besoins et comportement d\'achat','Influences sur les achats et pièges publicitaires',
+             'Évaluer des décisions de consommation']
     },
     digInhalte: {
-      '3.2':['Plateformes de vente','Chambres d\'écho, bulles filtrantes','Manipulations et désinformation'],
-      '3.4':['Recherche','Assistance en ligne aux consommateurs','Modèles en ligne','Outil en ligne'],
-      '3.5':['Données personnelles']
+      '3.2':['Naviguer','Évaluation des sources','Utilisation des plateformes de vente'],
+      '3.4':['Utilisation des outils budgétaires','Recherche d\'informations','Utilisation d\'outils en ligne destinés aux consommateurs'],
+      '3.5':['Exploitation des données personnelles']
     },
     lebensbezuege: [
       { text:'Je gagne mon propre argent, je le gère et je le dépense.',
@@ -415,25 +419,28 @@ const THEMEN_DATA = {
       }
     ],
     sprachInhalte:{
-      'rez': ['si-inhalte-erfassen','si-lesestrategien'],
-      '4.1': ['si-praesentieren','si-textvorlage','si-schriftlich-kom'],
-      '4.2': ['si-zusammenhaenge'],
-      '4.5': ['si-verhalten','si-einfluss-sprache']
+      'rez': ['si-comprendre-contenu','si-distinguer-elements','si-strategies-lecture'],
+      '4.1': ['si-synthetiser-resultats','si-presenter-decision','si-adapter-modele'],
+      '4.2': ['si-reformuler-contextes'],
+      '4.3': ['si-convaincre-faits'],
+      '4.5': ['si-analyser-comportement','si-analyser-procedes']
     }
   },
 
   3: {
     schluessel: ['1.1','1.7','1.8','1.11'],
     gesInhalte: {
-      '2.1':['Comportement interpersonnel'],
-      '2.2':['Risques et stratégies','Schémas comportementaux','Types d\'assurance et leur fonctionnement'],
-      '2.6':['Conséquences juridiques','Types d\'assurance et leur fonctionnement','Avantages de différentes polices d\'assurance'],
+      '2.1':['Comportements interpersonnels'],
+      '2.2':['Les Risques et des mesures','Schémas comportementaux','Types d\'assurances et leur fonctionnement'],
+      '2.6':['Conséquences juridiques','Types d\'assurances et leur fonctionnement','assurance accident et maladie'],
       '2.7':['Voir « Médias et numérique »'],
-      '2.8':['Assurance accident et santé','Avantages de différentes polices d\'assurance']
+      '2.8':['Utilité de chaque assurance']
     },
     digInhalte: {
-      '3.5':['Données personnelles'],
-      '3.6':['Données à protéger','Gestion des médias numériques']
+      '3.2':['Mécanismes des chambres d\'écho et bulles de filtre','Manipulations et désinformation'],
+      '3.3':['Informations pertinentes'],
+      '3.4':['Modèles en ligne','outil en ligne'],
+      '3.6':['Données sensibles','Utilisation des médias numériques']
     },
     lebensbezuege: [
       { text:'Mon corps et mon psychisme sont soumis à différentes influences.',
@@ -449,10 +456,11 @@ const THEMEN_DATA = {
       }
     ],
     sprachInhalte:{
-      'rez': ['si-inhalte-erfassen','si-grafiken'],
-      '4.3': ['si-ueberzeugen','si-position'],
-      '4.4': ['si-loesungsorient'],
-      '4.5': ['si-verhalten']
+      'rez': ['si-recueillir-info','si-comprendre-contenu','si-interpreter-graphiques'],
+      '4.1': ['si-ecrit-adapte-interlocuteur'],
+      '4.3': ['si-prendre-position'],
+      '4.4': ['si-communiquer-respectueuse'],
+      '4.5': ['si-analyser-comportement']
     }
   }
 };
@@ -619,7 +627,7 @@ function renderTimeline() {
     const col = document.createElement('div'); col.className = 'year-column';
     col.innerHTML = '<div class="year-header"><h2>'+y+'<sup>'+(y===1?'re':'e')+'</sup> année</h2><p>'+yNames[y-1]+'</p></div>';
     THEMES.filter(t=>t.year===y).forEach(theme => {
-      if (theme.schlussarbeit) { col.appendChild(createSchlussarbeit()); return; }
+      if (theme.schlussarbeit) { col.appendChild(createSchlussarbeit(theme)); return; }
       const data = THEMEN_DATA[theme.nr];
       col.appendChild(data ? createCard(theme,data) : createPlaceholder(theme));
     });
@@ -627,9 +635,9 @@ function renderTimeline() {
   }
 }
 
-function createSchlussarbeit() {
+function createSchlussarbeit(theme) {
   const d = document.createElement('div'); d.className = 'theme-card schlussarbeit';
-  d.innerHTML = '<h3>Travail de fin d\'études</h3><div class="lebensbezug-item"><span style="font-size:.8em;color:#666;">Selon les directives lors de la dernière année</span></div>';
+  d.innerHTML = '<h3>'+(theme && theme.name ? theme.name : 'Travail final')+'</h3><div class="lebensbezug-item"><span style="font-size:.8em;color:#666;">Selon les directives lors de la dernière année</span></div>';
   return d;
 }
 
