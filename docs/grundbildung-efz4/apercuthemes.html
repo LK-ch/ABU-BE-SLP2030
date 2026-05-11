@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aperçu des thèmes – CFC 3 ans</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   Design Tokens – Kanton Bern
+   ============================================================ */
+:root{
+  --kbe-red:#dc291e;
+  --kbe-red-dark:#a00d24;
+  --c-text:#111;
+  --c-text-soft:#333;
+  --c-muted:#666;
+  --c-border:#e0e0e0;
+  --c-border-soft:#ececec;
+  --c-bg-soft:#fafafa;
+  --c-bg-accent:#f9f3e8;
+
+  --cat-sk:#dc291e;      --cat-sk-soft:rgba(220,41,30,.12);
+  --cat-ges:#d4a500;     --cat-ges-soft:rgba(255,217,102,.3);
+  --cat-ges-bg:#fff8e1;  --cat-ges-border:#f0c040;
+  --cat-dig:#4db380;     --cat-dig-soft:rgba(77,179,128,.25);
+  --cat-dig-bg:#e6f6ee;  --cat-dig-border:#4db380;
+  --cat-spr:#3385d6;     --cat-spr-soft:rgba(51,133,214,.22);
+  --cat-spr-bg:#e8f2fd;  --cat-spr-border:#9ec8f0;
+
+  --radius-sm:3px;
+  --radius-md:6px;
+
+  --shadow-sm:0 2px 6px rgba(0,0,0,.07);
+  --shadow-md:0 4px 14px rgba(0,0,0,.09);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Roboto',-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica Neue',Arial,sans-serif;
+  line-height:1.6;color:var(--c-text);background:#fff;font-size:15px;
+}
+
+/* Header / Footer */
+header{background:#fff;border-bottom:1px solid var(--c-border);padding:12px 24px 0}
+.header-top{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px}
+.logo-section{display:flex;align-items:center;gap:12px;padding-bottom:8px}
+.logo-section img{height:60px;width:auto}
+.app-title{font-size:1em;font-weight:400;color:#000;padding-bottom:12px;text-decoration:none;display:inline-block}
+.app-title:hover{text-decoration:underline}
+.service-nav{display:flex;align-items:center;gap:20px;padding-top:4px}
+.service-nav a{font-size:.85em;color:#000;text-decoration:none}
+.service-nav a:hover{text-decoration:underline}
+.language-selector{display:flex;align-items:center;gap:6px;font-size:.85em}
+.language-selector span{color:#666}
+.language-selector a{color:#000;text-decoration:none}
+.language-selector a.active{font-weight:700;border-bottom:2px solid var(--kbe-red);padding-bottom:1px}
+.language-selector a:hover{text-decoration:underline}
+footer{background:#fff;border-top:1px solid var(--c-border);padding:14px 24px;margin-top:50px}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-copyright{font-size:.82em;color:var(--c-text-soft)}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:.82em;font-weight:700;color:#000;text-decoration:none}
+.footer-links a:hover{text-decoration:underline}
+
+/* Container / Headings */
+.container{max-width:1200px;margin:30px auto 0;padding:20px}
+.breadcrumb{font-size:.9em;color:var(--c-muted);margin-bottom:20px}
+.breadcrumb a{color:#000;text-decoration:none;font-weight:500}
+.breadcrumb a:hover{text-decoration:underline}
+h1{
+  font-family:'Roboto Slab','Roboto',serif;
+  color:#000;font-size:2.2em;margin-bottom:10px;font-weight:700;line-height:1.25;letter-spacing:-.01em;
+}
+.subtitle{color:var(--c-text-soft);font-size:1.1em;margin-bottom:30px;font-weight:300}
+.back-btn{
+  background:#fff;border:2px solid var(--kbe-red);padding:.6rem 1.2rem;border-radius:var(--radius-sm);
+  display:inline-flex;align-items:center;gap:.4rem;margin-bottom:1.5rem;
+  transition:all .2s;text-decoration:none;color:var(--kbe-red);font-weight:500;font-size:.9em;
+}
+.back-btn:hover{background:var(--kbe-red);color:#fff;transform:translateX(-3px)}
+.intro-text{font-size:1em;line-height:1.7;margin:0 0 20px 0}
+
+.section-title{
+  font-family:'Roboto Slab','Roboto',serif;
+  font-size:1.8em;font-weight:700;color:var(--kbe-red);
+  margin:40px 0 20px;padding-bottom:10px;border-bottom:2px solid var(--kbe-red);
+  text-align:center;letter-spacing:-.01em;
+}
+
+/* Kollapsible */
+.status-info{background:var(--c-bg-accent);padding:20px;margin-bottom:25px;border-radius:var(--radius-md)}
+.status-info h2{color:var(--kbe-red);margin-bottom:15px;font-size:1.1em;font-weight:700}
+.status-info-header{cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none}
+.status-info-toggle{font-size:1em;transition:transform .2s;color:var(--kbe-red);font-weight:bold}
+.status-info-toggle.open{transform:rotate(90deg)}
+.status-info-content{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.status-info-content.open{max-height:1400px}
+.status-info ul{list-style:none;padding-left:0;margin-top:15px}
+.status-info li{padding:.4rem 0 .4rem 1.5rem;position:relative;font-size:1em}
+.status-info li span{position:absolute;left:0;color:var(--kbe-red);font-weight:bold}
+
+/* ============================================================
+   Filter-Leiste
+   ============================================================ */
+.filter-area{margin:20px 0 25px}
+.main-filter-container{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.main-filter-btn{
+  background:#fff;border:2px solid #ddd;padding:10px 20px;
+  border-radius:var(--radius-sm);cursor:pointer;font-size:.98em;font-weight:500;
+  color:var(--c-text-soft);font-family:inherit;
+  display:inline-flex;align-items:center;gap:6px;transition:all .15s;
+}
+.main-filter-btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+.main-filter-btn.active{box-shadow:var(--shadow-md)}
+.mfb-reset{border-color:#555;color:#555}
+.mfb-reset.active{background:#555;color:#fff}
+.mfb-schluessel{border-color:var(--cat-sk);color:var(--cat-sk)}
+.mfb-schluessel.active{background:var(--cat-sk);color:#fff}
+.mfb-gesellschaft{border-color:#e0b94a;color:#a8810a}
+.mfb-gesellschaft.active{background:#ffd966;color:#333;border-color:#d4a500}
+.mfb-digital{border-color:var(--cat-dig);color:var(--cat-dig)}
+.mfb-digital.active{background:var(--cat-dig);color:#fff}
+.mfb-sprach{border-color:var(--cat-spr);color:var(--cat-spr)}
+.mfb-sprach.active{background:var(--cat-spr);color:#fff}
+.btn-arrow{font-size:.7em;transition:transform .2s}
+.main-filter-btn.open .btn-arrow{transform:rotate(180deg)}
+
+.filter-dropdown{
+  display:none;background:var(--c-bg-soft);
+  border:1px solid var(--c-border);border-radius:var(--radius-md);
+  padding:18px 20px;margin-top:10px;animation:fadeIn .18s ease;
+}
+.filter-dropdown.visible{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+
+.chip{
+  background:#fff;border:1px solid #ddd;padding:6px 14px;border-radius:20px;
+  cursor:pointer;font-size:.85em;font-weight:500;transition:all .15s;
+  white-space:nowrap;color:#444;font-family:inherit;
+}
+.chip:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+.chip.active{box-shadow:0 1px 5px rgba(0,0,0,.25)}
+.chip-schluessel.active{background:var(--cat-sk);color:#fff;border-color:var(--cat-sk)}
+.chip-gesellschaft.active{background:#ffd966;color:#333;border-color:#d4a500}
+.chip-digital.active{background:var(--cat-dig);color:#fff;border-color:var(--cat-dig)}
+.chip-sprache.active{background:var(--cat-spr);color:#fff;border-color:var(--cat-spr)}
+
+.sub-chip.active{outline:2px solid currentColor;outline-offset:1px;font-weight:700}
+
+/* Filtre Langue : Onglets */
+.spr-tabs{
+  display:flex;gap:0;margin-bottom:16px;border-bottom:2px solid var(--c-border);flex-wrap:wrap;
+}
+.spr-tab{
+  background:none;border:none;padding:9px 18px;cursor:pointer;
+  font-size:.92em;font-weight:500;color:var(--c-muted);
+  border-bottom:2px solid transparent;margin-bottom:-2px;
+  transition:all .15s;font-family:inherit;
+}
+.spr-tab:hover{color:var(--cat-spr)}
+.spr-tab.active{color:var(--cat-spr);border-bottom-color:var(--cat-spr);font-weight:700}
+.spr-panel{display:none}
+.spr-panel.active{display:block}
+
+/* Matrice des modes de communication */
+.modi-matrix{
+  display:grid;grid-template-columns:auto repeat(5,1fr);gap:6px;
+  background:#fff;padding:14px;border-radius:var(--radius-sm);
+  border:1px solid var(--c-border-soft);
+}
+.modi-matrix-header{
+  font-size:.78em;font-weight:700;color:var(--c-muted);
+  text-align:center;padding:6px 4px;
+}
+.modi-matrix-row-label{
+  font-size:.88em;font-weight:600;color:var(--cat-spr);
+  padding:8px 10px;display:flex;align-items:center;
+}
+.modi-cell{
+  background:#fff;border:1px solid var(--cat-spr-border);color:var(--cat-spr);
+  padding:8px 6px;border-radius:var(--radius-sm);cursor:pointer;
+  font-size:.85em;font-weight:500;transition:all .15s;
+  text-align:center;font-family:inherit;
+}
+.modi-cell:hover:not(.disabled){background:var(--cat-spr-bg);transform:translateY(-1px)}
+.modi-cell.active{background:var(--cat-spr);color:#fff;font-weight:700}
+.modi-cell.disabled{
+  opacity:.3;cursor:not-allowed;background:#f5f5f5;border-color:#ddd;color:#999;
+}
+/* En-tête de colonne cliquable dans la matrice */
+.modi-col-header{
+  background:#fff;border:1px solid var(--c-border);border-bottom:2px solid var(--cat-spr);
+  padding:8px 4px;border-radius:var(--radius-sm) var(--radius-sm) 0 0;
+  cursor:pointer;font-family:inherit;transition:all .15s;
+  text-align:center;
+}
+.modi-col-header:hover{background:var(--cat-spr-bg);transform:translateY(-1px)}
+.modi-col-header.active{background:var(--cat-spr);border-color:var(--cat-spr)}
+.modi-col-header.active div{color:#fff !important}
+.modi-hint{
+  font-size:.82em;color:var(--c-muted);margin-top:12px;font-style:italic;
+  padding:8px 12px;background:#fff;border-left:3px solid var(--cat-spr);
+  border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+/* ============================================================
+   Barre de recherche
+   ============================================================ */
+.search-bar{
+  max-width:600px;margin:0 auto 14px;position:relative;
+}
+.search-input{
+  width:100%;padding:11px 40px 11px 42px;
+  border:2px solid var(--c-border);border-radius:var(--radius-sm);
+  font-size:1em;font-family:inherit;color:var(--c-text);
+  background:#fff;transition:border-color .15s,box-shadow .15s;
+}
+.search-input:focus{
+  outline:none;border-color:var(--kbe-red);
+  box-shadow:0 0 0 3px rgba(220,41,30,.12);
+}
+.search-icon{
+  position:absolute;left:14px;top:50%;transform:translateY(-50%);
+  pointer-events:none;color:var(--c-muted);font-size:1.05em;
+}
+.search-clear{
+  position:absolute;right:8px;top:50%;transform:translateY(-50%);
+  background:none;border:none;cursor:pointer;
+  color:var(--c-muted);font-size:1.2em;padding:4px 8px;
+  border-radius:var(--radius-sm);font-family:inherit;line-height:1;
+  display:none;
+}
+.search-clear.visible{display:block}
+.search-clear:hover{background:#f0f0f0;color:var(--c-text)}
+.search-suggestions{
+  font-size:.8em;color:var(--c-muted);text-align:center;margin-top:6px;font-style:italic;
+}
+
+/* Surlignage des occurrences dans les chips et badges */
+mark.search-hit{
+  background:#fff3a0;color:inherit;padding:0 2px;border-radius:2px;font-weight:700;
+  box-shadow:0 0 0 1px rgba(180,140,0,.35);
+}
+
+/* Affichage du filtre actif */
+.active-filter-bar{
+  display:none;margin:18px auto 0;max-width:900px;
+  padding:10px 16px;background:#fff;border:1px solid var(--c-border);
+  border-left:4px solid var(--kbe-red);border-radius:var(--radius-sm);
+  font-size:.92em;color:var(--c-text-soft);
+  align-items:center;gap:12px;flex-wrap:wrap;box-shadow:var(--shadow-sm);
+}
+.active-filter-bar.visible{display:flex}
+.active-filter-label{font-weight:500;color:var(--c-muted)}
+.active-filter-value{font-weight:700;color:var(--kbe-red)}
+.active-filter-count{font-size:.85em;color:var(--c-muted);margin-left:auto}
+.active-filter-clear{
+  background:none;border:1px solid #ccc;padding:4px 12px;border-radius:var(--radius-sm);
+  cursor:pointer;font-size:.85em;color:var(--c-text-soft);font-family:inherit;
+}
+.active-filter-clear:hover{background:#f5f5f5;border-color:#999}
+
+/* Groupe de filtre (chip d'aspect + sous-chips sur une ligne) */
+.filter-group{display:flex;flex-direction:column;gap:10px;width:100%}
+.filter-row{
+  display:flex;flex-wrap:wrap;align-items:center;gap:6px;
+  padding:6px 0;border-bottom:1px dashed var(--c-border-soft);
+}
+.filter-row:last-child{border-bottom:none}
+
+/* Flèche d'ouverture avant chaque chip d'aspect */
+.filter-toggle{
+  background:none;border:none;cursor:pointer;
+  font-size:.75em;padding:2px 5px;line-height:1;flex-shrink:0;
+  transition:transform .2s;font-family:inherit;width:22px;
+  display:inline-flex;align-items:center;justify-content:center;
+}
+.filter-toggle.open{transform:rotate(90deg)}
+.filter-toggle-ges{color:var(--cat-ges)}
+.filter-toggle-dig{color:var(--cat-dig)}
+.filter-toggle-spr{color:var(--cat-spr)}
+.filter-toggle-invisible{visibility:hidden}
+
+.sub-chip-group{
+  display:none;flex-wrap:wrap;gap:4px;margin:6px 0 4px 30px;width:100%;
+  animation:subChipFade .15s ease;
+}
+.sub-chip-group.visible{display:flex}
+@keyframes subChipFade{from{opacity:0;transform:translateY(-2px)}to{opacity:1;transform:translateY(0)}}
+.sub-chip{
+  padding:3px 10px;border-radius:12px;font-size:.78em;cursor:pointer;
+  transition:all .15s;font-family:inherit;line-height:1.3;
+}
+.sub-chip-ges{background:var(--cat-ges-bg);border:1px solid var(--cat-ges-border);color:#7a5800}
+.sub-chip-ges:hover{background:#ffd966}
+.sub-chip-dig{background:var(--cat-dig-bg);border:1px solid var(--cat-dig-border);color:#1a5e35}
+.sub-chip-dig:hover{background:var(--cat-dig);color:#fff}
+.sub-chip-spr{background:var(--cat-spr-bg);border:1px solid var(--cat-spr-border);color:#1a5080}
+.sub-chip-spr:hover{background:var(--cat-spr);color:#fff}
+
+/* ============================================================
+   Timeline / Cartes
+   ============================================================ */
+.timeline-grid{display:flex;gap:16px;margin-top:25px;align-items:flex-start}
+.year-column{
+  flex:1;background:#fff;border-radius:var(--radius-md);padding:12px;
+  box-shadow:var(--shadow-sm);min-width:0;
+}
+.year-header{
+  background:linear-gradient(135deg,var(--kbe-red),var(--kbe-red-dark));
+  color:#fff;padding:14px;border-radius:var(--radius-sm);margin-bottom:14px;text-align:center;
+}
+.year-header h2{font-family:'Roboto Slab','Roboto',serif;font-size:1.3em;font-weight:700;letter-spacing:-.01em}
+
+.theme-card{
+  background:var(--c-bg-soft);border-radius:var(--radius-sm);padding:14px;
+  margin-bottom:14px;transition:all .25s;border:1px solid transparent;
+}
+.theme-card:hover{transform:translateX(2px);box-shadow:var(--shadow-sm);border-color:var(--c-border-soft)}
+.theme-card.is-match{
+  border-color:var(--kbe-red);box-shadow:0 0 0 2px rgba(220,41,30,.1);
+}
+.theme-card.is-dimmed{opacity:.3}
+.theme-card h3{color:var(--kbe-red);font-size:1.05em;margin-bottom:10px;font-weight:700;line-height:1.3}
+.theme-card.schlussarbeit{background:#f5e6d3}
+.theme-card.schlussarbeit h3{color:var(--kbe-red-dark)}
+
+.card-section{margin-top:10px}
+.card-section-label{
+  font-size:.7em;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+  color:var(--c-muted);margin-bottom:4px;
+}
+
+/* Badges de compétences (numéros) */
+.badge{
+  display:inline-block;font-size:.82em;padding:3px 8px;margin:2px 3px 2px 0;
+  border-radius:2px;font-weight:600;position:relative;cursor:help;line-height:1.2;
+}
+.badge-sk{background:var(--cat-sk-soft);color:var(--cat-sk)}
+.badge-ges{background:var(--cat-ges-soft);color:#7a5800}
+.badge-dig{background:var(--cat-dig-soft);color:#1a5e35}
+.badge-spr{background:var(--cat-spr-soft);color:#1a5080}
+.badge.is-match{outline:2px solid currentColor;outline-offset:1px}
+.badge.is-dimmed{opacity:.25}
+
+/* Chips de contenu */
+.content-chip{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:3px 9px;border-radius:10px;font-size:.76em;white-space:normal;
+  transition:opacity .15s,outline .1s,font-weight .1s;margin:2px 3px 2px 0;
+  max-width:100%;line-height:1.3;
+}
+.chip-ges{background:var(--cat-ges-bg);border:1px solid var(--cat-ges-border);color:#7a5800}
+.chip-dig{background:var(--cat-dig-bg);border:1px solid var(--cat-dig-border);color:#1a5e35}
+.chip-spr{background:var(--cat-spr-bg);border:1px solid var(--cat-spr-border);color:#1a5080}
+.content-chip.is-match{font-weight:700;outline:2px solid currentColor;outline-offset:1px}
+.content-chip.is-dimmed{opacity:.2}
+
+.modi-markers{
+  display:inline-flex;gap:2px;font-size:.85em;opacity:.85;
+  font-weight:600;margin-left:3px;
+}
+.modi-marker{
+  background:rgba(51,133,214,.25);color:#1a5080;padding:0 4px;border-radius:3px;
+  font-size:.9em;line-height:1.3;
+}
+
+/* Infobulle */
+.tooltip{
+  position:absolute;bottom:100%;left:50%;transform:translateX(-50%);
+  background:rgba(0,0,0,.9);color:#fff;padding:8px 12px;border-radius:var(--radius-sm);
+  font-size:.85em;pointer-events:none;opacity:0;transition:opacity .2s;z-index:1000;
+  margin-bottom:8px;max-width:280px;white-space:normal;text-align:center;line-height:1.4;
+  font-weight:400;
+}
+.tooltip::after{
+  content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  border:6px solid transparent;border-top-color:rgba(0,0,0,.9);
+}
+.badge:hover .tooltip{opacity:1}
+
+/* Note pour cartes vides */
+.empty-theme-note{
+  font-size:.82em;color:var(--c-muted);font-style:italic;
+  padding:8px;background:#fff;border-radius:var(--radius-sm);
+  border:1px dashed var(--c-border);margin-top:6px;
+}
+
+/* Mode focus : Quand un filtre de catégorie est actif, seules les
+   sections de la catégorie correspondante sont affichées sur les cartes. */
+.timeline-grid.focus-sk  .card-section[data-block="ges"],
+.timeline-grid.focus-sk  .card-section[data-block="dig"],
+.timeline-grid.focus-sk  .card-section[data-block="spr"]{display:none}
+.timeline-grid.focus-ges .card-section[data-block="sk"],
+.timeline-grid.focus-ges .card-section[data-block="dig"],
+.timeline-grid.focus-ges .card-section[data-block="spr"]{display:none}
+.timeline-grid.focus-dig .card-section[data-block="sk"],
+.timeline-grid.focus-dig .card-section[data-block="ges"],
+.timeline-grid.focus-dig .card-section[data-block="spr"]{display:none}
+.timeline-grid.focus-spr .card-section[data-block="sk"],
+.timeline-grid.focus-spr .card-section[data-block="ges"],
+.timeline-grid.focus-spr .card-section[data-block="dig"]{display:none}
+
+@media(max-width:1200px){
+  .timeline-grid{flex-direction:column;gap:20px}
+  .year-column{width:100%}
+}
+@media(max-width:768px){
+  body{font-size:14px}
+  h1{font-size:1.8em}
+  .container{padding:15px}
+  .year-header h2{font-size:1.1em}
+  .theme-card h3{font-size:.95em}
+  .main-filter-btn{padding:8px 14px;font-size:.88em}
+  .chip{font-size:.8em;padding:5px 11px}
+  .modi-matrix{gap:4px;padding:10px}
+  .modi-matrix-header{font-size:.7em;padding:4px 2px}
+  .modi-cell{padding:6px 3px;font-size:.78em}
+  .modi-matrix-row-label{padding:6px 4px;font-size:.78em}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <div>
+      <div class="logo-section"><img src="../images/KTBE.png" alt="Logo du canton de Berne"></div>
+      <a href="../index_fr.html" class="app-title">Schullehrplan ABU / Plan d'études de culture générale</a>
+    </div>
+    <nav class="service-nav" aria-label="Navigation de service">
+      <a href="../contact_fr.html">Contact</a>
+      <div class="language-selector">
+        <a href="foerderfokusse_de.html" lang="de">DE</a>
+        <span>|</span>
+        <a href="apercuthemes.html" class="active" lang="fr">FR</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <nav class="breadcrumb">
+    <a href="../index_fr.html">Plan d'études de culture générale</a> /
+    <a href="index_fr.html">Formation professionnelle initiale CFC 3 ans</a> /
+    Aperçu des thèmes
+  </nav>
+
+  <h1>Aperçu des thèmes</h1>
+  <p class="subtitle">Développement des compétences en spirale tout au long de l'apprentissage</p>
+  <a href="index_fr.html" class="back-btn">← Retour à l'aperçu de la formation professionnelle initiale CFC 3 ans</a>
+
+  <p class="intro-text">Cette page offre un aperçu des <em>compétences clés</em> à développer, des <em>aspects</em> et des contenus associés du domaine d'apprentissage <em>Société</em>, des <em>types de texte</em> et des <em>modes de communication</em> avec leurs contenus du domaine <em>Langue &amp; communication</em>, ainsi que des domaines de compétence de <em>Médias &amp; numérique</em>.</p>
+
+  <p class="intro-text" style="margin-bottom:25px;">Les filtres ci-dessous permettent d'afficher les thèmes de manière ciblée : le filtre actif est indiqué sous la barre de filtres, et les thèmes correspondants sont mis en évidence. Les contenus du domaine <em>Médias &amp; numérique</em> recoupent en grande partie l'aspect <em>Transformation technologique et numérique</em> du domaine <em>Société</em>, sans pour autant le couvrir de façon exhaustive.</p>
+
+  <div class="section-title">Développement des compétences par année</div>
+
+  <div class="filter-area">
+    <!-- Barre de recherche -->
+    <div class="search-bar">
+      <span class="search-icon">🔍</span>
+      <input
+        type="search"
+        id="search-input"
+        class="search-input"
+        placeholder="Rechercher dans les contenus, aspects, thèmes …"
+        autocomplete="off"
+        oninput="onSearchInput(this.value)"
+        onkeydown="if(event.key==='Escape')clearSearch()"
+      >
+      <button class="search-clear" id="search-clear" onclick="clearSearch()" title="Effacer la recherche">✕</button>
+      <div class="search-suggestions">par ex. «&nbsp;graphiques&nbsp;», «&nbsp;budget&nbsp;», «&nbsp;droit&nbsp;», «&nbsp;présentation&nbsp;», «&nbsp;assurance&nbsp;» …</div>
+    </div>
+
+    <div class="main-filter-container" id="main-filter-btns">
+      <button class="main-filter-btn mfb-reset active" id="btn-reset" onclick="resetFilter()">Tout afficher</button>
+      <button class="main-filter-btn mfb-schluessel" id="btn-schluessel" onclick="toggleDropdown('schluessel')">Compétences clés <span class="btn-arrow">▾</span></button>
+      <button class="main-filter-btn mfb-gesellschaft" id="btn-gesellschaft" onclick="toggleDropdown('gesellschaft')">Société <span class="btn-arrow">▾</span></button>
+      <button class="main-filter-btn mfb-digital" id="btn-digital" onclick="toggleDropdown('digital')">Médias &amp; numérique <span class="btn-arrow">▾</span></button>
+      <button class="main-filter-btn mfb-sprach" id="btn-sprach" onclick="toggleDropdown('sprach')">Langue &amp; communication <span class="btn-arrow">▾</span></button>
+    </div>
+    <div class="filter-dropdown" id="dropdown-schluessel"></div>
+    <div class="filter-dropdown" id="dropdown-gesellschaft"></div>
+    <div class="filter-dropdown" id="dropdown-digital"></div>
+    <div class="filter-dropdown" id="dropdown-sprach">
+      <div class="spr-tabs">
+        <button class="spr-tab active" data-sprtab="texttypen" onclick="switchSprTab('texttypen')">Types de texte</button>
+        <button class="spr-tab" data-sprtab="modi" onclick="switchSprTab('modi')">Modes de communication</button>
+      </div>
+      <div class="spr-panel active" id="spr-panel-texttypen"></div>
+      <div class="spr-panel" id="spr-panel-modi">
+        <div class="modi-matrix" id="modi-matrix"></div>
+        <div class="modi-hint">Un clic sur une colonne (<strong>orale</strong>, <strong>écrite</strong>, …) affiche tous les thèmes utilisant ce mode – indépendamment de la réception, de la production ou de l'interaction. Les cellules de la matrice indiquent les combinaisons prévues par le plan-cadre d'études.</div>
+      </div>
+    </div>
+
+    <!-- Affichage du filtre actif -->
+    <div class="active-filter-bar" id="active-filter-bar">
+      <span class="active-filter-label">Filtre actif :</span>
+      <span class="active-filter-value" id="active-filter-value">—</span>
+      <span class="active-filter-count" id="active-filter-count"></span>
+      <button class="active-filter-clear" onclick="resetFilter()">Réinitialiser ✕</button>
+    </div>
+  </div>
+
+  <div id="timeline-container" class="timeline-grid"></div>
+
+  <div class="status-info" style="margin-top:50px;">
+    <div class="status-info-header" onclick="toggleStatusInfo()">
+      <h2>Exigences selon le plan-cadre d'études CG 2030</h2>
+      <span class="status-info-toggle" id="statusinfo-toggle">▶</span>
+    </div>
+    <div class="status-info-content" id="statusinfo-content">
+      <ul>
+        <li><span>▸</span>Par thème, au moins <strong>3 compétences clés</strong> sont consciemment encouragées</li>
+        <li><span>▸</span>Contenus d'apprentissage issus d'au moins <strong>3 aspects</strong> du domaine Société</li>
+        <li><span>▸</span>Prise en compte de <strong>3 modes de communication</strong> par thème</li>
+        <li><span>▸</span>Compétences de tous les <strong>modes de communication</strong> en tenant compte des conventions, normes et conscience de la langue</li>
+        <li><span>▸</span>Jusqu'à la fin : développement des <strong>12 compétences clés</strong> et compétences de tous les <strong>8 aspects de la société</strong></li>
+        <li><span>▸</span>Intégration du <strong>travail de fin d'études</strong> lors de la dernière année</li>
+        <li><span>▸</span>Curriculum en spirale avec attestations de compétences formatives et sommatives</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   DONNÉES – EXCLUSIVEMENT DU PDF
+   Source : Aperçu_des_thèmes_CFC_8_5_5_26.pdf (pages 1-3)
+   ============================================================ */
+
+const THEMES=[
+  {id:'t1', nr:1, name:'Ma formation professionnelle',         year:1},
+  {id:'t2', nr:2, name:'Mon salaire, mes dépenses',            year:1},
+  {id:'t3', nr:3, name:'Ma sécurité, mon bien-être',           year:1},
+  {id:'t4', nr:4, name:'Ma culture, mes relations',            year:2},
+  {id:'t5', nr:5, name:'Exprimer non opinion',                 year:2},
+  {id:'t6', nr:6, name:'Ma consommation, mon influence',       year:2},
+  {id:'tS', nr:0, name:'Travail final',                        year:3, schlussarbeit:true},
+  {id:'t7', nr:7, name:'Mon travail dans la futur',            year:3},
+  {id:'t8', nr:8, name:'Mon domicile',                         year:3}
+];
+
+const SK={
+  '1.1':'Sources distinctives',
+  '1.2':'Fixation et ajustement des objectifs',
+  '1.3':'Innovation et résolution de problèmes',
+  '1.4':'Travail d\'équipe',
+  '1.5':'Refléter les valeurs',
+  '1.6':'Justification des points de vue',
+  '1.7':'Promouvoir la compréhension',
+  '1.8':'Phases de vie planifiées',
+  '1.9':'Durabilité',
+  '1.10':'Personnalisation',
+  '1.11':'Ambiguïté',
+  '1.12':'Participation'
+};
+const GES={
+  '2.1':'Éthique',
+  '2.2':'Identité et socialisation',
+  '2.3':'Culture',
+  '2.4':'Écologie',
+  '2.5':'Politique',
+  '2.6':'Droit',
+  '2.7':'Transformation technologique et numérique',
+  '2.8':'Économie'
+};
+const DIG={
+  '3.1':'Bases des applications numériques',
+  '3.2':'Compétences en gestion des données',
+  '3.3':'Création de contenu',
+  '3.4':'Résolution de problèmes',
+  '3.5':'Eléments spécifiques à l\'IA',
+  '3.6':'Attitude réflexive et utilisation responsable'
+};
+const SPR={
+  '4.1':'Descriptif (descriptif)',
+  '4.2':'Explicatif (explicatif)',
+  '4.3':'Argumentatif (persuasif)',
+  '4.4':'Interactif (interaction)',
+  '4.5':'Réfléxif (réfléchissant)',
+  '4.R':'Réception'
+};
+
+/* Modes de communication – matrice comme dans le plan-cadre (page 1 PDF)
+   O = Orale, E = Écrite/visuelle, A-V = Audiovisuelle,
+   M-M = Multimédia, N = Numérique */
+const MODI_ROWS=[
+  {id:'R',label:'Réception',                    cols:['O','E','A-V']},
+  {id:'P',label:'Production',                   cols:['O','E','M-M']},
+  {id:'I',label:'Interaction et collaboration', cols:['O','E','N']}
+];
+const MODI_COLS=['O','E','A-V','M-M','N'];
+const COL_LABELS={'O':'orale','E':'écrite et visuelle','A-V':'audiovisuelle','M-M':'multimédia','N':'numérique'};
+const MODI_LABELS={
+  'R-O':'Réception · orale',
+  'R-E':'Réception · écrite et visuelle',
+  'R-A-V':'Réception · audiovisuelle',
+  'P-O':'Production · orale',
+  'P-E':'Production · écrite et visuelle',
+  'P-M-M':'Production · multimédia',
+  'I-O':'Interaction · orale',
+  'I-E':'Interaction · écrite',
+  'I-N':'Interaction · numérique'
+};
+const MODI_AVAILABLE=new Set();
+MODI_ROWS.forEach(r=>r.cols.forEach(c=>MODI_AVAILABLE.add(r.id+'-'+c)));
+
+/* ============================================================
+   THEMEN_DATA – 1:1 selon le PDF
+   Source : Aperçu_des_thèmes_CFC_8_5_5_26.pdf
+   - Page 2 : matrice Société (aspect × thème)
+   - Page 3 : matrice Langue + matrice Médias (avec modes entre parenthèses)
+   Mapping des colonnes vérifié visuellement à partir du PDF.
+   Dans le PDF, seules les colonnes des thèmes 1, 2 et 3 (1re année) sont remplies.
+   Tous les autres thèmes (4–8, Travail final) sont vides dans le PDF.
+   Les compétences clés ne sont pas indiquées par thème dans le PDF ;
+   celles présentes ici sont reprises de la version précédente du site.
+   ============================================================ */
+const THEMEN_DATA={
+  /* ---------- Thème 1 : Ma formation professionnelle ---------- */
+  t1:{
+    sk:['1.2','1.4','1.7','1.10'],
+    ges:{
+      '2.2':['L\'école professionnelle et l\'eCG','Les 3 lieux d\'apprentissage','Comportement au travail et à l\'école','Attentes liées à son rôle'],
+      '2.5':['Opportunités de participation'],
+      '2.6':['Contrat d\'apprentissage et droit suisse','Fondement juridique','Droit et obligations'],
+      '2.7':['Voir « Médias et numérique »']
+    },
+    dig:{
+      '3.1':['Fonctions de base des programmes','Outils comme aide à l\'organisation et/ou à l\'apprentissage'],
+      '3.2':['Utilisation de l\'IA, mention des sources'],
+      '3.4':['Recherche','Les lois et réglements en ligne'],
+      '3.6':['Collaboration numérique']
+    },
+    spr:[
+      {id:'t1-si-comparer-contenus',  label:'Comparer des contenus',                                                  texttyp:'4.R', modi:['R-E']},
+      {id:'t1-si-presenter-entretien',label:'Présenter un entretien',                                                  texttyp:'4.1', modi:['P-M-M','P-O']},
+      {id:'t1-si-decrire-solutions',  label:'Décrire des solutions',                                                   texttyp:'4.1', modi:['P-O','P-E']},
+      {id:'t1-si-ecrit-groupe-cible', label:'Communiquer par écrit de manière appropriée au groupe cible en tenant compte de la ponctuation', texttyp:'4.2', modi:['P-E','I-E']},
+      {id:'t1-si-mener-entretien',    label:'Mener un entretien',                                                      texttyp:'4.4', modi:['I-O']},
+      {id:'t1-si-communiquer-solution',label:'Communiquer de manière orientée solution',                               texttyp:'4.4', modi:['I-O']},
+      {id:'t1-si-reflechir-strategies',label:'Réfléchir sur les stratégies d\'apprentissage',                          texttyp:'4.5', modi:['P-E']}
+    ]
+  },
+
+  /* ---------- Thème 2 : Mon salaire, mes dépenses ---------- */
+  t2:{
+    sk:['1.5','1.6','1.8','1.9'],
+    ges:{
+      '2.1':['Évaluer des décisions de consommation'],
+      '2.2':['Besoins et comportement d\'achat'],
+      '2.4':['Évaluer des décisions de consommation'],
+      '2.6':['Capacité de discernement','Un Contrat est juridique valable','Résiliation ou inéxécution du contrat'],
+      '2.7':['Voir « Médias et numérique »'],
+      '2.8':['Fiche de salaire','Circuit économique simplifié','Budget','Offres des établissements financiers','Moyens de paiement','Différents types de financement','Besoins et comportement d\'achat','Influences sur les achats et pièges publicitaires','Évaluer des décisions de consommation']
+    },
+    dig:{
+      '3.2':['Naviguer','Évaluation des sources','Utilisation des plateformes de vente'],
+      '3.4':['Utilisation des outils budgétaires','Recherche d\'informations','Utilisation d\'outils en ligne destinés aux consommateurs'],
+      '3.5':['Exploitation des données personnelles']
+    },
+    spr:[
+      {id:'t2-si-comparer-contenus',  label:'Comparer des contenus',                                                  texttyp:'4.R', modi:['R-E']},
+      {id:'t2-si-comprendre-contenu', label:'Comprendre le contenu',                                                  texttyp:'4.R', modi:['R-E','R-A-V']},
+      {id:'t2-si-distinguer-elements',label:'Distinguer les éléments clés',                                            texttyp:'4.R', modi:['R-A-V']},
+      {id:'t2-si-strategies-lecture', label:'Appliquer des stratégies de lecture',                                     texttyp:'4.R', modi:['R-E']},
+      {id:'t2-si-synthetiser',        label:'Synthétiser les résultats de recherche',                                  texttyp:'4.1', modi:['P-O']},
+      {id:'t2-si-presenter-decision', label:'Présenter une décision',                                                  texttyp:'4.1', modi:['P-M-M']},
+      {id:'t2-si-adapter-modele',     label:'Adapter le modèle de texte en tenant compte de la ponctuation',           texttyp:'4.1', modi:['P-E']},
+      {id:'t2-si-reformuler',         label:'Reformuler des contextes',                                                texttyp:'4.2', modi:['P-E']},
+      {id:'t2-si-convaincre-faits',   label:'Convaincre en s\'appuyant sur des faits',                                 texttyp:'4.3', modi:['P-E']},
+      {id:'t2-si-analyser-comportement',label:'Analyser son comportement',                                              texttyp:'4.5', modi:['P-O','P-E']},
+      {id:'t2-si-analyser-procedes',  label:'Analyser les procédés linguistiques',                                     texttyp:'4.5', modi:['P-O']}
+    ]
+  },
+
+  /* ---------- Thème 3 : Ma sécurité, mon bien-être ---------- */
+  t3:{
+    sk:['1.1','1.7','1.8','1.11'],
+    ges:{
+      '2.1':['Comportements interpersonnels'],
+      '2.2':['Les Risques et des mesures','Schémas comportementaux','Types d\'assurances et leur fonctionnement'],
+      '2.6':['Conséquences juridiques','Types d\'assurances et leur fonctionnement','assurance accident et maladie'],
+      '2.7':['Voir « Médias et numérique »'],
+      '2.8':['Utilité de chaque assurance']
+    },
+    dig:{
+      '3.2':['Mécanismes des chambres d\'écho et bulles de filtre','Manipulations et désinformation'],
+      '3.3':['Informations pertinentes'],
+      '3.4':['Modèles en ligne','outil en ligne'],
+      '3.6':['Données sensibles','Utilisation des médias numériques']
+    },
+    spr:[
+      {id:'t3-si-recueillir',         label:'Recueillir des informations',                                              texttyp:'4.R', modi:['R-A-V']},
+      {id:'t3-si-comprendre-contenu', label:'Comprendre le contenu',                                                   texttyp:'4.R', modi:['R-E']},
+      {id:'t3-si-interpreter-graphiques',label:'Interpréter des graphiques',                                            texttyp:'4.R', modi:['R-E']},
+      {id:'t3-si-ecrit-adapte',       label:'Communiquer par écrit de manière adaptée à l\'interlocuteur en tenant compte de la ponctuation', texttyp:'4.1', modi:['P-E','I-E']},
+      {id:'t3-si-prendre-position',   label:'Prendre position',                                                         texttyp:'4.3', modi:['P-E']},
+      {id:'t3-si-communiquer-respectueuse',label:'Communiquer de manière respectueuse et constructive',                texttyp:'4.4', modi:['I-O']},
+      {id:'t3-si-analyser-comportement',label:'Analyser son comportement',                                              texttyp:'4.5', modi:['P-O','P-E']}
+    ]
+  },
+
+  /* ---------- Thèmes 4, 5, 6, 7, 8 et Travail final ----------
+     Selon le PDF, aucun contenu n'est indiqué pour ces thèmes.
+     Les matrices des pages 2 et 3 sont vides pour ces colonnes. */
+  t4:{sk:[], ges:{}, dig:{}, spr:[], empty:true},
+  t5:{sk:[], ges:{}, dig:{}, spr:[], empty:true},
+  t6:{sk:[], ges:{}, dig:{}, spr:[], empty:true},
+  tS:{sk:[], ges:{}, dig:{}, spr:[], schlussarbeit:true},
+  t7:{sk:[], ges:{}, dig:{}, spr:[], empty:true},
+  t8:{sk:[], ges:{}, dig:{}, spr:[], empty:true}
+};
+
+/* ============================================================
+   Helpers
+   ============================================================ */
+function sortNr(a,b){const pa=a.split('.').map(x=>x==='R'?0:Number(x)),pb=b.split('.').map(x=>x==='R'?0:Number(x));return pa[0]!==pb[0]?pa[0]-pb[0]:(pa[1]||0)-(pb[1]||0);}
+
+/* État */
+let activeFilter=null;  // {kind, value, label, category, chipEl}
+let openDropdown=null;
+
+/* ============================================================
+   Rendu des menus déroulants
+   ============================================================ */
+function makeAspChip(label,chipClass,onClick){
+  const c=document.createElement('div');
+  c.className='chip '+chipClass;
+  c.textContent=label;
+  c.onclick=onClick;
+  return c;
+}
+
+function makeSubChip(label,subCls,onClick){
+  const c=document.createElement('div');
+  c.className='sub-chip '+subCls;
+  c.textContent=label;
+  c.onclick=onClick;
+  return c;
+}
+
+function collectContents(kind){
+  const map={};
+  Object.values(THEMEN_DATA).forEach(td=>{
+    const src = kind==='ges' ? td.ges : td.dig;
+    if(!src)return;
+    Object.entries(src).forEach(([aspNr, arr])=>{
+      if(!map[aspNr])map[aspNr]=new Set();
+      arr.forEach(t=>map[aspNr].add(t));
+    });
+  });
+  return map;
+}
+
+function renderDropdowns(){
+  /* Compétences clés */
+  const dsk=document.getElementById('dropdown-schluessel');
+  const rowSk=document.createElement('div');
+  rowSk.style.cssText='display:flex;flex-wrap:wrap;gap:8px;';
+  Object.entries(SK).sort((a,b)=>sortNr(a[0],b[0])).forEach(([nr,text])=>{
+    const c=makeAspChip(nr+' '+text,'chip-schluessel',null);
+    c.onclick=()=>setFilter({kind:'aspect',value:nr,label:nr+' '+text,category:'sk',chipEl:c});
+    rowSk.appendChild(c);
+  });
+  dsk.appendChild(rowSk);
+
+  /* Société */
+  renderGroupedDropdown('gesellschaft', GES, collectContents('ges'), 'ges','chip-gesellschaft','sub-chip-ges');
+  /* Médias & numérique */
+  renderGroupedDropdown('digital', DIG, collectContents('dig'), 'dig','chip-digital','sub-chip-dig');
+  /* Langue – Types de texte */
+  renderSprachTexttypen();
+  /* Langue – Matrice des modes */
+  renderModiMatrix();
+}
+
+function renderGroupedDropdown(dropdownKey, labelMap, contentMap, catShort, chipClass, subCls){
+  const root=document.getElementById('dropdown-'+dropdownKey);
+  const group=document.createElement('div');group.className='filter-group';
+
+  Object.entries(labelMap).sort((a,b)=>sortNr(a[0],b[0])).forEach(([nr,text])=>{
+    const contents=[...(contentMap[nr]||[])];
+    const row=document.createElement('div');row.className='filter-row';
+
+    /* Flèche d'ouverture (uniquement si des sous-chips existent) */
+    const toggleBtn=document.createElement('button');
+    toggleBtn.type='button';
+    toggleBtn.textContent='▶';
+    if(contents.length){
+      toggleBtn.className='filter-toggle filter-toggle-'+catShort;
+      toggleBtn.setAttribute('aria-label','Ouvrir les contenus');
+    } else {
+      toggleBtn.className='filter-toggle filter-toggle-invisible';
+      toggleBtn.tabIndex=-1;
+    }
+    row.appendChild(toggleBtn);
+
+    const aspChip=makeAspChip(nr+' '+text, chipClass, null);
+    aspChip.onclick=()=>setFilter({kind:'aspect',value:nr,label:nr+' '+text,category:catShort,chipEl:aspChip});
+    row.appendChild(aspChip);
+
+    if(contents.length){
+      const sub=document.createElement('div');sub.className='sub-chip-group';
+      contents.forEach(txt=>{
+        const sc=makeSubChip(txt,subCls,null);
+        sc.onclick=()=>setFilter({kind:'content',value:txt,label:txt,category:catShort,chipEl:sc});
+        sub.appendChild(sc);
+      });
+
+      const doToggle=(e)=>{
+        e.stopPropagation();
+        sub.classList.toggle('visible');
+        toggleBtn.classList.toggle('open');
+      };
+      toggleBtn.addEventListener('click',doToggle);
+
+      row.appendChild(sub);
+    }
+    group.appendChild(row);
+  });
+  root.appendChild(group);
+}
+
+function renderSprachTexttypen(){
+  const root=document.getElementById('spr-panel-texttypen');
+  const group=document.createElement('div');group.className='filter-group';
+
+  /* Rassemble toutes les entrées spr par texttyp (dédupliqué par label) */
+  const byType={};
+  Object.values(THEMEN_DATA).forEach(td=>{
+    (td.spr||[]).forEach(si=>{
+      if(!byType[si.texttyp])byType[si.texttyp]={};
+      byType[si.texttyp][si.label]={label:si.label,modi:si.modi||[]};
+    });
+  });
+
+  const order=['4.R','4.1','4.2','4.3','4.4','4.5'];
+  order.forEach(tt=>{
+    const row=document.createElement('div');row.className='filter-row';
+    const contents=byType[tt]?Object.values(byType[tt]):[];
+
+    const toggleBtn=document.createElement('button');
+    toggleBtn.type='button';
+    toggleBtn.textContent='▶';
+    if(contents.length){
+      toggleBtn.className='filter-toggle filter-toggle-spr';
+      toggleBtn.setAttribute('aria-label','Ouvrir les contenus');
+    } else {
+      toggleBtn.className='filter-toggle filter-toggle-invisible';
+      toggleBtn.tabIndex=-1;
+    }
+    row.appendChild(toggleBtn);
+
+    const aspChip=makeAspChip(tt+' '+(SPR[tt]||tt),'chip-sprache',null);
+    aspChip.onclick=()=>setFilter({kind:'aspect',value:tt,label:tt+' '+(SPR[tt]||tt),category:'spr',chipEl:aspChip});
+    row.appendChild(aspChip);
+
+    if(contents.length){
+      const sub=document.createElement('div');sub.className='sub-chip-group';
+      contents.forEach(si=>{
+        const sc=makeSubChip(si.label,'sub-chip-spr',null);
+        sc.onclick=()=>setFilter({kind:'content',value:si.label,label:si.label,category:'spr',chipEl:sc});
+        sub.appendChild(sc);
+      });
+
+      const doToggle=(e)=>{
+        e.stopPropagation();
+        sub.classList.toggle('visible');
+        toggleBtn.classList.toggle('open');
+      };
+      toggleBtn.addEventListener('click',doToggle);
+
+      row.appendChild(sub);
+    }
+    group.appendChild(row);
+  });
+  root.appendChild(group);
+}
+
+function renderModiMatrix(){
+  const matrix=document.getElementById('modi-matrix');
+  matrix.innerHTML='';
+
+  /* Coin haut-gauche */
+  const hCorner=document.createElement('div');hCorner.className='modi-matrix-header';matrix.appendChild(hCorner);
+
+  /* Les en-têtes de colonnes sont les boutons de filtre */
+  MODI_COLS.forEach(col=>{
+    const h=document.createElement('button');
+    h.type='button';
+    h.className='modi-col-header';
+    h.setAttribute('data-modi-col',col);
+    h.title='Afficher tous les thèmes avec le mode «'+COL_LABELS[col]+'»';
+    h.innerHTML='<div style="font-size:1.1em;color:var(--c-text);font-weight:700">'+col+'</div><div style="font-size:.85em;font-weight:400;margin-top:2px;color:var(--c-muted)">'+COL_LABELS[col]+'</div>';
+    h.onclick=()=>setFilter({
+      kind:'modi-col',
+      value:col,
+      label:col+' · '+COL_LABELS[col],
+      category:'spr',
+      chipEl:h
+    });
+    matrix.appendChild(h);
+  });
+
+  /* Lignes de données – les cellules sont des indicateurs (montrent quelles combinaisons existent),
+     mais le clic filtre également sur la colonne */
+  MODI_ROWS.forEach(row=>{
+    const label=document.createElement('div');label.className='modi-matrix-row-label';label.textContent=row.label;
+    matrix.appendChild(label);
+    MODI_COLS.forEach(col=>{
+      const modiId=row.id+'-'+col;
+      const cell=document.createElement('button');
+      if(MODI_AVAILABLE.has(modiId)){
+        cell.className='modi-cell';
+        cell.textContent=col;
+        cell.title=MODI_LABELS[modiId]+' (filtre par «'+COL_LABELS[col]+'»)';
+        cell.setAttribute('data-modi-col',col);
+        /* Clic sur cellule -> filtrer par colonne (comme l'en-tête) */
+        cell.onclick=()=>{
+          const headerBtn=matrix.querySelector('.modi-col-header[data-modi-col="'+col+'"]');
+          setFilter({
+            kind:'modi-col',
+            value:col,
+            label:col+' · '+COL_LABELS[col],
+            category:'spr',
+            chipEl:headerBtn || cell
+          });
+        };
+      } else {
+        cell.className='modi-cell disabled';
+        cell.textContent='—';
+        cell.disabled=true;
+      }
+      matrix.appendChild(cell);
+    });
+  });
+}
+
+/* ============================================================
+   Rendu de la timeline / cartes
+   ============================================================ */
+function renderTimeline(){
+  const cont=document.getElementById('timeline-container');
+  cont.innerHTML='';
+  const yNames=['Fondements','Approfondissement','Transfert'];
+  for(let y=1;y<=3;y++){
+    const col=document.createElement('div');col.className='year-column';
+    col.innerHTML='<div class="year-header"><h2>'+y+'<sup>'+(y===1?'re':'e')+'</sup> année</h2><p style="font-size:.85em;opacity:.9;font-weight:300;margin-top:4px;">'+yNames[y-1]+'</p></div>';
+    THEMES.filter(t=>t.year===y).forEach(theme=>{
+      const data=THEMEN_DATA[theme.id];
+      col.appendChild(createCard(theme,data));
+    });
+    cont.appendChild(col);
+  }
+}
+
+function createCard(theme,data){
+  const card=document.createElement('div');
+  card.className='theme-card'+(theme.schlussarbeit?' schlussarbeit':'');
+  card.setAttribute('data-theme-id',theme.id);
+
+  const h3=document.createElement('h3');
+  h3.textContent=theme.name;
+  card.appendChild(h3);
+
+  if(theme.schlussarbeit){
+    const note=document.createElement('div');note.className='empty-theme-note';
+    note.textContent='Travail final – intègre les compétences acquises pendant toute la formation.';
+    card.appendChild(note);
+    return card;
+  }
+
+  if(!data || data.empty){
+    const note=document.createElement('div');note.className='empty-theme-note';
+    note.textContent='Aucun contenu n\'est encore indiqué pour ce thème.';
+    card.appendChild(note);
+    return card;
+  }
+
+  /* Compétences clés */
+  if(data.sk && data.sk.length){
+    const sect=document.createElement('div');sect.className='card-section';sect.setAttribute('data-block','sk');
+    const lbl=document.createElement('div');lbl.className='card-section-label';lbl.textContent='Compétences clés';
+    sect.appendChild(lbl);
+    const badgeRow=document.createElement('div');
+    data.sk.sort(sortNr).forEach(nr=>badgeRow.appendChild(mkBadge(nr,'sk',nr,SK[nr]||nr)));
+    sect.appendChild(badgeRow);
+    card.appendChild(sect);
+  }
+
+  /* Société */
+  const gesAspects=Object.keys(data.ges||{}).sort(sortNr);
+  if(gesAspects.length){
+    const sect=document.createElement('div');sect.className='card-section';sect.setAttribute('data-block','ges');
+    const lbl=document.createElement('div');lbl.className='card-section-label';lbl.textContent='Société';
+    sect.appendChild(lbl);
+    const badgeRow=document.createElement('div');
+    gesAspects.forEach(nr=>badgeRow.appendChild(mkBadge(nr,'ges',nr,GES[nr]||nr)));
+    sect.appendChild(badgeRow);
+    const chipRow=document.createElement('div');chipRow.style.cssText='margin-top:4px;';
+    gesAspects.forEach(nr=>{
+      data.ges[nr].forEach(txt=>{
+        const c=document.createElement('span');
+        c.className='content-chip chip-ges';
+        c.setAttribute('data-category','ges');
+        c.setAttribute('data-aspect',nr);
+        c.setAttribute('data-content',txt);
+        c.textContent=txt;
+        chipRow.appendChild(c);
+      });
+    });
+    sect.appendChild(chipRow);
+    card.appendChild(sect);
+  }
+
+  /* Médias & numérique */
+  const digAspects=Object.keys(data.dig||{}).sort(sortNr);
+  if(digAspects.length){
+    const sect=document.createElement('div');sect.className='card-section';sect.setAttribute('data-block','dig');
+    const lbl=document.createElement('div');lbl.className='card-section-label';lbl.textContent='Médias & numérique';
+    sect.appendChild(lbl);
+    const badgeRow=document.createElement('div');
+    digAspects.forEach(nr=>badgeRow.appendChild(mkBadge(nr,'dig',nr,DIG[nr]||nr)));
+    sect.appendChild(badgeRow);
+    const chipRow=document.createElement('div');chipRow.style.cssText='margin-top:4px;';
+    digAspects.forEach(nr=>{
+      data.dig[nr].forEach(txt=>{
+        const c=document.createElement('span');
+        c.className='content-chip chip-dig';
+        c.setAttribute('data-category','dig');
+        c.setAttribute('data-aspect',nr);
+        c.setAttribute('data-content',txt);
+        c.textContent=txt;
+        chipRow.appendChild(c);
+      });
+    });
+    sect.appendChild(chipRow);
+    card.appendChild(sect);
+  }
+
+  /* Langue & communication */
+  if(data.spr && data.spr.length){
+    const sect=document.createElement('div');sect.className='card-section';sect.setAttribute('data-block','spr');
+    const lbl=document.createElement('div');lbl.className='card-section-label';lbl.textContent='Langue & communication';
+    sect.appendChild(lbl);
+
+    const sprTypes=[...new Set(data.spr.map(s=>s.texttyp))].sort(sortNr);
+    const badgeRow=document.createElement('div');
+    sprTypes.forEach(tt=>badgeRow.appendChild(mkBadge(tt,'spr',tt,SPR[tt]||tt)));
+    sect.appendChild(badgeRow);
+
+    const chipRow=document.createElement('div');chipRow.style.cssText='margin-top:4px;';
+    data.spr.forEach(si=>{
+      const c=document.createElement('span');
+      c.className='content-chip chip-spr';
+      c.setAttribute('data-category','spr');
+      c.setAttribute('data-aspect',si.texttyp);
+      c.setAttribute('data-content',si.label);
+      c.setAttribute('data-modi',(si.modi||[]).join(','));
+      c.textContent=si.label;
+      if(si.modi && si.modi.length){
+        const m=document.createElement('span');m.className='modi-markers';
+        si.modi.forEach(modi=>{
+          const mm=document.createElement('span');mm.className='modi-marker';
+          mm.textContent=modi;mm.title=MODI_LABELS[modi]||modi;
+          m.appendChild(mm);
+        });
+        c.appendChild(m);
+      }
+      chipRow.appendChild(c);
+    });
+    sect.appendChild(chipRow);
+    card.appendChild(sect);
+  }
+
+  return card;
+}
+
+function mkBadge(text,cat,aspect,tipText){
+  const b=document.createElement('div');
+  b.className='badge badge-'+cat;
+  b.textContent=text;
+  b.setAttribute('data-category',cat);
+  b.setAttribute('data-aspect',aspect);
+  const tt=document.createElement('div');tt.className='tooltip';tt.textContent=tipText;
+  b.appendChild(tt);
+  return b;
+}
+
+/* ============================================================
+   Système de filtres
+   ============================================================ */
+function toggleDropdown(cat){
+  const panel=document.getElementById('dropdown-'+cat);
+  const btn=document.getElementById('btn-'+cat);
+  if(!panel||!btn)return;
+  if(openDropdown===cat){
+    panel.classList.remove('visible');btn.classList.remove('open');
+    openDropdown=null;
+  } else {
+    if(openDropdown){
+      document.getElementById('dropdown-'+openDropdown).classList.remove('visible');
+      const ob=document.getElementById('btn-'+openDropdown);if(ob)ob.classList.remove('open');
+    }
+    panel.classList.add('visible');btn.classList.add('open');openDropdown=cat;
+  }
+}
+
+function switchSprTab(which){
+  document.querySelectorAll('.spr-tab').forEach(t=>t.classList.toggle('active',t.getAttribute('data-sprtab')===which));
+  document.getElementById('spr-panel-texttypen').classList.toggle('active',which==='texttypen');
+  document.getElementById('spr-panel-modi').classList.toggle('active',which==='modi');
+}
+
+function setFilter(f){
+  /* Toggle : même filtre à nouveau -> reset (sauf pour la recherche) */
+  if(f.kind!=='search' && activeFilter && activeFilter.kind===f.kind && activeFilter.value===f.value){
+    resetFilter();return;
+  }
+  activeFilter=f;
+
+  /* Si le nouveau filtre n'est PAS une recherche, vider le champ de recherche */
+  if(f.kind!=='search'){
+    const si=document.getElementById('search-input');
+    if(si && si.value){
+      si.value='';
+      document.getElementById('search-clear').classList.remove('visible');
+    }
+  }
+
+  /* Boutons principaux */
+  document.querySelectorAll('.main-filter-btn').forEach(b=>b.classList.remove('active'));
+  const mainBtnMap={sk:'btn-schluessel',ges:'btn-gesellschaft',dig:'btn-digital',spr:'btn-sprach'};
+  const mb=document.getElementById(mainBtnMap[f.category]);
+  if(mb)mb.classList.add('active');
+
+  /* États des chips dans le menu déroulant */
+  document.querySelectorAll('.chip, .sub-chip, .modi-cell, .modi-col-header').forEach(c=>c.classList.remove('active'));
+  if(f.chipEl)f.chipEl.classList.add('active');
+
+  applyFilter();
+  updateActiveFilterBar();
+}
+
+function resetFilter(){
+  activeFilter=null;
+  document.querySelectorAll('.main-filter-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('btn-reset').classList.add('active');
+  document.querySelectorAll('.chip, .sub-chip, .modi-cell, .modi-col-header').forEach(c=>c.classList.remove('active'));
+  if(openDropdown){
+    document.getElementById('dropdown-'+openDropdown).classList.remove('visible');
+    const ob=document.getElementById('btn-'+openDropdown);if(ob)ob.classList.remove('open');
+    openDropdown=null;
+  }
+  /* Vider le champ de recherche */
+  const si=document.getElementById('search-input');
+  if(si){
+    si.value='';
+    document.getElementById('search-clear').classList.remove('visible');
+  }
+  applyFilter();
+  updateActiveFilterBar();
+}
+
+function applyFilter(){
+  const f=activeFilter;
+  const allCards=[...document.querySelectorAll('.theme-card')];
+  const timeline=document.getElementById('timeline-container');
+
+  /* Reset */
+  allCards.forEach(c=>c.classList.remove('is-match','is-dimmed'));
+  document.querySelectorAll('.badge, .content-chip').forEach(el=>el.classList.remove('is-match','is-dimmed'));
+  /* Supprimer les surlignages de recherche */
+  clearSearchHighlights();
+  /* Réinitialiser le mode focus */
+  timeline.classList.remove('focus-sk','focus-ges','focus-dig','focus-spr');
+
+  if(!f)return;
+
+  /* Cas spécial : recherche – montre toutes les sections, pas de mode focus */
+  if(f.kind==='search'){
+    applySearch(f.value);
+    return;
+  }
+
+  /* Mode focus : pour les filtres par catégorie, n'afficher que la section concernée.
+     - Filtre Compétences clés (category='sk') -> focus-sk
+     - Filtre Société (category='ges') -> focus-ges
+     - Filtre Numérique (category='dig') -> focus-dig
+     - Filtre Langue (category='spr', y compris modi-col) -> focus-spr */
+  if(f.category==='sk')timeline.classList.add('focus-sk');
+  else if(f.category==='ges')timeline.classList.add('focus-ges');
+  else if(f.category==='dig')timeline.classList.add('focus-dig');
+  else if(f.category==='spr')timeline.classList.add('focus-spr');
+
+  allCards.forEach(card=>{
+    if(card.classList.contains('schlussarbeit')){
+      card.classList.add('is-dimmed');return;
+    }
+    let match=false;
+
+    if(f.kind==='aspect'){
+      const cat=f.category;
+      const badges=[...card.querySelectorAll('.badge[data-category="'+cat+'"]')];
+      const targetBadges=badges.filter(b=>b.getAttribute('data-aspect')===f.value);
+      if(targetBadges.length)match=true;
+      badges.forEach(b=>{
+        if(b.getAttribute('data-aspect')===f.value)b.classList.add('is-match');
+        else b.classList.add('is-dimmed');
+      });
+      const chips=[...card.querySelectorAll('.content-chip[data-category="'+cat+'"]')];
+      chips.forEach(c=>{
+        if(c.getAttribute('data-aspect')===f.value)c.classList.add('is-match');
+        else c.classList.add('is-dimmed');
+      });
+    }
+    else if(f.kind==='content'){
+      const cat=f.category;
+      const chips=[...card.querySelectorAll('.content-chip[data-category="'+cat+'"]')];
+      const matches=chips.filter(c=>c.getAttribute('data-content')===f.value);
+      if(matches.length)match=true;
+      chips.forEach(c=>{
+        if(c.getAttribute('data-content')===f.value)c.classList.add('is-match');
+        else c.classList.add('is-dimmed');
+      });
+    }
+    else if(f.kind==='modi-col'){
+      /* Correspondance : data-modi contient une entrée de la forme "<R|P|I>-<col>" */
+      const col=f.value;
+      const matchesCol = (modiStr)=>{
+        if(!modiStr)return false;
+        return modiStr.split(',').some(m=>{
+          /* m est par ex. "R-E", "P-M-M", "I-N" ...
+             La partie "mode" après le premier "-" est la colonne. */
+          const parts=m.split('-');
+          if(parts.length<2)return false;
+          const colPart=parts.slice(1).join('-'); // "O", "E", "A-V", "M-M", "N"
+          return colPart===col;
+        });
+      };
+      const chips=[...card.querySelectorAll('.content-chip[data-category="spr"]')];
+      const matches=chips.filter(c=>matchesCol(c.getAttribute('data-modi')||''));
+      if(matches.length)match=true;
+      chips.forEach(c=>{
+        if(matchesCol(c.getAttribute('data-modi')||''))c.classList.add('is-match');
+        else c.classList.add('is-dimmed');
+      });
+    }
+    else if(f.kind==='modi'){
+      const chips=[...card.querySelectorAll('.content-chip[data-category="spr"]')];
+      const matches=chips.filter(c=>(c.getAttribute('data-modi')||'').split(',').includes(f.value));
+      if(matches.length)match=true;
+      chips.forEach(c=>{
+        if((c.getAttribute('data-modi')||'').split(',').includes(f.value))c.classList.add('is-match');
+        else c.classList.add('is-dimmed');
+      });
+    }
+
+    if(match)card.classList.add('is-match');
+    else card.classList.add('is-dimmed');
+  });
+}
+
+function updateActiveFilterBar(){
+  const bar=document.getElementById('active-filter-bar');
+  const val=document.getElementById('active-filter-value');
+  const cnt=document.getElementById('active-filter-count');
+  if(!activeFilter){bar.classList.remove('visible');return;}
+  bar.classList.add('visible');
+  const kindLabel={
+    'aspect':'Aspect / type de texte',
+    'content':'Contenu',
+    'modi':'Mode de communication',
+    'modi-col':'Mode de communication',
+    'search':'Recherche'
+  }[activeFilter.kind] || 'Filtre';
+  val.textContent=kindLabel+' : '+activeFilter.label;
+  const matches=document.querySelectorAll('.theme-card.is-match').length;
+  cnt.textContent=matches+' thème'+(matches===1?'':'s')+' correspondant'+(matches===1?'':'s');
+}
+
+/* ============================================================
+   Recherche – insensible à la casse, recherche dans :
+   - les noms de thèmes
+   - les badges d'aspect (via data-aspect -> table des labels)
+   - les chips de contenu (Société, Numérique, Langue)
+   Surligne les occurrences avec <mark>, atténue les cartes sans correspondance.
+   ============================================================ */
+let searchDebounce=null;
+
+function onSearchInput(raw){
+  const val=(raw||'').trim();
+  const clearBtn=document.getElementById('search-clear');
+  if(val){clearBtn.classList.add('visible');} else {clearBtn.classList.remove('visible');}
+
+  /* Debounce pour une saisie fluide */
+  if(searchDebounce)clearTimeout(searchDebounce);
+  searchDebounce=setTimeout(()=>{
+    if(val.length===0){
+      /* Vider la recherche : réinitialiser le filtre actif si c'était une recherche */
+      if(activeFilter && activeFilter.kind==='search'){
+        resetFilter();
+      } else {
+        clearSearchHighlights();
+      }
+    } else if(val.length<2){
+      /* Trop court – supprimer juste les surlignages, pas d'action */
+      clearSearchHighlights();
+    } else {
+      setFilter({kind:'search',value:val,label:'«\u00a0'+val+'\u00a0»',category:null,chipEl:null});
+    }
+  },180);
+}
+
+function clearSearch(){
+  const input=document.getElementById('search-input');
+  input.value='';
+  document.getElementById('search-clear').classList.remove('visible');
+  if(activeFilter && activeFilter.kind==='search'){
+    resetFilter();
+  } else {
+    clearSearchHighlights();
+  }
+  input.focus();
+}
+
+function applySearch(query){
+  const q=query.toLowerCase();
+  const allCards=[...document.querySelectorAll('.theme-card')];
+
+  allCards.forEach(card=>{
+    if(card.classList.contains('schlussarbeit')){
+      card.classList.add('is-dimmed');return;
+    }
+
+    let cardMatched=false;
+
+    /* 1. Vérifier le titre du thème */
+    const h3=card.querySelector('h3');
+    if(h3){
+      const title=h3.textContent;
+      if(title.toLowerCase().includes(q)){
+        cardMatched=true;
+        h3.innerHTML=highlightText(title,q);
+      }
+    }
+
+    /* 2. Badges – vérifier le texte de l'infobulle (label de l'aspect) */
+    [...card.querySelectorAll('.badge')].forEach(b=>{
+      const tip=b.querySelector('.tooltip');
+      const aspektLabel = tip ? tip.textContent : '';
+      if(aspektLabel.toLowerCase().includes(q)){
+        b.classList.add('is-match');
+        cardMatched=true;
+      } else {
+        b.classList.add('is-dimmed');
+      }
+    });
+
+    /* 3. Vérifier les chips de contenu (data-content) */
+    [...card.querySelectorAll('.content-chip')].forEach(c=>{
+      const content=c.getAttribute('data-content')||'';
+      if(content.toLowerCase().includes(q)){
+        c.classList.add('is-match');
+        cardMatched=true;
+        /* Surligner le texte du chip – mais préserver les modi-markers */
+        highlightChipText(c,content,q);
+      } else {
+        c.classList.add('is-dimmed');
+      }
+    });
+
+    if(cardMatched){
+      card.classList.add('is-match');
+    } else {
+      card.classList.add('is-dimmed');
+    }
+  });
+
+  updateActiveFilterBar();
+}
+
+/* Crée un HTML de surlignage sûr à partir d'une chaîne */
+function highlightText(text,q){
+  const lower=text.toLowerCase();
+  const idx=lower.indexOf(q);
+  if(idx===-1)return escapeHtml(text);
+  const before=text.slice(0,idx);
+  const hit=text.slice(idx,idx+q.length);
+  const after=text.slice(idx+q.length);
+  /* Recherche récursive dans le reste pour surligner toutes les occurrences */
+  return escapeHtml(before)+'<mark class="search-hit">'+escapeHtml(hit)+'</mark>'+highlightText(after,q);
+}
+
+/* Surligne le texte d'un chip de contenu sans détruire les modi-markers intégrés */
+function highlightChipText(chip,originalText,q){
+  /* Mémoriser le DOM-node des modi-markers, puis réassembler */
+  const markers=chip.querySelector('.modi-markers');
+  chip.innerHTML=highlightText(originalText,q);
+  if(markers)chip.appendChild(markers);
+}
+
+/* Supprime les surlignages <mark> et restaure le texte original */
+function clearSearchHighlights(){
+  /* Titres de thèmes : enlever les balises mark, garder le texte brut */
+  document.querySelectorAll('.theme-card h3').forEach(h3=>{
+    if(h3.querySelector('mark.search-hit')){
+      const plain=h3.textContent; // textContent renvoie déjà le texte sans balises
+      h3.textContent=plain;
+    }
+  });
+  /* Chips de contenu : reconstruire depuis data-content + modi-markers */
+  document.querySelectorAll('.content-chip').forEach(c=>{
+    if(c.querySelector('mark.search-hit')){
+      const text=c.getAttribute('data-content')||'';
+      const markers=c.querySelector('.modi-markers');
+      c.textContent=text;
+      if(markers)c.appendChild(markers);
+    }
+  });
+}
+
+function escapeHtml(s){
+  return s.replace(/[&<>"']/g,ch=>({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+  }[ch]));
+}
+
+function toggleStatusInfo(){
+  document.getElementById('statusinfo-content').classList.toggle('open');
+  document.getElementById('statusinfo-toggle').classList.toggle('open');
+}
+
+function initApp(){
+  renderDropdowns();
+  renderTimeline();
+}
+document.addEventListener('DOMContentLoaded',initApp);
+</script>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copyright">© 2025 - Office de l'enseignement secondaire du 2e degré et de la formation professionnelle, Canton de Berne</span>
+    <nav class="footer-links" aria-label="Navigation du pied de page">
+      <a href="../mentions_legales.html">Mentions légales</a>
+      <a href="../impressum_fr.html">Impressum</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>
