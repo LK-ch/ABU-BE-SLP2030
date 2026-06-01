@@ -65,9 +65,45 @@
             .thema-arrow { display: none !important; }
             * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
 
-            /* --- Schriftgrösse (etwas kleiner als 0.82em) --- */
+            /* --- Seitenzahl kleiner --- */
+            @page {
+                margin: 1.2cm 1.2cm 1.5cm 1.2cm;
+                @bottom-center {
+                    content: counter(page);
+                    font-size: 8pt;
+                    color: #666;
+                }
+            }
+
+            /* --- Schriftgrösse --- */
             body {
                 font-size: 0.78em;
+            }
+
+            /* --- Abstände zwischen Blöcken reduzieren --- */
+            .lebensbezug,
+            .freibereich-section,
+            .lerninhalt,
+            .table-container,
+            .leitidee,
+            .schluesselkompetenzen-block {
+                margin-bottom: 6px !important;
+            }
+
+            .kompetenz-header {
+                padding: 8px 14px !important;
+            }
+
+            .lerninhalt-content {
+                padding: 8px !important;
+            }
+
+            .lebensbezug-content {
+                padding: 0 14px 10px !important;
+            }
+
+            .spacing-row td {
+                height: 6px !important;
             }
 
             /* --- Dreierpäckli nicht trennen --- */
@@ -76,9 +112,7 @@
                 page-break-inside: avoid;
             }
 
-            /* --- Kompetenz-Block als Einheit halten ---
-                 Passen 2 Kompetenzen auf eine Seite: ok.
-                 Passt nur 1: beginnt oben auf neuer Seite. */
+            /* --- Kompetenz-Block als Einheit halten --- */
             .lerninhalt {
                 break-inside: avoid;
                 page-break-inside: avoid;
@@ -86,6 +120,12 @@
 
             /* --- Lebensbezug immer oben auf neuer Seite --- */
             .lebensbezug {
+                break-before: always;
+                page-break-before: always;
+            }
+
+            /* --- Freibereich: neue Seite --- */
+            .freibereich-section {
                 break-before: always;
                 page-break-before: always;
             }
@@ -181,10 +221,7 @@
     <footer>
         <div class="footer-inner">
             <span class="footer-copyright">© 2025 - Mittelschul- und Berufsbildungsamt Kanton Bern</span>
-            <nav class="footer-links" aria-label="Footer-Navigation">
-                <a href="../rechtliche-hinweise.html">Rechtliche Hinweise</a>
-                <a href="../impressum_de.html">Impressum</a>
-            </nav>
+
         </div>
     </footer>
 
