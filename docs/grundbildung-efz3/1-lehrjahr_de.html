@@ -65,18 +65,20 @@
             .thema-arrow { display: none !important; }
             * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
 
-            /* --- Neu: Schriftgrösse --- */
+            /* --- Schriftgrösse --- */
             body {
                 font-size: 0.82em;
             }
 
-            /* --- Neu: Dreierpäckli nicht trennen --- */
+            /* --- Dreierpäckli nicht trennen --- */
             .table-container {
                 break-inside: avoid;
                 page-break-inside: avoid;
             }
 
-            /* --- Neu: Kompetenz-Block als Einheit halten --- */
+            /* --- Kompetenz-Block als Einheit halten ---
+                 Passen 2 Kompetenzen auf eine Seite: ok.
+                 Passt nur 1: beginnt oben auf neuer Seite. */
             .lerninhalt {
                 break-inside: avoid;
                 page-break-inside: avoid;
