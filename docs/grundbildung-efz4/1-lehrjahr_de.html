@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>4-jährige Grundbildung EFZ - Schullehrplan ABU</title>
+    <title>4-jährige Grundbildung EFZ - Kantonaler Lehrplan ABU</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -57,7 +57,86 @@
         .footer-links a { font-size: 0.82em; font-weight: 700; color: #000; text-decoration: none; }
         .footer-links a:hover { text-decoration: underline; }
         @media (max-width: 768px) { .header-top { flex-direction: column; gap: 12px; } .footer-inner { flex-direction: column; align-items: flex-start; } .page-toolbar { justify-content: flex-start; } }
-        @media print { header, .breadcrumb, .page-toolbar, .pdf-export-container, footer { display: none !important; } .thema-content { display: block !important; } .thema-arrow { display: none !important; } * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; } }
+
+        @media print {
+            /* --- Bestehendes --- */
+            header, .breadcrumb, .page-toolbar, .pdf-export-container, footer { display: none !important; }
+            .thema-content { display: block !important; }
+            .thema-arrow { display: none !important; }
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+            /* --- Seitenzahl kleiner --- */
+            @page {
+                margin: 1.2cm 1.2cm 1.5cm 1.2cm;
+                @bottom-center {
+                    content: counter(page);
+                    font-size: 8pt;
+                    color: #666;
+                }
+            }
+
+            /* --- Schriftgrösse --- */
+            body {
+                font-size: 0.78em;
+            }
+
+            /* --- Abstände zwischen Blöcken reduzieren --- */
+            .lebensbezug,
+            .freibereich-section,
+            .lerninhalt,
+            .table-container,
+            .leitidee,
+            .schluesselkompetenzen-block {
+                margin-bottom: 6px !important;
+            }
+
+            .kompetenz-header {
+                padding: 8px 14px !important;
+            }
+
+            .lerninhalt-content {
+                padding: 8px !important;
+            }
+
+            .lebensbezug-content {
+                padding: 0 14px 10px !important;
+            }
+
+            .spacing-row td {
+                height: 6px !important;
+            }
+
+            /* --- Dreierpäckli nicht trennen --- */
+            .table-container {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            /* --- Kompetenz-Block als Einheit halten --- */
+            .lerninhalt {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            /* --- Lebensbezug immer oben auf neuer Seite --- */
+            .lebensbezug {
+                break-before: always;
+                page-break-before: always;
+            }
+
+            /* --- Freibereich: neue Seite --- */
+            .freibereich-section {
+                break-before: always;
+                page-break-before: always;
+            }
+
+            /* --- Thema 2 & 3: neue Seite --- */
+            #section-thema2,
+            #section-thema3 {
+                break-before: always;
+                page-break-before: always;
+            }
+        }
     </style>
 </head>
 <body>
@@ -68,7 +147,7 @@
                 <div class="logo-section">
                     <img src="../images/KTBE.png" alt="Logo des Kantons Bern">
                 </div>
-                <div class="app-title">Schullehrplan ABU / Plan d'études de culture générale</div>
+                <div class="app-title">Kantonaler Lehrplan ABU / Plan d'études de culture générale</div>
             </div>
             <nav class="service-nav" aria-label="Service-Navigation">
                 <a href="../kontakt_de.html">Kontakt</a>
@@ -83,7 +162,7 @@
 
     <main>
         <nav class="breadcrumb">
-            <a href="../index_de.html">Schullehrplan ABU</a> /
+            <a href="../index_de.html">Kantonaler Lehrplan ABU</a> /
             4-jährige Grundbildung EFZ
         </nav>
 
@@ -138,10 +217,6 @@
     <footer>
         <div class="footer-inner">
             <span class="footer-copyright">© 2025 - Mittelschul- und Berufsbildungsamt Kanton Bern</span>
-            <nav class="footer-links" aria-label="Footer-Navigation">
-                <a href="../rechtliche-hinweise.html">Rechtliche Hinweise</a>
-                <a href="../impressum_de.html">Impressum</a>
-            </nav>
         </div>
     </footer>
 
