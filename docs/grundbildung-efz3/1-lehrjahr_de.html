@@ -57,7 +57,31 @@
         .footer-links a { font-size: 0.82em; font-weight: 700; color: #000; text-decoration: none; }
         .footer-links a:hover { text-decoration: underline; }
         @media (max-width: 768px) { .header-top { flex-direction: column; gap: 12px; } .footer-inner { flex-direction: column; align-items: flex-start; } .page-toolbar { justify-content: flex-start; } }
-        @media print { header, .breadcrumb, .page-toolbar, .pdf-export-container, footer { display: none !important; } .thema-content { display: block !important; } .thema-arrow { display: none !important; } * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; } }
+
+        @media print {
+            /* --- Bestehendes --- */
+            header, .breadcrumb, .page-toolbar, .pdf-export-container, footer { display: none !important; }
+            .thema-content { display: block !important; }
+            .thema-arrow { display: none !important; }
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+            /* --- Neu: Schriftgrösse --- */
+            body {
+                font-size: 0.82em;
+            }
+
+            /* --- Neu: Dreierpäckli nicht trennen --- */
+            .table-container {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            /* --- Neu: Kompetenz-Block als Einheit halten --- */
+            .lerninhalt {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+        }
     </style>
 </head>
 <body>
@@ -174,8 +198,6 @@
                     newScript.textContent = oldScript.textContent;
                     document.body.appendChild(newScript);
                 });
-
-                // Keine initTooltips — Themen verwalten ihre Panels selbst
 
             } catch (e) {
                 content.innerHTML = '<div class="thema-loading" style="color:#dc291e;">⚠ Inhalt konnte nicht geladen werden. Bitte stelle sicher, dass die Seite über einen Server läuft (z.B. GitHub Pages).</div>';
