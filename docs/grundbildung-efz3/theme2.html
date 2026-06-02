@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Plan d'études CG – Gagner et dépenser de l'argent</title>
+<title>Plan d'études CG – Mon salaire, mes dépenses</title>
 <style>
   .theme-content-inner { padding: 20px; background-color: #fff; font-family: 'Roboto', Arial, sans-serif; }
   .leitidee { background-color: #f9f3e8; padding: 20px; margin-bottom: 18px; }
@@ -71,6 +71,8 @@
   .schluessel-content { max-height: 0; overflow: hidden; transition: max-height .3s; }
   .schluessel-content.expanded { max-height: 500px; margin-top: 8px; }
   .schluessel-content p { font-size: 0.8em; color: #000; }
+  .kompetenz-nummer-link[title] { pointer-events: auto; }
+  .kompetenz-nummer-link::after { display: none !important; }
 </style>
 </head>
 <body>
@@ -83,21 +85,24 @@
 
   <div class="schluesselkompetenzen-block">
     <h3>Compétences clés</h3>
-    <span class="kompetenz-nummer-link" data-label="1.5 Valeurs en pensée critique" data-text="Afin de franchir les étapes d'un développement personnel menant à une vie autodéterminée, il est important de s'interroger sur ses valeurs et ses convictions personnelles, d'élargir ses perspectives et de construire une base éthique réfléchie pour ses propres actions."><span class="knum">1.5</span><span class="klabel">Valeurs en pensée critique</span></span>
-    <span class="kompetenz-nummer-link" data-label="1.6 Justification et partage du point de vue" data-text="Afin de rallier les autres à ses propres idées et points de vue, il est important d'exprimer et de défendre efficacement ses pensées et ses idées, de présenter des arguments de façon claire et convaincante et de perfectionner ses capacités en matière de communication."><span class="knum">1.6</span><span class="klabel">Justification et partage du point de vue</span></span>
-    <span class="kompetenz-nummer-link" data-label="1.8 Planification des étapes de vie" data-text="Afin de planifier et d'organiser les différentes étapes de la vie à moyen et long terme, il est important de développer des ressources personnelles, sociales et matérielles et de les utiliser de manière ciblée selon le principe de l'auto-efficacité. Il faut notamment être capable de mobiliser des ressources pour gérer son parcours aussi bien personnel que professionnel et de prendre en considération sa santé physique et psychique."><span class="knum">1.8</span><span class="klabel">Planification des étapes de vie</span></span>
-    <span class="kompetenz-nummer-link" data-label="1.9 Durabilité" data-text="Une approche analytique et une capacité de pensée systémique sont indispensables afin de comprendre les liens et les interdépendances complexes aux niveaux local et global ainsi que leurs interactions et leurs conséquences et d'en déduire des actions possibles en faveur du développement durable."><span class="knum">1.9</span><span class="klabel">Durabilité</span></span>
+    <span class="kompetenz-nummer-link" data-label="1.5 Identifier, comprendre et développer ses propres valeurs et convictions et y réfléchir de manière critique" data-text="Afin de franchir les étapes d'un développement personnel menant à une vie autodéterminée, il est important de s'interroger sur ses valeurs et ses convictions personnelles, d'élargir ses perspectives et de construire une base éthique réfléchie pour ses propres actions."><span class="knum">1.5</span><span class="klabel">Identifier, comprendre et développer ses propres valeurs et convictions et y réfléchir de manière critique</span></span>
+    <span class="kompetenz-nummer-link" data-label="1.6 Justifier son point de vue et amener les autres à le partager" data-text="Afin de rallier les autres à ses propres idées et points de vue, il est important d'exprimer et de défendre efficacement ses pensées et ses idées, de présenter des arguments de façon claire et convaincante et de perfectionner ses capacités en matière de communication."><span class="knum">1.6</span><span class="klabel">Justifier son point de vue et amener les autres à le partager</span></span>
+    <span class="kompetenz-nummer-link" data-label="1.8 Planifier les étapes de sa vie et gérer les impondérables" data-text="Afin de planifier et d'organiser les différentes étapes de la vie à moyen et long terme, il est important de développer des ressources personnelles, sociales et matérielles et de les utiliser de manière ciblée selon le principe de l'auto-efficacité. Il faut notamment être capable de mobiliser des ressources pour gérer son parcours aussi bien personnel que professionnel et de prendre en considération sa santé physique et psychique."><span class="knum">1.8</span><span class="klabel">Planifier les étapes de sa vie et gérer les impondérables</span></span>
+    <span class="kompetenz-nummer-link" data-label="1.9 Penser de manière systémique afin d'agir de manière durable sur les plans social, écologique et économique" data-text="Une approche analytique et une capacité de pensée systémique sont indispensables afin de comprendre les liens et les interdépendances complexes aux niveaux local et global ainsi que leurs interactions et leurs conséquences et d'en déduire des actions possibles en faveur du développement durable."><span class="knum">1.9</span><span class="klabel">Penser de manière systémique afin d'agir de manière durable sur les plans social, écologique et économique</span></span>
     <div id="kompetenz-panel" style="display:none;margin-top:12px;background:#fff;border:1px solid #c8b99a;padding:12px 14px;font-size:0.85em;line-height:1.6;color:#000;user-select:text;">
       <div id="kompetenz-panel-label" style="font-weight:700;margin-bottom:6px;"></div>
       <div id="kompetenz-panel-text"></div>
     </div>
   </div>
 
+  <!-- CONTEXTE DE VIE 1 -->
   <div class="lebensbezug">
     <div class="lebensbezug-header collapsed" onclick="toggleLB(this)">
       <h3><strong>1. Contexte de vie :</strong> Je gagne mon propre argent, je le gère et je le dépense.</h3>
     </div>
     <div class="lebensbezug-content">
+
+      <!-- Compétence 1 -->
       <div class="lerninhalt">
         <div class="kompetenz-header">
           <h4>Compétence 1 : <span class="normal-weight">Je planifie et analyse un budget réaliste en fonction de ma fiche de salaire et de ma situation personnelle.</span></h4>
@@ -114,14 +119,14 @@
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.8. Économie</span><br>Comprendre les éléments de sa propre fiche de salaire.</p>
+                      <p><span class="ges-tag">2.8. Économie</span><br>Comprendre les éléments de <strong>sa propre fiche de salaire.</strong></p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                     <td class="col-sprache">
                       <p>
                         <span class="sprach-tag">4. Réception</span><br>
                         <span class="form-label">Réception écrite et visuelle</span><br>
-                        Distinguer les contenus essentiels d'un document officiel à l'aide de stratégies appropriées.
+                        <strong>Distinguer les contenus essentiels</strong> d'un document officiel à l'aide de stratégies appropriées.
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
@@ -129,7 +134,7 @@
                   <tr><th class="col-digital" colspan="2"><span>Médias et numérique</span></th></tr>
                   <tr>
                     <td class="col-digital-content" colspan="2">
-                      <p><span class="dig-tag">3.2. Compétences en gestion des données</span><br>Naviguer de manière efficace sur un site web.</p>
+                      <p><span class="dig-tag">3.2. Compétences en gestion des données</span><br><strong>Naviguer</strong> de manière efficace sur un site web.</p>
                       <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
@@ -140,14 +145,14 @@
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.8. Économie</span><br>Déterminer son rôle en tant qu'<strong>agent économique</strong> au sein du circuit économique simplifié.</p>
+                      <p><span class="ges-tag">2.8. Économie</span><br>Déterminer son rôle en tant qu'agent économique au sein <strong>du circuit économique simplifié.</strong></p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                     <td class="col-sprache">
                       <p>
                         <span class="sprach-tag">4. Réception</span><br>
                         <span class="form-label">Réception audiovisuelle</span><br>
-                        Distinguer les éléments clés de l'endettement et les stratégies de prévention.
+                        <strong>Distinguer les éléments clés</strong> de l'endettement et les stratégies de prévention.
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
@@ -155,7 +160,7 @@
                   <tr><th class="col-digital" colspan="2"><span>Médias et numérique</span></th></tr>
                   <tr>
                     <td class="col-digital-content" colspan="2">
-                      <p><span class="dig-tag">3.4. Résolution de problèmes</span><br>Utiliser des outils budgétaires pour la planification.</p>
+                      <p><span class="dig-tag">3.4. Résolution de problèmes</span><br>Utiliser <strong>des outils budgétaires</strong> pour la planification.</p>
                       <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
@@ -166,7 +171,7 @@
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.8. Économie</span><br>Établir et comparer avec ses pairs son propre budget avec des coûts fixes et variables.</p>
+                      <p><span class="ges-tag">2.8. Économie</span><br>Établir et comparer avec ses pairs <strong>son propre budget</strong> avec des coûts fixes et variables.</p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                     <td class="col-sprache"><p>&nbsp;</p></td>
@@ -182,6 +187,7 @@
         </div>
       </div>
 
+      <!-- Compétence 2 -->
       <div class="lerninhalt">
         <div class="kompetenz-header">
           <h4>Compétence 2 : <span class="normal-weight">Je compare différentes possibilités de gestion financière et en déduis une approche raisonnée.</span></h4>
@@ -198,14 +204,14 @@
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.8. Économie</span><br>Comparer et évaluer les offres d'établissements financiers (comptes, transferts d'argent) pour les opérations de paiement et d'épargne.</p>
+                      <p><span class="ges-tag">2.8. Économie</span><br>Comparer et évaluer <strong>les offres d'établissements financiers</strong> (comptes, transferts d'argent) pour les opérations de paiement et d'épargne.</p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                     <td class="col-sprache">
                       <p>
                         <span class="sprach-tag">4.1. Descriptif</span><br>
                         <span class="form-label">Production orale</span><br>
-                        Synthétiser les résultats de recherche à des pairs de manière compréhensible.
+                        <strong>Synthétiser les résultats de recherche</strong> à des pairs de manière compréhensible.
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
@@ -213,7 +219,7 @@
                   <tr><th class="col-digital" colspan="2"><span>Médias et numérique</span></th></tr>
                   <tr>
                     <td class="col-digital-content" colspan="2">
-                      <p><span class="dig-tag">3.4. Résolution de problèmes</span><br>Rechercher des informations sur les offres d'établissement financiers et analyser les sources.</p>
+                      <p><span class="dig-tag">3.4. Résolution de problèmes</span><br><strong>Rechercher</strong> des informations sur les offres d'établissement financiers et analyser les sources.</p>
                       <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
@@ -228,6 +234,7 @@
         </div>
       </div>
 
+      <!-- Compétence 3 -->
       <div class="lerninhalt">
         <div class="kompetenz-header">
           <h4>Compétence 3 : <span class="normal-weight">J'utilise les modes de paiement et de financement de manière ciblée et justifiée.</span></h4>
@@ -244,7 +251,7 @@
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.8. Économie</span><br>Utiliser les moyens de paiement (crédit, débit, etc.) de manière ciblée en fonction de la situation.</p>
+                      <p><span class="ges-tag">2.8. Économie</span><br>Utiliser <strong>les moyens de paiement</strong> (crédit, débit, etc.) de manière ciblée en fonction de la situation.</p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                     <td class="col-sprache">
@@ -252,7 +259,7 @@
                         <span class="sprach-tag">4. Réception</span><br>
                         <span class="form-label">Réception écrite et visuelle</span><br>
                         <span class="form-label">Réception audiovisuelle</span><br>
-                        Comprendre le contenu de textes numériques et analogiques spécialisés et factuels (articles, supports d'apprentissage, etc.).
+                        <strong>Comprendre le contenu de texte</strong> numériques et analogiques spécialisés et factuels (articles, supports d'apprentissage, etc.).
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
@@ -260,7 +267,7 @@
                   <tr><th class="col-digital" colspan="2"><span>Médias et numérique</span></th></tr>
                   <tr>
                     <td class="col-digital-content" colspan="2">
-                      <p><span class="dig-tag">3.2. Compétences en gestion des données</span><br>Évaluer des sources (intentions, contexte, confidentialité).</p>
+                      <p><span class="dig-tag">3.2. Compétences en gestion des données</span><br><strong>Évaluer des sources</strong> (intentions, contexte, confidentialité).</p>
                       <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
@@ -271,14 +278,14 @@
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.8. Économie</span><br>Évaluer les coûts et les risques liés aux différents types de financement (autofinancement, paiement échelonné, crédit à la consommation, leasing, pièges de l'endettement) lors d'un achat important.</p>
+                      <p><span class="ges-tag">2.8. Économie</span><br>Évaluer les coûts et les risques liés <strong>aux différents types de financement</strong> (autofinancement, paiement échelonné, crédit à la consommation, leasing, pièges de l'endettement) lors d'un achat important.</p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                     <td class="col-sprache">
                       <p>
                         <span class="sprach-tag">4.3. Argumentatif</span><br>
                         <span class="form-label">Production écrite et visuelle</span><br>
-                        Convaincre (parents ou autres bailleurs de fonds) d'un achat en s'appuyant sur des faits.
+                        <strong>Convaincre</strong> (parents ou autres bailleurs de fonds) d'un achat en s'appuyant sur des faits.
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
@@ -296,11 +303,14 @@
     </div>
   </div>
 
+  <!-- CONTEXTE DE VIE 2 -->
   <div class="lebensbezug">
     <div class="lebensbezug-header collapsed" onclick="toggleLB(this)">
       <h3><strong>2. Contexte de vie :</strong> Je prends quotidiennement des décisions d'achat et de consommation qui sont soumises à des droits et des obligations.</h3>
     </div>
     <div class="lebensbezug-content">
+
+      <!-- Compétence 1 -->
       <div class="lerninhalt">
         <div class="kompetenz-header">
           <h4>Compétence 1 : <span class="normal-weight">J'analyse mes habitudes de consommation et j'adopte des stratégies favorisant une consommation responsable.</span></h4>
@@ -317,7 +327,7 @@
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.2. Identité et socialisation</span><br>Identifier ses besoins et analyser son comportement d'achat.</p>
+                      <p><span class="ges-tag">2.2. Identité et socialisation</span><br>Identifier <strong>ses besoins</strong> et analyser <strong>son comportement d'achat.</strong></p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                     <td class="col-sprache">
@@ -325,7 +335,7 @@
                         <span class="sprach-tag">4.5. Réflexif</span><br>
                         <span class="form-label">Production orale</span><br>
                         <span class="form-label">Production écrite et visuelle</span><br>
-                        Analyser son comportement d'achat.
+                        <strong>Analyser son comportement</strong> d'achat.
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
@@ -333,7 +343,7 @@
                   <tr><th class="col-digital" colspan="2"><span>Médias et numérique</span></th></tr>
                   <tr>
                     <td class="col-digital-content" colspan="2">
-                      <p><span class="dig-tag">3.5. Éléments spécifiques à l'IA</span><br>Expliquer l'influence de l'exploitation des données personnelles sur les contenus proposés en ligne.</p>
+                      <p><span class="dig-tag">3.5. Éléments spécifiques à l'IA</span><br>Expliquer <strong>l'influence</strong> de l'exploitation des données personnelles <strong>sur les contenus proposés en ligne.</strong></p>
                       <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
@@ -344,14 +354,14 @@
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.8. Économie</span><br>Identifier les influences sur les achats et les pièges publicitaires, et adapter son comportement d'achat en conséquence.</p>
+                      <p><span class="ges-tag">2.8. Économie</span><br>Identifier <strong>les influences sur les achats et les pièges publicitaires</strong>, et adapter son comportement d'achat en conséquence.</p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                     <td class="col-sprache">
                       <p>
                         <span class="sprach-tag">4.5. Réflexif</span><br>
                         <span class="form-label">Production orale</span><br>
-                        Identifier les procédés linguistiques utilisés dans la publicité et analyser leur influence sur les décisions d'achat.
+                        <strong>Identifier les procédés linguistiques</strong> utilisés dans la publicité et analyser leur influence sur les décisions d'achat.
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
@@ -359,7 +369,7 @@
                   <tr><th class="col-digital" colspan="2"><span>Médias et numérique</span></th></tr>
                   <tr>
                     <td class="col-digital-content" colspan="2">
-                      <p><span class="dig-tag">3.4. Résolution de problèmes</span><br>Tester et utiliser des outils en ligne destinés aux consommateurs (comparaison des prix, évaluation écologique, questions sociales).</p>
+                      <p><span class="dig-tag">3.4. Résolution de problèmes</span><br>Tester et utiliser <strong>des outils en ligne destinées aux consommateurs</strong> (comparaison des prix, évaluation écologique, questions sociales).</p>
                       <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
@@ -370,14 +380,14 @@
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.1. Éthique</span><br><span class="ges-tag">2.4. Écologie</span><br><span class="ges-tag">2.8. Économie</span><br>Évaluer la durabilité économique, écologique et sociale des décisions de consommation et en déduire un comportement quotidien approprié.</p>
+                      <p><span class="ges-tag">2.1. Éthique</span><br><span class="ges-tag">2.4. Écologie</span><br><span class="ges-tag">2.8. Économie</span><br>Évaluer la durabilité économique, écologique et sociale <strong>des décisions de consommation</strong> et en déduire un comportement quotidien approprié.</p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                     <td class="col-sprache">
                       <p>
                         <span class="sprach-tag">4.1. Descriptif</span><br>
                         <span class="form-label">Production multimédia</span><br>
-                        Présenter une décision de consommation basée sur des critères prédéfinis.
+                        <strong>Présenter</strong> une décision de consommation basée sur des critères prédéfinis.
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
@@ -393,6 +403,7 @@
         </div>
       </div>
 
+      <!-- Compétence 2 -->
       <div class="lerninhalt">
         <div class="kompetenz-header">
           <h4>Compétence 2 : <span class="normal-weight">Je vérifie les conditions contractuelles, j'assume mes obligations et je fais valoir mes droits.</span></h4>
@@ -409,14 +420,14 @@
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.6. Droit</span><br>Évaluer la capacité de discernement et d'action en matière de conclusion de contrats (y compris en ligne) et de responsabilité.</p>
+                      <p><span class="ges-tag">2.6. Droit</span><br>Évaluer <strong>la capacité de discernement</strong> et d'action en matière de conclusion de contrats (y compris en ligne) et de responsabilité.</p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                     <td class="col-sprache">
                       <p>
                         <span class="sprach-tag">4.2. Explicatif</span><br>
                         <span class="form-label">Production écrite et visuelle</span><br>
-                        Reformuler sous forme d'énoncés conditionnels (si, alors).
+                        <strong>Reformuler</strong> sous forme d'énoncés conditionnels (si, alors).
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
@@ -424,7 +435,7 @@
                   <tr><th class="col-digital" colspan="2"><span>Médias et numérique</span></th></tr>
                   <tr>
                     <td class="col-digital-content" colspan="2">
-                      <p><span class="dig-tag">3.2. Compétences en gestion des données</span><br>Utiliser des plateformes de vente (moteurs de recherche, etc.) de manière ciblée.</p>
+                      <p><span class="dig-tag">3.2. Compétences en gestion des données</span><br>Utiliser <strong>des plateformes de vente</strong> (moteurs de recherche, etc.) de manière ciblée.</p>
                       <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                   </tr>
@@ -435,14 +446,14 @@
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.6. Droit</span><br>Déterminer le moment où un contrat est juridiquement valable (y compris en ligne) et les conséquences y relatives.</p>
+                      <p><span class="ges-tag">2.6. Droit</span><br>Déterminer le moment où <strong>un contrat est juridiquement valable</strong> (y compris en ligne) et les conséquences y relatives.</p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                     <td class="col-sprache">
                       <p>
                         <span class="sprach-tag">4. Réception</span><br>
                         <span class="form-label">Réception écrite et visuelle</span><br>
-                        Appliquer des stratégies de lecture de textes contenant du vocabulaire technique typique dans les conditions générales.
+                        <strong>Appliquer des stratégies de lecture</strong> de textes contenant du vocabulaire technique typique dans les conditions générales.
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
@@ -454,14 +465,14 @@
                   </tr>
                   <tr>
                     <td class="col-gesellschaft">
-                      <p><span class="ges-tag">2.6. Droit</span><br>Décrire la procédure à suivre en cas de résiliations du contrat ou d'inexécutions du contrat (retard de livraison ou de paiement, défaut).</p>
+                      <p><span class="ges-tag">2.6. Droit</span><br>Décrire <strong>la procédure à suivre en cas de résiliations du contrat ou d'inexécutions du contrat</strong> (retard de livraison ou de paiement, défaut).</p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
                     <td class="col-sprache">
                       <p>
                         <span class="sprach-tag">4.1. Descriptif</span><br>
                         <span class="form-label">Production écrite et visuelle</span><br>
-                        Adapter le modèle de texte à sa situation (geste commercial, erreur, défaut) en tenant compte de la ponctuation.
+                        <strong>Adapter le modèle de texte</strong> à sa situation (geste commercial, erreur, défaut) en tenant compte de <strong>la ponctuation</strong>.
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Exemples d'instruments / outils / sites web</span><br>–</p>
                     </td>
@@ -479,6 +490,7 @@
     </div>
   </div>
 
+  <!-- DOMAINE LIBRE -->
   <div class="freibereich-section">
     <div class="freibereich-header collapsed" onclick="toggleFB(this)">
       <h3>Domaine libre (20%)</h3>
@@ -489,27 +501,27 @@
         <tbody>
           <tr><th style="background:#fff4cc;padding:5px 10px;text-align:left;font-size:0.75em;font-weight:700;border:1px solid #000;">Société</th></tr>
           <tr><td style="background:#fffef5;padding:8px 10px;border:1px solid #000;font-size:0.8em;">
-            <p style="margin-bottom:10px;"><span class="ges-tag">2.8. Économie</span><br>Comparer les différentes possibilités d'investissement financier afin d'expliquer les mécanismes pouvant entraîner des pertes ou des gains.</p>
-            <p style="margin-bottom:10px;"><span class="ges-tag">2.8. Économie</span><br>Étudier l'origine de la monnaie.</p>
-            <p style="margin-bottom:10px;"><span class="ges-tag">2.7. Technologie</span><br>Analyser de manière critique le fonctionnement de la cryptomonnaie et d'autres moyens de paiement virtuels afin d'en évaluer les usages, les avantages et les limites.</p>
-            <p style="margin-bottom:10px;"><span class="ges-tag">2.1. Éthique</span><br><span class="ges-tag">2.8. Économie</span><br>Analyser les différentes possibilités d'investissements liées à l'argent.</p>
-            <p style="margin-bottom:10px;"><span class="ges-tag">2.8. Économie</span><br>Évaluer l'influence des taux d'intérêt sur le comportement d'investissement et la manière dont l'argent est converti en différentes monnaies.</p>
-            <p style="margin-bottom:10px;"><span class="ges-tag">2.2. Identité et socialisation</span><br>Identifier les risques de dépendance liés aux achats en ligne et prendre des mesures si nécessaire.</p>
-            <p style="margin-bottom:10px;"><span class="ges-tag">2.1. Éthique</span><br>Exposer son point de vue face à un dilemme moral.</p>
-            <p style="margin-bottom:0;"><span class="ges-tag">2.1. Éthique</span><br>Analyser le postulat « l'argent fait-il le bonheur ? ».</p>
+            <p style="margin-bottom:10px;"><span class="ges-tag">2.8. Économie</span><br>Comparer les différentes possibilités d'<strong>investissement financier</strong> afin d'expliquer les mécanismes pouvant entraîner des pertes ou des gains.</p>
+            <p style="margin-bottom:10px;"><span class="ges-tag">2.8. Économie</span><br>Étudier <strong>l'origine de la monnaie.</strong></p>
+            <p style="margin-bottom:10px;"><span class="ges-tag">2.7. Technologie</span><br>Analyser de manière critique le fonctionnement de la cryptomonnaie et d'autres <strong>moyens de paiement virtuels</strong> afin d'en évaluer les usages, les avantages et les limites.</p>
+            <p style="margin-bottom:10px;"><span class="ges-tag">2.1. Éthique</span><br><span class="ges-tag">2.8. Économie</span><br>Analyser les différentes possibilités <strong>d'investissements liées à l'argent.</strong></p>
+            <p style="margin-bottom:10px;"><span class="ges-tag">2.8. Économie</span><br>Evaluer <strong>l'influence des taux d'intérêt</strong> sur le comportement d'investissement et la manière dont l'argent est converti en différentes monnaies.</p>
+            <p style="margin-bottom:10px;"><span class="ges-tag">2.2. Identité et socialisation</span><br>Identifier les risques de <strong>dépendance liés aux achats en ligne</strong> et prendre des mesures si nécessaire.</p>
+            <p style="margin-bottom:10px;"><span class="ges-tag">2.1. Éthique</span><br>Exposer son point de vue face à <strong>un dilemme moral</strong>.</p>
+            <p style="margin-bottom:0;"><span class="ges-tag">2.1. Éthique</span><br>Analyser le postulat « <strong>l'argent fait-il le bonheur ?</strong> ».</p>
           </td></tr>
           <tr><th style="background:#cce5ff;padding:5px 10px;text-align:left;font-size:0.75em;font-weight:700;border:1px solid #000;">Langue et communication</th></tr>
           <tr><td style="background:#f5f9ff;padding:8px 10px;border:1px solid #000;font-size:0.8em;">
-            <p style="margin-bottom:10px;"><span class="sprach-tag">4.2. Explicatif</span> &nbsp;<span class="form-label">Interaction et collaboration orales</span><br>Mener une discussion sur les différentes possibilités d'augmenter son capital.</p>
-            <p style="margin-bottom:10px;"><span class="sprach-tag">4.1. Descriptif</span> &nbsp;<span class="form-label">Réception écrite et visuelle</span><br>Analyser son comportement de consommation personnel.</p>
-            <p style="margin-bottom:0;"><span class="sprach-tag">4. Réception</span> &nbsp;<span class="form-label">Réception écrite et visuelle</span><br>Comprendre un texte littéraire.</p>
+            <p style="margin-bottom:10px;"><span class="sprach-tag">4.2. Explicatif</span> &nbsp;<span class="form-label">Interaction et collaboration orales</span><br><strong>Mener une discussion</strong> sur les différentes possibilités d'augmenter son capital.</p>
+            <p style="margin-bottom:10px;"><span class="sprach-tag">4.1. Descriptif</span> &nbsp;<span class="form-label">Réception écrite et visuelle</span><br><strong>Analyser son comportement</strong> de consommation personnel.</p>
+            <p style="margin-bottom:0;"><span class="sprach-tag">4. Réception</span> &nbsp;<span class="form-label">Réception écrite et visuelle</span><br><strong>Comprendre un texte</strong> littéraire.</p>
           </td></tr>
           <tr><th style="background:#d4edda;padding:5px 10px;text-align:left;font-size:0.75em;font-weight:700;border:1px solid #000;">Médias et numérique</th></tr>
           <tr><td style="background:#f0f8f0;padding:8px 10px;border:1px solid #000;font-size:0.8em;">
-            <p style="margin-bottom:10px;"><span class="dig-tag">3.4. Résolution de problèmes</span><br>Investir son argent de manière rentable à l'aide de conseils financiers trouvés sur Internet.</p>
-            <p style="margin-bottom:10px;"><span class="dig-tag">3.2. Compétences en gestion des données</span><br>Définir le processus d'achat de moyens de paiement virtuels.</p>
-            <p style="margin-bottom:10px;"><span class="dig-tag">3.3. Création de contenu</span><br>Rechercher les raisons qui expliquent les réussites financières.</p>
-            <p style="margin-bottom:0;"><span class="dig-tag">3.2. Compétences en gestion des données</span><br>Configurer et utiliser en toute sécurité des sites web et des outils numériques et informatiques pertinents pour la formation.</p>
+            <p style="margin-bottom:10px;"><span class="dig-tag">3.4. Résolution de problèmes</span><br>Investir <strong>son argent de manière rentable</strong> à l'aide de conseils financiers trouvés sur Internet.</p>
+            <p style="margin-bottom:10px;"><span class="dig-tag">3.2. Compétences en gestion des données</span><br>Définir le processus d'achat <strong>de moyens de paiement virtuels.</strong></p>
+            <p style="margin-bottom:10px;"><span class="dig-tag">3.3. Création de contenu</span><br>Rechercher les raisons qui expliquent <strong>les réussites financières.</strong></p>
+            <p style="margin-bottom:0;"><span class="dig-tag">3.2. Compétences en gestion des données</span><br>Configurer et utiliser en toute sécurité des sites web et <strong>des outils numériques</strong> et informatiques pertinents pour la formation.</p>
           </td></tr>
         </tbody>
       </table>
@@ -517,13 +529,11 @@
   </div>
 
 </div>
-
 <script>
 function toggleLB(header) { header.nextElementSibling.classList.toggle('show'); header.classList.toggle('collapsed'); }
 function toggleFB(header) { header.nextElementSibling.classList.toggle('show'); header.classList.toggle('collapsed'); }
 function toggleTbl(header) { const c = header.nextElementSibling; const i = header.querySelector('.table-toggle'); c.classList.toggle('expanded'); i.classList.toggle('rotated'); }
 function toggleUms(box) { const c = box.querySelector('.schluessel-content'); const i = box.querySelector('.toggle-schluessel'); c.classList.toggle('expanded'); i.classList.toggle('rotated'); }
-
 document.querySelectorAll('.kompetenz-nummer-link').forEach(el => {
   el.title = '';
   el.addEventListener('click', function() {
