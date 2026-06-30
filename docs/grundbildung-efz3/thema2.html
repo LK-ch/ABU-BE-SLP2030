@@ -69,14 +69,23 @@
   .ges-tag { font-weight: 700; color: #7a5c00; font-size: 0.92em; }
   .dig-tag { font-weight: 700; color: #1a6e2e; font-size: 0.92em; }
   .tool-hint { background: #fff; padding: 8px 10px; margin-top: 0; font-size: 0.75em; }
-  .umsetzung-box { background: #fff; border: 1px solid #d0d0d0; padding: 4px 8px; margin-top: 14px; cursor: pointer; user-select: none; }
+  .tool-hint a { color: #dc291e; text-decoration: underline; }
+  .umsetzung-box { background: #fff; border: 1px solid #d0d0d0; padding: 4px 8px; margin-top: 8px; cursor: pointer; user-select: none; }
+  .umsetzung-box + .table-container { margin-top: 32px; }
   .umsetzung-box .schluessel-header { display: flex; justify-content: space-between; align-items: center; }
-  .umsetzung-box .schluessel-header h4 { font-size: 0.75em; color: #000; font-weight: 700; margin: 0; }
+  .umsetzung-box .schluessel-header h4 { font-size: 0.85em; color: #000; font-weight: 700; margin: 0; }
   .toggle-schluessel { color: #000; transition: transform .3s; }
   .toggle-schluessel.rotated { transform: rotate(180deg); }
   .schluessel-content { max-height: 0; overflow: hidden; transition: max-height .3s; }
-  .schluessel-content.expanded { max-height: 500px; margin-top: 8px; }
-  .schluessel-content p { font-size: 0.8em; color: #000; }
+  .schluessel-content.expanded { max-height: 1400px; margin-top: 8px; }
+  .schluessel-content p { font-size: 0.8em; color: #000; margin: 0 0 8px 0; }
+  .schluessel-content p:last-child { margin-bottom: 0; }
+  .ub-row { display: flex; gap: 10px; margin: 0 0 8px 0; align-items: flex-start; }
+  .ub-row:last-child { margin-bottom: 0; }
+  .ub-label { flex: 0 0 11em; font-size: 0.8em; color: #000; font-weight: 400; }
+  .ub-text { flex: 1; font-size: 0.8em; color: #000; line-height: 1.5; }
+  .ub-sublabel { text-decoration: underline; }
+  .schluessel-content a { color: #dc291e; text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -161,7 +170,7 @@
                   <tr>
                     <td class="col-gesellschaft">
                       <p><span class="ges-tag">2.8. Wirtschaft</span><br>Ein eigenes <strong>Budget</strong> mit fixen und variablen Kosten aufstellen und mit einem fremden Budget vergleichen.</p>
-                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«(online) Budgetieren» (Iconomix) <a href="https://www.iconomix.ch/de/module/a051/a036/a036-fallbeispiel-onlinebudgeting/" target="_blank" rel="noopener noreferrer">iconomix.ch</a></p>
+                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br><a href="https://www.iconomix.ch/de/module/a051/a036/a036-fallbeispiel-onlinebudgeting/" target="_blank" rel="noopener noreferrer">«(online) Budgetieren» (Iconomix)</a></p>
                     </td>
                     <td class="col-sprache">
                       <p>
@@ -185,7 +194,9 @@
           </div>
           <div class="umsetzung-box" onclick="toggleUms(this)">
             <div class="schluessel-header"><h4>Umsetzungsbeispiel</h4><span class="toggle-schluessel">▼</span></div>
-            <div class="schluessel-content"><p>-</p></div>
+            <div class="schluessel-content">
+              <p style="font-style:italic;">– für ganzen Lebensbezug 1 nachfolgend an Kompetenz 3</p>
+            </div>
           </div>
         </div>
       </div>
@@ -223,7 +234,7 @@
                   <tr>
                     <td class="col-digital-content" colspan="2">
                       <p><span class="dig-tag">3.4. Problemlösung</span><br>Informationen zu Angeboten <strong>recherchieren</strong> und Quellen analysieren.</p>
-                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Verlässlichkeit und Glaubwürdigkeit von Quellen beurteilen» (Iconomix) <a href="https://www.iconomix.ch/de/module/d01/instrumentelernziele-abu-dh-kv/" target="_blank" rel="noopener noreferrer">iconomix.ch</a></p>
+                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br><a href="https://www.iconomix.ch/de/module/d01/instrumentelernziele-abu-dh-kv/" target="_blank" rel="noopener noreferrer">«Verlässlichkeit und Glaubwürdigkeit von Quellen beurteilen» (Iconomix)</a></p>
                     </td>
                   </tr>
                 </tbody>
@@ -232,7 +243,9 @@
           </div>
           <div class="umsetzung-box" onclick="toggleUms(this)">
             <div class="schluessel-header"><h4>Umsetzungsbeispiel</h4><span class="toggle-schluessel">▼</span></div>
-            <div class="schluessel-content"><p>-</p></div>
+            <div class="schluessel-content">
+              <p style="font-style:italic;">– für ganzen Lebensbezug 1 nachfolgend an Kompetenz 3</p>
+            </div>
           </div>
         </div>
       </div>
@@ -255,7 +268,7 @@
                   <tr>
                     <td class="col-gesellschaft">
                       <p><span class="ges-tag">2.8. Wirtschaft</span><br><strong>Zahlungsmittel</strong> (Kredit, Debit, etc.) situativ gezielt einsetzen.</p>
-                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Zahlungsarten im Internet» (Iconomix) <a href="https://www.iconomix.ch/de/module/a051/a047/a047-faktenblatt-onlineshopping/" target="_blank" rel="noopener noreferrer">iconomix.ch</a></p>
+                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br><a href="https://www.iconomix.ch/de/module/a051/a047/a047-faktenblatt-onlineshopping/" target="_blank" rel="noopener noreferrer">«Zahlungsarten im Internet» (Iconomix)</a></p>
                     </td>
                     <td class="col-sprache">
                       <p>
@@ -275,7 +288,7 @@
                   <tr>
                     <td class="col-gesellschaft">
                       <p><span class="ges-tag">2.8. Wirtschaft</span><br>Kosten und Risiken bei <strong>Finanzierungsarten</strong> (Eigenfinanzierung, Ratenzahlung, Konsumkredit, Leasing, Schuldenfallen) bei einer grösseren Anschaffung beurteilen.</p>
-                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Barkredit, Barkauf, Teilzahlungsvertrag» (Iconomix) <a href="https://www.iconomix.ch/de/module/a049/a045/fallbeispiel/" target="_blank" rel="noopener noreferrer">iconomix.ch</a><br>«Wie läuft eine Betreibung ab?» (Iconomix) <a href="https://www.iconomix.ch/de/module/a049/a045/faktenblattbarkredit/" target="_blank" rel="noopener noreferrer">iconomix.ch</a><br>«Auto-Abo (Vergleich mit Leasing etc.)» (Iconomix) <a href="https://www.iconomix.ch/de/module/a049/a063/fallbeispiel/" target="_blank" rel="noopener noreferrer">iconomix.ch</a><br><a href="https://www.comparis.ch/leasing/leasingrechner" target="_blank" rel="noopener noreferrer">comparis.ch/leasing</a>, <a href="https://www.comparis.ch/privatkredit/kreditrechner" target="_blank" rel="noopener noreferrer">comparis.ch/privatkredit</a></p>
+                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br><a href="https://www.iconomix.ch/de/module/a049/a045/fallbeispiel/" target="_blank" rel="noopener noreferrer">«Barkredit, Barkauf, Teilzahlungsvertrag» (Iconomix)</a>, <a href="https://www.iconomix.ch/de/module/a049/a045/faktenblattbarkredit/" target="_blank" rel="noopener noreferrer">«Wie läuft eine Betreibung ab?» (Iconomix)</a>, <a href="https://www.iconomix.ch/de/module/a049/a063/fallbeispiel/" target="_blank" rel="noopener noreferrer">«Auto-Abo (Vergleich mit Leasing etc.)» (Iconomix)</a>, <a href="https://www.comparis.ch/leasing/leasingrechner" target="_blank" rel="noopener noreferrer">comparis.ch/leasingrechner</a>, <a href="https://www.comparis.ch/privatkredit/kreditrechner" target="_blank" rel="noopener noreferrer">comparis.ch/kreditrechner</a></p>
                     </td>
                     <td class="col-sprache">
                       <p>
@@ -290,7 +303,7 @@
                   <tr>
                     <td class="col-digital-content" colspan="2">
                       <p><span class="dig-tag">3.2. Informations- &amp; Datenkompetenz</span><br><strong>Quellenbeurteilung</strong> (Absichten, Hintergründe, Vertraulichkeit).</p>
-                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Verlässlichkeit und Glaubwürdigkeit von Quellen beurteilen» (Iconomix) <a href="https://www.iconomix.ch/de/module/d01/instrumentelernziele-abu-dh-kv/" target="_blank" rel="noopener noreferrer">iconomix.ch</a></p>
+                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br><a href="https://www.iconomix.ch/de/module/d01/instrumentelernziele-abu-dh-kv/" target="_blank" rel="noopener noreferrer">«Verlässlichkeit und Glaubwürdigkeit von Quellen beurteilen» (Iconomix)</a></p>
                     </td>
                   </tr>
                 </tbody>
@@ -298,8 +311,12 @@
             </div>
           </div>
           <div class="umsetzung-box" onclick="toggleUms(this)">
-            <div class="schluessel-header"><h4>Umsetzungsbeispiel</h4><span class="toggle-schluessel">▼</span></div>
-            <div class="schluessel-content"><p>-</p></div>
+            <div class="schluessel-header"><h4>Umsetzungsbeispiel: Eine Anschaffung tätigen</h4><span class="toggle-schluessel">▼</span></div>
+            <div class="schluessel-content">
+              <div class="ub-row"><span class="ub-label">Herausforderung:</span><span class="ub-text">In naher/mittelfristiger Zukunft möchte ich (oder eine befreundete Person) eine konkrete Anschaffung tätigen oder sonst eine grössere Summe Geld ausgeben (Reise ins Ausland, Fahrzeug, …).</span></div>
+              <div class="ub-row"><span class="ub-label">Produkt:</span><span class="ub-text">Dialogischer <strong>Podcast</strong> mit aufgezeigten Herausforderungen und Lösungsansätzen, mit einem Handout als Recherchedokumentation.</span></div>
+              <div class="ub-row"><span class="ub-label">Qualitätskriterien:</span><span class="ub-text"><span class="ub-sublabel">Inhalt:</span> Klärung des Budgets, Vorschlag für Finanzierung, Folgen der Verschuldung<br><span class="ub-sublabel">Sprache &amp; Kommunikation:</span> Rechercheergebnisse vermitteln, Argumentieren mithilfe des Instruments <a href="https://www.hep-verlag.ch/instrumente-myskillbox-bern" target="_blank" rel="noopener">«Argumentierender 3-Schritt» (EHB/hep)</a><br><span class="ub-sublabel">Medien &amp; Digitalität:</span> Prüfung einer wichtigen Quelle im Handout anhand des Instruments <a href="https://www.iconomix.ch/de/module/d01/instrumentelernziele-abu-dh-kv/" target="_blank" rel="noopener noreferrer">«Verlässlichkeit und Glaubwürdigkeit von Quellen beurteilen» (Iconomix)</a></span></div>
+            </div>
           </div>
         </div>
       </div>
@@ -372,7 +389,23 @@
                       <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>-</p>
                     </td>
                   </tr>
-                  <tr class="spacing-row"><td colspan="2"></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="umsetzung-box" onclick="toggleUms(this)">
+            <div class="schluessel-header"><h4>Umsetzungsbeispiel: Beeinflussung erleben</h4><span class="toggle-schluessel">▼</span></div>
+            <div class="schluessel-content">
+              <div class="ub-row"><span class="ub-label">Herausforderung:</span><span class="ub-text">Durch die Preisgabe persönlicher Daten werde ich stark beeinflusst, speziell online.</span></div>
+              <div class="ub-row"><span class="ub-label">Produkt:</span><span class="ub-text">Erstellung eines neuen Accounts (Google, in einem sozialen Medium, …), womit Suchanfragen zu einem ausgesuchten Produkt gemacht werden, <strong>Analyse</strong> (schriftlich, Zeitrafferfilm, …) der Beeinflussungsversuche.</span></div>
+              <div class="ub-row"><span class="ub-label">Qualitätskriterien:</span><span class="ub-text"><span class="ub-sublabel">Inhalt:</span> Vorgehen und Resultate aufzeigen<br><span class="ub-sublabel">Sprache &amp; Kommunikation:</span> Reflexion auf Beeinflussung und eigenes Online-Verhalten<br><span class="ub-sublabel">Medien &amp; Digitalität:</span> geeignete Wiedergabe des Versuchs</span></div>
+            </div>
+          </div>
+          <div class="table-container">
+            <div class="table-header" onclick="toggleTbl(this)"><h5>Inhalte</h5><span class="table-toggle">▼</span></div>
+            <div class="table-content">
+              <table class="kompetenz-table">
+                <tbody>
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Gesellschaft</th>
                     <th class="col-sprache" style="width:50%;">Sprache und Kommunikation</th>
@@ -380,7 +413,7 @@
                   <tr>
                     <td class="col-gesellschaft">
                       <p><span class="ges-tag">2.1. Ethik</span><br><span class="ges-tag">2.4. Ökologie</span><br><span class="ges-tag">2.8. Wirtschaft</span><br><strong>Konsumentscheide</strong> auf deren Nachhaltigkeit <strong>überprüfen</strong> (wirtschaftlich, ökologisch, sozial) und daraus Alltagsverhalten ableiten (z. B. moralische Verantwortung als Konsumierende reflektieren).</p>
-                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br><a href="https://www.hep-verlag.ch/instrumente-myskillbox-bern" target="_blank" rel="noopener">«Nachhaltigkeitseinschätzung» (EHB/hep)</a></p>
+                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br><a href="https://www.hep-verlag.ch/instrumente-myskillbox-bern" target="_blank" rel="noopener">«Nachhaltigkeitseinschätzungen» (EHB/hep)</a></p>
                     </td>
                     <td class="col-sprache">
                       <p>
@@ -403,8 +436,12 @@
             </div>
           </div>
           <div class="umsetzung-box" onclick="toggleUms(this)">
-            <div class="schluessel-header"><h4>Umsetzungsbeispiel</h4><span class="toggle-schluessel">▼</span></div>
-            <div class="schluessel-content"><p>-</p></div>
+            <div class="schluessel-header"><h4>Umsetzungsbeispiel: Produktewahl</h4><span class="toggle-schluessel">▼</span></div>
+            <div class="schluessel-content">
+              <div class="ub-row"><span class="ub-label">Herausforderung:</span><span class="ub-text">Beim Kauf eines Produktes (z. B. Schokoladentafel, Kleidungsstück, …) habe ich die Qual der Wahl. Worauf soll ich schauen?</span></div>
+              <div class="ub-row"><span class="ub-label">Produkt:</span><span class="ub-text"><strong>Präsentation einer Produktewahl</strong> nach einer Nachhaltigkeitsanalyse.</span></div>
+              <div class="ub-row"><span class="ub-label">Qualitätskriterien:</span><span class="ub-text"><span class="ub-sublabel">Inhalt:</span> Kaufkriterien, Abwägung mit Instrument <a href="https://www.hep-verlag.ch/instrumente-myskillbox-bern" target="_blank" rel="noopener">«Nachhaltigkeitseinschätzungen» (EHB/hep)</a><br><span class="ub-sublabel">Sprache &amp; Kommunikation:</span> Präsentation (in Kleingruppen oder Klasse)<br><span class="ub-sublabel">Medien &amp; Digitalität:</span> Online-Konsumentenhilfen miteinbeziehen</span></div>
+            </div>
           </div>
         </div>
       </div>
@@ -492,8 +529,12 @@
             </div>
           </div>
           <div class="umsetzung-box" onclick="toggleUms(this)">
-            <div class="schluessel-header"><h4>Umsetzungsbeispiel</h4><span class="toggle-schluessel">▼</span></div>
-            <div class="schluessel-content"><p>-</p></div>
+            <div class="schluessel-header"><h4>Umsetzungsbeispiel: Vertragsrechtsfälle</h4><span class="toggle-schluessel">▼</span></div>
+            <div class="schluessel-content">
+              <div class="ub-row"><span class="ub-label">Herausforderung:</span><span class="ub-text">Täglich gehe ich Verträge ein. Wann gilt ein Vertrag? Wie kann ich davon zurücktreten?</span></div>
+              <div class="ub-row"><span class="ub-label">Produkt:</span><span class="ub-text">In Gruppen <strong>persönliche Vertragsrechtsfälle</strong> schriftlich erfassen und diese rechtlich überprüfen. Eine andere Gruppe beurteilt diese Fälle: Rechtliche Einschätzung, angemessene schriftliche Reaktion an Verkäufer bei Mangel.</span></div>
+              <div class="ub-row"><span class="ub-label">Qualitätskriterien:</span><span class="ub-text"><span class="ub-sublabel">Inhalt:</span> Auftragserstellung, rechtliche Einschätzung<br><span class="ub-sublabel">Sprache &amp; Kommunikation:</span> «Wenn – dann – Aussagen» formulieren, adäquate und korrekte schriftliche Reaktion<br><span class="ub-sublabel">Medien &amp; Digitalität:</span> Verkaufsbedingungen (AGB) auf Plattformen klären</span></div>
+            </div>
           </div>
         </div>
       </div>
@@ -526,7 +567,7 @@
           <tr><th style="background:#cce5ff;padding:5px 10px;text-align:left;font-size:0.75em;font-weight:700;border:1px solid #000;">Sprache und Kommunikation</th></tr>
           <tr><td style="background:#f5f9ff;padding:8px 10px;border:1px solid #000;font-size:0.8em;">
             <p style="margin-bottom:10px;"><span class="sprach-tag">4.2. Expositorisch (erklärend)</span> &nbsp;<span class="form-label">Interaktion &amp; Kollaboration mündlich</span><span class="form-code" data-form="Ik_m"></span><br>Unterschiedliche <strong>Geldvermehrungsmöglichkeiten</strong> erörtern.<br><span style="font-size:0.9em;color:#666;">Beispielhafte Instrumente / Tools / Webseiten: -</span></p>
-            <p style="margin-bottom:10px;"><span class="sprach-tag">4.1. Deskriptiv (beschreibend)</span> &nbsp;<span class="form-label">Produktion schriftlich &amp; bildlich</span><span class="form-code" data-form="Ps"></span><br>Persönliches <strong>Konsumverhalten</strong> visualisieren.<br><span style="font-size:0.9em;color:#666;">Beispielhafte Instrumente / Tools / Webseiten: Mindmap</span></p>
+            <p style="margin-bottom:10px;"><span class="sprach-tag">4.1. Deskriptiv (beschreibend)</span> &nbsp;<span class="form-label">Produktion schriftlich &amp; bildlich</span><span class="form-code" data-form="Ps"></span><br>Persönliches <strong>Konsumverhalten</strong> visualisieren.<br><span style="font-size:0.9em;color:#666;">Beispielhafte Instrumente / Tools / Webseiten: -</span></p>
             <p style="margin-bottom:0;"><span class="sprach-tag">4. Rezeption</span> &nbsp;<span class="form-label">Rezeption schriftlich &amp; bildlich</span><span class="form-code" data-form="Rs"></span><br>Einen <strong>literarischen Text</strong> verstehen.<br><span style="font-size:0.9em;color:#666;">Beispielhafte Instrumente / Tools / Webseiten: -</span></p>
           </td></tr>
           <tr><th style="background:#d4edda;padding:5px 10px;text-align:left;font-size:0.75em;font-weight:700;border:1px solid #000;">Medien und Digitalität</th></tr>
