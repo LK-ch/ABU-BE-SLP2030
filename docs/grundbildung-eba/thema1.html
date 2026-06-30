@@ -65,14 +65,23 @@
   .ges-tag { font-weight: 700; color: #7a5c00; font-size: 0.92em; }
   .dig-tag { font-weight: 700; color: #1a6e2e; font-size: 0.92em; }
   .tool-hint { background: #fff; padding: 8px 10px; margin-top: 0; font-size: 0.75em; }
-  .umsetzung-box { background: #fff; border: 1px solid #d0d0d0; padding: 4px 8px; margin-top: 14px; cursor: pointer; user-select: none; }
+  .tool-hint a { color: #dc291e; text-decoration: underline; }
+  .umsetzung-box { background: #fff; border: 1px solid #d0d0d0; padding: 4px 8px; margin-top: 8px; cursor: pointer; user-select: none; }
+  .umsetzung-box + .table-container { margin-top: 32px; }
   .umsetzung-box .schluessel-header { display: flex; justify-content: space-between; align-items: center; }
-  .umsetzung-box .schluessel-header h4 { font-size: 0.75em; color: #000; font-weight: 700; margin: 0; }
+  .umsetzung-box .schluessel-header h4 { font-size: 0.85em; color: #000; font-weight: 700; margin: 0; }
   .toggle-schluessel { color: #000; transition: transform .3s; }
   .toggle-schluessel.rotated { transform: rotate(180deg); }
   .schluessel-content { max-height: 0; overflow: hidden; transition: max-height .3s; }
-  .schluessel-content.expanded { max-height: 500px; margin-top: 8px; }
-  .schluessel-content p { font-size: 0.8em; color: #000; }
+  .schluessel-content.expanded { max-height: 1400px; margin-top: 8px; }
+  .schluessel-content p { font-size: 0.8em; color: #000; margin: 0 0 8px 0; }
+  .schluessel-content p:last-child { margin-bottom: 0; }
+  .ub-row { display: flex; gap: 10px; margin: 0 0 8px 0; align-items: flex-start; }
+  .ub-row:last-child { margin-bottom: 0; }
+  .ub-label { flex: 0 0 11em; font-size: 0.8em; color: #000; font-weight: 400; }
+  .ub-text { flex: 1; font-size: 0.8em; color: #000; line-height: 1.5; }
+  .ub-sublabel { text-decoration: underline; }
+  .schluessel-content a { color: #dc291e; text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -128,10 +137,26 @@
                   <tr>
                     <td class="col-digital-content" colspan="2">
                       <p><span class="dig-tag">3.2. Informations- &amp; Datenkompetenz</span><br>Vorgaben der Schule zur <strong>Nutzung von KI</strong> und der <strong>Angabe</strong> von <strong>Quellen</strong> anwenden.</p>
-                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>-</p>
+                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>Schulinterne Dokumente</p>
                     </td>
                   </tr>
-                  <tr class="spacing-row"><td colspan="2"></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="umsetzung-box" onclick="toggleUms(this)">
+            <div class="schluessel-header"><h4>Umsetzungsbeispiel: Schriftlich Kommunizieren</h4><span class="toggle-schluessel">▼</span></div>
+            <div class="schluessel-content">
+              <div class="ub-row"><span class="ub-label">Herausforderung:</span><span class="ub-text">Ich möchte an einem Familienfest teilnehmen, habe aber am selben Tag Unterricht. Ich muss sowohl die Berufsschule als auch den Betrieb informieren. Wie kann mich KI dabei unterstützen?</span></div>
+              <div class="ub-row"><span class="ub-label">Produkt:</span><span class="ub-text"><strong>Schriftliche</strong>, elektronische <strong>Nachricht</strong> sowohl an Lehrperson als auch an Betrieb.</span></div>
+              <div class="ub-row"><span class="ub-label">Qualitätskriterien:</span><span class="ub-text"><span class="ub-sublabel">Inhaltliche Vollständigkeit:</span> z.B. 4 Teile einer formellen Nachricht, Betreff, CC<br><span class="ub-sublabel">Sprache:</span> zielgruppengerecht je Ansprechperson (im Gespräch zielgruppengerechte Sprache begründen anhand mehrerer Beispiele im Mail; z.B. Pronomen, Wortwahl etc.)<br><span class="ub-sublabel">Medien &amp; Digitalität:</span> Screenshots der Prompts, um zu überprüfen, ob KI korrekt genutzt wurde (Vorgaben der Schule &amp; Datenschutz berücksichtigt)</span></div>
+            </div>
+          </div>
+          <div class="table-container">
+            <div class="table-header" onclick="toggleTbl(this)"><h5>Inhalte</h5><span class="table-toggle">▼</span></div>
+            <div class="table-content">
+              <table class="kompetenz-table">
+                <tbody>
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Gesellschaft</th>
                     <th class="col-sprache" style="width:50%;">Sprache und Kommunikation</th>
@@ -168,8 +193,12 @@
             </div>
           </div>
           <div class="umsetzung-box" onclick="toggleUms(this)">
-            <div class="schluessel-header"><h4>Umsetzungsbeispiel</h4><span class="toggle-schluessel">▼</span></div>
-            <div class="schluessel-content"><p>-</p></div>
+            <div class="schluessel-header"><h4>Umsetzungsbeispiel: Meinen Betrieb vorstellen</h4><span class="toggle-schluessel">▼</span></div>
+            <div class="schluessel-content">
+              <div class="ub-row"><span class="ub-label">Herausforderung:</span><span class="ub-text">Ich arbeite seit wenigen Wochen im Lehrbetrieb. Ich befrage jemanden im Betrieb zu unserem Arbeitsort. Wie kann ich diese Informationen, meine bisherigen Erfahrungen und Tätigkeiten in meinem Lehrbetrieb den anderen spannend beschreiben? Welche Unterschiede stelle ich im Austausch mit den anderen fest?</span></div>
+              <div class="ub-row"><span class="ub-label">Produkt:</span><span class="ub-text"><strong>Präsentation</strong> des Lehrbetriebs aufgrund eigener Erfahrungen und eines <strong>Interviews</strong> mit Berufsperson zum Thema Mitgestaltung im Betrieb.</span></div>
+              <div class="ub-row"><span class="ub-label">Qualitätskriterien:</span><span class="ub-text"><span class="ub-sublabel">Inhalt:</span> Wichtiges zum Betrieb, Aufgabenbereiche, Erfahrungswissen aus Interview<br><span class="ub-sublabel">Sprache &amp; Kommunikation:</span> Offene, gehaltvolle Interviewfragen gemäss Instrument «Offene und geschlossene Fragen», mündliche Beschreibung während Präsentation gemäss Instrument <a href="https://www.hep-verlag.ch/instrumente-myskillbox-bern" target="_blank" rel="noopener">«Beschreiben mit OPA» (EHB/hep)</a><br><span class="ub-sublabel">Medien &amp; Digitalität:</span> Präsentation mit PowerPoint oder ähnlichen Programmen, Berücksichtigung formaler Richtlinien</span></div>
+            </div>
           </div>
         </div>
       </div>
@@ -198,7 +227,7 @@
                         <span class="form-label">Interaktion &amp; Kollaboration mündlich</span><br>
                         Über Vor- und Nachteile von <strong>Lernstrategien</strong> mündlich <strong>austauschen</strong>.
                       </p>
-                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>–</p>
+                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br><a href="https://www.hep-verlag.ch/instrumente-myskillbox-bern" target="_blank" rel="noopener">«Vernetztes Denken mit Netzwerken» (EHB/hep)</a></p>
                     </td>
                   </tr>
                   <tr><th class="col-digital" colspan="2"><span>Medien und Digitalität</span></th></tr>
@@ -208,7 +237,23 @@
                       <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>–</p>
                     </td>
                   </tr>
-                  <tr class="spacing-row"><td colspan="2"></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="umsetzung-box" onclick="toggleUms(this)">
+            <div class="schluessel-header"><h4>Umsetzungsbeispiel: Netzwerk</h4><span class="toggle-schluessel">▼</span></div>
+            <div class="schluessel-content">
+              <div class="ub-row"><span class="ub-label">Herausforderung:</span><span class="ub-text">Ich starte einen neuen Lebensabschnitt. Welche Strategien helfen mir dabei, den Überblick zu behalten, zielgerichtet vorzugehen und erfolgreich zu sein?</span></div>
+              <div class="ub-row"><span class="ub-label">Produkt:</span><span class="ub-text"><strong>Netzwerk</strong> als Lern- und Arbeitsstrategie für kommenden Arbeiten/Prüfungen/Projekte.</span></div>
+              <div class="ub-row"><span class="ub-label">Qualitätskriterien:</span><span class="ub-text"><span class="ub-sublabel">Inhalt:</span> Darstellung unterschiedlicher Ursachen (Zeitmanagement, Ordnung, Prüfungslernen, ...) und deren Wirkung auf den Erfolg mit Instrument <a href="https://www.hep-verlag.ch/instrumente-myskillbox-bern" target="_blank" rel="noopener">«Vernetztes Denken mit Netzwerken» (EHB/hep)</a>, Reflexion nach Arbeit/Prüfung<br><span class="ub-sublabel">Sprache &amp; Kommunikation:</span> Verständliches Netzwerk, klare Stichworte, kritische Reflexion<br><span class="ub-sublabel">Medien &amp; Digitalität:</span> Tools in Netzwerk einbinden</span></div>
+            </div>
+          </div>
+          <div class="table-container">
+            <div class="table-header" onclick="toggleTbl(this)"><h5>Inhalte</h5><span class="table-toggle">▼</span></div>
+            <div class="table-content">
+              <table class="kompetenz-table">
+                <tbody>
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Gesellschaft</th>
                     <th class="col-sprache" style="width:50%;">Sprache und Kommunikation</th>
@@ -232,8 +277,12 @@
             </div>
           </div>
           <div class="umsetzung-box" onclick="toggleUms(this)">
-            <div class="schluessel-header"><h4>Umsetzungsbeispiel</h4><span class="toggle-schluessel">▼</span></div>
-            <div class="schluessel-content"><p>-</p></div>
+            <div class="schluessel-header"><h4>Umsetzungsbeispiel: Rollenkonflikt in einer bestimmten Situation</h4><span class="toggle-schluessel">▼</span></div>
+            <div class="schluessel-content">
+              <div class="ub-row"><span class="ub-label">Herausforderung:</span><span class="ub-text">In meinem Alltag stellen meine Ansprechpersonen Erwartungen an mich (z.B. Berufsbildnerin erwartet, dass ich heute länger bleibe, obwohl ich heute ein wichtiges Sporttraining habe). Wie kann ich meine und die anderen Erwartungen vereinbaren, um Rollenkonflikte mithilfe einer guten Kommunikation zu vermeiden?</span></div>
+              <div class="ub-row"><span class="ub-label">Produkt:</span><span class="ub-text">Gegenüberstellung unterschiedlicher Konfliktklärungen mit <strong>Rollenspiel</strong> oder <strong>Beratungsgespräch</strong>.</span></div>
+              <div class="ub-row"><span class="ub-label">Qualitätskriterien:</span><span class="ub-text"><span class="ub-sublabel">Inhalt:</span> Problemanalyse in 5 Schritten mithilfe des Instruments <a href="https://www.hep-verlag.ch/instrumente-myskillbox-bern" target="_blank" rel="noopener">«Perspektivenwechsel zur Problemanalyse» (EHB/hep)</a><br><span class="ub-sublabel">Sprache &amp; Kommunikation:</span> Kommunikationsfreundliche Gesprächstechniken anwenden mithilfe des Instruments <a href="https://www.hep-verlag.ch/instrumente-myskillbox-bern" target="_blank" rel="noopener">«Kommunikationsfreundliche Gesprächstechniken» (EHB/hep)</a></span></div>
+            </div>
           </div>
         </div>
       </div>
@@ -261,7 +310,7 @@
                   <tr>
                     <td class="col-gesellschaft">
                       <p><span class="ges-tag">2.6. Recht</span><br>Ein grundlegendes Rechtsbewusstsein zum <strong>Lehrvertrag</strong> entwickeln und passende Handlungsmöglichkeiten anwenden.</p>
-                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>Chummerchaschte, schulische- und kantonale Anlaufstellen</p>
+                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br><a href="https://bdk.be.ch" target="_blank" rel="noopener">bdk.be.ch</a>, <a href="https://www.berufsbildung.ch" target="_blank" rel="noopener">berufsbildung.ch</a>, Chummerchaschte</p>
                     </td>
                     <td class="col-sprache">
                       <p>
@@ -303,8 +352,12 @@
             </div>
           </div>
           <div class="umsetzung-box" onclick="toggleUms(this)">
-            <div class="schluessel-header"><h4>Umsetzungsbeispiel</h4><span class="toggle-schluessel">▼</span></div>
-            <div class="schluessel-content"><p>-</p></div>
+            <div class="schluessel-header"><h4>Umsetzungsbeispiel: Rechtliche Situationen in der Lehre</h4><span class="toggle-schluessel">▼</span></div>
+            <div class="schluessel-content">
+              <div class="ub-row"><span class="ub-label">Herausforderung:</span><span class="ub-text">Ich begegne in meiner Lehre herausfordernden Situationen und löse diese mit gesetzlichen Grundlagen.</span></div>
+              <div class="ub-row"><span class="ub-label">Produkt:</span><span class="ub-text">Lösen von verschiedenen Mini-Cases (Ausgangslage darstellen, rechtliche Klärung und Lösungsvorschlag), z. B. durch <strong>filmische Darstellung oder Kurztheater</strong>.<br>Umsetzungsidee: 3-er Gruppen, eine Lernende, eine Vorgesetzte und jemand, der das Recht erklärt.</span></div>
+              <div class="ub-row"><span class="ub-label">Qualitätskriterien:</span><span class="ub-text"><span class="ub-sublabel">Inhalt:</span> Das Recht wird anhand der bearbeiteten Unterrichtsmaterialien erklärt. Die drei Elemente (Ausgangslage darstellen, rechtliche Klärung und Lösungsvorschlag) werden dargestellt.<br><span class="ub-sublabel">Sprache &amp; Kommunikation:</span> Beschreibung/Darstellung der drei Elemente</span></div>
+            </div>
           </div>
         </div>
       </div>
@@ -320,7 +373,7 @@
         <tbody>
           <tr><th style="background:#fff4cc;padding:5px 10px;text-align:left;font-size:0.75em;font-weight:700;border:1px solid #000;">Gesellschaft</th></tr>
           <tr><td style="background:#fffef5;padding:8px 10px;border:1px solid #000;font-size:0.8em;">
-            <p style="margin-bottom:10px;"><span class="ges-tag">2.2. Identität und Sozialisation</span><br>Die eigene <strong>Tätigkeit / Tagesablauf</strong> (z.&nbsp;B. im Betrieb) aufzeigen.</p>
+            <p style="margin-bottom:10px;"><span class="ges-tag">2.2. Identität und Sozialisation</span><br>Die eigene <strong>Tätigkeit / Tagesablauf</strong> (z.&nbsp;B. im Betrieb) aufzeigen.<br><span style="font-size:0.9em;color:#666;"><a href="https://www.hep-verlag.ch/instrumente-myskillbox-bern" target="_blank" rel="noopener">«Beschreiben mit OPA» (EHB/hep)</a></span></p>
             <p style="margin-bottom:10px;"><span class="ges-tag">2.1. Ethik</span><br>Eigene <strong>moralische Überzeugungen</strong> mit denen anderer Personen abgleichen.</p>
             <p style="margin-bottom:0;"><span class="ges-tag">2.3. Kultur</span><br><strong>Verhaltenserwartungen</strong> (z.&nbsp;B. an Leute in Ausbildung) verschiedener Kulturen und Generationen analysieren.</p>
           </td></tr>
