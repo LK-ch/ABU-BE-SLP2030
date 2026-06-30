@@ -65,14 +65,23 @@
   .ges-tag { font-weight: 700; color: #7a5c00; font-size: 0.92em; }
   .dig-tag { font-weight: 700; color: #1a6e2e; font-size: 0.92em; }
   .tool-hint { background: #fff; padding: 8px 10px; margin-top: 0; font-size: 0.75em; }
-  .umsetzung-box { background: #fff; border: 1px solid #d0d0d0; padding: 4px 8px; margin-top: 14px; cursor: pointer; user-select: none; }
+  .tool-hint a { color: #dc291e; text-decoration: underline; }
+  .umsetzung-box { background: #fff; border: 1px solid #d0d0d0; padding: 4px 8px; margin-top: 8px; cursor: pointer; user-select: none; }
+  .umsetzung-box + .table-container { margin-top: 32px; }
   .umsetzung-box .schluessel-header { display: flex; justify-content: space-between; align-items: center; }
-  .umsetzung-box .schluessel-header h4 { font-size: 0.75em; color: #000; font-weight: 700; margin: 0; }
+  .umsetzung-box .schluessel-header h4 { font-size: 0.85em; color: #000; font-weight: 700; margin: 0; }
   .toggle-schluessel { color: #000; transition: transform .3s; }
   .toggle-schluessel.rotated { transform: rotate(180deg); }
   .schluessel-content { max-height: 0; overflow: hidden; transition: max-height .3s; }
-  .schluessel-content.expanded { max-height: 500px; margin-top: 8px; }
-  .schluessel-content p { font-size: 0.8em; color: #000; }
+  .schluessel-content.expanded { max-height: 1400px; margin-top: 8px; }
+  .schluessel-content p { font-size: 0.8em; color: #000; margin: 0 0 8px 0; }
+  .schluessel-content p:last-child { margin-bottom: 0; }
+  .ub-row { display: flex; gap: 10px; margin: 0 0 8px 0; align-items: flex-start; }
+  .ub-row:last-child { margin-bottom: 0; }
+  .ub-label { flex: 0 0 11em; font-size: 0.8em; color: #000; font-weight: 400; }
+  .ub-text { flex: 1; font-size: 0.8em; color: #000; line-height: 1.5; }
+  .ub-sublabel { text-decoration: underline; }
+  .schluessel-content a { color: #dc291e; text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -162,8 +171,12 @@
             </div>
           </div>
           <div class="umsetzung-box" onclick="toggleUms(this)">
-            <div class="schluessel-header"><h4>Umsetzungsbeispiel</h4><span class="toggle-schluessel">▼</span></div>
-            <div class="schluessel-content"><p>-</p></div>
+            <div class="schluessel-header"><h4>Umsetzungsbeispiel: Einfluss digitaler Geräte</h4><span class="toggle-schluessel">▼</span></div>
+            <div class="schluessel-content">
+              <div class="ub-row"><span class="ub-label">Herausforderung:</span><span class="ub-text">Ich bin fast ständig online erreichbar. Dies hat eine Auswirkung auf mich und mein Verhalten.</span></div>
+              <div class="ub-row"><span class="ub-label">Produkt:</span><span class="ub-text"><strong>Selbstexperiment</strong> durchführen und dokumentieren: Ersatzhandlung definieren (z. B. Alternative zum Gebrauch sozialer Medien), Wirkung beschreiben/aufzeigen, zukünftiges Verhalten definieren.</span></div>
+              <div class="ub-row"><span class="ub-label">Qualitätskriterien:</span><span class="ub-text"><span class="ub-sublabel">Inhalt:</span> Ausgangslage, Durchführung mit Dokumentation, Auswertung<br><span class="ub-sublabel">Sprache &amp; Kommunikation:</span> Position beziehen zum zukünftigen Verhalten<br><span class="ub-sublabel">Medien &amp; Digitalität:</span> Bildschirmzeit, Möglichkeiten der Einschränkung</span></div>
+            </div>
           </div>
         </div>
       </div>
@@ -225,7 +238,7 @@
                   <tr>
                     <td class="col-digital-content" colspan="2">
                       <p><span class="dig-tag">3.2. Informations- &amp; Datenkompetenz</span><br>Mit Online-Tools und Websites Informationen auf <strong>Manipulation und Falschinformation</strong> überprüfen.</p>
-                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br><a href="https://www.mimikama.org/anleitung-zur-erkennung-von-fake-news/" target="_blank" rel="noopener noreferrer">mimikama.org – Fake-News erkennen</a></p>
+                      <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br><a href="https://www.mimikama.org/anleitung-zur-erkennung-von-fake-news/" target="_blank" rel="noopener noreferrer">mimikama.org</a>, <a href="https://www.hep-verlag.ch/brennpunkt-welt/fakt-oder-fake" target="_blank" rel="noopener noreferrer">brennpunkt-welt/fakt-oder-fake</a></p>
                     </td>
                   </tr>
                 </tbody>
@@ -233,8 +246,12 @@
             </div>
           </div>
           <div class="umsetzung-box" onclick="toggleUms(this)">
-            <div class="schluessel-header"><h4>Umsetzungsbeispiel</h4><span class="toggle-schluessel">▼</span></div>
-            <div class="schluessel-content"><p>-</p></div>
+            <div class="schluessel-header"><h4>Umsetzungsbeispiel: Online-Manipulation</h4><span class="toggle-schluessel">▼</span></div>
+            <div class="schluessel-content">
+              <div class="ub-row"><span class="ub-label">Herausforderung:</span><span class="ub-text">Im Alltag begegnen mir Nachrichten auf verschiedenen Kanälen. Was ist echt, was falsch? Welche Wirkung können Falschnachrichten oder Kommentare haben?</span></div>
+              <div class="ub-row"><span class="ub-label">Produkt:</span><span class="ub-text"><strong>Einordnung</strong> von Fakten und Kommentaren: Faktencheck bei aktuellen Mitteilungen, Analyse der Kommentare, rechtliche Konsequenzen, Vorgehensweisen.</span></div>
+              <div class="ub-row"><span class="ub-label">Qualitätskriterien:</span><span class="ub-text"><span class="ub-sublabel">Inhalt:</span> Analyse eines Fallbeispiels, Handlungsmöglichkeiten ausarbeiten<br><span class="ub-sublabel">Sprache &amp; Kommunikation:</span> Lösungsorientierte Kommunikationsmöglichkeit, eigenes Verhalten in digitalen Räumen reflektieren<br><span class="ub-sublabel">Medien &amp; Digitalität:</span> Erkennungstools anwenden</span></div>
+            </div>
           </div>
         </div>
       </div>
@@ -267,7 +284,7 @@
                     <td class="col-sprache">
                       <p>
                         <span class="sprach-tag">4. Rezeption</span><br>
-                        <span class="form-label">Rezeption schriftlich & bildlich</span><br>
+                        <span class="form-label">Rezeption schriftlich &amp; bildlich</span><br>
                         <strong>Inhalte</strong> aus einem Sachtext <strong>erfassen</strong> und an Gleichaltrige nachvollziehbar vermitteln.
                       </p>
                       <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>-</p>
@@ -289,7 +306,7 @@
                         <span class="form-label">Produktion schriftlich &amp; bildlich</span><br>
                         <strong>Zielgruppengerecht schriftlich kommunizieren</strong> (Schadensmeldung) unter Berücksichtigung der <strong>Gross-/Kleinschreibung</strong>.
                       </p>
-                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br><a href="https://www.hep-verlag.ch/instrumente-myskillbox-bern" target="_blank" rel="noopener">«Die Nomenproben» (EHB/hep)</a>, duden.de</p>
+                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br><a href="https://www.hep-verlag.ch/instrumente-myskillbox-bern" target="_blank" rel="noopener">«Die Nomenproben» (EHB/hep)</a>, <a href="https://www.duden.de/" target="_blank" rel="noopener noreferrer">duden.de</a></p>
                     </td>
                   </tr>
                   <tr><th class="col-digital" colspan="2"><span>Medien und Digitalität</span></th></tr>
@@ -299,7 +316,23 @@
                       <p class="tool-hint" style="background:#fff;text-align:center;"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>-</p>
                     </td>
                   </tr>
-                  <tr class="spacing-row"><td colspan="2"></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="umsetzung-box" onclick="toggleUms(this)">
+            <div class="schluessel-header"><h4>Umsetzungsbeispiel: Absicherung einer neuen Lebenslage</h4><span class="toggle-schluessel">▼</span></div>
+            <div class="schluessel-content">
+              <div class="ub-row"><span class="ub-label">Herausforderung:</span><span class="ub-text">Meine Lebensumstände verändern sich in den nächsten Jahren. Bin ich gut genug abgesichert?</span></div>
+              <div class="ub-row"><span class="ub-label">Produkt:</span><span class="ub-text">Mögliche Absicherungen einer neuen Lebenslage analysieren (Roadtrip, Ausziehen, Haustier, Autofahren, Kinder, Hauskauf, Firmengründung, …) und <strong>vorstellen</strong>.</span></div>
+              <div class="ub-row"><span class="ub-label">Qualitätskriterien:</span><span class="ub-text"><span class="ub-sublabel">Inhalt:</span> Definition des Lebensumstands, mögliche Absicherungsbereiche, Wahl begründen aufgrund des Instruments <a href="https://www.hep-verlag.ch/instrumente-myskillbox-bern" target="_blank" rel="noopener">«Die richtige Versicherung finden» (EHB/hep)</a><br><span class="ub-sublabel">Sprache &amp; Kommunikation:</span> Möglichkeiten wiedergeben</span></div>
+            </div>
+          </div>
+          <div class="table-container">
+            <div class="table-header" onclick="toggleTbl(this)"><h5>Inhalte</h5><span class="table-toggle">▼</span></div>
+            <div class="table-content">
+              <table class="kompetenz-table">
+                <tbody>
                   <tr>
                     <th class="col-gesellschaft" style="width:50%;">Gesellschaft</th>
                     <th class="col-sprache" style="width:50%;">Sprache und Kommunikation</th>
@@ -307,7 +340,7 @@
                   <tr>
                     <td class="col-gesellschaft">
                       <p><span class="ges-tag">2.8. Wirtschaft</span><br>Eigene Kosten aufgrund unterschiedlicher Leistungen der <strong>Unfall-</strong> und <strong>Krankenversicherung</strong> unterscheiden, Grundversicherungsmodelle vergleichen und auswählen.</p>
-                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Glossar Krankenkasse» (Iconomix), <a href="https://www.iconomix.ch/de/module/v11/glossar/" target="_blank" rel="noopener noreferrer">iconomix.ch</a></p>
+                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br><a href="https://www.iconomix.ch/de/module/v11/glossar/" target="_blank" rel="noopener noreferrer">«Glossar Krankenkasse» (Iconomix)</a></p>
                     </td>
                     <td class="col-sprache">
                       <p>
@@ -315,7 +348,7 @@
                         <span class="form-label">Rezeption schriftlich &amp; bildlich</span><br>
                         Aussagen aus <strong>Grafiken</strong> entnehmen.
                       </p>
-                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br>«Grafiken lesen und interpretieren» (Iconomix), <a href="https://www.iconomix.ch/de/module/d01/instrumentelernziele-abu-dh-kv/" target="_blank" rel="noopener noreferrer">iconomix.ch</a></p>
+                      <p class="tool-hint"><span style="color:#666;">Beispielhafte Instrumente / Tools / Webseiten</span><br><a href="https://www.iconomix.ch/de/module/d01/instrumentelernziele-abu-dh-kv/" target="_blank" rel="noopener noreferrer">«Grafiken lesen und interpretieren» (Iconomix)</a></p>
                     </td>
                   </tr>
                   <tr><th class="col-digital" colspan="2"><span>Medien und Digitalität</span></th></tr>
@@ -330,8 +363,12 @@
             </div>
           </div>
           <div class="umsetzung-box" onclick="toggleUms(this)">
-            <div class="schluessel-header"><h4>Umsetzungsbeispiel</h4><span class="toggle-schluessel">▼</span></div>
-            <div class="schluessel-content"><p>-</p></div>
+            <div class="schluessel-header"><h4>Umsetzungsbeispiel: Versicherungsberatung</h4><span class="toggle-schluessel">▼</span></div>
+            <div class="schluessel-content">
+              <div class="ub-row"><span class="ub-label">Herausforderung:</span><span class="ub-text">Ich bezahle regelmässig Beträge an die Krankenversicherung. Wie kann ich mich bestmöglich absichern und trotzdem so wenig wie möglich bezahlen?</span></div>
+              <div class="ub-row"><span class="ub-label">Produkt:</span><span class="ub-text"><strong>Versicherungsgespräch</strong> zwischen Kunde und Versicherungsberater:in aufgrund konkreter Fragen und mit begründeter Empfehlung.</span></div>
+              <div class="ub-row"><span class="ub-label">Qualitätskriterien:</span><span class="ub-text"><span class="ub-sublabel">Inhalt:</span> Sachliche Richtigkeit, Beachtung relevanter Punkte<br><span class="ub-sublabel">Sprache &amp; Kommunikation:</span> Gesprächsaufbau, nachvollziehbare Begründung<br><span class="ub-sublabel">Medien &amp; Digitalität:</span> Einbezug konkreter Kostenbeispiele aus Online-Tools</span></div>
+            </div>
           </div>
         </div>
       </div>
