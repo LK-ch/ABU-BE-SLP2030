@@ -59,13 +59,24 @@
         @media (max-width: 768px) { .header-top { flex-direction: column; gap: 12px; } .footer-inner { flex-direction: column; align-items: flex-start; } .page-toolbar { justify-content: flex-start; } }
 
         @media print {
-            /* --- Bestehendes --- */
+            /* --- Bildschirm-Elemente ausblenden --- */
             header, .breadcrumb, .page-toolbar, .pdf-export-container, footer { display: none !important; }
             .thema-content { display: block !important; }
             .thema-arrow { display: none !important; }
             * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
 
-            /* --- Seitenzahl kleiner --- */
+            /* --- Alle aufklappbaren Container im Druck vollständig zeigen --- */
+            /* Wichtig: max-height/overflow der Akkordeon-Container aufheben,        */
+            /* sonst werden lange Inhalte (inkl. Umsetzungsbeispiele) abgeschnitten. */
+            .lebensbezug-content,
+            .freibereich-content { display: block !important; }
+            .table-content,
+            .schluessel-content {
+                max-height: none !important;
+                overflow: visible !important;
+            }
+
+            /* --- Seitenränder & kleine Seitenzahl --- */
             @page {
                 margin: 1.2cm 1.2cm 1.5cm 1.2cm;
                 @bottom-center {
@@ -118,8 +129,16 @@
                 page-break-inside: avoid;
             }
 
-            /* --- Lebensbezug immer oben auf neuer Seite --- */
-            .lebensbezug {
+            /* --- Umsetzungsbeispiel als Einheit halten --- */
+            .umsetzung-box {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            /* --- Lebensbezug ab dem zweiten oben auf neuer Seite --- */
+            /* Der erste Lebensbezug bleibt direkt unter Leitidee &        */
+            /* Schlüsselkompetenzen; erst ab dem zweiten wird umgebrochen. */
+            .lebensbezug:not(:first-of-type) {
                 break-before: always;
                 page-break-before: always;
             }
@@ -289,18 +308,27 @@
             }
         }
 
+        // Klappt den gesamten Inhalt eines Themas auf (Bildschirmansicht).
         function expandThemaContent(content) {
             content.querySelectorAll('.lebensbezug-content').forEach(el => el.classList.add('show'));
             content.querySelectorAll('.lebensbezug-header').forEach(el => el.classList.remove('collapsed'));
+            content.querySelectorAll('.freibereich-content').forEach(el => el.classList.add('show'));
+            content.querySelectorAll('.freibereich-header').forEach(el => el.classList.remove('collapsed'));
             content.querySelectorAll('.table-content').forEach(el => el.classList.add('expanded'));
             content.querySelectorAll('.table-toggle').forEach(el => el.classList.add('rotated'));
+            content.querySelectorAll('.schluessel-content').forEach(el => el.classList.add('expanded'));
+            content.querySelectorAll('.toggle-schluessel').forEach(el => el.classList.add('rotated'));
         }
 
         function collapseThemaContent(content) {
             content.querySelectorAll('.lebensbezug-content').forEach(el => el.classList.remove('show'));
             content.querySelectorAll('.lebensbezug-header').forEach(el => el.classList.add('collapsed'));
+            content.querySelectorAll('.freibereich-content').forEach(el => el.classList.remove('show'));
+            content.querySelectorAll('.freibereich-header').forEach(el => el.classList.add('collapsed'));
             content.querySelectorAll('.table-content').forEach(el => el.classList.remove('expanded'));
             content.querySelectorAll('.table-toggle').forEach(el => el.classList.remove('rotated'));
+            content.querySelectorAll('.schluessel-content').forEach(el => el.classList.remove('expanded'));
+            content.querySelectorAll('.toggle-schluessel').forEach(el => el.classList.remove('rotated'));
         }
 
         async function toggleAll() {
@@ -332,9 +360,8 @@
                 await loadThema(thema.id, thema.file);
                 content.classList.add('show');
                 arrow.classList.add('open');
-                content.querySelectorAll('.theme-content, .lebensbezug-content, .freibereich-content').forEach(el => el.classList.add('show'));
-                content.querySelectorAll('.table-content').forEach(el => el.classList.add('expanded'));
-                content.querySelectorAll('.schluessel-content').forEach(el => el.classList.remove('expanded'));
+                // Alle aufklappbaren Bereiche vollständig öffnen – inkl. Umsetzungsbeispiele.
+                expandThemaContent(content);
             }
             setTimeout(() => { window.print(); }, 600);
         }
