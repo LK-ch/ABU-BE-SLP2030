@@ -131,11 +131,18 @@
                 widows: 3;
             }
 
+            /* --- Jede Kompetenz ausser der ersten beginnt auf --- */
+            /* neuer Seite. Die erste Kompetenz folgt direkt dem   */
+            /* Lebensbezug-Titel (keine Lücke); jede weitere – d.h.*/
+            /* wenn oberhalb bereits Inhalt oder ein Umsetzungs-   */
+            /* beispiel stand – kommt auf eine neue Seite.         */
+            .lerninhalt:not(:first-child) {
+                break-before: always;
+                page-break-before: always;
+            }
+
             /* --- Kompetenz-Titel nicht allein am Seitenende: --- */
-            /* an die erste Tabelle binden. Der Lebensbezug-Titel   */
-            /* wird bewusst NICHT gebunden, sonst entsteht eine      */
-            /* Lücke, wenn die erste Tabelle nicht mehr auf die      */
-            /* (frische) Lebensbezug-Seite passt.                    */
+            /* an die erste Tabelle binden.                         */
             .kompetenz-header {
                 break-after: avoid;
                 page-break-after: avoid;
