@@ -123,15 +123,19 @@
                 page-break-inside: avoid;
             }
 
-            /* --- Kompetenz-Block als Einheit halten --- */
+            /* --- Kompetenz-Block: darf über Seiten fliessen,        --- */
+            /* damit keine Lücke nach dem Lebensbezug-Titel entsteht.     */
+            /* Zusammenhalt übernehmen .table-container & .umsetzung-box. */
             .lerninhalt {
-                break-inside: avoid;
-                page-break-inside: avoid;
+                orphans: 3;
+                widows: 3;
             }
 
-            /* --- Lebensbezug-Titel nicht allein am Seitenende: --- */
-            /* Header an die folgende (erste) Kompetenz binden.     */
-            .lebensbezug-header,
+            /* --- Kompetenz-Titel nicht allein am Seitenende: --- */
+            /* an die erste Tabelle binden. Der Lebensbezug-Titel   */
+            /* wird bewusst NICHT gebunden, sonst entsteht eine      */
+            /* Lücke, wenn die erste Tabelle nicht mehr auf die      */
+            /* (frische) Lebensbezug-Seite passt.                    */
             .kompetenz-header {
                 break-after: avoid;
                 page-break-after: avoid;
